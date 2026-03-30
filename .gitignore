@@ -258,3 +258,4 @@ data/ava/videos/
 *.json
 
 # Model Binaries
+*.pt
