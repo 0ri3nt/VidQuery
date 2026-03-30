@@ -52,15 +52,39 @@ def get_spatial_relationships(node_a: dict, node_b: dict) -> list[dict]:
 
     # 1. Overlap (Intersection over Union)
     iou = calculate_iou(boxA, boxB)
-    if iou > IOU_THRESHOLD:
+    if iou > 0:
+        if iou > IOU_THRESHOLD:
+            edges.append({
+                "source": node_a["node_id"],
+                "target": node_b["node_id"],
+                "type": "overlaps_with",
+                "weight": round(iou, 3)
+            })
+        else:
+            edges.append({
+                "source": node_a["node_id"],
+                "target": node_b["node_id"],
+                "type": "touches",
+                "weight": round(iou, 3)
+            })
+
+    # 2. Containment
+    if (boxA[0] <= boxB[0] and boxA[1] <= boxB[1]
+            and boxA[2] >= boxB[2] and boxA[3] >= boxB[3]):
         edges.append({
             "source": node_a["node_id"],
             "target": node_b["node_id"],
-            "type": "overlaps_with",
-            "weight": round(iou, 3)
+            "type": "contains"
+        })
+    elif (boxB[0] <= boxA[0] and boxB[1] <= boxA[1]
+            and boxB[2] >= boxA[2] and boxB[3] >= boxA[3]):
+        edges.append({
+            "source": node_a["node_id"],
+            "target": node_b["node_id"],
+            "type": "inside"
         })
 
-    # 2. Distance (Euclidean between centers)
+    # 3. Distance (Euclidean between centers)
     dx = centerA[0] - centerB[0]
     dy = centerA[1] - centerB[1]
     distance = math.sqrt(dx**2 + dy**2)
@@ -73,15 +97,46 @@ def get_spatial_relationships(node_a: dict, node_b: dict) -> list[dict]:
             "distance": round(distance, 1)
         })
 
-    # 3. Directionality (Relative Position)
-    # Only assign left/right/above/below if they are "near" to avoid 
-    # connecting everything to everything else across the whole frame.
+    # 4. Directionality
     if distance < NEAR_THRESHOLD * 2: 
-        if centerA[0] < centerB[0] - 20: # 20px buffer to prevent noise
+        # horizontal relations
+        if centerA[0] < centerB[0] - 20:
             edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "left_of"})
         elif centerA[0] > centerB[0] + 20:
             edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "right_of"})
-            
+        # vertical relations
+        if centerA[1] < centerB[1] - 20:
+            edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "above"})
+        elif centerA[1] > centerB[1] + 20:
+            edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "below"})
+
+    return edges
+
+
+def get_semantic_relationships(node_a: dict, node_b: dict) -> list[dict]:
+    """Generate semantic edges based on AVA matched actions."""
+    edges = []
+
+    ann_a = node_a.get("matched_annotation")
+    ann_b = node_b.get("matched_annotation")
+
+    action_a = set(ann_a.get("action_ids", [])) if isinstance(ann_a, dict) else set()
+    action_b = set(ann_b.get("action_ids", [])) if isinstance(ann_b, dict) else set()
+
+    # People talking to each other
+    if node_a.get("class_name") == "person" and node_b.get("class_name") == "person":
+        if 36 in action_a or 36 in action_b:
+            edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "talks_to"})
+
+    # Interaction with common object types
+    if node_a.get("class_name") == "person" and node_b.get("class_name") in {"laptop", "keyboard", "cell phone", "book", "cup"}:
+        if 17 in action_a or 44 in action_a or 15 in action_a:
+            edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "interacts_with"})
+
+    if node_b.get("class_name") == "person" and node_a.get("class_name") in {"laptop", "keyboard", "cell phone", "book", "cup"}:
+        if 17 in action_b or 44 in action_b or 15 in action_b:
+            edges.append({"source": node_a["node_id"], "target": node_b["node_id"], "type": "interacts_with"})
+
     return edges
 
 
@@ -117,9 +172,22 @@ def process_frame(json_path: Path, output_path: Path):
         for j in range(num_nodes):
             if i == j:
                 continue # Skip self-comparison
-            
+
             spatial_edges = get_spatial_relationships(nodes[i], nodes[j])
+            semantic_edges = get_semantic_relationships(nodes[i], nodes[j])
+
             edges.extend(spatial_edges)
+            edges.extend(semantic_edges)
+
+    # 2.1 Remove duplicates (source, target, type)
+    unique = set()
+    deduped_edges = []
+    for edge in edges:
+        key = (edge.get('source'), edge.get('target'), edge.get('type'))
+        if key not in unique:
+            unique.add(key)
+            deduped_edges.append(edge)
+    edges = deduped_edges
 
     # 3. Compile Graph Structure
     graph_data = {
