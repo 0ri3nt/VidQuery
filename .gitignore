@@ -243,3 +243,6 @@ __marimo__/
 *.mkv
 *.webm
 *.mp4
+
+# YOLO Model training file
+*.pt
