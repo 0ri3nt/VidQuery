@@ -1,5 +1,6 @@
 import json
 import time
+import csv
 from pathlib import Path
 from collections import defaultdict
 
@@ -12,6 +13,8 @@ from ultralytics import YOLO
 
 FRAMES_DIR       = Path("data/ava/extracted_frames")  # root frames dir
 DETECTIONS_DIR   = Path("data/ava/detections")        # where JSON goes
+TRAIN_CSV        = Path("data/ava/annotations/ava_train_v2.2.csv")
+VAL_CSV          = Path("data/ava/annotations/ava_val_v2.2.csv")
 MODEL_SIZE       = "yolov8n.pt"                       # nano for testing
 CONFIDENCE_THRESH = 0.25                              # min confidence
 IOU_THRESH        = 0.45                              # NMS threshold
@@ -44,6 +47,57 @@ RELEVANT_CLASSES = {
     76: "scissors",
     79: "toothbrush",
 }
+
+
+# AVA subset + fallback pattern for unknown IDs.
+AVA_ACTIONS = {
+    12: "sit",
+    13: "stand",
+    15: "walk",
+    17: "write",
+    26: "listen_to",
+    36: "talk_to",
+    44: "use_laptop",
+    64: "kiss",
+}
+
+
+def action_label_from_id(action_id: int) -> str:
+    return AVA_ACTIONS.get(action_id, f"action_{action_id}")
+
+
+def load_ava_annotations(csv_path: Path) -> dict:
+    """
+    Parse AVA CSV to a nested mapping:
+      annotations[video_id][timestamp] -> list of annotations
+    """
+    annotations = defaultdict(lambda: defaultdict(list))
+    if not csv_path.exists():
+        return annotations
+
+    with open(csv_path, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if len(row) < 8:
+                continue
+
+            video_id = row[0].strip()
+            try:
+                timestamp = int(float(str(row[1]).strip()))
+                x1, y1, x2, y2 = map(float, row[2:6])
+                action_id = int(row[6])
+                entity_id = int(row[7])
+            except ValueError:
+                continue
+
+            annotations[video_id][timestamp].append({
+                "bbox": [x1, y1, x2, y2],
+                "action_id": action_id,
+                "action_label": action_label_from_id(action_id),
+                "entity_id": entity_id,
+            })
+
+    return annotations
 
 
 # ─────────────────────────────────────────────
@@ -293,10 +347,18 @@ def process_split(model: YOLO,
             if json_path.exists():
                 with open(json_path) as f:
                     cached = json.load(f)
-                ts = cached.get('timestamp')
-                video_summary['frames'][ts] = cached['detections']
-                video_summary['total_detections'] += len(cached['detections'])
-                continue
+
+                # If AVA annotations are available but missing from cached detections,
+                # regenerate this frame so action relations can be built downstream.
+                has_matched_annotations = any(
+                    isinstance(det.get('matched_annotation'), dict)
+                    for det in cached.get('detections', [])
+                )
+                if not (annotations and not has_matched_annotations):
+                    ts = cached.get('timestamp')
+                    video_summary['frames'][ts] = cached['detections']
+                    video_summary['total_detections'] += len(cached['detections'])
+                    continue
 
             # Parse timestamp from filename e.g. "2DUITARAsWQ_0902.jpg"
             try:
@@ -379,6 +441,11 @@ def main():
     # Load model once — reused across both splits
     model = load_model(MODEL_SIZE)
 
+    split_annotations = {
+        "train": load_ava_annotations(TRAIN_CSV),
+        "val": load_ava_annotations(VAL_CSV),
+    }
+
     # Process both splits
     for split in ["train", "val"]:
         split_dir = FRAMES_DIR / split
@@ -391,9 +458,7 @@ def main():
             split_name     = split,
             frames_dir     = FRAMES_DIR,
             detections_dir = DETECTIONS_DIR,
-            annotations    = None   # set to train_results[video_id]
-                                    # from extract_frames.py if you want
-                                    # AVA label matching
+            annotations    = split_annotations.get(split)
         )
 
         # Print split summary

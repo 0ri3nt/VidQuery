@@ -1,5 +1,6 @@
 import json
 import math
+import re
 from pathlib import Path
 
 # ─────────────────────────────────────────────
@@ -140,6 +141,104 @@ def get_semantic_relationships(node_a: dict, node_b: dict) -> list[dict]:
     return edges
 
 
+def _slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+
+
+def _person_posture(node: dict) -> str:
+    """Infer posture from person bounding-box aspect ratio as a fallback."""
+    x1, y1, x2, y2 = node["bbox"]
+    width = max(1.0, float(x2 - x1))
+    height = max(1.0, float(y2 - y1))
+    ratio = height / width
+
+    if ratio >= 1.7:
+        return "standing"
+    if ratio >= 1.1:
+        return "sitting"
+    return "lying"
+
+
+def _nearest_other_node(source: dict, nodes: list[dict]) -> dict | None:
+    src_center = source["center"]
+    best = None
+    best_dist = float("inf")
+
+    for node in nodes:
+        if node["node_id"] == source["node_id"]:
+            continue
+        dx = src_center[0] - node["center"][0]
+        dy = src_center[1] - node["center"][1]
+        dist = math.sqrt(dx * dx + dy * dy)
+        if dist < best_dist:
+            best_dist = dist
+            best = node
+
+    return best
+
+
+def get_action_relationships(nodes: list[dict]) -> list[dict]:
+    """
+    Build action-specific relationships from AVA-matched actions and
+    fallback posture inference.
+    """
+    edges = []
+
+    for node in nodes:
+        if node.get("class_name") != "person":
+            continue
+
+        ann = node.get("matched_annotation")
+        labels = []
+        if isinstance(ann, dict):
+            labels = [str(lbl) for lbl in ann.get("action_labels", [])]
+
+        if not labels:
+            # Fallback when no AVA action is attached to this detection.
+            edges.append({
+                "source": node["node_id"],
+                "target": node["node_id"],
+                "type": _person_posture(node)
+            })
+            continue
+
+        nearest = _nearest_other_node(node, nodes)
+        for label in labels:
+            action = _slug(label)
+
+            if "sit" in action:
+                edges.append({"source": node["node_id"], "target": node["node_id"], "type": "sitting"})
+                continue
+            if "stand" in action:
+                edges.append({"source": node["node_id"], "target": node["node_id"], "type": "standing"})
+                continue
+            if "kiss" in action and nearest and nearest.get("class_name") == "person":
+                edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": "kissing"})
+                continue
+            if "hug" in action and nearest and nearest.get("class_name") == "person":
+                edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": "hugging"})
+                continue
+            if "talk" in action and nearest:
+                edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": "talking_to"})
+                continue
+
+            if ("watch" in action or "look" in action) and nearest:
+                src_x = node["center"][0]
+                tgt_x = nearest["center"][0]
+                look_rel = "looking_right_at" if tgt_x > src_x else "looking_left_at"
+                edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": look_rel})
+                continue
+
+            # Preserve unmapped actions in graph form.
+            edges.append({
+                "source": node["node_id"],
+                "target": node["node_id"],
+                "type": f"action_{action}"
+            })
+
+    return edges
+
+
 # ─────────────────────────────────────────────
 # GRAPH GENERATION
 # ─────────────────────────────────────────────
@@ -179,7 +278,10 @@ def process_frame(json_path: Path, output_path: Path):
             edges.extend(spatial_edges)
             edges.extend(semantic_edges)
 
-    # 2.1 Remove duplicates (source, target, type)
+            # 2.1 Add action-centric relationships (including posture and look direction)
+            edges.extend(get_action_relationships(nodes))
+
+            # 2.2 Remove duplicates (source, target, type)
     unique = set()
     deduped_edges = []
     for edge in edges:

@@ -27,7 +27,15 @@ RELATION_COLORS = {
     "contains":     (0, 150, 150),   # Teal
     "inside":       (0, 150, 150),   # Teal
     "talks_to":     (0, 0, 255),     # Red
-    "interacts_with": (0, 125, 255)  # Yellow
+    "interacts_with": (0, 125, 255), # Yellow
+    "sitting":      (40, 220, 40),
+    "standing":     (40, 255, 120),
+    "lying":        (120, 200, 120),
+    "kissing":      (200, 40, 255),
+    "hugging":      (255, 100, 180),
+    "talking_to":   (0, 0, 220),
+    "looking_left_at":  (255, 180, 0),
+    "looking_right_at": (255, 180, 0),
 }
 
 def draw_graph_on_frame(frame_path: Path, json_path: Path, out_path: Path):
@@ -47,7 +55,9 @@ def draw_graph_on_frame(frame_path: Path, json_path: Path, out_path: Path):
     # 2. Draw Edges (Lines between centers)
     # We draw edges first so they sit behind the bounding boxes and text
     node_centers = {node["node_id"]: tuple(map(int, node["center"])) for node in nodes}
+    node_bboxes = {node["node_id"]: tuple(map(int, node["bbox"])) for node in nodes}
     edge_offsets = {}
+    self_edge_offsets = {}
 
     for edge in edges:
         src_id = edge["source"]
@@ -59,7 +69,22 @@ def draw_graph_on_frame(frame_path: Path, json_path: Path, out_path: Path):
 
             relation_color = RELATION_COLORS.get(edge.get("type"), COLOR_EDGE)
 
-            # Draw the line
+            if src_id == tgt_id:
+                # Render action/state tags for self-relationships near node box.
+                x1, y1, _, _ = node_bboxes[src_id]
+                idx = self_edge_offsets.get(src_id, 0)
+                self_edge_offsets[src_id] = idx + 1
+                label = edge.get("type", "?")
+
+                tx = x1
+                ty = max(14, y1 - 22 - (idx * 16))
+                (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+                cv2.rectangle(img, (tx, ty - th - 2), (tx + tw, ty + 3), relation_color, -1)
+                cv2.putText(img, label, (tx, ty),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLOR_TEXT, 1, cv2.LINE_AA)
+                continue
+
+            # Draw the line for normal inter-node relations.
             cv2.line(img, pt1, pt2, relation_color, 2)
 
             # Keep text labels from stacking on reused midpoint
