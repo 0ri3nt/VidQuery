@@ -239,6 +239,12 @@ marimo/_lsp/
 __marimo__/
 
 
+# Audio files
+data/ava/audio/
+*.wav
+*.mp3
+*.flac
+
 # Video files
 data/ava/videos/
 *.mkv
