@@ -245,6 +245,10 @@ data/ava/videos/
 *.webm
 *.mp4
 
+# Generated audio artifacts
+data/ava/audio/
+*.wav
+
 # Dataset files
 *.txt
 *.csv
