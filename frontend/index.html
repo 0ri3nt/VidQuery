@@ -1,0 +1,101 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Search inside videos with timestamped visual and spoken evidence." />
+    <title>VidQuery</title>
+    <link rel="stylesheet" href="/assets/app.css" />
+    <script src="/assets/app.js?v=20260814-appearance" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#search" aria-label="VidQuery home">
+        <span class="brand-mark" aria-hidden="true">VQ</span>
+        <span><strong>VidQuery</strong><small>Semantic video search</small></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <button class="nav-link active" data-view="search">Search</button>
+        <button class="nav-link" data-view="library">Library</button>
+        <button class="nav-link" data-view="upload">Upload</button>
+      </nav>
+      <div id="health" class="health"><span></span>Checking system</div>
+    </header>
+
+    <main>
+      <section id="search-view" class="view active">
+        <div class="hero">
+          <p class="eyebrow">SEARCH THE MOMENT, NOT THE FILE</p>
+          <h1>Ask what happened.<br /><em>Jump to when it did.</em></h1>
+          <p class="hero-copy">VidQuery ranks five-second moments using transcript, speaker, object, action, and explicit relationship evidence.</p>
+          <form id="search-form" class="search-box">
+            <label class="sr-only" for="query">Natural-language video query</label>
+            <input id="query" name="query" maxlength="500" autocomplete="off" placeholder="Find where someone discusses architecture near a whiteboard" required />
+            <label class="sr-only" for="video-filter">Limit search to one video</label>
+            <select id="video-filter" name="video-filter" aria-label="Limit search to one video">
+              <option value="">All videos</option>
+            </select>
+            <button type="submit">Search moments</button>
+          </form>
+          <div class="examples" aria-label="Example queries">
+            <span>Try</span>
+            <button>Find where architecture is discussed</button>
+            <button>Find a person near a laptop</button>
+            <button>Find where deployment is discussed near a laptop</button>
+          </div>
+        </div>
+
+        <div id="search-state" class="state-panel hidden" role="status"></div>
+        <section id="results-section" class="results-section hidden" aria-live="polite">
+          <div class="section-heading">
+            <div><p class="eyebrow">RANKED EVIDENCE</p><h2>Matching moments</h2></div>
+            <span id="result-count"></span>
+          </div>
+          <div id="parsed-query" class="parsed-query"></div>
+          <article id="generated-answer" class="answer-card hidden"></article>
+          <div id="results" class="result-grid"></div>
+        </section>
+      </section>
+
+      <section id="library-view" class="view">
+        <div class="page-heading"><p class="eyebrow">PERSISTENT INDEX</p><h1>Your video library</h1><p>Processing state survives API restarts. Retry failed or completed videos without uploading again.</p></div>
+        <div id="library-state" class="state-panel">Loading videos&hellip;</div>
+        <div id="video-list" class="video-list"></div>
+      </section>
+
+      <section id="upload-view" class="view">
+        <div class="page-heading"><p class="eyebrow">INGEST A VIDEO</p><h1>Add searchable evidence</h1><p>MP4 only. The server streams uploads to disk, validates the media, deduplicates content, and processes in the background.</p></div>
+        <form id="upload-form" class="upload-card">
+          <label id="drop-zone" for="video-file">
+            <span class="upload-icon" aria-hidden="true">&uarr;</span>
+            <strong>Drop an MP4 here</strong>
+            <span>or choose a file from your computer</span>
+            <input id="video-file" type="file" name="file" accept="video/mp4,.mp4" required />
+          </label>
+          <div id="selected-file" class="selected-file">No file selected</div>
+          <button class="primary" type="submit">Upload and process</button>
+          <div id="upload-progress" class="progress hidden"><span></span></div>
+          <div id="upload-state" class="state-panel hidden" role="status"></div>
+        </form>
+      </section>
+    </main>
+
+    <dialog id="player-dialog">
+      <div class="dialog-bar">
+        <div><p class="eyebrow">SELECTED MOMENT</p><h2 id="player-title">Video result</h2></div>
+        <button id="close-player" aria-label="Close player">&times;</button>
+      </div>
+      <video id="player" controls preload="metadata"></video>
+      <div class="player-context">
+        <strong id="player-time"></strong>
+        <p id="player-reason"></p>
+        <p id="player-transcript"></p>
+      </div>
+    </dialog>
+
+    <footer>
+      <span>VidQuery &middot; Project 137</span>
+      <span>Evidence-backed results &middot; Grounded answer citations &middot; Provenance labelled</span>
+    </footer>
+  </body>
+</html>

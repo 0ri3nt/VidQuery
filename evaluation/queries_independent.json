@@ -1,0 +1,3617 @@
+{
+  "schema_version": "3.0-independent",
+  "description": "Five-video evaluation with manually selected query intents and evidence-validated intervals. The only AVA member is from the strict held-out action-model test split; other fixtures are outside AVA training.",
+  "videos": [
+    "She How many dates have we been to",
+    "distractor_demo",
+    "final_demo",
+    "hbYvDvJrpNk",
+    "ocr_demo"
+  ],
+  "video_count": 5,
+  "query_count": 62,
+  "positive_query_count": 52,
+  "negative_query_count": 10,
+  "category_counts": {
+    "transcript": 8,
+    "visual_entity": 8,
+    "spatial_relationship": 8,
+    "ava_action": 10,
+    "speaker": 6,
+    "multimodal": 8,
+    "ocr": 4,
+    "negative": 10
+  },
+  "independence_audit": {
+    "action_model_split_manifest": "data/app/models/ava80_scaling/30/split_manifest.json",
+    "ava_training_overlap": [],
+    "ava_validation_overlap": [],
+    "ava_test_overlap": [
+      "hbYvDvJrpNk"
+    ],
+    "passed": true
+  },
+  "queries": [
+    {
+      "id": "tx-architecture",
+      "query": "architecture",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "architecture",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "tx-software-architecture",
+      "query": "software architecture",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "software architecture",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "tx-sqlite-metadata",
+      "query": "SQLite metadata",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 5.0,
+      "ground_truth_end_time": 10.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "SQLite metadata",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "tx-deployment-docker",
+      "query": "deployment Docker Neo4j",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 10.0,
+      "ground_truth_end_time": 15.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "deployment",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "tx-retrieval-architecture",
+      "query": "retrieval architecture",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 15.0,
+      "ground_truth_end_time": 20.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "retrieval architecture",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "tx-search-evidence",
+      "query": "speech objects relationships",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 20.0,
+      "ground_truth_end_time": 25.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "speech",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "tx-semantic-deployment",
+      "query": "release the application to production",
+      "category": "transcript",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 10.0,
+      "ground_truth_end_time": 15.0,
+      "timestamp_tolerance": 5,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "deployment",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "Deliberate paraphrase for semantic retrieval.",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 5
+        }
+      ]
+    },
+    {
+      "id": "tx-distractor-architecture",
+      "query": "software architecture",
+      "category": "transcript",
+      "relevant_video_id": "distractor_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "software architecture",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "distractor_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-final-laptop",
+      "query": "laptop",
+      "category": "visual_entity",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "laptop"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-final-whiteboard",
+      "query": "whiteboard",
+      "category": "visual_entity",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "whiteboard"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-final-table",
+      "query": "table",
+      "category": "visual_entity",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "dining table"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "automatic_detection_review",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-heldout-phone",
+      "query": "cell phone",
+      "category": "visual_entity",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1035.0,
+      "ground_truth_end_time": 1040.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "cell phone"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1035.0,
+          "end_time": 1040.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1045.0,
+          "end_time": 1050.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1095.0,
+          "end_time": 1100.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1105.0,
+          "end_time": 1110.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1115.0,
+          "end_time": 1120.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1160.0,
+          "end_time": 1165.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1215.0,
+          "end_time": 1220.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1305.0,
+          "end_time": 1310.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1340.0,
+          "end_time": 1345.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1465.0,
+          "end_time": 1470.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1540.0,
+          "end_time": 1545.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1615.0,
+          "end_time": 1620.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1635.0,
+          "end_time": 1640.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1725.0,
+          "end_time": 1730.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-heldout-cup",
+      "query": "cup",
+      "category": "visual_entity",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 905.0,
+      "ground_truth_end_time": 910.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "cup"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 905.0,
+          "end_time": 910.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 920.0,
+          "end_time": 925.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 925.0,
+          "end_time": 930.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 930.0,
+          "end_time": 935.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 955.0,
+          "end_time": 960.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 960.0,
+          "end_time": 965.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1225.0,
+          "end_time": 1230.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1410.0,
+          "end_time": 1415.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1420.0,
+          "end_time": 1425.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-heldout-handbag",
+      "query": "handbag",
+      "category": "visual_entity",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 960.0,
+      "ground_truth_end_time": 965.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "handbag"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 960.0,
+          "end_time": 965.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 990.0,
+          "end_time": 995.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1080.0,
+          "end_time": 1085.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1300.0,
+          "end_time": 1305.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1305.0,
+          "end_time": 1310.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1465.0,
+          "end_time": 1470.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1505.0,
+          "end_time": 1510.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1530.0,
+          "end_time": 1535.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1565.0,
+          "end_time": 1570.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-heldout-couch",
+      "query": "couch",
+      "category": "visual_entity",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1235.0,
+      "ground_truth_end_time": 1240.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "couch"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1235.0,
+          "end_time": 1240.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1240.0,
+          "end_time": 1245.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1245.0,
+          "end_time": 1250.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1250.0,
+          "end_time": 1255.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1695.0,
+          "end_time": 1700.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1700.0,
+          "end_time": 1705.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1705.0,
+          "end_time": 1710.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1710.0,
+          "end_time": 1715.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1715.0,
+          "end_time": 1720.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1720.0,
+          "end_time": 1725.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1725.0,
+          "end_time": 1730.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1740.0,
+          "end_time": 1745.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1745.0,
+          "end_time": 1750.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1750.0,
+          "end_time": 1755.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1755.0,
+          "end_time": 1760.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1760.0,
+          "end_time": 1765.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1765.0,
+          "end_time": 1770.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1770.0,
+          "end_time": 1775.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "vis-user-person",
+      "query": "person",
+      "category": "visual_entity",
+      "relevant_video_id": "She How many dates have we been to",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "automatic_detection_review",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "She How many dates have we been to",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "She How many dates have we been to",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-final-person-laptop",
+      "query": "person near laptop",
+      "category": "spatial_relationship",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "laptop"
+      ],
+      "expected_relation": {
+        "subject": "person",
+        "predicate": "near",
+        "object": "laptop"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-final-chair-behind-laptop",
+      "query": "chair behind laptop",
+      "category": "spatial_relationship",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "chair",
+        "laptop"
+      ],
+      "expected_relation": {
+        "subject": "chair",
+        "predicate": "behind",
+        "object": "laptop"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "learned_relation_review",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-final-laptop-above-table",
+      "query": "laptop above table",
+      "category": "spatial_relationship",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "laptop",
+        "dining table"
+      ],
+      "expected_relation": {
+        "subject": "laptop",
+        "predicate": "above",
+        "object": "dining table"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "learned_relation_review",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-final-person-front-person",
+      "query": "person in front of person",
+      "category": "spatial_relationship",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": {
+        "subject": "person",
+        "predicate": "in_front_of",
+        "object": "person"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "learned_relation_review",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-heldout-person-contains-phone",
+      "query": "person contains cell phone",
+      "category": "spatial_relationship",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1035.0,
+      "ground_truth_end_time": 1040.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "cell phone"
+      ],
+      "expected_relation": {
+        "subject": "person",
+        "predicate": "contains",
+        "object": "cell phone"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_geometry",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1035.0,
+          "end_time": 1040.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1045.0,
+          "end_time": 1050.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1105.0,
+          "end_time": 1110.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1115.0,
+          "end_time": 1120.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1160.0,
+          "end_time": 1165.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1215.0,
+          "end_time": 1220.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1305.0,
+          "end_time": 1310.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1340.0,
+          "end_time": 1345.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1465.0,
+          "end_time": 1470.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1615.0,
+          "end_time": 1620.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1635.0,
+          "end_time": 1640.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1725.0,
+          "end_time": 1730.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-heldout-phone-inside-person",
+      "query": "cell phone inside person",
+      "category": "spatial_relationship",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1035.0,
+      "ground_truth_end_time": 1040.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "cell phone",
+        "person"
+      ],
+      "expected_relation": {
+        "subject": "cell phone",
+        "predicate": "inside",
+        "object": "person"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_geometry",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1035.0,
+          "end_time": 1040.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1045.0,
+          "end_time": 1050.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1105.0,
+          "end_time": 1110.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1115.0,
+          "end_time": 1120.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1160.0,
+          "end_time": 1165.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1215.0,
+          "end_time": 1220.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1305.0,
+          "end_time": 1310.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1340.0,
+          "end_time": 1345.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1465.0,
+          "end_time": 1470.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1615.0,
+          "end_time": 1620.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1635.0,
+          "end_time": 1640.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1725.0,
+          "end_time": 1730.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-heldout-person-left-chair",
+      "query": "person left of chair",
+      "category": "spatial_relationship",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 900.0,
+      "ground_truth_end_time": 905.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "chair"
+      ],
+      "expected_relation": {
+        "subject": "person",
+        "predicate": "left_of",
+        "object": "chair"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_geometry",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 900.0,
+          "end_time": 905.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 910.0,
+          "end_time": 915.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 920.0,
+          "end_time": 925.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 925.0,
+          "end_time": 930.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 945.0,
+          "end_time": 950.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 955.0,
+          "end_time": 960.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 960.0,
+          "end_time": 965.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 980.0,
+          "end_time": 985.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1020.0,
+          "end_time": 1025.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1025.0,
+          "end_time": 1030.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1030.0,
+          "end_time": 1035.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1070.0,
+          "end_time": 1075.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1195.0,
+          "end_time": 1200.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1210.0,
+          "end_time": 1215.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1240.0,
+          "end_time": 1245.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1245.0,
+          "end_time": 1250.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1250.0,
+          "end_time": 1255.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1295.0,
+          "end_time": 1300.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1300.0,
+          "end_time": 1305.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1305.0,
+          "end_time": 1310.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1450.0,
+          "end_time": 1455.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1510.0,
+          "end_time": 1515.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1570.0,
+          "end_time": 1575.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1755.0,
+          "end_time": 1760.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1760.0,
+          "end_time": 1765.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "rel-heldout-plant-contains-vase",
+      "query": "potted plant contains vase",
+      "category": "spatial_relationship",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 910.0,
+      "ground_truth_end_time": 915.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "potted plant",
+        "vase"
+      ],
+      "expected_relation": {
+        "subject": "potted plant",
+        "predicate": "contains",
+        "object": "vase"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_geometry",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 910.0,
+          "end_time": 915.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 920.0,
+          "end_time": 925.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 930.0,
+          "end_time": 935.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 935.0,
+          "end_time": 940.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 940.0,
+          "end_time": 945.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1010.0,
+          "end_time": 1015.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1030.0,
+          "end_time": 1035.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1480.0,
+          "end_time": 1485.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-hand-shake",
+      "query": "person hand shake",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 905.0,
+      "ground_truth_end_time": 910.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "hand shake",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 905.0,
+          "end_time": 910.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1230.0,
+          "end_time": 1235.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1410.0,
+          "end_time": 1415.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1450.0,
+          "end_time": 1455.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1455.0,
+          "end_time": 1460.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1470.0,
+          "end_time": 1475.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1475.0,
+          "end_time": 1480.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1490.0,
+          "end_time": 1495.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1575.0,
+          "end_time": 1580.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1620.0,
+          "end_time": 1625.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1640.0,
+          "end_time": 1645.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1645.0,
+          "end_time": 1650.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-answer-phone",
+      "query": "person answer phone",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 905.0,
+      "ground_truth_end_time": 910.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "answer phone",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 905.0,
+          "end_time": 910.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 915.0,
+          "end_time": 920.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 920.0,
+          "end_time": 925.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-fall-down",
+      "query": "person fall down",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1085.0,
+      "ground_truth_end_time": 1090.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "fall down",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1085.0,
+          "end_time": 1090.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1205.0,
+          "end_time": 1210.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1210.0,
+          "end_time": 1215.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1670.0,
+          "end_time": 1675.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-take-photo",
+      "query": "person take photo",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1095.0,
+      "ground_truth_end_time": 1100.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "take photo",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1095.0,
+          "end_time": 1100.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1100.0,
+          "end_time": 1105.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1105.0,
+          "end_time": 1110.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1110.0,
+          "end_time": 1115.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1115.0,
+          "end_time": 1120.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1120.0,
+          "end_time": 1125.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1125.0,
+          "end_time": 1130.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1130.0,
+          "end_time": 1135.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1135.0,
+          "end_time": 1140.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1140.0,
+          "end_time": 1145.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1160.0,
+          "end_time": 1165.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1165.0,
+          "end_time": 1170.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1170.0,
+          "end_time": 1175.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1185.0,
+          "end_time": 1190.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1195.0,
+          "end_time": 1200.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1200.0,
+          "end_time": 1205.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1205.0,
+          "end_time": 1210.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1210.0,
+          "end_time": 1215.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1215.0,
+          "end_time": 1220.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1220.0,
+          "end_time": 1225.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1225.0,
+          "end_time": 1230.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1380.0,
+          "end_time": 1385.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-write",
+      "query": "person writing",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 905.0,
+      "ground_truth_end_time": 910.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "write",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 905.0,
+          "end_time": 910.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 925.0,
+          "end_time": 930.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 930.0,
+          "end_time": 935.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 950.0,
+          "end_time": 955.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 985.0,
+          "end_time": 990.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1000.0,
+          "end_time": 1005.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1010.0,
+          "end_time": 1015.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1015.0,
+          "end_time": 1020.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1020.0,
+          "end_time": 1025.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1025.0,
+          "end_time": 1030.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1035.0,
+          "end_time": 1040.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1040.0,
+          "end_time": 1045.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1045.0,
+          "end_time": 1050.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1050.0,
+          "end_time": 1055.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1055.0,
+          "end_time": 1060.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1060.0,
+          "end_time": 1065.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1065.0,
+          "end_time": 1070.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1070.0,
+          "end_time": 1075.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1085.0,
+          "end_time": 1090.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1090.0,
+          "end_time": 1095.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1095.0,
+          "end_time": 1100.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1120.0,
+          "end_time": 1125.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1125.0,
+          "end_time": 1130.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1225.0,
+          "end_time": 1230.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1240.0,
+          "end_time": 1245.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1245.0,
+          "end_time": 1250.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1250.0,
+          "end_time": 1255.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1275.0,
+          "end_time": 1280.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1290.0,
+          "end_time": 1295.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1300.0,
+          "end_time": 1305.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1305.0,
+          "end_time": 1310.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1310.0,
+          "end_time": 1315.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1340.0,
+          "end_time": 1345.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1345.0,
+          "end_time": 1350.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1360.0,
+          "end_time": 1365.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1365.0,
+          "end_time": 1370.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1380.0,
+          "end_time": 1385.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1385.0,
+          "end_time": 1390.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1395.0,
+          "end_time": 1400.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1405.0,
+          "end_time": 1410.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1415.0,
+          "end_time": 1420.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1425.0,
+          "end_time": 1430.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1430.0,
+          "end_time": 1435.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1500.0,
+          "end_time": 1505.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1590.0,
+          "end_time": 1595.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1595.0,
+          "end_time": 1600.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1635.0,
+          "end_time": 1640.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1640.0,
+          "end_time": 1645.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1695.0,
+          "end_time": 1700.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1700.0,
+          "end_time": 1705.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1705.0,
+          "end_time": 1710.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1710.0,
+          "end_time": 1715.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1715.0,
+          "end_time": 1720.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1720.0,
+          "end_time": 1725.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1755.0,
+          "end_time": 1760.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1760.0,
+          "end_time": 1765.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1765.0,
+          "end_time": 1770.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1770.0,
+          "end_time": 1775.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1790.0,
+          "end_time": 1795.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-kiss",
+      "query": "person kiss",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1000.0,
+      "ground_truth_end_time": 1005.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "kiss",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1000.0,
+          "end_time": 1005.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1480.0,
+          "end_time": 1485.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-crawl",
+      "query": "person crawl",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 980.0,
+      "ground_truth_end_time": 985.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "crawl",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 980.0,
+          "end_time": 985.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1500.0,
+          "end_time": 1505.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1505.0,
+          "end_time": 1510.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1535.0,
+          "end_time": 1540.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1550.0,
+          "end_time": 1555.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1580.0,
+          "end_time": 1585.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1620.0,
+          "end_time": 1625.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-martial-art",
+      "query": "person martial art",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 960.0,
+      "ground_truth_end_time": 965.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "martial art",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 960.0,
+          "end_time": 965.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 965.0,
+          "end_time": 970.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 970.0,
+          "end_time": 975.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 975.0,
+          "end_time": 980.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 980.0,
+          "end_time": 985.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 985.0,
+          "end_time": 990.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 995.0,
+          "end_time": 1000.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1125.0,
+          "end_time": 1130.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1130.0,
+          "end_time": 1135.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1135.0,
+          "end_time": 1140.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1140.0,
+          "end_time": 1145.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1150.0,
+          "end_time": 1155.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1155.0,
+          "end_time": 1160.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1160.0,
+          "end_time": 1165.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1165.0,
+          "end_time": 1170.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1170.0,
+          "end_time": 1175.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1185.0,
+          "end_time": 1190.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1195.0,
+          "end_time": 1200.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1200.0,
+          "end_time": 1205.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1205.0,
+          "end_time": 1210.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1210.0,
+          "end_time": 1215.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1295.0,
+          "end_time": 1300.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1300.0,
+          "end_time": 1305.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1445.0,
+          "end_time": 1450.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1460.0,
+          "end_time": 1465.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1465.0,
+          "end_time": 1470.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1470.0,
+          "end_time": 1475.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1475.0,
+          "end_time": 1480.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1480.0,
+          "end_time": 1485.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1485.0,
+          "end_time": 1490.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1490.0,
+          "end_time": 1495.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1495.0,
+          "end_time": 1500.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1500.0,
+          "end_time": 1505.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1510.0,
+          "end_time": 1515.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1530.0,
+          "end_time": 1535.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1535.0,
+          "end_time": 1540.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1540.0,
+          "end_time": 1545.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1545.0,
+          "end_time": 1550.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1550.0,
+          "end_time": 1555.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1565.0,
+          "end_time": 1570.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1570.0,
+          "end_time": 1575.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1575.0,
+          "end_time": 1580.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1580.0,
+          "end_time": 1585.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1605.0,
+          "end_time": 1610.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1610.0,
+          "end_time": 1615.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1615.0,
+          "end_time": 1620.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1620.0,
+          "end_time": 1625.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1625.0,
+          "end_time": 1630.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1630.0,
+          "end_time": 1635.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1635.0,
+          "end_time": 1640.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1645.0,
+          "end_time": 1650.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1650.0,
+          "end_time": 1655.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1655.0,
+          "end_time": 1660.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1660.0,
+          "end_time": 1665.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-text-phone",
+      "query": "person text on phone",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1135.0,
+      "ground_truth_end_time": 1140.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "text on phone",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1135.0,
+          "end_time": 1140.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1230.0,
+          "end_time": 1235.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "act-work-computer",
+      "query": "person work on computer",
+      "category": "ava_action",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1240.0,
+      "ground_truth_end_time": 1245.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": "work on computer",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1240.0,
+          "end_time": 1245.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1245.0,
+          "end_time": 1250.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1250.0,
+          "end_time": 1255.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "spk00-architecture",
+      "query": "SPEAKER_00 software architecture",
+      "category": "speaker",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "software architecture",
+      "expected_speaker": "SPEAKER_00",
+      "negative": false,
+      "label_source": "controlled_manifest_plus_pyannote",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "spk01-sqlite",
+      "query": "SPEAKER_01 SQLite metadata",
+      "category": "speaker",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 5.0,
+      "ground_truth_end_time": 10.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "SQLite metadata",
+      "expected_speaker": "SPEAKER_01",
+      "negative": false,
+      "label_source": "controlled_manifest_plus_pyannote",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "spk00-deployment",
+      "query": "SPEAKER_00 deployment Docker",
+      "category": "speaker",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 10.0,
+      "ground_truth_end_time": 15.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "deployment",
+      "expected_speaker": "SPEAKER_00",
+      "negative": false,
+      "label_source": "controlled_manifest_plus_pyannote",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "spk01-whiteboard",
+      "query": "SPEAKER_01 whiteboard retrieval",
+      "category": "speaker",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 15.0,
+      "ground_truth_end_time": 20.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "retrieval",
+      "expected_speaker": "SPEAKER_01",
+      "negative": false,
+      "label_source": "controlled_manifest_plus_pyannote",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "spk00-relationships",
+      "query": "SPEAKER_00 objects relationships",
+      "category": "speaker",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 20.0,
+      "ground_truth_end_time": 25.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "relationships",
+      "expected_speaker": "SPEAKER_00",
+      "negative": false,
+      "label_source": "controlled_manifest_plus_pyannote",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "spk-distractor",
+      "query": "SPEAKER_00 software architecture",
+      "category": "speaker",
+      "relevant_video_id": "distractor_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "software architecture",
+      "expected_speaker": "SPEAKER_00",
+      "negative": false,
+      "label_source": "controlled_manifest_plus_pyannote",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "distractor_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-deployment-laptop",
+      "query": "deployment person near laptop",
+      "category": "multimodal",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 10.0,
+      "ground_truth_end_time": 15.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "laptop"
+      ],
+      "expected_relation": {
+        "subject": "person",
+        "predicate": "near",
+        "object": "laptop"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": "deployment",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 10.0,
+          "end_time": 15.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-retrieval-whiteboard",
+      "query": "retrieval architecture person near whiteboard",
+      "category": "multimodal",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 15.0,
+      "ground_truth_end_time": 20.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "whiteboard"
+      ],
+      "expected_relation": {
+        "subject": "person",
+        "predicate": "near",
+        "object": "whiteboard"
+      },
+      "expected_action": null,
+      "expected_spoken_concept": "retrieval architecture",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 15.0,
+          "end_time": 20.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-sqlite-laptop",
+      "query": "SQLite metadata laptop",
+      "category": "multimodal",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 5.0,
+      "ground_truth_end_time": 10.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "laptop"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "SQLite metadata",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 5.0,
+          "end_time": 10.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-speech-person",
+      "query": "speech relationships person",
+      "category": "multimodal",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": 20.0,
+      "ground_truth_end_time": 25.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person"
+      ],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "speech",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "final_demo",
+          "start_time": 20.0,
+          "end_time": 25.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-heldout-writing-table",
+      "query": "person writing table",
+      "category": "multimodal",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 950.0,
+      "ground_truth_end_time": 955.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "dining table"
+      ],
+      "expected_relation": null,
+      "expected_action": "write",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 950.0,
+          "end_time": 955.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1010.0,
+          "end_time": 1015.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1695.0,
+          "end_time": 1700.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-heldout-answer-phone",
+      "query": "person answer phone remote",
+      "category": "multimodal",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 915.0,
+      "ground_truth_end_time": 920.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "remote"
+      ],
+      "expected_relation": null,
+      "expected_action": "answer phone",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 915.0,
+          "end_time": 920.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-heldout-photo-phone",
+      "query": "person take photo cell phone",
+      "category": "multimodal",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1095.0,
+      "ground_truth_end_time": 1100.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "cell phone"
+      ],
+      "expected_relation": null,
+      "expected_action": "take photo",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1095.0,
+          "end_time": 1100.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1105.0,
+          "end_time": 1110.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1115.0,
+          "end_time": 1120.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1145.0,
+          "end_time": 1150.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1160.0,
+          "end_time": 1165.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1175.0,
+          "end_time": 1180.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1180.0,
+          "end_time": 1185.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1190.0,
+          "end_time": 1195.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1215.0,
+          "end_time": 1220.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "mm-heldout-computer-laptop",
+      "query": "person work on computer laptop",
+      "category": "multimodal",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": 1240.0,
+      "ground_truth_end_time": 1245.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [
+        "person",
+        "laptop"
+      ],
+      "expected_relation": null,
+      "expected_action": "work on computer",
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1240.0,
+          "end_time": 1245.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1245.0,
+          "end_time": 1250.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "hbYvDvJrpNk",
+          "start_time": 1250.0,
+          "end_time": 1255.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "ocr-kubernetes",
+      "query": "Kubernetes",
+      "category": "ocr",
+      "relevant_video_id": "ocr_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "kubernetes",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_ocr_fixture",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "ocr_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "ocr-deployment",
+      "query": "deployment",
+      "category": "ocr",
+      "relevant_video_id": "ocr_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "deployment",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_ocr_fixture",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "ocr_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "ocr-knowledge-graph",
+      "query": "knowledge graph",
+      "category": "ocr",
+      "relevant_video_id": "ocr_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "knowledge graph",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_ocr_fixture",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "ocr_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        },
+        {
+          "source_video_id": "ocr_demo",
+          "start_time": 5.0,
+          "end_time": 6.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "ocr-k8s-deployment",
+      "query": "Kubernetes deployment",
+      "category": "ocr",
+      "relevant_video_id": "ocr_demo",
+      "ground_truth_start_time": 0.0,
+      "ground_truth_end_time": 5.0,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": "kubernetes",
+      "expected_speaker": null,
+      "negative": false,
+      "label_source": "controlled_ocr_fixture",
+      "notes": "",
+      "relevant": [
+        {
+          "source_video_id": "ocr_demo",
+          "start_time": 0.0,
+          "end_time": 5.0,
+          "tolerance_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "neg-final-dog",
+      "query": "dog",
+      "category": "negative",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-final-car",
+      "query": "person near car",
+      "category": "negative",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-final-speaker",
+      "query": "SPEAKER_99 architecture",
+      "category": "negative",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-final-swim",
+      "query": "person swimming",
+      "category": "negative",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-ocr-laptop",
+      "query": "laptop",
+      "category": "negative",
+      "relevant_video_id": "ocr_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_ocr_fixture",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-distractor-whiteboard",
+      "query": "whiteboard",
+      "category": "negative",
+      "relevant_video_id": "distractor_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-heldout-airplane",
+      "query": "airplane",
+      "category": "negative",
+      "relevant_video_id": "hbYvDvJrpNk",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "official_ava_heldout",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-user-elephant",
+      "query": "elephant",
+      "category": "negative",
+      "relevant_video_id": "She How many dates have we been to",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "automatic_detection_review",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-final-postgres",
+      "query": "PostgreSQL",
+      "category": "negative",
+      "relevant_video_id": "final_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_manifest",
+      "notes": "",
+      "relevant": []
+    },
+    {
+      "id": "neg-ocr-speaker",
+      "query": "SPEAKER_00 Kubernetes",
+      "category": "negative",
+      "relevant_video_id": "ocr_demo",
+      "ground_truth_start_time": null,
+      "ground_truth_end_time": null,
+      "timestamp_tolerance": 0.0,
+      "expected_entities": [],
+      "expected_relation": null,
+      "expected_action": null,
+      "expected_spoken_concept": null,
+      "expected_speaker": null,
+      "negative": true,
+      "label_source": "controlled_ocr_fixture",
+      "notes": "",
+      "relevant": []
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Frozen transcript-semantic baseline used by the independent evaluation.
+sentence-transformers==5.1.2

@@ -1,12 +1,11 @@
 import argparse
+import shutil
+import subprocess
 from collections import defaultdict
 from pathlib import Path
-import shutil
 
 import cv2
-import ffmpeg
 import pandas as pd
-
 
 AVA_ACTIONS = {
     1: "bend/bow",
@@ -155,11 +154,6 @@ class VideoPreprocessor:
 
         ffmpeg_bin = self._resolve_ffmpeg_binary()
 
-        try:
-            ffmpeg.probe(str(video_path), cmd=ffmpeg_bin)
-        except Exception as exc:
-            print(f"  [!] Could not probe {video_id}: {exc}. Continuing without probe.")
-
         saved_frames: dict[int, str] = {}
         for ts in sorted(timestamps):
             out_path = video_out / f"{video_id}_{ts:04d}.jpg"
@@ -167,19 +161,30 @@ class VideoPreprocessor:
                 saved_frames[ts] = str(out_path)
                 continue
 
-            try:
-                (
-                    ffmpeg.input(str(video_path), ss=ts)
-                    .output(str(out_path), vframes=1, q=2)
-                    .overwrite_output()
-                    .run(cmd=ffmpeg_bin, quiet=True)
-                )
+            result = subprocess.run(
+                [
+                    ffmpeg_bin,
+                    "-loglevel",
+                    "error",
+                    "-ss",
+                    str(ts),
+                    "-i",
+                    str(video_path),
+                    "-frames:v",
+                    "1",
+                    "-q:v",
+                    "2",
+                    "-y",
+                    str(out_path),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if result.returncode == 0 and out_path.is_file():
                 saved_frames[ts] = str(out_path)
-            except ffmpeg.Error as exc:
-                stderr = ""
-                if getattr(exc, "stderr", None):
-                    stderr = exc.stderr.decode(errors="ignore")
-                print(f"  [!] FFmpeg error at {video_id} t={ts}s: {stderr}")
+            else:
+                print(f"  [!] FFmpeg error at {video_id} t={ts}s: {result.stderr[-500:]}")
 
         return saved_frames
 
@@ -191,12 +196,26 @@ class VideoPreprocessor:
 
         ffmpeg_bin = self._resolve_ffmpeg_binary()
 
-        (
-            ffmpeg.input(str(video_path))
-            .output(str(out_path), ac=1, ar=16000)
-            .overwrite_output()
-            .run(cmd=ffmpeg_bin, quiet=True)
+        result = subprocess.run(
+            [
+                ffmpeg_bin,
+                "-loglevel",
+                "error",
+                "-i",
+                str(video_path),
+                "-ac",
+                "1",
+                "-ar",
+                "16000",
+                "-y",
+                str(out_path),
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
         )
+        if result.returncode != 0 or not out_path.is_file():
+            raise RuntimeError(f"FFmpeg audio extraction failed: {result.stderr[-500:]}")
         return out_path
 
     def process_split(self, split_name: str, csv_path: Path) -> dict:
@@ -209,7 +228,11 @@ class VideoPreprocessor:
         split_out = self.output_frame_dir / split_name
         split_out.mkdir(parents=True, exist_ok=True)
 
-        available_videos = list(self.video_dir.glob("*.mp4"))
+        available_videos = sorted(
+            path
+            for path in self.video_dir.iterdir()
+            if path.suffix.lower() in {".mp4", ".mkv", ".webm"}
+        )
         if not available_videos:
             print(f"  [!] No .mp4 files found in {self.video_dir}")
             return {}

@@ -2,14 +2,14 @@ import argparse
 import json
 from pathlib import Path
 
-from extraction.preprocessor import VideoPreprocessor
-from extraction.visual import VisualExtractor
 from extraction.audio import (
     AudioExtractor,
     render_timeline_plot,
     write_segments_csv,
     write_speaker_srt,
 )
+from extraction.preprocessor import VideoPreprocessor
+from extraction.visual import VisualExtractor
 from modelling.alignment import fuse_modalities
 from modelling.gnn_exporter import export_gnn_outputs
 from modelling.scene_graph_builder import SceneGraphBuilder
@@ -97,7 +97,11 @@ def _run_audio_and_alignment(
 
         merged_segments = AudioExtractor.merge_audio_data(whisper_result, speaker_segments)
         (merged_dir / f"{stem}.merged.json").write_text(
-            json.dumps({"video_id": stem, "segments": merged_segments}, indent=2, ensure_ascii=False),
+            json.dumps(
+                {"video_id": stem, "segments": merged_segments},
+                indent=2,
+                ensure_ascii=False,
+            ),
             encoding="utf-8",
         )
         print(f"  [OK] Merged audio saved for {stem} -> {merged_dir / f'{stem}.merged.json'}")
@@ -127,7 +131,8 @@ def _run_audio_and_alignment(
                 ),
                 encoding="utf-8",
             )
-            print(f"  [OK] Fused output saved for {stem} ({split}) -> {out_dir / f'{stem}.fused.json'}")
+            output_path = out_dir / f"{stem}.fused.json"
+            print(f"  [OK] Fused output saved for {stem} ({split}) -> {output_path}")
 
 
 def run_pipeline(
@@ -223,20 +228,31 @@ def main() -> None:
 
     pipe = sub.add_parser("pipeline", help="Run extraction + detection + graph building")
     pipe.add_argument("--max_videos", type=int, default=20)
-    pipe.add_argument("--skip_audio", action="store_true", help="Skip audio transcription/fusion stage")
+    pipe.add_argument(
+        "--skip_audio",
+        action="store_true",
+        help="Skip audio transcription/fusion stage",
+    )
     pipe.add_argument(
         "--skip_gnn_export",
         action="store_true",
         help="Skip exporting persistent GNN tensors",
     )
-    pipe.add_argument("--whisper_model", type=str, default="tiny", help="Whisper model for audio stage")
+    pipe.add_argument(
+        "--whisper_model",
+        type=str,
+        default="tiny",
+        help="Whisper model for audio stage",
+    )
     pipe.add_argument(
         "--run_diarization",
         action="store_true",
         help="Run pyannote diarization if HF token is configured",
     )
 
-    gnn = sub.add_parser("gnn", help="Export persistent GNN tensor outputs from scene graphs")
+    gnn = sub.add_parser(
+        "gnn", help="Export untrained GNN-compatible features from scene graphs"
+    )
     gnn.add_argument("--max_videos", type=int, default=20)
     gnn.add_argument(
         "--scene_graph_root",

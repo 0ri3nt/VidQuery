@@ -1,0 +1,24 @@
+{
+  "schema_version": "ava80-interrupted-download-cleanup-v1",
+  "reason": "stale downloader children preallocated incomplete .part files after the expansion parent was stopped at the storage safety boundary",
+  "validated_artifacts_deleted": false,
+  "temporary_root": "data/temp/ava_expansion",
+  "files": [
+    {"path": "batch_0005/videos/C25wkwAMB-w.mkv.part", "bytes": 1935175389},
+    {"path": "batch_0006/videos/PmElx9ZVByw.mp4.part", "bytes": 452297489},
+    {"path": "batch_0006/videos/TM5MPJIq1Is.mkv.part", "bytes": 596647790},
+    {"path": "batch_0007/videos/4ZpjKfu6Cl8.mkv.part", "bytes": 1037398704},
+    {"path": "batch_0007/videos/yMtGmGa8KZ0.mkv.part", "bytes": 360448546},
+    {"path": "batch_0008/videos/rXFlJbXyZyc.mkv.part", "bytes": 480749023},
+    {"path": "batch_0008/videos/WKqbLbU68wU.mkv.part", "bytes": 523742901},
+    {"path": "batch_0009/videos/9QbzS8bZXFE.mkv.part", "bytes": 213271099},
+    {"path": "batch_0009/videos/wEAeql4z1O0.mp4.part", "bytes": 638799326}
+  ],
+  "post_target_cleanup": {
+    "target_reached": true,
+    "validated_video_count": 30,
+    "validated_master_cache_sha256": "8b95ec40b0740eea7427e0a06cda235c180f2285624e478d668b9f8b4af2dbee",
+    "batch_directories_removed": "batch_0005 through batch_0278",
+    "reason": "all successful additions are present in validated per-video caches and the atomically reloaded 30-video master cache; remaining media were incomplete transfer artifacts"
+  }
+}

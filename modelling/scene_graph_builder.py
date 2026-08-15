@@ -205,32 +205,74 @@ class SceneGraphBuilder:
                 labels = [str(lbl) for lbl in ann.get("action_labels", [])]
 
             if not labels:
-                edges.append({"source": node["node_id"], "target": node["node_id"], "type": self._person_posture(node)})
+                edges.append(
+                    {
+                        "source": node["node_id"],
+                        "target": node["node_id"],
+                        "type": self._person_posture(node),
+                    }
+                )
                 continue
 
             nearest = self._nearest_other_node(node, nodes)
             for label in labels:
                 action = self._slug(label)
                 if "sit" in action:
-                    edges.append({"source": node["node_id"], "target": node["node_id"], "type": "sitting"})
+                    edges.append(
+                        {
+                            "source": node["node_id"],
+                            "target": node["node_id"],
+                            "type": "sitting",
+                        }
+                    )
                     continue
                 if "stand" in action:
-                    edges.append({"source": node["node_id"], "target": node["node_id"], "type": "standing"})
+                    edges.append(
+                        {
+                            "source": node["node_id"],
+                            "target": node["node_id"],
+                            "type": "standing",
+                        }
+                    )
                     continue
                 if "kiss" in action and nearest and nearest.get("class_name") == "person":
-                    edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": "kissing"})
+                    edges.append(
+                        {
+                            "source": node["node_id"],
+                            "target": nearest["node_id"],
+                            "type": "kissing",
+                        }
+                    )
                     continue
                 if "hug" in action and nearest and nearest.get("class_name") == "person":
-                    edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": "hugging"})
+                    edges.append(
+                        {
+                            "source": node["node_id"],
+                            "target": nearest["node_id"],
+                            "type": "hugging",
+                        }
+                    )
                     continue
                 if "talk" in action and nearest:
-                    edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": "talking_to"})
+                    edges.append(
+                        {
+                            "source": node["node_id"],
+                            "target": nearest["node_id"],
+                            "type": "talking_to",
+                        }
+                    )
                     continue
                 if ("watch" in action or "look" in action) and nearest:
                     src_x = node["center"][0]
                     tgt_x = nearest["center"][0]
                     look_rel = "looking_right_at" if tgt_x > src_x else "looking_left_at"
-                    edges.append({"source": node["node_id"], "target": nearest["node_id"], "type": look_rel})
+                    edges.append(
+                        {
+                            "source": node["node_id"],
+                            "target": nearest["node_id"],
+                            "type": look_rel,
+                        }
+                    )
                     continue
                 edges.append(
                     {
@@ -243,7 +285,7 @@ class SceneGraphBuilder:
         return edges
 
     def process_frame(self, json_path: Path, output_path: Path) -> dict:
-        with open(json_path, "r", encoding="utf-8") as f:
+        with open(json_path, encoding="utf-8") as f:
             data = json.load(f)
 
         detections = data.get("detections", [])

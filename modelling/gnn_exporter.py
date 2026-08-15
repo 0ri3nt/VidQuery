@@ -4,7 +4,6 @@ from pathlib import Path
 import torch
 
 from modelling.gnn_dataset import build_sparse_graphs
-from modelling.gnn_model import SceneGraphMPNN
 
 
 def _to_tensor_pair(graph_obj):
@@ -50,7 +49,11 @@ def export_gnn_outputs(
     overwrite: bool = False,
 ) -> None:
     """
-    Persist runtime GNN tensors for each scene-graph frame.
+    Persist GNN-compatible input features for each scene-graph frame.
+
+    This function deliberately does not instantiate ``SceneGraphMPNN``.  No
+    trained checkpoint or relationship-label head exists in this repository,
+    so emitting randomly initialized edge vectors would be misleading.
 
     Output per frame is written to:
     data/ava/gnn_outputs/<split>/<video_id>/<frame>.gnn.json
@@ -88,10 +91,6 @@ def export_gnn_outputs(
 
             print(f"  [Video {idx}/{len(video_ids)}] {video_id} frames={len(frame_items)}")
 
-            model = None
-            in_channels = None
-            out_dim = 32
-
             stats = {
                 "total_frames": len(frame_items),
                 "frames_with_nodes": 0,
@@ -126,29 +125,14 @@ def export_gnn_outputs(
                 if not graphs:
                     x = torch.empty((0, 10), dtype=torch.float)
                     edge_index = torch.empty((2, 0), dtype=torch.long)
-                    edge_features = torch.empty((0, out_dim), dtype=torch.float)
                 else:
                     x, edge_index = _to_tensor_pair(graphs[0])
                     if x.ndim != 2:
                         x = x.reshape(x.shape[0], -1)
 
-                    current_in_channels = int(x.shape[1]) if x.ndim == 2 else 0
-                    if current_in_channels > 0 and (model is None or in_channels != current_in_channels):
-                        model = SceneGraphMPNN(in_channels=current_in_channels)
-                        model.eval()
-                        in_channels = current_in_channels
-                        out_dim = int(model.edge_mlp[-1].out_features)
-
-                    if model is None:
-                        edge_features = torch.empty((0, out_dim), dtype=torch.float)
-                    else:
-                        with torch.no_grad():
-                            edge_features = model(x, edge_index)
-
                 node_count = int(x.shape[0])
                 node_feature_dim = int(x.shape[1]) if x.ndim == 2 else 0
                 sparse_edge_count = int(edge_index.shape[1]) if edge_index.ndim == 2 else 0
-                edge_feature_dim = int(edge_features.shape[1]) if edge_features.ndim == 2 else out_dim
                 audio_segments = scene_graph.get("audio_segments", [])
                 audio_segment_count = len(audio_segments) if isinstance(audio_segments, list) else 0
                 unique_speakers = (
@@ -180,13 +164,19 @@ def export_gnn_outputs(
                     "node_count": node_count,
                     "node_feature_dim": node_feature_dim,
                     "sparse_edge_count": sparse_edge_count,
-                    "edge_feature_dim": edge_feature_dim,
+                    "model_status": "untrained_feature_export",
+                    "edge_feature_dim": 0,
                     "audio_segment_count": audio_segment_count,
                     "audio_unique_speakers": unique_speakers,
                     "node_feature_tensor": x.detach().cpu().tolist(),
                     "edge_index_tensor": edge_index.detach().cpu().tolist(),
-                    "edge_pairs": edge_index.t().detach().cpu().tolist() if sparse_edge_count > 0 else [],
-                    "edge_feature_tensor": edge_features.detach().cpu().tolist(),
+                    "edge_pairs": (
+                        edge_index.t().detach().cpu().tolist()
+                        if sparse_edge_count > 0
+                        else []
+                    ),
+                    "edge_feature_tensor": [],
+                    "relationship_predictions": [],
                 }
 
                 out_path.write_text(json.dumps(record, indent=2), encoding="utf-8")
@@ -200,10 +190,14 @@ def export_gnn_outputs(
                 "frames_with_audio": stats["frames_with_audio"],
                 "total_nodes": stats["total_nodes"],
                 "total_sparse_edges": stats["total_sparse_edges"],
+                "model_status": "untrained_feature_export",
+                "relationship_predictions_available": False,
                 "output_dir": str(video_out_dir),
             }
 
-            (video_out_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+            (video_out_dir / "summary.json").write_text(
+                json.dumps(summary, indent=2), encoding="utf-8"
+            )
             print(
                 "    "
                 f"saved={len(frame_items)} "

@@ -1,4 +1,5 @@
 from math import hypot
+from types import SimpleNamespace
 
 import torch
 
@@ -62,7 +63,10 @@ def build_sparse_graphs(visual_data: list[dict], near_threshold: float = 200.0):
 
         audio_features = _frame_audio_features(frame)
 
-        x = torch.tensor([_node_features(node, audio_features) for node in nodes], dtype=torch.float)
+        x = torch.tensor(
+            [_node_features(node, audio_features) for node in nodes],
+            dtype=torch.float,
+        )
 
         edge_pairs = []
         for i in range(len(nodes)):
@@ -85,12 +89,12 @@ def build_sparse_graphs(visual_data: list[dict], near_threshold: float = 200.0):
             graph.video_id = frame.get("video_id")
             graph.timestamp = frame.get("timestamp")
         else:
-            graph = {
-                "x": x,
-                "edge_index": edge_index,
-                "video_id": frame.get("video_id"),
-                "timestamp": frame.get("timestamp"),
-            }
+            graph = SimpleNamespace(
+                x=x,
+                edge_index=edge_index,
+                video_id=frame.get("video_id"),
+                timestamp=frame.get("timestamp"),
+            )
         graphs.append(graph)
 
     return graphs

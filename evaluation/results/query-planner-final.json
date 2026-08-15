@@ -1,0 +1,195 @@
+{
+  "schema_version": "vidquery-query-planner-evaluation-v1",
+  "generated_at": "2026-08-12T21:50:41.924476+00:00",
+  "provider_calls": 0,
+  "passed": 7,
+  "total": 7,
+  "cases": [
+    {
+      "id": "observed-driving",
+      "query": "show me someone driving",
+      "passed": true,
+      "expected": {
+        "intent": "action_search",
+        "actions": [
+          "drive"
+        ],
+        "spoken_terms": []
+      },
+      "observed": {
+        "intent": "action_search",
+        "actions": [
+          "drive"
+        ],
+        "visual_entities": [
+          "person"
+        ],
+        "spoken_terms": [],
+        "ocr_terms": [],
+        "tuple_predicate": null,
+        "alternative_spoken_terms": [],
+        "ambiguous": false,
+        "status": "deterministic_clear"
+      },
+      "mismatches": {}
+    },
+    {
+      "id": "spoken-drive",
+      "query": "where did they say drive?",
+      "passed": true,
+      "expected": {
+        "intent": "transcript_search",
+        "actions": [],
+        "spoken_terms": [
+          "drive"
+        ]
+      },
+      "observed": {
+        "intent": "transcript_search",
+        "actions": [],
+        "visual_entities": [],
+        "spoken_terms": [
+          "drive"
+        ],
+        "ocr_terms": [],
+        "tuple_predicate": null,
+        "alternative_spoken_terms": [],
+        "ambiguous": false,
+        "status": "deterministic_clear"
+      },
+      "mismatches": {}
+    },
+    {
+      "id": "holding-mug",
+      "query": "someone holding a mug",
+      "passed": true,
+      "expected": {
+        "visual_entities": [
+          "person",
+          "cup"
+        ],
+        "tuple_predicate": "hold"
+      },
+      "observed": {
+        "intent": "relationship_search",
+        "actions": [],
+        "visual_entities": [
+          "person",
+          "cup"
+        ],
+        "spoken_terms": [],
+        "ocr_terms": [],
+        "tuple_predicate": "hold",
+        "alternative_spoken_terms": [],
+        "ambiguous": false,
+        "status": "deterministic_clear"
+      },
+      "mismatches": {}
+    },
+    {
+      "id": "visible-kubernetes",
+      "query": "Kubernetes written on screen",
+      "passed": true,
+      "expected": {
+        "intent": "ocr_search",
+        "ocr_terms": [
+          "kubernetes"
+        ],
+        "spoken_terms": []
+      },
+      "observed": {
+        "intent": "ocr_search",
+        "actions": [],
+        "visual_entities": [],
+        "spoken_terms": [],
+        "ocr_terms": [
+          "kubernetes"
+        ],
+        "tuple_predicate": null,
+        "alternative_spoken_terms": [],
+        "ambiguous": false,
+        "status": "deterministic_clear"
+      },
+      "mismatches": {}
+    },
+    {
+      "id": "spoken-kubernetes",
+      "query": "where was Kubernetes mentioned?",
+      "passed": true,
+      "expected": {
+        "intent": "transcript_search",
+        "spoken_terms": [
+          "kubernetes"
+        ],
+        "ocr_terms": []
+      },
+      "observed": {
+        "intent": "transcript_search",
+        "actions": [],
+        "visual_entities": [],
+        "spoken_terms": [
+          "kubernetes"
+        ],
+        "ocr_terms": [],
+        "tuple_predicate": null,
+        "alternative_spoken_terms": [],
+        "ambiguous": false,
+        "status": "deterministic_clear"
+      },
+      "mismatches": {}
+    },
+    {
+      "id": "person-interaction",
+      "query": "two people speaking with each other",
+      "passed": true,
+      "expected": {
+        "intent": "relationship_search",
+        "tuple_predicate": "talk_to"
+      },
+      "observed": {
+        "intent": "relationship_search",
+        "actions": [],
+        "visual_entities": [
+          "person"
+        ],
+        "spoken_terms": [],
+        "ocr_terms": [],
+        "tuple_predicate": "talk_to",
+        "alternative_spoken_terms": [],
+        "ambiguous": false,
+        "status": "deterministic_clear"
+      },
+      "mismatches": {}
+    },
+    {
+      "id": "ambiguous-drive",
+      "query": "find drive",
+      "passed": true,
+      "expected": {
+        "actions": [
+          "drive"
+        ],
+        "alternative_spoken_terms": [
+          "drive"
+        ],
+        "ambiguous": true
+      },
+      "observed": {
+        "intent": "action_search",
+        "actions": [
+          "drive"
+        ],
+        "visual_entities": [],
+        "spoken_terms": [],
+        "ocr_terms": [],
+        "tuple_predicate": null,
+        "alternative_spoken_terms": [
+          "drive"
+        ],
+        "ambiguous": true,
+        "status": "fallback_ambiguous_merged"
+      },
+      "mismatches": {}
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import re
 import hashlib
+import re
 from pathlib import Path
 
 from .neo4j_client import Neo4jClient
@@ -51,7 +51,12 @@ class GraphIngestor:
     def _concept_from_action(action: str) -> str:
         return str(action or "unknown_action").strip().lower().replace("_", " ")
 
-    def _merge_frame_scene(self, video_id: str, split: str | None, frame_data: dict) -> tuple[int, str]:
+    def _merge_frame_scene(
+        self,
+        video_id: str,
+        split: str | None,
+        frame_data: dict,
+    ) -> tuple[int, str]:
         timestamp = int(frame_data.get("timestamp", 0))
         frame_file = str(frame_data.get("frame_file", ""))
         scene_key = f"{video_id}:{timestamp}"

@@ -3,7 +3,6 @@ from pathlib import Path
 
 import cv2
 
-
 RELATION_COLORS = {
     "overlaps_with": (0, 165, 255),
     "touches": (255, 0, 255),
@@ -37,7 +36,7 @@ def draw_graph_on_frame(frame_path: Path, json_path: Path, out_path: Path) -> No
         print(f"  [!] Could not load image: {frame_path}")
         return
 
-    with open(json_path, "r", encoding="utf-8") as f:
+    with open(json_path, encoding="utf-8") as f:
         graph_data = json.load(f)
 
     nodes = graph_data.get("nodes", [])

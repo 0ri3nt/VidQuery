@@ -2,10 +2,10 @@ import argparse
 import csv
 import json
 import os
-from pathlib import Path
 import shutil
 import time
 import warnings
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 
@@ -68,7 +68,10 @@ class AudioExtractor:
 
             warnings.filterwarnings(
                 "ignore",
-                message=r"(?s).*torchcodec is not installed correctly so built-in audio decoding will fail.*",
+                message=(
+                    r"(?s).*torchcodec is not installed correctly so built-in audio "
+                    r"decoding will fail.*"
+                ),
                 category=UserWarning,
             )
             warnings.filterwarnings(
@@ -296,7 +299,11 @@ def main_whisper() -> None:
 def main_diarization() -> None:
     parser = argparse.ArgumentParser(description="Run speaker diarization on media files")
     parser.add_argument("--input", type=Path, required=True)
-    parser.add_argument("--output_dir", type=Path, default=Path("data/ava/audio_outputs/diarization"))
+    parser.add_argument(
+        "--output_dir",
+        type=Path,
+        default=Path("data/ava/audio_outputs/diarization"),
+    )
     parser.add_argument("--hf_token", type=str, default=os.getenv("HF_TOKEN", ""))
     parser.add_argument("--model", type=str, default="pyannote/speaker-diarization-3.1")
     args = parser.parse_args()

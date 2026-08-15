@@ -1,0 +1,79 @@
+{
+  "schema_version": "ava80-improved-neo4j-proof-v1",
+  "captured_at": "2026-08-10T20:05:51.200873+00:00",
+  "video_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7",
+  "model_version": "ava80-gat-v3-roi",
+  "health": true,
+  "constraint_count": 13,
+  "index_count": 22,
+  "counts_after_first_ingestion": {
+    "segments": 179,
+    "entity_occurrences": 3568,
+    "actions": 55,
+    "relationship_evidence": 33303
+  },
+  "counts_after_second_ingestion": {
+    "segments": 179,
+    "entity_occurrences": 3568,
+    "actions": 55,
+    "relationship_evidence": 33303
+  },
+  "idempotent": true,
+  "gnn_only_action_write": [
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1265000:1270000",
+      "start_time": 1265.0,
+      "end_time": 1270.0,
+      "action": "write"
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1270000:1275000",
+      "start_time": 1270.0,
+      "end_time": 1275.0,
+      "action": "write"
+    }
+  ],
+  "gnn_target_resolver_relationships": [
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1250000:1255000",
+      "predicate": "carry_hold",
+      "confidence": 0.9184784889221191,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1254.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1295000:1300000",
+      "predicate": "carry_hold",
+      "confidence": 0.9126107096672058,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1299.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1295000:1300000",
+      "predicate": "carry_hold",
+      "confidence": 0.9061353802680969,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1299.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1415000:1420000",
+      "predicate": "carry_hold",
+      "confidence": 0.9043011665344238,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1419.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1295000:1300000",
+      "predicate": "carry_hold",
+      "confidence": 0.902100682258606,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1298.0
+    }
+  ],
+  "verified": {
+    "schema": true,
+    "action_node": true,
+    "relationship_provenance": true,
+    "duplicate_prevention": true
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "vidquery-query-planner-rag-proof-v2",
+  "generated_at": "2026-08-12T21:50:11.646121+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "query": "where is architecture discussed while a laptop is visible",
+  "video_name": "final_demo.mp4",
+  "retrieval_backend": "sqlite",
+  "ranked_result_count": 5,
+  "rag_health": "available_configured",
+  "rag_status": "generated_supported",
+  "query_planner_health": "available_configured_local_first",
+  "query_planner_status": "groq_planned_validated",
+  "query_ambiguities": [
+    "The deterministic parser found unclassified language alongside visual constraints."
+  ],
+  "parsed_query": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+      "laptop"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+      "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": null
+  },
+  "alternative_query_plans": [],
+  "answer": {
+    "answer": "In the first 5 seconds of the video, the speaker discusses software architecture while a laptop is visible.",
+    "supported": true,
+    "evidence_ids": [
+      "E1"
+    ],
+    "citations": [
+      {
+        "evidence_id": "E1",
+        "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+        "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+        "video_title": "final_demo.mp4",
+        "start_time": 0.0,
+        "end_time": 5.0,
+        "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream"
+      }
+    ]
+  },
+  "cited_graph_evidence": {
+    "action_provenance": [
+      "gnn_action_model",
+      "gnn_action_plus_target_resolver"
+    ],
+    "relationship_sources": [
+      "bounding_box_geometry",
+      "gnn_action_plus_target_resolver",
+      "manual_annotation",
+      "relationship_gnn"
+    ],
+    "relationship_model_versions": [
+      "vidor-relation-gat-v1"
+    ]
+  },
+  "verified": {
+    "raw_ranked_results_preserved": true,
+    "all_evidence_ids_resolved": true,
+    "all_citation_intervals_match_ranked_results": true,
+    "planner_produced_validated_structured_plan": true,
+    "cited_result_contains_gnn_or_graph_evidence": true,
+    "no_api_key_in_artifact": true
+  }
+}

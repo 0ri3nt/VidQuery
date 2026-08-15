@@ -1,0 +1,3626 @@
+{
+  "schema_version": "ava80-improved-unseen-api-proof-v1",
+  "captured_at": "2026-08-10T20:40:31.033314+00:00",
+  "model_version": "ava80-gat-v3-roi",
+  "training_video_ids": [
+    "-FaXLcSFjUI",
+    "-IELREHX_js",
+    "-OyDO1g74vc",
+    "-XpUuIgyUHE",
+    "C3qk4yAMANk",
+    "_ithRWANKB0",
+    "b-YoBU0XT90",
+    "fpprSy6AzKk",
+    "lWXhqIAvarw",
+    "xeGWXqSvC-8",
+    "y7ncweROe9U"
+  ],
+  "unseen_video_source_id": "hbYvDvJrpNk",
+  "unseen_video_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7",
+  "unseen_video_was_in_training": false,
+  "health": {
+    "application": "ok",
+    "database": "available",
+    "neo4j": "available",
+    "models": {
+      "yolo": "available_configured",
+      "whisper": "available_configured",
+      "diarization": "disabled",
+      "gnn_person_action_classifier": "available_validated_enabled",
+      "gnn_relationship_prediction": "unavailable_no_relation_labels",
+      "person_action_classifier": "available_validated_fallback"
+    }
+  },
+  "video": {
+    "video_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7",
+    "display_name": "hbYvDvJrpNk.mp4",
+    "original_filename": "hbYvDvJrpNk.mp4",
+    "stored_path": "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\data\\ava\\videos\\hbYvDvJrpNk.mp4",
+    "content_sha256": "585f5f62d632f2195555f41f5d6db3d8cfbe9dc542233691d12c05ef7c2fe475",
+    "duration": 6240.68,
+    "width": 1280,
+    "height": 544,
+    "fps": 25.0,
+    "has_audio": true,
+    "upload_time": "2026-08-10T14:22:53.640283Z",
+    "updated_time": "2026-08-10T14:26:38.149943Z",
+    "state": "READY",
+    "current_stage": "complete",
+    "failure_message": null,
+    "warnings": [
+      "Imported existing AVA artifacts; no fresh model inference was performed",
+      "AVA annotations and geometry heuristics are not GNN predictions"
+    ]
+  },
+  "queries": {
+    "write": {
+      "query": "write",
+      "parsed_query": {
+        "visual_entities": [],
+        "relationships": [],
+        "relationship_tuples": [],
+        "actions": [
+          "write"
+        ],
+        "spoken_terms": [],
+        "speaker": null
+      },
+      "results": [
+        {
+          "video_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7",
+          "video_title": "hbYvDvJrpNk.mp4",
+          "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1270000:1275000",
+          "start_time": 1270.0,
+          "end_time": 1275.0,
+          "score": 0.0707,
+          "transcript": "",
+          "speakers": [],
+          "entities": [
+            "person"
+          ],
+          "actions": [
+            "carry/hold",
+            "close",
+            "drive",
+            "eat",
+            "hand shake",
+            "listen to",
+            "pull",
+            "sit",
+            "stand",
+            "take from person",
+            "talk to",
+            "touch object",
+            "walk",
+            "watch person",
+            "write"
+          ],
+          "action_evidence": [
+            {
+              "action": "stand",
+              "confidence": 0.8116375207901001,
+              "source_entity_id": "ava_det_2718d6116636a52e11dd",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.5529860258102417,
+              "source_entity_id": "ava_det_2718d6116636a52e11dd",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "close",
+              "confidence": 0.12642477452754974,
+              "source_entity_id": "ava_det_2718d6116636a52e11dd",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.6185543537139893,
+              "source_entity_id": "ava_det_2718d6116636a52e11dd",
+              "target_entity_id": "ava_det_51d1725e2a89b003706c",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5948321223258972,
+              "source_entity_id": "ava_det_2718d6116636a52e11dd",
+              "target_entity_id": "ava_det_51d1725e2a89b003706c",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7820443511009216,
+              "source_entity_id": "ava_det_a4833096489c68d60c31",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.49577170610427856,
+              "source_entity_id": "ava_det_a4833096489c68d60c31",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.21775922179222107,
+              "source_entity_id": "ava_det_a4833096489c68d60c31",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.6242729425430298,
+              "source_entity_id": "ava_det_a4833096489c68d60c31",
+              "target_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.6162729859352112,
+              "source_entity_id": "ava_det_a4833096489c68d60c31",
+              "target_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7312412261962891,
+              "source_entity_id": "ava_det_51d1725e2a89b003706c",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.4339735805988312,
+              "source_entity_id": "ava_det_51d1725e2a89b003706c",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "close",
+              "confidence": 0.12754234671592712,
+              "source_entity_id": "ava_det_51d1725e2a89b003706c",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.3588758409023285,
+              "source_entity_id": "ava_det_51d1725e2a89b003706c",
+              "target_entity_id": "ava_det_2718d6116636a52e11dd",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5430012345314026,
+              "source_entity_id": "ava_det_51d1725e2a89b003706c",
+              "target_entity_id": "ava_det_2718d6116636a52e11dd",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7043739557266235,
+              "source_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.45791634917259216,
+              "source_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.11523991823196411,
+              "source_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.6430270671844482,
+              "source_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "target_entity_id": "ava_det_a4833096489c68d60c31",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.6298807263374329,
+              "source_entity_id": "ava_det_6fc777c918b3df0ea372",
+              "target_entity_id": "ava_det_a4833096489c68d60c31",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "action": "sit",
+              "confidence": 0.5213662385940552,
+              "source_entity_id": "ava_det_43bfc7079e000012afbb",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.07588616013526917,
+              "source_entity_id": "ava_det_43bfc7079e000012afbb",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.3923320174217224,
+              "source_entity_id": "ava_det_43bfc7079e000012afbb",
+              "target_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.47227218747138977,
+              "source_entity_id": "ava_det_43bfc7079e000012afbb",
+              "target_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.530837893486023,
+              "source_entity_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.2252705842256546,
+              "source_entity_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.19796277582645416,
+              "source_entity_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.5961368680000305,
+              "source_entity_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_entity_id": "ava_det_8f3ae50b28ea94442f9b",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5772534608840942,
+              "source_entity_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_entity_id": "ava_det_8f3ae50b28ea94442f9b",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.6422685980796814,
+              "source_entity_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.2553470730781555,
+              "source_entity_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.5835817456245422,
+              "source_entity_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5911544561386108,
+              "source_entity_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.6307737827301025,
+              "source_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.16469226777553558,
+              "source_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.6907428503036499,
+              "source_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_entity_id": "ava_det_43bfc7079e000012afbb",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.6069579720497131,
+              "source_entity_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_entity_id": "ava_det_43bfc7079e000012afbb",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "action": "walk",
+              "confidence": 0.6150729656219482,
+              "source_entity_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.8338284492492676,
+              "source_entity_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "drive",
+              "confidence": 0.2158856838941574,
+              "source_entity_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "hand shake",
+              "confidence": 0.09019749611616135,
+              "source_entity_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "resolved_predicate": "hand_shake",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.45698148012161255,
+              "source_entity_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "walk",
+              "confidence": 0.7114470601081848,
+              "source_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.762421190738678,
+              "source_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "pull",
+              "confidence": 0.0640728622674942,
+              "source_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "hand shake",
+              "confidence": 0.13502173125743866,
+              "source_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "target_entity_id": "ava_det_84324ad963a8e22fa876",
+              "resolved_predicate": "hand_shake",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.4990074634552002,
+              "source_entity_id": "ava_det_8374b2fd04dfa904a730",
+              "target_entity_id": "ava_det_84324ad963a8e22fa876",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "walk",
+              "confidence": 0.7404510974884033,
+              "source_entity_id": "ava_det_40df5ce84899abd28cbc",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.8216615915298462,
+              "source_entity_id": "ava_det_40df5ce84899abd28cbc",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "hand shake",
+              "confidence": 0.11998413503170013,
+              "source_entity_id": "ava_det_40df5ce84899abd28cbc",
+              "target_entity_id": "ava_det_84324ad963a8e22fa876",
+              "resolved_predicate": "hand_shake",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.4382631778717041,
+              "source_entity_id": "ava_det_40df5ce84899abd28cbc",
+              "target_entity_id": "ava_det_84324ad963a8e22fa876",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "walk",
+              "confidence": 0.6970818638801575,
+              "source_entity_id": "ava_det_84324ad963a8e22fa876",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.8298388123512268,
+              "source_entity_id": "ava_det_84324ad963a8e22fa876",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "drive",
+              "confidence": 0.1550929695367813,
+              "source_entity_id": "ava_det_84324ad963a8e22fa876",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "hand shake",
+              "confidence": 0.10167057067155838,
+              "source_entity_id": "ava_det_84324ad963a8e22fa876",
+              "target_entity_id": "ava_det_40df5ce84899abd28cbc",
+              "resolved_predicate": "hand_shake",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.3850160837173462,
+              "source_entity_id": "ava_det_84324ad963a8e22fa876",
+              "target_entity_id": "ava_det_40df5ce84899abd28cbc",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "action": "walk",
+              "confidence": 0.7142794728279114,
+              "source_entity_id": "ava_det_34199e5a89e4d512af4b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1273.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.8836579322814941,
+              "source_entity_id": "ava_det_34199e5a89e4d512af4b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1273.0
+            },
+            {
+              "action": "write",
+              "confidence": 0.07067801803350449,
+              "source_entity_id": "ava_det_34199e5a89e4d512af4b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1273.0
+            },
+            {
+              "action": "hand shake",
+              "confidence": 0.11049800366163254,
+              "source_entity_id": "ava_det_34199e5a89e4d512af4b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1273.0
+            },
+            {
+              "action": "take from person",
+              "confidence": 0.05874156206846237,
+              "source_entity_id": "ava_det_34199e5a89e4d512af4b",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 1273.0
+            }
+          ],
+          "relationships": [
+            {
+              "relationship_id": "ava_rel_ed8c27db8edb01f08225",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "touches",
+              "confidence": 0.011,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_22ce9c3903c184362da4",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_bfb058a1e79fee690f79",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_7c3b9e4fdde96771a029",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "touches",
+              "confidence": 0.028,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_1178b5a3cbc3cd52985f",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_f4c911e81c667de8fbcc",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "touches",
+              "confidence": 0.011,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_396e6a6855598a1bd562",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_9299f67d1e0611c27665",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_cfcd36c2eb9eec31de6e",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "touches",
+              "confidence": 0.028,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_7660fd4a9f55170acb81",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_6d9e2b578b6e76f298ec",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_501757a298876c150141",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_61765922fe1def063e91",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_ea89d406b7c14ddd8416",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_a461e46f5d7121c29742",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_c612ccd633b877f8caf8",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_702af50b7f00fde3f30c",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_d8a82ff337cd7095a886",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_1586bf9381a13d7b10d4",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_4f72748a4c46e457ce88",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_a1b1f0a3a074eccccbca",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "ava_rel_b9f8025bccbd8a764c97",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "overlaps_with",
+              "confidence": 0.106,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_29978ed63655d19cb7f3",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_610634a2f2c15b138f0b",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_1a52aa26f9cc6204c761",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "overlaps_with",
+              "confidence": 0.272,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_f318c3d801b190e5cb26",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_358ac6fcebdf05bb5d1c",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_731f0bbbf74efe0b5cce",
+              "predicate": "overlaps_with",
+              "confidence": 0.272,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_80f28a6918596e15340a",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_731f0bbbf74efe0b5cce",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_103eca220b7bb4704f15",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "overlaps_with",
+              "confidence": 0.1,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_834d4e3f195038782029",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_3e3f0431997499126a00",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_d6622cf4be5c977be138",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "overlaps_with",
+              "confidence": 0.106,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_3242733579d4e1b33e49",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_fe97bc5d5db71f4e8563",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_9c561b949e3d11039b77",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "overlaps_with",
+              "confidence": 0.1,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_b5d018e273b0d14c1596",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_979be602e5adfeae128c",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_60cfd5f8a833d795cb34",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_2f496c5fec3fcf3fd57b",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_fb8952f6c2bf983e1740",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_731f0bbbf74efe0b5cce",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_88a31576b787b7814cae",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_731f0bbbf74efe0b5cce",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_e3cf4d5ed72972bd3a3b",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_731f0bbbf74efe0b5cce",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_187022562708dcf20a22",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_f3161e8e873c9caa7517",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_d774d994e295f1f57e87",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_36a8dccd335f2e7576e6",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_f2c1693be73dae8b6d54",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_b19df6224382d510dded",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "ava_rel_f13e2b34c32f4c5b89d0",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_5386453d43ce12558960",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_904b52a8cb524f9e3343",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_4c742163a7a69a3cb9ec",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_298be984a23501c6d211",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_aa442a9f2b134104c736",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_8f66bbc800a0454715f8",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "near",
+              "confidence": 0.9269487333473586,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_fb4fab935f8ef5c985e5",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_f47bd99437f2498b13eb",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_469b77579f6a42ad1b99",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "near",
+              "confidence": 0.9475123773066652,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_7f10b1ef8240789a5367",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_057cc707b79e1d7daf82",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_c0802d1285d8947e778d",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_7db883ca5ebd4442fdda",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_29d8dd16d1ee6a852d17",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "near",
+              "confidence": 0.9269487333473586,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_763551e10223613a46c0",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_d5d9e7857933fcdcbab0",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_2d8d378ebd1e2a439981",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "overlaps_with",
+              "confidence": 0.127,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_90d32de815968db1eb8c",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "near",
+              "confidence": 0.9766322227735152,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_9283a18723b79c4b4dda",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_0e8966c14d47920e5c08",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_651e356af032125410c7",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_70740ef5a0e52c1ad417",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "near",
+              "confidence": 0.9475123773066652,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_46655e75c824c9d3f19e",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_e6a041c829fa019a2956",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_f6c8ecc2805725769b76",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "overlaps_with",
+              "confidence": 0.127,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_a1481cb3582eeea25803",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "near",
+              "confidence": 0.9766322227735152,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_20dc8d96be18d568ba8c",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_171c0da7b0dc58d7cea2",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_680dd7e55181d6d02e41",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "action_write",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_bd27ab868430eb2d6cb4",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_f6b50405d518d3dc3d7d",
+              "predicate": "action_action_80",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_522dfd4a60b104dab15b",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_e2468d9a01d7099bcb5a",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "action_write",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_3cafe089945e4e3d7888",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_02cbd23032f07fbbaf8a",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "action_action_59",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_613581ed05d3d331a92a",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "standing",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "ava_rel_5d6845f1291bf6cbba3a",
+              "source_id": "ava_det_34199e5a89e4d512af4b",
+              "target_id": "ava_det_34199e5a89e4d512af4b",
+              "predicate": "standing",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 1273.0
+            },
+            {
+              "relationship_id": "rel_cb8806da13af142c5239",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "listen_to",
+              "confidence": 0.6185543537139893,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_24ef3cc6688a2b4c1bd4",
+              "source_id": "ava_det_2718d6116636a52e11dd",
+              "target_id": "ava_det_51d1725e2a89b003706c",
+              "predicate": "watch_person",
+              "confidence": 0.5948321223258972,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_62fec7cca9ce3382d6c8",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "listen_to",
+              "confidence": 0.6242729425430298,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_67ccc6e28042e4d62415",
+              "source_id": "ava_det_a4833096489c68d60c31",
+              "target_id": "ava_det_6fc777c918b3df0ea372",
+              "predicate": "talk_to",
+              "confidence": 0.6162729859352112,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_85c93b5a72d92e1fc87f",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "listen_to",
+              "confidence": 0.3588758409023285,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_d9508e6991f4416b8b1d",
+              "source_id": "ava_det_51d1725e2a89b003706c",
+              "target_id": "ava_det_2718d6116636a52e11dd",
+              "predicate": "watch_person",
+              "confidence": 0.5430012345314026,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_0979d6ae4b979d8ca903",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "listen_to",
+              "confidence": 0.6430270671844482,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_56064e38dc9e1dd12319",
+              "source_id": "ava_det_6fc777c918b3df0ea372",
+              "target_id": "ava_det_a4833096489c68d60c31",
+              "predicate": "watch_person",
+              "confidence": 0.6298807263374329,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1270.0
+            },
+            {
+              "relationship_id": "rel_ddef3e7cec8d2f91d048",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "listen_to",
+              "confidence": 0.3923320174217224,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_e6e4854499eec1920ba5",
+              "source_id": "ava_det_43bfc7079e000012afbb",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "watch_person",
+              "confidence": 0.47227218747138977,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_e793e76942003ea00388",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "talk_to",
+              "confidence": 0.5961368680000305,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_c9f00a79634a7ea71dce",
+              "source_id": "ava_det_731f0bbbf74efe0b5cce",
+              "target_id": "ava_det_8f3ae50b28ea94442f9b",
+              "predicate": "watch_person",
+              "confidence": 0.5772534608840942,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_919a622433af9c08ed22",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "talk_to",
+              "confidence": 0.5835817456245422,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_be151c8d7e93e47f3ffc",
+              "source_id": "ava_det_8f3ae50b28ea94442f9b",
+              "target_id": "ava_det_3925f3b6172d4a90f4eb",
+              "predicate": "watch_person",
+              "confidence": 0.5911544561386108,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_dadd4036cc2649dc0121",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "talk_to",
+              "confidence": 0.6907428503036499,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_f9af648e9f11470d9136",
+              "source_id": "ava_det_3925f3b6172d4a90f4eb",
+              "target_id": "ava_det_43bfc7079e000012afbb",
+              "predicate": "watch_person",
+              "confidence": 0.6069579720497131,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1271.0
+            },
+            {
+              "relationship_id": "rel_15ebe228b3778a7b9433",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "hand_shake",
+              "confidence": 0.09019749611616135,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_481b6301ca4884279ca1",
+              "source_id": "ava_det_f6b50405d518d3dc3d7d",
+              "target_id": "ava_det_8374b2fd04dfa904a730",
+              "predicate": "watch_person",
+              "confidence": 0.45698148012161255,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_531b8edf163c86f5f2c1",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "hand_shake",
+              "confidence": 0.13502173125743866,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_62bcbf6710415720f9b3",
+              "source_id": "ava_det_8374b2fd04dfa904a730",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "watch_person",
+              "confidence": 0.4990074634552002,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_fa2901806456ad26fcbb",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "hand_shake",
+              "confidence": 0.11998413503170013,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_b1b92053328bb2d64a16",
+              "source_id": "ava_det_40df5ce84899abd28cbc",
+              "target_id": "ava_det_84324ad963a8e22fa876",
+              "predicate": "watch_person",
+              "confidence": 0.4382631778717041,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_c54adba9a87b83e3eaa7",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "hand_shake",
+              "confidence": 0.10167057067155838,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            },
+            {
+              "relationship_id": "rel_6b9d64237753396a3ba1",
+              "source_id": "ava_det_84324ad963a8e22fa876",
+              "target_id": "ava_det_40df5ce84899abd28cbc",
+              "predicate": "watch_person",
+              "confidence": 0.3850160837173462,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 1272.0
+            }
+          ],
+          "matched_relationships": [],
+          "thumbnail_url": "/api/videos/aa03a76b-b03b-4f97-8542-d89736ab29e7/thumbnail?timestamp=1270.0",
+          "stream_url": "/api/videos/aa03a76b-b03b-4f97-8542-d89736ab29e7/stream",
+          "match_reason": "Matched actions write (gnn_action_model, confidence 0.07)."
+        }
+      ],
+      "retrieval_backend": "sqlite"
+    },
+    "talk to": {
+      "query": "talk to",
+      "parsed_query": {
+        "visual_entities": [],
+        "relationships": [],
+        "relationship_tuples": [],
+        "actions": [
+          "talk to"
+        ],
+        "spoken_terms": [],
+        "speaker": null
+      },
+      "results": [
+        {
+          "video_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7",
+          "video_title": "hbYvDvJrpNk.mp4",
+          "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:910000:915000",
+          "start_time": 910.0,
+          "end_time": 915.0,
+          "score": 1.0,
+          "transcript": "",
+          "speakers": [],
+          "entities": [
+            "bottle",
+            "chair",
+            "person",
+            "potted plant",
+            "vase"
+          ],
+          "actions": [
+            "carry/hold",
+            "eat",
+            "lift person",
+            "listen to",
+            "sit",
+            "stand",
+            "talk to",
+            "walk",
+            "watch person"
+          ],
+          "action_evidence": [
+            {
+              "action": "stand",
+              "confidence": 0.5806534290313721,
+              "source_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 910.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.5315744280815125,
+              "source_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "target_entity_id": "ava_det_80363fa9a903d2d67679",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.2629877030849457,
+              "source_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 910.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.674255907535553,
+              "source_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "target_entity_id": "ava_det_5bd7d163144241c423d2",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.6291183829307556,
+              "source_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "target_entity_id": "ava_det_5bd7d163144241c423d2",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7193127274513245,
+              "source_entity_id": "ava_det_5bd7d163144241c423d2",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 910.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.7172375321388245,
+              "source_entity_id": "ava_det_5bd7d163144241c423d2",
+              "target_entity_id": "ava_det_1c1efa8ce64920815dff",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.39327648282051086,
+              "source_entity_id": "ava_det_5bd7d163144241c423d2",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 910.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.6533170342445374,
+              "source_entity_id": "ava_det_5bd7d163144241c423d2",
+              "target_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5404118895530701,
+              "source_entity_id": "ava_det_5bd7d163144241c423d2",
+              "target_entity_id": "ava_det_d004bcfda3e940afc42e",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "action": "sit",
+              "confidence": 0.6396713852882385,
+              "source_entity_id": "ava_det_9a60a881dda38f25a91f",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 911.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.6710352897644043,
+              "source_entity_id": "ava_det_9a60a881dda38f25a91f",
+              "target_entity_id": "ava_det_7723c36f030bd32d0693",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 911.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.5043719410896301,
+              "source_entity_id": "ava_det_9a60a881dda38f25a91f",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 911.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.6542264819145203,
+              "source_entity_id": "ava_det_9a60a881dda38f25a91f",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 911.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.46113529801368713,
+              "source_entity_id": "ava_det_9a60a881dda38f25a91f",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 911.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.8142821788787842,
+              "source_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 912.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.6177975535392761,
+              "source_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_entity_id": "ava_det_a39547c1ac2da62189b9",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.22857458889484406,
+              "source_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 912.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.528622031211853,
+              "source_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5305014848709106,
+              "source_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7129471898078918,
+              "source_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 912.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.5705296397209167,
+              "source_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_entity_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.13683654367923737,
+              "source_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 912.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.7018635869026184,
+              "source_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.6343640089035034,
+              "source_entity_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_entity_id": "ava_det_4993cf7a3ad588e414b7",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7182161211967468,
+              "source_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 913.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.7672917246818542,
+              "source_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_entity_id": "ava_det_724a0a2304b563437aa2",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.1414387971162796,
+              "source_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 913.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.48583275079727173,
+              "source_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.4901737570762634,
+              "source_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.5171583890914917,
+              "source_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 913.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.7277975082397461,
+              "source_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_entity_id": "ava_det_0238fd3bab4ecc5948d9",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.16911549866199493,
+              "source_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 913.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.5350949168205261,
+              "source_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.6450612545013428,
+              "source_entity_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_entity_id": "ava_det_d470b0ac3ba77f3df683",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.6717386841773987,
+              "source_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 914.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.6248419880867004,
+              "source_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_entity_id": "ava_det_78126b087b4390b82cd0",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.1398293673992157,
+              "source_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 914.0
+            },
+            {
+              "action": "listen to",
+              "confidence": 0.682819128036499,
+              "source_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_entity_id": "ava_det_d457d0996eb787f749fc",
+              "resolved_predicate": "listen_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.5575541257858276,
+              "source_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_entity_id": "ava_det_d457d0996eb787f749fc",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "action": "stand",
+              "confidence": 0.7443885207176208,
+              "source_entity_id": "ava_det_d457d0996eb787f749fc",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 914.0
+            },
+            {
+              "action": "carry/hold",
+              "confidence": 0.790543258190155,
+              "source_entity_id": "ava_det_d457d0996eb787f749fc",
+              "target_entity_id": "ava_det_25591fb6e526169d0aec",
+              "resolved_predicate": "carry_hold",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "action": "eat",
+              "confidence": 0.32038331031799316,
+              "source_entity_id": "ava_det_d457d0996eb787f749fc",
+              "target_entity_id": null,
+              "resolved_predicate": null,
+              "provenance": "gnn_action_model",
+              "timestamp": 914.0
+            },
+            {
+              "action": "talk to",
+              "confidence": 0.5718135833740234,
+              "source_entity_id": "ava_det_d457d0996eb787f749fc",
+              "target_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "resolved_predicate": "talk_to",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "action": "watch person",
+              "confidence": 0.48610714077949524,
+              "source_entity_id": "ava_det_d457d0996eb787f749fc",
+              "target_entity_id": "ava_det_18b8c912b6f1fbe3868c",
+              "resolved_predicate": "watch_person",
+              "provenance": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            }
+          ],
+          "relationships": [
+            {
+              "relationship_id": "ava_rel_c15c676107ae4f755987",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "touches",
+              "confidence": 0.021,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_63da1e2f7d071495a047",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_4ba33aaa5e99123c046c",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_6a4c2f8942688aff65ec",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_819a1f051ea0855aec4d",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_334adfde0bb355d1e791",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_819a1f051ea0855aec4d",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_d5e02d9c826a4e22a52c",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_1c1efa8ce64920815dff",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_a426caad32f9e6cd4c6d",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "overlaps_with",
+              "confidence": 0.072,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_e9037f1595b85477b4b8",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_a6c5ae8a9f2dcf05bbf0",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_41eb43b0ebb333a82416",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_6772fb6a5e789a465505",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_de22f42dce75368f6a25",
+              "source_id": "ava_det_80363fa9a903d2d67679",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "touches",
+              "confidence": 0.021,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_5d02f451f58a16916167",
+              "source_id": "ava_det_80363fa9a903d2d67679",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_85c8aa56d63861b71d65",
+              "source_id": "ava_det_80363fa9a903d2d67679",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_dface1cfdc039528db14",
+              "source_id": "ava_det_80363fa9a903d2d67679",
+              "target_id": "ava_det_819a1f051ea0855aec4d",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_c3d19665f0fd698413ef",
+              "source_id": "ava_det_80363fa9a903d2d67679",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_5480101c524737e4801b",
+              "source_id": "ava_det_80363fa9a903d2d67679",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_4e3187f0e66d9523c142",
+              "source_id": "ava_det_819a1f051ea0855aec4d",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_d5d3ee9ccfb9eb4a1e92",
+              "source_id": "ava_det_819a1f051ea0855aec4d",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_5fe25d3803a25240f2d5",
+              "source_id": "ava_det_819a1f051ea0855aec4d",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_c9b8471907dd97b1986d",
+              "source_id": "ava_det_819a1f051ea0855aec4d",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "overlaps_with",
+              "confidence": 0.137,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_4f35f84d77d7cf1e84f6",
+              "source_id": "ava_det_819a1f051ea0855aec4d",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "near",
+              "confidence": 0.9781421406866112,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_5279815b6f48fe74ad0d",
+              "source_id": "ava_det_819a1f051ea0855aec4d",
+              "target_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_d35e12462c81951e5221",
+              "source_id": "ava_det_1c1efa8ce64920815dff",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_40ec19c92563ac801da1",
+              "source_id": "ava_det_1c1efa8ce64920815dff",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "overlaps_with",
+              "confidence": 0.065,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_b3bba1d2d33cf18c9d84",
+              "source_id": "ava_det_1c1efa8ce64920815dff",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "near",
+              "confidence": 0.9056660808580064,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_9f4f2ac146087368f793",
+              "source_id": "ava_det_1c1efa8ce64920815dff",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_7787987c2ffe0b94b55e",
+              "source_id": "ava_det_1c1efa8ce64920815dff",
+              "target_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_e2525864670431da749f",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "overlaps_with",
+              "confidence": 0.072,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_5862194ceab7c8ccfcba",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_8b9550c16c7e9007ccc9",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_135ffa81b2afa2001b71",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_1c1efa8ce64920815dff",
+              "predicate": "overlaps_with",
+              "confidence": 0.065,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_66f304a6e06b68f5e7f7",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_1c1efa8ce64920815dff",
+              "predicate": "near",
+              "confidence": 0.9056660808580064,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_0c748d8fd1648bbbc6bb",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_1c1efa8ce64920815dff",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_163f2e83aaa1933c9d5f",
+              "source_id": "ava_det_b0eb0c8c853471eb0d9a",
+              "target_id": "ava_det_1c1efa8ce64920815dff",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_53fef57c735ea732a01d",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_17176094cd78dd3719a8",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_32da31f999c3790d686a",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_c04e114784143a38f900",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_fc71322df72d42a5acd4",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_819a1f051ea0855aec4d",
+              "predicate": "overlaps_with",
+              "confidence": 0.137,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_47a2d4254f43d9a9904b",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_819a1f051ea0855aec4d",
+              "predicate": "near",
+              "confidence": 0.9781421406866112,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_84b5ac13c01c10d3ca84",
+              "source_id": "ava_det_9c59f5e5759a5cc23e0f",
+              "target_id": "ava_det_819a1f051ea0855aec4d",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_aca8199f131ae3d19d5e",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_57039ace3ff2c14979c6",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_aa2612c1d0049f9cbdb9",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "sitting",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_4c53311c1a6f60480c1e",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "ava_rel_8275f23f1e8f342bd692",
+              "source_id": "ava_det_7723c36f030bd32d0693",
+              "target_id": "ava_det_d1776b588061f761ff09",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_5432f6e1702151e129c6",
+              "source_id": "ava_det_075531a0534008e47998",
+              "target_id": "ava_det_d1776b588061f761ff09",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_c6daad049f0d8436363d",
+              "source_id": "ava_det_075531a0534008e47998",
+              "target_id": "ava_det_d1776b588061f761ff09",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_04335d53cefa4bcb6119",
+              "source_id": "ava_det_d1776b588061f761ff09",
+              "target_id": "ava_det_7723c36f030bd32d0693",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_2eb9bbe12a35547e1224",
+              "source_id": "ava_det_d1776b588061f761ff09",
+              "target_id": "ava_det_075531a0534008e47998",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_68a51cdf63adcb91cd27",
+              "source_id": "ava_det_d1776b588061f761ff09",
+              "target_id": "ava_det_075531a0534008e47998",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_0dc2cd747127454acde0",
+              "source_id": "ava_det_9a60a881dda38f25a91f",
+              "target_id": "ava_det_9a60a881dda38f25a91f",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_2e94aeed2a5ab2f4e6fa",
+              "source_id": "ava_det_9a60a881dda38f25a91f",
+              "target_id": "ava_det_9a60a881dda38f25a91f",
+              "predicate": "action_write",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_5b195a1b579c71c90f76",
+              "source_id": "ava_det_9a60a881dda38f25a91f",
+              "target_id": "ava_det_9a60a881dda38f25a91f",
+              "predicate": "action_action_73",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_70e5ad11c61b608d62b9",
+              "source_id": "ava_det_9a60a881dda38f25a91f",
+              "target_id": "ava_det_9a60a881dda38f25a91f",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "ava_rel_e968f2ccc556dc7d51c2",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_a39547c1ac2da62189b9",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_2baab59869b092f65245",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_a39547c1ac2da62189b9",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_f58331e1b5ef7a9c5e50",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "predicate": "touches",
+              "confidence": 0.023,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_e5e6353feeaa179eeb17",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_7b19e156b2ac1737f3d7",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_d7afd50b6ebe102a07ca",
+              "source_id": "ava_det_a39547c1ac2da62189b9",
+              "target_id": "ava_det_4993cf7a3ad588e414b7",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_d6f354fa8ddb46662052",
+              "source_id": "ava_det_a39547c1ac2da62189b9",
+              "target_id": "ava_det_4993cf7a3ad588e414b7",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_c35cc67275b05fdc4726",
+              "source_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "touches",
+              "confidence": 0.023,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_a493c26c8aae687322a8",
+              "source_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_73907a9b7e842675dae5",
+              "source_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_b8d8a42d009cf3a6f6ea",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_4993cf7a3ad588e414b7",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_244e51795a8cf495b206",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_4993cf7a3ad588e414b7",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_86ef80273edfdf010e2a",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_4e79a8d368b9f7e33eea",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "action_action_73",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_80088691a045dd454d89",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "ava_rel_e74cfa78428f55ca57f2",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_b5afb855eb02a00186b9",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_eb4b3eece3f496eecec3",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_b5afb855eb02a00186b9",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_9b8586f463e1c7546182",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_8283c777c5b901a2f52b",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_91adffcf43cd69cfdc07",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_8283c777c5b901a2f52b",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_a03348d2d7d9f20d93f4",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_0238fd3bab4ecc5948d9",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_503f4cbefa4f6f84228c",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_0238fd3bab4ecc5948d9",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_9925289dd9eacae077fc",
+              "source_id": "ava_det_b5afb855eb02a00186b9",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_8515d17044fb9229a899",
+              "source_id": "ava_det_b5afb855eb02a00186b9",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_31fc7b9ee1a9b699dd8f",
+              "source_id": "ava_det_b5afb855eb02a00186b9",
+              "target_id": "ava_det_8283c777c5b901a2f52b",
+              "predicate": "overlaps_with",
+              "confidence": 0.259,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_212af84f075171303560",
+              "source_id": "ava_det_b5afb855eb02a00186b9",
+              "target_id": "ava_det_8283c777c5b901a2f52b",
+              "predicate": "contains",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_257cbf56a106728634de",
+              "source_id": "ava_det_b5afb855eb02a00186b9",
+              "target_id": "ava_det_8283c777c5b901a2f52b",
+              "predicate": "near",
+              "confidence": 0.962036349613588,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_627f24955afc4942ab92",
+              "source_id": "ava_det_b5afb855eb02a00186b9",
+              "target_id": "ava_det_8283c777c5b901a2f52b",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_a4a5369159a22374f298",
+              "source_id": "ava_det_8283c777c5b901a2f52b",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_51683dfde2c768d60201",
+              "source_id": "ava_det_8283c777c5b901a2f52b",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_1e3cba7ac2ca557d5b89",
+              "source_id": "ava_det_8283c777c5b901a2f52b",
+              "target_id": "ava_det_b5afb855eb02a00186b9",
+              "predicate": "overlaps_with",
+              "confidence": 0.259,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_d8f007aa93d7b924b179",
+              "source_id": "ava_det_8283c777c5b901a2f52b",
+              "target_id": "ava_det_b5afb855eb02a00186b9",
+              "predicate": "inside",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_97d9561d383d169a8f7a",
+              "source_id": "ava_det_8283c777c5b901a2f52b",
+              "target_id": "ava_det_b5afb855eb02a00186b9",
+              "predicate": "near",
+              "confidence": 0.962036349613588,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_368e01167937976ddb0a",
+              "source_id": "ava_det_8283c777c5b901a2f52b",
+              "target_id": "ava_det_b5afb855eb02a00186b9",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_3e23aac607c1be549ff9",
+              "source_id": "ava_det_724a0a2304b563437aa2",
+              "target_id": "ava_det_0238fd3bab4ecc5948d9",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_e04a8259b48fe4dc9251",
+              "source_id": "ava_det_724a0a2304b563437aa2",
+              "target_id": "ava_det_0238fd3bab4ecc5948d9",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_26814e05a92700847ab2",
+              "source_id": "ava_det_0238fd3bab4ecc5948d9",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_9657fb43270c3122746b",
+              "source_id": "ava_det_0238fd3bab4ecc5948d9",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_c6c295c58d046eda30f3",
+              "source_id": "ava_det_0238fd3bab4ecc5948d9",
+              "target_id": "ava_det_724a0a2304b563437aa2",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_c41153b628d7a66ca16d",
+              "source_id": "ava_det_0238fd3bab4ecc5948d9",
+              "target_id": "ava_det_724a0a2304b563437aa2",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_a8c3cfa36a8e1439c3fd",
+              "source_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_id": "ava_det_d470b0ac3ba77f3df683",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_4d9a61c04d31576f8cc5",
+              "source_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_id": "ava_det_d470b0ac3ba77f3df683",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_ce5ccbd0e49100172503",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_7b1730303504ae4ff030",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "ava_rel_28b424ae439c9637f416",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_33117a31a501b9107f0c",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_52a3b70ddabe91acbc95",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_33117a31a501b9107f0c",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_e8d48cb7fc02965e08f2",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_78126b087b4390b82cd0",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_44afaf8ae584f520f8f5",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_78126b087b4390b82cd0",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_c700f6433a73906f79f1",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_dc31e2ed8325c60ecc49",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_ffda54273251cae3c17c",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_f97e56a8c8f014713639",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_732e0c69dcb9a697c4d4",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "overlaps_with",
+              "confidence": 0.077,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_0ba5668475ac5e13eedd",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "near",
+              "confidence": 0.9123528601874312,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_26e17538524f5d7e3d10",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_4e4f459b96dddd79b5f6",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_b115787a2a1a4de1d2db",
+              "source_id": "ava_det_dc31e2ed8325c60ecc49",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_f30fb5b0bf9f7e32cf2a",
+              "source_id": "ava_det_dc31e2ed8325c60ecc49",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "overlaps_with",
+              "confidence": 0.271,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_65f5430526da99407995",
+              "source_id": "ava_det_dc31e2ed8325c60ecc49",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "near",
+              "confidence": 0.967357012735926,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_0f882c29e22c024de715",
+              "source_id": "ava_det_dc31e2ed8325c60ecc49",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_2b767ee8f54efa6efb63",
+              "source_id": "ava_det_dc31e2ed8325c60ecc49",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_578dfe0a57d837982f34",
+              "source_id": "ava_det_dc31e2ed8325c60ecc49",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_c4e6b4721b5787e814d6",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_6c792d897ea0859ddf56",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_9ed8c1a153356e56f9d2",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_dc31e2ed8325c60ecc49",
+              "predicate": "overlaps_with",
+              "confidence": 0.271,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_7cf933b469dd683c86a1",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_dc31e2ed8325c60ecc49",
+              "predicate": "near",
+              "confidence": 0.967357012735926,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_6abc02d24dfec64bbdf6",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_dc31e2ed8325c60ecc49",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_653e9a72efe80ec75ce1",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "near",
+              "confidence": 0.8952404571723439,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_0d7416a4090f20edc818",
+              "source_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_f88397e18392dc5d83ff",
+              "source_id": "ava_det_33117a31a501b9107f0c",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_343fa87033e128df475f",
+              "source_id": "ava_det_33117a31a501b9107f0c",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_a0b7ab536e3929b17b15",
+              "source_id": "ava_det_33117a31a501b9107f0c",
+              "target_id": "ava_det_78126b087b4390b82cd0",
+              "predicate": "overlaps_with",
+              "confidence": 0.985,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_0a7a3b328906b3082a69",
+              "source_id": "ava_det_33117a31a501b9107f0c",
+              "target_id": "ava_det_78126b087b4390b82cd0",
+              "predicate": "near",
+              "confidence": 0.9997123965879817,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_3c805e7b6fc3dde04613",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "overlaps_with",
+              "confidence": 0.077,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_1a05e556bf4226df92c7",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "near",
+              "confidence": 0.9123528601874312,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_56374bbce6c429befa70",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "right_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_60e57b37828dc7143148",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_4163e61222546538178e",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_dc31e2ed8325c60ecc49",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_cc46a579ad24c7f83aad",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_dc31e2ed8325c60ecc49",
+              "predicate": "above",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_edca5b22fd772c3fbc08",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "near",
+              "confidence": 0.8952404571723439,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_0ecbc07a445f1061567c",
+              "source_id": "ava_det_25591fb6e526169d0aec",
+              "target_id": "ava_det_3bbf3cba0d8248e6ad57",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_e423d68d44103e043f57",
+              "source_id": "ava_det_78126b087b4390b82cd0",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "left_of",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_95aaaaed1e005d1254c0",
+              "source_id": "ava_det_78126b087b4390b82cd0",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "below",
+              "confidence": 0.65,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_4753bcf4ce3701752c88",
+              "source_id": "ava_det_78126b087b4390b82cd0",
+              "target_id": "ava_det_33117a31a501b9107f0c",
+              "predicate": "overlaps_with",
+              "confidence": 0.985,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_7ce4737959b398d2a282",
+              "source_id": "ava_det_78126b087b4390b82cd0",
+              "target_id": "ava_det_33117a31a501b9107f0c",
+              "predicate": "near",
+              "confidence": 0.9997123965879817,
+              "source_method": "bounding_box_geometry",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_58a5cb73b367f4fc5dc2",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_94a3b27a40f0ee89d814",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "action_write",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_328d6fb8bb993bcfd6fd",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "action_action_79",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_de2ee3edd74da42d3645",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "action_action_14",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "ava_rel_abdd0d0d86803fb1e8e9",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "action_action_74",
+              "confidence": 0.65,
+              "source_method": "ava_ground_truth",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "rel_15970a3099b468f08aea",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_80363fa9a903d2d67679",
+              "predicate": "carry_hold",
+              "confidence": 0.5315744280815125,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "rel_3436a210a4a2bc7babaa",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "listen_to",
+              "confidence": 0.674255907535553,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "rel_fdf6d90acb6d3270cacb",
+              "source_id": "ava_det_d004bcfda3e940afc42e",
+              "target_id": "ava_det_5bd7d163144241c423d2",
+              "predicate": "talk_to",
+              "confidence": 0.6291183829307556,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "rel_f64fd1a23afa5136872b",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_1c1efa8ce64920815dff",
+              "predicate": "carry_hold",
+              "confidence": 0.7172375321388245,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "rel_47a54cf48da7b2cdbce5",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "talk_to",
+              "confidence": 0.6533170342445374,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "rel_e90b092659394e77f7f1",
+              "source_id": "ava_det_5bd7d163144241c423d2",
+              "target_id": "ava_det_d004bcfda3e940afc42e",
+              "predicate": "watch_person",
+              "confidence": 0.5404118895530701,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 910.0
+            },
+            {
+              "relationship_id": "rel_a73962170a0cec5edcd3",
+              "source_id": "ava_det_9a60a881dda38f25a91f",
+              "target_id": "ava_det_7723c36f030bd32d0693",
+              "predicate": "carry_hold",
+              "confidence": 0.6710352897644043,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 911.0
+            },
+            {
+              "relationship_id": "rel_fae794448df5765d8fcd",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_a39547c1ac2da62189b9",
+              "predicate": "carry_hold",
+              "confidence": 0.6177975535392761,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "rel_8fd4945b6e9116e48257",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "listen_to",
+              "confidence": 0.528622031211853,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "rel_617478282c41ca7f14e6",
+              "source_id": "ava_det_4993cf7a3ad588e414b7",
+              "target_id": "ava_det_87ff527de7f7e27ec2ac",
+              "predicate": "watch_person",
+              "confidence": 0.5305014848709106,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "rel_866eaebc7279a164d7f4",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_f9bc3c3c273c9bc68f00",
+              "predicate": "carry_hold",
+              "confidence": 0.5705296397209167,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "rel_4f4a852fcc6316db1197",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_4993cf7a3ad588e414b7",
+              "predicate": "listen_to",
+              "confidence": 0.7018635869026184,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "rel_47ed1133d8c3ef4b8a04",
+              "source_id": "ava_det_87ff527de7f7e27ec2ac",
+              "target_id": "ava_det_4993cf7a3ad588e414b7",
+              "predicate": "watch_person",
+              "confidence": 0.6343640089035034,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 912.0
+            },
+            {
+              "relationship_id": "rel_47cae19f97acc5e87f42",
+              "source_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_id": "ava_det_724a0a2304b563437aa2",
+              "predicate": "carry_hold",
+              "confidence": 0.7672917246818542,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "rel_6028fcd0d0c6926fbab5",
+              "source_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "listen_to",
+              "confidence": 0.48583275079727173,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "rel_1efaad48932a75e9a9cb",
+              "source_id": "ava_det_d470b0ac3ba77f3df683",
+              "target_id": "ava_det_a14d1a7032b5d28867bc",
+              "predicate": "watch_person",
+              "confidence": 0.4901737570762634,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "rel_e84bc810b5522cb6b1cd",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_0238fd3bab4ecc5948d9",
+              "predicate": "carry_hold",
+              "confidence": 0.7277975082397461,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "rel_51c937906e2f5698c5b1",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_d470b0ac3ba77f3df683",
+              "predicate": "listen_to",
+              "confidence": 0.5350949168205261,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "rel_b932d19128d1ea56d4fe",
+              "source_id": "ava_det_a14d1a7032b5d28867bc",
+              "target_id": "ava_det_d470b0ac3ba77f3df683",
+              "predicate": "talk_to",
+              "confidence": 0.6450612545013428,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 913.0
+            },
+            {
+              "relationship_id": "rel_685c16154a21972b0c10",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_78126b087b4390b82cd0",
+              "predicate": "carry_hold",
+              "confidence": 0.6248419880867004,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "rel_638446ab985b59f9c572",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "listen_to",
+              "confidence": 0.682819128036499,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "rel_fdaffc9a129bddc7bc6c",
+              "source_id": "ava_det_18b8c912b6f1fbe3868c",
+              "target_id": "ava_det_d457d0996eb787f749fc",
+              "predicate": "watch_person",
+              "confidence": 0.5575541257858276,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "rel_db9ab3b8a0ddddc9cb72",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_25591fb6e526169d0aec",
+              "predicate": "carry_hold",
+              "confidence": 0.790543258190155,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "rel_2dca4988be0ebd4576fa",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "talk_to",
+              "confidence": 0.5718135833740234,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            },
+            {
+              "relationship_id": "rel_0a60b128aa13ee22547e",
+              "source_id": "ava_det_d457d0996eb787f749fc",
+              "target_id": "ava_det_18b8c912b6f1fbe3868c",
+              "predicate": "watch_person",
+              "confidence": 0.48610714077949524,
+              "source_method": "gnn_action_plus_target_resolver",
+              "timestamp": 914.0
+            }
+          ],
+          "matched_relationships": [],
+          "thumbnail_url": "/api/videos/aa03a76b-b03b-4f97-8542-d89736ab29e7/thumbnail?timestamp=910.0",
+          "stream_url": "/api/videos/aa03a76b-b03b-4f97-8542-d89736ab29e7/stream",
+          "match_reason": "Matched actions talk to (ava_ground_truth, confidence 1.00)."
+        }
+      ],
+      "retrieval_backend": "sqlite"
+    }
+  },
+  "verified": {
+    "checkpoint_health": true,
+    "sqlite_search": true,
+    "gnn_provenance": true,
+    "gnn_only_action_match_reason": true,
+    "target_resolver_provenance": true
+  }
+}

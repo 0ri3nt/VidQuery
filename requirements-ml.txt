@@ -1,0 +1,15 @@
+# Install a platform-appropriate PyTorch build first when CUDA is required.
+torch>=2.1,<2.6
+torchvision>=0.16,<0.21
+ultralytics==8.4.39
+open-clip-torch==2.26.1
+openai-whisper==20250625
+soundfile==0.13.1
+pyannote.audio==3.3.2
+speechbrain==1.0.3
+torch-geometric==2.7.0
+sentence-transformers==5.1.2
+easyocr==1.7.2
+rapidfuzz==3.12.2
+huggingface-hub>=0.33,<2
+remotezip==0.12.3

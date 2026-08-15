@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "run_at": "2026-08-12T16:32:16.463951+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+  "checks": [
+    {
+      "name": "packaged_frontend",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 4963
+      }
+    },
+    {
+      "name": "page_refresh",
+      "passed": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "static_delivery:/assets/app.css",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 10121
+      }
+    },
+    {
+      "name": "static_delivery:/assets/app.js",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 11784
+      }
+    },
+    {
+      "name": "video_filter_control",
+      "passed": true,
+      "detail": {
+        "selector_in_html": true
+      }
+    },
+    {
+      "name": "health",
+      "passed": true,
+      "detail": {
+        "application": "ok",
+        "database": "available",
+        "neo4j": "available",
+        "models": {
+          "yolo": "available_configured",
+          "whisper": "available_configured",
+          "diarization": "available_configured_required",
+          "gnn_person_action_classifier": "available_validated_enabled",
+          "gnn_relationship_prediction": "available_validated_enabled",
+          "person_action_classifier": "available_validated_fallback",
+          "sentence_embedding_retrieval": "available_cached_enabled",
+          "ocr": "available_cached"
+        }
+      }
+    },
+    {
+      "name": "library_and_processing_status",
+      "passed": true,
+      "detail": {
+        "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+        "display_name": "final_demo.mp4",
+        "original_filename": "final_demo.mp4",
+        "stored_path": "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\data\\demo\\final_demo.mp4",
+        "content_sha256": "e6ffe1ee4436c0b921e399a774a222ac33d717ddd029d369569f4ff9d1f33e32",
+        "duration": 25.0,
+        "width": 1280,
+        "height": 720,
+        "fps": 25.0,
+        "has_audio": true,
+        "upload_time": "2026-08-09T19:40:06.321789Z",
+        "updated_time": "2026-08-11T18:47:00.917475Z",
+        "state": "READY",
+        "current_stage": "complete",
+        "failure_message": null,
+        "warnings": []
+      }
+    },
+    {
+      "name": "multiple_video_library",
+      "passed": true,
+      "detail": {
+        "video_count": 10
+      }
+    },
+    {
+      "name": "upload_validation_error",
+      "passed": true,
+      "detail": "{\"detail\":\"Only .mp4 uploads are accepted\"}"
+    },
+    {
+      "name": "upload_deduplication",
+      "passed": true,
+      "detail": {
+        "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+        "state": "READY",
+        "duplicate": true
+      }
+    },
+    {
+      "name": "exact_relationship_display_and_reason",
+      "passed": true,
+      "detail": {
+        "start_time": 0.0,
+        "matched_tuple": {
+          "relationship_id": "manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter:near:laptop",
+          "source_id": "manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter",
+          "source_class": "person",
+          "predicate": "near",
+          "target_id": "manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop",
+          "target_class": "laptop",
+          "directionality": "symmetric",
+          "confidence": 1.0,
+          "source_method": "manual_annotation",
+          "timestamp": 0.0,
+          "model_version": null,
+          "start_time": null,
+          "end_time": null,
+          "source_track_id": null,
+          "target_track_id": null,
+          "observation_count": 1,
+          "temporal_smoothed": false
+        }
+      }
+    },
+    {
+      "name": "result_thumbnail",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 165055
+      }
+    },
+    {
+      "name": "transcript_search",
+      "passed": true,
+      "detail": [
+        0.0,
+        15.0,
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "name": "speaker_search",
+      "passed": true,
+      "detail": [
+        15.0,
+        5.0,
+        10.0
+      ]
+    },
+    {
+      "name": "multimodal_search",
+      "passed": true,
+      "detail": [
+        10.0,
+        0.0,
+        5.0,
+        15.0,
+        20.0
+      ]
+    },
+    {
+      "name": "neo4j_exact_graph_search",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "start_times": [
+          0.0,
+          5.0,
+          10.0,
+          15.0,
+          20.0
+        ]
+      }
+    },
+    {
+      "name": "no_result_state",
+      "passed": true,
+      "detail": {
+        "query": "zzzxylophone quantum penguin",
+        "parsed_query": {
+          "visual_entities": [],
+          "relationships": [],
+          "relationship_tuples": [],
+          "actions": [],
+          "spoken_terms": [
+            "zzzxylophone",
+            "quantum",
+            "penguin"
+          ],
+          "speaker": null
+        },
+        "results": [],
+        "retrieval_backend": "sqlite"
+      }
+    },
+    {
+      "name": "repeated_query",
+      "passed": true,
+      "detail": [
+        "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+        "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+        "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+        "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+        "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000"
+      ]
+    },
+    {
+      "name": "video_filter",
+      "passed": true,
+      "detail": [
+        "4d508fd2-cb26-4caf-8c06-f7589c23764b"
+      ]
+    },
+    {
+      "name": "missing_video_filter",
+      "passed": true,
+      "detail": {
+        "query": "person",
+        "parsed_query": {
+          "visual_entities": [
+            "person"
+          ],
+          "relationships": [],
+          "relationship_tuples": [],
+          "actions": [],
+          "spoken_terms": [],
+          "speaker": null
+        },
+        "results": [],
+        "retrieval_backend": "sqlite"
+      }
+    },
+    {
+      "name": "range_video_playback",
+      "passed": true,
+      "detail": {
+        "status": 206,
+        "content_range": "bytes 0-127/445275",
+        "bytes": 128
+      }
+    },
+    {
+      "name": "invalid_range_error",
+      "passed": true,
+      "detail": "{\"detail\":\"Requested range is outside the file\"}"
+    },
+    {
+      "name": "api_not_found",
+      "passed": true,
+      "detail": "{\"detail\":\"Video was not found\"}"
+    },
+    {
+      "name": "validation_error",
+      "passed": true,
+      "detail": "{\"detail\":[{\"type\":\"string_too_short\",\"loc\":[\"body\",\"query\"],\"msg\":\"String should have at least 1 character\",\"input\":\"\",\"ctx\":{\"min_length\":1}}]}"
+    }
+  ],
+  "passed": 24,
+  "failed": 0,
+  "all_passed": true
+}

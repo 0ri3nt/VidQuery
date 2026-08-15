@@ -1,0 +1,73 @@
+{
+  "proof_version": "appearance-proof-v1",
+  "run_date": "2026-08-14",
+  "fixture": {
+    "video": "evaluation/fixtures/appearance/red_black_seated_fixture.mp4",
+    "red_scene_image": "evaluation/fixtures/appearance/red_shirt_seated.png",
+    "black_scene_image": "evaluation/fixtures/appearance/black_shirt_seated.png",
+    "red_interval_seconds": [0.0, 5.0],
+    "black_interval_seconds": [5.0, 10.0],
+    "person_detection": "YOLOv8n",
+    "controlled_ground_truth": ["chair", "sit"]
+  },
+  "appearance_model": {
+    "name": "open_clip/ViT-B-32",
+    "version": "ViT-B-32:openai:frozen:appearance-schema-v1",
+    "embedding_dimensions": 512,
+    "weights_cached": true,
+    "image_encoding_stage": "ingestion_only",
+    "search_stage": "cached_embedding_plus_text_encoder"
+  },
+  "appearance_records": [
+    {
+      "expected_scene": "red",
+      "attribute": "upper_clothing_color",
+      "value": "red",
+      "relative_prompt_score": 0.563419,
+      "score_interpretation": "relative_prompt_score_not_calibrated_probability",
+      "red_text_image_cosine": 0.287605
+    },
+    {
+      "expected_scene": "black",
+      "attribute": "upper_clothing_color",
+      "value": "black",
+      "relative_prompt_score": 0.896911,
+      "score_interpretation": "relative_prompt_score_not_calibrated_probability",
+      "black_text_image_cosine": 0.300298
+    }
+  ],
+  "queries": [
+    {
+      "query": "find the red-shirt person sitting on the chair",
+      "result_count": 1,
+      "rank_1_segment_id": "appearance-proof-v1:0:5000",
+      "rank_1_interval_seconds": [0.0, 5.0],
+      "rank_1_score": 0.8321,
+      "black_distractor_returned": false,
+      "global_library_rank_1": true,
+      "legacy_missing-cache_score": 0.6731,
+      "matched_via": ["explicit_attribute", "appearance_similarity"]
+    },
+    {
+      "query": "find the black-shirt person sitting on the chair",
+      "result_count": 1,
+      "rank_1_segment_id": "appearance-proof-v1:5000:10000",
+      "rank_1_interval_seconds": [5.0, 10.0],
+      "rank_1_score": 0.9604,
+      "red_distractor_returned": false,
+      "matched_via": ["explicit_attribute", "appearance_similarity"]
+    },
+    {
+      "query": "find a person sitting on the chair",
+      "result_count": 2,
+      "ranked_intervals_seconds": [[0.0, 5.0], [5.0, 10.0]],
+      "appearance_constraint_applied": false
+    }
+  ],
+  "api_proof": {
+    "endpoint": "POST /api/search",
+    "video_id": "appearance-proof-v1",
+    "reproducible_command": "python -m scripts.run_appearance_proof",
+    "raw_embeddings_omitted": true
+  }
+}

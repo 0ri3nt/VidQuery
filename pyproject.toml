@@ -1,0 +1,124 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vidquery"
+version = "0.2.0"
+description = "Evidence-backed semantic search inside videos"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "fastapi==0.136.0",
+  "uvicorn[standard]==0.44.0",
+  "pydantic==2.13.2",
+  "python-multipart==0.0.9",
+  "python-dotenv==1.2.2",
+  "opencv-python-headless==4.13.0.92",
+  "imageio-ffmpeg==0.6.0",
+  "numpy==2.4.4",
+  "Pillow==12.2.0",
+]
+
+[project.optional-dependencies]
+database = ["neo4j==6.1.0"]
+visual = [
+  "torch>=2.1,<2.6",
+  "torchvision>=0.16,<0.21",
+  "ultralytics==8.4.39",
+  "open-clip-torch==2.26.1",
+]
+audio = [
+  "torch>=2.1,<2.6",
+  "openai-whisper==20250625",
+  "soundfile==0.13.1",
+]
+diarization = [
+  "pyannote.audio==3.3.2",
+  "speechbrain==1.0.3",
+  "soundfile==0.13.1",
+]
+gnn-experimental = ["torch>=2.1,<2.6", "torch-geometric==2.7.0"]
+evaluation = ["sentence-transformers==5.1.2"]
+ocr = ["easyocr==1.7.2", "rapidfuzz==3.12.2"]
+streamlit = ["streamlit==1.56.0", "requests==2.33.1"]
+dev = [
+  "httpx==0.28.1",
+  "pytest==8.3.5",
+  "pytest-cov==6.0.0",
+  "ruff==0.12.5",
+  "mypy==1.17.0",
+]
+full = [
+  "neo4j==6.1.0",
+  "torch>=2.1,<2.6",
+  "torchvision>=0.16,<0.21",
+  "ultralytics==8.4.39",
+  "open-clip-torch==2.26.1",
+  "openai-whisper==20250625",
+  "soundfile==0.13.1",
+  "pyannote.audio==3.3.2",
+  "speechbrain==1.0.3",
+  "torch-geometric==2.7.0",
+  "sentence-transformers==5.1.2",
+  "easyocr==1.7.2",
+  "rapidfuzz==3.12.2",
+  "huggingface-hub>=0.33,<2",
+  "remotezip==0.12.3",
+]
+
+[project.scripts]
+vidquery = "vidquery.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vidquery*", "frontend*"]
+
+[tool.setuptools.package-data]
+frontend = ["*.html", "assets/*.css", "assets/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+  "integration: live external-service integration tests; skip when the service is unavailable",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["data", "tmp", ".venv-local"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+plugins = ["pydantic.mypy"]
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = true
+exclude = "^(data|tmp)/"
+
+[[tool.mypy.overrides]]
+module = [
+  "imageio_ffmpeg",
+  "pyannote",
+  "pyannote.*",
+  "sentence_transformers",
+  "sentence_transformers.SentenceTransformer",
+  "torch",
+  "torch.*",
+  "torch_geometric",
+  "torch_geometric.*",
+  "torchvision",
+  "torchvision.*",
+  "ultralytics",
+  "whisper",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["extraction.*", "modelling.*"]
+follow_imports = "skip"
+ignore_missing_imports = true

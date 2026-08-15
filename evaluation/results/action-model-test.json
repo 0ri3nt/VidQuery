@@ -1,0 +1,395 @@
+{
+  "schema_version": "ava-person-action-mlp-v1",
+  "task": "multilabel person-centric AVA action classification",
+  "model_type": "two-hidden-layer multilayer perceptron",
+  "architecture": {
+    "input_features": 30,
+    "hidden_dimensions": [
+      64,
+      32
+    ],
+    "output_labels": 6,
+    "dropout": 0.15
+  },
+  "labels": [
+    "sit",
+    "stand",
+    "carry/hold",
+    "listen to",
+    "talk to",
+    "watch person"
+  ],
+  "official_ava_action_ids": [
+    11,
+    12,
+    17,
+    74,
+    79,
+    80
+  ],
+  "feature_names": [
+    "bbox_x1_norm",
+    "bbox_y1_norm",
+    "bbox_x2_norm",
+    "bbox_y2_norm",
+    "center_x_norm",
+    "center_y_norm",
+    "bbox_width_norm",
+    "bbox_height_norm",
+    "bbox_area_norm",
+    "bbox_aspect_ratio",
+    "detector_confidence",
+    "log_person_count",
+    "log_other_object_count",
+    "context_has_chair",
+    "context_has_couch",
+    "context_has_bed",
+    "context_has_bottle",
+    "context_has_cup",
+    "context_has_cell_phone",
+    "context_has_laptop",
+    "context_has_tv",
+    "context_has_dining_table",
+    "context_has_book",
+    "context_has_suitcase",
+    "context_has_backpack",
+    "context_has_refrigerator",
+    "log_audio_segment_count",
+    "log_audio_speaker_count",
+    "log_audio_duration",
+    "log_audio_text_characters"
+  ],
+  "split": {
+    "train": [
+      "-FaXLcSFjUI",
+      "-IELREHX_js",
+      "-OyDO1g74vc"
+    ],
+    "validation": [
+      "-XpUuIgyUHE"
+    ],
+    "test": [
+      "0f39OWEqJ24"
+    ]
+  },
+  "sample_counts": {
+    "train": 2711,
+    "validation": 1129,
+    "test": 994
+  },
+  "class_frequency": {
+    "train": {
+      "sit": {
+        "positive": 523,
+        "negative": 2188
+      },
+      "stand": {
+        "positive": 1439,
+        "negative": 1272
+      },
+      "carry/hold": {
+        "positive": 985,
+        "negative": 1726
+      },
+      "listen to": {
+        "positive": 571,
+        "negative": 2140
+      },
+      "talk to": {
+        "positive": 894,
+        "negative": 1817
+      },
+      "watch person": {
+        "positive": 1043,
+        "negative": 1668
+      }
+    },
+    "validation": {
+      "sit": {
+        "positive": 124,
+        "negative": 1005
+      },
+      "stand": {
+        "positive": 525,
+        "negative": 604
+      },
+      "carry/hold": {
+        "positive": 804,
+        "negative": 325
+      },
+      "listen to": {
+        "positive": 283,
+        "negative": 846
+      },
+      "talk to": {
+        "positive": 363,
+        "negative": 766
+      },
+      "watch person": {
+        "positive": 503,
+        "negative": 626
+      }
+    },
+    "test": {
+      "sit": {
+        "positive": 277,
+        "negative": 717
+      },
+      "stand": {
+        "positive": 583,
+        "negative": 411
+      },
+      "carry/hold": {
+        "positive": 286,
+        "negative": 708
+      },
+      "listen to": {
+        "positive": 149,
+        "negative": 845
+      },
+      "talk to": {
+        "positive": 319,
+        "negative": 675
+      },
+      "watch person": {
+        "positive": 361,
+        "negative": 633
+      }
+    }
+  },
+  "loss": "BCEWithLogitsLoss",
+  "class_imbalance": {
+    "method": "training-split positive class weights clipped at 20",
+    "positive_weights": [
+      4.183557,
+      0.883947,
+      1.752284,
+      3.747811,
+      2.032439,
+      1.599233
+    ]
+  },
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "batch_size": 128,
+  "seed": 2026,
+  "epochs_requested": 100,
+  "epochs_completed": 21,
+  "early_stopping_patience": 15,
+  "history": [
+    {
+      "epoch": 1,
+      "training_loss": 0.91089657,
+      "validation_loss": 0.92570299
+    },
+    {
+      "epoch": 2,
+      "training_loss": 0.89056575,
+      "validation_loss": 0.90105826
+    },
+    {
+      "epoch": 3,
+      "training_loss": 0.8635651,
+      "validation_loss": 0.87089658
+    },
+    {
+      "epoch": 4,
+      "training_loss": 0.83058391,
+      "validation_loss": 0.85306317
+    },
+    {
+      "epoch": 5,
+      "training_loss": 0.81177421,
+      "validation_loss": 0.85764337
+    },
+    {
+      "epoch": 6,
+      "training_loss": 0.80167655,
+      "validation_loss": 0.84769517
+    },
+    {
+      "epoch": 7,
+      "training_loss": 0.7957438,
+      "validation_loss": 0.85901111
+    },
+    {
+      "epoch": 8,
+      "training_loss": 0.78852674,
+      "validation_loss": 0.87100106
+    },
+    {
+      "epoch": 9,
+      "training_loss": 0.77728379,
+      "validation_loss": 0.88351911
+    },
+    {
+      "epoch": 10,
+      "training_loss": 0.77505411,
+      "validation_loss": 0.87961876
+    },
+    {
+      "epoch": 11,
+      "training_loss": 0.76889883,
+      "validation_loss": 0.89239901
+    },
+    {
+      "epoch": 12,
+      "training_loss": 0.76752456,
+      "validation_loss": 0.89327508
+    },
+    {
+      "epoch": 13,
+      "training_loss": 0.76413383,
+      "validation_loss": 0.90075678
+    },
+    {
+      "epoch": 14,
+      "training_loss": 0.75600035,
+      "validation_loss": 0.90801644
+    },
+    {
+      "epoch": 15,
+      "training_loss": 0.75371156,
+      "validation_loss": 0.90869498
+    },
+    {
+      "epoch": 16,
+      "training_loss": 0.7474077,
+      "validation_loss": 0.92443186
+    },
+    {
+      "epoch": 17,
+      "training_loss": 0.74183136,
+      "validation_loss": 0.92786425
+    },
+    {
+      "epoch": 18,
+      "training_loss": 0.74334675,
+      "validation_loss": 0.93565327
+    },
+    {
+      "epoch": 19,
+      "training_loss": 0.73741439,
+      "validation_loss": 0.94456875
+    },
+    {
+      "epoch": 20,
+      "training_loss": 0.73631904,
+      "validation_loss": 0.94107038
+    },
+    {
+      "epoch": 21,
+      "training_loss": 0.7322248,
+      "validation_loss": 0.94642758
+    }
+  ],
+  "thresholds": {
+    "sit": 0.6,
+    "stand": 0.3,
+    "carry/hold": 0.25,
+    "listen to": 0.5,
+    "talk to": 0.5,
+    "watch person": 0.4
+  },
+  "validation_metrics": {
+    "macro_f1": 0.600586,
+    "micro_f1": 0.678707,
+    "per_class": {
+      "sit": {
+        "precision": 0.267176,
+        "recall": 0.282258,
+        "f1": 0.27451,
+        "support": 124
+      },
+      "stand": {
+        "precision": 0.536671,
+        "recall": 0.878095,
+        "f1": 0.666185,
+        "support": 525
+      },
+      "carry/hold": {
+        "precision": 0.718018,
+        "recall": 0.991294,
+        "f1": 0.832811,
+        "support": 804
+      },
+      "listen to": {
+        "precision": 0.47619,
+        "recall": 0.706714,
+        "f1": 0.56899,
+        "support": 283
+      },
+      "talk to": {
+        "precision": 0.55819,
+        "recall": 0.713499,
+        "f1": 0.62636,
+        "support": 363
+      },
+      "watch person": {
+        "precision": 0.53719,
+        "recall": 0.775348,
+        "f1": 0.634662,
+        "support": 503
+      }
+    }
+  },
+  "test_metrics": {
+    "macro_f1": 0.465902,
+    "micro_f1": 0.528039,
+    "per_class": {
+      "sit": {
+        "precision": 0.394558,
+        "recall": 0.209386,
+        "f1": 0.273585,
+        "support": 277
+      },
+      "stand": {
+        "precision": 0.611502,
+        "recall": 0.893654,
+        "f1": 0.726132,
+        "support": 583
+      },
+      "carry/hold": {
+        "precision": 0.288986,
+        "recall": 0.926573,
+        "f1": 0.440565,
+        "support": 286
+      },
+      "listen to": {
+        "precision": 0.27381,
+        "recall": 0.308725,
+        "f1": 0.290221,
+        "support": 149
+      },
+      "talk to": {
+        "precision": 0.512064,
+        "recall": 0.598746,
+        "f1": 0.552023,
+        "support": 319
+      },
+      "watch person": {
+        "precision": 0.460352,
+        "recall": 0.578947,
+        "f1": 0.512883,
+        "support": 361
+      }
+    }
+  },
+  "hardware": {
+    "device": "cpu",
+    "name": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel"
+  },
+  "training_duration_seconds": 3.557,
+  "checkpoint_path": "data/app/models/action_classifier/action_model.pt",
+  "checkpoint_sha256": "013d1f5f7b84d9587ff12760265e32c58bfe815dbe49586128fcd8443ac34a70",
+  "validation": {
+    "status": "validated",
+    "schema_checked": true,
+    "held_out_test_video_count": 1
+  },
+  "limitations": [
+    "Only five AVA videos are available; the held-out test split contains one video.",
+    "Features contain box geometry, detector confidence, object context, and audio summaries; no pixels or motion clips are used.",
+    "Metrics do not establish generalization beyond the checked five-video subset."
+  ]
+}

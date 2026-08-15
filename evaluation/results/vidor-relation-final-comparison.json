@@ -1,0 +1,133 @@
+{
+  "schema_version": "vidor-relation-final-comparison-v1",
+  "selection_policy": {
+    "primary": "validation supported-predicate macro F1",
+    "tie_break": "validation mean average precision",
+    "test_used_for_selection": false
+  },
+  "old_experiment": {
+    "dataset": {
+      "videos": 500,
+      "split_videos": {"train": 400, "validation": 50, "test": 50},
+      "graphs": 3000,
+      "candidate_edges": 89322,
+      "candidate_edge_recall": 0.9437642214757829,
+      "pair_pixels": false
+    },
+    "pairwise_mlp": {
+      "model_version": "vidor-relation-mlp-v1",
+      "validation": {
+        "supported_predicates": 45,
+        "macro_f1_supported_predicates": 0.259568,
+        "micro_f1": 0.331362,
+        "mean_average_precision_supported_predicates": 0.226094
+      },
+      "test": {
+        "supported_predicates": 43,
+        "macro_f1_supported_predicates": 0.161331,
+        "micro_f1": 0.326389,
+        "mean_average_precision_supported_predicates": 0.189743
+      },
+      "checkpoint": "data/app/models/vidor_relation/vidor-relation-mlp-v1.pt",
+      "checkpoint_bytes": 279016
+    },
+    "relationship_gnn": {
+      "model_version": "vidor-relation-gat-v1",
+      "validation": {
+        "supported_predicates": 45,
+        "macro_f1_supported_predicates": 0.240843,
+        "micro_f1": 0.346827,
+        "mean_average_precision_supported_predicates": 0.218776
+      },
+      "test": {
+        "supported_predicates": 43,
+        "macro_f1_supported_predicates": 0.178522,
+        "micro_f1": 0.329635,
+        "mean_average_precision_supported_predicates": 0.203428
+      },
+      "checkpoint": "data/app/models/vidor_relation/vidor-relation-gat-v1.pt",
+      "checkpoint_bytes": 560812
+    }
+  },
+  "pair_visual_experiment": {
+    "dataset": {
+      "source": "official VidOR training-video-part1.zip and existing fixed manifest",
+      "videos": 67,
+      "split_videos": {"train": 57, "validation": 6, "test": 4},
+      "decoded_frames": 402,
+      "graphs": 402,
+      "candidate_edges": 11981,
+      "candidate_edge_recall": 1.0,
+      "positive_edges": 7900,
+      "hard_nearby_negative_edges": 1441,
+      "random_background_negative_edges": 2640,
+      "raw_videos_retained": 0
+    },
+    "shared_input_features": [
+      "subject frozen ResNet-18 ROI embedding",
+      "object frozen ResNet-18 ROI embedding",
+      "union-box frozen ResNet-18 embedding",
+      "entity class embedding",
+      "normalized box and box shape",
+      "relative pair geometry",
+      "track-aligned motion when available"
+    ],
+    "pairwise_mlp": {
+      "model_version": "vidor-relation-pair-visual-mlp-v2",
+      "selected_epoch": 13,
+      "validation": {
+        "supported_predicates": 22,
+        "macro_f1_supported_predicates": 0.270589,
+        "micro_f1": 0.351224,
+        "mean_average_precision_supported_predicates": 0.222036
+      },
+      "test": {
+        "supported_predicates": 17,
+        "macro_f1_supported_predicates": 0.182475,
+        "micro_f1": 0.319328,
+        "mean_average_precision_supported_predicates": 0.210712
+      },
+      "checkpoint": "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-mlp-v2.pt",
+      "checkpoint_sha256": "9b17006200b32c27af3fb7d74ffa79e84fe4e708bf9b35b5909b7654367a8f8a",
+      "checkpoint_bytes": 1971300
+    },
+    "relationship_gnn": {
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "selected_epoch": 17,
+      "validation": {
+        "supported_predicates": 22,
+        "macro_f1_supported_predicates": 0.308495,
+        "micro_f1": 0.401693,
+        "mean_average_precision_supported_predicates": 0.287223
+      },
+      "test": {
+        "supported_predicates": 17,
+        "macro_f1_supported_predicates": 0.178194,
+        "micro_f1": 0.371113,
+        "mean_average_precision_supported_predicates": 0.191364
+      },
+      "checkpoint": "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-gat-v2.pt",
+      "checkpoint_sha256": "0da6be0b16d704083e785aa468ff7f34836bd071378bce6b8531a700fce3fa39",
+      "checkpoint_bytes": 3531614
+    }
+  },
+  "validation_winner": "vidor-relation-pair-visual-gat-v2",
+  "gnn_beats_matched_mlp": {
+    "validation_macro_f1_delta": 0.037906,
+    "validation_map_delta": 0.065187,
+    "test_macro_f1_delta": -0.004281,
+    "test_micro_f1_delta": 0.051785,
+    "test_map_delta": -0.019348
+  },
+  "comparability": {
+    "new_mlp_vs_new_gnn": "fair: same frames, candidate edges, targets, split, and raw pair input features",
+    "old_vs_new": "descriptive only: the pair-visual run uses the 67 selected videos available in archive part 1, not the old 500-video held-out set"
+  },
+  "known_limitations": [
+    "The pair-visual held-out test has only four videos and 17 supported predicates.",
+    "Training uses VidOR annotation boxes while product inference uses detector boxes.",
+    "Candidate-edge recall is 1.0 during supervised construction because every labelled positive is retained; runtime candidate generation remains geometry-bounded.",
+    "Predicates absent from validation retain a rejecting threshold of 1.0.",
+    "The v2 predictor requires real frame pixels and rejects a missing frame rather than substituting zero visual features."
+  ]
+}

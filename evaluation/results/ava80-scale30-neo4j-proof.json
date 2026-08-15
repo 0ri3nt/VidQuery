@@ -1,0 +1,97 @@
+{
+  "schema_version": "ava80-scale30-neo4j-proof-v1",
+  "captured_at": "2026-08-11T15:58:03.416404+00:00",
+  "video_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7",
+  "model_version": "ava80-gat-v5-scale30-roi-frame",
+  "health": true,
+  "constraint_count": 13,
+  "index_count": 22,
+  "counts_after_first_ingestion": {
+    "segments": 179,
+    "entity_occurrences": 3568,
+    "actions": 59,
+    "relationship_evidence": 32410
+  },
+  "counts_after_second_ingestion": {
+    "segments": 179,
+    "entity_occurrences": 3568,
+    "actions": 59,
+    "relationship_evidence": 32410
+  },
+  "idempotent": true,
+  "gnn_only_action_write": [
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:905000:910000",
+      "start_time": 905.0,
+      "end_time": 910.0,
+      "action": "write"
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:925000:930000",
+      "start_time": 925.0,
+      "end_time": 930.0,
+      "action": "write"
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:930000:935000",
+      "start_time": 930.0,
+      "end_time": 935.0,
+      "action": "write"
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:950000:955000",
+      "start_time": 950.0,
+      "end_time": 955.0,
+      "action": "write"
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:985000:990000",
+      "start_time": 985.0,
+      "end_time": 990.0,
+      "action": "write"
+    }
+  ],
+  "gnn_target_resolver_relationships": [
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1745000:1750000",
+      "predicate": "carry_hold",
+      "confidence": 0.9454891085624695,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1745.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1745000:1750000",
+      "predicate": "carry_hold",
+      "confidence": 0.935732901096344,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1745.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:980000:985000",
+      "predicate": "carry_hold",
+      "confidence": 0.9323644638061523,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 982.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:1110000:1115000",
+      "predicate": "carry_hold",
+      "confidence": 0.9308241605758667,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 1114.0
+    },
+    {
+      "segment_id": "aa03a76b-b03b-4f97-8542-d89736ab29e7:900000:905000",
+      "predicate": "carry_hold",
+      "confidence": 0.9300234913825989,
+      "provenance": "gnn_action_plus_target_resolver",
+      "timestamp": 903.0
+    }
+  ],
+  "verified": {
+    "schema": true,
+    "action_node": true,
+    "relationship_provenance": true,
+    "duplicate_prevention": true
+  }
+}

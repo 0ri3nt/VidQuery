@@ -1,0 +1,58 @@
+{
+  "verified_at": "2026-08-10",
+  "api_base_url": "http://127.0.0.1:8000",
+  "held_out_source_video_id": "0f39OWEqJ24",
+  "registered_video_id": "8a586aef-903d-4659-91aa-85405e68dc4c",
+  "training_split_membership": "test_only",
+  "health": {
+    "gnn_person_action_classifier": "available_validated_enabled",
+    "gnn_relationship_prediction": "unavailable_no_relation_labels"
+  },
+  "action_search": {
+    "request": {
+      "query": "read",
+      "video_ids": ["8a586aef-903d-4659-91aa-85405e68dc4c"],
+      "limit": 3
+    },
+    "parsed_actions": ["read"],
+    "top_results": [
+      {
+        "start_time": 2935.0,
+        "score": 0.804,
+        "confidence": 0.8040099143981934,
+        "provenance": "gnn_action_model"
+      },
+      {
+        "start_time": 4670.0,
+        "score": 0.8031,
+        "confidence": 0.803144633769989,
+        "provenance": "gnn_action_model"
+      },
+      {
+        "start_time": 4300.0,
+        "score": 0.7619,
+        "confidence": 0.7619401812553406,
+        "provenance": "gnn_action_model"
+      }
+    ],
+    "limitation": "The held-out annotations contain no read positives; this proves searchable inference plumbing, not correctness for this action."
+  },
+  "target_resolver_search": {
+    "query": "person talking to person",
+    "top_result": {
+      "start_time": 3000.0,
+      "score": 0.9206,
+      "predicate": "talk_to",
+      "source_class": "person",
+      "target_class": "person",
+      "relationship_confidence_rounded": 0.84,
+      "source_method": "gnn_action_plus_target_resolver"
+    }
+  },
+  "backfill": {
+    "timestamped_person_action_predictions": 40199,
+    "resolver_relationships_in_sqlite": 10067,
+    "first_decode_bound_run_seconds": 238,
+    "cached_frame_run_seconds": 50.4
+  }
+}

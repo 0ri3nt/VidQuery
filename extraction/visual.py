@@ -4,8 +4,12 @@ import json
 import time
 from collections import defaultdict
 from pathlib import Path
+from typing import Any
 
-from ultralytics import YOLO
+try:
+    from ultralytics import YOLO
+except ImportError:  # pragma: no cover - optional legacy dependency
+    YOLO = None  # type: ignore[assignment,misc]
 
 
 RELEVANT_CLASSES = {
@@ -56,7 +60,7 @@ def load_ava_annotations(csv_path: Path) -> dict:
     if not csv_path.exists():
         return annotations
 
-    with open(csv_path, "r", encoding="utf-8") as f:
+    with open(csv_path, encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
             if len(row) < 8:
@@ -150,10 +154,14 @@ class VisualExtractor:
         self.model_size = model_size
         self.conf_thresh = conf_thresh
         self.iou_thresh = iou_thresh
-        self.model: YOLO | None = None
+        self.model: Any | None = None
 
-    def load_model(self) -> YOLO:
+    def load_model(self) -> Any:
         if self.model is None:
+            if YOLO is None:
+                raise RuntimeError(
+                    "ultralytics is required for legacy VisualExtractor inference"
+                )
             print(f"Loading YOLO model: {self.model_size}")
             self.model = YOLO(self.model_size)
         return self.model
@@ -215,7 +223,14 @@ class VisualExtractor:
 
     @staticmethod
     def _has_plan_fields(frame_record: dict) -> bool:
-        required = {"frame_id", "timestamp", "bounding_boxes", "classes", "confidence", "detections"}
+        required = {
+            "frame_id",
+            "timestamp",
+            "bounding_boxes",
+            "classes",
+            "confidence",
+            "detections",
+        }
         return required.issubset(frame_record.keys())
 
     def process_split(
@@ -270,7 +285,7 @@ class VisualExtractor:
                 json_path = out_video_dir / frame_path.with_suffix(".json").name
 
                 if json_path.exists():
-                    with open(json_path, "r", encoding="utf-8") as f:
+                    with open(json_path, encoding="utf-8") as f:
                         cached = json.load(f)
 
                     cached_detections = cached.get("detections", [])
@@ -348,7 +363,8 @@ class VisualExtractor:
             summary[video_id] = video_summary
             avg_det = video_summary["total_detections"] / max(video_summary["total_frames"], 1)
             print(
-                f"      Detections : {video_summary['total_detections']} total  ({avg_det:.1f} avg/frame)"
+                f"      Detections : {video_summary['total_detections']} total  "
+                f"({avg_det:.1f} avg/frame)"
             )
 
         elapsed = time.time() - t_start
@@ -390,8 +406,16 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run YOLOv8 detection on extracted AVA frames")
     parser.add_argument("--frames_dir", type=Path, default=Path("data/ava/extracted_frames"))
     parser.add_argument("--detections_dir", type=Path, default=Path("data/ava/detections"))
-    parser.add_argument("--train_csv", type=Path, default=Path("data/ava/annotations/ava_train_v2.2.csv"))
-    parser.add_argument("--val_csv", type=Path, default=Path("data/ava/annotations/ava_val_v2.2.csv"))
+    parser.add_argument(
+        "--train_csv",
+        type=Path,
+        default=Path("data/ava/annotations/ava_train_v2.2.csv"),
+    )
+    parser.add_argument(
+        "--val_csv",
+        type=Path,
+        default=Path("data/ava/annotations/ava_val_v2.2.csv"),
+    )
     parser.add_argument("--model", type=str, default="yolov8n.pt")
     parser.add_argument("--conf", type=float, default=0.25)
     parser.add_argument("--iou", type=float, default=0.45)

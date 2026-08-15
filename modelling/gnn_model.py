@@ -24,6 +24,7 @@ class _SimpleMPNNLayer(MessagePassing):
 
 
 class SceneGraphMPNN(nn.Module):
+    """Experimental architecture only; it has no trained checkpoint or label head."""
     def __init__(self, in_channels: int = 10, hidden_channels: int = 64, out_channels: int = 32):
         super().__init__()
         self.mp1 = _SimpleMPNNLayer(in_channels, hidden_channels)

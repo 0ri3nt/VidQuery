@@ -39,7 +39,16 @@ def draw_graph_on_image(img, graph_data):
             label = rel
             (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.45, 1)
             cv2.rectangle(img, (tx, ty - th - 2), (tx + tw, ty + 3), relation_color, -1)
-            cv2.putText(img, label, (tx, ty), cv2.FONT_HERSHEY_SIMPLEX, 0.45, color_text, 1, cv2.LINE_AA)
+            cv2.putText(
+                img,
+                label,
+                (tx, ty),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.45,
+                color_text,
+                1,
+                cv2.LINE_AA,
+            )
             continue
 
         cv2.line(img, pt1, pt2, relation_color, 2)
@@ -52,7 +61,16 @@ def draw_graph_on_image(img, graph_data):
 
         (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.45, 1)
         cv2.rectangle(img, (mid_x, mid_y - th - 2), (mid_x + tw, mid_y + 3), relation_color, -1)
-        cv2.putText(img, label, (mid_x, mid_y), cv2.FONT_HERSHEY_SIMPLEX, 0.45, color_text, 1, cv2.LINE_AA)
+        cv2.putText(
+            img,
+            label,
+            (mid_x, mid_y),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.45,
+            color_text,
+            1,
+            cv2.LINE_AA,
+        )
 
     for node in nodes:
         x1, y1, x2, y2 = map(int, node["bbox"])
@@ -60,7 +78,16 @@ def draw_graph_on_image(img, graph_data):
         cv2.rectangle(img, (x1, y1), (x2, y2), color_node, 2)
         (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
         cv2.rectangle(img, (x1, y1 - th - 6), (x1 + tw, y1), color_node, -1)
-        cv2.putText(img, label, (x1, y1 - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color_text, 1, cv2.LINE_AA)
+        cv2.putText(
+            img,
+            label,
+            (x1, y1 - 4),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.5,
+            color_text,
+            1,
+            cv2.LINE_AA,
+        )
 
     return img
 
@@ -117,7 +144,7 @@ def process_video_split(split_name: str):
             if img is None:
                 continue
 
-            with open(json_path, "r", encoding="utf-8") as f:
+            with open(json_path, encoding="utf-8") as f:
                 graph_data = json.load(f)
 
             img_out = draw_graph_on_image(img, graph_data)
