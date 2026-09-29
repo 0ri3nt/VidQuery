@@ -1,5 +1,7 @@
 # Evaluation
 
+> **Historical record.** This document captures the early smoke and 35-query evaluation. Current results are in [EVALUATION_FINAL.md](EVALUATION_FINAL.md) and [REVIEW2.md](REVIEW2.md).
+
 ## Reproducible smoke evaluation
 
 The repository includes `evaluation/queries.json`, five evidence-grounded queries across transcript, visual, action, relational, and multimodal categories. The expected intervals were verified against the existing fused AVA artifact for source video `-FaXLcSFjUI`. The relational smoke query uses an exact stored `person left_of chair` edge; the former `person near chair` label was removed because the interval merely co-located those classes while its `near` edges connected other endpoint pairs. Import and run:

@@ -1,5 +1,7 @@
 # Library refresh verification
 
+> **Historical record.** This document captures a 2026-08-10 verification run. Current setup and reprocessing steps are in [SETUP.md](SETUP.md).
+
 Verified on 2026-08-10 against the local SQLite library with YOLOv8n, Whisper
 tiny, and the validated person-action checkpoint enabled.
 

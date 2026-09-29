@@ -1,230 +1,178 @@
 # VidQuery
 
 VidQuery is an evidence-backed multimodal video search system. It turns an MP4
-into timestamp-aligned evidence - speech, speakers, OCR, objects, appearance,
-actions, and explicit subject-predicate-object relationships - then returns the
-most relevant moments with playable timestamp citations.
-
-This repository is the capstone implementation, not a mock interface. The
-default local path uses SQLite for reliable application state and retrieval;
-Neo4j is an optional graph mirror and explicit graph-search backend. Learned
-models are activated only when a compatible, checksum-validated checkpoint is
-present. Random GNN weights are never used for inference.
-
-## What VidQuery can search
-
-- spoken concepts and semantic transcript matches;
-- Pyannote speaker labels such as `SPEAKER_01`;
-- YOLO object classes and OpenCLIP appearance descriptions;
-- EasyOCR text visible in frames;
-- person-centric AVA actions from an 80-label action GNN;
-- explicit VidOR subject-predicate-object relations from a 50-predicate GNN;
-- geometry relations such as `near`, `left_of`, `above`, and `inside`;
-- combinations such as "deployment while a laptop is visible";
-- grounded answers synthesized from retrieved evidence, with clickable video
-  timestamps.
-
-Examples:
+into timestamp-aligned evidence (speech, speakers, on-screen text, objects,
+appearance, person actions, and subject-predicate-object relationships). Given
+a natural-language query, it returns the moments that match, seeks to the exact
+peak-evidence timestamp, and says how much the evidence can be trusted.
 
 ```text
 Find where architecture is discussed
-Find a person near a laptop
 Find where SPEAKER_01 discusses deployment
+Find a person near a laptop
 Find the person in the blue jacket
 Find a person talking to another person
+find drive          <- ambiguous: the action, or the spoken word?
 ```
 
-## Architecture
+SQLite is the system of record and default search backend. Neo4j is an optional
+graph mirror. Learned models run only from compatible, checksum-validated
+checkpoints; random GNN weights are never used for inference.
+
+## What it does
+
+**Indexing.** Each upload is validated, deduplicated by SHA-256, split into
+frames and audio, and passed through:
+
+| Evidence | Model |
+|---|---|
+| Transcript with word timings | Whisper |
+| Speaker turns | Pyannote 3.1 |
+| Objects and short-range tracks | YOLOv8 |
+| On-screen text | EasyOCR |
+| Appearance descriptions | OpenCLIP ViT-B-32 |
+| Geometry relations (`near`, `left_of`, `inside`, ...) | box geometry |
+| Explicit relations (50 predicates) | VidOR pair-visual GATv2 |
+| Person actions (80 labels) | AVA GATv2 |
+| Semantic text vectors | MiniLM |
+
+Everything is aligned into five-second canonical segments that keep every
+underlying observation and its own timestamp.
+
+**Search.** Search runs in two stages:
+
+1. **Retrieve.** A local parser turns the query into a validated plan
+   (entities, actions, relation tuples, speaker, spoken or OCR terms). The
+   constrained Groq planner is consulted only for genuinely ambiguous queries.
+   Segments are then ranked by lexical, semantic, entity, action, OCR,
+   appearance, and exact relation-tuple evidence.
+2. **Localize and assess** (Review-2).
+   - **Localization.** Inside each winning segment, the localizer finds the
+     peak-evidence moment (word, frame, or interval) instead of returning the
+     segment start.
+   - **Reliability.** Each result gets a reliability-weighted confidence and a
+     `supported` / `weak` / `insufficient` verdict. Weak model output, such as
+     the action GNN, cannot make a result look certain on its own.
+   - **Hypotheses.** For ambiguous queries like `find drive`, each
+     interpretation is retrieved separately. The system then either resolves
+     the ambiguity or asks the user to pick one.
+   - **Abstention.** When the evidence is insufficient, the response says so
+     instead of returning a confident wrong timestamp.
+
+**Answers.** Optionally, Groq writes a grounded answer from the top evidence,
+citing only real result IDs and timestamps.
 
 ```mermaid
 flowchart LR
-    V[MP4 upload] --> I[Validation and SHA-256 deduplication]
+    V[MP4 upload] --> I[Validation + SHA-256 dedupe]
     I --> F[Frames]
     I --> A[Audio]
-    F --> YOLO[YOLO objects]
+    F --> YOLO[YOLO + tracks]
     F --> OCR[EasyOCR]
-    F --> CLIP[OpenCLIP appearance]
+    F --> CLIP[OpenCLIP]
     F --> RGNN[VidOR relation GNN]
-    A --> W[Whisper transcript]
-    A --> P[Pyannote diarization]
-    YOLO --> C[Canonical 5-second segments]
+    A --> W[Whisper words]
+    A --> P[Pyannote]
+    YOLO --> C[Canonical 5 s segments]
     OCR --> C
     CLIP --> C
     RGNN --> C
     W --> C
     P --> C
-    C --> AGNN[AVA person-action GNN]
-    AGNN --> S[(SQLite system of record)]
+    C --> AGNN[AVA action GNN]
+    AGNN --> S[(SQLite)]
     C --> S
-    S --> N[(Optional Neo4j mirror)]
-    S --> R[Exact multimodal retrieval]
+    S -.-> N[(Neo4j mirror)]
+    Q[Query] --> PL[Parser + constrained Groq planner]
+    PL --> H[Hypotheses]
+    H --> R[Hybrid / reliability ranking]
+    S --> R
     N --> R
-    Q[Natural-language query] --> GP[Constrained Groq planner]
-    GP --> R
-    R --> GR[Grounded Groq answer]
-    R --> UI[Ranked evidence and video player]
+    R --> L[Localizer + abstention]
+    L --> UI[Results + player seeks to peak]
+    L --> GR[Grounded Groq answer]
     GR --> UI
 ```
 
-Groq never queries Neo4j and never produces executable Cypher. The optional
-planner emits a validated retrieval plan; the answer layer receives only the
-top retrieved evidence and must cite valid evidence IDs. If Groq is unavailable,
-normal ranked search continues to work.
-
-## Implemented components
-
-| Layer | Implementation |
-|---|---|
-| Media | streamed MP4 upload, `ffprobe` validation, SHA-256 deduplication, frame/audio extraction, range playback |
-| Vision | YOLO detections, EasyOCR, OpenCLIP crop/frame embeddings, short-range tracks |
-| Speech | timestamped Whisper transcription and compulsory Pyannote diarization for audio-bearing uploads |
-| Actions | trained 80-label PyTorch Geometric AVA GATv2, person-node multilabel output |
-| Relations | geometry tuples plus trained 50-predicate VidOR pair-visual GATv2 |
-| Index | timestamp-aligned canonical segments in SQLite; idempotent optional Neo4j mirror |
-| Retrieval | lexical + MiniLM semantic + entity + action + OCR + appearance + exact relation-tuple scoring |
-| Answering | constrained Groq query planning and grounded JSON answer synthesis with timestamp citations |
-| Product | FastAPI, packaged browser UI, upload/library/search flows, health and processing metadata |
-
-AVA labels are person-centric actions. The AVA GNN does **not** predict object
-targets. When an action needs a target, a separate compatible-entity resolver
-creates the tuple with provenance `gnn_action_plus_target_resolver`. The VidOR
-model is the component that directly predicts ordered visual relations.
+Groq never queries a database and never produces executable Cypher. If Groq is
+unavailable, search still works.
 
 ## Quick start
 
-Requirements:
+Requirements: Python 3.11 or 3.12, FFmpeg/ffprobe, a Hugging Face token accepted
+for Pyannote, and optionally a Groq API key and Docker (for Neo4j).
 
-- Python 3.11 or 3.12;
-- FFmpeg/ffprobe on `PATH` (or the `imageio-ffmpeg` fallback);
-- sufficient disk space for extracted media and local model caches;
-- a Hugging Face token accepted for the configured Pyannote model when
-  processing audio;
-- Docker only if Neo4j is required.
-
-```powershell
-git clone https://github.com/Aryamanseven/VidQuery.git
-Set-Location VidQuery
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+```bash
+git clone https://github.com/0ri3nt/VidQuery.git
+cd VidQuery
+python3.12 -m venv .venv
+source .venv/bin/activate            # Windows: .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev,full]"
-Copy-Item .env.example .env
+cp .env.example .env                 # Windows: Copy-Item .env.example .env
+```
+
+Put `HUGGINGFACE_TOKEN` and `GROQ_API_KEY` in `.env` (it is gitignored). For the
+first run, set `ALLOW_MODEL_DOWNLOADS=true` and `HF_HUB_OFFLINE=0` so models can
+be cached, then set them back.
+
+```bash
 python -m vidquery serve --host 127.0.0.1 --port 8000
 ```
 
-Open <http://127.0.0.1:8000>. OpenAPI documentation is available at
-<http://127.0.0.1:8000/docs>.
+Open <http://127.0.0.1:8000> (OpenAPI docs are at `/docs`), upload an MP4, and
+search once it reaches `READY`. `GET /api/health` shows the readiness of every
+model.
 
-On macOS/Linux, use `source .venv/bin/activate` and `cp .env.example .env`.
+**[docs/SETUP.md](docs/SETUP.md)** has the exact model cache layout, how to
+install the trained GNN checkpoints, and fixes for common problems (macOS SSL
+certificate errors, Whisper on Apple Silicon, slow diarization, and a GNN that
+produces no actions).
 
-### Configure models and credentials
+## Command line
 
-Edit the local `.env`; never commit it. At minimum, review:
-
-```dotenv
-HUGGINGFACE_TOKEN=
-GROQ_API_KEY=
-NEO4J_PASSWORD=change-me
-ALLOW_MODEL_DOWNLOADS=false
-HF_HUB_OFFLINE=1
-```
-
-Use `ALLOW_MODEL_DOWNLOADS=true` and `HF_HUB_OFFLINE=0` only for an explicitly
-authorized first download, then return to cached/offline operation. The complete
-configuration contract, including model versions and thresholds, is in
-[`.env.example`](.env.example).
-
-### Model and checkpoint setup
-
-Model weights, downloaded datasets, extracted media, and feature caches are
-intentionally excluded from Git. Put locally produced artifacts at the paths in
-`.env`, or change the corresponding settings.
-
-| Component | Default local artifact/configuration |
+| Command | Purpose |
 |---|---|
-| YOLO | `YOLO_MODEL=yolov8n.pt` |
-| Whisper | `WHISPER_MODEL=tiny`, cached below `data/app/models/whisper` |
-| Pyannote | `pyannote/speaker-diarization-3.1`, local Hugging Face cache |
-| MiniLM | `sentence-transformers/all-MiniLM-L6-v2` |
-| OpenCLIP | `ViT-B-32:openai`, cached below `data/app/models/appearance` |
-| AVA GNN | `data/app/models/ava80_scaling/30/ablations/ava80-gat-v5-scale30-roi-frame.pt` plus matching metadata |
-| VidOR GNN | `data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-gat-v2.pt` plus matching metadata |
+| `serve` | run the API and browser UI |
+| `process --video PATH --copy` | register and index one MP4 |
+| `search "QUERY"` | search the local index |
+| `refresh-library [--video-id ID]` | re-run current models on indexed videos |
+| `diagnose-query "QUERY" [--video-id ID]` | trace why an action or relation query fails ([guide](docs/RETRIEVAL_DIAGNOSTICS.md)) |
+| `evaluate` | run the Review-1 retrieval benchmark |
+| `evaluate-challenge` | run the Review-2 timestamp and ambiguity benchmark |
+| `backfill-gnn-actions` | apply the validated action GNN to stored evidence without reprocessing media |
+| `import-ava`, `expand-ava-dataset` | import or expand the AVA evaluation and training corpus |
+| `train-action-model`, `train-gnn-action-model` | train the action models |
 
-Missing, corrupt, checksum-mismatched, feature-incompatible, or version-
-incompatible learned checkpoints are rejected visibly. Training commands and
-artifact schemas are documented in [AVA80_GNN.md](docs/AVA80_GNN.md) and
-[VIDOR_RELATION_FINAL_PASS.md](docs/VIDOR_RELATION_FINAL_PASS.md).
+All commands run as `python -m vidquery <command>`. Model changes do not rewrite
+existing segments; use `refresh-library` or the Library tab's reprocess action.
 
-## Process and search a video
-
-After models and `.env` are ready:
-
-```powershell
-python -m vidquery process --video C:\path\to\video.mp4 --copy
-python -m vidquery search "person near a car" --limit 5
-python -m vidquery serve --host 127.0.0.1 --port 8000
-```
-
-Check readiness at `GET /api/health`. For a trustworthy full run, YOLO and
-Whisper should report `available_configured`, required diarization should be
-available, and enabled learned models should report validated/compatible states.
-Changing model configuration does not update existing indexed segments; use the
-Library reprocess action or:
-
-```powershell
-python -m vidquery refresh-library
-python -m vidquery refresh-library --video-id VIDEO_UUID
-```
-
-The pipeline is fail-soft at optional adapters. Required media extraction and
-required diarization failures mark processing as failed with a safe public
-message and a private diagnostic traceback.
-
-## Neo4j and Docker
-
-SQLite remains authoritative for videos, jobs, canonical evidence, paths,
-playback metadata, and default search. Neo4j provides an optional idempotent
-mirror for explicit, static, parameterized graph retrieval.
-
-```powershell
-$env:NEO4J_PASSWORD = "choose-a-strong-local-password"
-docker compose up -d neo4j
-docker compose up -d --build backend
-docker compose ps
-```
-
-The tested stack uses Neo4j 5.26 Community, persistent named volumes, health
-checks, and the FastAPI-hosted frontend. See
-[NEO4J_VERIFICATION.md](docs/NEO4J_VERIFICATION.md) for schema counts,
-idempotency evidence, saved parameterized Cypher examples, restart verification,
-and the exact SQLite/Neo4j responsibility boundary.
-
-## API surface
+## API
 
 | Endpoint | Purpose |
 |---|---|
 | `POST /api/videos` | validate, stream, register, and queue an MP4 |
-| `GET /api/videos` | list the persistent video library |
-| `GET /api/videos/{id}/status` | processing state, warnings, and model provenance |
-| `POST /api/videos/{id}/process` | retry or reprocess a video |
-| `POST /api/search` | ranked evidence, optional grounded answer, and exact citations |
+| `GET /api/videos` | list the video library |
+| `GET /api/videos/{id}/status` | processing state, warnings, model provenance |
+| `POST /api/videos/{id}/process` | reprocess (`409` while a job is running) |
+| `POST /api/search` | ranked, localized evidence, with hypotheses, verdicts, and an optional grounded answer |
 | `GET /api/videos/{id}/stream` | byte-range MP4 playback |
 | `GET /api/videos/{id}/thumbnail` | nearest extracted frame |
-| `GET /api/health` | SQLite, Neo4j, retrieval, and model readiness |
+| `GET /api/health` | SQLite, Neo4j, and per-model readiness |
 
-The search response keeps raw ranked results visible even when a grounded answer
-is present. Every accepted answer citation maps back to an exact result video,
-start time, and end time.
+Search accepts `ranking` (`hybrid` or `reliability`), `localize`,
+`collapse_duplicate_evidence`, and `hypothesis_id`. The defaults reproduce
+Review-1 behaviour; the UI turns on the full Review-2 behaviour. See
+[docs/API.md](docs/API.md) and [docs/REVIEW2.md](docs/REVIEW2.md).
 
 ## Measured results
 
-### Independent retrieval benchmark
+### Independent retrieval benchmark (Review-1)
 
-The final corpus contains 62 manually specified queries over five videos: 52
-positive and 10 negative queries across transcript, visual entity, spatial
-relation, AVA action, speaker, multimodal, OCR, and negative categories. It has
-zero overlap with AVA training/validation videos; the action portion uses one
-strict held-out test video.
+62 manually specified queries over five videos (52 positive, 10 negative),
+covering transcript, visual entity, spatial relation, AVA action, speaker,
+multimodal, OCR, and negative categories. There is zero overlap with AVA
+training or validation videos.
 
 | Method | P@1 | P@5 | Recall@5 | MRR | Negative rejection |
 |---|---:|---:|---:|---:|---:|
@@ -236,91 +184,99 @@ strict held-out test video.
 | Exact Neo4j graph | 0.8654 | 0.5462 | 0.6776 | 0.8654 | 1.0000 |
 | AVA GNN-enhanced, supported 14-query subset | 0.5000 | 0.3714 | 0.2181 | 0.5000 | n/a |
 
-Exact tuples improved spatial P@5 from 0.95 to 1.00 and spatial Recall@5 from
-0.6553 to 0.6757, while spatial P@1/MRR tied the ablation. These are capstone-
-scale results, not broad-domain superiority claims. Full per-category/per-video
-metrics and raw rankings are in
-[EVALUATION_FINAL.md](docs/EVALUATION_FINAL.md) and
-`evaluation/results/independent-final.json`.
+These are capstone-scale results, not broad-domain claims. Details are in
+[docs/EVALUATION_FINAL.md](docs/EVALUATION_FINAL.md).
 
-### Learned model results
+### Learned models
 
 | Model | Split | Supported macro F1 | Micro F1 | mAP |
 |---|---|---:|---:|---:|
 | AVA 80-label GATv2 v5 (active) | 3 held-out videos | 0.072086 | 0.462054 | 0.086745 |
 | VidOR pair-visual GATv2 v2 (active) | 4 held-out videos | 0.178194 | 0.371113 | 0.191364 |
 
-The AVA checkpoint was chosen on validation supported macro F1 (0.125380). The
-VidOR GNN beat its matched MLP on validation macro F1 (0.308495 vs. 0.270589)
-before the four-video test split was evaluated. Small held-out sets, label
-imbalance, detector/domain shift, and limited supported classes constrain these
-numbers. See [GNN_STATUS.md](docs/GNN_STATUS.md) for the complete ablations and
-safe claim boundaries.
+Both are weak on held-out data because of small test sets, label imbalance, and
+domain shift. That is why Review-2 down-weights them rather than trusting them.
+See [docs/GNN_STATUS.md](docs/GNN_STATUS.md).
 
-## Reproducible validation
+### Review-2 challenge benchmark
 
-```powershell
-python -m pytest -q
+The benchmark compares three systems on point-in-time ground truth: Review-1
+(segment start as the answer), Review-1 plus localization, and full Review-2. It
+measures timestamp error, temporal IoU, intent accuracy, negative rejection, and
+confident-wrong rate. The code, schema, and tests are complete, and
+`evaluation/queries_challenge.template.json` shows the manifest format. **No
+annotated manifest has been checked in yet, so no Review-2 improvement is
+claimed.**
+
+## Development
+
+```bash
+python -m pytest -q          # 178 passed; 2 skip without live Neo4j or an optional checkpoint
 python -m ruff check .
 python -m mypy vidquery scripts
-python -m compileall -q vidquery scripts tests
 node --check frontend/assets/app.js
 ```
 
-The live Neo4j integration test skips clearly when the service or credentials
-are unavailable. Groq tests use deterministic mocks and do not consume API
-quota during the normal suite.
+The Neo4j integration test skips when the service is unavailable. Groq tests use
+mocks and do not consume API quota.
+
+### Neo4j (optional)
+
+```bash
+export NEO4J_PASSWORD=choose-a-strong-local-password
+docker compose up -d neo4j
+docker compose up -d --build backend
+```
+
+Set `ENABLE_NEO4J=true` in `.env`, and send `"retrieval_backend": "neo4j"` to use
+graph retrieval. See [docs/NEO4J_VERIFICATION.md](docs/NEO4J_VERIFICATION.md).
 
 ## Repository layout
 
 ```text
-vidquery/       primary application, models, indexing, retrieval, API contracts
-frontend/       packaged browser UI
-tests/          deterministic unit, API, model, and integration tests
-scripts/        dataset preparation, training, evaluation, and proof capture
-database/       Neo4j schema and saved parameterized Cypher examples
-evaluation/     query manifests and machine-readable measured results
-demo/           controlled-demo manifest and source-generation instructions
-docs/           architecture, model, evaluation, QA, and evidence documentation
+vidquery/       application: pipeline, models, retrieval, Review-2 layers, API, CLI
+frontend/       browser UI
+tests/          unit, API, model, and integration tests
+scripts/        dataset preparation, training, evaluation, proof capture
+evaluation/     query manifests and machine-readable results
+database/       Neo4j schema and parameterized Cypher examples
+demo/           controlled-demo manifest
+docs/           documentation (index: docs/README.md)
+extraction/, modelling/, core/, retrieval/, api/, app/
+                original AVA research pipeline, kept for reproduction
 ```
 
-`data/app`, raw AVA/VidOR media, uploads, extracted frames/audio, caches,
-checkpoints, local databases, virtual environments, and secrets are deliberately
-not versioned.
-
-## Documentation
-
-- [Final capstone evidence](docs/FINAL_CAPSTONE_EVIDENCE.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [API contract](docs/API.md)
-- [Graph schema](docs/GRAPH_SCHEMA.md)
-- [AVA 80-label GNN](docs/AVA80_GNN.md)
-- [VidOR relationship GNN final pass](docs/VIDOR_RELATION_FINAL_PASS.md)
-- [GNN status and metrics](docs/GNN_STATUS.md)
-- [Grounded Groq RAG](docs/GROQ_RAG.md)
-- [Constrained Groq planner](docs/GROQ_QUERY_PLANNER.md)
-- [Final retrieval evaluation](docs/EVALUATION_FINAL.md)
-- [Live Neo4j verification](docs/NEO4J_VERIFICATION.md)
-- [Final demo guide](docs/FINAL_DEMO_GUIDE.md)
-- [UI and deployment QA](docs/UI_QA.md)
-- [Model limitations](docs/MODEL_LIMITATIONS.md)
+`data/app/` (models, caches, uploads, extracted media, the SQLite database), raw
+datasets, virtual environments, and `.env` are not versioned.
 
 ## Security and limitations
 
-- Secrets are environment-only. `.env` is ignored; `.env.example` contains no
-  credential values.
-- Neo4j queries are source-owned and parameterized. LLM output is never executed
-  as Cypher.
-- Groq receives only bounded retrieved evidence and must return validated JSON;
-  it cannot repair missing visual/action evidence or invent timestamps.
-- Uploads are size-bounded, filenames are sanitized, MP4 structure is probed,
-  CORS is allowlisted, and generated paths are server-owned.
-- The service remains local/demo-grade. Production use still needs auth,
-  authorization, quotas, malware scanning, distributed jobs, and object storage.
-- YOLO has a fixed class vocabulary; OpenCLIP appearance retrieval broadens
-  descriptions but is similarity evidence, not open-vocabulary detection.
-- Speaker IDs are file-local clusters, not real-world identity recognition.
-- Temporal tracking is short-range association, not cross-shot re-identification.
+- Secrets live only in `.env`. `.env.example` contains no credentials.
+- Neo4j queries are source-owned and parameterized. LLM output is never executed.
+- Groq receives only bounded retrieved evidence. It cannot invent timestamps or
+  fill in missing visual evidence.
+- Uploads are size-bounded and probed, filenames are sanitized, and CORS is
+  allowlisted. There is no authentication, so do not expose the service
+  publicly.
+- YOLO has a fixed class vocabulary, and OpenCLIP is similarity evidence, not
+  open-vocabulary detection. Speaker IDs are per-file clusters, not identities.
+  Tracking is short-range only.
+- Confidence values and verdicts are reliability-weighted design constants, not
+  calibrated probabilities.
 
-Use [FINAL_CAPSTONE_EVIDENCE.md](docs/FINAL_CAPSTONE_EVIDENCE.md) for the exact
-claims that are safe - and unsafe - to make in a report or presentation.
+See [docs/MODEL_LIMITATIONS.md](docs/MODEL_LIMITATIONS.md) and
+[docs/FINAL_CAPSTONE_EVIDENCE.md](docs/FINAL_CAPSTONE_EVIDENCE.md) for what can
+and cannot be claimed.
+
+## Documentation
+
+The full index is [docs/README.md](docs/README.md). Key documents:
+
+- [Setup and troubleshooting](docs/SETUP.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Review-2 design](docs/REVIEW2.md)
+- [API contract](docs/API.md)
+- [Retrieval diagnostics](docs/RETRIEVAL_DIAGNOSTICS.md)
+- [GNN status](docs/GNN_STATUS.md)
+- [Final evaluation](docs/EVALUATION_FINAL.md)
+- [Final demo guide](docs/FINAL_DEMO_GUIDE.md)

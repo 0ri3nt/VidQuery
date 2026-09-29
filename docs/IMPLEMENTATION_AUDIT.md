@@ -1,5 +1,7 @@
 # VidQuery implementation audit
 
+> **Historical record.** This document captures the baseline audit at commit `6f7d03c`, before the application was built. It describes what was missing then, not the current system.
+
 Baseline date: 2026-08-08
 
 Baseline commit: `6f7d03c` on `dev_aryaman`
