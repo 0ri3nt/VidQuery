@@ -9,18 +9,30 @@ flowchart LR
     V --> S[(SQLite system of record)]
     V --> P[processing service]
     P --> F[FFmpeg/OpenCV frames + audio]
-    F --> Y[optional YOLO]
-    F --> W[optional Whisper]
-    F --> D[optional Pyannote]
+    F --> Y[YOLO + short-range tracks]
+    F --> O[EasyOCR]
+    F --> AP[OpenCLIP appearance]
+    F --> W[Whisper words + utterances]
+    F --> D[Pyannote speakers]
     Y --> G[geometry relationships]
-    W --> C[canonical 5 s segments]
+    Y --> VR[VidOR relation GNN]
+    Y --> C[canonical 5 s segments]
+    O --> C
+    AP --> C
+    W --> C
     D --> C
     G --> C
+    VR --> C
+    C --> AG[AVA action GNN]
+    AG --> S
     C --> S
     C -. parameterized mirror .-> N[(Neo4j)]
-    U -->|structured query| Q[allowlisted parser + local hybrid ranker]
-    Q --> S
-    Q --> R[timestamped result + evidence]
+    U -->|query| Q[local parser + optional Groq planner]
+    Q --> H[hypotheses]
+    H --> K[hybrid / reliability ranker]
+    K --> S
+    K --> L[localizer + duplicate collapse]
+    L --> R[peak timestamp + evidence verdict]
     R --> U
     U -->|HTTP Range| M[source MP4 playback]
 ```
@@ -41,7 +53,7 @@ UPLOADED
                    \-> FAILED (stage + safe message + private traceback)
 ```
 
-The service samples frames at `FRAME_SAMPLE_RATE`, extracts mono 16 kHz audio, assigns detections/transcripts/speakers/relationships to fixed-duration windows, writes all windows transactionally, then mirrors them to Neo4j when configured. Optional visual/audio/diarization exceptions add warnings; invalid media, no readable frames, or persistence failures stop the job.
+The service samples frames at `FRAME_SAMPLE_RATE`, extracts mono 16 kHz audio, assigns detections/transcripts/speakers/relationships to fixed-duration windows, writes all windows transactionally, then mirrors them to Neo4j when configured. Required diarization failures fail the job; other optional visual/audio exceptions add warnings; invalid media, no readable frames, or persistence failures stop the job.
 
 ## Component boundaries
 
@@ -56,7 +68,15 @@ The service samples frames at `FRAME_SAMPLE_RATE`, extracts mono 16 kHz audio, a
 | `StructuredQueryParser` | local aliases, morphology, speech/OCR cues, and allowlisted NL-to-plan mapping | clear queries remain local |
 | `QueryPlanningService` | optional constrained Groq planning over vocabularies only | ambiguous queries validate strictly; failures use safe local plans |
 | `LocalHybridSearchEngine` | validated structured constraints plus transparent lexical/semantic score | zero score means omitted; no arbitrary execution |
-| Browser frontend | upload, state, search, evidence, seeked playback | visible empty/error states |
+| `hypotheses.generate_hypotheses` / `fuse_hypotheses` | enumerate ambiguous interpretations, retrieve each, resolve or ask for clarification | unambiguous queries produce no hypotheses |
+| `reliability.assess_evidence` | per-result reliability-weighted confidence and `supported` / `weak` / `insufficient` verdict | rank score is untouched; abstains rather than guessing |
+| `localization.localize_segment` | peak-evidence timestamp inside the ranked segment from stored observations | falls back to the segment window, labelled `segment` |
+| `diagnose.diagnose_query` | trace one query through index inventory, raw hits, and both ranking modes | read-only |
+| Browser frontend | upload, state, search, hypothesis chips, evidence verdicts, seek to peak | visible empty/error states |
+
+Search is a two-stage process. Retrieval ranks five-second segments because
+that is cheap and stable; the localizer then picks the moment inside the
+winning segment. See [REVIEW2.md](REVIEW2.md).
 
 ## Trust boundaries and security
 
@@ -66,7 +86,7 @@ The current service intentionally has no authentication. Deploying beyond a trus
 
 ## Legacy and migration
 
-The original AVA workflow remains under `extraction/`, `core/`, `modelling/`, `database/graph_builder.py`, and `main.py`. `vidquery/ava_adapter.py` reads fused JSON and converts it to canonical segments without overwriting the corpus. Legacy graph labels stay in `database/schema.cypher` for readability, while the application writes the segment-centered schema.
+The original AVA workflow remains under `extraction/`, `core/`, `modelling/`, `database/ingestion.py`, and `main.py`. `vidquery/ava_adapter.py` reads fused JSON and converts it to canonical segments without overwriting the corpus. Legacy graph labels stay in `database/schema.cypher` for readability, while the application writes the segment-centered schema.
 
 ## Scaling path
 

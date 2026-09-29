@@ -1,5 +1,7 @@
 # VidOR explicit relationship GNN
 
+> **Historical record.** This document captures the v1 geometry-only relation GNN. The active model is described in [VIDOR_RELATION_FINAL_PASS.md](VIDOR_RELATION_FINAL_PASS.md).
+
 ## Task boundary
 
 This model predicts a predicate for an explicit ordered entity pair at a video

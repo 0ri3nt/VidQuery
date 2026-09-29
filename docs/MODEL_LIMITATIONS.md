@@ -71,23 +71,45 @@ the canonical result evidence. SQLite remains the metadata/job system of record.
 
 A trained person-action GNN and a separate trained VidOR relationship GNN are
 available only with validated checkpoints. The action GNN did not consistently
-outperform all matched ablations. In the relation experiment, the pairwise MLP
-won validation supported macro F1 (0.259568 versus 0.240843), while the GNN had
-higher held-out test supported macro F1 (0.178522 versus 0.161331). This does not
-establish GNN superiority. The relation checkpoint uses object class and box
-geometry rather than ROI pixels, audio, or text. Old random feature exports
-remain invalid as predictions. See `GNN_STATUS.md` and
-`VIDOR_RELATION_GNN.md`.
+outperform all matched ablations. The active relation model is the pair-visual
+GATv2 v2, which uses frozen ResNet-18 subject, object, and union-box features
+plus class, geometry, and motion. It beat its matched MLP on validation
+supported macro F1 (0.308495 versus 0.270589), but on the four-video test split
+the MLP was marginally higher on macro F1 (0.182475 versus 0.178194) while the
+GNN was higher on micro F1. This does not establish GNN superiority. Old random
+feature exports remain invalid as predictions. See `GNN_STATUS.md` and
+`VIDOR_RELATION_FINAL_PASS.md`.
+
+Both GNNs are trained on AVA movie clips and VidOR videos. On phone recordings,
+meetings, or screen captures, some classes are never predicted. For example, the
+AVA GNN produced no `drink` or `work on computer` predictions on a 72-second
+custom phone video. That is domain shift, not a retrieval bug; see
+[RETRIEVAL_DIAGNOSTICS.md](RETRIEVAL_DIAGNOSTICS.md).
+
+## Review-2 localization and reliability
+
+- Localized timestamps are only as precise as the stored evidence. At 1 fps,
+  visual peaks have about one-second granularity; speech peaks reach word level
+  only for videos indexed with `WHISPER_WORD_TIMESTAMPS=true`.
+- Reliability priors, precision confidences, and verdict thresholds are
+  documented design constants derived from measured results. They are not
+  calibrated probabilities.
+- A `supported` verdict means the evidence is strong under those priors, not
+  that the moment is verified correct.
+- Hypothesis generation recognises three ambiguity patterns (action homonym,
+  entity-only, unclassified concept). Other ambiguities rely on the planner.
+- The challenge benchmark is implemented but has no annotated manifest yet, so
+  no measured Review-2 improvement is claimed.
 
 ## Evaluation scope
 
 The old five-query, one-video file is retained only as a regression smoke test.
-The existing 35-query/five-video corpus reports all requested categories and
-negatives, but its labels derive from source AVA/ASR/diarization artifacts. It
-is not an independent human re-annotation study and provides no annotator
-agreement, confidence intervals, statistical significance, or broad-domain
-generalization evidence. A new independent manual evaluation remains required
-before making final comparative claims.
+The final 62-query, five-video independent benchmark
+([EVALUATION_FINAL.md](EVALUATION_FINAL.md)) was manually specified with zero
+overlap with AVA training videos, but it is capstone-scale: no annotator
+agreement study, no confidence intervals, and five videos. It labels
+relevance on the five-second grid, so it cannot measure sub-segment timestamp
+error. That is what the Review-2 challenge benchmark is for.
 
 ## Operational and privacy limits
 

@@ -38,9 +38,19 @@ replaced. The equivalent all-library CLI is `python -m vidquery refresh-library`
   "query": "SPEAKER_09 person watching",
   "video_ids": [],
   "limit": 10,
-  "retrieval_backend": "sqlite"
+  "retrieval_backend": "sqlite",
+  "ranking": "reliability",
+  "localize": true,
+  "collapse_duplicate_evidence": true,
+  "hypothesis_id": null
 }
 ```
+
+The last four fields are the Review-2 controls. Defaults are `ranking: "hybrid"`,
+`localize: true`, `collapse_duplicate_evidence: false`, and no `hypothesis_id`,
+which reproduces the Review-1 ranking contract. The browser UI sends the values
+shown above. An unknown `hypothesis_id` returns `422`. See
+[REVIEW2.md](REVIEW2.md) for the algorithms.
 
 `query` is 1–500 non-blank characters, at most 100 video IDs may be supplied, and `limit` is 1–50. `retrieval_backend` is `sqlite` by default or may be explicitly set to `neo4j`. The response echoes the backend actually used. Neo4j mode uses a static parameterized graph plan to select segment IDs, then hydrates and ranks their canonical evidence from SQLite; it returns 503 when Neo4j is disabled or unavailable. There is no silent fallback that could mislabel SQLite retrieval as graph retrieval.
 
@@ -69,6 +79,43 @@ and provenance. `gnn_action_model` means person-action classification only;
 `gnn_action_plus_target_resolver` means a separate resolver selected the target.
 Action-only search uses stored prediction confidence when ranking matches.
 
+### Review-2 result and response fields
+
+Each result may also carry:
+
+```json
+{
+  "localization": {
+    "peak_time": 42.1, "start_time": 42.1, "end_time": 42.6,
+    "precision": "word", "source": "whisper_word_timing",
+    "confidence": 0.95, "evidence": ["word 'deployment' spoken at 42.10s"]
+  },
+  "evidence": {
+    "confidence": 0.71, "verdict": "supported",
+    "contributions": [{"modality": "transcript", "raw_score": 0.9,
+      "source_method": "whisper_transcript", "reliability_prior": 0.9,
+      "query_weight": 1.0, "weighted_score": 0.81}],
+    "explanation": "transcript evidence from whisper_transcript ... -> supported."
+  },
+  "supporting_hypotheses": ["spoken_mention"]
+}
+```
+
+- `localization.precision` is one of `word`, `frame`, `interval`,
+  `utterance_interpolated`, `utterance`, or `segment`. `peak_time` is where the
+  player seeks. It always lies inside `[start_time, end_time]`, which lies
+  inside the segment.
+- `evidence.verdict` is `supported`, `weak`, or `insufficient`. `confidence` is
+  a reliability-weighted fusion, not a calibrated probability, and is separate
+  from `score`.
+
+The response adds `hypotheses` (each with `hypothesis_id`, `label`, `plan`,
+`prior`, `support`, `posterior`, `result_count`), `interpretation` (`single`,
+`resolved`, `clarification_suggested`, or `insufficient_evidence`),
+`selected_hypothesis_id`, and `clarification_prompt`. `insufficient_evidence`
+means the system is abstaining; clients should present it as "not found" rather
+than showing the top result as an answer.
+
 ## Playback and evidence images
 
 ### `GET /api/videos/{video_id}/stream`
@@ -91,14 +138,22 @@ Returns the generated JPEG closest to the requested non-negative timestamp, or `
   "models": {
     "yolo": "available_configured",
     "whisper": "available_configured",
-    "diarization": "disabled",
+    "diarization": "available_configured_required",
     "gnn_person_action_classifier": "available_validated_enabled",
-    "gnn_relationship_prediction": "unavailable_no_relation_labels",
-    "person_action_classifier": "available_validated_fallback",
-    "query_planner": "available_configured_local_first"
+    "gnn_relationship_prediction": "available_validated_enabled",
+    "person_action_classifier": "unavailable_no_valid_checkpoint",
+    "sentence_embedding_retrieval": "available_cached_enabled",
+    "ocr": "available_cached",
+    "rag_generation": "available_configured",
+    "query_planner": "available_configured_local_first",
+    "entity_appearance": "available_configured_frozen"
   }
 }
 ```
+
+This is the output of a fully configured local install. The legacy six-label
+`person_action_classifier` is unavailable when its optional checkpoint is not
+installed; the 80-label GNN replaces it.
 
 YOLO and Whisper report `available_configured` only when they are enabled, their
 Python dependency is importable, and the configured checkpoint is locally
@@ -107,8 +162,8 @@ checkpoints have distinct `unavailable_*` states. The 80-label GNN status is
 derived from checkpoint existence, schema, model version, label and feature
 contracts, validation metadata, thresholds, and SHA-256 integrity. It ends in
 `_inactive` or `_enabled` when valid; invalid/missing states state the reason.
-The relationship-model key stays unavailable because the trained GNN predicts
-person actions, not explicit relation targets. Adapters still load weights lazily during processing.
+`gnn_relationship_prediction` reports the VidOR pair-visual relation GNN, which
+is validated the same way. Adapters still load weights lazily during processing.
 `/health` is a hidden compatibility alias.
 
 ## Operational caveats
