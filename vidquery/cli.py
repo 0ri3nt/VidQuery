@@ -18,13 +18,21 @@ from .ava_gnn80 import (
     build_ava80_action_index,
     train_ava80_suite,
 )
+from .challenge_evaluation import (
+    ChallengeManifestError,
+    evaluate_challenge,
+    load_manifest,
+    validate_manifest,
+    write_challenge_results,
+)
 from .config import get_settings
 from .domain import SearchRequest
 from .evaluation import evaluate, write_evaluation
 from .media import VideoIngestionService
 from .neo4j import CanonicalNeo4jIndexer
 from .pipeline import VideoProcessingService
-from .search import LocalHybridSearchEngine
+from .query_planner import QueryPlanningService
+from .search import LocalHybridSearchEngine, configured_text_encoder
 from .storage import SQLiteRepository
 
 
@@ -33,6 +41,53 @@ def _services():
     settings.ensure_directories()
     repository = SQLiteRepository(settings.database_path)
     return settings, repository
+
+
+def run_challenge_evaluation(
+    dataset: Path,
+    output: Path,
+    *,
+    limit: int,
+    use_groq: bool,
+    validate_only: bool,
+) -> None:
+    from dataclasses import replace
+
+    try:
+        manifest = load_manifest(dataset)
+    except ChallengeManifestError as exc:
+        raise SystemExit(f"Challenge manifest is invalid: {exc}") from exc
+    warnings = validate_manifest(manifest)
+    for warning in warnings:
+        print(f"[WARN] {warning}")
+    if validate_only:
+        print(f"Manifest OK: {len(manifest['queries'])} queries")
+        return
+    settings, repository = _services()
+    planner_settings = settings if use_groq else replace(settings, enable_query_planner=False)
+    planner = QueryPlanningService(planner_settings)
+    engine = LocalHybridSearchEngine(
+        repository,
+        encoder=configured_text_encoder(settings),
+        semantic_min_similarity=settings.semantic_min_similarity,
+        appearance_settings=settings,
+        evidence_supported_threshold=settings.evidence_supported_threshold,
+        evidence_weak_threshold=settings.evidence_weak_threshold,
+    )
+    try:
+        result = evaluate_challenge(
+            repository,
+            dataset,
+            planner=planner,
+            limit=limit,
+            engine=engine,
+            resolution_margin=settings.hypothesis_resolution_margin,
+        )
+    except ChallengeManifestError as exc:
+        raise SystemExit(str(exc)) from exc
+    write_challenge_results(result, output)
+    print(json.dumps(result["review1_vs_review2"], indent=2))
+    print(f"Wrote machine-readable results to {output}")
 
 
 def process_video(path: Path, *, copy: bool) -> str:
@@ -136,6 +191,28 @@ def run_search(query: str, video_ids: list[str], limit: int) -> None:
     print(response.model_dump_json(indent=2))
 
 
+def run_diagnose(
+    query: str,
+    video_ids: list[str],
+    limit: int,
+    *,
+    json_output: bool,
+    use_planner: bool,
+) -> None:
+    from .diagnose import diagnose_query, format_report, report_to_dict
+
+    report = diagnose_query(
+        query,
+        video_ids=video_ids or None,
+        limit=limit,
+        use_planner=use_planner,
+    )
+    if json_output:
+        print(json.dumps(report_to_dict(report), indent=2))
+    else:
+        print(format_report(report))
+
+
 def demo(path: Path) -> None:
     video_id = process_video(path, copy=True)
     settings, repository = _services()
@@ -224,10 +301,46 @@ def main() -> None:
     search.add_argument("--video-id", action="append", default=[])
     search.add_argument("--limit", type=int, default=10)
 
+    diagnose = subcommands.add_parser(
+        "diagnose-query",
+        help="Trace action/relationship retrieval failures for one query",
+    )
+    diagnose.add_argument("query")
+    diagnose.add_argument("--video-id", action="append", default=[])
+    diagnose.add_argument("--limit", type=int, default=5)
+    diagnose.add_argument("--json", action="store_true")
+    diagnose.add_argument(
+        "--no-planner",
+        action="store_true",
+        help="Use only the deterministic parser (skip Groq planner)",
+    )
+
     evaluation = subcommands.add_parser("evaluate", help="Run the checked-in retrieval evaluation")
     evaluation.add_argument("--dataset", type=Path, default=Path("evaluation/queries.json"))
     evaluation.add_argument(
         "--output", type=Path, default=Path("evaluation/results/latest.json")
+    )
+
+    challenge = subcommands.add_parser(
+        "evaluate-challenge",
+        help="Run the Review-2 challenge benchmark: Review-1 vs localized vs full Review-2",
+    )
+    challenge.add_argument(
+        "--dataset", type=Path, default=Path("evaluation/queries_challenge.json")
+    )
+    challenge.add_argument(
+        "--output", type=Path, default=Path("evaluation/results/challenge-latest.json")
+    )
+    challenge.add_argument("--limit", type=int, default=5)
+    challenge.add_argument(
+        "--use-groq",
+        action="store_true",
+        help="Allow the constrained Groq planner; default keeps the run fully deterministic",
+    )
+    challenge.add_argument(
+        "--validate-only",
+        action="store_true",
+        help="Check the manifest schema and category counts without running retrieval",
     )
 
     action_training = subcommands.add_parser(
@@ -357,6 +470,14 @@ def main() -> None:
         backfill_gnn_actions(args.video_id)
     elif args.command == "search":
         run_search(args.query, args.video_id, args.limit)
+    elif args.command == "diagnose-query":
+        run_diagnose(
+            args.query,
+            args.video_id,
+            args.limit,
+            json_output=args.json,
+            use_planner=not args.no_planner,
+        )
     elif args.command == "evaluate":
         settings, repository = _services()
         graph_runner = None
@@ -418,6 +539,14 @@ def main() -> None:
         write_evaluation(result, args.output)
         print(json.dumps(result["summary"], indent=2))
         print(f"Wrote machine-readable results to {args.output}")
+    elif args.command == "evaluate-challenge":
+        run_challenge_evaluation(
+            args.dataset,
+            args.output,
+            limit=args.limit,
+            use_groq=args.use_groq,
+            validate_only=args.validate_only,
+        )
     elif args.command == "train-action-model":
         metadata = train_person_action_model(
             fused_root=args.fused_root,

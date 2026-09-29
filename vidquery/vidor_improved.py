@@ -11,6 +11,7 @@ import copy
 import hashlib
 import json
 import math
+import os
 import platform
 import random
 import time
@@ -114,7 +115,18 @@ class FrozenResNetPairEncoder:
 
         self.device = _device(torch, device)
         self.weights = ResNet18_Weights.IMAGENET1K_V1
-        model = resnet18(weights=self.weights)
+        local_checkpoint = (
+            Path(os.environ.get("TORCH_HOME", Path.home() / ".cache" / "torch"))
+            / "hub"
+            / "checkpoints"
+            / "resnet18-f37072fd.pth"
+        )
+        if local_checkpoint.is_file():
+            model = resnet18(weights=None)
+            state = torch.load(local_checkpoint, map_location="cpu", weights_only=True)
+            model.load_state_dict(state)
+        else:
+            model = resnet18(weights=self.weights)
         model.fc = nn.Identity()
         self.model = model.eval().to(self.device)
         for parameter in self.model.parameters():

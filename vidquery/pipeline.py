@@ -797,6 +797,21 @@ class VideoProcessingService:
                     "gnn_action_inference_enabled": True,
                     "learned_action_predictions_used": bool(predictions),
                     "gnn_action_backfill": True,
+                    "action_instances": [
+                        item
+                        for item in metadata.get("action_instances", [])
+                        if item.get("source_method")
+                        != RelationshipSource.GNN_ACTION_MODEL.value
+                    ]
+                    + [
+                        {
+                            "action": item.label,
+                            "confidence": item.confidence,
+                            "timestamp": item.timestamp,
+                            "source_method": item.source_method.value,
+                        }
+                        for item in predictions
+                    ],
                     "gnn_action_instances": [
                         {
                             "action": item.label,

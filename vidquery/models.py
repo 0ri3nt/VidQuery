@@ -18,6 +18,7 @@ from .domain import (
     FrameRecord,
     SpeakerSegment,
     TranscriptSegment,
+    TranscriptWord,
 )
 from .geometry import centroid, interval_overlap, normalize_bbox
 from .media import resolve_ffmpeg_binary
@@ -79,9 +80,14 @@ def _resolve_device(requested: str) -> str | int:
 
 
 def _whisper_device(requested: str) -> str:
+    """Whisper on Apple MPS hits sparse-tensor NotImplementedError; keep it on CPU/CUDA."""
+
     device = _resolve_device(requested)
     if device == 0:
         return "cuda"
+    if str(device) == "mps":
+        LOGGER.warning("Whisper requested MPS; using CPU because SparseMPS is unsupported")
+        return "cpu"
     return str(device)
 
 
@@ -262,32 +268,68 @@ class WhisperTranscriber:
     def transcribe(self, audio_path: Path, video_id: str) -> list[TranscriptSegment]:
         model = self._load()
         audio = _decode_audio_for_whisper(audio_path)
-        result = model.transcribe(audio, verbose=False)
-        segments: list[TranscriptSegment] = []
-        for index, item in enumerate(result.get("segments", [])):
-            start = max(0.0, float(item.get("start", 0.0)))
-            end = max(start, float(item.get("end", start)))
-            log_probability = float(item.get("avg_logprob", 0.0))
-            speech_probability = 1.0 - float(item.get("no_speech_prob", 0.0))
-            confidence = min(
-                1.0,
-                max(
-                    0.0,
-                    math.exp(min(0.0, log_probability)) * speech_probability,
-                ),
-            )
-            segments.append(
-                TranscriptSegment(
-                    segment_id=_stable_id("tx", video_id, index, f"{start:.3f}", f"{end:.3f}"),
-                    video_id=video_id,
-                    start_time=start,
-                    end_time=end,
-                    text=str(item.get("text", "")).strip(),
-                    confidence=confidence,
-                    speaker="UNKNOWN",
+        word_timestamps = bool(getattr(self.settings, "whisper_word_timestamps", True))
+        try:
+            result = model.transcribe(audio, verbose=False, word_timestamps=word_timestamps)
+        except TypeError:
+            # Very old openai-whisper builds predate word_timestamps.
+            result = model.transcribe(audio, verbose=False)
+        return parse_whisper_result(result, video_id)
+
+
+def parse_whisper_result(result: dict[str, Any], video_id: str) -> list[TranscriptSegment]:
+    """Convert a Whisper ``transcribe`` payload into timed transcript segments.
+
+    Word timings are preserved when present so the second-stage localizer can
+    answer "when is X said" at word precision instead of utterance precision.
+    """
+
+    segments: list[TranscriptSegment] = []
+    for index, item in enumerate(result.get("segments", [])):
+        start = max(0.0, float(item.get("start", 0.0)))
+        end = max(start, float(item.get("end", start)))
+        log_probability = float(item.get("avg_logprob", 0.0))
+        speech_probability = 1.0 - float(item.get("no_speech_prob", 0.0))
+        confidence = min(
+            1.0,
+            max(
+                0.0,
+                math.exp(min(0.0, log_probability)) * speech_probability,
+            ),
+        )
+        words: list[TranscriptWord] = []
+        for raw_word in item.get("words", []) or []:
+            text = str(raw_word.get("word", "")).strip()
+            if not text:
+                continue
+            word_start = max(0.0, float(raw_word.get("start", start)))
+            word_end = max(word_start, float(raw_word.get("end", word_start)))
+            probability = raw_word.get("probability")
+            words.append(
+                TranscriptWord(
+                    word=text,
+                    start_time=word_start,
+                    end_time=word_end,
+                    probability=(
+                        min(1.0, max(0.0, float(probability)))
+                        if probability is not None
+                        else None
+                    ),
                 )
             )
-        return segments
+        segments.append(
+            TranscriptSegment(
+                segment_id=_stable_id("tx", video_id, index, f"{start:.3f}", f"{end:.3f}"),
+                video_id=video_id,
+                start_time=start,
+                end_time=end,
+                text=str(item.get("text", "")).strip(),
+                confidence=confidence,
+                speaker="UNKNOWN",
+                words=words,
+            )
+        )
+    return segments
 
 
 def whisper_component_status(settings: Settings) -> str:

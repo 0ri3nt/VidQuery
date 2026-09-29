@@ -248,6 +248,19 @@ class Settings:
         default_factory=lambda: int(os.getenv("APPEARANCE_MAX_OBSERVATIONS", "6"))
     )
 
+    # Review-2: ambiguity-aware planning, evidence confidence, localization.
+    hypothesis_resolution_margin: float = field(
+        default_factory=lambda: float(os.getenv("HYPOTHESIS_RESOLUTION_MARGIN", "0.25"))
+    )
+    evidence_supported_threshold: float = field(
+        default_factory=lambda: float(os.getenv("EVIDENCE_SUPPORTED_THRESHOLD", "0.45"))
+    )
+    evidence_weak_threshold: float = field(
+        default_factory=lambda: float(os.getenv("EVIDENCE_WEAK_THRESHOLD", "0.15"))
+    )
+    whisper_word_timestamps: bool = field(
+        default_factory=lambda: _bool_env("WHISPER_WORD_TIMESTAMPS", True)
+    )
     frame_sample_rate: float = field(
         default_factory=lambda: float(os.getenv("FRAME_SAMPLE_RATE", "1.0"))
     )

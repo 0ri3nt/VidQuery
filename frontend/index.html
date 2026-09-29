@@ -6,7 +6,7 @@
     <meta name="description" content="Search inside videos with timestamped visual and spoken evidence." />
     <title>VidQuery</title>
     <link rel="stylesheet" href="/assets/app.css" />
-    <script src="/assets/app.js?v=20260814-appearance" defer></script>
+    <script src="/assets/app.js?v=20260929-review2" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -27,7 +27,7 @@
         <div class="hero">
           <p class="eyebrow">SEARCH THE MOMENT, NOT THE FILE</p>
           <h1>Ask what happened.<br /><em>Jump to when it did.</em></h1>
-          <p class="hero-copy">VidQuery ranks five-second moments using transcript, speaker, object, action, and explicit relationship evidence.</p>
+          <p class="hero-copy">VidQuery ranks five-second moments using transcript, speaker, object, action, and explicit relationship evidence, then localizes the exact peak-evidence timestamp inside the winning window.</p>
           <form id="search-form" class="search-box">
             <label class="sr-only" for="query">Natural-language video query</label>
             <input id="query" name="query" maxlength="500" autocomplete="off" placeholder="Find where someone discusses architecture near a whiteboard" required />
@@ -52,6 +52,7 @@
             <span id="result-count"></span>
           </div>
           <div id="parsed-query" class="parsed-query"></div>
+          <article id="interpretation" class="interpretation-card hidden"></article>
           <article id="generated-answer" class="answer-card hidden"></article>
           <div id="results" class="result-grid"></div>
         </section>

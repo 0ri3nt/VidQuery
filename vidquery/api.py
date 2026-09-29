@@ -30,6 +30,7 @@ from .domain import (
     UploadResponse,
     VideoRecord,
 )
+from .hypotheses import fuse_hypotheses
 from .media import MediaValidationError, UploadTooLargeError, VideoIngestionService
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService, query_planner_component_status
@@ -70,6 +71,8 @@ def create_app(
         encoder=configured_text_encoder(active_settings),
         semantic_min_similarity=active_settings.semantic_min_similarity,
         appearance_settings=active_settings,
+        evidence_supported_threshold=active_settings.evidence_supported_threshold,
+        evidence_weak_threshold=active_settings.evidence_weak_threshold,
     )
     application.state.rag = GroundedAnswerService(active_settings)
     application.state.query_planner = QueryPlanningService(active_settings)
@@ -162,7 +165,10 @@ def create_app(
                 "gnn_relationship_prediction": relationship_status,
                 "person_action_classifier": learned_action_status,
                 "sentence_embedding_retrieval": (
-                    sentence_embedding_status(app_settings.sentence_embedding_model)
+                    sentence_embedding_status(
+                        app_settings.sentence_embedding_model,
+                        app_settings.sentence_embedding_cache_dir,
+                    )
                     + "_enabled"
                     if app_settings.semantic_retrieval_mode == "sentence_transformer"
                     else "hashing_baseline_enabled"
@@ -276,30 +282,67 @@ def create_app(
                     response = request.app.state.search.search(payload)
             return response
 
-        response = retrieve(planning.plan)
-        if planning.alternatives:
-            combined = {item.segment_id: item for item in response.results}
-            for alternative in planning.alternatives:
-                for item in retrieve(alternative).results:
-                    previous = combined.get(item.segment_id)
-                    if previous is None or item.score > previous.score:
-                        combined[item.segment_id] = item
+        hypotheses = list(planning.hypotheses)
+        to_retrieve = hypotheses
+        if payload.hypothesis_id is not None:
+            pinned = [item for item in hypotheses if item.hypothesis_id == payload.hypothesis_id]
+            if not pinned:
+                raise HTTPException(
+                    status_code=422, detail="Unknown hypothesis_id for this query"
+                )
+            # Only the pinned reading is retrieved, but every reading stays in the
+            # response so the client can offer the other interpretations again.
+            to_retrieve = pinned
+
+        if hypotheses:
+            # Ambiguity-aware retrieval: run every validated interpretation,
+            # measure evidence support, then resolve or ask.
+            retrieved = {
+                item.hypothesis_id: retrieve(item.plan).results for item in to_retrieve
+            }
+            app_settings_for_fusion: Settings = request.app.state.settings
+            fused = fuse_hypotheses(
+                hypotheses,
+                retrieved,
+                limit=payload.limit,
+                resolution_margin=app_settings_for_fusion.hypothesis_resolution_margin,
+                pinned_hypothesis_id=payload.hypothesis_id,
+            )
+            selected_plan = next(
+                (
+                    item.plan
+                    for item in fused.hypotheses
+                    if item.hypothesis_id == fused.selected_hypothesis_id
+                ),
+                planning.plan,
+            )
+            response = SearchResponse(
+                query=payload.query,
+                parsed_query=selected_plan,
+                results=fused.results,
+                retrieval_backend=payload.retrieval_backend,
+                query_planner_status=planning.status,
+                query_ambiguities=list(planning.ambiguities),
+                alternative_query_plans=[
+                    item.plan
+                    for item in fused.hypotheses
+                    if item.hypothesis_id != fused.selected_hypothesis_id
+                ],
+                hypotheses=fused.hypotheses,
+                interpretation=fused.interpretation,
+                selected_hypothesis_id=fused.selected_hypothesis_id,
+                clarification_prompt=fused.clarification_prompt,
+            )
+        else:
+            response = retrieve(planning.plan)
             response = response.model_copy(
                 update={
-                    "results": sorted(
-                        combined.values(),
-                        key=lambda item: (-item.score, item.start_time, item.video_id),
-                    )[: payload.limit]
+                    "parsed_query": planning.plan,
+                    "query_planner_status": planning.status,
+                    "query_ambiguities": list(planning.ambiguities),
+                    "alternative_query_plans": list(planning.alternatives),
                 }
             )
-        response = response.model_copy(
-            update={
-                "parsed_query": planning.plan,
-                "query_planner_status": planning.status,
-                "query_ambiguities": list(planning.ambiguities),
-                "alternative_query_plans": list(planning.alternatives),
-            }
-        )
 
         try:
             outcome = request.app.state.rag.generate(payload.query, response)

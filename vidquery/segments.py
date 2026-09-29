@@ -377,6 +377,18 @@ def build_canonical_segments(
                     for item in segment_actions
                 )
             }
+            # Observation-level action timestamps for every provenance. The
+            # second-stage localizer uses these to return the instant an
+            # action was observed instead of the segment start.
+            metadata["action_instances"] = [
+                {
+                    "action": item.label,
+                    "confidence": item.confidence,
+                    "timestamp": item.timestamp,
+                    "source_method": item.source_method.value,
+                }
+                for item in segment_actions
+            ]
             metadata["gnn_action_instances"] = [
                 {
                     "action": item.label,

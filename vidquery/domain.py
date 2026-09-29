@@ -132,6 +132,21 @@ class EntityAppearance(StrictModel):
     source_method: RelationshipSource = RelationshipSource.VISUAL_ATTRIBUTE_MODEL
 
 
+class TranscriptWord(StrictModel):
+    """Word-level timing emitted by Whisper ``word_timestamps=True``."""
+
+    word: str
+    start_time: float = Field(ge=0)
+    end_time: float = Field(ge=0)
+    probability: float | None = Field(default=None, ge=0, le=1)
+
+    @model_validator(mode="after")
+    def valid_interval(self) -> TranscriptWord:
+        if self.end_time < self.start_time:
+            raise ValueError("word end_time must be greater than or equal to start_time")
+        return self
+
+
 class TranscriptSegment(StrictModel):
     segment_id: str
     video_id: str
@@ -140,6 +155,9 @@ class TranscriptSegment(StrictModel):
     text: str
     confidence: float | None = Field(default=None, ge=0, le=1)
     speaker: str = "UNKNOWN"
+    # Optional word timings. Older indexed payloads have no words; the
+    # localizer then falls back to proportional utterance interpolation.
+    words: list[TranscriptWord] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def valid_interval(self) -> TranscriptSegment:
@@ -310,11 +328,105 @@ class QueryPlan(StrictModel):
     appearance_constraints: list[AppearanceConstraint] = Field(default_factory=list)
 
 
+LocalizationPrecision = Literal[
+    "word",
+    "utterance_interpolated",
+    "utterance",
+    "frame",
+    "interval",
+    "segment",
+]
+
+
+class TemporalLocalization(StrictModel):
+    """Second-stage, sub-segment timestamp estimate for one ranked result.
+
+    ``peak_time`` is the single best moment to seek to. ``start_time`` and
+    ``end_time`` bound the supporting evidence inside the coarse segment.
+    ``precision`` states how the estimate was obtained so a reviewer can see
+    when the system only knows the five-second window.
+    """
+
+    peak_time: float = Field(ge=0)
+    start_time: float = Field(ge=0)
+    end_time: float = Field(ge=0)
+    precision: LocalizationPrecision
+    source: str
+    confidence: float = Field(ge=0, le=1)
+    evidence: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def valid_interval(self) -> TemporalLocalization:
+        if self.end_time < self.start_time:
+            raise ValueError("localization end_time must not precede start_time")
+        if not self.start_time <= self.peak_time <= self.end_time:
+            raise ValueError("localization peak_time must lie inside its interval")
+        return self
+
+
+EvidenceModality = Literal[
+    "transcript",
+    "semantic",
+    "ocr",
+    "entity",
+    "action",
+    "relationship",
+    "speaker",
+    "appearance",
+]
+EvidenceVerdict = Literal["supported", "weak", "insufficient"]
+
+
+class EvidenceContribution(StrictModel):
+    modality: EvidenceModality
+    raw_score: float = Field(ge=0, le=1)
+    source_method: str
+    reliability_prior: float = Field(ge=0, le=1)
+    query_weight: float = Field(ge=0)
+    weighted_score: float = Field(ge=0, le=1)
+
+
+class EvidenceAssessment(StrictModel):
+    """Reliability-aware confidence for one result, separate from the rank score."""
+
+    confidence: float = Field(ge=0, le=1)
+    verdict: EvidenceVerdict
+    contributions: list[EvidenceContribution] = Field(default_factory=list)
+    explanation: str = ""
+
+
+class QueryHypothesis(StrictModel):
+    """One validated interpretation of an ambiguous natural-language query."""
+
+    hypothesis_id: str
+    label: str
+    description: str
+    plan: QueryPlan
+    prior: float = Field(ge=0, le=1)
+    support: float = Field(default=0.0, ge=0, le=1)
+    posterior: float = Field(default=0.0, ge=0, le=1)
+    result_count: int = Field(default=0, ge=0)
+
+
+InterpretationStatus = Literal[
+    "single",
+    "resolved",
+    "clarification_suggested",
+    "insufficient_evidence",
+]
+
+
 class SearchRequest(StrictModel):
     query: str = Field(min_length=1, max_length=500)
     video_ids: list[str] = Field(default_factory=list, max_length=100)
     limit: int = Field(default=10, ge=1, le=50)
     retrieval_backend: Literal["sqlite", "neo4j"] = "sqlite"
+    # Review-2 controls. Defaults preserve the Review-1 ranking contract so
+    # the historical benchmark stays reproducible; the UI opts in explicitly.
+    ranking: Literal["hybrid", "reliability"] = "hybrid"
+    localize: bool = True
+    collapse_duplicate_evidence: bool = False
+    hypothesis_id: str | None = Field(default=None, max_length=64)
 
     @field_validator("query")
     @classmethod
@@ -344,6 +456,9 @@ class SearchResult(StrictModel):
     thumbnail_url: str
     stream_url: str
     match_reason: str
+    localization: TemporalLocalization | None = None
+    evidence: EvidenceAssessment | None = None
+    supporting_hypotheses: list[str] = Field(default_factory=list)
 
 
 class AnswerCitation(StrictModel):
@@ -354,6 +469,7 @@ class AnswerCitation(StrictModel):
     start_time: float = Field(ge=0)
     end_time: float = Field(ge=0)
     stream_url: str
+    peak_time: float | None = Field(default=None, ge=0)
 
     @model_validator(mode="after")
     def valid_interval(self) -> AnswerCitation:
@@ -379,6 +495,10 @@ class SearchResponse(StrictModel):
     query_planner_status: str = "deterministic"
     query_ambiguities: list[str] = Field(default_factory=list)
     alternative_query_plans: list[QueryPlan] = Field(default_factory=list)
+    hypotheses: list[QueryHypothesis] = Field(default_factory=list)
+    interpretation: InterpretationStatus = "single"
+    selected_hypothesis_id: str | None = None
+    clarification_prompt: str | None = None
 
 
 class UploadResponse(StrictModel):

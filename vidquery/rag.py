@@ -242,6 +242,18 @@ class GroundedAnswerService:
             "start_time": result.start_time,
             "end_time": result.end_time,
             "retrieval_score": result.score,
+            "peak_time": (
+                result.localization.peak_time if result.localization is not None else None
+            ),
+            "localization_precision": (
+                result.localization.precision if result.localization is not None else None
+            ),
+            "evidence_confidence": (
+                result.evidence.confidence if result.evidence is not None else None
+            ),
+            "evidence_verdict": (
+                result.evidence.verdict if result.evidence is not None else None
+            ),
             "transcript": result.transcript,
             "speakers": result.speakers,
             "ocr": [
@@ -346,4 +358,7 @@ class GroundedAnswerService:
             start_time=result.start_time,
             end_time=result.end_time,
             stream_url=result.stream_url,
+            peak_time=(
+                result.localization.peak_time if result.localization is not None else None
+            ),
         )

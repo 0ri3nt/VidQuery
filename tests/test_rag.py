@@ -114,6 +114,10 @@ def test_groq_receives_only_top_k_allowlisted_multimodal_evidence(settings_facto
         "start_time",
         "end_time",
         "retrieval_score",
+        "peak_time",
+        "localization_precision",
+        "evidence_confidence",
+        "evidence_verdict",
         "transcript",
         "speakers",
         "ocr",
@@ -226,6 +230,7 @@ def test_search_api_adds_grounded_answer_without_hiding_ranked_results(
         "start_time": 0.0,
         "end_time": 5.0,
         "stream_url": "/api/videos/video-0/stream",
+        "peak_time": None,
     }
     assert payload["rag_status"] == "generated_supported"
 

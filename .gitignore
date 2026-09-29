@@ -326,3 +326,6 @@ data/**/checkpoints/
 data/demo/**/*.mp4
 data/demo/**/*.wav
 data/demo/work/
+
+# Local checkpoint drop folder (copy into data/app/models)
+gnn_checkpoints_handoff/

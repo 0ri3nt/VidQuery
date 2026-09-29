@@ -18,7 +18,14 @@ from pydantic import Field
 from .appearance import APPEARANCE_COLORS
 from .ava_labels import AVA_V22_ACTIONS
 from .config import Settings
-from .domain import AppearanceConstraint, QueryPlan, RelationshipQuery, StrictModel
+from .domain import (
+    AppearanceConstraint,
+    QueryHypothesis,
+    QueryPlan,
+    RelationshipQuery,
+    StrictModel,
+)
+from .hypotheses import generate_hypotheses, is_bare_action_homonym
 from .rag import (
     GROQ_CHAT_COMPLETIONS_URL,
     ProviderTransport,
@@ -78,6 +85,21 @@ class QueryPlanningOutcome:
     alternatives: tuple[QueryPlan, ...] = ()
     status: str = "deterministic_clear"
     ambiguities: tuple[str, ...] = ()
+    # Review-2: every distinct validated interpretation, first one primary.
+    # Empty when the query is unambiguous.
+    hypotheses: tuple[QueryHypothesis, ...] = ()
+
+
+def _with_hypotheses(
+    hypotheses: list[QueryHypothesis], *, status: str, ambiguities: tuple[str, ...]
+) -> QueryPlanningOutcome:
+    return QueryPlanningOutcome(
+        plan=hypotheses[0].plan,
+        alternatives=tuple(item.plan for item in hypotheses[1:]),
+        status=status,
+        ambiguities=ambiguities,
+        hypotheses=tuple(hypotheses),
+    )
 
 
 def query_planner_component_status(settings: Settings) -> str:
@@ -115,20 +137,28 @@ class QueryPlanningService:
     def plan(self, query: str) -> QueryPlanningOutcome:
         local = self.parser.parse(query)
         reasons = self._ambiguity_reasons(query, local)
+        hypotheses = generate_hypotheses(query, local)
         if not reasons:
-            return QueryPlanningOutcome(plan=local)
+            if not hypotheses:
+                return QueryPlanningOutcome(plan=local)
+            # Structurally clear to the parser but semantically open (for
+            # example "find the laptop scene"): no provider call is needed,
+            # every interpretation is retrieved and fused downstream.
+            return _with_hypotheses(
+                hypotheses,
+                status="deterministic_hypotheses",
+                ambiguities=(
+                    "The query names a concept that may be visible, spoken, or written; "
+                    "all interpretations are retrieved and compared.",
+                ),
+            )
 
         bare_action = self._bare_action_homonym(query, local)
-        fallback = self._safe_fallback(query, local, bare_action, reasons)
+        fallback = self._safe_fallback(query, local, bare_action, reasons, hypotheses)
         if not self.enabled:
             return fallback
         if not self.api_key or not self.model:
-            return QueryPlanningOutcome(
-                plan=fallback.plan,
-                alternatives=fallback.alternatives,
-                status="fallback_provider_unconfigured",
-                ambiguities=fallback.ambiguities,
-            )
+            return self._restatus(fallback, "fallback_provider_unconfigured")
 
         try:
             envelope = self.transport.post_json(
@@ -145,40 +175,90 @@ class QueryPlanningService:
             planned = self._validated_plan(provider)
         except Exception as exc:
             LOGGER.warning("Constrained query planning unavailable: %s", type(exc).__name__)
-            return QueryPlanningOutcome(
-                plan=fallback.plan,
-                alternatives=fallback.alternatives,
-                status="fallback_provider_unavailable",
-                ambiguities=fallback.ambiguities,
-            )
+            return self._restatus(fallback, "fallback_provider_unavailable")
 
         if provider.confidence < self.min_confidence:
-            return QueryPlanningOutcome(
-                plan=fallback.plan,
-                alternatives=fallback.alternatives,
-                status="fallback_low_confidence",
-                ambiguities=fallback.ambiguities,
-            )
+            return self._restatus(fallback, "fallback_low_confidence")
         if bare_action:
             # A model confidence score cannot remove a genuine semantic ambiguity.
-            return QueryPlanningOutcome(
-                plan=fallback.plan,
-                alternatives=fallback.alternatives,
-                status="groq_ambiguous_merged",
-                ambiguities=fallback.ambiguities,
-            )
-        return QueryPlanningOutcome(
+            return self._restatus(fallback, "groq_ambiguous_merged")
+        provider_hypothesis = QueryHypothesis(
+            hypothesis_id="planner_validated",
+            label=self._describe_plan(planned),
+            description="Constrained planner interpretation validated against the ontology.",
             plan=planned,
+            prior=round(max(0.0, min(1.0, provider.confidence)), 4),
+        )
+        remaining = max(0.0, 1.0 - provider_hypothesis.prior)
+        deterministic = [
+            item
+            for item in (hypotheses or self._literal_hypotheses(local))
+            if item.plan != planned
+        ]
+        shared = sum(item.prior for item in deterministic) or 1.0
+        scaled = [
+            item.model_copy(update={"prior": round(remaining * item.prior / shared, 4)})
+            for item in deterministic
+        ]
+        return _with_hypotheses(
+            [provider_hypothesis, *scaled],
             status="groq_planned_validated",
             ambiguities=tuple(reasons),
         )
 
     @staticmethod
+    def _restatus(outcome: QueryPlanningOutcome, status: str) -> QueryPlanningOutcome:
+        return QueryPlanningOutcome(
+            plan=outcome.plan,
+            alternatives=outcome.alternatives,
+            status=status,
+            ambiguities=outcome.ambiguities,
+            hypotheses=outcome.hypotheses,
+        )
+
+    @staticmethod
+    def _describe_plan(plan: QueryPlan) -> str:
+        parts: list[str] = []
+        if plan.actions:
+            parts.append("action " + "/".join(plan.actions))
+        if plan.relationship_tuples:
+            parts.extend(
+                f"{item.subject} {item.predicate} {item.object}"
+                for item in plan.relationship_tuples
+            )
+        elif plan.visual_entities:
+            parts.append("visible " + "/".join(plan.visual_entities))
+        if plan.appearance_constraints:
+            parts.append("appearance match")
+        if plan.spoken_terms:
+            parts.append("spoken " + " ".join(plan.spoken_terms))
+        if plan.ocr_terms:
+            parts.append("on-screen text " + " ".join(plan.ocr_terms))
+        if plan.speaker:
+            parts.append(plan.speaker)
+        return ", ".join(parts) or plan.intent.replace("_", " ")
+
+    @staticmethod
+    def _literal_hypotheses(local: QueryPlan) -> list[QueryHypothesis]:
+        """The parser's literal reading, kept as a low-prior alternative."""
+
+        if not (local.spoken_terms or local.ocr_terms or local.visual_entities or local.actions):
+            return []
+        return [
+            QueryHypothesis(
+                hypothesis_id="literal_terms",
+                label="literal terms " + " ".join(local.spoken_terms or local.ocr_terms)
+                if (local.spoken_terms or local.ocr_terms)
+                else "literal parse",
+                description="The deterministic parser's literal reading of the query.",
+                plan=local,
+                prior=0.3,
+            )
+        ]
+
+    @staticmethod
     def _bare_action_homonym(query: str, plan: QueryPlan) -> bool:
-        if SPEECH_CUE_PATTERN.search(query.lower()) or OCR_CUE_PATTERN.search(query.lower()):
-            return False
-        core = [token for token in TOKEN_PATTERN.findall(query.lower()) if token not in STOPWORDS]
-        return len(core) == 1 and core[0] in ACTION_ALIASES and bool(plan.actions)
+        return is_bare_action_homonym(query, plan)
 
     def _ambiguity_reasons(self, query: str, plan: QueryPlan) -> list[str]:
         if self._bare_action_homonym(query, plan):
@@ -213,31 +293,17 @@ class QueryPlanningService:
         local: QueryPlan,
         bare_action: bool,
         reasons: list[str],
+        hypotheses: list[QueryHypothesis],
     ) -> QueryPlanningOutcome:
-        if not bare_action:
-            return QueryPlanningOutcome(
-                plan=local,
-                status="fallback_deterministic",
+        if bare_action or hypotheses:
+            return _with_hypotheses(
+                hypotheses,
+                status="fallback_ambiguous_merged",
                 ambiguities=tuple(reasons),
             )
-        action = local.actions[0]
-        action_plan = local.model_copy(
-            update={
-                "intent": "action_search",
-                "relationships": [],
-                "relationship_tuples": [],
-                "spoken_terms": [],
-                "ocr_terms": [],
-            }
-        )
-        transcript_plan = QueryPlan(
-            intent="transcript_search",
-            spoken_terms=[action],
-        )
         return QueryPlanningOutcome(
-            plan=action_plan,
-            alternatives=(transcript_plan,),
-            status="fallback_ambiguous_merged",
+            plan=local,
+            status="fallback_deterministic",
             ambiguities=tuple(reasons),
         )
 

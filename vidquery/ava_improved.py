@@ -244,7 +244,20 @@ class FrozenResNet18Embedder:
             device_name = "cuda" if torch.cuda.is_available() else "cpu"
         self.device = torch.device(device_name)
         weights = ResNet18_Weights.IMAGENET1K_V1
-        backbone = resnet18(weights=weights)
+        # Prefer the project TORCH_HOME cache. Python's urllib SSL on some macOS
+        # installs fails even when the weights file was already downloaded.
+        local_checkpoint = (
+            Path(os.environ.get("TORCH_HOME", Path.home() / ".cache" / "torch"))
+            / "hub"
+            / "checkpoints"
+            / "resnet18-f37072fd.pth"
+        )
+        if local_checkpoint.is_file():
+            backbone = resnet18(weights=None)
+            state = torch.load(local_checkpoint, map_location="cpu", weights_only=True)
+            backbone.load_state_dict(state)
+        else:
+            backbone = resnet18(weights=weights)
         backbone.fc = nn.Identity()
         self.model = backbone.eval().to(self.device)
         self.transform = weights.transforms()

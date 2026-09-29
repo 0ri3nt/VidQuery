@@ -22,11 +22,19 @@ from .domain import (
     SearchResponse,
     SearchResult,
 )
+from .localization import collapse_duplicate_results, localize_segment
 from .relationships import (
     RELATIONSHIP_ALIASES,
     matching_relationships,
     normalize_predicate,
     relationship_directionality,
+)
+from .reliability import (
+    DEFAULT_SUPPORTED_THRESHOLD,
+    DEFAULT_WEAK_THRESHOLD,
+    RawContribution,
+    assess_evidence,
+    reliability_rank_score,
 )
 from .storage import SQLiteRepository
 
@@ -194,6 +202,9 @@ ACTION_ALIASES = {
     "handshake": "hand shake",
     "using a laptop": "work on computer",
     "uses a laptop": "work on computer",
+    "using laptop": "work on computer",
+    "using the laptop": "work on computer",
+    "uses laptop": "work on computer",
     "watching a person": "watch person",
     "watching person": "watch person",
     "watch person": "watch person",
@@ -206,6 +217,14 @@ ACTION_ALIASES = {
     "working on the computer": "work on computer",
     "works on a laptop": "work on computer",
     "works on the laptop": "work on computer",
+    # AVA has no "typing" class; the closest person-centric label is work on computer.
+    "typing": "work on computer",
+    "types": "work on computer",
+    "typed": "work on computer",
+    "type on": "work on computer",
+    "drinking": "drink",
+    "drinks": "drink",
+    "drank": "drink",
 }
 for _ava_action in AVA_V22_ACTIONS.values():
     ACTION_ALIASES.setdefault(_ava_action, _ava_action)
@@ -214,6 +233,7 @@ STOPWORDS = {
     "a",
     "an",
     "and",
+    "another",
     "are",
     "at",
     "be",
@@ -391,6 +411,23 @@ class StructuredQueryParser:
             )
             if "talk_to" not in relationships:
                 relationships.append("talk_to")
+        # "two people interacting" is a social-proximity ask; prefer talk_to when
+        # available, otherwise person-near-person geometry/GNN still matches near.
+        interact_phrase = bool(
+            re.search(r"\b(?:people|persons|someone)\b.*\binteract(?:ing|s)?\b", normalized)
+            or re.search(r"\binteract(?:ing|s)?\b.*\b(?:people|persons)\b", normalized)
+        )
+        if interact_phrase and not relationship_tuples:
+            relationship_tuples.append(
+                RelationshipQuery(
+                    subject="person",
+                    predicate="talk_to",
+                    object="person",
+                    directionality=relationship_directionality("talk_to"),
+                )
+            )
+            if "talk_to" not in relationships:
+                relationships.append("talk_to")
         speaker_match = re.search(r"\bspeaker[_ ]?(\d+)\b", normalized, re.IGNORECASE)
         speaker = f"SPEAKER_{int(speaker_match.group(1)):02d}" if speaker_match else None
 
@@ -407,6 +444,10 @@ class StructuredQueryParser:
             consumed.update(_tokens(speaker_match.group(0)))
         consumed.update(inflected_action_tokens)
         consumed.update(appearance_tokens)
+        if interact_phrase:
+            consumed.update({"interact", "interacting", "interacts", "interaction"})
+        if any(item.predicate == "talk_to" for item in relationship_tuples):
+            consumed.update({"another", "other"})
 
         concept_terms: list[str] = []
         for token in _tokens(normalized):
@@ -825,6 +866,7 @@ class SentenceTransformerTextEncoder:
         *,
         device: str = "auto",
         allow_downloads: bool = False,
+        cache_folder: str | Path | None = None,
     ) -> None:
         if device == "auto":
             import torch
@@ -834,11 +876,13 @@ class SentenceTransformerTextEncoder:
 
         self.model_name = model_name
         self.is_semantic = True
-        self.model: Any = SentenceTransformer(
-            model_name,
-            device=device,
-            local_files_only=not allow_downloads,
-        )
+        kwargs: dict[str, Any] = {
+            "device": device,
+            "local_files_only": not allow_downloads,
+        }
+        if cache_folder is not None:
+            kwargs["cache_folder"] = str(cache_folder)
+        self.model: Any = SentenceTransformer(model_name, **kwargs)
         self.dimensions = int(self.model.get_sentence_embedding_dimension())
 
     def encode(self, text: str) -> list[float]:
@@ -857,7 +901,7 @@ class SentenceTransformerTextEncoder:
         return max(0.0, min(1.0, similarity))
 
 
-def sentence_embedding_status(model_name: str) -> str:
+def sentence_embedding_status(model_name: str, cache_folder: str | Path | None = None) -> str:
     try:
         import importlib.util
 
@@ -868,7 +912,10 @@ def sentence_embedding_status(model_name: str) -> str:
             return "available_local"
         from huggingface_hub import snapshot_download  # type: ignore[import-not-found]
 
-        snapshot_download(repo_id=model_name, local_files_only=True)
+        kwargs: dict[str, Any] = {"repo_id": model_name, "local_files_only": True}
+        if cache_folder is not None:
+            kwargs["cache_dir"] = str(cache_folder)
+        snapshot_download(**kwargs)
     except Exception:
         return "unavailable_missing_checkpoint"
     return "available_cached"
@@ -885,6 +932,7 @@ def configured_text_encoder(settings: Any) -> Any:
             settings.sentence_embedding_model,
             device=settings.sentence_embedding_device,
             allow_downloads=settings.allow_model_downloads,
+            cache_folder=settings.sentence_embedding_cache_dir,
         )
     except Exception as exc:
         LOGGER.warning(
@@ -892,6 +940,15 @@ def configured_text_encoder(settings: Any) -> Any:
             type(exc).__name__,
         )
         return HashingTextEncoder()
+
+
+@dataclass(frozen=True, slots=True)
+class ScoredEvidence:
+    score: float
+    reasons: list[str]
+    matched_relationships: list[MatchedRelationship]
+    appearance_matches: list[AppearanceMatchEvidence]
+    contributions: list[RawContribution]
 
 
 class LocalHybridSearchEngine:
@@ -903,6 +960,8 @@ class LocalHybridSearchEngine:
         semantic_min_similarity: float = 0.20,
         appearance_settings: Any | None = None,
         appearance_encoder: Any | None = None,
+        evidence_supported_threshold: float = DEFAULT_SUPPORTED_THRESHOLD,
+        evidence_weak_threshold: float = DEFAULT_WEAK_THRESHOLD,
     ):
         self.repository = repository
         self.parser = parser or StructuredQueryParser()
@@ -912,6 +971,10 @@ class LocalHybridSearchEngine:
         self.semantic_min_similarity = semantic_min_similarity
         self.appearance_settings = appearance_settings
         self._configured_appearance_encoder = appearance_encoder
+        if not 0 <= evidence_weak_threshold <= evidence_supported_threshold <= 1:
+            raise ValueError("evidence thresholds must satisfy 0 <= weak <= supported <= 1")
+        self.evidence_supported_threshold = evidence_supported_threshold
+        self.evidence_weak_threshold = evidence_weak_threshold
 
     def search(
         self,
@@ -970,7 +1033,7 @@ class LocalHybridSearchEngine:
             video = videos.get(segment.video_id)
             if video is None:
                 continue
-            score, reasons, matched_relationships, appearance_matches = self._score_with_appearance(
+            evidence = self._score_detailed(
                 plan,
                 query_vector,
                 segment,
@@ -980,8 +1043,27 @@ class LocalHybridSearchEngine:
                 appearance_encoder=appearance_encoder,
                 appearance_enabled=appearance_enabled,
             )
-            if score <= 0:
+            if evidence.score <= 0:
                 continue
+            assessment = assess_evidence(
+                plan,
+                evidence.contributions,
+                supported_threshold=self.evidence_supported_threshold,
+                weak_threshold=self.evidence_weak_threshold,
+            )
+            localization = (
+                localize_segment(
+                    plan,
+                    segment,
+                    matched_relationships=evidence.matched_relationships,
+                    appearance_matches=evidence.appearance_matches,
+                )
+                if request.localize
+                else None
+            )
+            thumbnail_time = (
+                localization.peak_time if localization is not None else segment.start_time
+            )
             scored.append(
                 SearchResult(
                     video_id=segment.video_id,
@@ -989,7 +1071,7 @@ class LocalHybridSearchEngine:
                     segment_id=segment.segment_id,
                     start_time=segment.start_time,
                     end_time=segment.end_time,
-                    score=round(score, 4),
+                    score=round(evidence.score, 4),
                     transcript=segment.transcript,
                     speakers=segment.speakers,
                     entities=segment.entities,
@@ -1000,21 +1082,45 @@ class LocalHybridSearchEngine:
                     ],
                     ocr_evidence=segment.ocr_evidence,
                     relationships=segment.relationships,
-                    matched_relationships=matched_relationships,
-                    appearance_matches=appearance_matches,
+                    matched_relationships=evidence.matched_relationships,
+                    appearance_matches=evidence.appearance_matches,
                     thumbnail_url=(
-                        f"/api/videos/{segment.video_id}/thumbnail?timestamp={segment.start_time}"
+                        f"/api/videos/{segment.video_id}/thumbnail?timestamp={thumbnail_time}"
                     ),
                     stream_url=f"/api/videos/{segment.video_id}/stream",
-                    match_reason="Matched " + ", ".join(reasons) + ".",
+                    match_reason="Matched " + ", ".join(evidence.reasons) + ".",
+                    localization=localization,
+                    evidence=assessment,
                 )
             )
 
-        scored.sort(key=lambda item: (-item.score, item.start_time, item.video_id))
+        if request.ranking == "reliability":
+            scored.sort(
+                key=lambda item: (
+                    -reliability_rank_score(item.score, item.evidence),
+                    -item.score,
+                    item.start_time,
+                    item.video_id,
+                )
+            )
+        else:
+            scored.sort(key=lambda item: (-item.score, item.start_time, item.video_id))
+        if request.collapse_duplicate_evidence and request.localize:
+            scored = collapse_duplicate_results(scored)
+        top = scored[: request.limit]
         return SearchResponse(
             query=request.query,
             parsed_query=plan,
-            results=scored[: request.limit],
+            results=top,
+            interpretation=(
+                "insufficient_evidence"
+                if not top
+                or all(
+                    item.evidence is not None and item.evidence.verdict == "insufficient"
+                    for item in top
+                )
+                else "single"
+            ),
         )
 
     def _get_appearance_encoder(self) -> Any | None:
@@ -1051,9 +1157,43 @@ class LocalHybridSearchEngine:
         list[MatchedRelationship],
         list[AppearanceMatchEvidence],
     ]:
+        evidence = self._score_detailed(
+            plan,
+            query_vector,
+            segment,
+            appearance_by_id=appearance_by_id,
+            appearance_by_track=appearance_by_track,
+            appearance_text_vectors=appearance_text_vectors,
+            appearance_encoder=appearance_encoder,
+            appearance_enabled=appearance_enabled,
+        )
+        return (
+            evidence.score,
+            evidence.reasons,
+            evidence.matched_relationships,
+            evidence.appearance_matches,
+        )
+
+    def _score_detailed(
+        self,
+        plan: QueryPlan,
+        query_vector: list[float],
+        segment,
+        *,
+        appearance_by_id: dict[str, EntityAppearance] | None = None,
+        appearance_by_track: dict[tuple[str, str], EntityAppearance] | None = None,
+        appearance_text_vectors: dict[str, list[float]] | None = None,
+        appearance_encoder: Any | None = None,
+        appearance_enabled: bool = False,
+    ) -> ScoredEvidence:
         components: list[tuple[float, float, str]] = []
+        contributions: list[RawContribution] = []
         matched_relationship_evidence: list[MatchedRelationship] = []
         appearance_match_evidence: list[AppearanceMatchEvidence] = []
+        rejected = ScoredEvidence(0.0, [], [], [], [])
+        encoder_source = (
+            self.encoder.model_name if self.encoder.is_semantic else "hashing_embedding"
+        )
         transcript_tokens = set(_tokens(segment.transcript))
         ocr_tokens = {
             token for evidence in segment.ocr_evidence for token in _tokens(evidence.text)
@@ -1110,6 +1250,14 @@ class LocalHybridSearchEngine:
             semantic_weight = 0.65 if self.encoder.is_semantic else 0.3
             components.append((1.0 - semantic_weight, lexical, spoken_reason))
             components.append((semantic_weight, vector_score, vector_reason))
+            transcript_fraction = len(matched_transcript) / len(plan.spoken_terms)
+            ocr_fraction = len(matched_ocr_for_general_concept) / len(plan.spoken_terms)
+            contributions.append(
+                RawContribution("transcript", transcript_fraction, "whisper_transcript")
+            )
+            if matched_ocr_for_general_concept:
+                contributions.append(RawContribution("ocr", ocr_fraction, "easyocr"))
+            contributions.append(RawContribution("semantic", vector_score, encoder_source))
 
         if plan.ocr_terms:
             matched_ocr = [term for term in plan.ocr_terms if term in ocr_tokens]
@@ -1137,12 +1285,14 @@ class LocalHybridSearchEngine:
                     ),
                 )
             )
+            contributions.append(RawContribution("ocr", lexical, "easyocr"))
+            contributions.append(RawContribution("semantic", vector_score, encoder_source))
 
         if plan.visual_entities:
             entity_set = {item.lower() for item in segment.entities}
             matched = [item for item in plan.visual_entities if item in entity_set]
             if len(matched) != len(plan.visual_entities):
-                return 0.0, [], [], []
+                return rejected
             components.append(
                 (
                     1.0,
@@ -1150,12 +1300,16 @@ class LocalHybridSearchEngine:
                     f"visual entities {'/'.join(matched)}" if matched else "",
                 )
             )
+            detector_confidence = self._entity_detector_confidence(matched, segment)
+            contributions.append(
+                RawContribution("entity", detector_confidence, "yolo_detection")
+            )
 
         if plan.actions:
             action_set = {item.lower() for item in segment.actions}
             matched = [item for item in plan.actions if item in action_set]
             if len(matched) != len(plan.actions):
-                return 0.0, [], [], []
+                return rejected
             action_sources = segment.processing_metadata.get("action_sources", {})
             action_confidences = segment.processing_metadata.get("action_confidences", {})
             mean_action_confidence = sum(
@@ -1174,6 +1328,14 @@ class LocalHybridSearchEngine:
                     ),
                 )
             )
+            for action in matched:
+                contributions.append(
+                    RawContribution(
+                        "action",
+                        float(action_confidences.get(action, 1.0)),
+                        str(action_sources.get(action, "unknown")),
+                    )
+                )
 
         if plan.relationship_tuples:
             confidences: list[float] = []
@@ -1182,7 +1344,7 @@ class LocalHybridSearchEngine:
             for relation_query in plan.relationship_tuples:
                 matches = matching_relationships(segment, relation_query)
                 if not matches:
-                    return 0.0, [], [], []
+                    return rejected
                 best = matches[0]
                 confidences.append(best.confidence)
                 if best.relationship_id not in seen_relationship_ids:
@@ -1196,6 +1358,9 @@ class LocalHybridSearchEngine:
                     + (f", model {best.model_version}" if best.model_version else "")
                     + ")"
                 )
+                contributions.append(
+                    RawContribution("relationship", best.confidence, best.source_method.value)
+                )
             components.append(
                 (1.0, sum(confidences) / len(confidences), "; ".join(relationship_reasons))
             )
@@ -1203,7 +1368,7 @@ class LocalHybridSearchEngine:
             relation_set = {normalize_predicate(item.predicate) for item in segment.relationships}
             matched = [item for item in plan.relationships if item in relation_set]
             if len(matched) != len(plan.relationships):
-                return 0.0, [], [], []
+                return rejected
             components.append(
                 (
                     1.0,
@@ -1211,12 +1376,29 @@ class LocalHybridSearchEngine:
                     f"relationships {'/'.join(matched)}" if matched else "",
                 )
             )
+            for predicate in matched:
+                best_relationship = max(
+                    (
+                        item
+                        for item in segment.relationships
+                        if normalize_predicate(item.predicate) == predicate
+                    ),
+                    key=lambda item: item.confidence,
+                )
+                contributions.append(
+                    RawContribution(
+                        "relationship",
+                        best_relationship.confidence,
+                        best_relationship.source_method.value,
+                    )
+                )
 
         if plan.speaker:
             speaker_matched = plan.speaker in segment.speakers
             if not speaker_matched:
-                return 0.0, [], [], []
+                return rejected
             components.append((1.0, 1.0, f"speaker {plan.speaker}"))
+            contributions.append(RawContribution("speaker", 1.0, "pyannote_diarization"))
 
         if plan.appearance_constraints and appearance_enabled:
             appearance_score = self._appearance_score(
@@ -1228,18 +1410,52 @@ class LocalHybridSearchEngine:
                 appearance_encoder,
             )
             if appearance_score is None:
-                return 0.0, [], [], []
+                return rejected
             for value, reason, evidence in appearance_score:
                 components.append((1.25, value, reason))
                 if evidence is not None:
                     appearance_match_evidence.append(evidence)
+                contributions.append(
+                    RawContribution(
+                        "appearance",
+                        value,
+                        (
+                            evidence.appearance_embedding_model
+                            if evidence is not None
+                            and "appearance_similarity" in evidence.matched_via
+                            else "visual_attribute_model"
+                        ),
+                    )
+                )
 
         if not components:
-            return 0.0, [], [], []
+            return rejected
         total_weight = sum(weight for weight, _, _ in components)
         score = sum(weight * value for weight, value, _ in components) / total_weight
         reasons = [reason for _, value, reason in components if value > 0 and reason]
-        return score, reasons, matched_relationship_evidence, appearance_match_evidence
+        return ScoredEvidence(
+            score=score,
+            reasons=reasons,
+            matched_relationships=matched_relationship_evidence,
+            appearance_matches=appearance_match_evidence,
+            contributions=contributions,
+        )
+
+    @staticmethod
+    def _entity_detector_confidence(matched: list[str], segment: Any) -> float:
+        """Mean of the best detector confidence for each required class."""
+
+        if not matched:
+            return 0.0
+        best: dict[str, float] = {}
+        for detection in getattr(segment, "detections", []):
+            label = detection.class_label.lower()
+            if label in matched:
+                best[label] = max(best.get(label, 0.0), float(detection.confidence))
+        if not best:
+            # Legacy segments may list entities without detections.
+            return 1.0
+        return sum(best.get(label, 0.0) for label in matched) / len(matched)
 
     def _appearance_score(
         self,
