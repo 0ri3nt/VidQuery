@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "title": "Synthetic controlled architecture meeting",
+  "media_path": "data/demo/final_demo.mp4",
+  "source_image_path": "data/demo/source/meeting_scene.png",
+  "source_image_provenance": "Original image generated with the built-in OpenAI image generation tool for this capstone demo; no third-party footage.",
+  "duration_seconds": 25.0,
+  "segment_duration_seconds": 5.0,
+  "entities": [
+    {"id": "presenter", "class": "person", "normalized_bbox": [0.11, 0.10, 0.43, 0.91]},
+    {"id": "colleague", "class": "person", "normalized_bbox": [0.68, 0.16, 0.93, 0.93]},
+    {"id": "laptop", "class": "laptop", "normalized_bbox": [0.21, 0.71, 0.45, 0.92]},
+    {"id": "whiteboard", "class": "whiteboard", "normalized_bbox": [0.31, 0.04, 0.92, 0.73]}
+  ],
+  "relationships": [
+    {"subject": "presenter", "predicate": "near", "object": "laptop"},
+    {"subject": "presenter", "predicate": "near", "object": "whiteboard"},
+    {"subject": "colleague", "predicate": "near", "object": "whiteboard"}
+  ],
+  "segments": [
+    {"start_time": 0.0, "end_time": 5.0, "speaker": "SPEAKER_00", "transcript": "We discuss the software architecture."},
+    {"start_time": 5.0, "end_time": 10.0, "speaker": "SPEAKER_01", "transcript": "The laptop runs the API with SQLite metadata."},
+    {"start_time": 10.0, "end_time": 15.0, "speaker": "SPEAKER_00", "transcript": "Deployment uses Docker for the backend and Neo4j graph."},
+    {"start_time": 15.0, "end_time": 20.0, "speaker": "SPEAKER_01", "transcript": "This whiteboard shows the retrieval architecture."},
+    {"start_time": 20.0, "end_time": 25.0, "speaker": "SPEAKER_00", "transcript": "The system searches speech, objects, and relationships."}
+  ],
+  "demo_queries": [
+    {"query": "architecture", "expected_start_times": [0.0, 15.0]},
+    {"query": "person near laptop", "expected_start_times": [0.0, 5.0, 10.0, 15.0, 20.0]},
+    {"query": "deployment person near laptop", "expected_start_times": [10.0]},
+    {"query": "SPEAKER_01 architecture", "expected_start_times": [15.0]},
+    {"query": "person near whiteboard", "expected_start_times": [0.0, 5.0, 10.0, 15.0, 20.0]}
+  ]
+}

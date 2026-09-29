@@ -1,0 +1,488 @@
+{
+  "schema_version": "ava-person-action-graphsage-v1",
+  "task": "multilabel person-centric AVA action classification with scene-graph context",
+  "model_type": "two-layer mean-aggregation GraphSAGE",
+  "architecture": {
+    "input_features": 30,
+    "hidden_dimensions": [
+      64,
+      32
+    ],
+    "output_labels": 6,
+    "dropout": 0.15,
+    "edge_policy": "bidirectional normalized-center distance <= 0.45"
+  },
+  "labels": [
+    "sit",
+    "stand",
+    "carry/hold",
+    "listen to",
+    "talk to",
+    "watch person"
+  ],
+  "official_ava_action_ids": [
+    11,
+    12,
+    17,
+    74,
+    79,
+    80
+  ],
+  "node_feature_names": [
+    "bbox_x1_norm",
+    "bbox_y1_norm",
+    "bbox_x2_norm",
+    "bbox_y2_norm",
+    "center_x_norm",
+    "center_y_norm",
+    "bbox_width_norm",
+    "bbox_height_norm",
+    "bbox_area_norm",
+    "bbox_aspect_ratio",
+    "detector_confidence",
+    "class_is_person",
+    "class_is_chair",
+    "class_is_couch",
+    "class_is_bed",
+    "class_is_bottle",
+    "class_is_cup",
+    "class_is_cell_phone",
+    "class_is_laptop",
+    "class_is_tv",
+    "class_is_dining_table",
+    "class_is_book",
+    "class_is_suitcase",
+    "class_is_backpack",
+    "class_is_refrigerator",
+    "class_is_other",
+    "log_audio_segment_count",
+    "log_audio_speaker_count",
+    "log_audio_duration",
+    "log_audio_text_characters"
+  ],
+  "node_class_names": [
+    "person",
+    "chair",
+    "couch",
+    "bed",
+    "bottle",
+    "cup",
+    "cell phone",
+    "laptop",
+    "tv",
+    "dining table",
+    "book",
+    "suitcase",
+    "backpack",
+    "refrigerator",
+    "other"
+  ],
+  "split": {
+    "train": [
+      "-FaXLcSFjUI",
+      "-IELREHX_js",
+      "-OyDO1g74vc"
+    ],
+    "validation": [
+      "-XpUuIgyUHE"
+    ],
+    "test": [
+      "0f39OWEqJ24"
+    ]
+  },
+  "sample_counts": {
+    "train": 2711,
+    "validation": 1129,
+    "test": 994
+  },
+  "graph_counts": {
+    "train": 1870,
+    "validation": 672,
+    "test": 744
+  },
+  "graph_statistics": {
+    "train": {
+      "graphs": 1870,
+      "person_targets": 2711,
+      "nodes": 3948,
+      "directed_edges": 5540,
+      "graphs_with_edges": 868,
+      "mean_nodes_per_graph": 2.1112
+    },
+    "validation": {
+      "graphs": 672,
+      "person_targets": 1129,
+      "nodes": 1414,
+      "directed_edges": 2662,
+      "graphs_with_edges": 323,
+      "mean_nodes_per_graph": 2.1042
+    },
+    "test": {
+      "graphs": 744,
+      "person_targets": 994,
+      "nodes": 1269,
+      "directed_edges": 1184,
+      "graphs_with_edges": 260,
+      "mean_nodes_per_graph": 1.7056
+    }
+  },
+  "class_frequency": {
+    "train": {
+      "sit": {
+        "positive": 523,
+        "negative": 2188
+      },
+      "stand": {
+        "positive": 1439,
+        "negative": 1272
+      },
+      "carry/hold": {
+        "positive": 985,
+        "negative": 1726
+      },
+      "listen to": {
+        "positive": 571,
+        "negative": 2140
+      },
+      "talk to": {
+        "positive": 894,
+        "negative": 1817
+      },
+      "watch person": {
+        "positive": 1043,
+        "negative": 1668
+      }
+    },
+    "validation": {
+      "sit": {
+        "positive": 124,
+        "negative": 1005
+      },
+      "stand": {
+        "positive": 525,
+        "negative": 604
+      },
+      "carry/hold": {
+        "positive": 804,
+        "negative": 325
+      },
+      "listen to": {
+        "positive": 283,
+        "negative": 846
+      },
+      "talk to": {
+        "positive": 363,
+        "negative": 766
+      },
+      "watch person": {
+        "positive": 503,
+        "negative": 626
+      }
+    },
+    "test": {
+      "sit": {
+        "positive": 277,
+        "negative": 717
+      },
+      "stand": {
+        "positive": 583,
+        "negative": 411
+      },
+      "carry/hold": {
+        "positive": 286,
+        "negative": 708
+      },
+      "listen to": {
+        "positive": 149,
+        "negative": 845
+      },
+      "talk to": {
+        "positive": 319,
+        "negative": 675
+      },
+      "watch person": {
+        "positive": 361,
+        "negative": 633
+      }
+    }
+  },
+  "loss": "BCEWithLogitsLoss",
+  "class_imbalance": {
+    "method": "training-split positive class weights clipped at 20",
+    "positive_weights": [
+      4.183557,
+      0.883947,
+      1.752284,
+      3.747811,
+      2.032439,
+      1.599233
+    ]
+  },
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "batch_size_graphs": 64,
+  "seed": 2026,
+  "epochs_requested": 100,
+  "epochs_completed": 21,
+  "early_stopping_patience": 15,
+  "history": [
+    {
+      "epoch": 1,
+      "training_loss": 0.91139341,
+      "validation_loss": 0.91849326
+    },
+    {
+      "epoch": 2,
+      "training_loss": 0.88450731,
+      "validation_loss": 0.89056353
+    },
+    {
+      "epoch": 3,
+      "training_loss": 0.85285155,
+      "validation_loss": 0.86956282
+    },
+    {
+      "epoch": 4,
+      "training_loss": 0.82877537,
+      "validation_loss": 0.84904675
+    },
+    {
+      "epoch": 5,
+      "training_loss": 0.80530843,
+      "validation_loss": 0.85024729
+    },
+    {
+      "epoch": 6,
+      "training_loss": 0.79528175,
+      "validation_loss": 0.84005463
+    },
+    {
+      "epoch": 7,
+      "training_loss": 0.78784004,
+      "validation_loss": 0.86659272
+    },
+    {
+      "epoch": 8,
+      "training_loss": 0.77719157,
+      "validation_loss": 0.84481564
+    },
+    {
+      "epoch": 9,
+      "training_loss": 0.76997955,
+      "validation_loss": 0.84636301
+    },
+    {
+      "epoch": 10,
+      "training_loss": 0.76107879,
+      "validation_loss": 0.85156114
+    },
+    {
+      "epoch": 11,
+      "training_loss": 0.7600323,
+      "validation_loss": 0.84142558
+    },
+    {
+      "epoch": 12,
+      "training_loss": 0.74750792,
+      "validation_loss": 0.84991497
+    },
+    {
+      "epoch": 13,
+      "training_loss": 0.74870038,
+      "validation_loss": 0.86214088
+    },
+    {
+      "epoch": 14,
+      "training_loss": 0.74637425,
+      "validation_loss": 0.85744159
+    },
+    {
+      "epoch": 15,
+      "training_loss": 0.74513437,
+      "validation_loss": 0.85080019
+    },
+    {
+      "epoch": 16,
+      "training_loss": 0.73477867,
+      "validation_loss": 0.85562248
+    },
+    {
+      "epoch": 17,
+      "training_loss": 0.73499597,
+      "validation_loss": 0.85271027
+    },
+    {
+      "epoch": 18,
+      "training_loss": 0.72377021,
+      "validation_loss": 0.86009539
+    },
+    {
+      "epoch": 19,
+      "training_loss": 0.72416068,
+      "validation_loss": 0.86190174
+    },
+    {
+      "epoch": 20,
+      "training_loss": 0.71581397,
+      "validation_loss": 0.85449022
+    },
+    {
+      "epoch": 21,
+      "training_loss": 0.71753173,
+      "validation_loss": 0.8567573
+    }
+  ],
+  "thresholds": {
+    "sit": 0.5,
+    "stand": 0.3,
+    "carry/hold": 0.15,
+    "listen to": 0.55,
+    "talk to": 0.5,
+    "watch person": 0.3
+  },
+  "validation_metrics": {
+    "macro_f1": 0.599522,
+    "micro_f1": 0.654819,
+    "per_class": {
+      "sit": {
+        "precision": 0.1643,
+        "recall": 0.653226,
+        "f1": 0.262561,
+        "support": 124
+      },
+      "stand": {
+        "precision": 0.53253,
+        "recall": 0.841905,
+        "f1": 0.652399,
+        "support": 525
+      },
+      "carry/hold": {
+        "precision": 0.712135,
+        "recall": 1.0,
+        "f1": 0.831868,
+        "support": 804
+      },
+      "listen to": {
+        "precision": 0.505263,
+        "recall": 0.678445,
+        "f1": 0.579186,
+        "support": 283
+      },
+      "talk to": {
+        "precision": 0.553753,
+        "recall": 0.752066,
+        "f1": 0.63785,
+        "support": 363
+      },
+      "watch person": {
+        "precision": 0.476861,
+        "recall": 0.942346,
+        "f1": 0.633267,
+        "support": 503
+      }
+    }
+  },
+  "test_metrics": {
+    "macro_f1": 0.517134,
+    "micro_f1": 0.548044,
+    "per_class": {
+      "sit": {
+        "precision": 0.385714,
+        "recall": 0.584838,
+        "f1": 0.464849,
+        "support": 277
+      },
+      "stand": {
+        "precision": 0.615746,
+        "recall": 0.898799,
+        "f1": 0.730823,
+        "support": 583
+      },
+      "carry/hold": {
+        "precision": 0.288016,
+        "recall": 1.0,
+        "f1": 0.447224,
+        "support": 286
+      },
+      "listen to": {
+        "precision": 0.309524,
+        "recall": 0.436242,
+        "f1": 0.362117,
+        "support": 149
+      },
+      "talk to": {
+        "precision": 0.525907,
+        "recall": 0.636364,
+        "f1": 0.575887,
+        "support": 319
+      },
+      "watch person": {
+        "precision": 0.393258,
+        "recall": 0.775623,
+        "f1": 0.521901,
+        "support": 361
+      }
+    }
+  },
+  "test_metrics_without_edges": {
+    "macro_f1": 0.48659,
+    "micro_f1": 0.543775,
+    "per_class": {
+      "sit": {
+        "precision": 0.395904,
+        "recall": 0.418773,
+        "f1": 0.407018,
+        "support": 277
+      },
+      "stand": {
+        "precision": 0.600679,
+        "recall": 0.910806,
+        "f1": 0.723926,
+        "support": 583
+      },
+      "carry/hold": {
+        "precision": 0.287726,
+        "recall": 1.0,
+        "f1": 0.446875,
+        "support": 286
+      },
+      "listen to": {
+        "precision": 0.287129,
+        "recall": 0.194631,
+        "f1": 0.232,
+        "support": 149
+      },
+      "talk to": {
+        "precision": 0.486726,
+        "recall": 0.689655,
+        "f1": 0.570687,
+        "support": 319
+      },
+      "watch person": {
+        "precision": 0.405594,
+        "recall": 0.803324,
+        "f1": 0.539033,
+        "support": 361
+      }
+    }
+  },
+  "hardware": {
+    "device": "cuda",
+    "name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "training_duration_seconds": 8.108,
+  "checkpoint_path": "data/app/models/gnn_action_classifier/graphsage_action.pt",
+  "checkpoint_sha256": "9cf767e678d3575cc114335b275caa61f044e0410170a62c126bba526b3e7f8d",
+  "validation": {
+    "status": "validated",
+    "schema_checked": true,
+    "held_out_test_video_count": 1,
+    "message_passing_ablation_reported": true
+  },
+  "limitations": [
+    "Only five AVA videos are available; validation and test each contain one video.",
+    "The task predicts person-centric AVA actions, not arbitrary object-object predicates.",
+    "Edges are deterministic spatial candidates; AVA action labels supervise person nodes.",
+    "Metrics do not establish generalization beyond the checked five-video subset."
+  ]
+}

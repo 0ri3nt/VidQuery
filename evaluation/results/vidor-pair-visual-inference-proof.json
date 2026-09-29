@@ -1,0 +1,365 @@
+{
+  "schema_version": "vidor-pair-visual-inference-proof-v1",
+  "checkpoint_status": "available_validated",
+  "model_version": "vidor-relation-pair-visual-gat-v2",
+  "split": "test",
+  "video_id": "4999665957",
+  "frame_id": 1772,
+  "timestamp": 73.83333333333333,
+  "frame_path": "data/source/vidor/selected-frames/0021/4999665957/frame_001773.jpg",
+  "frame_pixels_used": true,
+  "visual_provenance": "frozen_resnet18_subject_object_union_roi",
+  "detection_count": 5,
+  "annotated_relationships": [
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "hold",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "watch",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-4",
+      "target_class": "table"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "watch",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "above",
+      "target_id": "vidor-4999665957-1772-4",
+      "target_class": "table"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-3",
+      "source_class": "cake",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-3",
+      "source_class": "cake",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-1",
+      "target_class": "adult"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-3",
+      "source_class": "cake",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-3",
+      "source_class": "cake",
+      "predicate": "above",
+      "target_id": "vidor-4999665957-1772-4",
+      "target_class": "table"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-4",
+      "source_class": "table",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-4",
+      "source_class": "table",
+      "predicate": "beneath",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-4",
+      "source_class": "table",
+      "predicate": "beneath",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake"
+    }
+  ],
+  "prediction_count": 30,
+  "predictions": [
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake",
+      "confidence": 0.8561872839927673,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "watch",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake",
+      "confidence": 0.8534528017044067,
+      "threshold": 0.75,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-1",
+      "target_class": "adult",
+      "confidence": 0.7125279307365417,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "watch",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake",
+      "confidence": 0.8713858127593994,
+      "threshold": 0.75,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake",
+      "confidence": 0.8416450619697571,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "behind",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake",
+      "confidence": 0.7703040242195129,
+      "threshold": 0.550000011920929,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-0",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-4",
+      "target_class": "table",
+      "confidence": 0.949572741985321,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult",
+      "confidence": 0.8575159907341003,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake",
+      "confidence": 0.9081722497940063,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "watch",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake",
+      "confidence": 0.8154690861701965,
+      "threshold": 0.75,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "behind",
+      "target_id": "vidor-4999665957-1772-2",
+      "target_class": "cake",
+      "confidence": 0.6944893598556519,
+      "threshold": 0.550000011920929,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake",
+      "confidence": 0.9196250438690186,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-1",
+      "source_class": "adult",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-4",
+      "target_class": "table",
+      "confidence": 0.9756720662117004,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-4",
+      "target_class": "table",
+      "confidence": 0.8326253294944763,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-3",
+      "target_class": "cake",
+      "confidence": 0.6804146766662598,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-1",
+      "target_class": "adult",
+      "confidence": 0.8950068950653076,
+      "threshold": 0.5,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult",
+      "confidence": 0.828508734703064,
+      "threshold": 0.5,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-2",
+      "source_class": "cake",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult",
+      "confidence": 0.47798413038253784,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-3",
+      "source_class": "cake",
+      "predicate": "in_front_of",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult",
+      "confidence": 0.7253301739692688,
+      "threshold": 0.5,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    },
+    {
+      "source_id": "vidor-4999665957-1772-3",
+      "source_class": "cake",
+      "predicate": "next_to",
+      "target_id": "vidor-4999665957-1772-0",
+      "target_class": "adult",
+      "confidence": 0.45465990900993347,
+      "threshold": 0.44999998807907104,
+      "model_version": "vidor-relation-pair-visual-gat-v2",
+      "visual_provenance": "frozen_resnet18_subject_object_union_roi"
+    }
+  ],
+  "claim": "inference execution proof only; aggregate held-out metrics remain the evidence for model quality"
+}

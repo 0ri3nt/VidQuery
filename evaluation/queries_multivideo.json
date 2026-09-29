@@ -1,0 +1,262 @@
+{
+  "schema_version": "2.0",
+  "description": "Independent five-video AVA-derived evaluation corpus. Query intents and primary intervals were manually selected and checked against the canonical source artifacts; relevant lists enumerate the labelled matching windows used for scoring.",
+  "videos": [
+    "-FaXLcSFjUI",
+    "-IELREHX_js",
+    "-OyDO1g74vc",
+    "-XpUuIgyUHE",
+    "0f39OWEqJ24"
+  ],
+  "queries": [
+    {
+      "id": "fa-transcript-animal-trains", "query": "animal across trains", "category": "transcript",
+      "relevant_video_id": "-FaXLcSFjUI", "ground_truth_start_time": 900.0, "ground_truth_end_time": 905.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "animal across trains", "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-FaXLcSFjUI", "start_time": 900.0, "end_time": 905.0, "tolerance_seconds": 5.0}]
+    },
+    {
+      "id": "fa-visual-cell-phone", "query": "cell phone", "category": "visual_entity",
+      "relevant_video_id": "-FaXLcSFjUI", "ground_truth_start_time": 1140.0, "ground_truth_end_time": 1145.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["cell phone"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-FaXLcSFjUI", "start_time": 1140.0, "end_time": 1145.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "fa-relation-person-near-phone", "query": "person near cell phone", "category": "spatial_relationship",
+      "relevant_video_id": "-FaXLcSFjUI", "ground_truth_start_time": 1140.0, "ground_truth_end_time": 1145.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person", "cell phone"], "expected_relation": {"subject": "person", "predicate": "near", "object": "cell phone"}, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-FaXLcSFjUI", "start_time": 1140.0, "end_time": 1145.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "fa-action-hand-shake", "query": "person shaking hands", "category": "ava_action",
+      "relevant_video_id": "-FaXLcSFjUI", "ground_truth_start_time": 1150.0, "ground_truth_end_time": 1155.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "hand shake", "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-FaXLcSFjUI", "start_time": 1150.0, "end_time": 1155.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-FaXLcSFjUI", "start_time": 1155.0, "end_time": 1160.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-FaXLcSFjUI", "start_time": 1160.0, "end_time": 1165.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-FaXLcSFjUI", "start_time": 1630.0, "end_time": 1635.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-FaXLcSFjUI", "start_time": 1635.0, "end_time": 1640.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-FaXLcSFjUI", "start_time": 1640.0, "end_time": 1645.0, "tolerance_seconds": 0.0}
+      ]
+    },
+    {
+      "id": "fa-speaker-animal", "query": "SPEAKER_09 animal", "category": "speaker",
+      "relevant_video_id": "-FaXLcSFjUI", "ground_truth_start_time": 900.0, "ground_truth_end_time": 905.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "animal", "expected_speaker": "SPEAKER_09", "negative": false,
+      "relevant": [{"source_video_id": "-FaXLcSFjUI", "start_time": 900.0, "end_time": 905.0, "tolerance_seconds": 5.0}]
+    },
+    {
+      "id": "fa-multimodal-animal-talk", "query": "SPEAKER_09 animal person talking", "category": "multimodal",
+      "relevant_video_id": "-FaXLcSFjUI", "ground_truth_start_time": 900.0, "ground_truth_end_time": 905.0, "timestamp_tolerance": 5.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "talk to", "expected_spoken_concept": "animal", "expected_speaker": "SPEAKER_09", "negative": false,
+      "relevant": [{"source_video_id": "-FaXLcSFjUI", "start_time": 900.0, "end_time": 905.0, "tolerance_seconds": 5.0}]
+    },
+
+    {
+      "id": "iel-transcript-blame-agree", "query": "happened blame agree", "category": "transcript",
+      "relevant_video_id": "-IELREHX_js", "ground_truth_start_time": 945.0, "ground_truth_end_time": 950.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "happened blame agree", "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-IELREHX_js", "start_time": 945.0, "end_time": 950.0, "tolerance_seconds": 5.0}]
+    },
+    {
+      "id": "iel-visual-laptop", "query": "laptop", "category": "visual_entity",
+      "relevant_video_id": "-IELREHX_js", "ground_truth_start_time": 970.0, "ground_truth_end_time": 975.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["laptop"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-IELREHX_js", "start_time": 970.0, "end_time": 975.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1240.0, "end_time": 1245.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1755.0, "end_time": 1760.0, "tolerance_seconds": 0.0}
+      ]
+    },
+    {
+      "id": "iel-relation-person-contains-laptop", "query": "person contains laptop", "category": "spatial_relationship",
+      "relevant_video_id": "-IELREHX_js", "ground_truth_start_time": 1240.0, "ground_truth_end_time": 1245.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person", "laptop"], "expected_relation": {"subject": "person", "predicate": "contains", "object": "laptop"}, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-IELREHX_js", "start_time": 1240.0, "end_time": 1245.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "iel-action-open", "query": "person opening", "category": "ava_action",
+      "relevant_video_id": "-IELREHX_js", "ground_truth_start_time": 1185.0, "ground_truth_end_time": 1190.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "open", "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-IELREHX_js", "start_time": 1185.0, "end_time": 1190.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1225.0, "end_time": 1230.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1270.0, "end_time": 1275.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1410.0, "end_time": 1415.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1445.0, "end_time": 1450.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1520.0, "end_time": 1525.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-IELREHX_js", "start_time": 1705.0, "end_time": 1710.0, "tolerance_seconds": 0.0}
+      ]
+    },
+    {
+      "id": "iel-speaker-blame", "query": "SPEAKER_20 blame agree", "category": "speaker",
+      "relevant_video_id": "-IELREHX_js", "ground_truth_start_time": 945.0, "ground_truth_end_time": 950.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "blame agree", "expected_speaker": "SPEAKER_20", "negative": false,
+      "relevant": [{"source_video_id": "-IELREHX_js", "start_time": 945.0, "end_time": 950.0, "tolerance_seconds": 5.0}]
+    },
+    {
+      "id": "iel-multimodal-past-near-chair", "query": "SPEAKER_20 shared past person near chair listening", "category": "multimodal",
+      "relevant_video_id": "-IELREHX_js", "ground_truth_start_time": 945.0, "ground_truth_end_time": 950.0, "timestamp_tolerance": 5.0,
+      "expected_entities": ["person", "chair"], "expected_relation": {"subject": "person", "predicate": "near", "object": "chair"}, "expected_action": "listen to", "expected_spoken_concept": "shared past", "expected_speaker": "SPEAKER_20", "negative": false,
+      "relevant": [{"source_video_id": "-IELREHX_js", "start_time": 945.0, "end_time": 950.0, "tolerance_seconds": 5.0}]
+    },
+
+    {
+      "id": "oy-transcript-stopping", "query": "stopping", "category": "transcript",
+      "relevant_video_id": "-OyDO1g74vc", "ground_truth_start_time": 930.0, "ground_truth_end_time": 935.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "stopping", "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-OyDO1g74vc", "start_time": 930.0, "end_time": 935.0, "tolerance_seconds": 5.0}]
+    },
+    {
+      "id": "oy-visual-suitcase", "query": "suitcase", "category": "visual_entity",
+      "relevant_video_id": "-OyDO1g74vc", "ground_truth_start_time": 945.0, "ground_truth_end_time": 950.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["suitcase"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-OyDO1g74vc", "start_time": 945.0, "end_time": 950.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-OyDO1g74vc", "start_time": 1480.0, "end_time": 1485.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-OyDO1g74vc", "start_time": 1515.0, "end_time": 1520.0, "tolerance_seconds": 0.0}
+      ]
+    },
+    {
+      "id": "oy-relation-chair-near-laptop", "query": "chair near laptop", "category": "spatial_relationship",
+      "relevant_video_id": "-OyDO1g74vc", "ground_truth_start_time": 945.0, "ground_truth_end_time": 950.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["chair", "laptop"], "expected_relation": {"subject": "chair", "predicate": "near", "object": "laptop"}, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-OyDO1g74vc", "start_time": 945.0, "end_time": 950.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "oy-action-point", "query": "person pointing", "category": "ava_action",
+      "relevant_video_id": "-OyDO1g74vc", "ground_truth_start_time": 1370.0, "ground_truth_end_time": 1375.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "point to", "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-OyDO1g74vc", "start_time": 1370.0, "end_time": 1375.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-OyDO1g74vc", "start_time": 1495.0, "end_time": 1500.0, "tolerance_seconds": 0.0}
+      ]
+    },
+    {
+      "id": "oy-speaker-stopping", "query": "SPEAKER_09 stopping", "category": "speaker",
+      "relevant_video_id": "-OyDO1g74vc", "ground_truth_start_time": 930.0, "ground_truth_end_time": 935.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "stopping", "expected_speaker": "SPEAKER_09", "negative": false,
+      "relevant": [{"source_video_id": "-OyDO1g74vc", "start_time": 930.0, "end_time": 935.0, "tolerance_seconds": 5.0}]
+    },
+    {
+      "id": "oy-multimodal-stopping-fridge", "query": "SPEAKER_09 stopping person near refrigerator carrying", "category": "multimodal",
+      "relevant_video_id": "-OyDO1g74vc", "ground_truth_start_time": 930.0, "ground_truth_end_time": 935.0, "timestamp_tolerance": 5.0,
+      "expected_entities": ["person", "refrigerator"], "expected_relation": {"subject": "person", "predicate": "near", "object": "refrigerator"}, "expected_action": "carry/hold", "expected_spoken_concept": "stopping", "expected_speaker": "SPEAKER_09", "negative": false,
+      "relevant": [{"source_video_id": "-OyDO1g74vc", "start_time": 930.0, "end_time": 935.0, "tolerance_seconds": 5.0}]
+    },
+
+    {
+      "id": "xp-transcript-chiacciaio", "query": "chiacciaio cumbo crepaci", "category": "transcript",
+      "relevant_video_id": "-XpUuIgyUHE", "ground_truth_start_time": 925.0, "ground_truth_end_time": 930.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "chiacciaio cumbo crepaci", "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-XpUuIgyUHE", "start_time": 920.0, "end_time": 925.0, "tolerance_seconds": 5.0},
+        {"source_video_id": "-XpUuIgyUHE", "start_time": 925.0, "end_time": 930.0, "tolerance_seconds": 5.0}
+      ]
+    },
+    {
+      "id": "xp-visual-cell-phone", "query": "cell phone", "category": "visual_entity",
+      "relevant_video_id": "-XpUuIgyUHE", "ground_truth_start_time": 1625.0, "ground_truth_end_time": 1630.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["cell phone"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-XpUuIgyUHE", "start_time": 1625.0, "end_time": 1630.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "xp-relation-person-near-phone", "query": "person near cell phone", "category": "spatial_relationship",
+      "relevant_video_id": "-XpUuIgyUHE", "ground_truth_start_time": 1625.0, "ground_truth_end_time": 1630.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person", "cell phone"], "expected_relation": {"subject": "person", "predicate": "near", "object": "cell phone"}, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "-XpUuIgyUHE", "start_time": 1625.0, "end_time": 1630.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "xp-action-write", "query": "person writing", "category": "ava_action",
+      "relevant_video_id": "-XpUuIgyUHE", "ground_truth_start_time": 1365.0, "ground_truth_end_time": 1370.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "write", "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "-XpUuIgyUHE", "start_time": 1365.0, "end_time": 1370.0, "tolerance_seconds": 0.0},
+        {"source_video_id": "-XpUuIgyUHE", "start_time": 1395.0, "end_time": 1400.0, "tolerance_seconds": 0.0}
+      ]
+    },
+    {
+      "id": "xp-speaker-chiacciaio", "query": "SPEAKER_17 chiacciaio", "category": "speaker",
+      "relevant_video_id": "-XpUuIgyUHE", "ground_truth_start_time": 925.0, "ground_truth_end_time": 930.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "chiacciaio", "expected_speaker": "SPEAKER_17", "negative": false,
+      "relevant": [
+        {"source_video_id": "-XpUuIgyUHE", "start_time": 920.0, "end_time": 925.0, "tolerance_seconds": 5.0},
+        {"source_video_id": "-XpUuIgyUHE", "start_time": 925.0, "end_time": 930.0, "tolerance_seconds": 5.0}
+      ]
+    },
+    {
+      "id": "xp-multimodal-chiacciaio-backpack", "query": "SPEAKER_17 chiacciaio person near backpack carrying", "category": "multimodal",
+      "relevant_video_id": "-XpUuIgyUHE", "ground_truth_start_time": 920.0, "ground_truth_end_time": 925.0, "timestamp_tolerance": 5.0,
+      "expected_entities": ["person", "backpack"], "expected_relation": {"subject": "person", "predicate": "near", "object": "backpack"}, "expected_action": "carry/hold", "expected_spoken_concept": "chiacciaio", "expected_speaker": "SPEAKER_17", "negative": false,
+      "relevant": [{"source_video_id": "-XpUuIgyUHE", "start_time": 920.0, "end_time": 925.0, "tolerance_seconds": 5.0}]
+    },
+
+    {
+      "id": "of-transcript-sugar", "query": "pretty please sugar", "category": "transcript",
+      "relevant_video_id": "0f39OWEqJ24", "ground_truth_start_time": 955.0, "ground_truth_end_time": 960.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "pretty please sugar", "expected_speaker": null, "negative": false,
+      "relevant": [
+        {"source_video_id": "0f39OWEqJ24", "start_time": 950.0, "end_time": 955.0, "tolerance_seconds": 5.0},
+        {"source_video_id": "0f39OWEqJ24", "start_time": 955.0, "end_time": 960.0, "tolerance_seconds": 5.0}
+      ]
+    },
+    {
+      "id": "of-visual-keyboard", "query": "keyboard", "category": "visual_entity",
+      "relevant_video_id": "0f39OWEqJ24", "ground_truth_start_time": 1435.0, "ground_truth_end_time": 1440.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["keyboard"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "0f39OWEqJ24", "start_time": 1435.0, "end_time": 1440.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "of-relation-phone-above-laptop", "query": "cell phone above laptop", "category": "spatial_relationship",
+      "relevant_video_id": "0f39OWEqJ24", "ground_truth_start_time": 1650.0, "ground_truth_end_time": 1655.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["cell phone", "laptop"], "expected_relation": {"subject": "cell phone", "predicate": "above", "object": "laptop"}, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "0f39OWEqJ24", "start_time": 1650.0, "end_time": 1655.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "of-action-open", "query": "person opening", "category": "ava_action",
+      "relevant_video_id": "0f39OWEqJ24", "ground_truth_start_time": 1330.0, "ground_truth_end_time": 1335.0, "timestamp_tolerance": 0.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "open", "expected_spoken_concept": null, "expected_speaker": null, "negative": false,
+      "relevant": [{"source_video_id": "0f39OWEqJ24", "start_time": 1330.0, "end_time": 1335.0, "tolerance_seconds": 0.0}]
+    },
+    {
+      "id": "of-speaker-sugar", "query": "SPEAKER_08 sugar", "category": "speaker",
+      "relevant_video_id": "0f39OWEqJ24", "ground_truth_start_time": 955.0, "ground_truth_end_time": 960.0, "timestamp_tolerance": 5.0,
+      "expected_entities": [], "expected_relation": null, "expected_action": null, "expected_spoken_concept": "sugar", "expected_speaker": "SPEAKER_08", "negative": false,
+      "relevant": [
+        {"source_video_id": "0f39OWEqJ24", "start_time": 950.0, "end_time": 955.0, "tolerance_seconds": 5.0},
+        {"source_video_id": "0f39OWEqJ24", "start_time": 955.0, "end_time": 960.0, "tolerance_seconds": 5.0}
+      ]
+    },
+    {
+      "id": "of-multimodal-sugar-carry", "query": "SPEAKER_08 sugar person carrying", "category": "multimodal",
+      "relevant_video_id": "0f39OWEqJ24", "ground_truth_start_time": 955.0, "ground_truth_end_time": 960.0, "timestamp_tolerance": 5.0,
+      "expected_entities": ["person"], "expected_relation": null, "expected_action": "carry/hold", "expected_spoken_concept": "sugar", "expected_speaker": "SPEAKER_08", "negative": false,
+      "relevant": [
+        {"source_video_id": "0f39OWEqJ24", "start_time": 950.0, "end_time": 955.0, "tolerance_seconds": 5.0},
+        {"source_video_id": "0f39OWEqJ24", "start_time": 955.0, "end_time": 960.0, "tolerance_seconds": 5.0}
+      ]
+    },
+
+    {
+      "id": "fa-negative-laptop", "query": "laptop", "category": "visual_entity", "relevant_video_id": "-FaXLcSFjUI",
+      "ground_truth_start_time": null, "ground_truth_end_time": null, "timestamp_tolerance": 0.0, "expected_entities": ["laptop"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": true, "relevant": []
+    },
+    {
+      "id": "iel-negative-pointing", "query": "person pointing", "category": "ava_action", "relevant_video_id": "-IELREHX_js",
+      "ground_truth_start_time": null, "ground_truth_end_time": null, "timestamp_tolerance": 0.0, "expected_entities": ["person"], "expected_relation": null, "expected_action": "point to", "expected_spoken_concept": null, "expected_speaker": null, "negative": true, "relevant": []
+    },
+    {
+      "id": "oy-negative-backpack", "query": "backpack", "category": "visual_entity", "relevant_video_id": "-OyDO1g74vc",
+      "ground_truth_start_time": null, "ground_truth_end_time": null, "timestamp_tolerance": 0.0, "expected_entities": ["backpack"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": true, "relevant": []
+    },
+    {
+      "id": "xp-negative-watching-object", "query": "person watching", "category": "ava_action", "relevant_video_id": "-XpUuIgyUHE",
+      "ground_truth_start_time": null, "ground_truth_end_time": null, "timestamp_tolerance": 0.0, "expected_entities": ["person"], "expected_relation": null, "expected_action": "watch", "expected_spoken_concept": null, "expected_speaker": null, "negative": true, "relevant": []
+    },
+    {
+      "id": "of-negative-book", "query": "book", "category": "visual_entity", "relevant_video_id": "0f39OWEqJ24",
+      "ground_truth_start_time": null, "ground_truth_end_time": null, "timestamp_tolerance": 0.0, "expected_entities": ["book"], "expected_relation": null, "expected_action": null, "expected_spoken_concept": null, "expected_speaker": null, "negative": true, "relevant": []
+    }
+  ]
+}

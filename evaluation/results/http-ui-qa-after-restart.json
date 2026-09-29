@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0",
+  "run_at": "2026-08-09T20:05:09.761537+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "video_id": "209a32a1-1a34-41e6-addf-0b53495130da",
+  "checks": [
+    {
+      "name": "packaged_frontend",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 4963
+      }
+    },
+    {
+      "name": "page_refresh",
+      "passed": true,
+      "detail": {
+        "status": 200
+      }
+    },
+    {
+      "name": "static_delivery:/assets/app.css",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 10121
+      }
+    },
+    {
+      "name": "static_delivery:/assets/app.js",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 10588
+      }
+    },
+    {
+      "name": "video_filter_control",
+      "passed": true,
+      "detail": {
+        "selector_in_html": true
+      }
+    },
+    {
+      "name": "health",
+      "passed": true,
+      "detail": {
+        "application": "ok",
+        "database": "available",
+        "neo4j": "available",
+        "models": {
+          "yolo": "disabled",
+          "whisper": "disabled",
+          "diarization": "disabled",
+          "gnn_relationship_prediction": "unavailable_untrained",
+          "person_action_classifier": "unavailable_no_valid_checkpoint"
+        }
+      }
+    },
+    {
+      "name": "library_and_processing_status",
+      "passed": true,
+      "detail": {
+        "video_id": "209a32a1-1a34-41e6-addf-0b53495130da",
+        "display_name": "final_demo.mp4",
+        "original_filename": "final_demo.mp4",
+        "stored_path": "/app/data/app/uploads/209a32a1-1a34-41e6-addf-0b53495130da.mp4",
+        "content_sha256": "e6ffe1ee4436c0b921e399a774a222ac33d717ddd029d369569f4ff9d1f33e32",
+        "duration": 25.0,
+        "width": 1280,
+        "height": 720,
+        "fps": 25.0,
+        "has_audio": true,
+        "upload_time": "2026-08-09T19:43:28.601353Z",
+        "updated_time": "2026-08-09T19:43:31.915320Z",
+        "state": "READY",
+        "current_stage": "complete",
+        "failure_message": null,
+        "warnings": [
+          "YOLO is disabled by configuration",
+          "Whisper is disabled by configuration"
+        ]
+      }
+    },
+    {
+      "name": "multiple_video_library",
+      "passed": true,
+      "detail": {
+        "video_count": 4
+      }
+    },
+    {
+      "name": "upload_validation_error",
+      "passed": true,
+      "detail": "{\"detail\":\"Only .mp4 uploads are accepted\"}"
+    },
+    {
+      "name": "upload_deduplication",
+      "passed": true,
+      "detail": {
+        "video_id": "209a32a1-1a34-41e6-addf-0b53495130da",
+        "state": "READY",
+        "duplicate": true
+      }
+    },
+    {
+      "name": "exact_relationship_display_and_reason",
+      "passed": true,
+      "detail": {
+        "start_time": 0.0,
+        "matched_tuple": {
+          "relationship_id": "manual:209a32a1-1a34-41e6-addf-0b53495130da:0:presenter:near:laptop",
+          "source_id": "manual:209a32a1-1a34-41e6-addf-0b53495130da:0:presenter",
+          "source_class": "person",
+          "predicate": "near",
+          "target_id": "manual:209a32a1-1a34-41e6-addf-0b53495130da:0:laptop",
+          "target_class": "laptop",
+          "directionality": "symmetric",
+          "confidence": 1.0,
+          "source_method": "manual_annotation",
+          "timestamp": 0.0
+        }
+      }
+    },
+    {
+      "name": "result_thumbnail",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "bytes": 165055
+      }
+    },
+    {
+      "name": "transcript_search",
+      "passed": true,
+      "detail": [
+        15.0,
+        0.0
+      ]
+    },
+    {
+      "name": "speaker_search",
+      "passed": true,
+      "detail": [
+        15.0,
+        5.0
+      ]
+    },
+    {
+      "name": "multimodal_search",
+      "passed": true,
+      "detail": [
+        10.0,
+        5.0,
+        0.0,
+        20.0,
+        15.0
+      ]
+    },
+    {
+      "name": "neo4j_exact_graph_search",
+      "passed": true,
+      "detail": {
+        "status": 200,
+        "start_times": [
+          0.0,
+          5.0,
+          10.0,
+          15.0,
+          20.0
+        ]
+      }
+    },
+    {
+      "name": "no_result_state",
+      "passed": true,
+      "detail": {
+        "query": "zzzxylophone quantum penguin",
+        "parsed_query": {
+          "visual_entities": [],
+          "relationships": [],
+          "relationship_tuples": [],
+          "actions": [],
+          "spoken_terms": [
+            "zzzxylophone",
+            "quantum",
+            "penguin"
+          ],
+          "speaker": null
+        },
+        "results": [],
+        "retrieval_backend": "sqlite"
+      }
+    },
+    {
+      "name": "repeated_query",
+      "passed": true,
+      "detail": [
+        "209a32a1-1a34-41e6-addf-0b53495130da:0:5000",
+        "209a32a1-1a34-41e6-addf-0b53495130da:5000:10000",
+        "209a32a1-1a34-41e6-addf-0b53495130da:10000:15000",
+        "209a32a1-1a34-41e6-addf-0b53495130da:15000:20000",
+        "209a32a1-1a34-41e6-addf-0b53495130da:20000:25000"
+      ]
+    },
+    {
+      "name": "video_filter",
+      "passed": true,
+      "detail": [
+        "209a32a1-1a34-41e6-addf-0b53495130da"
+      ]
+    },
+    {
+      "name": "missing_video_filter",
+      "passed": true,
+      "detail": {
+        "query": "person",
+        "parsed_query": {
+          "visual_entities": [
+            "person"
+          ],
+          "relationships": [],
+          "relationship_tuples": [],
+          "actions": [],
+          "spoken_terms": [],
+          "speaker": null
+        },
+        "results": [],
+        "retrieval_backend": "sqlite"
+      }
+    },
+    {
+      "name": "range_video_playback",
+      "passed": true,
+      "detail": {
+        "status": 206,
+        "content_range": "bytes 0-127/445275",
+        "bytes": 128
+      }
+    },
+    {
+      "name": "invalid_range_error",
+      "passed": true,
+      "detail": "{\"detail\":\"Requested range is outside the file\"}"
+    },
+    {
+      "name": "api_not_found",
+      "passed": true,
+      "detail": "{\"detail\":\"Video was not found\"}"
+    },
+    {
+      "name": "validation_error",
+      "passed": true,
+      "detail": "{\"detail\":[{\"type\":\"string_too_short\",\"loc\":[\"body\",\"query\"],\"msg\":\"String should have at least 1 character\",\"input\":\"\",\"ctx\":{\"min_length\":1}}]}"
+    }
+  ],
+  "passed": 24,
+  "failed": 0,
+  "all_passed": true
+}

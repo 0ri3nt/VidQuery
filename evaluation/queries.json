@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "description": "Small, artifact-grounded smoke evaluation for the checked-in AVA sample. It is not a statistically representative benchmark.",
+  "queries": [
+    {
+      "id": "transcript-animal-trains",
+      "category": "transcript",
+      "query": "animal across trains",
+      "relevant": [
+        {
+          "source_video_id": "-FaXLcSFjUI",
+          "start_time": 900.0,
+          "end_time": 905.0,
+          "tolerance_seconds": 5.0
+        }
+      ],
+      "provenance": "Whisper transcript segment in the fused artifact."
+    },
+    {
+      "id": "visual-person",
+      "category": "visual",
+      "query": "person",
+      "relevant": [
+        {
+          "source_video_id": "-FaXLcSFjUI",
+          "start_time": 900.0,
+          "end_time": 905.0,
+          "tolerance_seconds": 5.0
+        }
+      ],
+      "provenance": "AVA/YOLO-derived person occurrence in the fused artifact."
+    },
+    {
+      "id": "action-watch",
+      "category": "action",
+      "query": "person watching",
+      "relevant": [
+        {
+          "source_video_id": "-FaXLcSFjUI",
+          "start_time": 900.0,
+          "end_time": 905.0,
+          "tolerance_seconds": 5.0
+        }
+      ],
+      "provenance": "Mapped AVA action 80 (watch) in the fused artifact."
+    },
+    {
+      "id": "relation-left-of-chair",
+      "category": "relational",
+      "query": "person left of chair",
+      "relevant": [
+        {
+          "source_video_id": "-FaXLcSFjUI",
+          "start_time": 1690.0,
+          "end_time": 1695.0,
+          "tolerance_seconds": 5.0
+        },
+        {
+          "source_video_id": "-FaXLcSFjUI",
+          "start_time": 1700.0,
+          "end_time": 1705.0,
+          "tolerance_seconds": 5.0
+        }
+      ],
+      "provenance": "Exact geometry-derived person-to-chair left_of edges at timestamps 1694 and 1701 in the fused artifact."
+    },
+    {
+      "id": "multimodal-speaker-topic",
+      "category": "multimodal",
+      "query": "SPEAKER_09 animal",
+      "relevant": [
+        {
+          "source_video_id": "-FaXLcSFjUI",
+          "start_time": 900.0,
+          "end_time": 905.0,
+          "tolerance_seconds": 5.0
+        }
+      ],
+      "provenance": "Aligned diarization label and Whisper transcript in the fused artifact."
+    }
+  ]
+}

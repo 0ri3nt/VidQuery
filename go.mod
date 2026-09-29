@@ -1,3 +1,3 @@
-module exmaple.com/m
+module vidquery
 
 go 1.24.5

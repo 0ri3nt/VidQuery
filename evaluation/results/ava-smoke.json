@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-07T22:54:58.530354+00:00",
+  "dataset": "evaluation/queries.json",
+  "query_count": 5,
+  "indexed_video_count": 1,
+  "indexed_segment_count": 154,
+  "cutoff": 5,
+  "summary": {
+    "transcript_lexical": {
+      "overall": {
+        "precision_at_1": 0.4,
+        "precision_at_5": 0.08,
+        "recall_at_5": 0.4,
+        "mrr": 0.4,
+        "timestamp_tolerance_rate": 0.4,
+        "temporal_iou": 0.4,
+        "latency_ms": 13.5734
+      },
+      "by_category": {
+        "action": {
+          "precision_at_1": 0.0,
+          "precision_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "mrr": 0.0,
+          "timestamp_tolerance_rate": 0.0,
+          "temporal_iou": 0.0,
+          "latency_ms": 10.571
+        },
+        "multimodal": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 10.928
+        },
+        "relational": {
+          "precision_at_1": 0.0,
+          "precision_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "mrr": 0.0,
+          "timestamp_tolerance_rate": 0.0,
+          "temporal_iou": 0.0,
+          "latency_ms": 12.069
+        },
+        "transcript": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 14.885
+        },
+        "visual": {
+          "precision_at_1": 0.0,
+          "precision_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "mrr": 0.0,
+          "timestamp_tolerance_rate": 0.0,
+          "temporal_iou": 0.0,
+          "latency_ms": 19.414
+        }
+      }
+    },
+    "hybrid": {
+      "overall": {
+        "precision_at_1": 1.0,
+        "precision_at_5": 0.28,
+        "recall_at_5": 1.0,
+        "mrr": 1.0,
+        "timestamp_tolerance_rate": 1.0,
+        "temporal_iou": 1.0,
+        "latency_ms": 16.6542
+      },
+      "by_category": {
+        "action": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 20.646
+        },
+        "multimodal": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.4,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 19.859
+        },
+        "relational": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 12.135
+        },
+        "transcript": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 18.657
+        },
+        "visual": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.4,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 11.974
+        }
+      }
+    }
+  },
+  "queries": {
+    "transcript_lexical": [
+      {
+        "id": "transcript-animal-trains",
+        "category": "transcript",
+        "query": "animal across trains",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 14.885
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 900.0,
+            "end_time": 905.0,
+            "score": 1.0
+          }
+        ]
+      },
+      {
+        "id": "visual-person",
+        "category": "visual",
+        "query": "person",
+        "metrics": {
+          "precision_at_1": 0.0,
+          "precision_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "mrr": 0.0,
+          "timestamp_tolerance_rate": 0.0,
+          "temporal_iou": 0.0,
+          "latency_ms": 19.414
+        },
+        "results": []
+      },
+      {
+        "id": "action-watch",
+        "category": "action",
+        "query": "person watching",
+        "metrics": {
+          "precision_at_1": 0.0,
+          "precision_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "mrr": 0.0,
+          "timestamp_tolerance_rate": 0.0,
+          "temporal_iou": 0.0,
+          "latency_ms": 10.571
+        },
+        "results": []
+      },
+      {
+        "id": "relation-near-chair",
+        "category": "relational",
+        "query": "person near chair",
+        "metrics": {
+          "precision_at_1": 0.0,
+          "precision_at_5": 0.0,
+          "recall_at_5": 0.0,
+          "mrr": 0.0,
+          "timestamp_tolerance_rate": 0.0,
+          "temporal_iou": 0.0,
+          "latency_ms": 12.069
+        },
+        "results": []
+      },
+      {
+        "id": "multimodal-speaker-topic",
+        "category": "multimodal",
+        "query": "SPEAKER_09 animal",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 10.928
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 900.0,
+            "end_time": 905.0,
+            "score": 1.0
+          }
+        ]
+      }
+    ],
+    "hybrid": [
+      {
+        "id": "transcript-animal-trains",
+        "category": "transcript",
+        "query": "animal across trains",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 18.657
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 900.0,
+            "end_time": 905.0,
+            "score": 0.826
+          }
+        ]
+      },
+      {
+        "id": "visual-person",
+        "category": "visual",
+        "query": "person",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.4,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 11.974
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 900.0,
+            "end_time": 905.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 905.0,
+            "end_time": 910.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 910.0,
+            "end_time": 915.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 915.0,
+            "end_time": 920.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 920.0,
+            "end_time": 925.0,
+            "score": 1.0
+          }
+        ]
+      },
+      {
+        "id": "action-watch",
+        "category": "action",
+        "query": "person watching",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 20.646
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 900.0,
+            "end_time": 905.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 930.0,
+            "end_time": 935.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 950.0,
+            "end_time": 955.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 985.0,
+            "end_time": 990.0,
+            "score": 1.0
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 990.0,
+            "end_time": 995.0,
+            "score": 1.0
+          }
+        ]
+      },
+      {
+        "id": "relation-near-chair",
+        "category": "relational",
+        "query": "person near chair",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.2,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 12.135
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 1700.0,
+            "end_time": 1705.0,
+            "score": 1.0
+          }
+        ]
+      },
+      {
+        "id": "multimodal-speaker-topic",
+        "category": "multimodal",
+        "query": "SPEAKER_09 animal",
+        "metrics": {
+          "precision_at_1": 1.0,
+          "precision_at_5": 0.4,
+          "recall_at_5": 1.0,
+          "mrr": 1.0,
+          "timestamp_tolerance_rate": 1.0,
+          "temporal_iou": 1.0,
+          "latency_ms": 19.859
+        },
+        "results": [
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 900.0,
+            "end_time": 905.0,
+            "score": 0.8757
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 905.0,
+            "end_time": 910.0,
+            "score": 0.5
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 910.0,
+            "end_time": 915.0,
+            "score": 0.5
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 915.0,
+            "end_time": 920.0,
+            "score": 0.5
+          },
+          {
+            "source_video_id": "-FaXLcSFjUI",
+            "start_time": 940.0,
+            "end_time": 945.0,
+            "score": 0.5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "node_counts": [
+    {
+      "labels": [
+        "Action"
+      ],
+      "count": 57
+    },
+    {
+      "labels": [
+        "EntityOccurrence"
+      ],
+      "count": 6726
+    },
+    {
+      "labels": [
+        "RelationshipEvidence"
+      ],
+      "count": 45047
+    },
+    {
+      "labels": [
+        "Segment"
+      ],
+      "count": 872
+    },
+    {
+      "labels": [
+        "Speaker"
+      ],
+      "count": 83
+    },
+    {
+      "labels": [
+        "TranscriptSegment"
+      ],
+      "count": 925
+    },
+    {
+      "labels": [
+        "Video"
+      ],
+      "count": 8
+    }
+  ],
+  "constraints": [
+    {
+      "count": 13,
+      "names": [
+        "action_name_unique",
+        "audio_segment_key_unique",
+        "concept_name_unique",
+        "detection_id_unique",
+        "frame_key_unique",
+        "object_key_unique",
+        "person_key_unique",
+        "relationship_evidence_id_unique",
+        "scene_key_unique",
+        "segment_id_unique",
+        "speaker_key_unique",
+        "transcript_segment_id_unique",
+        "video_id_unique"
+      ]
+    }
+  ],
+  "indexes": [
+    {
+      "count": 22,
+      "names": [
+        "action_name_unique",
+        "audio_segment_key_unique",
+        "audio_segment_time_idx",
+        "concept_name_unique",
+        "detection_id_unique",
+        "entity_occurrence_class_idx",
+        "frame_key_unique",
+        "frame_timestamp_idx",
+        "index_343aff4e",
+        "index_f7700477",
+        "object_class_idx",
+        "object_key_unique",
+        "person_key_unique",
+        "relationship_evidence_id_unique",
+        "relationship_predicate_idx",
+        "scene_key_unique",
+        "scene_timestamp_idx",
+        "segment_id_unique",
+        "segment_video_time_idx",
+        "speaker_key_unique",
+        "transcript_segment_id_unique",
+        "video_id_unique"
+      ]
+    }
+  ],
+  "duplicate_video_ids": [],
+  "duplicate_segment_ids": [],
+  "demo_tuple": [
+    {
+      "segment_id": "209a32a1-1a34-41e6-addf-0b53495130da:0:5000",
+      "start_time": 0.0,
+      "end_time": 5.0,
+      "relationship_id": "manual:209a32a1-1a34-41e6-addf-0b53495130da:0:presenter:near:laptop",
+      "source_method": "manual_annotation"
+    },
+    {
+      "segment_id": "209a32a1-1a34-41e6-addf-0b53495130da:5000:10000",
+      "start_time": 5.0,
+      "end_time": 10.0,
+      "relationship_id": "manual:209a32a1-1a34-41e6-addf-0b53495130da:5000:presenter:near:laptop",
+      "source_method": "manual_annotation"
+    }
+  ]
+}

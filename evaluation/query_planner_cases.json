@@ -1,0 +1,40 @@
+{
+  "schema_version": "vidquery-query-planner-evaluation-v1",
+  "cases": [
+    {
+      "id": "observed-driving",
+      "query": "show me someone driving",
+      "expected": {"intent": "action_search", "actions": ["drive"], "spoken_terms": []}
+    },
+    {
+      "id": "spoken-drive",
+      "query": "where did they say drive?",
+      "expected": {"intent": "transcript_search", "actions": [], "spoken_terms": ["drive"]}
+    },
+    {
+      "id": "holding-mug",
+      "query": "someone holding a mug",
+      "expected": {"visual_entities": ["person", "cup"], "tuple_predicate": "hold"}
+    },
+    {
+      "id": "visible-kubernetes",
+      "query": "Kubernetes written on screen",
+      "expected": {"intent": "ocr_search", "ocr_terms": ["kubernetes"], "spoken_terms": []}
+    },
+    {
+      "id": "spoken-kubernetes",
+      "query": "where was Kubernetes mentioned?",
+      "expected": {"intent": "transcript_search", "spoken_terms": ["kubernetes"], "ocr_terms": []}
+    },
+    {
+      "id": "person-interaction",
+      "query": "two people speaking with each other",
+      "expected": {"intent": "relationship_search", "tuple_predicate": "talk_to"}
+    },
+    {
+      "id": "ambiguous-drive",
+      "query": "find drive",
+      "expected": {"actions": ["drive"], "alternative_spoken_terms": ["drive"], "ambiguous": true}
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "challenge-1.0",
+  "description": "Review-2 challenge benchmark template. Copy to evaluation/queries_challenge.json, replace every example entry with a manually labelled query on UNSEEN videos, and delete the 'status': 'example' markers. The evaluator refuses to run while example entries remain, so template numbers can never be reported by accident.",
+  "annotation_guidelines": {
+    "videos": "Use videos that were not used for any model training, validation, or the Review-1 benchmark. Record the file stem as source_video_id (the evaluator matches it to the indexed original filename).",
+    "peak_time": "Scrub the player and record the single best moment to seek to, to 0.1 s precision. For speech it is the onset of the target word; for objects/actions it is the frame where the event is clearest.",
+    "interval": "start_time/end_time bound the whole event (word span, object visibility run, action duration). Do NOT snap to 5-second boundaries; the point of this benchmark is sub-segment precision.",
+    "ambiguous": "At least 15 queries with two defensible readings (spoken vs visible, action vs word, OCR vs speech). Set expected_intents to every reading that is actually present in the video; if only one reading exists, list only that one so intent accuracy is meaningful.",
+    "timestamp": "At least 15 queries whose answer is a precise moment (a word onset, an object appearing, a gesture).",
+    "negative": "At least 5 queries for things that do not occur in the video. negative=true and no relevant list.",
+    "two_annotators": "For conference use, have a second annotator label at least 20 queries independently and report agreement (Cohen's kappa on intent, mean |peak difference| on time).",
+    "tolerance_seconds": "Default 2.0. Do not lower it below the frame sampling interval of the index."
+  },
+  "queries": [
+    {
+      "status": "example",
+      "id": "amb-drive-01",
+      "query": "find drive",
+      "category": "ambiguous",
+      "source_video_id": "unseen_meeting_01",
+      "negative": false,
+      "expected_intents": ["transcript_search"],
+      "expected_hypothesis_ids": ["spoken_mention"],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "unseen_meeting_01",
+          "peak_time": 42.3,
+          "start_time": 42.1,
+          "end_time": 42.8
+        }
+      ],
+      "annotator": "initials",
+      "notes": "The word 'drive' is spoken; nobody drives a vehicle."
+    },
+    {
+      "status": "example",
+      "id": "ts-deployment-01",
+      "query": "when is deployment mentioned",
+      "category": "timestamp",
+      "source_video_id": "unseen_meeting_01",
+      "negative": false,
+      "expected_intents": ["transcript_search"],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "unseen_meeting_01",
+          "peak_time": 71.6,
+          "start_time": 71.4,
+          "end_time": 72.2
+        }
+      ],
+      "annotator": "initials",
+      "notes": "Word onset from the waveform."
+    },
+    {
+      "status": "example",
+      "id": "ts-laptop-01",
+      "query": "find the laptop scene",
+      "category": "timestamp",
+      "source_video_id": "unseen_office_02",
+      "negative": false,
+      "expected_intents": ["visual_search"],
+      "expected_hypothesis_ids": ["visible_object"],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "unseen_office_02",
+          "peak_time": 12.0,
+          "start_time": 11.0,
+          "end_time": 19.5
+        }
+      ],
+      "annotator": "initials",
+      "notes": "Laptop first fully visible at 11.0 s."
+    },
+    {
+      "status": "example",
+      "id": "neg-bicycle-01",
+      "query": "find someone riding a bicycle",
+      "category": "negative",
+      "source_video_id": "unseen_office_02",
+      "negative": true,
+      "annotator": "initials",
+      "notes": "No bicycle appears or is mentioned."
+    }
+  ]
+}

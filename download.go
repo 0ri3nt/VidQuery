@@ -2,22 +2,26 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 // termWriter manages cursor positioning so each file owns a fixed row
 type termWriter struct {
-	mu      sync.Mutex
+	mu       sync.Mutex
 	rowCount int
 }
 
 var term = &termWriter{}
+var httpClient = &http.Client{Timeout: 5 * time.Minute}
 
 // reserve claims the next available row, returning its index
 func (tw *termWriter) reserve() int {
@@ -69,12 +73,14 @@ func renderBar(filename string, current, total int64) string {
 
 // printProgress owns a reserved terminal row and updates it until done is closed
 func printProgress(row int, filename string, bytesRead *atomic.Int64, total int64, done <-chan struct{}) {
+	ticker := time.NewTicker(250 * time.Millisecond)
+	defer ticker.Stop()
 	for {
 		select {
 		case <-done:
 			term.write(row, renderBar(filename, total, total))
 			return
-		default:
+		case <-ticker.C:
 			term.write(row, renderBar(filename, bytesRead.Load(), total))
 		}
 	}
@@ -89,11 +95,11 @@ func truncate(s string, max int) string {
 
 func formatBytes(b int64) string {
 	switch {
-	case b >= 1 << 30:
+	case b >= 1<<30:
 		return fmt.Sprintf("%.1fGB", float64(b)/float64(1<<30))
-	case b >= 1 << 20:
+	case b >= 1<<20:
 		return fmt.Sprintf("%.1fMB", float64(b)/float64(1<<20))
-	case b >= 1 << 10:
+	case b >= 1<<10:
 		return fmt.Sprintf("%.1fKB", float64(b)/float64(1<<10))
 	default:
 		return fmt.Sprintf("%dB", b)
@@ -101,18 +107,18 @@ func formatBytes(b int64) string {
 }
 
 func workerCalc(fileSize int64) int64 {
-	workers := fileSize / (500 * 1024 * 1024)
+	workers := fileSize / (64 * 1024 * 1024)
 	if workers < 1 {
 		workers = 1
 	}
-	if workers > 8 {
-		workers = 8
+	if workers > 4 {
+		workers = 4
 	}
 	return workers
 }
 
-func readParse() ([]string, error) {
-	file, err := os.Open("ava_train_v2.2.txt")
+func readParse(listPath string) ([]string, error) {
+	file, err := os.Open(listPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open file list: %w", err)
 	}
@@ -128,24 +134,43 @@ func readParse() ([]string, error) {
 	return files, scanner.Err()
 }
 
-func Download(baseURL, filename string) error {
+func Download(baseURL, filename, outputDir string) error {
 	fullURL := baseURL + filename
+	destination := filepath.Join(outputDir, filename)
 
-	resp, err := http.Head(fullURL)
+	req, err := http.NewRequest(http.MethodHead, fullURL, nil)
+	if err != nil {
+		return fmt.Errorf("HEAD request creation failed for %s: %w", filename, err)
+	}
+	resp, err := httpClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("HEAD request failed for %s: %w", filename, err)
 	}
 	resp.Body.Close()
 
 	fileSize := resp.ContentLength
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 || fileSize <= 0 {
+		return fmt.Errorf("HEAD request for %s returned %s", filename, resp.Status)
+	}
+	if info, statErr := os.Stat(destination); statErr == nil && info.Size() == fileSize {
+		fmt.Printf("%-20s cached (%s)\n", truncate(filename, 20), formatBytes(fileSize))
+		return nil
+	}
 	numWorkers := workerCalc(fileSize)
 	chunkSize := fileSize / numWorkers
 
-	outFile, err := os.Create(filename)
-	if err != nil {
-		return fmt.Errorf("failed to create output file %s: %w", filename, err)
+	if err := os.MkdirAll(outputDir, 0o755); err != nil {
+		return fmt.Errorf("failed to create output directory: %w", err)
 	}
-	defer outFile.Close()
+	partial := destination + ".part"
+	outFile, err := os.Create(partial)
+	if err != nil {
+		return fmt.Errorf("failed to create output file %s: %w", partial, err)
+	}
+	if err := outFile.Truncate(fileSize); err != nil {
+		outFile.Close()
+		return fmt.Errorf("failed to size partial file %s: %w", partial, err)
+	}
 
 	var bytesRead atomic.Int64
 	done := make(chan struct{})
@@ -168,7 +193,7 @@ func Download(baseURL, filename string) error {
 
 		go func(start, end int64) {
 			defer wg.Done()
-			if err := downloadChunk(fullURL, outFile, start, end, &bytesRead); err != nil {
+			if err := downloadChunkWithRetry(fullURL, outFile, start, end, &bytesRead); err != nil {
 				errs <- err
 			}
 		}(start, end)
@@ -180,8 +205,19 @@ func Download(baseURL, filename string) error {
 
 	for err := range errs {
 		if err != nil {
+			outFile.Close()
 			return err
 		}
+	}
+	if err := outFile.Sync(); err != nil {
+		outFile.Close()
+		return err
+	}
+	if err := outFile.Close(); err != nil {
+		return err
+	}
+	if err := os.Rename(partial, destination); err != nil {
+		return fmt.Errorf("failed to finalize %s: %w", destination, err)
 	}
 	return nil
 }
@@ -193,33 +229,56 @@ func downloadChunk(url string, out *os.File, start, end int64, bytesRead *atomic
 	}
 	req.Header.Set("Range", fmt.Sprintf("bytes=%d-%d", start, end))
 
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := httpClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("chunk request failed: %w", err)
 	}
 	defer resp.Body.Close()
-
-	pr := &progressReader{reader: resp.Body, bytesRead: bytesRead}
-	data, err := io.ReadAll(pr)
-	if err != nil {
-		return fmt.Errorf("failed to read chunk body: %w", err)
+	if resp.StatusCode != http.StatusPartialContent {
+		return fmt.Errorf("range %d-%d returned %s", start, end, resp.Status)
 	}
 
-	_, err = out.WriteAt(data, start)
-	return err
+	pr := &progressReader{reader: resp.Body, bytesRead: bytesRead}
+	written, err := io.Copy(io.NewOffsetWriter(out, start), pr)
+	if err != nil {
+		return fmt.Errorf("failed to stream chunk body: %w", err)
+	}
+	expected := end - start + 1
+	if written != expected {
+		return fmt.Errorf("range %d-%d wrote %d bytes, expected %d", start, end, written, expected)
+	}
+	return nil
+}
+
+func downloadChunkWithRetry(url string, out *os.File, start, end int64, bytesRead *atomic.Int64) error {
+	var lastErr error
+	for attempt := 1; attempt <= 4; attempt++ {
+		lastErr = downloadChunk(url, out, start, end, bytesRead)
+		if lastErr == nil {
+			return nil
+		}
+		if attempt < 4 {
+			time.Sleep(time.Duration(attempt*attempt) * time.Second)
+		}
+	}
+	return fmt.Errorf("range %d-%d failed after 4 attempts: %w", start, end, lastErr)
 }
 
 func main() {
-	const baseURL = "https://s3.amazonaws.com/ava-dataset/trainval/"
-	const maxConcurrentFiles = 5
+	listPath := flag.String("list", "ava_train_v2.2.txt", "newline-delimited AVA filenames")
+	outputDir := flag.String("output-dir", ".", "download destination")
+	baseURL := flag.String("base-url", "https://s3.amazonaws.com/ava-dataset/trainval/", "AVA media base URL")
+	flag.Parse()
+	const maxConcurrentFiles = 2
 
-	listOfFiles, err := readParse()
+	listOfFiles, err := readParse(*listPath)
 	if err != nil {
 		panic(err)
 	}
 
 	sem := make(chan struct{}, maxConcurrentFiles)
 	var wg sync.WaitGroup
+	var failed atomic.Bool
 
 	for _, filename := range listOfFiles {
 		wg.Add(1)
@@ -227,12 +286,17 @@ func main() {
 		go func(f string) {
 			defer wg.Done()
 			defer func() { <-sem }()
-			if err := Download(baseURL, f); err != nil {
+			if err := Download(*baseURL, f, *outputDir); err != nil {
+				failed.Store(true)
 				fmt.Fprintf(os.Stderr, "error downloading %s: %v\n", f, err)
 			}
 		}(filename)
 	}
 
 	wg.Wait()
+	if failed.Load() {
+		fmt.Fprintln(os.Stderr, "one or more downloads failed")
+		os.Exit(1)
+	}
 	fmt.Println("\nAll downloads complete.")
 }

@@ -1,0 +1,45 @@
+{
+  "schema_version": "groq-grounded-rag-proof-v1",
+  "generated_at": "2026-08-12T19:39:25.824405+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "query": "Where is architecture discussed?",
+  "video_name": "final_demo.mp4",
+  "retrieval_backend": "sqlite",
+  "ranked_result_count": 2,
+  "rag_health": "available_configured",
+  "rag_status": "generated_supported",
+  "answer": {
+    "answer": "Architecture is discussed in the first 5 seconds of the video and again around 15\u201320 seconds.",
+    "supported": true,
+    "evidence_ids": [
+      "E1",
+      "E2"
+    ],
+    "citations": [
+      {
+        "evidence_id": "E1",
+        "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+        "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+        "video_title": "final_demo.mp4",
+        "start_time": 0.0,
+        "end_time": 5.0,
+        "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream"
+      },
+      {
+        "evidence_id": "E2",
+        "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+        "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+        "video_title": "final_demo.mp4",
+        "start_time": 15.0,
+        "end_time": 20.0,
+        "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream"
+      }
+    ]
+  },
+  "verified": {
+    "raw_ranked_results_preserved": true,
+    "all_evidence_ids_resolved": true,
+    "all_citation_intervals_match_ranked_results": true,
+    "no_api_key_in_artifact": true
+  }
+}

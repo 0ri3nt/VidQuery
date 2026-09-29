@@ -1,0 +1,11 @@
+# Reproducible CPU/API base. Install optional groups from pyproject.toml for ML.
+fastapi==0.136.0
+uvicorn[standard]==0.44.0
+pydantic==2.13.2
+python-multipart==0.0.9
+python-dotenv==1.2.2
+opencv-python-headless==4.13.0.92
+imageio-ffmpeg==0.6.0
+numpy==2.4.4
+Pillow==12.2.0
+neo4j==6.1.0

@@ -1,0 +1,95 @@
+{
+  "schema_version": "ava-expansion-processing-v1",
+  "selection": "evaluation/results/ava-expansion-selection-target5.json",
+  "requested_video_count": 12,
+  "processed_video_count": 12,
+  "unavailable_video_ids": [],
+  "videos": {
+    "9mLYmkonWZQ": {
+      "split": "train",
+      "requested_timestamps": 732,
+      "extracted_frames": 732,
+      "scene_graphs": 732,
+      "fused_path": "data/ava/fused/train/9mLYmkonWZQ.fused.json"
+    },
+    "C3qk4yAMANk": {
+      "split": "train",
+      "requested_timestamps": 831,
+      "extracted_frames": 831,
+      "scene_graphs": 831,
+      "fused_path": "data/ava/fused/train/C3qk4yAMANk.fused.json"
+    },
+    "_ithRWANKB0": {
+      "split": "train",
+      "requested_timestamps": 720,
+      "extracted_frames": 720,
+      "scene_graphs": 720,
+      "fused_path": "data/ava/fused/train/_ithRWANKB0.fused.json"
+    },
+    "b-YoBU0XT90": {
+      "split": "val",
+      "requested_timestamps": 611,
+      "extracted_frames": 611,
+      "scene_graphs": 611,
+      "fused_path": "data/ava/fused/val/b-YoBU0XT90.fused.json"
+    },
+    "covMYDBa5dk": {
+      "split": "val",
+      "requested_timestamps": 761,
+      "extracted_frames": 761,
+      "scene_graphs": 761,
+      "fused_path": "data/ava/fused/val/covMYDBa5dk.fused.json"
+    },
+    "fpprSy6AzKk": {
+      "split": "val",
+      "requested_timestamps": 843,
+      "extracted_frames": 843,
+      "scene_graphs": 843,
+      "fused_path": "data/ava/fused/val/fpprSy6AzKk.fused.json"
+    },
+    "hbYvDvJrpNk": {
+      "split": "train",
+      "requested_timestamps": 843,
+      "extracted_frames": 843,
+      "scene_graphs": 843,
+      "fused_path": "data/ava/fused/train/hbYvDvJrpNk.fused.json"
+    },
+    "lWXhqIAvarw": {
+      "split": "train",
+      "requested_timestamps": 830,
+      "extracted_frames": 830,
+      "scene_graphs": 830,
+      "fused_path": "data/ava/fused/train/lWXhqIAvarw.fused.json"
+    },
+    "t0V4drbYDnc": {
+      "split": "train",
+      "requested_timestamps": 867,
+      "extracted_frames": 867,
+      "scene_graphs": 867,
+      "fused_path": "data/ava/fused/train/t0V4drbYDnc.fused.json"
+    },
+    "xeGWXqSvC-8": {
+      "split": "val",
+      "requested_timestamps": 615,
+      "extracted_frames": 615,
+      "scene_graphs": 615,
+      "fused_path": "data/ava/fused/val/xeGWXqSvC-8.fused.json"
+    },
+    "y7ncweROe9U": {
+      "split": "train",
+      "requested_timestamps": 850,
+      "extracted_frames": 850,
+      "scene_graphs": 850,
+      "fused_path": "data/ava/fused/train/y7ncweROe9U.fused.json"
+    },
+    "zR725veL-DI": {
+      "split": "train",
+      "requested_timestamps": 849,
+      "extracted_frames": 849,
+      "scene_graphs": 849,
+      "fused_path": "data/ava/fused/train/zR725veL-DI.fused.json"
+    }
+  },
+  "total_annotated_frames": 9352,
+  "yolo_model": "yolov8n.pt"
+}
