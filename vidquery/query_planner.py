@@ -30,6 +30,7 @@ from .rag import (
     GROQ_CHAT_COMPLETIONS_URL,
     ProviderTransport,
     UrllibProviderTransport,
+    reasoning_options,
 )
 from .relationships import RELATIONSHIP_ALIASES, normalize_predicate, relationship_directionality
 from .search import (
@@ -479,6 +480,7 @@ class QueryPlanningService:
             "model": self.model,
             "temperature": 0,
             "max_completion_tokens": 700,
+            **reasoning_options(self.model),
             "tool_choice": "none",
             "messages": [
                 {

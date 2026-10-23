@@ -26,6 +26,15 @@ class RAGProviderError(RuntimeError):
     """Raised when the optional answer provider cannot return validated output."""
 
 
+def reasoning_options(model: str) -> dict[str, str]:
+    # gpt-oss reasoning tokens count against max_completion_tokens; at the default
+    # effort they exhaust the budget before the JSON document is emitted. Groq
+    # rejects the parameter for non-reasoning models.
+    if model.startswith("openai/gpt-oss"):
+        return {"reasoning_effort": "low"}
+    return {}
+
+
 class ProviderTransport(Protocol):
     def post_json(
         self,
@@ -309,6 +318,7 @@ class GroundedAnswerService:
             "model": self.model,
             "temperature": 0,
             "max_completion_tokens": 500,
+            **reasoning_options(self.model),
             "tool_choice": "none",
             "messages": [
                 {
