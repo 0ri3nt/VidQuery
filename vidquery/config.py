@@ -261,6 +261,11 @@ class Settings:
     whisper_word_timestamps: bool = field(
         default_factory=lambda: _bool_env("WHISPER_WORD_TIMESTAMPS", True)
     )
+    challenge_manifest_path: Path = field(
+        default_factory=lambda: _path_env(
+            "CHALLENGE_MANIFEST_PATH", Path("evaluation/queries_challenge.json")
+        )
+    )
     frame_sample_rate: float = field(
         default_factory=lambda: float(os.getenv("FRAME_SAMPLE_RATE", "1.0"))
     )

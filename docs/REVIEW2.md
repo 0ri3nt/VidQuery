@@ -157,26 +157,48 @@ Three systems are compared on identical inputs:
 
 Metrics: P@1, Hit@5, MRR, top-1 timestamp error in seconds, within-tolerance
 rate (default 2 s), temporal IoU, intent accuracy against
-`expected_hypothesis_ids`, negative rejection, and confident-wrong rate.
+`expected_hypothesis_ids`, negative rejection, and confident-wrong rate. P@1,
+within-tolerance rate, MRR, and negative rejection also report a 95% bootstrap
+confidence interval (2,000 resamples of queries, fixed seed), because a
+30-query test split cannot support small differences.
+
+### Labelling ground truth
+
+Use the **Annotate** tab in the web UI (`http://127.0.0.1:8000/#annotate`):
+
+1. Pick a `READY` video and assign it to the `calibration` or `test` split.
+   Splits are per video, so no video contributes to both.
+2. Scrub to the moment and press `[` (start), `P` (peak), and `]` (end), or use
+   the buttons. The arrow keys step 0.1 s; with Shift they step 1 s.
+3. Enter the query, choose a category (`timestamp`, `ambiguous`,
+   `action_relation`, or `negative`), and tick the readings that are actually
+   present in the video.
+4. Save. Entries are written to `evaluation/queries_challenge.json`
+   (`CHALLENGE_MANIFEST_PATH`) and validated on every write.
+
+Label from the video, not from the system: do not run a query in Search before
+labelling it. Name video files before uploading them, because the manifest keys
+each video by its original filename without the extension.
+
+Targets: at least 15 ambiguous, 15 timestamp, 10 action/relation, and 5
+negative queries, about 60 in total.
 
 ```bash
-python -m vidquery evaluate-challenge --validate-only \
-  --dataset evaluation/queries_challenge.template.json
-python -m vidquery evaluate-challenge \
-  --dataset evaluation/queries_challenge.json \
-  --output evaluation/results/challenge-latest.json
+python -m vidquery evaluate-challenge --validate-only
+python -m vidquery evaluate-challenge --split calibration \
+  --output evaluation/results/challenge-calibration.json
+python -m vidquery evaluate-challenge --split test \
+  --output evaluation/results/challenge-test.json
 ```
 
 `--use-groq` allows the constrained planner; by default the run is fully
-deterministic.
+deterministic. Tune on `calibration` only and report `test`.
 
-**Status:** the benchmark code and schema are implemented and unit-tested, and
-`evaluation/queries_challenge.template.json` shows the format. A real manifest
-needs at least 15 ambiguous, 15 timestamp, and 5 negative queries with manually
-annotated peak times on indexed videos. That annotated manifest has not been
-checked in, so there are **no measured Review-2 benchmark numbers yet**. Do not
-report timestamp-error or abstention improvements until
-`evaluation/results/challenge-latest.json` exists from a real manifest.
+**Status:** the benchmark, the annotation page, and the split support are
+implemented and tested. No annotated manifest exists yet, so there are **no
+measured Review-2 benchmark numbers**. Do not report timestamp-error or
+abstention improvements until `evaluation/results/challenge-test.json` exists
+from a real manifest.
 
 ## Configuration
 

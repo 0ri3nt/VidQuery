@@ -116,6 +116,24 @@ The response adds `hypotheses` (each with `hypothesis_id`, `label`, `plan`,
 means the system is abstaining; clients should present it as "not found" rather
 than showing the top result as an answer.
 
+## Benchmark annotation
+
+These endpoints back the **Annotate** tab and write the Review-2 challenge
+manifest (`CHALLENGE_MANIFEST_PATH`, default `evaluation/queries_challenge.json`).
+See [REVIEW2.md](REVIEW2.md#labelling-ground-truth).
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/annotations` | labelled queries, indexed videos with their `source_video_id` and split, and progress toward the category targets |
+| `PUT /api/annotations/queries/{id}` | create or replace one labelled query |
+| `DELETE /api/annotations/queries/{id}` | remove one labelled query (`404` if unknown) |
+| `PUT /api/annotations/videos/{source_video_id}/split` | set a video's split: `{"split": "calibration"}` or `"test"` |
+
+`PUT /api/annotations/queries/{id}` returns `422` when the body `id` differs from
+the URL, the video is not indexed, a moment ends after the video does, a peak lies
+outside its interval, a negative query lists moments, or a positive query lists
+none.
+
 ## Playback and evidence images
 
 ### `GET /api/videos/{video_id}/stream`

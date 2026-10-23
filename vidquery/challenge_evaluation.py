@@ -20,6 +20,7 @@ Every number is machine-generated from the manifest; nothing is hand-typed.
 from __future__ import annotations
 
 import json
+import random
 import time
 from collections import Counter, defaultdict
 from collections.abc import Callable
@@ -29,7 +30,7 @@ from pathlib import Path
 from statistics import mean, median
 from typing import Any
 
-from .domain import QueryPlan, SearchRequest, SearchResult
+from .domain import QueryPlan, SearchRequest, SearchResult, VideoRecord
 from .hypotheses import fuse_hypotheses
 from .query_planner import QueryPlanningOutcome, QueryPlanningService
 from .search import LocalHybridSearchEngine
@@ -37,7 +38,16 @@ from .storage import SQLiteRepository
 
 SCHEMA_VERSION = "challenge-1.0"
 REQUIRED_QUERY_FIELDS = ("id", "query", "category", "source_video_id")
-MINIMUM_COUNTS = {"ambiguous": 15, "timestamp": 15, "negative": 5}
+MINIMUM_COUNTS = {"ambiguous": 15, "timestamp": 15, "action_relation": 10, "negative": 5}
+VIDEO_SPLITS = ("calibration", "test")
+BOOTSTRAP_SAMPLES = 2000
+BOOTSTRAP_SEED = 2026
+
+
+def source_video_id(video: VideoRecord) -> str:
+    """The manifest key for an indexed video: its original filename without extension."""
+
+    return Path(video.original_filename).stem
 
 
 class ChallengeManifestError(ValueError):
@@ -115,6 +125,20 @@ def validate_manifest(payload: dict[str, Any]) -> list[str]:
                     f"relevant moment of {item['id']!r} has peak outside its interval"
                 )
     warnings: list[str] = []
+    videos = payload.get("videos", {}) or {}
+    if not isinstance(videos, dict):
+        raise ChallengeManifestError("'videos' must map source_video_id to its split")
+    for name, entry in videos.items():
+        split = entry.get("split") if isinstance(entry, dict) else None
+        if split not in VIDEO_SPLITS:
+            raise ChallengeManifestError(
+                f"video {name!r} has split {split!r}; expected one of {VIDEO_SPLITS}"
+            )
+    unsplit = sorted({str(item["source_video_id"]) for item in queries} - set(videos))
+    if unsplit:
+        warnings.append(
+            "videos without a calibration/test split: " + ", ".join(unsplit)
+        )
     counts = Counter(str(item["category"]) for item in queries)
     for category, minimum in MINIMUM_COUNTS.items():
         if counts.get(category, 0) < minimum:
@@ -128,9 +152,12 @@ def validate_manifest(payload: dict[str, Any]) -> list[str]:
 
 
 def _source_ids(repository: SQLiteRepository) -> dict[str, str]:
-    return {
-        video.video_id: Path(video.original_filename).stem for video in repository.list_videos()
-    }
+    return {video.video_id: source_video_id(video) for video in repository.list_videos()}
+
+
+def video_split(manifest: dict[str, Any], source_id: str) -> str | None:
+    entry = (manifest.get("videos") or {}).get(source_id)
+    return entry.get("split") if isinstance(entry, dict) else None
 
 
 def _moment_from_result(
@@ -412,6 +439,25 @@ def _rate(values: list[bool | None]) -> float | None:
     return round(sum(bool(value) for value in known) / len(known), 4) if known else None
 
 
+def _bootstrap_interval(values: list[float]) -> list[float] | None:
+    """95% percentile bootstrap interval of the mean, resampling queries.
+
+    Seeded so the same result file is reproduced exactly on every run.
+    """
+
+    if len(values) < 2:
+        return None
+    rng = random.Random(BOOTSTRAP_SEED)
+    size = len(values)
+    means = sorted(
+        sum(values[rng.randrange(size)] for _ in range(size)) / size
+        for _ in range(BOOTSTRAP_SAMPLES)
+    )
+    low = means[int(0.025 * BOOTSTRAP_SAMPLES)]
+    high = means[int(0.975 * BOOTSTRAP_SAMPLES) - 1]
+    return [round(low, 4), round(high, 4)]
+
+
 def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     positives = [row for row in rows if not row["negative"]]
     negatives = [row for row in rows if row["negative"]]
@@ -455,6 +501,16 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
                 str(m["returned_precision"]) for m in metrics if m["returned_precision"] is not None
             )
         ),
+        "bootstrap_95_ci": {
+            "precision_at_1": _bootstrap_interval([m["precision_at_1"] for m in metrics]),
+            "within_tolerance_rate": _bootstrap_interval(
+                [float(bool(m["within_tolerance"])) for m in metrics]
+            ),
+            "mrr": _bootstrap_interval([m["mrr"] for m in metrics]),
+            "negative_rejection_rate": _bootstrap_interval(
+                [float(bool(row["metrics"]["negative_rejected"])) for row in negatives]
+            ),
+        },
     }
     return summary
 
@@ -467,10 +523,21 @@ def evaluate_challenge(
     limit: int = 5,
     engine: LocalHybridSearchEngine | None = None,
     resolution_margin: float = 0.25,
+    split: str | None = None,
 ) -> dict[str, Any]:
     manifest = load_manifest(dataset_path)
     warnings = validate_manifest(manifest)
     queries: list[dict[str, Any]] = manifest["queries"]
+    if split is not None:
+        if split not in VIDEO_SPLITS:
+            raise ChallengeManifestError(f"split must be one of {VIDEO_SPLITS}, got {split!r}")
+        queries = [
+            item
+            for item in queries
+            if video_split(manifest, str(item["source_video_id"])) == split
+        ]
+        if not queries:
+            raise ChallengeManifestError(f"no queries belong to videos in the {split!r} split")
     source_ids = _source_ids(repository)
     canonical_by_source = {source: canonical for canonical, source in source_ids.items()}
     missing = sorted(
@@ -564,6 +631,7 @@ def evaluate_challenge(
         "generated_at": datetime.now(UTC).isoformat(),
         "dataset": str(Path(dataset_path).as_posix()),
         "dataset_schema_version": manifest["schema_version"],
+        "split": split or "all",
         "query_count": len(queries),
         "category_counts": dict(Counter(str(item["category"]) for item in queries)),
         "manifest_warnings": warnings,

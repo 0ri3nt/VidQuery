@@ -6,7 +6,8 @@
     <meta name="description" content="Search inside videos with timestamped visual and spoken evidence." />
     <title>VidQuery</title>
     <link rel="stylesheet" href="/assets/app.css" />
-    <script src="/assets/app.js?v=20260929-review2" defer></script>
+    <script src="/assets/app.js?v=20260930-annotate" defer></script>
+    <script src="/assets/annotate.js?v=20260930-annotate" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -18,6 +19,7 @@
         <button class="nav-link active" data-view="search">Search</button>
         <button class="nav-link" data-view="library">Library</button>
         <button class="nav-link" data-view="upload">Upload</button>
+        <button class="nav-link" data-view="annotate">Annotate</button>
       </nav>
       <div id="health" class="health"><span></span>Checking system</div>
     </header>
@@ -78,6 +80,72 @@
           <div id="upload-progress" class="progress hidden"><span></span></div>
           <div id="upload-state" class="state-panel hidden" role="status"></div>
         </form>
+      </section>
+      <section id="annotate-view" class="view">
+        <div class="page-heading"><p class="eyebrow">LABEL GROUND TRUTH</p><h1>Annotate the benchmark</h1><p>Watch the video and mark where each query's answer really happens. Do not run the query in Search first: the labels must come from the video, not from the system's output.</p></div>
+        <div id="annotation-progress" class="annotation-progress"></div>
+        <div class="annotate-layout">
+          <div class="annotate-player-card">
+            <div class="annotate-controls">
+              <label>Video <select id="annotate-video" aria-label="Video to annotate"></select></label>
+              <label>Split <select id="annotate-split" aria-label="Benchmark split for this video">
+                <option value="">unassigned</option>
+                <option value="calibration">calibration</option>
+                <option value="test">test</option>
+              </select></label>
+            </div>
+            <video id="annotate-player" controls preload="metadata"></video>
+            <div class="annotate-clock"><strong id="annotate-now">00:00:00.0</strong><span>Keys: <kbd>[</kbd> start · <kbd>P</kbd> peak · <kbd>]</kbd> end · <kbd>Space</kbd> play · <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> 0.1 s (<kbd>Shift</kbd> 1 s)</span></div>
+            <div class="annotate-buttons">
+              <button type="button" data-step="-1">&minus;1 s</button>
+              <button type="button" data-step="-0.1">&minus;0.1 s</button>
+              <button type="button" data-step="0.1">+0.1 s</button>
+              <button type="button" data-step="1">+1 s</button>
+              <button type="button" class="mark" data-mark="start">Mark start</button>
+              <button type="button" class="mark" data-mark="peak">Mark peak</button>
+              <button type="button" class="mark" data-mark="end">Mark end</button>
+            </div>
+          </div>
+          <form id="annotation-form" class="annotation-form">
+            <label>Query <input id="ann-query" maxlength="500" required placeholder="When does someone say 'deployment'?" /></label>
+            <div class="annotation-row">
+              <label>Category <select id="ann-category">
+                <option value="timestamp">timestamp</option>
+                <option value="ambiguous">ambiguous</option>
+                <option value="action_relation">action / relation</option>
+                <option value="negative">negative (does not happen)</option>
+              </select></label>
+              <label>ID <input id="ann-id" pattern="[A-Za-z0-9_.\-]{1,64}" required /></label>
+            </div>
+            <fieldset id="ann-moment-fields">
+              <legend>Relevant moment</legend>
+              <div class="annotation-row three">
+                <label>Start <input id="ann-start" type="number" min="0" step="0.1" /></label>
+                <label>Peak <input id="ann-peak" type="number" min="0" step="0.1" /></label>
+                <label>End <input id="ann-end" type="number" min="0" step="0.1" /></label>
+              </div>
+              <button type="button" id="ann-add-moment">Add moment</button>
+              <ul id="ann-moments" class="ann-moments"></ul>
+            </fieldset>
+            <fieldset>
+              <legend>Readings actually present in the video</legend>
+              <div class="ann-checks" id="ann-hypotheses"></div>
+              <div class="ann-checks" id="ann-intents"></div>
+            </fieldset>
+            <div class="annotation-row">
+              <label>Tolerance (s) <input id="ann-tolerance" type="number" min="0.5" max="10" step="0.5" value="2" /></label>
+              <label>Annotator <input id="ann-annotator" maxlength="32" placeholder="initials" /></label>
+            </div>
+            <label>Notes <input id="ann-notes" maxlength="1000" placeholder="What makes this query hard or ambiguous?" /></label>
+            <div class="annotation-row">
+              <button type="submit" class="primary">Save query</button>
+              <button type="button" id="ann-clear">New query</button>
+            </div>
+            <div id="ann-status" class="state-panel hidden" role="status"></div>
+          </form>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">LABELLED FOR THIS VIDEO</p><h2>Saved queries</h2></div><span id="ann-count"></span></div>
+        <div id="ann-list" class="ann-list"></div>
       </section>
     </main>
 

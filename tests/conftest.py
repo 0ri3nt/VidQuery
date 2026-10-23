@@ -22,6 +22,7 @@ def settings_factory(tmp_path):
             upload_dir=tmp_path / "uploads",
             generated_dir=tmp_path / "generated",
             database_path=tmp_path / "vidquery.sqlite3",
+            challenge_manifest_path=tmp_path / "queries_challenge.json",
             whisper_cache_dir=tmp_path / "models" / "whisper",
             pyannote_cache_dir=tmp_path / "models" / "pyannote",
             enable_neo4j=False,

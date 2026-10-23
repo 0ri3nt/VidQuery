@@ -1,4 +1,4 @@
-const views = ["search", "library", "upload"];
+const views = ["search", "library", "upload", "annotate"];
 const state = { videos: [], poller: null, lastQuery: "" };
 
 const $ = (selector) => document.querySelector(selector);
@@ -34,6 +34,7 @@ function showView(name) {
     $(`.nav-link[data-view='${view}']`).classList.toggle("active", view === name);
   });
   if (name === "library") refreshLibrary();
+  if (name === "annotate" && typeof loadAnnotations === "function") loadAnnotations();
   history.replaceState(null, "", `#${name}`);
 }
 

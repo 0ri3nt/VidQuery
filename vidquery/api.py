@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterator
 from pathlib import Path
+from typing import Any
 
 from fastapi import (
     BackgroundTasks,
@@ -21,6 +22,8 @@ from fastapi.staticfiles import StaticFiles
 
 import frontend
 
+from .annotation import AnnotatedQuery, ChallengeManifestStore, VideoSplitUpdate
+from .challenge_evaluation import source_video_id
 from .config import Settings, get_settings
 from .domain import (
     HealthResponse,
@@ -76,6 +79,7 @@ def create_app(
     )
     application.state.rag = GroundedAnswerService(active_settings)
     application.state.query_planner = QueryPlanningService(active_settings)
+    application.state.annotations = ChallengeManifestStore(active_settings.challenge_manifest_path)
 
     application.add_middleware(
         CORSMiddleware,
@@ -431,6 +435,64 @@ def create_app(
             raise HTTPException(status_code=404, detail="No generated thumbnail is available")
         path = min(candidates, key=lambda item: item[0])[1]
         return FileResponse(path, media_type="image/jpeg")
+
+    def indexed_sources(request: Request) -> dict[str, VideoRecord]:
+        videos = request.app.state.repository.list_videos()
+        return {source_video_id(video): video for video in videos}
+
+    @application.get("/api/annotations")
+    def get_annotations(request: Request) -> dict[str, Any]:
+        store: ChallengeManifestStore = request.app.state.annotations
+        manifest = store.load()
+        splits = manifest["videos"]
+        return {
+            "summary": store.summary(),
+            "videos": [
+                {
+                    "video_id": video.video_id,
+                    "display_name": video.display_name,
+                    "source_video_id": source,
+                    "duration": video.duration,
+                    "state": video.state,
+                    "stream_url": f"/api/videos/{video.video_id}/stream",
+                    "split": (splits.get(source) or {}).get("split"),
+                }
+                for source, video in indexed_sources(request).items()
+            ],
+            "queries": manifest["queries"],
+        }
+
+    @application.put("/api/annotations/queries/{query_id}")
+    def put_annotation(query_id: str, payload: AnnotatedQuery, request: Request) -> dict[str, Any]:
+        if payload.id != query_id:
+            raise HTTPException(status_code=422, detail="Body id must match the URL query id")
+        video = indexed_sources(request).get(payload.source_video_id)
+        if video is None:
+            raise HTTPException(status_code=422, detail="source_video_id is not an indexed video")
+        if any(moment.end_time > video.duration + 0.5 for moment in payload.relevant):
+            raise HTTPException(
+                status_code=422, detail="A relevant moment ends after the video does"
+            )
+        store: ChallengeManifestStore = request.app.state.annotations
+        result = store.upsert_query(payload)
+        return {**result, "summary": store.summary()}
+
+    @application.delete("/api/annotations/queries/{query_id}")
+    def delete_annotation(query_id: str, request: Request) -> dict[str, Any]:
+        store: ChallengeManifestStore = request.app.state.annotations
+        if not store.delete_query(query_id):
+            raise HTTPException(status_code=404, detail="Annotated query was not found")
+        return {"deleted": query_id, "summary": store.summary()}
+
+    @application.put("/api/annotations/videos/{source_id}/split")
+    def put_video_split(
+        source_id: str, payload: VideoSplitUpdate, request: Request
+    ) -> dict[str, Any]:
+        if source_id not in indexed_sources(request):
+            raise HTTPException(status_code=404, detail="Video was not found")
+        store: ChallengeManifestStore = request.app.state.annotations
+        store.set_video_split(source_id, payload.split)
+        return {"source_video_id": source_id, "split": payload.split, "summary": store.summary()}
 
     return application
 

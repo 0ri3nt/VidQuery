@@ -19,6 +19,7 @@ from .ava_gnn80 import (
     train_ava80_suite,
 )
 from .challenge_evaluation import (
+    VIDEO_SPLITS,
     ChallengeManifestError,
     evaluate_challenge,
     load_manifest,
@@ -50,6 +51,7 @@ def run_challenge_evaluation(
     limit: int,
     use_groq: bool,
     validate_only: bool,
+    split: str | None = None,
 ) -> None:
     from dataclasses import replace
 
@@ -82,6 +84,7 @@ def run_challenge_evaluation(
             limit=limit,
             engine=engine,
             resolution_margin=settings.hypothesis_resolution_margin,
+            split=split,
         )
     except ChallengeManifestError as exc:
         raise SystemExit(str(exc)) from exc
@@ -342,6 +345,12 @@ def main() -> None:
         action="store_true",
         help="Check the manifest schema and category counts without running retrieval",
     )
+    challenge.add_argument(
+        "--split",
+        choices=VIDEO_SPLITS,
+        default=None,
+        help="Evaluate only queries on videos assigned to this split (default: all)",
+    )
 
     action_training = subcommands.add_parser(
         "train-action-model", help="Train and validate the reduced AVA person-action model"
@@ -546,6 +555,7 @@ def main() -> None:
             limit=args.limit,
             use_groq=args.use_groq,
             validate_only=args.validate_only,
+            split=args.split,
         )
     elif args.command == "train-action-model":
         metadata = train_person_action_model(

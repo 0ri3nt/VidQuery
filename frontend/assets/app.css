@@ -56,7 +56,7 @@ h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; }
 
 .state-panel { width: min(1100px, 90vw); margin: 30px auto; padding: 18px 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); color: var(--muted); }
 .state-panel.error { border-color: rgba(255,128,109,.45); color: var(--danger); }
-.results-section, #library-view, #upload-view { width: min(1200px, 92vw); margin: 0 auto; padding: 70px 0 100px; }
+.results-section, #library-view, #upload-view, #annotate-view { width: min(1200px, 92vw); margin: 0 auto; padding: 70px 0 100px; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
 .section-heading h2, .page-heading h1 { font-size: clamp(2.1rem, 5vw, 4rem); margin-bottom: 18px; letter-spacing: -.045em; }
 .section-heading > span { color: var(--muted); padding-bottom: 24px; }
@@ -124,6 +124,48 @@ h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; }
 .progress { height: 7px; margin-top: 16px; background: var(--line); border-radius: 999px; overflow: hidden; }
 .progress span { display: block; width: 0; height: 100%; background: var(--accent); transition: width .15s; }
 
+.annotation-progress { margin: 10px 0 24px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--muted); }
+.annotation-progress strong { color: var(--ink); font-size: 1.3rem; }
+.progress-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.progress-chip { padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: .75rem; }
+.progress-chip.done { color: var(--accent); border-color: rgba(201,255,74,.4); }
+.progress-warn { margin: 10px 0 0; color: #ffc44a; font-size: .78rem; }
+.annotate-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; align-items: start; margin-bottom: 40px; }
+.annotate-player-card, .annotation-form { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.annotate-controls { display: flex; gap: 14px; margin-bottom: 12px; }
+.annotate-controls label, .annotation-form label { display: grid; gap: 6px; color: var(--muted); font-size: .78rem; }
+.annotate-controls label:first-child { flex: 1; }
+.annotate-controls select, .annotation-form input, .annotation-form select { width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); color: var(--ink); }
+#annotate-player { width: 100%; max-height: 52vh; background: #000; border-radius: 12px; display: block; }
+.annotate-clock { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 12px 0; color: var(--muted); font-size: .74rem; }
+.annotate-clock strong { color: var(--accent); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+kbd { padding: 1px 5px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface-2); font-size: .7rem; }
+.annotate-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.annotate-buttons button, .annotation-form button:not(.primary), .ann-row-actions button, .ann-moments button, .ann-row-moments button { border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); border-radius: 9px; padding: 8px 11px; }
+.annotate-buttons .mark { border-color: rgba(201,255,74,.4); color: var(--accent); }
+.annotation-form { display: grid; gap: 14px; }
+.annotation-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 10px; margin: 0; }
+.annotation-form fieldset:disabled { opacity: .45; }
+.annotation-form legend { color: var(--muted); font-size: .76rem; padding: 0 6px; }
+.annotation-form .primary { background: var(--accent); color: #0b100d; }
+.annotation-form .state-panel { width: auto; margin: 0; }
+.annotation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.annotation-row.three { grid-template-columns: repeat(3, 1fr); }
+.ann-checks { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.ann-checks label { display: flex; align-items: center; gap: 6px; color: var(--ink); font-size: .78rem; }
+.ann-checks input { width: auto; }
+.ann-moments { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.ann-moments li { display: flex; gap: 6px; }
+.ann-moments .seek { flex: 1; text-align: left; font-variant-numeric: tabular-nums; }
+.ann-list { display: grid; gap: 10px; }
+.ann-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; padding: 14px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.ann-row h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.ann-row .eyebrow { margin-bottom: 6px; }
+.ann-row-moments { display: flex; flex-wrap: wrap; gap: 6px; }
+.ann-row-actions { display: flex; gap: 8px; }
+.ann-row-actions .delete { color: var(--danger); }
+.muted { color: var(--muted); font-size: .8rem; }
+
 dialog { width: min(1000px, 92vw); padding: 0; border: 1px solid var(--line); border-radius: var(--radius); background: #0d130f; color: var(--ink); box-shadow: 0 30px 120px #000; }
 dialog::backdrop { background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
 .dialog-bar { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; }
@@ -149,5 +191,7 @@ footer { min-height: 74px; border-top: 1px solid var(--line); padding: 0 4vw; di
   .score strong { display: inline; }
   .video-row { grid-template-columns: 1fr auto; }
   .video-row .retry { grid-column: 1 / -1; }
+  .annotate-layout, .annotation-row, .annotation-row.three { grid-template-columns: 1fr; }
+  .annotate-clock { flex-direction: column; align-items: flex-start; }
   footer { padding-bottom: 82px; flex-direction: column; justify-content: center; align-items: flex-start; }
 }
