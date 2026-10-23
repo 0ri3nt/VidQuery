@@ -7,6 +7,8 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 | Document | Contents |
 |---|---|
 | [SETUP.md](SETUP.md) | install, credentials, model cache layout, health check, troubleshooting |
+| [RUN_AND_TEST.md](RUN_AND_TEST.md) | running, examiner-style testing, demo-day checklist, reporting issues |
+| [TEAMMATE_IMPROVEMENT_PLAN.md](TEAMMATE_IMPROVEMENT_PLAN.md) | phased plan: demo hardening, end-to-end benchmark, learned reliability, paper |
 | [API.md](API.md) | HTTP endpoints, search request and response contract, health states |
 | [FINAL_DEMO_GUIDE.md](FINAL_DEMO_GUIDE.md) | controlled demo script and expected results |
 | [UI_QA.md](UI_QA.md) | browser and deployment QA |
