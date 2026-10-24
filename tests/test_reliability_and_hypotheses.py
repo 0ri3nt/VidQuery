@@ -51,6 +51,14 @@ def test_reliability_prior_loader_validates_known_sources_and_ranges(tmp_path):
         load_reliability_priors(path)
 
 
+def test_partial_learned_priors_keep_defaults_for_unlisted_sources():
+    partial = {"gnn_action_model": 0.2}
+
+    assert reliability_prior("gnn_action_model", partial) == 0.2
+    assert reliability_prior("whisper_transcript", partial) == 0.9
+    assert reliability_prior("sentence-transformers/all-MiniLM-L6-v2", partial) == 0.6
+
+
 def test_reliability_fitter_keeps_sparse_priors_and_smooths_observed_sources():
     observations = [
         {"source_method": "gnn_action_model", "correct": index < 8}

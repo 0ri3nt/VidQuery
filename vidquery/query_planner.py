@@ -193,7 +193,8 @@ class QueryPlanningService:
             planned = self._validated_plan(provider)
         except Exception as exc:
             LOGGER.warning("Constrained query planning unavailable: %s", type(exc).__name__)
-            return finish(self._restatus(fallback, "fallback_provider_unavailable"))
+            # Not cached: provider failures such as HTTP 429 are transient.
+            return self._restatus(fallback, "fallback_provider_unavailable")
 
         if provider.confidence < self.min_confidence:
             return finish(self._restatus(fallback, "fallback_low_confidence"))

@@ -201,6 +201,8 @@ def reliability_prior(source_method: str, priors: Mapping[str, float] | None = N
     values = priors or SOURCE_RELIABILITY
     if key in values:
         return values[key]
+    if key in SOURCE_RELIABILITY:
+        return SOURCE_RELIABILITY[key]
     # Model names such as ``sentence-transformers/all-MiniLM-L6-v2``.
     if "minilm" in key or "sentence" in key or "mpnet" in key:
         return values.get("sentence_embedding", SOURCE_RELIABILITY["sentence_embedding"])

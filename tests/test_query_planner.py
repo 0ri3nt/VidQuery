@@ -119,6 +119,20 @@ def test_repeated_ambiguous_query_uses_cached_provider_plan(settings_factory):
     assert len(transport.calls) == 1
 
 
+def test_provider_failure_is_not_cached(settings_factory):
+    transport = MockPlannerTransport(error=RuntimeError("HTTP 429"))
+    planner = configured_planner(settings_factory, transport)
+
+    first = planner.plan("find drive")
+    transport.error = None
+    transport.response = provider_plan(intent="action_search", actions=["drive"])
+    second = planner.plan("find drive")
+
+    assert first.status == "fallback_provider_unavailable"
+    assert second.status != "fallback_provider_unavailable"
+    assert len(transport.calls) == 2
+
+
 def test_local_aliases_plural_and_relationship_paraphrase_skip_groq(settings_factory):
     transport = MockPlannerTransport()
     planner = configured_planner(settings_factory, transport)

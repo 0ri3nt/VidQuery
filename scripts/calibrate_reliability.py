@@ -28,7 +28,9 @@ def _manifest_checksum(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def collect_observations(manifest_path: Path, *, split: str, limit: int) -> dict:
+def collect_observations(
+    manifest_path: Path, *, split: str, limit: int, top_k: int = 1
+) -> dict:
     manifest = load_manifest(manifest_path)
     validate_manifest(manifest)
     settings = get_settings()
@@ -64,7 +66,9 @@ def collect_observations(manifest_path: Path, *, split: str, limit: int) -> dict
             ),
             plan_override=plan,
         )
-        for result in response.results:
+        # Only the results a user acts on are scored; lower ranks are mostly
+        # unlabelled near-misses and would bias every prior downward.
+        for result in response.results[:top_k]:
             if source_ids.get(result.video_id) != source or result.evidence is None:
                 continue
             moment = _moment_from_result(result, use_localization=True)
@@ -73,6 +77,8 @@ def collect_observations(manifest_path: Path, *, split: str, limit: int) -> dict
                 for relevant in item.get("relevant", [])
             )
             for contribution in result.evidence.contributions:
+                if contribution.raw_score <= 0:
+                    continue
                 observations.append(
                     {
                         "query_id": item["id"],
@@ -86,6 +92,7 @@ def collect_observations(manifest_path: Path, *, split: str, limit: int) -> dict
     return {
         "schema_version": "reliability-calibration-1.0",
         "split": split,
+        "top_k": top_k,
         "manifest": str(manifest_path),
         "manifest_sha256": _manifest_checksum(manifest_path),
         "created_at": datetime.now(UTC).isoformat(),
@@ -100,10 +107,17 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, default=Path("evaluation/queries_challenge.json"))
     parser.add_argument("--split", choices=("calibration", "test"), default="calibration")
     parser.add_argument("--limit", type=int, default=20)
+    parser.add_argument(
+        "--top-k", type=int, default=1, help="Score only the top K results per query"
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    if args.top_k < 1:
+        raise SystemExit("--top-k must be at least 1")
     try:
-        result = collect_observations(args.manifest, split=args.split, limit=args.limit)
+        result = collect_observations(
+            args.manifest, split=args.split, limit=args.limit, top_k=args.top_k
+        )
     except ChallengeManifestError as exc:
         raise SystemExit(f"Challenge manifest is invalid: {exc}") from exc
     args.output.parent.mkdir(parents=True, exist_ok=True)
