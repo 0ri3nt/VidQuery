@@ -33,6 +33,7 @@ from .media import VideoIngestionService
 from .neo4j import CanonicalNeo4jIndexer
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService
+from .reliability import load_reliability_priors
 from .search import LocalHybridSearchEngine, configured_text_encoder
 from .storage import SQLiteRepository
 
@@ -75,6 +76,11 @@ def run_challenge_evaluation(
         appearance_settings=settings,
         evidence_supported_threshold=settings.evidence_supported_threshold,
         evidence_weak_threshold=settings.evidence_weak_threshold,
+        reliability_priors=(
+            load_reliability_priors(settings.reliability_priors_path)
+            if settings.reliability_priors_path is not None
+            else None
+        ),
     )
     try:
         result = evaluate_challenge(

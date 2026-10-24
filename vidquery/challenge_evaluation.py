@@ -361,6 +361,7 @@ def _query_metrics(
     metrics: dict[str, Any] = {
         "interpretation": run.interpretation,
         "abstained": abstained,
+        "confidence": float(ranked[0].confidence or 0.0) if ranked else 0.0,
     }
     if negative:
         metrics.update(
@@ -458,6 +459,86 @@ def _bootstrap_interval(values: list[float]) -> list[float] | None:
     return [round(low, 4), round(high, 4)]
 
 
+def _selective_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize confidence, abstention, and risk-coverage behavior."""
+
+    if not rows:
+        return {
+            "risk_coverage": [],
+            "aurc": None,
+            "rejection_f1": None,
+            "answerability_auroc": None,
+        }
+    ordered = sorted(rows, key=lambda row: -float(row["metrics"].get("confidence", 0.0)))
+    covered = 0
+    errors = 0
+    curve: list[dict[str, float]] = []
+    for row in ordered:
+        metrics = row["metrics"]
+        if metrics.get("abstained"):
+            continue
+        covered += 1
+        wrong = (not row["negative"] and not metrics.get("precision_at_1", False)) or (
+            row["negative"] and metrics.get("confident_wrong", False)
+        )
+        errors += int(wrong)
+        curve.append(
+            {"coverage": round(covered / len(rows), 4), "risk": round(errors / covered, 4)}
+        )
+    aurc = round(sum(point["risk"] for point in curve) / len(curve), 4) if curve else None
+
+    true_positive = sum(
+        bool(row["negative"] and row["metrics"].get("abstained")) for row in rows
+    )
+    false_positive = sum(
+        bool(not row["negative"] and row["metrics"].get("abstained")) for row in rows
+    )
+    false_negative = sum(
+        bool(row["negative"] and not row["metrics"].get("abstained")) for row in rows
+    )
+    precision = (
+        true_positive / (true_positive + false_positive)
+        if true_positive + false_positive
+        else 0.0
+    )
+    recall = (
+        true_positive / (true_positive + false_negative)
+        if true_positive + false_negative
+        else 0.0
+    )
+    rejection_f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+
+    answerable = [
+        (float(row["metrics"].get("confidence", 0.0)), 1)
+        for row in rows
+        if not row["negative"]
+    ]
+    unanswerable = [
+        (float(row["metrics"].get("confidence", 0.0)), 0)
+        for row in rows
+        if row["negative"]
+    ]
+    pairs = [(positive, negative) for positive, _ in answerable for negative, _ in unanswerable]
+    auroc = (
+        round(
+            sum(
+                1.0 if positive > negative else 0.5 if positive == negative else 0.0
+                for positive, negative in pairs
+            )
+            / len(pairs),
+            4,
+        )
+        if pairs
+        else None
+    )
+    return {
+        "risk_coverage": curve,
+        "aurc": aurc,
+        "rejection_f1": round(rejection_f1, 4),
+        "answerability_auroc": auroc,
+    }
+
+
 def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
     positives = [row for row in rows if not row["negative"]]
     negatives = [row for row in rows if row["negative"]]
@@ -501,6 +582,7 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
                 str(m["returned_precision"]) for m in metrics if m["returned_precision"] is not None
             )
         ),
+        **_selective_metrics(rows),
         "bootstrap_95_ci": {
             "precision_at_1": _bootstrap_interval([m["precision_at_1"] for m in metrics]),
             "within_tolerance_rate": _bootstrap_interval(

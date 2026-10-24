@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+from collections import OrderedDict
 from dataclasses import dataclass
 from typing import Any, Literal
 
@@ -114,6 +115,8 @@ def query_planner_component_status(settings: Settings) -> str:
 
 
 class QueryPlanningService:
+    _PLAN_CACHE_SIZE = 128
+
     def __init__(
         self,
         settings: Settings,
@@ -128,6 +131,7 @@ class QueryPlanningService:
         self.timeout = max(1.0, min(60.0, settings.query_planner_timeout_seconds))
         self.parser = parser or StructuredQueryParser()
         self.transport = transport or UrllibProviderTransport()
+        self._plan_cache: OrderedDict[str, QueryPlanningOutcome] = OrderedDict()
         self.allowed_actions = frozenset(AVA_V22_ACTIONS.values())
         self.allowed_entities = frozenset(ENTITY_ALIASES.values())
         self.allowed_relations = frozenset(
@@ -136,30 +140,43 @@ class QueryPlanningService:
         )
 
     def plan(self, query: str) -> QueryPlanningOutcome:
+        cache_key = " ".join(query.lower().split())
+        cached = self._plan_cache.get(cache_key)
+        if cached is not None:
+            self._plan_cache.move_to_end(cache_key)
+            return cached
+
+        def finish(outcome: QueryPlanningOutcome) -> QueryPlanningOutcome:
+            self._plan_cache[cache_key] = outcome
+            self._plan_cache.move_to_end(cache_key)
+            if len(self._plan_cache) > self._PLAN_CACHE_SIZE:
+                self._plan_cache.popitem(last=False)
+            return outcome
+
         local = self.parser.parse(query)
         reasons = self._ambiguity_reasons(query, local)
         hypotheses = generate_hypotheses(query, local)
         if not reasons:
             if not hypotheses:
-                return QueryPlanningOutcome(plan=local)
+                return finish(QueryPlanningOutcome(plan=local))
             # Structurally clear to the parser but semantically open (for
             # example "find the laptop scene"): no provider call is needed,
             # every interpretation is retrieved and fused downstream.
-            return _with_hypotheses(
+            return finish(_with_hypotheses(
                 hypotheses,
                 status="deterministic_hypotheses",
                 ambiguities=(
                     "The query names a concept that may be visible, spoken, or written; "
                     "all interpretations are retrieved and compared.",
                 ),
-            )
+            ))
 
         bare_action = self._bare_action_homonym(query, local)
         fallback = self._safe_fallback(query, local, bare_action, reasons, hypotheses)
         if not self.enabled:
-            return fallback
+            return finish(fallback)
         if not self.api_key or not self.model:
-            return self._restatus(fallback, "fallback_provider_unconfigured")
+            return finish(self._restatus(fallback, "fallback_provider_unconfigured"))
 
         try:
             envelope = self.transport.post_json(
@@ -176,13 +193,13 @@ class QueryPlanningService:
             planned = self._validated_plan(provider)
         except Exception as exc:
             LOGGER.warning("Constrained query planning unavailable: %s", type(exc).__name__)
-            return self._restatus(fallback, "fallback_provider_unavailable")
+            return finish(self._restatus(fallback, "fallback_provider_unavailable"))
 
         if provider.confidence < self.min_confidence:
-            return self._restatus(fallback, "fallback_low_confidence")
+            return finish(self._restatus(fallback, "fallback_low_confidence"))
         if bare_action:
             # A model confidence score cannot remove a genuine semantic ambiguity.
-            return self._restatus(fallback, "groq_ambiguous_merged")
+            return finish(self._restatus(fallback, "groq_ambiguous_merged"))
         provider_hypothesis = QueryHypothesis(
             hypothesis_id="planner_validated",
             label=self._describe_plan(planned),
@@ -201,11 +218,11 @@ class QueryPlanningService:
             item.model_copy(update={"prior": round(remaining * item.prior / shared, 4)})
             for item in deterministic
         ]
-        return _with_hypotheses(
+        return finish(_with_hypotheses(
             [provider_hypothesis, *scaled],
             status="groq_planned_validated",
             ambiguities=tuple(reasons),
-        )
+        ))
 
     @staticmethod
     def _restatus(outcome: QueryPlanningOutcome, status: str) -> QueryPlanningOutcome:

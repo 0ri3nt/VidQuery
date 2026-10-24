@@ -236,7 +236,9 @@ STOPWORDS = {
     "another",
     "are",
     "at",
+    "about",
     "be",
+    "can",
     "containing",
     "discuss",
     "discussed",
@@ -253,6 +255,7 @@ STOPWORDS = {
     "hear",
     "heard",
     "in",
+    "i",
     "is",
     "it",
     "they",
@@ -264,6 +267,8 @@ STOPWORDS = {
     "of",
     "one",
     "on",
+    "part",
+    "please",
     "scene",
     "scenes",
     "segment",
@@ -276,7 +281,13 @@ STOPWORDS = {
     "shown",
     "sign",
     "spoken",
+    "speaker",
     "text",
+    "tell",
+    "that",
+    "there",
+    "talk",
+    "talking",
     "visible",
     "written",
     "ocr",
@@ -291,12 +302,20 @@ STOPWORDS = {
     "where",
     "while",
     "with",
+    "want",
+    "you",
     "other",
+    "see",
+    "moment",
+    "anybody",
+    "anything",
+    "speaking",
 }
 
 SPEECH_CUE_PATTERN = re.compile(
     r"\b(?:say|said|says|mention|mentioned|mentions|discuss|discussed|"
-    r"discusses|hear|heard|spoken)\b"
+    r"discusses|hear|heard|spoken|talk(?:ing|s)?\s+about|"
+    r"speak(?:ing|s)?\s+about)\b"
 )
 OCR_CUE_PATTERN = re.compile(
     r"\b(?:ocr|written|displayed|visible text|text on (?:the )?screen|"
@@ -962,6 +981,7 @@ class LocalHybridSearchEngine:
         appearance_encoder: Any | None = None,
         evidence_supported_threshold: float = DEFAULT_SUPPORTED_THRESHOLD,
         evidence_weak_threshold: float = DEFAULT_WEAK_THRESHOLD,
+        reliability_priors: dict[str, float] | None = None,
     ):
         self.repository = repository
         self.parser = parser or StructuredQueryParser()
@@ -975,6 +995,7 @@ class LocalHybridSearchEngine:
             raise ValueError("evidence thresholds must satisfy 0 <= weak <= supported <= 1")
         self.evidence_supported_threshold = evidence_supported_threshold
         self.evidence_weak_threshold = evidence_weak_threshold
+        self.reliability_priors = reliability_priors
 
     def search(
         self,
@@ -1050,6 +1071,7 @@ class LocalHybridSearchEngine:
                 evidence.contributions,
                 supported_threshold=self.evidence_supported_threshold,
                 weak_threshold=self.evidence_weak_threshold,
+                priors=self.reliability_priors,
             )
             localization = (
                 localize_segment(

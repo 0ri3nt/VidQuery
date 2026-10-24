@@ -17,7 +17,11 @@ the API can abstain instead of returning a confident wrong timestamp.
 
 from __future__ import annotations
 
+import json
+from collections.abc import Mapping
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
 
 from .domain import (
     EvidenceAssessment,
@@ -148,18 +152,63 @@ class RawContribution:
     source_method: str
 
 
-def reliability_prior(source_method: str) -> float:
+def load_reliability_priors(path: Path) -> dict[str, float]:
+    """Load validated learned priors without changing the hand-picked defaults."""
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    values = payload.get("priors") if isinstance(payload, dict) and "priors" in payload else payload
+    if not isinstance(values, dict) or not values:
+        raise ValueError("reliability priors must be a non-empty JSON object")
+    unknown = sorted(set(values) - set(SOURCE_RELIABILITY))
+    if unknown:
+        raise ValueError(f"reliability priors contain unknown sources: {', '.join(unknown)}")
+    result: dict[str, float] = {}
+    for source, value in values.items():
+        if isinstance(value, bool) or not isinstance(value, int | float) or not 0 <= value <= 1:
+            raise ValueError(f"reliability prior for {source!r} must be a number in [0, 1]")
+        result[source] = float(value)
+    return result
+
+
+def fit_reliability_priors(
+    observations: list[Mapping[str, Any]], *, minimum_observations: int = 10, strength: int = 5
+) -> dict[str, float]:
+    """Fit source priors from calibration observations with prior smoothing."""
+
+    if minimum_observations < 1 or strength < 0:
+        raise ValueError("minimum_observations must be positive and strength non-negative")
+    counts: dict[str, tuple[int, int]] = {}
+    for observation in observations:
+        source = str(observation.get("source_method", "")).strip()
+        if source not in SOURCE_RELIABILITY:
+            raise ValueError(f"unknown observation source: {source!r}")
+        correct = observation.get("correct")
+        if not isinstance(correct, bool):
+            raise ValueError("reliability observations require a boolean 'correct' field")
+        total, hits = counts.get(source, (0, 0))
+        counts[source] = (total + 1, hits + int(correct))
+
+    fitted = dict(SOURCE_RELIABILITY)
+    for source, (total, hits) in counts.items():
+        if total >= minimum_observations:
+            prior = SOURCE_RELIABILITY[source]
+            fitted[source] = (hits + strength * prior) / (total + strength)
+    return {source: round(value, 6) for source, value in fitted.items()}
+
+
+def reliability_prior(source_method: str, priors: Mapping[str, float] | None = None) -> float:
     key = source_method.strip().lower()
-    if key in SOURCE_RELIABILITY:
-        return SOURCE_RELIABILITY[key]
+    values = priors or SOURCE_RELIABILITY
+    if key in values:
+        return values[key]
     # Model names such as ``sentence-transformers/all-MiniLM-L6-v2``.
     if "minilm" in key or "sentence" in key or "mpnet" in key:
-        return SOURCE_RELIABILITY["sentence_embedding"]
+        return values.get("sentence_embedding", SOURCE_RELIABILITY["sentence_embedding"])
     if "hashing" in key:
-        return SOURCE_RELIABILITY["hashing_embedding"]
+        return values.get("hashing_embedding", SOURCE_RELIABILITY["hashing_embedding"])
     if "clip" in key:
-        return SOURCE_RELIABILITY["openclip_appearance"]
-    return SOURCE_RELIABILITY["unknown"]
+        return values.get("openclip_appearance", SOURCE_RELIABILITY["openclip_appearance"])
+    return values.get("unknown", SOURCE_RELIABILITY["unknown"])
 
 
 def modality_weight(intent: str, modality: EvidenceModality) -> float:
@@ -173,6 +222,7 @@ def assess_evidence(
     *,
     supported_threshold: float = DEFAULT_SUPPORTED_THRESHOLD,
     weak_threshold: float = DEFAULT_WEAK_THRESHOLD,
+    priors: Mapping[str, float] | None = None,
 ) -> EvidenceAssessment:
     """Fuse per-modality evidence into one confidence and an abstention verdict."""
 
@@ -181,7 +231,7 @@ def assess_evidence(
     denominator = 0.0
     for item in contributions:
         raw = max(0.0, min(1.0, item.raw_score))
-        prior = reliability_prior(item.source_method)
+        prior = reliability_prior(item.source_method, priors)
         weight = modality_weight(plan.intent, item.modality)
         value = raw * prior
         numerator += weight * value

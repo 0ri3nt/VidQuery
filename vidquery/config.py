@@ -29,6 +29,16 @@ def _path_env(name: str, default: Path) -> Path:
     return path.resolve()
 
 
+def _optional_path_env(name: str) -> Path | None:
+    raw = os.getenv(name)
+    if not raw:
+        return None
+    path = Path(raw)
+    if not path.is_absolute():
+        path = PROJECT_ROOT / path
+    return path.resolve()
+
+
 def _path_env_alias(primary: str, legacy: str, default: Path) -> Path:
     raw = os.getenv(primary) or os.getenv(legacy)
     path = Path(raw) if raw else default
@@ -207,6 +217,9 @@ class Settings:
     )
     query_planner_timeout_seconds: float = field(
         default_factory=lambda: float(os.getenv("QUERY_PLANNER_TIMEOUT_SECONDS", "10"))
+    )
+    reliability_priors_path: Path | None = field(
+        default_factory=lambda: _optional_path_env("RELIABILITY_PRIORS_PATH")
     )
     sentence_embedding_cache_dir: Path = field(
         default_factory=lambda: _path_env(

@@ -38,6 +38,7 @@ from .media import MediaValidationError, UploadTooLargeError, VideoIngestionServ
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService, query_planner_component_status
 from .rag import GroundedAnswerService, rag_component_status
+from .reliability import load_reliability_priors
 from .search import (
     LocalHybridSearchEngine,
     Neo4jGraphSearchEngine,
@@ -76,6 +77,11 @@ def create_app(
         appearance_settings=active_settings,
         evidence_supported_threshold=active_settings.evidence_supported_threshold,
         evidence_weak_threshold=active_settings.evidence_weak_threshold,
+        reliability_priors=(
+            load_reliability_priors(active_settings.reliability_priors_path)
+            if active_settings.reliability_priors_path is not None
+            else None
+        ),
     )
     application.state.rag = GroundedAnswerService(active_settings)
     application.state.query_planner = QueryPlanningService(active_settings)

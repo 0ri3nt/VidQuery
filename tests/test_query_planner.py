@@ -108,6 +108,17 @@ def test_local_parser_distinguishes_ocr_from_transcript():
     assert transcript.ocr_terms == []
 
 
+def test_repeated_ambiguous_query_uses_cached_provider_plan(settings_factory):
+    transport = MockPlannerTransport(provider_plan(intent="action_search", actions=["drive"]))
+    planner = configured_planner(settings_factory, transport)
+
+    first = planner.plan("find drive")
+    second = planner.plan("  FIND drive ")
+
+    assert first == second
+    assert len(transport.calls) == 1
+
+
 def test_local_aliases_plural_and_relationship_paraphrase_skip_groq(settings_factory):
     transport = MockPlannerTransport()
     planner = configured_planner(settings_factory, transport)

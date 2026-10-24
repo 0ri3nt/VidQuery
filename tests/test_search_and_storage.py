@@ -182,6 +182,63 @@ def test_query_parser_extracts_multimodal_plan():
     assert "architecture" in plan.spoken_terms
 
 
+def test_query_parser_consumes_examiner_speech_filler_words():
+    parser = StructuredQueryParser()
+    cases = {
+        "when does the student talk about operating systems": (
+            "transcript_search",
+            ["student", "operating", "systems"],
+            [],
+        ),
+        "show me where someone mentions databases": (
+            "multimodal_search",
+            ["databases"],
+            ["person"],
+        ),
+        "is there a segment where the speaker says binary search tree": (
+            "transcript_search",
+            ["binary", "search", "tree"],
+            [],
+        ),
+        "can you find the part that talks about Neo4j": ("transcript_search", ["neo4j"], []),
+        "please tell me when they discuss indexing": ("transcript_search", ["indexing"], []),
+        "where does the presenter mention graph traversal": (
+            "transcript_search",
+            ["presenter", "graph", "traversal"],
+            [],
+        ),
+        "find a moment when someone is talking about SQL joins": (
+            "multimodal_search",
+            ["sql", "joins"],
+            ["person"],
+        ),
+        "does anybody say anything about embeddings": ("transcript_search", ["embeddings"], []),
+        "I want to see where the video discusses retrieval": (
+            "transcript_search",
+            ["retrieval"],
+            [],
+        ),
+        "is the lecturer talking about databases": (
+            "transcript_search",
+            ["lecturer", "databases"],
+            [],
+        ),
+    }
+
+    for query, (expected_intent, expected_terms, expected_entities) in cases.items():
+        plan = parser.parse(query)
+        assert plan.intent == expected_intent, query
+        assert plan.spoken_terms == expected_terms, query
+        assert plan.visual_entities == expected_entities, query
+
+
+def test_query_parser_preserves_talk_to_relationship():
+    plan = StructuredQueryParser().parse("person talking to another person")
+
+    assert plan.relationship_tuples[0].predicate == "talk_to"
+    assert plan.spoken_terms == []
+
+
 def test_query_parser_maps_people_and_white_board():
     plan = StructuredQueryParser().parse("people near a white board")
     assert plan.visual_entities == ["whiteboard", "person"]

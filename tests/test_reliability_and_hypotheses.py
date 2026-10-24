@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import json
+
+import pytest
 from fastapi.testclient import TestClient
 from test_search_and_storage import evidence_segment, video_record
 
@@ -11,6 +14,8 @@ from vidquery.query_planner import QueryPlanningService
 from vidquery.reliability import (
     RawContribution,
     assess_evidence,
+    fit_reliability_priors,
+    load_reliability_priors,
     reliability_prior,
     reliability_rank_score,
 )
@@ -29,6 +34,33 @@ def test_reliability_priors_rank_transcript_above_weak_gnns():
         "sentence_embedding"
     )
     assert reliability_prior("something_new") == 0.5
+
+
+def test_reliability_prior_loader_validates_known_sources_and_ranges(tmp_path):
+    path = tmp_path / "priors.json"
+    path.write_text(json.dumps({"priors": {"whisper_transcript": 0.72}}), encoding="utf-8")
+
+    assert load_reliability_priors(path) == {"whisper_transcript": 0.72}
+
+    path.write_text(json.dumps({"unknown_source": 0.5}), encoding="utf-8")
+    with pytest.raises(ValueError, match="unknown sources"):
+        load_reliability_priors(path)
+
+    path.write_text(json.dumps({"whisper_transcript": 1.1}), encoding="utf-8")
+    with pytest.raises(ValueError, match=r"\[0, 1\]"):
+        load_reliability_priors(path)
+
+
+def test_reliability_fitter_keeps_sparse_priors_and_smooths_observed_sources():
+    observations = [
+        {"source_method": "gnn_action_model", "correct": index < 8}
+        for index in range(10)
+    ]
+
+    fitted = fit_reliability_priors(observations)
+
+    assert fitted["whisper_transcript"] == 0.9
+    assert fitted["gnn_action_model"] == round((8 + 5 * 0.3) / 15, 6)
 
 
 def test_exact_transcript_hit_is_supported_but_gnn_only_action_is_not():

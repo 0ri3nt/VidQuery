@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VidQuery OpenCLIP Retrieval Evidence</title>
+  <style>
+    :root {
+      --bg: #07100c;
+      --panel: #0d1812;
+      --line: #26372d;
+      --text: #f1f5ef;
+      --muted: #9dad9f;
+      --lime: #b7ff37;
+      --cyan: #66e5d5;
+      --red: #ef5350;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    .page {
+      width: 1440px;
+      height: 810px;
+      padding: 38px 48px 28px;
+      background:
+        linear-gradient(rgba(183,255,55,.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183,255,55,.028) 1px, transparent 1px),
+        var(--bg);
+      background-size: 38px 38px;
+      overflow: hidden;
+    }
+    header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .eyebrow { color: var(--lime); font-size: 14px; font-weight: 850; letter-spacing: 1.8px; }
+    h1 { margin: 7px 0 4px; font-size: 36px; line-height: 1.05; letter-spacing: -1.3px; }
+    .subtitle { color: var(--muted); font-size: 15px; }
+    .model {
+      border: 1px solid var(--line);
+      background: rgba(13,24,18,.92);
+      border-radius: 13px;
+      padding: 12px 16px;
+      text-align: right;
+      min-width: 300px;
+    }
+    .model strong { color: var(--cyan); font-size: 16px; }
+    .model div { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .queries { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 25px; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(13,24,18,.96);
+      padding: 14px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+    .query {
+      height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid #3b4d41;
+      border-radius: 11px;
+      padding: 0 14px;
+      background: #eef2e9;
+      color: #101612;
+      font-weight: 740;
+      font-size: 15px;
+    }
+    .query::before { content: "QUERY"; color: #526057; font-size: 10px; letter-spacing: 1px; }
+    .frame {
+      height: 282px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 12px;
+      margin-top: 12px;
+      border: 1px solid #33463a;
+      display: block;
+    }
+    .resultline {
+      display: grid;
+      grid-template-columns: 1.25fr .9fr .9fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .metric { background: #101f17; border: 1px solid #263a2d; padding: 10px 11px; border-radius: 10px; }
+    .metric span { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .8px; }
+    .metric strong { display: block; color: var(--text); font-size: 18px; margin-top: 3px; }
+    .metric.primary strong { color: var(--lime); }
+    .pass {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 11px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .pill { border: 1px solid rgba(183,255,55,.38); color: var(--lime); border-radius: 999px; padding: 5px 10px; font-weight: 760; }
+    .conclusion {
+      margin-top: 20px;
+      border: 1px solid rgba(183,255,55,.45);
+      background: linear-gradient(90deg, rgba(183,255,55,.10), rgba(102,229,213,.055));
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: 175px 1fr;
+      align-items: center;
+      gap: 14px;
+    }
+    .conclusion .label { color: var(--lime); font-size: 12px; font-weight: 900; letter-spacing: 1.3px; }
+    .conclusion .text { font-size: 15px; line-height: 1.35; }
+    footer { margin-top: 12px; display: flex; justify-content: space-between; color: #748579; font-size: 10px; }
+    footer code { color: #9bb2a0; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <div class="eyebrow">VIDQUERY · CONTROLLED VISUAL RETRIEVAL PROOF</div>
+        <h1>OpenCLIP appearance retrieval</h1>
+        <div class="subtitle">The same seated-person scene is retrieved by clothing colour and separated from its visual distractor.</div>
+      </div>
+      <div class="model">
+        <strong>OpenCLIP ViT-B/32</strong>
+        <div>Frozen image/text encoder · 512-dimensional embeddings</div>
+        <div>Image encoding performed once during ingestion</div>
+      </div>
+    </header>
+
+    <section class="queries">
+      <article class="card">
+        <div class="query">find the red-shirt person sitting on the chair</div>
+        <img class="frame" src="../evaluation/fixtures/appearance/red_shirt_seated.png" alt="Red shirt seated fixture">
+        <div class="resultline">
+          <div class="metric primary"><span>Rank-1 interval</span><strong>00:00–00:05</strong></div>
+          <div class="metric"><span>Retrieval score</span><strong>0.8321</strong></div>
+          <div class="metric"><span>Image-text cosine</span><strong>0.287605</strong></div>
+        </div>
+        <div class="pass"><span>Black-shirt distractor returned: <b>NO</b></span><span class="pill">Correct · Rank 1</span></div>
+      </article>
+
+      <article class="card">
+        <div class="query">find the black-shirt person sitting on the chair</div>
+        <img class="frame" src="../evaluation/fixtures/appearance/black_shirt_seated.png" alt="Black shirt seated fixture">
+        <div class="resultline">
+          <div class="metric primary"><span>Rank-1 interval</span><strong>00:05–00:10</strong></div>
+          <div class="metric"><span>Retrieval score</span><strong>0.9604</strong></div>
+          <div class="metric"><span>Image-text cosine</span><strong>0.300298</strong></div>
+        </div>
+        <div class="pass"><span>Red-shirt distractor returned: <b>NO</b></span><span class="pill">Correct · Rank 1</span></div>
+      </article>
+    </section>
+
+    <section class="conclusion">
+      <div class="label">OBSERVED RESULT</div>
+      <div class="text"><b>Both colour-constrained queries retrieve the correct five-second interval at Rank 1</b>, while the visually similar wrong-colour segment is excluded. Without a colour constraint, both intervals remain valid.</div>
+    </section>
+
+    <footer>
+      <span>Controlled fixture: <code>red_black_seated_fixture.mp4</code></span>
+      <span>Recorded proof: <code>evaluation/results/appearance-real-proof.json</code> · raw scores are not calibrated probabilities</span>
+    </footer>
+  </main>
+</body>
+</html>

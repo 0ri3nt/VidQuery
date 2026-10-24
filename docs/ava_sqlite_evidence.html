@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>VidQuery AVA SQLite evidence</title>
+  </head>
+  <body>
+    <form id="query" method="post" action="http://127.0.0.1:8091/query/">
+      <textarea name="sql">WITH seg AS (
+  SELECT s.*, v.display_name
+  FROM segments s
+  JOIN videos v ON v.video_id = s.video_id
+  WHERE v.display_name = '0f39OWEqJ24.mp4'
+    AND s.start_time = 1010.0
+)
+SELECT 'AVA source video' AS stored_field,
+       display_name,
+       'videos + segments.video_id' AS sqlite_location FROM seg
+UNION ALL
+SELECT 'Canonical segment ID', segment_id,
+       'segments.segment_id' FROM seg
+UNION ALL
+SELECT 'Five-second interval',
+       printf('%.1f-%.1f seconds', start_time, end_time),
+       'segments.start_time/end_time' FROM seg
+UNION ALL
+SELECT 'Frame evidence',
+       json_array_length(json_extract(payload_json, '$.frame_ids')) || ' timestamped frame IDs',
+       'segments.payload_json.frame_ids' FROM seg
+UNION ALL
+SELECT 'Visual detections',
+       json_array_length(json_extract(payload_json, '$.detections')) || ' boxes; entities = ' ||
+       json_extract(payload_json, '$.entities'),
+       'segments.payload_json.detections/entities' FROM seg
+UNION ALL
+SELECT 'Whisper transcript', transcript,
+       'segments.transcript/transcript_segments' FROM seg
+UNION ALL
+SELECT 'Speaker evidence',
+       json_extract(payload_json, '$.speakers'),
+       'segments.payload_json.speakers' FROM seg
+UNION ALL
+SELECT 'Segment action labels',
+       json_extract(payload_json, '$.actions'),
+       'segments.payload_json.actions' FROM seg
+UNION ALL
+SELECT 'Learned AVA action output',
+       json_array_length(json_extract(payload_json, '$.processing_metadata.gnn_action_instances')) ||
+       ' person-action predictions; model = ' ||
+       json_extract(payload_json, '$.processing_metadata.gnn_model_version'),
+       'payload_json.processing_metadata.gnn_action_instances' FROM seg
+UNION ALL
+SELECT 'Action confidence example',
+       'talk to = ' || printf('%.3f', json_extract(payload_json, '$.processing_metadata.action_confidences."talk to"')) ||
+       '; stand = ' || printf('%.3f', json_extract(payload_json, '$.processing_metadata.action_confidences.stand')) ||
+       '; watch person = ' || printf('%.3f', json_extract(payload_json, '$.processing_metadata.action_confidences."watch person"')),
+       'payload_json.processing_metadata.action_confidences' FROM seg
+UNION ALL
+SELECT 'Relationship evidence',
+       json_array_length(json_extract(payload_json, '$.relationships')) || ' explicit relationship records from ' ||
+       (SELECT group_concat(DISTINCT json_extract(r.value, '$.source_method'))
+        FROM json_each(seg.payload_json, '$.relationships') r),
+       'segments.payload_json.relationships' FROM seg
+UNION ALL
+SELECT 'Relationship examples',
+       (SELECT group_concat(example, ' | ') FROM (
+          SELECT json_extract(r.value, '$.predicate') || ' (' ||
+                 json_extract(r.value, '$.source_method') || ', conf ' ||
+                 printf('%.2f', json_extract(r.value, '$.confidence')) || ')' AS example
+          FROM json_each(seg.payload_json, '$.relationships') r
+          WHERE json_extract(r.value, '$.predicate') NOT LIKE 'action_%'
+          GROUP BY json_extract(r.value, '$.predicate')
+          LIMIT 5
+       )),
+       'relationship tuple predicate/confidence/source' FROM seg;</textarea>
+    </form>
+    <script>document.getElementById('query').submit();</script>
+  </body>
+</html>
