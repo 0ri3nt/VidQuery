@@ -167,7 +167,38 @@ Review-1 behaviour; the UI turns on the full Review-2 behaviour. See
 
 ## Measured results
 
-### Independent retrieval benchmark (Review-1)
+Two kinds of numbers appear below. **End-to-end** numbers come from videos
+indexed only by the models. **Labelled-evidence** numbers come from an index
+whose evidence was partly inserted from labels; they measure retrieval and
+ranking, not end-to-end accuracy.
+
+### End-to-end action benchmark (model-only)
+
+Six held-out AVA v2.2 movie windows (15 minutes each) were re-indexed from raw
+video by the full pipeline, with no ground-truth import. There are 120 queries
+(25% negative) with ground truth from official AVA annotations, split by video
+into calibration and test. The table shows the test split: 45 positive and 15
+negative queries.
+
+| System | P@1 [95% CI] | Recall@5 | AURC (lower better) | Rejection F1 | Answerability AUROC | Negatives rejected |
+|---|---:|---:|---:|---:|---:|---:|
+| Review-1 ranking | 0.200 [0.089, 0.333] | 0.080 | n/a | 0.261 | n/a | 0.200 |
+| Review-2, hand-picked trust | 0.156 [0.067, 0.267] | 0.056 | 0.722 | 0.261 | 0.507 | 0.200 |
+| Review-2, learned trust | 0.133 [0.044, 0.244] | 0.055 | 0.768 | 0.419 | 0.555 | 0.867 |
+
+Learned trust values raise negative rejection but answer only 24% of
+answerable queries, and they do not improve confidence ranking. The main
+bottleneck is query parsing: the parser missed the intended action label on
+27 of 45 test queries. Movie footage does not cover speech, OCR, or lecture
+queries. Full definitions, ablations, and reproduction commands are in
+[docs/EVALUATION_END_TO_END.md](docs/EVALUATION_END_TO_END.md).
+
+### Independent retrieval benchmark (Review-1, labelled evidence)
+
+These numbers are **not end-to-end**. The synthetic `final_demo` video's
+transcript, objects, and relations were inserted from
+`demo/final_demo_manifest.json`. The AVA clip `hbYvDvJrpNk` was indexed with
+official AVA action labels.
 
 62 manually specified queries over five videos (52 positive, 10 negative),
 covering transcript, visual entity, spatial relation, AVA action, speaker,
@@ -182,7 +213,7 @@ training or validation videos.
 | Hybrid without exact tuples | 0.9615 | 0.5692 | 0.7706 | 0.9615 | 0.9000 |
 | Exact local hybrid | 0.9615 | 0.5769 | 0.7738 | 0.9615 | 0.9000 |
 | Exact Neo4j graph | 0.8654 | 0.5462 | 0.6776 | 0.8654 | 1.0000 |
-| AVA GNN-enhanced, supported 14-query subset | 0.5000 | 0.3714 | 0.2181 | 0.5000 | n/a |
+| AVA GNN-enhanced, supported 14-query subset (GNN on training-cache graphs, one video) | 0.5000 | 0.3714 | 0.2181 | 0.5000 | n/a |
 
 These are capstone-scale results, not broad-domain claims. Details are in
 [docs/EVALUATION_FINAL.md](docs/EVALUATION_FINAL.md).
@@ -195,23 +226,34 @@ These are capstone-scale results, not broad-domain claims. Details are in
 | VidOR pair-visual GATv2 v2 (active) | 4 held-out videos | 0.178194 | 0.371113 | 0.191364 |
 
 Both are weak on held-out data because of small test sets, label imbalance, and
-domain shift. That is why Review-2 down-weights them rather than trusting them.
+domain shift. Both are small graph heads over frozen ImageNet ResNet-18
+features, trained on a small share of the available data:
+
+| Model | Trained on | Available labelled data | Share |
+|---|---|---|---:|
+| AVA action GNN v5 | 24 train videos (30 incl. val/test), 35,095 supervised persons | 299 AVA v2.2 train+val videos, 426,346 person boxes | 10% of videos |
+| VidOR relation GNN v2 | 57 train videos (67 incl. val/test), 402 frames | 7,000 VidOR training videos | 1% of videos |
+
+The action model's best validation epoch was epoch 1; validation loss rose
+from then on. That is why Review-2 down-weights them rather than trusting them.
 See [docs/GNN_STATUS.md](docs/GNN_STATUS.md).
 
 ### Review-2 challenge benchmark
 
 The benchmark compares three systems on point-in-time ground truth: Review-1
 (segment start as the answer), Review-1 plus localization, and full Review-2. It
-measures timestamp error, temporal IoU, intent accuracy, negative rejection, and
-confident-wrong rate. The code, schema, and tests are complete, and
-`evaluation/queries_challenge.template.json` shows the manifest format. **No
-annotated manifest has been checked in yet, so no Review-2 improvement is
-claimed.**
+measures timestamp error, temporal IoU, intent accuracy, negative rejection,
+confident-wrong rate, AURC, rejection F1, and answerability AUROC, plus an
+abstention-off ablation. `evaluation/queries_challenge_ava_holdout.json` is
+the first real manifest (the end-to-end action benchmark above). A lecture
+manifest with speech, OCR, and ambiguous queries still needs human labelling
+in the Annotate tab, so **no Review-2 improvement is claimed for those query
+types.**
 
 ## Development
 
 ```bash
-python -m pytest -q          # 178 passed; 2 skip without live Neo4j or an optional checkpoint
+python -m pytest -q          # 207 passed; 1 skips without live Neo4j
 python -m ruff check .
 python -m mypy vidquery scripts
 node --check frontend/assets/app.js
@@ -262,7 +304,18 @@ datasets, virtual environments, and `.env` are not versioned.
   open-vocabulary detection. Speaker IDs are per-file clusters, not identities.
   Tracking is short-range only.
 - Confidence values and verdicts are reliability-weighted design constants, not
-  calibrated probabilities.
+  calibrated probabilities. Learned trust values exist only for AVA action
+  queries (`evaluation/results/ava-holdout-reliability-priors.json`); they are
+  not enabled by default.
+- The parser recognises AVA actions mainly in their base or listed forms
+  ("sitting", "hugging"). Many natural phrasings ("kneeling down", "answering
+  the phone") are not recognised and fall back to spoken-term search.
+- Semantic search silently falls back to a hashing encoder when
+  `SENTENCE_EMBEDDING_CACHE_DIR` does not contain MiniLM. Check
+  `sentence_embedding_retrieval` in `/api/health`.
+- `ENABLE_PHONETIC_MATCH=true` enables sound-alike matching for misheard
+  technical words ("binary" ~ "vandri"). It is off by default and has not been
+  measured on real lectures yet.
 
 See [docs/MODEL_LIMITATIONS.md](docs/MODEL_LIMITATIONS.md) and
 [docs/FINAL_CAPSTONE_EVIDENCE.md](docs/FINAL_CAPSTONE_EVIDENCE.md) for what can
@@ -279,4 +332,6 @@ The full index is [docs/README.md](docs/README.md). Key documents:
 - [Retrieval diagnostics](docs/RETRIEVAL_DIAGNOSTICS.md)
 - [GNN status](docs/GNN_STATUS.md)
 - [Final evaluation](docs/EVALUATION_FINAL.md)
+- [End-to-end evaluation](docs/EVALUATION_END_TO_END.md)
+- [Codebase, data, and cost audit](docs/AUDIT_2026-10.md)
 - [Final demo guide](docs/FINAL_DEMO_GUIDE.md)

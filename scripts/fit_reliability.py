@@ -8,7 +8,7 @@ from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
 
-from vidquery.reliability import fit_reliability_priors
+from vidquery.reliability import canonical_source, fit_reliability_priors
 
 
 def main() -> None:
@@ -28,11 +28,22 @@ def main() -> None:
         minimum_observations=args.minimum_observations,
         strength=args.strength,
     )
-    counts = Counter(str(item["source_method"]) for item in observations)
+    # Report counts under the same canonical keys the fitter uses, and only for
+    # contributions with non-zero evidence (the ones that influence the fit).
+    counts = Counter(
+        canonical_source(str(item["source_method"]))
+        for item in observations
+        if float(item.get("raw_score", 1.0)) > 0
+    )
     result = {
         "schema_version": "reliability-priors-1.0",
         "priors": priors,
         "observations_per_source": dict(sorted(counts.items())),
+        "minimum_observations": args.minimum_observations,
+        "strength": args.strength,
+        "kept_hand_picked": sorted(
+            source for source in priors if counts.get(source, 0) < args.minimum_observations
+        ),
         "manifest": payload.get("manifest"),
         "manifest_sha256": payload.get("manifest_sha256"),
         "split": payload.get("split", "calibration"),

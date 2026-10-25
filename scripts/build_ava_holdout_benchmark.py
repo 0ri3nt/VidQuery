@@ -301,7 +301,10 @@ def main() -> None:
         type=Path,
         nargs="+",
         default=[
-            Path("data/app/models/ava80_scaling/30/ablations/ava80-gat-v5-scale30-roi-frame.metadata.json"),
+            Path(
+                "data/app/models/ava80_scaling/30/ablations/"
+                "ava80-gat-v5-scale30-roi-frame.metadata.json"
+            ),
             Path("data/app/models/ava80_final/ava80-gat-v6-scale37-roi-frame-rare.metadata.json"),
         ],
     )
@@ -361,14 +364,19 @@ def main() -> None:
             "negatives_per_video": args.negatives,
             "max_keyframe_coverage_for_positive": args.max_coverage,
             "min_keyframes_for_positive": 3,
-            "negative_order": "global AVA frequency, descending, synonyms of present labels excluded",
+            "negative_order": (
+                "global AVA frequency, descending, synonyms of present labels excluded"
+            ),
         },
         "annotation_sources": {path.as_posix(): _sha256(path) for path in args.annotations},
         "training_overlap_audit": leakage,
         "limitations": [
-            "Movie footage, not lectures or classrooms; speech, OCR, and ambiguity are not covered.",
-            "AVA caps object/person interactions at three per person, so negatives are near-exhaustive.",
-            "Query wording is fixed per label and was written by the benchmark author, not examiners.",
+            "Movie footage, not lectures or classrooms; speech, OCR, and ambiguity "
+            "are not covered.",
+            "AVA caps object/person interactions at three per person, so negatives "
+            "are near-exhaustive.",
+            "Query wording is fixed per label and was written by the benchmark author, "
+            "not examiners.",
         ],
         "coverage": coverage,
         "videos": videos,
