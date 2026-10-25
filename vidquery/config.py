@@ -221,6 +221,12 @@ class Settings:
     reliability_priors_path: Path | None = field(
         default_factory=lambda: _optional_path_env("RELIABILITY_PRIORS_PATH")
     )
+    enable_phonetic_match: bool = field(
+        default_factory=lambda: _bool_env("ENABLE_PHONETIC_MATCH", False)
+    )
+    phonetic_match_threshold: float = field(
+        default_factory=lambda: float(os.getenv("PHONETIC_MATCH_THRESHOLD", "0.75"))
+    )
     sentence_embedding_cache_dir: Path = field(
         default_factory=lambda: _path_env(
             "SENTENCE_EMBEDDING_CACHE_DIR", Path("data/app/models/sentence_transformers")

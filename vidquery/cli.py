@@ -34,7 +34,7 @@ from .neo4j import CanonicalNeo4jIndexer
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService
 from .reliability import load_reliability_priors
-from .search import LocalHybridSearchEngine, configured_text_encoder
+from .search import LocalHybridSearchEngine, configured_search_engine
 from .storage import SQLiteRepository
 
 
@@ -53,7 +53,9 @@ def run_challenge_evaluation(
     use_groq: bool,
     validate_only: bool,
     split: str | None = None,
+    reliability_priors: str | None = None,
 ) -> None:
+    import hashlib
     from dataclasses import replace
 
     try:
@@ -69,19 +71,32 @@ def run_challenge_evaluation(
     settings, repository = _services()
     planner_settings = settings if use_groq else replace(settings, enable_query_planner=False)
     planner = QueryPlanningService(planner_settings)
-    engine = LocalHybridSearchEngine(
-        repository,
-        encoder=configured_text_encoder(settings),
-        semantic_min_similarity=settings.semantic_min_similarity,
-        appearance_settings=settings,
-        evidence_supported_threshold=settings.evidence_supported_threshold,
-        evidence_weak_threshold=settings.evidence_weak_threshold,
-        reliability_priors=(
-            load_reliability_priors(settings.reliability_priors_path)
-            if settings.reliability_priors_path is not None
+    # --reliability-priors overrides RELIABILITY_PRIORS_PATH for this run:
+    # "default" forces the hand-picked constants, a path loads learned values.
+    priors_path: Path | None
+    if reliability_priors is None:
+        priors_path = settings.reliability_priors_path
+    elif reliability_priors.strip().lower() == "default":
+        priors_path = None
+    else:
+        priors_path = Path(reliability_priors)
+    priors = load_reliability_priors(priors_path) if priors_path is not None else None
+    engine = configured_search_engine(repository, settings, reliability_priors=priors)
+    run_metadata = {
+        "reliability_priors": "learned" if priors_path is not None else "default_hand_picked",
+        "reliability_priors_path": priors_path.as_posix() if priors_path is not None else None,
+        "reliability_priors_sha256": (
+            hashlib.sha256(priors_path.read_bytes()).hexdigest()
+            if priors_path is not None
             else None
         ),
-    )
+        "evidence_supported_threshold": settings.evidence_supported_threshold,
+        "evidence_weak_threshold": settings.evidence_weak_threshold,
+        "phonetic_match": settings.enable_phonetic_match,
+        "text_encoder": getattr(engine.encoder, "model_name", type(engine.encoder).__name__),
+        "query_planner": "groq_constrained" if use_groq else "local_parser_only",
+        "manifest_sha256": hashlib.sha256(Path(dataset).read_bytes()).hexdigest(),
+    }
     try:
         result = evaluate_challenge(
             repository,
@@ -91,6 +106,7 @@ def run_challenge_evaluation(
             engine=engine,
             resolution_margin=settings.hypothesis_resolution_margin,
             split=split,
+            run_metadata=run_metadata,
         )
     except ChallengeManifestError as exc:
         raise SystemExit(str(exc)) from exc
@@ -357,6 +373,14 @@ def main() -> None:
         default=None,
         help="Evaluate only queries on videos assigned to this split (default: all)",
     )
+    challenge.add_argument(
+        "--reliability-priors",
+        default=None,
+        help=(
+            "Override RELIABILITY_PRIORS_PATH for this run: a learned priors JSON path, "
+            "or 'default' for the hand-picked constants"
+        ),
+    )
 
     action_training = subcommands.add_parser(
         "train-action-model", help="Train and validate the reduced AVA person-action model"
@@ -562,6 +586,7 @@ def main() -> None:
             use_groq=args.use_groq,
             validate_only=args.validate_only,
             split=args.split,
+            reliability_priors=args.reliability_priors,
         )
     elif args.command == "train-action-model":
         metadata = train_person_action_model(

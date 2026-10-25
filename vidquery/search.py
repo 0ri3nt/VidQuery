@@ -4,7 +4,7 @@ import hashlib
 import logging
 import math
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Protocol
 
@@ -23,6 +23,7 @@ from .domain import (
     SearchResult,
 )
 from .localization import collapse_duplicate_results, localize_segment
+from .phonetics import DEFAULT_PHONETIC_THRESHOLD, find_phonetic_matches
 from .relationships import (
     RELATIONSHIP_ALIASES,
     matching_relationships,
@@ -34,11 +35,14 @@ from .reliability import (
     DEFAULT_WEAK_THRESHOLD,
     RawContribution,
     assess_evidence,
+    load_reliability_priors,
     reliability_rank_score,
 )
 from .storage import SQLiteRepository
 
 TOKEN_PATTERN = re.compile(r"[a-z0-9_]+")
+# A phonetic (sound-alike) transcript hit counts as this fraction of an exact hit.
+PHONETIC_LEXICAL_WEIGHT = 0.6
 LOGGER = logging.getLogger(__name__)
 
 ENTITY_ALIASES = {
@@ -968,6 +972,7 @@ class ScoredEvidence:
     matched_relationships: list[MatchedRelationship]
     appearance_matches: list[AppearanceMatchEvidence]
     contributions: list[RawContribution]
+    phonetic_surface_terms: list[str] = field(default_factory=list)
 
 
 class LocalHybridSearchEngine:
@@ -982,6 +987,8 @@ class LocalHybridSearchEngine:
         evidence_supported_threshold: float = DEFAULT_SUPPORTED_THRESHOLD,
         evidence_weak_threshold: float = DEFAULT_WEAK_THRESHOLD,
         reliability_priors: dict[str, float] | None = None,
+        phonetic_match: bool = False,
+        phonetic_threshold: float = DEFAULT_PHONETIC_THRESHOLD,
     ):
         self.repository = repository
         self.parser = parser or StructuredQueryParser()
@@ -996,6 +1003,10 @@ class LocalHybridSearchEngine:
         self.evidence_supported_threshold = evidence_supported_threshold
         self.evidence_weak_threshold = evidence_weak_threshold
         self.reliability_priors = reliability_priors
+        if not 0 < phonetic_threshold <= 1:
+            raise ValueError("phonetic_threshold must be in (0, 1]")
+        self.phonetic_match = phonetic_match
+        self.phonetic_threshold = phonetic_threshold
 
     def search(
         self,
@@ -1073,9 +1084,18 @@ class LocalHybridSearchEngine:
                 weak_threshold=self.evidence_weak_threshold,
                 priors=self.reliability_priors,
             )
+            localization_plan = (
+                plan.model_copy(
+                    update={
+                        "spoken_terms": [*plan.spoken_terms, *evidence.phonetic_surface_terms]
+                    }
+                )
+                if evidence.phonetic_surface_terms
+                else plan
+            )
             localization = (
                 localize_segment(
-                    plan,
+                    localization_plan,
                     segment,
                     matched_relationships=evidence.matched_relationships,
                     appearance_matches=evidence.appearance_matches,
@@ -1213,6 +1233,7 @@ class LocalHybridSearchEngine:
         matched_relationship_evidence: list[MatchedRelationship] = []
         appearance_match_evidence: list[AppearanceMatchEvidence] = []
         rejected = ScoredEvidence(0.0, [], [], [], [])
+        phonetic_surface_terms: list[str] = []
         encoder_source = (
             self.encoder.model_name if self.encoder.is_semantic else "hashing_embedding"
         )
@@ -1231,7 +1252,18 @@ class LocalHybridSearchEngine:
             matched_concepts = list(
                 dict.fromkeys([*matched_transcript, *matched_ocr_for_general_concept])
             )
-            lexical = len(matched_concepts) / len(plan.spoken_terms)
+            phonetic_matches = (
+                find_phonetic_matches(
+                    [term for term in plan.spoken_terms if term not in matched_concepts],
+                    _tokens(segment.transcript),
+                    threshold=self.phonetic_threshold,
+                )
+                if self.phonetic_match
+                else {}
+            )
+            lexical = (
+                len(matched_concepts) + PHONETIC_LEXICAL_WEIGHT * len(phonetic_matches)
+            ) / len(plan.spoken_terms)
             searchable_text = " ".join(
                 [
                     segment.transcript,
@@ -1261,6 +1293,15 @@ class LocalHybridSearchEngine:
                         if matched_ocr_for_general_concept
                         else ""
                     ),
+                    (
+                        "phonetic match "
+                        + ", ".join(
+                            f"{term}~{' '.join(match.surface_tokens)}"
+                            for term, match in phonetic_matches.items()
+                        )
+                        if phonetic_matches
+                        else ""
+                    ),
                 )
                 if reason
             )
@@ -1277,6 +1318,18 @@ class LocalHybridSearchEngine:
             contributions.append(
                 RawContribution("transcript", transcript_fraction, "whisper_transcript")
             )
+            if phonetic_matches:
+                contributions.append(
+                    RawContribution(
+                        "transcript",
+                        sum(match.similarity for match in phonetic_matches.values())
+                        / len(plan.spoken_terms),
+                        "phonetic_transcript",
+                    )
+                )
+                phonetic_surface_terms.extend(
+                    token for match in phonetic_matches.values() for token in match.surface_tokens
+                )
             if matched_ocr_for_general_concept:
                 contributions.append(RawContribution("ocr", ocr_fraction, "easyocr"))
             contributions.append(RawContribution("semantic", vector_score, encoder_source))
@@ -1461,6 +1514,7 @@ class LocalHybridSearchEngine:
             matched_relationships=matched_relationship_evidence,
             appearance_matches=appearance_match_evidence,
             contributions=contributions,
+            phonetic_surface_terms=list(dict.fromkeys(phonetic_surface_terms)),
         )
 
     @staticmethod
@@ -1672,3 +1726,34 @@ class Neo4jGraphSearchEngine:
             plan_override=plan,
         )
         return response.model_copy(update={"retrieval_backend": "neo4j"})
+
+
+_PRIORS_FROM_SETTINGS = object()
+
+
+def configured_search_engine(
+    repository: SQLiteRepository,
+    settings: Any,
+    *,
+    reliability_priors: Any = _PRIORS_FROM_SETTINGS,
+) -> LocalHybridSearchEngine:
+    """Build the local engine exactly as the API does from ``settings``.
+
+    ``reliability_priors`` overrides ``RELIABILITY_PRIORS_PATH``: pass a mapping
+    for learned values or ``None`` to force the hand-picked defaults.
+    """
+
+    if reliability_priors is _PRIORS_FROM_SETTINGS:
+        path = getattr(settings, "reliability_priors_path", None)
+        reliability_priors = load_reliability_priors(path) if path is not None else None
+    return LocalHybridSearchEngine(
+        repository,
+        encoder=configured_text_encoder(settings),
+        semantic_min_similarity=settings.semantic_min_similarity,
+        appearance_settings=settings,
+        evidence_supported_threshold=settings.evidence_supported_threshold,
+        evidence_weak_threshold=settings.evidence_weak_threshold,
+        reliability_priors=reliability_priors,
+        phonetic_match=bool(getattr(settings, "enable_phonetic_match", False)),
+        phonetic_threshold=float(getattr(settings, "phonetic_match_threshold", 0.75)),
+    )

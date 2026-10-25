@@ -20,7 +20,7 @@ from vidquery.challenge_evaluation import (
 from vidquery.config import get_settings
 from vidquery.domain import SearchRequest
 from vidquery.query_planner import QueryPlanningService
-from vidquery.search import LocalHybridSearchEngine, configured_text_encoder
+from vidquery.search import configured_search_engine
 from vidquery.storage import SQLiteRepository
 
 
@@ -35,14 +35,9 @@ def collect_observations(manifest_path: Path, *, split: str, limit: int) -> dict
     settings.ensure_directories()
     repository = SQLiteRepository(settings.database_path)
     planner = QueryPlanningService(replace(settings, enable_query_planner=False))
-    engine = LocalHybridSearchEngine(
-        repository,
-        encoder=configured_text_encoder(settings),
-        semantic_min_similarity=settings.semantic_min_similarity,
-        appearance_settings=settings,
-        evidence_supported_threshold=settings.evidence_supported_threshold,
-        evidence_weak_threshold=settings.evidence_weak_threshold,
-    )
+    # Observations are always collected under the hand-picked priors, so the
+    # fitted values never depend on a previously learned file.
+    engine = configured_search_engine(repository, settings, reliability_priors=None)
     source_ids = {video.video_id: source_video_id(video) for video in repository.list_videos()}
     observations: list[dict] = []
     query_count = 0

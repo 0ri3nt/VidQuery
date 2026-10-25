@@ -13,6 +13,13 @@ specific, or negative.  Three systems are compared on identical inputs:
   localizer (isolates the timestamp gain).
 * ``review2_full``           - hypotheses + reliability ranking + localization
   + duplicate collapse + abstention.
+* ``review2_full_no_abstention`` - the identical ``review2_full`` retrieval with
+  the abstention layer switched off: every query with any result is answered.
+  It isolates what abstention itself contributes.
+
+Selective-prediction metrics treat *any* answer to a negative query as an
+error.  A ``weak`` answer to a query whose answer is absent is still an
+answer, not a rejection; only abstention counts as rejecting it.
 
 Every number is machine-generated from the manifest; nothing is hand-typed.
 """
@@ -324,6 +331,42 @@ class ChallengeMethods:
         )
 
 
+def _without_abstention(run: MethodRun) -> MethodRun:
+    """The same run with abstention disabled: answer whenever anything was retrieved.
+
+    Verdicts are dropped (as in Review-1, every returned answer is presented
+    as an answer) but fused confidence is kept so ranking metrics stay defined.
+    """
+
+    ranked = [
+        RankedMoment(
+            video_id=item.video_id,
+            segment_start=item.segment_start,
+            segment_end=item.segment_end,
+            time_point=item.time_point,
+            interval_start=item.interval_start,
+            interval_end=item.interval_end,
+            score=item.score,
+            verdict=None,
+            confidence=item.confidence,
+            precision=item.precision,
+        )
+        for item in run.ranked
+    ]
+    interpretation = (
+        "single" if run.interpretation == "insufficient_evidence" and ranked else run.interpretation
+    )
+    return MethodRun(
+        ranked=ranked,
+        selected_intent=run.selected_intent,
+        selected_hypothesis_id=run.selected_hypothesis_id,
+        offered_hypothesis_ids=list(run.offered_hypothesis_ids),
+        offered_intents=list(run.offered_intents),
+        interpretation=interpretation,
+        latency_ms=run.latency_ms,
+    )
+
+
 def _hit(moment: RankedMoment, relevant: dict[str, Any], tolerance: float) -> bool:
     overlaps = min(moment.interval_end, relevant["end_time"]) > max(
         moment.interval_start, relevant["start_time"]
@@ -358,16 +401,23 @@ def _query_metrics(
     top_supported = bool(
         ranked and (ranked[0].verdict == "supported" or ranked[0].verdict is None)
     )
+    # ``None`` means the method produces no confidence (Review-1 variants);
+    # ranking metrics such as AURC and AUROC are then undefined, not zero.
+    top_confidence = ranked[0].confidence if ranked else 0.0
     metrics: dict[str, Any] = {
         "interpretation": run.interpretation,
         "abstained": abstained,
-        "confidence": float(ranked[0].confidence or 0.0) if ranked else 0.0,
+        "answered": not abstained,
+        "confidence": float(top_confidence) if top_confidence is not None else None,
+        "top_verdict": ranked[0].verdict if ranked else None,
     }
     if negative:
         metrics.update(
             {
                 "negative_rejected": abstained,
                 "confident_wrong": bool(ranked) and top_supported and not abstained,
+                # Answered with a hedged verdict: still a failure to reject.
+                "weak_answer": bool(ranked) and not abstained and ranked[0].verdict == "weak",
             }
         )
         return metrics
@@ -385,6 +435,12 @@ def _query_metrics(
             break
     top1_hit = first_rank == 1
     top1 = ranked[0] if ranked else None
+    recalled = [
+        target
+        for target in relevant
+        if any(_hit(moment, target, tolerance) for moment in ranked)
+    ]
+    recall_at_cutoff = len(recalled) / len(relevant) if relevant else 0.0
     timestamp_error: float | None = None
     within_tolerance = False
     temporal_iou = 0.0
@@ -417,6 +473,7 @@ def _query_metrics(
         {
             "precision_at_1": float(top1_hit),
             "hit_at_5": float(0 < first_rank <= 5),
+            "recall_at_cutoff": round(recall_at_cutoff, 4),
             "mrr": 1.0 / first_rank if first_rank else 0.0,
             "timestamp_error_seconds": (
                 round(timestamp_error, 3) if timestamp_error is not None else None
@@ -459,37 +516,65 @@ def _bootstrap_interval(values: list[float]) -> list[float] | None:
     return [round(low, 4), round(high, 4)]
 
 
+def _is_error(row: dict[str, Any]) -> bool:
+    """A query answered wrongly: a missed positive, or any answer to a negative."""
+
+    if row["negative"]:
+        return True
+    return not bool(row["metrics"].get("precision_at_1", False))
+
+
 def _selective_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
-    """Summarize confidence, abstention, and risk-coverage behavior."""
+    """Abstention operating point, risk-coverage curve, rejection F1, and AUROC.
 
+    * Operating point: ``coverage`` is the fraction of queries answered (not
+      abstained); ``selective_risk`` is the error rate among answered queries,
+      where answering a negative query at all is an error.
+    * ``aurc``: area under the risk-coverage curve obtained by ranking *every*
+      query by fused confidence (higher first) and answering the top k for
+      k = 1..N.  It measures whether confidence separates right from wrong,
+      independent of the abstention threshold.  Undefined (``None``) for
+      methods that emit no confidence.
+    * ``rejection_*``: abstention treated as a detector of negative queries.
+    * ``answerability_auroc``: probability that a random positive query gets a
+      higher confidence than a random negative query (ties count 0.5).
+    """
+
+    empty: dict[str, Any] = {
+        "coverage": None,
+        "selective_risk": None,
+        "risk_coverage": [],
+        "aurc": None,
+        "rejection_precision": None,
+        "rejection_recall": None,
+        "rejection_f1": None,
+        "answerability_auroc": None,
+    }
     if not rows:
-        return {
-            "risk_coverage": [],
-            "aurc": None,
-            "rejection_f1": None,
-            "answerability_auroc": None,
-        }
-    ordered = sorted(rows, key=lambda row: -float(row["metrics"].get("confidence", 0.0)))
-    covered = 0
-    errors = 0
-    curve: list[dict[str, float]] = []
-    for row in ordered:
-        metrics = row["metrics"]
-        if metrics.get("abstained"):
-            continue
-        covered += 1
-        wrong = (not row["negative"] and not metrics.get("precision_at_1", False)) or (
-            row["negative"] and metrics.get("confident_wrong", False)
-        )
-        errors += int(wrong)
-        curve.append(
-            {"coverage": round(covered / len(rows), 4), "risk": round(errors / covered, 4)}
-        )
-    aurc = round(sum(point["risk"] for point in curve) / len(curve), 4) if curve else None
-
-    true_positive = sum(
-        bool(row["negative"] and row["metrics"].get("abstained")) for row in rows
+        return empty
+    answered = [row for row in rows if not row["metrics"].get("abstained")]
+    coverage = len(answered) / len(rows)
+    selective_risk = (
+        sum(_is_error(row) for row in answered) / len(answered) if answered else None
     )
+
+    confidences = [row["metrics"].get("confidence") for row in rows]
+    has_confidence = all(value is not None for value in confidences)
+    curve: list[dict[str, float]] = []
+    aurc: float | None = None
+    if has_confidence:
+        ordered = sorted(
+            range(len(rows)), key=lambda index: (-float(confidences[index] or 0.0), index)
+        )
+        errors = 0
+        for covered, index in enumerate(ordered, start=1):
+            errors += int(_is_error(rows[index]))
+            curve.append(
+                {"coverage": round(covered / len(rows), 4), "risk": round(errors / covered, 4)}
+            )
+        aurc = round(sum(point["risk"] for point in curve) / len(curve), 4)
+
+    true_positive = sum(bool(row["negative"] and row["metrics"].get("abstained")) for row in rows)
     false_positive = sum(
         bool(not row["negative"] and row["metrics"].get("abstained")) for row in rows
     )
@@ -497,46 +582,60 @@ def _selective_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
         bool(row["negative"] and not row["metrics"].get("abstained")) for row in rows
     )
     precision = (
-        true_positive / (true_positive + false_positive)
-        if true_positive + false_positive
-        else 0.0
+        true_positive / (true_positive + false_positive) if true_positive + false_positive else 0.0
     )
     recall = (
-        true_positive / (true_positive + false_negative)
-        if true_positive + false_negative
-        else 0.0
+        true_positive / (true_positive + false_negative) if true_positive + false_negative else 0.0
     )
     rejection_f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
 
-    answerable = [
-        (float(row["metrics"].get("confidence", 0.0)), 1)
-        for row in rows
-        if not row["negative"]
-    ]
-    unanswerable = [
-        (float(row["metrics"].get("confidence", 0.0)), 0)
-        for row in rows
-        if row["negative"]
-    ]
-    pairs = [(positive, negative) for positive, _ in answerable for negative, _ in unanswerable]
-    auroc = (
-        round(
-            sum(
-                1.0 if positive > negative else 0.5 if positive == negative else 0.0
-                for positive, negative in pairs
+    auroc: float | None = None
+    if has_confidence:
+        positives = [float(row["metrics"]["confidence"]) for row in rows if not row["negative"]]
+        negatives = [float(row["metrics"]["confidence"]) for row in rows if row["negative"]]
+        pairs = [(left, right) for left in positives for right in negatives]
+        if pairs:
+            auroc = round(
+                sum(
+                    1.0 if left > right else 0.5 if left == right else 0.0
+                    for left, right in pairs
+                )
+                / len(pairs),
+                4,
             )
-            / len(pairs),
-            4,
-        )
-        if pairs
-        else None
-    )
     return {
+        "coverage": round(coverage, 4),
+        "selective_risk": round(selective_risk, 4) if selective_risk is not None else None,
         "risk_coverage": curve,
         "aurc": aurc,
+        "rejection_precision": round(precision, 4),
+        "rejection_recall": round(recall, 4),
         "rejection_f1": round(rejection_f1, 4),
         "answerability_auroc": auroc,
     }
+
+
+def _bootstrap_statistic(
+    rows: list[dict[str, Any]], statistic: Callable[[list[dict[str, Any]]], float | None]
+) -> list[float] | None:
+    """95% percentile bootstrap interval of a whole-set statistic, resampling queries."""
+
+    if len(rows) < 2:
+        return None
+    rng = random.Random(BOOTSTRAP_SEED)
+    size = len(rows)
+    values: list[float] = []
+    for _ in range(BOOTSTRAP_SAMPLES):
+        sample = [rows[rng.randrange(size)] for _ in range(size)]
+        value = statistic(sample)
+        if value is not None:
+            values.append(float(value))
+    if len(values) < BOOTSTRAP_SAMPLES // 2:
+        return None
+    values.sort()
+    low = values[int(0.025 * len(values))]
+    high = values[max(0, int(0.975 * len(values)) - 1)]
+    return [round(low, 4), round(high, 4)]
 
 
 def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -554,6 +653,14 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "negative_query_count": len(negatives),
         "precision_at_1": round(mean(m["precision_at_1"] for m in metrics), 4) if metrics else None,
         "hit_at_5": round(mean(m["hit_at_5"] for m in metrics), 4) if metrics else None,
+        "recall_at_cutoff": (
+            round(mean(m["recall_at_cutoff"] for m in metrics), 4) if metrics else None
+        ),
+        "positive_answered_rate": _rate([m["answered"] for m in metrics]),
+        "negative_answered_rate": _rate([row["metrics"]["answered"] for row in negatives]),
+        "negative_weak_answer_rate": _rate(
+            [row["metrics"]["weak_answer"] for row in negatives]
+        ),
         "mrr": round(mean(m["mrr"] for m in metrics), 4) if metrics else None,
         "within_tolerance_rate": _rate([m["within_tolerance"] for m in metrics]),
         "temporal_iou": round(mean(m["temporal_iou"] for m in metrics), 4) if metrics else None,
@@ -592,6 +699,14 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "negative_rejection_rate": _bootstrap_interval(
                 [float(bool(row["metrics"]["negative_rejected"])) for row in negatives]
             ),
+            "recall_at_cutoff": _bootstrap_interval([m["recall_at_cutoff"] for m in metrics]),
+            "aurc": _bootstrap_statistic(rows, lambda sample: _selective_metrics(sample)["aurc"]),
+            "rejection_f1": _bootstrap_statistic(
+                rows, lambda sample: _selective_metrics(sample)["rejection_f1"]
+            ),
+            "answerability_auroc": _bootstrap_statistic(
+                rows, lambda sample: _selective_metrics(sample)["answerability_auroc"]
+            ),
         },
     }
     return summary
@@ -606,6 +721,8 @@ def evaluate_challenge(
     engine: LocalHybridSearchEngine | None = None,
     resolution_margin: float = 0.25,
     split: str | None = None,
+    include_no_abstention: bool = True,
+    run_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     manifest = load_manifest(dataset_path)
     warnings = validate_manifest(manifest)
@@ -639,13 +756,22 @@ def evaluate_challenge(
         "review2_full": methods.review2_full,
     }
     rows: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    planner_statuses: list[str] = []
     for item in queries:
         planning = planner.plan(item["query"])
+        planner_statuses.append(planning.status)
         video_ids = [canonical_by_source[str(item["source_video_id"])]]
+        method_runs: list[tuple[str, MethodRun, float]] = []
         for method, runner in runners.items():
             started = time.perf_counter()
             run = runner(str(item["query"]), planning, video_ids, limit)
             latency_ms = (time.perf_counter() - started) * 1000
+            method_runs.append((method, run, latency_ms))
+            if method == "review2_full" and include_no_abstention:
+                method_runs.append(
+                    ("review2_full_no_abstention", _without_abstention(run), latency_ms)
+                )
+        for method, run, latency_ms in method_runs:
             metrics = _query_metrics(item, run, source_ids)
             rows[method].append(
                 {
@@ -718,9 +844,8 @@ def evaluate_challenge(
         "category_counts": dict(Counter(str(item["category"]) for item in queries)),
         "manifest_warnings": warnings,
         "cutoff": limit,
-        "planner_status_histogram": dict(
-            Counter(planner.plan(item["query"]).status for item in queries)
-        ),
+        "planner_status_histogram": dict(Counter(planner_statuses)),
+        "run_metadata": run_metadata or {},
         "summary": summary,
         "review1_vs_review2": comparison,
         "queries": dict(rows),

@@ -38,11 +38,9 @@ from .media import MediaValidationError, UploadTooLargeError, VideoIngestionServ
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService, query_planner_component_status
 from .rag import GroundedAnswerService, rag_component_status
-from .reliability import load_reliability_priors
 from .search import (
-    LocalHybridSearchEngine,
     Neo4jGraphSearchEngine,
-    configured_text_encoder,
+    configured_search_engine,
     sentence_embedding_status,
 )
 from .storage import SQLiteRepository, VideoNotFoundError
@@ -70,19 +68,7 @@ def create_app(
     application.state.repository = active_repository
     application.state.processor = active_processor
     application.state.ingestion = VideoIngestionService(active_settings, active_repository)
-    application.state.search = LocalHybridSearchEngine(
-        active_repository,
-        encoder=configured_text_encoder(active_settings),
-        semantic_min_similarity=active_settings.semantic_min_similarity,
-        appearance_settings=active_settings,
-        evidence_supported_threshold=active_settings.evidence_supported_threshold,
-        evidence_weak_threshold=active_settings.evidence_weak_threshold,
-        reliability_priors=(
-            load_reliability_priors(active_settings.reliability_priors_path)
-            if active_settings.reliability_priors_path is not None
-            else None
-        ),
-    )
+    application.state.search = configured_search_engine(active_repository, active_settings)
     application.state.rag = GroundedAnswerService(active_settings)
     application.state.query_planner = QueryPlanningService(active_settings)
     application.state.annotations = ChallengeManifestStore(active_settings.challenge_manifest_path)

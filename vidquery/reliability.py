@@ -37,6 +37,9 @@ from .domain import (
 SOURCE_RELIABILITY: dict[str, float] = {
     "whisper_transcript": 0.90,
     "whisper_word_timing": 0.90,
+    # Sound-alike transcript hits (ENABLE_PHONETIC_MATCH); deliberately below
+    # exact transcript evidence until calibration measures it.
+    "phonetic_transcript": 0.50,
     "easyocr": 0.80,
     "yolo_detection": 0.80,
     "pyannote_diarization": 0.75,
@@ -170,21 +173,47 @@ def load_reliability_priors(path: Path) -> dict[str, float]:
     return result
 
 
+def canonical_source(source_method: str) -> str:
+    """Map an emitted source name (including model names) onto a prior key.
+
+    The ranker reports semantic and appearance evidence by model name, for
+    example ``sentence-transformers/all-MiniLM-L6-v2`` or ``ViT-B-32:openai``.
+    Fitting and lookup must agree on one key per source, so both use this.
+    """
+
+    key = source_method.strip().lower()
+    if key in SOURCE_RELIABILITY:
+        return key
+    if "minilm" in key or "sentence" in key or "mpnet" in key:
+        return "sentence_embedding"
+    if "hashing" in key:
+        return "hashing_embedding"
+    if "clip" in key or key.startswith("vit-"):
+        return "openclip_appearance"
+    return "unknown"
+
+
 def fit_reliability_priors(
     observations: list[Mapping[str, Any]], *, minimum_observations: int = 10, strength: int = 5
 ) -> dict[str, float]:
-    """Fit source priors from calibration observations with prior smoothing."""
+    """Fit source priors from calibration observations with prior smoothing.
+
+    An observation counts only when its source produced non-zero evidence
+    (``raw_score > 0``): a zero contribution means the source did not match,
+    so it says nothing about how trustworthy that source's matches are.
+    """
 
     if minimum_observations < 1 or strength < 0:
         raise ValueError("minimum_observations must be positive and strength non-negative")
     counts: dict[str, tuple[int, int]] = {}
     for observation in observations:
-        source = str(observation.get("source_method", "")).strip()
-        if source not in SOURCE_RELIABILITY:
-            raise ValueError(f"unknown observation source: {source!r}")
+        source = canonical_source(str(observation.get("source_method", "")))
         correct = observation.get("correct")
         if not isinstance(correct, bool):
             raise ValueError("reliability observations require a boolean 'correct' field")
+        raw_score = observation.get("raw_score", 1.0)
+        if isinstance(raw_score, int | float) and float(raw_score) <= 0:
+            continue
         total, hits = counts.get(source, (0, 0))
         counts[source] = (total + 1, hits + int(correct))
 
@@ -197,18 +226,12 @@ def fit_reliability_priors(
 
 
 def reliability_prior(source_method: str, priors: Mapping[str, float] | None = None) -> float:
-    key = source_method.strip().lower()
-    values = priors or SOURCE_RELIABILITY
-    if key in values:
-        return values[key]
-    # Model names such as ``sentence-transformers/all-MiniLM-L6-v2``.
-    if "minilm" in key or "sentence" in key or "mpnet" in key:
-        return values.get("sentence_embedding", SOURCE_RELIABILITY["sentence_embedding"])
-    if "hashing" in key:
-        return values.get("hashing_embedding", SOURCE_RELIABILITY["hashing_embedding"])
-    if "clip" in key:
-        return values.get("openclip_appearance", SOURCE_RELIABILITY["openclip_appearance"])
-    return values.get("unknown", SOURCE_RELIABILITY["unknown"])
+    """Trust for ``source_method``; a partial learned file falls back per source."""
+
+    key = canonical_source(source_method)
+    if priors and key in priors:
+        return priors[key]
+    return SOURCE_RELIABILITY[key]
 
 
 def modality_weight(intent: str, modality: EvidenceModality) -> float:
