@@ -227,6 +227,21 @@ class Settings:
     phonetic_match_threshold: float = field(
         default_factory=lambda: float(os.getenv("PHONETIC_MATCH_THRESHOLD", "0.75"))
     )
+    enable_frame_semantic_retrieval: bool = field(
+        default_factory=lambda: _bool_env("ENABLE_FRAME_SEMANTIC_RETRIEVAL", False)
+    )
+    frame_semantic_weight: float = field(
+        default_factory=lambda: float(os.getenv("FRAME_SEMANTIC_WEIGHT", "1.0"))
+    )
+    frame_semantic_floor: float = field(
+        default_factory=lambda: float(os.getenv("FRAME_SEMANTIC_FLOOR", "0.18"))
+    )
+    frame_semantic_ceiling: float = field(
+        default_factory=lambda: float(os.getenv("FRAME_SEMANTIC_CEILING", "0.32"))
+    )
+    soft_constraint_matching: bool = field(
+        default_factory=lambda: _bool_env("SOFT_CONSTRAINT_MATCHING", False)
+    )
     sentence_embedding_cache_dir: Path = field(
         default_factory=lambda: _path_env(
             "SENTENCE_EMBEDDING_CACHE_DIR", Path("data/app/models/sentence_transformers")

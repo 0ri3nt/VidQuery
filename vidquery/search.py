@@ -43,6 +43,8 @@ from .reliability import (
 from .storage import SQLiteRepository
 
 TOKEN_PATTERN = re.compile(r"[a-z0-9_]+")
+# Purely linguistic intents never use frame-level visual similarity.
+FRAME_SEMANTIC_SKIP_INTENTS = frozenset({"transcript_search", "ocr_search", "speaker_search"})
 # A phonetic (sound-alike) transcript hit counts as this fraction of an exact hit.
 PHONETIC_LEXICAL_WEIGHT = 0.6
 LOGGER = logging.getLogger(__name__)
@@ -1051,6 +1053,11 @@ class LocalHybridSearchEngine:
         reliability_priors: dict[str, float] | None = None,
         phonetic_match: bool = False,
         phonetic_threshold: float = DEFAULT_PHONETIC_THRESHOLD,
+        soft_constraints: bool = False,
+        frame_semantic_index: Any | None = None,
+        frame_semantic_weight: float = 1.0,
+        frame_semantic_floor: float = 0.18,
+        frame_semantic_ceiling: float = 0.32,
     ):
         self.repository = repository
         self.parser = parser or StructuredQueryParser()
@@ -1069,6 +1076,16 @@ class LocalHybridSearchEngine:
             raise ValueError("phonetic_threshold must be in (0, 1]")
         self.phonetic_match = phonetic_match
         self.phonetic_threshold = phonetic_threshold
+        # Soft constraints: a segment missing a parsed entity/action/relation is
+        # down-weighted (partial match) instead of discarded.
+        self.soft_constraints = soft_constraints
+        # Optional frame-level OpenCLIP text-to-visual evidence (FrameSemanticIndex).
+        self.frame_semantic_index = frame_semantic_index
+        if frame_semantic_ceiling <= frame_semantic_floor or frame_semantic_weight < 0:
+            raise ValueError("frame semantic ceiling must exceed floor and weight be >= 0")
+        self.frame_semantic_weight = frame_semantic_weight
+        self.frame_semantic_floor = frame_semantic_floor
+        self.frame_semantic_ceiling = frame_semantic_ceiling
 
     def search(
         self,
@@ -1118,6 +1135,16 @@ class LocalHybridSearchEngine:
                         type(exc).__name__,
                     )
 
+        frame_text_vector = None
+        frame_index = self.frame_semantic_index
+        if frame_index is not None and plan.intent not in FRAME_SEMANTIC_SKIP_INTENTS:
+            text_encoder = self._get_appearance_encoder()
+            if text_encoder is not None:
+                import numpy as np
+
+                frame_text_vector = np.asarray(
+                    text_encoder.encode_texts([request.query])[0], dtype=np.float32
+                )
         for segment in self.repository.list_segments(request.video_ids or None):
             if (
                 candidate_segment_ids is not None
@@ -1136,6 +1163,13 @@ class LocalHybridSearchEngine:
                 appearance_text_vectors=appearance_text_vectors,
                 appearance_encoder=appearance_encoder,
                 appearance_enabled=appearance_enabled,
+                frame_similarity=(
+                    frame_index.best_frame(
+                        segment.video_id, list(segment.frame_ids), frame_text_vector
+                    )
+                    if frame_index is not None and frame_text_vector is not None
+                    else None
+                ),
             )
             if evidence.score <= 0:
                 continue
@@ -1289,6 +1323,7 @@ class LocalHybridSearchEngine:
         appearance_text_vectors: dict[str, list[float]] | None = None,
         appearance_encoder: Any | None = None,
         appearance_enabled: bool = False,
+        frame_similarity: tuple[float, str] | None = None,
     ) -> ScoredEvidence:
         components: list[tuple[float, float, str]] = []
         contributions: list[RawContribution] = []
@@ -1428,7 +1463,7 @@ class LocalHybridSearchEngine:
         if plan.visual_entities:
             entity_set = {item.lower() for item in segment.entities}
             matched = [item for item in plan.visual_entities if item in entity_set]
-            if len(matched) != len(plan.visual_entities):
+            if len(matched) != len(plan.visual_entities) and not self.soft_constraints:
                 return rejected
             components.append(
                 (
@@ -1445,13 +1480,16 @@ class LocalHybridSearchEngine:
         if plan.actions:
             action_set = {item.lower() for item in segment.actions}
             matched = [item for item in plan.actions if item in action_set]
-            if len(matched) != len(plan.actions):
+            if len(matched) != len(plan.actions) and not self.soft_constraints:
                 return rejected
             action_sources = segment.processing_metadata.get("action_sources", {})
             action_confidences = segment.processing_metadata.get("action_confidences", {})
-            mean_action_confidence = sum(
-                float(action_confidences.get(action, 1.0)) for action in matched
-            ) / len(matched)
+            mean_action_confidence = (
+                sum(float(action_confidences.get(action, 1.0)) for action in matched)
+                / len(matched)
+                if matched
+                else 0.0
+            )
             provenance = sorted({str(action_sources.get(action, "unknown")) for action in matched})
             components.append(
                 (
@@ -1481,7 +1519,10 @@ class LocalHybridSearchEngine:
             for relation_query in plan.relationship_tuples:
                 matches = matching_relationships(segment, relation_query)
                 if not matches:
-                    return rejected
+                    if not self.soft_constraints:
+                        return rejected
+                    confidences.append(0.0)
+                    continue
                 best = matches[0]
                 confidences.append(best.confidence)
                 if best.relationship_id not in seen_relationship_ids:
@@ -1504,7 +1545,7 @@ class LocalHybridSearchEngine:
         elif plan.relationships:
             relation_set = {normalize_predicate(item.predicate) for item in segment.relationships}
             matched = [item for item in plan.relationships if item in relation_set]
-            if len(matched) != len(plan.relationships):
+            if len(matched) != len(plan.relationships) and not self.soft_constraints:
                 return rejected
             components.append(
                 (
@@ -1565,7 +1606,23 @@ class LocalHybridSearchEngine:
                     )
                 )
 
+        if frame_similarity is not None:
+            similarity, frame_id = frame_similarity
+            span = max(1e-6, self.frame_semantic_ceiling - self.frame_semantic_floor)
+            visual_score = max(0.0, min(1.0, (similarity - self.frame_semantic_floor) / span))
+            components.append(
+                (
+                    self.frame_semantic_weight,
+                    visual_score,
+                    f"visual-text similarity {similarity:.3f} at frame {frame_id} (openclip)",
+                )
+            )
+            contributions.append(
+                RawContribution("visual_semantic", visual_score, "openclip_frame_similarity")
+            )
         if not components:
+            return rejected
+        if self.soft_constraints and not any(value > 0 for _, value, _ in components):
             return rejected
         total_weight = sum(weight for weight, _, _ in components)
         score = sum(weight * value for weight, value, _ in components) / total_weight
@@ -1827,6 +1884,26 @@ def configured_search_engine(
         reliability_priors=reliability_priors,
         phonetic_match=bool(getattr(settings, "enable_phonetic_match", False)),
         phonetic_threshold=float(getattr(settings, "phonetic_match_threshold", 0.75)),
+        soft_constraints=bool(getattr(settings, "soft_constraint_matching", False)),
+        frame_semantic_index=_configured_frame_semantic_index(settings),
+        frame_semantic_weight=float(getattr(settings, "frame_semantic_weight", 1.0)),
+        frame_semantic_floor=float(getattr(settings, "frame_semantic_floor", 0.18)),
+        frame_semantic_ceiling=float(getattr(settings, "frame_semantic_ceiling", 0.32)),
+    )
+
+
+def _configured_frame_semantic_index(settings: Any) -> Any | None:
+    if not getattr(settings, "enable_frame_semantic_retrieval", False):
+        return None
+    if not getattr(settings, "enable_appearance_features", False):
+        raise ValueError("frame semantic retrieval needs the OpenCLIP appearance encoder enabled")
+    from .appearance import parse_appearance_model
+    from .frame_semantics import FrameSemanticIndex
+
+    architecture, pretrained = parse_appearance_model(settings.appearance_model)
+    return FrameSemanticIndex(
+        settings.generated_dir,
+        expected_model_version=f"{architecture}:{pretrained}:frozen:appearance-schema-v1",
     )
 
 

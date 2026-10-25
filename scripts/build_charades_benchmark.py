@@ -160,7 +160,7 @@ def main() -> None:
     )
     if set(test["videos"]) & set(validation["videos"]):
         raise SystemExit("test and validation videos overlap")
-    manifest = {
+    manifest: dict[str, Any] = {
         "schema_version": SCHEMA,
         "created_at": datetime.now(UTC).isoformat(),
         "selection_rule": (

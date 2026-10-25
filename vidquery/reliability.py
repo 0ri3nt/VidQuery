@@ -46,6 +46,8 @@ SOURCE_RELIABILITY: dict[str, float] = {
     "bounding_box_geometry": 0.65,
     "sentence_embedding": 0.60,
     "openclip_appearance": 0.55,
+    # Frame-level OpenCLIP text-to-visual similarity (ENABLE_FRAME_SEMANTIC_RETRIEVAL).
+    "openclip_frame_similarity": 0.55,
     "visual_attribute_model": 0.55,
     "relationship_gnn": 0.35,
     "gnn_action_model": 0.30,
@@ -68,6 +70,7 @@ _ALL_MODALITIES: tuple[EvidenceModality, ...] = (
     "relationship",
     "speaker",
     "appearance",
+    "visual_semantic",
 )
 QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
     "transcript_search": {
@@ -79,6 +82,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 0.2,
         "speaker": 0.6,
         "appearance": 0.2,
+        "visual_semantic": 0.1,
     },
     "ocr_search": {
         "transcript": 0.3,
@@ -89,6 +93,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 0.2,
         "speaker": 0.2,
         "appearance": 0.2,
+        "visual_semantic": 0.1,
     },
     "visual_search": {
         "transcript": 0.3,
@@ -99,6 +104,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 0.5,
         "speaker": 0.2,
         "appearance": 0.9,
+        "visual_semantic": 0.9,
     },
     "action_search": {
         "transcript": 0.3,
@@ -109,6 +115,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 0.5,
         "speaker": 0.2,
         "appearance": 0.4,
+        "visual_semantic": 0.9,
     },
     "relationship_search": {
         "transcript": 0.3,
@@ -119,6 +126,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 1.0,
         "speaker": 0.2,
         "appearance": 0.4,
+        "visual_semantic": 0.7,
     },
     "speaker_search": {
         "transcript": 0.6,
@@ -129,6 +137,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 0.2,
         "speaker": 1.0,
         "appearance": 0.2,
+        "visual_semantic": 0.1,
     },
     "multimodal_search": {
         "transcript": 1.0,
@@ -139,6 +148,7 @@ QUERY_MODALITY_WEIGHTS: dict[str, dict[EvidenceModality, float]] = {
         "relationship": 0.8,
         "speaker": 0.8,
         "appearance": 0.8,
+        "visual_semantic": 0.9,
     },
 }
 

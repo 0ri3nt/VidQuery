@@ -373,6 +373,7 @@ EvidenceModality = Literal[
     "relationship",
     "speaker",
     "appearance",
+    "visual_semantic",
 ]
 EvidenceVerdict = Literal["supported", "weak", "insufficient"]
 
