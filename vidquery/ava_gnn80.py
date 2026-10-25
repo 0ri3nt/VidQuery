@@ -23,6 +23,12 @@ AVA80_LABELS = tuple(AVA_V22_ACTIONS[label_id] for label_id in AVA80_LABEL_IDS)
 AVA80_MLP_SCHEMA = "ava-person-action-mlp80-v1"
 AVA80_GNN_SCHEMA = "ava-person-action-pyg-gat80-v1"
 AVA80_DATASET_SCHEMA = "ava-timestamp-graph80-v2"
+# Leakage-free static schema: the same visual features minus two columns that
+# encode whether a node is a ground-truth-only box (always 0/real at inference).
+AVA80_NOLEAK_SCHEMA = "ava80-gat-ablation-v3-noleak"
+AVA80_NOLEAK_ATTRIBUTE = "visual_noleak_x"
+AVA80_NOLEAK_DROPPED = ("detector_confidence", "annotation_only")
+_STATIC_SCHEMAS = {"ava80-gat-ablation-v2", AVA80_NOLEAK_SCHEMA}
 
 COCO_CLASS_NAMES = (
     "person",
@@ -1542,6 +1548,23 @@ def train_ava80_suite(
     return result
 
 
+def leaking_column_indices() -> list[int]:
+    """Positions of the ground-truth-revealing columns in ``visual_x``."""
+
+    names = list(CONTINUOUS_FEATURE_NAMES)
+    return [names.index(name) for name in AVA80_NOLEAK_DROPPED]
+
+
+def drop_leaking_columns(features: Any) -> Any:
+    """``visual_x`` -> ``visual_noleak_x`` (same order, two columns removed)."""
+
+    import torch
+
+    drop = set(leaking_column_indices())
+    keep = [index for index in range(int(features.shape[1])) if index not in drop]
+    return features.index_select(1, torch.tensor(keep, device=features.device))
+
+
 def ava80_gnn_status(
     checkpoint_path: Path,
     metadata_path: Path,
@@ -1552,7 +1575,7 @@ def ava80_gnn_status(
     try:
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         schema_version = metadata.get("schema_version")
-        if schema_version not in {AVA80_GNN_SCHEMA, "ava80-gat-ablation-v2"}:
+        if schema_version not in {AVA80_GNN_SCHEMA, *_STATIC_SCHEMAS}:
             return "unavailable_schema_mismatch"
         if expected_model_version and metadata.get("model_version") != expected_model_version:
             return "unavailable_model_version_mismatch"
@@ -1586,7 +1609,7 @@ class AVA80GNNPredictor:
             raise ValueError(f"AVA80 GNN checkpoint cannot be activated: {status}")
         payload = torch.load(checkpoint_path, map_location=device, weights_only=True)
         schema_version = payload.get("schema_version")
-        if schema_version not in {AVA80_GNN_SCHEMA, "ava80-gat-ablation-v2"}:
+        if schema_version not in {AVA80_GNN_SCHEMA, *_STATIC_SCHEMAS}:
             raise ValueError("AVA80 GNN checkpoint schema mismatch")
         if payload.get("labels") != list(AVA80_LABELS):
             raise ValueError("AVA80 GNN label map mismatch")
@@ -1609,13 +1632,17 @@ class AVA80GNNPredictor:
             from .ava_ablation import StaticActionModel
 
             self.feature_attribute = str(payload.get("feature_attribute", ""))
-            if self.feature_attribute not in {
-                "handcrafted_x",
-                "roi_x",
-                "visual_x",
-                "visual_temporal_x",
-            }:
+            allowed = (
+                {AVA80_NOLEAK_ATTRIBUTE}
+                if schema_version == AVA80_NOLEAK_SCHEMA
+                else {"handcrafted_x", "roi_x", "visual_x", "visual_temporal_x"}
+            )
+            if self.feature_attribute not in allowed:
                 raise ValueError("improved AVA80 feature attribute is not inference-compatible")
+            if schema_version == AVA80_NOLEAK_SCHEMA and tuple(
+                payload.get("dropped_feature_names", ())
+            ) != AVA80_NOLEAK_DROPPED:
+                raise ValueError("leakage-free AVA80 checkpoint has an unexpected column schema")
             feature_dimension = int(payload.get("feature_dimension", 0))
             if feature_dimension <= 0:
                 raise ValueError("improved AVA80 feature dimension is invalid")
@@ -1632,12 +1659,23 @@ class AVA80GNNPredictor:
         self.thresholds = payload["thresholds"].to(self.device)
 
     def _features(self, graph: Any, frame_image: Any = None) -> Any:
+        if self.feature_attribute == AVA80_NOLEAK_ATTRIBUTE:
+            if hasattr(graph, AVA80_NOLEAK_ATTRIBUTE):
+                return getattr(graph, AVA80_NOLEAK_ATTRIBUTE)
+            return drop_leaking_columns(self._visual_features(graph, frame_image))
+        return self._visual_features(graph, frame_image)
+
+    def _visual_features(self, graph: Any, frame_image: Any = None) -> Any:
         import torch
 
         if self.feature_attribute == "x":
             return graph.x
-        if hasattr(graph, self.feature_attribute):
+        if self.feature_attribute != AVA80_NOLEAK_ATTRIBUTE and hasattr(
+            graph, self.feature_attribute
+        ):
             return getattr(graph, self.feature_attribute)
+        if self.feature_attribute == AVA80_NOLEAK_ATTRIBUTE and hasattr(graph, "visual_x"):
+            return graph.visual_x
         if self.feature_attribute == "visual_temporal_x":
             raise ValueError(
                 "visual_temporal_x requires a validated cached short-clip embedding"

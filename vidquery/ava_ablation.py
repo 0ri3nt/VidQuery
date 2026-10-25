@@ -285,6 +285,10 @@ def train_static_ablation(
     device_name: str = "auto",
     rare_class_sampling: bool = False,
     evaluate_test: bool = True,
+    learning_rate: float = 1e-3,
+    weight_decay: float = 1e-4,
+    schema_version: str = "ava80-gat-ablation-v2",
+    extra_payload: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     np, torch, nn = _seed_training(seed)
     from torch_geometric.loader import DataLoader
@@ -301,7 +305,9 @@ def train_static_ablation(
     )
     model = model_factory.to(device)
     loss_function = _loss_function(loss_mode, train_targets, torch, nn).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
+    optimizer = torch.optim.AdamW(
+        model.parameters(), lr=learning_rate, weight_decay=weight_decay
+    )
     device_mean, device_std = mean.to(device), std.to(device)
     sampling_weights = None
     training_sampler = None
@@ -427,7 +433,8 @@ def train_static_ablation(
     checkpoint = output_dir / f"{model_version}.pt"
     metadata_path = output_dir / f"{model_version}.metadata.json"
     torch.save({
-        "schema_version": STATIC_SCHEMA,
+        **(extra_payload or {}),
+        "schema_version": schema_version,
         "model_version": model_version,
         "state_dict": best_state,
         "feature_mean": mean,
@@ -441,9 +448,13 @@ def train_static_ablation(
         "labels": list(AVA80_LABELS),
     }, checkpoint)
     metadata = {
-        "schema_version": STATIC_SCHEMA,
+        **(extra_payload or {}),
+        "schema_version": schema_version,
         "model_version": model_version,
         "task": "person-centric AVA 80-label multilabel action classification",
+        "optimizer": {"name": "AdamW", "learning_rate": learning_rate,
+                      "weight_decay": weight_decay, "batch_size": batch_size,
+                      "epochs": epochs, "patience": patience},
         "feature_attribute": feature_attribute,
         "feature_schema": feature_schema,
         "architecture": "MLP" if mlp_only else "two-layer GATv2",

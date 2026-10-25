@@ -12,6 +12,7 @@ import json
 import math
 import os
 import shutil
+import socket
 import subprocess
 import time
 import urllib.error
@@ -30,6 +31,49 @@ MEDIA_EXTENSIONS = {".mp4", ".mkv", ".webm"}
 PER_VIDEO_CACHE_SCHEMA = "ava80-incremental-video-cache-v1"
 EXPANSION_SCHEMA = "ava80-storage-aware-expansion-v1"
 DEFAULT_MIN_FREE_BYTES = 2 * 1024**3
+AVA_MEDIA_HOST = "s3.amazonaws.com"
+_DNS_ERROR_MARKERS = (
+    "could not resolve host",
+    "getaddrinfo failed",
+    "name or service not known",
+    "temporary failure in name resolution",
+    "nodename nor servname",
+)
+
+
+def network_available(host: str = AVA_MEDIA_HOST) -> bool:
+    try:
+        socket.getaddrinfo(host, 443)
+    except OSError:
+        return False
+    return True
+
+
+def wait_for_network(
+    host: str = AVA_MEDIA_HOST,
+    *,
+    attempts: int = 5,
+    base_delay: float = 15.0,
+    sleep: Any = time.sleep,
+    resolver: Any = None,
+) -> dict[str, Any]:
+    """Bounded exponential backoff until ``host`` resolves (15 s, 30 s, 60 s, ...)."""
+
+    resolver = resolver or network_available
+    waited = 0.0
+    for attempt in range(1, max(1, attempts) + 1):
+        if resolver(host):
+            return {"available": True, "attempts": attempt, "waited_seconds": waited}
+        if attempt < attempts:
+            delay = base_delay * 2 ** (attempt - 1)
+            sleep(delay)
+            waited += delay
+    return {"available": False, "attempts": attempts, "waited_seconds": waited, "host": host}
+
+
+def is_dns_failure(report: dict[str, Any]) -> bool:
+    text = " ".join(str(report.get(key, "")) for key in ("error", "curl_error")).lower()
+    return any(marker in text for marker in _DNS_ERROR_MARKERS)
 
 
 def _sha256(path: Path) -> str:
@@ -513,12 +557,15 @@ def _storage_safe_batch(
     master_cache: Path,
     batch_size: int,
     min_free_bytes: int,
+    reserve_master_rebuild: bool = True,
 ) -> tuple[list[str], dict[str, Any]]:
     """Choose the highest-ranked batch that leaves room for cache rebuilding."""
 
     destination_dir.mkdir(parents=True, exist_ok=True)
     free_bytes = shutil.disk_usage(destination_dir).free
-    master_rebuild_bytes = master_cache.stat().st_size if master_cache.is_file() else 0
+    master_rebuild_bytes = (
+        master_cache.stat().st_size if reserve_master_rebuild and master_cache.is_file() else 0
+    )
     usable_bytes = max(0, free_bytes - min_free_bytes - master_rebuild_bytes)
     selected: list[str] = []
     estimated_bytes = 0
@@ -731,6 +778,8 @@ def _process_downloaded_batch(
     embedding_cache_dir: Path,
     yolo_model: str,
     device: str,
+    shard_dir: Path | None = None,
+    legacy_cache: bool = True,
 ) -> dict[str, dict[str, Any]]:
     os.environ.setdefault(
         "YOLO_CONFIG_DIR", str(Path("data/app/cache/ultralytics").resolve())
@@ -834,26 +883,37 @@ def _process_downloaded_batch(
         if not graphs:
             reports[video_id] = {"status": "failed", "error": "no graphs built"}
             continue
-        reports[video_id] = {
-            "status": "validated",
-            **_save_video_feature_cache(
-                video_id=video_id,
-                graphs=graphs,
-                cache_dir=cache_dir,
-                provenance={
-                    "source_media_filename": media_path.name,
-                    "source_media_bytes": media_path.stat().st_size,
-                    "source_media_sha256": _sha256(media_path),
-                    "annotation_split": coverage[video_id].annotation_split,
-                    "annotation_paths": [path.as_posix() for path in annotation_paths],
-                    "timestamps": extraction[video_id],
-                    "yolo_model": yolo_model,
-                    "visual_backbone": RESNET18_BACKBONE,
-                    "temporal_clip_encoder": TEMPORAL_CLIP_ENCODER,
-                    "temporal_context_seconds": [-1.0, 0.0, 1.0],
-                },
-            ),
+        provenance = {
+            "source_media_filename": media_path.name,
+            "source_media_bytes": media_path.stat().st_size,
+            "source_media_sha256": _sha256(media_path),
+            "annotation_split": coverage[video_id].annotation_split,
+            "annotation_paths": [path.as_posix() for path in annotation_paths],
+            "annotation_sha256": {path.as_posix(): _sha256(path) for path in annotation_paths},
+            "timestamps": extraction[video_id],
+            "yolo_model": yolo_model,
+            "visual_backbone": RESNET18_BACKBONE,
+            "temporal_clip_encoder": TEMPORAL_CLIP_ENCODER,
+            "temporal_context_seconds": [-1.0, 0.0, 1.0],
         }
+        report: dict[str, Any] = {"status": "validated"}
+        if legacy_cache:
+            report.update(
+                _save_video_feature_cache(
+                    video_id=video_id,
+                    graphs=graphs,
+                    cache_dir=cache_dir,
+                    provenance=provenance,
+                )
+            )
+        if shard_dir is not None:
+            from .ava_shards import write_shard
+
+            # write_shard re-validates the file against its recorded hash.
+            report["shard"] = write_shard(
+                graphs, shard_dir, video_id=video_id, provenance=provenance
+            )
+        reports[video_id] = report
     return reports
 
 
@@ -924,7 +984,17 @@ def expand_ava_dataset(
     delete_raw: bool = True,
     delete_frames: bool = True,
     min_free_bytes: int = DEFAULT_MIN_FREE_BYTES,
+    shard_dir: Path | None = None,
+    legacy_cache: bool = True,
+    rebuild_master: bool = True,
+    network_attempts: int = 5,
+    network_base_delay: float = 15.0,
+    sleep: Any = time.sleep,
 ) -> dict[str, Any]:
+    if not legacy_cache and shard_dir is None:
+        raise ValueError("disabling the legacy cache requires a shard directory")
+    if rebuild_master and not legacy_cache:
+        raise ValueError("the master cache is rebuilt from legacy per-video caches")
     if target_videos < 1:
         raise ValueError("target_videos must be positive")
     if batch_size < 1 or batch_size > 20:
@@ -935,15 +1005,25 @@ def expand_ava_dataset(
     per_video_cache_dir = feature_root / "videos"
     embedding_cache_dir = feature_root / "embedding_cache"
     per_video_cache_dir.mkdir(parents=True, exist_ok=True)
-    completed = _master_video_ids(master_cache)
+    # Shard-only runs never load the (large) legacy master cache.
+    completed = _master_video_ids(master_cache) if legacy_cache else set()
     incremental_cache_video_ids: set[str] = set()
-    for cache_path in per_video_cache_dir.glob("*.pt"):
+    for cache_path in per_video_cache_dir.glob("*.pt") if legacy_cache else ():
         try:
             cached_video_id = validate_video_feature_cache(cache_path)["video_id"]
             completed.add(cached_video_id)
             incremental_cache_video_ids.add(cached_video_id)
         except (OSError, ValueError, RuntimeError):
             continue
+    if shard_dir is not None:
+        from .ava_shards import completed_shard_video_ids
+
+        shard_ids = completed_shard_video_ids(shard_dir)
+        if not legacy_cache:
+            # Shard-only runs count only verified shards as done; legacy caches
+            # are converted with scripts/convert_ava_cache_to_shards.py instead.
+            completed = set(shard_ids)
+            incremental_cache_video_ids = set(shard_ids)
     state: dict[str, Any] = {
         "schema_version": EXPANSION_SCHEMA,
         "target_videos": target_videos,
@@ -966,7 +1046,16 @@ def expand_ava_dataset(
     )
     state["failed_video_ids"] = sorted(failed)
     state["transient_failure_video_ids"] = sorted(transient_failures)
-    inventory = fetch_ava_inventory() if len(completed) < target_videos else {}
+    inventory: dict[str, dict[str, Any]] = {}
+    if len(completed) < target_videos:
+        network = wait_for_network(
+            attempts=network_attempts, base_delay=network_base_delay, sleep=sleep
+        )
+        if not network["available"]:
+            state["network_unavailable"] = network
+            _write_json_atomic(state_path, state)
+            return state
+        inventory = fetch_ava_inventory()
     selected_history = [
         str(video_id)
         for batch_report in state["batches"]
@@ -998,14 +1087,27 @@ def expand_ava_dataset(
             master_cache=master_cache,
             batch_size=batch_size,
             min_free_bytes=min_free_bytes,
+            reserve_master_rebuild=rebuild_master,
         )
         if not batch:
             state["storage_blocked"] = storage_report
             _write_json_atomic(state_path, state)
             break
+        network = wait_for_network(
+            attempts=network_attempts, base_delay=network_base_delay, sleep=sleep
+        )
+        if not network["available"]:
+            state["network_unavailable"] = network
+            _write_json_atomic(state_path, state)
+            break
         attempted.update(batch)
         selected_history.extend(batch)
         downloads = _download_batch(batch, inventory, video_root, workers)
+        dns_failed = [
+            video_id
+            for video_id, result in downloads.items()
+            if result.get("status") == "failed" and is_dns_failure(result)
+        ]
         available_media = {
             video_id: Path(result["path"])
             for video_id, result in downloads.items()
@@ -1032,6 +1134,10 @@ def expand_ava_dataset(
                 failed.add(video_id)
             else:
                 transient_failures.add(video_id)
+        # A DNS outage is not the video's fault: keep it retryable in this run.
+        attempted.difference_update(dns_failed)
+        if dns_failed:
+            batch_report["dns_failed_video_ids"] = sorted(dns_failed)
         if available_media:
             try:
                 feature_reports = _process_downloaded_batch(
@@ -1043,6 +1149,8 @@ def expand_ava_dataset(
                     embedding_cache_dir=embedding_cache_dir,
                     yolo_model=yolo_model,
                     device=device,
+                    shard_dir=shard_dir,
+                    legacy_cache=legacy_cache,
                 )
             except Exception as exc:
                 feature_reports = {
@@ -1086,9 +1194,10 @@ def expand_ava_dataset(
             item.get("status") == "validated"
             for item in batch_report["features"].values()
         ):
-            state["master_cache"] = rebuild_incremental_master_cache(
-                master_cache, per_video_cache_dir
-            )
+            if rebuild_master:
+                state["master_cache"] = rebuild_incremental_master_cache(
+                    master_cache, per_video_cache_dir
+                )
             if (
                 delete_raw
                 and delete_frames

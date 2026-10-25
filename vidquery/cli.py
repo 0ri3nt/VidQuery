@@ -299,6 +299,23 @@ def main() -> None:
         default=2.0,
         help="Minimum free disk space retained while processing temporary batches",
     )
+    expansion.add_argument(
+        "--shard-dir",
+        type=Path,
+        default=None,
+        help="Also write slim versioned per-video shards here (ava80-slim-shard-v1)",
+    )
+    expansion.add_argument(
+        "--no-legacy-cache",
+        action="store_true",
+        help="Write only slim shards (requires --shard-dir; implies --no-master-cache)",
+    )
+    expansion.add_argument(
+        "--no-master-cache",
+        action="store_true",
+        help="Skip rebuilding the single in-RAM master graph cache after each batch",
+    )
+    expansion.add_argument("--network-attempts", type=int, default=5)
     expansion.add_argument("--keep-raw-video", action="store_true")
     expansion.add_argument("--keep-frames", action="store_true")
     expansion.add_argument(
@@ -507,6 +524,10 @@ def main() -> None:
             delete_raw=not args.keep_raw_video,
             delete_frames=not args.keep_frames,
             min_free_bytes=int(args.min_free_gb * 1024**3),
+            shard_dir=args.shard_dir,
+            legacy_cache=not args.no_legacy_cache,
+            rebuild_master=not (args.no_master_cache or args.no_legacy_cache),
+            network_attempts=args.network_attempts,
         )
         print(
             json.dumps(
