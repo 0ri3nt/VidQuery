@@ -31,7 +31,12 @@ def main() -> None:
     parser.add_argument("--split", choices=("validation", "test"), required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--reliability-priors", default="default")
-    parser.add_argument("--spans", nargs="+", default=list(SPANS), choices=SPANS)
+    parser.add_argument(
+        "--spans",
+        nargs="+",
+        default=list(SPANS),
+        help="native, segment, merge, expand:SECONDS, expand_peak:SECONDS",
+    )
     parser.add_argument("--merge-ratio", type=float, default=0.8)
     parser.add_argument("--limit", type=int, default=5)
     parser.add_argument("--kinds", nargs="+", default=None,
@@ -42,7 +47,9 @@ def main() -> None:
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     split = manifest["splits"][args.split]
     queries = [
-        item for item in split["queries"] if args.kinds is None or item["kind"] in args.kinds
+        {**item, "duration": split["durations"].get(item["video"])}
+        for item in split["queries"]
+        if args.kinds is None or item["kind"] in args.kinds
     ]
 
     settings = get_settings()

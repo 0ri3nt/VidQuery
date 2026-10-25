@@ -21,6 +21,9 @@ Predicted intervals (``span``):
 * ``segment``: always the 5 s segment of the result.
 * ``merge``: the top-1 segment extended over adjacent retrieved segments whose
   score is at least ``merge_ratio`` times the top score.
+* ``expand:L`` / ``expand_peak:L``: a window of L seconds centred on the top-1
+  segment / on its localized peak, clipped to the video. L is a tuning constant
+  chosen on validation.
 """
 
 from __future__ import annotations
@@ -47,6 +50,16 @@ IOU_THRESHOLDS = (0.3, 0.5, 0.7)
 SPANS = ("native", "segment", "merge")
 
 
+def _valid_span(span: str) -> bool:
+    if span in SPANS:
+        return True
+    name, _, value = span.partition(":")
+    try:
+        return name in {"expand", "expand_peak"} and float(value) > 0
+    except ValueError:
+        return False
+
+
 def temporal_iou(left: tuple[float, float], right: tuple[float, float]) -> float:
     intersection = max(0.0, min(left[1], right[1]) - max(left[0], right[0]))
     union = max(left[1], right[1]) - min(left[0], right[0])
@@ -54,10 +67,29 @@ def temporal_iou(left: tuple[float, float], right: tuple[float, float]) -> float
 
 
 def predicted_intervals(
-    ranked: list[RankedMoment], *, span: str, merge_ratio: float = 0.8
+    ranked: list[RankedMoment],
+    *,
+    span: str,
+    merge_ratio: float = 0.8,
+    duration: float | None = None,
 ) -> list[tuple[float, float]]:
-    if span not in SPANS:
-        raise ValueError(f"span must be one of {SPANS}")
+    if not _valid_span(span):
+        raise ValueError(f"span must be one of {SPANS} or expand[:_peak]:SECONDS")
+    if span.startswith("expand"):
+        name, _, value = span.partition(":")
+        half = float(value) / 2
+        upper = duration if duration else float("inf")
+        intervals = []
+        for item in ranked:
+            centre = (
+                item.time_point
+                if name == "expand_peak"
+                else (item.segment_start + item.segment_end) / 2
+            )
+            start = max(0.0, centre - half)
+            end = min(upper, centre + half)
+            intervals.append((start, max(start, end)))
+        return intervals
     if span == "native":
         return [(item.interval_start, item.interval_end) for item in ranked]
     intervals = [(item.segment_start, item.segment_end) for item in ranked]
@@ -96,6 +128,12 @@ def _query_row(
         "confidence": float(confidence) if confidence is not None else None,
         "top_verdict": ranked[0].verdict if ranked else None,
         "result_count": len(ranked),
+        # The engine abstains when every returned result is below the weak
+        # threshold, i.e. when this maximum is below it.
+        "max_confidence": max(
+            (float(item.confidence) for item in ranked if item.confidence is not None),
+            default=None,
+        ),
     }
     if not item["answerable"]:
         row["metrics"] = {
@@ -105,7 +143,9 @@ def _query_row(
         }
         return row
     truth = (float(item["start"]), float(item["end"]))
-    intervals = predicted_intervals(ranked, span=span, merge_ratio=merge_ratio)
+    intervals = predicted_intervals(
+        ranked, span=span, merge_ratio=merge_ratio, duration=item.get("duration")
+    )
     ious = [temporal_iou(interval, truth) for interval in intervals]
     top_iou = ious[0] if ious else 0.0
     segment_overlap = [

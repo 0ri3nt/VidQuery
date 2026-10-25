@@ -101,3 +101,26 @@ def test_content_blind_baselines_choose_window_on_validation_only():
     assert fixed["test"]["r1_iou0.5"] == 0.0  # the validation prior does not transfer here
     # Two of the six 5 s segments reach IoU 0.5 with a 10 s moment.
     assert result["random_segment"]["test"]["r1_iou0.5"] == pytest.approx(2 / 6, abs=1e-4)
+
+
+def test_expand_spans_are_clipped_to_the_video():
+    ranked = [_moment(0, 5, interval=(1.0, 1.0)), _moment(25, 30)]
+    assert predicted_intervals(ranked, span="expand:8", duration=30.0) == [(0.0, 6.5), (23.5, 30.0)]
+    assert predicted_intervals(ranked, span="expand_peak:4", duration=30.0)[0] == (0.0, 3.0)
+    with pytest.raises(ValueError):
+        predicted_intervals(ranked, span="expand:abc")
+
+
+def test_abstention_curve_counts_answers_and_rejections():
+    from scripts.fit_moment_abstention import curve
+
+    rows = [
+        {"negative": False, "max_confidence": 0.6, "metrics": {"ranking_precision_at_1": 1.0}},
+        {"negative": False, "max_confidence": 0.2, "metrics": {"ranking_precision_at_1": 0.0}},
+        {"negative": True, "max_confidence": 0.1, "metrics": {}},
+        {"negative": True, "max_confidence": None, "metrics": {}},
+    ]
+    low, high = curve(rows, [0.0, 0.5])
+    assert low["p_at_1"] == 0.5 and low["negative_rejection"] == 0.5
+    assert high["p_at_1"] == 0.5 and high["negative_rejection"] == 1.0
+    assert high["effective_reliability"] == 0.25 and high["coverage"] == 0.25
