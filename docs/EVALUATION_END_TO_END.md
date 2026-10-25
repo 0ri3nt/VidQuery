@@ -182,3 +182,106 @@ RELIABILITY_PRIORS_PATH=evaluation/results/ava-holdout-reliability-priors.json \
 python -m vidquery evaluate-challenge --dataset evaluation/queries_challenge_ava_holdout.json \
   --split test --output evaluation/results/ava-holdout-test-learned-priors.json
 ```
+
+## Second round: untouched test set (25 October 2026, later)
+
+The first test split's parser failures were inspected, so it can no longer
+judge parser changes. A new test set was therefore fixed *before* the parser
+lexicon was written:
+
+- **Videos.** `2PpxiG0WU18`, `NO2esmws190`, `uNT6HrrnqPU`: official AVA
+  validation videos outside every split, ordered by SHA-256 of the video ID,
+  first three. Registered in `evaluation/eval_only_videos.json`.
+- **Queries.** `evaluation/queries_challenge_ava_holdout_v2.json`, 56 queries
+  (41 positive, 15 negative), same selection rules, worded with the
+  pre-registered `PHRASES_V2`.
+- **Calibration** stays on the original three calibration videos; nothing was
+  fitted on test.
+
+All systems share one evaluator. P@1 counts only answered queries;
+"Ranking P@1" ignores abstention. Each row is shown with abstention on and
+off; the off row answers whenever anything was retrieved.
+
+| System | Abstention | P@1 [95% CI] | Ranking P@1 | Recall@5 | Positives answered | Negatives rejected | Coverage | Selective risk | AURC | Rejection F1 | AUROC |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| A original parser | on | 0.122 [0.02, 0.22] | 0.146 | 0.036 | 0.85 | 0.20 | 0.84 | 0.8936 | 0.8417 | 0.25 | 0.7439 |
+| A original parser | off | 0.146 [0.05, 0.27] | 0.146 | 0.036 | 0.90 | 0.20 | 0.88 | 0.8776 | 0.8417 | 0.2727 | 0.7439 |
+| B lexicon parser | on | 0.268 [0.15, 0.41] | 0.293 | 0.079 | 0.76 | 0.20 | 0.77 | 0.7442 | 0.6433 | 0.2143 | 0.7089 |
+| B lexicon parser | off | 0.293 [0.15, 0.44] | 0.293 | 0.079 | 0.80 | 0.20 | 0.80 | 0.7333 | 0.6433 | 0.2308 | 0.7089 |
+| C B + leakage-free GNN | on | 0.220 [0.10, 0.34] | 0.244 | 0.069 | 0.78 | 0.20 | 0.79 | 0.7955 | 0.6995 | 0.2222 | 0.7244 |
+| C B + leakage-free GNN | off | 0.244 [0.12, 0.39] | 0.244 | 0.069 | 0.83 | 0.20 | 0.82 | 0.7826 | 0.6995 | 0.24 | 0.7244 |
+| D B + top-1 priors + fitted thresholds | on | 0.073 [0.00, 0.15] | 0.317 | 0.077 | 0.07 | 1.00 | 0.05 | 0.0 | 0.5573 | 0.4412 | 0.7008 |
+| D B + top-1 priors + fitted thresholds | off | 0.317 [0.17, 0.46] | 0.317 | 0.077 | 0.80 | 0.20 | 0.80 | 0.7111 | 0.5573 | 0.2308 | 0.7008 |
+| D2 B + default priors + fitted thresholds | on | 0.073 [0.00, 0.17] | 0.293 | 0.079 | 0.12 | 1.00 | 0.09 | 0.4 | 0.6433 | 0.4545 | 0.7089 |
+| D2 B + default priors + fitted thresholds | off | 0.293 [0.15, 0.44] | 0.293 | 0.079 | 0.80 | 0.20 | 0.80 | 0.7333 | 0.6433 | 0.2308 | 0.7089 |
+| D3 B + top-20 priors + fitted thresholds | on | 0.073 [0.00, 0.15] | 0.317 | 0.075 | 0.07 | 1.00 | 0.05 | 0.0 | 0.5581 | 0.4412 | 0.7008 |
+| D3 B + top-20 priors + fitted thresholds | off | 0.317 [0.17, 0.46] | 0.317 | 0.075 | 0.80 | 0.20 | 0.80 | 0.7111 | 0.5581 | 0.2308 | 0.7008 |
+| D4 B + top-20 priors, default thresholds | on | 0.244 [0.12, 0.39] | 0.317 | 0.075 | 0.56 | 0.87 | 0.45 | 0.6 | 0.5581 | 0.5652 | 0.7008 |
+| D4 B + top-20 priors, default thresholds | off | 0.317 [0.17, 0.46] | 0.317 | 0.075 | 0.80 | 0.20 | 0.80 | 0.7111 | 0.5581 | 0.2308 | 0.7008 |
+| E C + refitted top-1 calibration | on | 0.073 [0.00, 0.17] | 0.244 | 0.073 | 0.17 | 1.00 | 0.12 | 0.5714 | 0.7073 | 0.4687 | 0.7276 |
+| E C + refitted top-1 calibration | off | 0.244 [0.12, 0.39] | 0.244 | 0.073 | 0.83 | 0.20 | 0.82 | 0.7826 | 0.7073 | 0.24 | 0.7276 |
+
+Paired bootstrap on the same queries (`summary-test-v2.json`):
+
+| Comparison | Mean P@1 change [95% CI] | Wins / losses |
+|---|---:|---:|
+| A → B, parser (full pipeline) | +0.146 [0.024, 0.268] | 7 / 1 |
+| A → B, parser (Review-1 ranking) | +0.195 [0.073, 0.317] | 8 / 0 |
+| B → C, leakage-free action GNN | −0.049 [−0.195, 0.098] | 3 / 5 |
+| B Review-1 ranking → B Review-2 ranking | −0.098 [−0.220, 0.024] | 1 / 5 |
+
+What this supports:
+
+- **Parser.** The lexicon roughly doubles end-to-end P@1. Intent accuracy goes
+  from 0.05 to 0.61. This is the only significant improvement.
+- **Action model.** The leakage-free retrain does not help end to end. Its
+  classification metrics also do not improve (see below).
+- **Calibration.** Thresholds fitted on calibration (60 queries) over-abstain on
+  new videos: about 5–12% coverage. Selective risk falls but almost nothing is
+  answered. Top-20 priors with the default thresholds (D4) give the most
+  balanced operating point: 0.87 of negatives rejected while 56% of positives
+  are answered. AURC improves from 0.64 to about 0.56 with fitted priors, but
+  the intervals overlap.
+- **Ranking.** Review-1 hybrid ranking gives the best top-1 (0.366 [0.22, 0.51]).
+  Reliability-weighted ranking slightly hurts top-1 here, though not
+  significantly.
+
+### Action model diagnostics (`evaluation/results/ava80-noleak-comparison.json`)
+
+On the active model's 3 test videos: 5,274 supervised persons, 5,145 of them
+detector-matched.
+
+| Model | Macro F1, all persons | Macro F1, detector-only | Micro F1 | mAP | Labels per segment (true 5.7) |
+|---|---:|---:|---:|---:|---:|
+| Active v5 (uses leaking columns) | 0.0721 | 0.0727 | 0.465 | 0.084 | 9.2 |
+| Leakage-free GATv2, learning rate 3e-4 (validation-selected) | 0.0712 | 0.0725 | 0.514 | 0.077 | 7.7 |
+| Leakage-free MLP baseline | 0.0819 | 0.0826 | 0.482 | 0.086 | 8.9 |
+
+- **The leak is small.** Only 2.5% of test persons are ground-truth-only boxes.
+- **Where the model works.** Frequent classes (sit, stand, watch person, talk
+  to) reach F1 0.5–0.68.
+- **Where it fails.** carry/hold, touch object and push are over-predicted,
+  push at near-zero precision. 27 supported classes are never predicted.
+  Message passing does not beat the MLP.
+
+### Relation model (`vidor-detector-matched-comparison.json`, `vidor-scale119-comparison.json`)
+
+- **Detector recall is the ceiling.** YOLOv8n matches 50% of annotated objects
+  and 27.5% of relation instances. yolov8s gives 34.7% and yolov8m 38.3%.
+- **Detector-box training hurts.** Models trained on detector-matched boxes are
+  worse than the annotation-trained ones.
+- **More data helps a little.** Going from 57 to 99 training videos raises
+  GATv2 macro F1 from 0.142 to 0.180 and mAP from 0.170 to 0.192 on the same
+  9 test videos; micro F1 falls from 0.340 to 0.289.
+
+### Reproduce the second round
+
+```bash
+# index the three fresh windows with the same settings as above, then:
+python -m scripts.calibrate_reliability --manifest evaluation/queries_challenge_ava_holdout.json   --split calibration --limit 1 --output OBS_TOP1.json
+python -m scripts.fit_reliability OBS_TOP1.json --output PRIORS_TOP1.json
+python -m scripts.calibrate_reliability --manifest evaluation/queries_challenge_ava_holdout.json   --split calibration --priors PRIORS_TOP1.json --decisions-output DECISIONS.json
+python -m scripts.fit_reliability OBS_TOP1.json --decisions DECISIONS.json --output CALIBRATION.json
+python -m vidquery evaluate-challenge --dataset evaluation/queries_challenge_ava_holdout_v2.json   --split test --reliability-priors CALIBRATION.json --output RESULT.json
+python -m scripts.summarize_challenge_results A=RESULT_A.json B=RESULT_B.json --pair A:B   --output SUMMARY.json
+```

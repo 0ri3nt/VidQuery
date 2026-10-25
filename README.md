@@ -174,24 +174,25 @@ ranking, not end-to-end accuracy.
 
 ### End-to-end action benchmark (model-only)
 
-Six held-out AVA v2.2 movie windows (15 minutes each) were re-indexed from raw
-video by the full pipeline, with no ground-truth import. There are 120 queries
-(25% negative) with ground truth from official AVA annotations, split by video
-into calibration and test. The table shows the test split: 45 positive and 15
-negative queries.
+AVA v2.2 movie windows (15 minutes each) were re-indexed from raw video by the
+full pipeline, with no ground-truth import. Ground truth comes from official AVA
+annotations. The table uses the **untouched** test set: three AVA validation
+videos chosen by a fixed rule and queried in wording committed before the
+parser was changed (41 positive, 15 negative queries).
 
-| System | P@1 [95% CI] | Recall@5 | AURC (lower better) | Rejection F1 | Answerability AUROC | Negatives rejected |
-|---|---:|---:|---:|---:|---:|---:|
-| Review-1 ranking | 0.200 [0.089, 0.333] | 0.080 | n/a | 0.261 | n/a | 0.200 |
-| Review-2, hand-picked trust | 0.156 [0.067, 0.267] | 0.056 | 0.722 | 0.261 | 0.507 | 0.200 |
-| Review-2, learned trust | 0.133 [0.044, 0.244] | 0.055 | 0.768 | 0.419 | 0.555 | 0.867 |
+| System (full Review-2 pipeline) | P@1 [95% CI] | Share of queries answered | Negatives rejected | AURC (lower better) |
+|---|---:|---:|---:|---:|
+| Original parser | 0.122 [0.02, 0.22] | 0.84 | 0.20 | 0.84 |
+| Action lexicon parser | 0.268 [0.15, 0.41] | 0.77 | 0.20 | 0.64 |
+| + leakage-free action GNN | 0.220 [0.10, 0.34] | 0.79 | 0.20 | 0.70 |
+| + calibration-fitted priors and thresholds | 0.073 [0.00, 0.15] | 0.05 | 1.00 | 0.56 |
 
-Learned trust values raise negative rejection but answer only 24% of
-answerable queries, and they do not improve confidence ranking. The main
-bottleneck is query parsing: the parser missed the intended action label on
-27 of 45 test queries. Movie footage does not cover speech, OCR, or lecture
-queries. Full definitions, ablations, and reproduction commands are in
-[docs/EVALUATION_END_TO_END.md](docs/EVALUATION_END_TO_END.md).
+The parser fix is the only change with a significant effect (paired +0.146 P@1,
+95% CI [0.024, 0.268]). The retrained action model is not measurably better.
+Thresholds fitted on three calibration videos over-abstain on new videos.
+Movie footage does not cover speech, OCR, or lecture queries. Details are in
+[docs/EVALUATION_END_TO_END.md](docs/EVALUATION_END_TO_END.md) and
+[docs/PROGRESS_2026-10-25.md](docs/PROGRESS_2026-10-25.md).
 
 ### Independent retrieval benchmark (Review-1, labelled evidence)
 
@@ -253,7 +254,7 @@ types.**
 ## Development
 
 ```bash
-python -m pytest -q          # 207 passed; 1 skips without live Neo4j
+python -m pytest -q          # 373 passed; 1 skips without live Neo4j
 python -m ruff check .
 python -m mypy vidquery scripts
 node --check frontend/assets/app.js
@@ -307,12 +308,12 @@ datasets, virtual environments, and `.env` are not versioned.
   calibrated probabilities. Learned trust values exist only for AVA action
   queries (`evaluation/results/ava-holdout-reliability-priors.json`); they are
   not enabled by default.
-- The parser recognises AVA actions mainly in their base or listed forms
-  ("sitting", "hugging"). Many natural phrasings ("kneeling down", "answering
-  the phone") are not recognised and fall back to spoken-term search.
-- Semantic search silently falls back to a hashing encoder when
-  `SENTENCE_EMBEDDING_CACHE_DIR` does not contain MiniLM. Check
-  `sentence_embedding_retrieval` in `/api/health`.
+- Action phrases are matched by `vidquery/action_lexicon.py`, built from the
+  AVA label wording plus inflections. Synonyms outside that wording ("applauding",
+  "embrace", "kung fu") are not recognised and fall back to spoken-term search.
+- The sentence-embedding model falls back to the standard Hugging Face cache
+  when `SENTENCE_EMBEDDING_CACHE_DIR` lacks it; `evaluate-challenge` refuses to
+  run on the hashing fallback unless `--allow-hashing-fallback` is given.
 - `ENABLE_PHONETIC_MATCH=true` enables sound-alike matching for misheard
   technical words ("binary" ~ "vandri"). It is off by default and has not been
   measured on real lectures yet.
