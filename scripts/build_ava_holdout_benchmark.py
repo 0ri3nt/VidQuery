@@ -124,6 +124,93 @@ PHRASES: dict[int, str] = {
     80: "someone watching another person",
 }
 
+# Second, independently worded phrase set, written and committed on 2026-10-25
+# *before* the parser action lexicon was extended.  It is reserved for fresh
+# held-out videos and must never be used to develop parser rules.
+PHRASES_V2: dict[int, str] = {
+    1: "a person bowing",
+    2: "someone crawling on the floor",
+    3: "a person crouching",
+    4: "someone dancing",
+    5: "a person falls over",
+    6: "someone stands up from a seat",
+    7: "a person leaps",
+    8: "someone sleeping",
+    9: "people doing kung fu",
+    10: "someone jogging",
+    11: "people seated",
+    12: "someone stands still",
+    13: "a person swims in water",
+    14: "people walking around",
+    15: "a person on a phone call",
+    16: "someone brushes his teeth",
+    17: "a person carrying an object",
+    18: "someone catches a ball",
+    19: "a person chopping food",
+    20: "someone climbing up",
+    21: "a toast with glasses",
+    22: "a person shuts the door",
+    23: "someone preparing food on a stove",
+    24: "a person cuts something with a knife",
+    25: "someone digging a hole",
+    26: "a person getting dressed",
+    27: "someone takes a drink",
+    28: "a person driving a car",
+    29: "someone eats food",
+    30: "a person comes in through the door",
+    31: "someone walks out of the room",
+    32: "a person pulls something out",
+    33: "someone goes fishing",
+    34: "a person strikes an object",
+    35: "someone kicks a ball",
+    36: "a person lifts something up",
+    37: "someone listening to music",
+    38: "a person opens a door",
+    39: "someone painting a picture",
+    40: "people playing chess",
+    41: "someone playing the guitar",
+    42: "a person playing with a dog",
+    43: "someone points at an object",
+    44: "a person presses an elevator button",
+    45: "someone pulls an object",
+    46: "a person pushing an object",
+    47: "someone sets something down",
+    48: "a person reading a book",
+    49: "someone riding a bike",
+    50: "people rowing",
+    51: "a sailboat being sailed",
+    52: "someone fires a gun",
+    53: "a person shovels snow",
+    54: "someone smoking a cigarette",
+    55: "a person stirs a pot",
+    56: "someone takes a picture with a camera",
+    57: "a person looking at their cellphone",
+    58: "someone throws an object",
+    59: "a person touches something",
+    60: "someone turns a screwdriver",
+    61: "a person watching TV",
+    62: "someone typing on a laptop",
+    63: "a person writes notes",
+    64: "someone punches another person",
+    65: "a person gives an object to someone",
+    66: "someone grabs a person",
+    67: "people applauding",
+    68: "two people shake hands",
+    69: "someone waves hello",
+    70: "two people embrace",
+    71: "someone kicks another person",
+    72: "a couple kissing",
+    73: "someone picks up a child",
+    74: "a person listens to someone speaking",
+    75: "a person playing with children",
+    76: "someone shoves another person",
+    77: "a person singing",
+    78: "someone takes an object from another person",
+    79: "two people having a conversation",
+    80: "a person looks at another person",
+}
+PHRASE_SETS = {"v1": PHRASES, "v2": PHRASES_V2}
+
 # Near-synonym groups: if any member is present, none may serve as a negative.
 SYNONYM_GROUPS: tuple[frozenset[int], ...] = (
     frozenset({37, 74}),
@@ -183,7 +270,9 @@ def build_video_queries(
     negatives: int,
     max_coverage: float,
     min_keyframes: int = 3,
+    phrases: dict[int, str] | None = None,
 ) -> tuple[list[dict], dict]:
+    phrases = phrases or PHRASES
     keyframes = sorted({value for values in video_labels.values() for value in values})
     window = max(1, len(keyframes))
     present = {label for label, values in video_labels.items() if values}
@@ -221,7 +310,7 @@ def build_video_queries(
         queries.append(
             {
                 "id": f"ava-{video_id}-a{label:02d}",
-                "query": PHRASES[label],
+                "query": phrases[label],
                 "category": "action_relation",
                 "source_video_id": source_video_id,
                 "negative": False,
@@ -239,7 +328,7 @@ def build_video_queries(
         queries.append(
             {
                 "id": f"ava-{video_id}-n{label:02d}",
-                "query": PHRASES[label],
+                "query": phrases[label],
                 "category": "negative",
                 "source_video_id": source_video_id,
                 "negative": True,
@@ -315,7 +404,23 @@ def main() -> None:
         "--output", type=Path, default=Path("evaluation/queries_challenge_ava_holdout.json")
     )
     parser.add_argument("--force", action="store_true", help="Overwrite an existing manifest")
+    parser.add_argument("--phrase-set", choices=sorted(PHRASE_SETS), default="v1")
+    parser.add_argument(
+        "--split",
+        action="append",
+        default=[],
+        metavar="SPLIT=VIDEO[,VIDEO...]",
+        help="Replace the default splits, e.g. --split test=abc,def (repeatable)",
+    )
     args = parser.parse_args()
+    splits: dict[str, tuple[str, ...]] = dict(DEFAULT_SPLITS)
+    if args.split:
+        splits = {}
+        for item in args.split:
+            name, _, videos = item.partition("=")
+            if name not in ("calibration", "test") or not videos:
+                raise SystemExit(f"invalid --split {item!r}")
+            splits[name] = tuple(video for video in videos.split(",") if video)
     if args.output.exists() and not args.force:
         raise SystemExit(f"{args.output} exists; refusing to overwrite without --force")
 
@@ -325,14 +430,14 @@ def main() -> None:
         for label, values in video_labels.items():
             global_frequency[label] += len(values)
 
-    all_ids = [video for videos in DEFAULT_SPLITS.values() for video in videos]
+    all_ids = [video for videos in splits.values() for video in videos]
     leakage = assert_no_training_overlap(
         all_ids, [path for path in args.checkpoint_metadata if path.is_file()]
     )
     queries: list[dict] = []
     videos: dict[str, dict] = {}
     coverage: dict[str, dict] = {}
-    for split, video_ids in DEFAULT_SPLITS.items():
+    for split, video_ids in splits.items():
         for video_id in video_ids:
             if video_id not in labels:
                 raise SystemExit(f"no AVA annotations found for {video_id}")
@@ -345,6 +450,7 @@ def main() -> None:
                 positives=args.positives,
                 negatives=args.negatives,
                 max_coverage=args.max_coverage,
+                phrases=PHRASE_SETS[args.phrase_set],
             )
             queries.extend(video_queries)
             videos[source] = {"split": split}
@@ -357,6 +463,7 @@ def main() -> None:
             "official AVA annotations; indexes built from raw media by the full pipeline."
         ),
         "builder": BUILDER_VERSION,
+        "phrase_set": args.phrase_set,
         "created_at": datetime.now(UTC).isoformat(),
         "window": {"source_start_seconds": WINDOW_OFFSET_SECONDS, "duration_seconds": 900},
         "selection_rules": {
