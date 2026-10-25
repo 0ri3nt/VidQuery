@@ -3,8 +3,10 @@
 Only a few decoded shards are held in memory at a time
 (``ShardGraphDataset(cache_shards=...)``), so the full 299-video AVA set fits
 this laptop's RAM.  Splits come from a JSON manifest with train/validation/test
-video lists; evaluation-only videos are refused for training, and test
-metrics are withheld unless ``--evaluate-test`` is given.
+video lists; evaluation-only videos are refused for training, test-only
+registry videos are refused for validation, and test metrics are withheld
+unless ``--evaluate-test`` is given.  ``--test-shard-dir`` adds directories of
+evaluation-only shards that are read for the test split only.
 """
 
 from __future__ import annotations
@@ -22,7 +24,7 @@ from vidquery.ava_gnn80 import (
     leaking_column_indices,
 )
 from vidquery.ava_shards import SHARD_SCHEMA, ShardBlockSampler, ShardGraphDataset
-from vidquery.eval_registry import assert_not_trained_on
+from vidquery.eval_registry import assert_not_selected_on, assert_not_trained_on
 
 
 def _peak_memory_mb() -> float | None:
@@ -50,6 +52,7 @@ def main() -> None:
     parser.add_argument("--device", default="auto")
     parser.add_argument("--mlp-only", action="store_true")
     parser.add_argument("--evaluate-test", action="store_true")
+    parser.add_argument("--test-shard-dir", type=Path, action="append", default=[])
     args = parser.parse_args()
     checkpoint = args.output_dir / f"{args.model_version}.pt"
     if checkpoint.exists():
@@ -57,12 +60,14 @@ def main() -> None:
 
     split = json.loads(args.split.read_text(encoding="utf-8"))
     assert_not_trained_on(split["train"], context="shard training split")
+    assert_not_selected_on(split["validation"], context="shard validation split")
     datasets = {
         name: ShardGraphDataset(
             args.shard_dir,
             split[name],
             feature_attribute=AVA80_NOLEAK_ATTRIBUTE,
             cache_shards=args.cache_shards,
+            extra_shard_dirs=args.test_shard_dir if name == "test" else (),
         )
         for name in ("train", "validation", "test")
     }
@@ -100,6 +105,7 @@ def main() -> None:
             "dropped_feature_names": list(AVA80_NOLEAK_DROPPED),
             "source_shard_dir": args.shard_dir.as_posix(),
             "source_split_manifest": args.split.as_posix(),
+            "test_shard_dirs": [path.as_posix() for path in args.test_shard_dir],
         },
         datasets=datasets,
         samplers=samplers,

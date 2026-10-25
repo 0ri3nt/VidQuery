@@ -169,6 +169,66 @@ def strict_video_split(video_ids: Sequence[str], seed: int = 2026) -> dict[str, 
     return split
 
 
+def frame_selection_support(manifest: dict[str, Any]) -> Counter[str]:
+    """Predicate counts that decide which frames each video contributes.
+
+    A manifest may freeze them (``frame_selection_support``) so that growing
+    the selection cannot change the frames, and therefore the graphs, of
+    videos selected earlier. Otherwise they are summed over its videos.
+    """
+
+    frozen = manifest.get("frame_selection_support")
+    if frozen is not None:
+        return Counter({str(key): int(value) for key, value in frozen.items()})
+    support: Counter[str] = Counter()
+    for row in manifest["selected_videos"]:
+        support.update(row["support"])
+    return support
+
+
+def extend_relation_selection(
+    summaries: Sequence[dict[str, Any]],
+    global_support: Counter[str],
+    base_manifest: dict[str, Any],
+    target_videos: int,
+) -> dict[str, Any]:
+    """Grow a selection with training videos only, keeping validation/test frozen.
+
+    New videos are the next-ranked ones under ``select_relation_videos``; the
+    base selection must be its prefix. Frame-selection counts are frozen at the
+    base selection's values.
+    """
+
+    base_ids = [str(row["video_id"]) for row in base_manifest["selected_videos"]]
+    if target_videos <= len(base_ids):
+        raise ValueError("target must exceed the base selection")
+    ranked = select_relation_videos(summaries, global_support, target_videos)
+    ranked_ids = [str(row["video_id"]) for row in ranked]
+    if set(base_ids) - set(ranked_ids):
+        raise ValueError("base selection is not contained in the extended ranking")
+    added = [row for row in ranked if str(row["video_id"]) not in set(base_ids)]
+    validation = [str(video) for video in base_manifest["validation"]]
+    test = [str(video) for video in base_manifest["test"]]
+    train = [str(video) for video in base_manifest["train"]] + [
+        str(row["video_id"]) for row in added
+    ]
+    sets = [set(train), set(validation), set(test)]
+    if sets[0] & sets[1] or sets[0] & sets[2] or sets[1] & sets[2]:
+        raise ValueError("VidOR video split leakage")
+    return {
+        "schema_version": "vidor-relation-split-v2-extended",
+        "seed": int(base_manifest["seed"]),
+        "selection": "rare-predicate-weighted deterministic selection; base prefix kept",
+        "target_videos": target_videos,
+        "base_selected_videos": len(base_ids),
+        "frame_selection_support": dict(sorted(frame_selection_support(base_manifest).items())),
+        "selected_videos": [*base_manifest["selected_videos"], *added],
+        "train": train,
+        "validation": validation,
+        "test": test,
+    }
+
+
 def _bbox_features(
     bbox: dict[str, float], width: float, height: float, generated: int, is_person: bool
 ) -> list[float]:

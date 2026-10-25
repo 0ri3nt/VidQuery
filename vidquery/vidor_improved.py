@@ -771,8 +771,16 @@ def train_improved_relation_model(
     batch_size: int = 16,
     seed: int = 2026,
     device_name: str = "auto",
+    init_checkpoint: Path | None = None,
+    evaluate_test: bool = True,
 ) -> dict[str, Any]:
-    """Train with validation macro-F1/mAP selection and touch test only afterward."""
+    """Train with validation macro-F1/mAP selection and touch test only afterward.
+
+    ``init_checkpoint`` warm-starts from a saved model of the same architecture
+    and feature schema; thresholds are re-fitted on validation as usual.
+    ``evaluate_test=False`` leaves ``test_metrics`` empty so test can be scored
+    once, after every candidate has been chosen on validation.
+    """
 
     np, torch = _seed(seed)
     from torch import nn
@@ -788,6 +796,21 @@ def train_improved_relation_model(
     negatives = train_targets.shape[0] - positives
     positive_weights = torch.clamp(negatives / torch.clamp(positives, min=1), max=30.0)
     model: Any = ImprovedRelationModel(use_graph=use_graph)
+    init_record = None
+    if init_checkpoint is not None:
+        initial = torch.load(init_checkpoint, map_location="cpu", weights_only=True)
+        if initial.get("schema_version") != VIDOR_IMPROVED_CHECKPOINT_SCHEMA:
+            raise ValueError("warm-start checkpoint schema mismatch")
+        if bool(initial.get("use_graph")) != use_graph:
+            raise ValueError("warm-start checkpoint architecture mismatch")
+        if initial.get("pair_input_feature_names") != list(IMPROVED_PAIR_FEATURE_NAMES):
+            raise ValueError("warm-start checkpoint feature schema mismatch")
+        model.load_state_dict(initial["state_dict"])
+        init_record = {
+            "checkpoint": Path(init_checkpoint).as_posix(),
+            "sha256": _sha256(Path(init_checkpoint)),
+            "model_version": str(initial.get("model_version")),
+        }
     model = model.to(device)
     loss_function = nn.BCEWithLogitsLoss(pos_weight=positive_weights.to(device))
     optimizer = torch.optim.AdamW(model.parameters(), lr=8e-4, weight_decay=1e-4)
@@ -868,9 +891,11 @@ def train_improved_relation_model(
     validation_targets, validation_probabilities = probabilities("validation")
     validation_metrics = _metrics(validation_targets, validation_probabilities, best_thresholds, np)
     # Test is evaluated exactly once, after validation has frozen state and thresholds.
-    test_targets, test_probabilities = probabilities("test")
-    test_metrics = _metrics(test_targets, test_probabilities, best_thresholds, np)
-    sample = next(iter(loader("test"))).to(device)
+    test_metrics = None
+    if evaluate_test:
+        test_targets, test_probabilities = probabilities("test")
+        test_metrics = _metrics(test_targets, test_probabilities, best_thresholds, np)
+    sample = next(iter(loader("test" if evaluate_test else "validation"))).to(device)
     if device.type == "cuda":
         torch.cuda.synchronize(device)
     latency_started = time.perf_counter()
@@ -924,6 +949,10 @@ def train_improved_relation_model(
         },
         "validation_metrics": validation_metrics,
         "test_metrics": test_metrics,
+        "test_evaluation_status": (
+            "evaluated" if evaluate_test else "withheld_until_final_selection"
+        ),
+        "warm_start": init_record,
         "history": history,
         "selected_epoch": int(
             max(
@@ -1226,26 +1255,86 @@ def build_and_train_improved_vidor(
     device_name: str = "auto",
     detector: Any | None = None,
     version_tag: str = "v2",
+    graph_cache: Path | None = None,
+    init_checkpoints: dict[str, Path | None] | None = None,
+    evaluate_test: bool = True,
 ) -> dict[str, Any]:
-    """Cache visuals once, train matched models, and select using validation only."""
+    """Cache visuals once, train matched models, and select using validation only.
+
+    ``graph_cache`` reuses a cache built for exactly this selection and these
+    frame-selection counts instead of rebuilding it. ``init_checkpoints`` maps
+    ``"mlp"``/``"gnn"`` to warm-start checkpoints.
+    """
 
     _, torch = _seed(seed)
     output_dir.mkdir(parents=True, exist_ok=True)
-    graphs, statistics = build_improved_relation_graphs(
-        annotation_zip,
-        selected,
-        predicate_support,
-        frame_root=frame_root,
-        max_frames_per_video=max_frames_per_video,
-        hard_negative_ratio=hard_negative_ratio,
-        random_negative_ratio=random_negative_ratio,
+    support_sha256 = hashlib.sha256(
+        json.dumps(dict(sorted(predicate_support.items()))).encode("utf-8")
+    ).hexdigest()
+    if graph_cache is not None:
+        payload = torch.load(graph_cache, map_location="cpu", weights_only=False)
+        valid, reason = validate_improved_graph_cache(payload)
+        if not valid:
+            raise ValueError(f"reused graph cache is invalid: {reason}")
+        if payload.get("frame_selection_support_sha256") != support_sha256:
+            raise ValueError("reused graph cache was built with different frame-selection counts")
+        wanted = {str(item["video_id"]) for item in selected}
+        if {str(graph.video_id) for graph in payload["graphs"]} != wanted:
+            raise ValueError("reused graph cache covers a different video selection")
+        graphs, statistics, cache = payload["graphs"], payload["statistics"], graph_cache
+    else:
+        graphs, statistics = build_improved_relation_graphs(
+            annotation_zip,
+            selected,
+            predicate_support,
+            frame_root=frame_root,
+            max_frames_per_video=max_frames_per_video,
+            hard_negative_ratio=hard_negative_ratio,
+            random_negative_ratio=random_negative_ratio,
+            seed=seed,
+            detector=detector,
+        )
+        cache = output_dir / "vidor_relation_pair_visual_graphs.pt"
+        _save_improved_graph_cache(torch, cache, graphs, statistics, support_sha256)
+    init_checkpoints = init_checkpoints or {}
+    mlp = train_improved_relation_model(
+        graphs=graphs,
+        split=split,
+        output_dir=output_dir,
+        model_version=f"vidor-relation-pair-visual-mlp-{version_tag}",
+        use_graph=False,
+        epochs=epochs,
+        patience=patience,
+        batch_size=batch_size,
         seed=seed,
-        detector=detector,
+        device_name=device_name,
+        init_checkpoint=init_checkpoints.get("mlp"),
+        evaluate_test=evaluate_test,
     )
-    cache = output_dir / "vidor_relation_pair_visual_graphs.pt"
+    gnn = train_improved_relation_model(
+        graphs=graphs,
+        split=split,
+        output_dir=output_dir,
+        model_version=f"vidor-relation-pair-visual-gat-{version_tag}",
+        use_graph=True,
+        epochs=epochs,
+        patience=patience,
+        batch_size=batch_size,
+        seed=seed,
+        device_name=device_name,
+        init_checkpoint=init_checkpoints.get("gnn"),
+        evaluate_test=evaluate_test,
+    )
+    return _relation_report(output_dir, selected, split, statistics, cache, mlp, gnn)
+
+
+def _save_improved_graph_cache(
+    torch: Any, cache: Path, graphs: Any, statistics: dict[str, Any], support_sha256: str
+) -> None:
     torch.save(
         {
             "schema_version": VIDOR_IMPROVED_GRAPH_SCHEMA,
+            "frame_selection_support_sha256": support_sha256,
             "graphs": graphs,
             "object_classes": list(VIDOR_OBJECTS),
             "predicates": list(VIDOR_PREDICATES),
@@ -1260,30 +1349,17 @@ def build_and_train_improved_vidor(
     valid, reason = validate_improved_graph_cache(reloaded)
     if not valid:
         raise ValueError(f"VidOR pair-visual graph cache validation failed: {reason}")
-    mlp = train_improved_relation_model(
-        graphs=graphs,
-        split=split,
-        output_dir=output_dir,
-        model_version=f"vidor-relation-pair-visual-mlp-{version_tag}",
-        use_graph=False,
-        epochs=epochs,
-        patience=patience,
-        batch_size=batch_size,
-        seed=seed,
-        device_name=device_name,
-    )
-    gnn = train_improved_relation_model(
-        graphs=graphs,
-        split=split,
-        output_dir=output_dir,
-        model_version=f"vidor-relation-pair-visual-gat-{version_tag}",
-        use_graph=True,
-        epochs=epochs,
-        patience=patience,
-        batch_size=batch_size,
-        seed=seed,
-        device_name=device_name,
-    )
+
+
+def _relation_report(
+    output_dir: Path,
+    selected: Sequence[dict[str, Any]],
+    split: dict[str, list[str]],
+    statistics: dict[str, Any],
+    cache: Path,
+    mlp: dict[str, Any],
+    gnn: dict[str, Any],
+) -> dict[str, Any]:
     mlp_key = (
         mlp["validation_metrics"]["macro_f1_supported_predicates"],
         mlp["validation_metrics"]["mean_average_precision_supported_predicates"],

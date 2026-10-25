@@ -13,7 +13,7 @@ from typing import Any
 from huggingface_hub import get_hf_file_metadata, hf_hub_url  # type: ignore[import-not-found]
 from remotezip import RemoteZip  # type: ignore[import-not-found]
 
-from vidquery.vidor_relation import _selected_frames
+from vidquery.vidor_relation import _selected_frames, frame_selection_support
 
 
 def _required_frames(
@@ -24,8 +24,12 @@ def _required_frames(
 ) -> dict[str, list[int]]:
     selected = manifest["selected_videos"][:maximum]
     support: Counter[str] = Counter()
-    for item in selected:
-        support.update(item["support"])
+    if "frame_selection_support" in manifest:
+        # Frozen counts keep earlier videos' frames unchanged as the selection grows.
+        support = frame_selection_support(manifest)
+    else:
+        for item in selected:
+            support.update(item["support"])
     output: dict[str, list[int]] = {}
     with zipfile.ZipFile(annotation_zip) as archive:
         for item in selected:

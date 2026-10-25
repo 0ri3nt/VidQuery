@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import argparse
 import json
-from collections import Counter
 from pathlib import Path
 
 from vidquery.vidor_improved import build_and_train_improved_vidor
+from vidquery.vidor_relation import frame_selection_support
 
 
 def main() -> None:
@@ -57,6 +57,19 @@ def main() -> None:
         default=[],
         help="Also evaluate these checkpoints on the same test graphs (repeatable)",
     )
+    parser.add_argument(
+        "--graph-cache",
+        type=Path,
+        default=None,
+        help="Reuse a pair-visual graph cache built for exactly this selection",
+    )
+    parser.add_argument("--init-gnn-checkpoint", type=Path, default=None)
+    parser.add_argument("--init-mlp-checkpoint", type=Path, default=None)
+    parser.add_argument(
+        "--withhold-test",
+        action="store_true",
+        help="Do not score test; select on validation now, compare on test afterwards",
+    )
     args = parser.parse_args()
     for kind in ("mlp", "gat"):
         target = args.output_dir / f"vidor-relation-pair-visual-{kind}-{args.version_tag}.pt"
@@ -66,9 +79,8 @@ def main() -> None:
     manifest = json.loads(args.baseline_manifest.read_text(encoding="utf-8"))
     source_manifest_path = Path(manifest.get("source_split_manifest", args.baseline_manifest))
     source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8"))
-    predicate_support: Counter[str] = Counter()
-    for row in source_manifest["selected_videos"]:
-        predicate_support.update(row["support"])
+    # Frozen counts (extended selections) keep earlier videos' frames unchanged.
+    predicate_support = frame_selection_support(source_manifest)
     split = {
         name: [str(value) for value in manifest[name]] for name in ("train", "validation", "test")
     }
@@ -88,8 +100,16 @@ def main() -> None:
         seed=args.seed,
         device_name=args.device,
         version_tag=args.version_tag,
+        graph_cache=args.graph_cache,
+        init_checkpoints={
+            "gnn": args.init_gnn_checkpoint,
+            "mlp": args.init_mlp_checkpoint,
+        },
+        evaluate_test=not args.withhold_test,
     )
     comparisons = {}
+    if args.compare_checkpoint and args.withhold_test:
+        raise SystemExit("--compare-checkpoint scores test; drop it when withholding test")
     if args.compare_checkpoint:
         import torch
 
@@ -97,7 +117,7 @@ def main() -> None:
         from vidquery.vidor_relation import _graph_split
 
         graphs = torch.load(
-            args.output_dir / "vidor_relation_pair_visual_graphs.pt",
+            Path(report["dataset"]["cache"]),
             map_location="cpu",
             weights_only=False,
         )["graphs"]

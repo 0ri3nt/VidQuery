@@ -1288,3 +1288,126 @@ def expand_ava_dataset(
     _write_json_atomic(selection_manifest, final_selection)
     _write_json_atomic(state_path, state)
     return state
+
+
+EVALUATION_SHARD_SCHEMA = "ava80-evaluation-only-shards-v1"
+
+
+def build_evaluation_shards(
+    video_ids: Sequence[str],
+    *,
+    shard_dir: Path,
+    training_shard_dir: Path,
+    annotation_paths: Sequence[Path] = (
+        Path("data/ava/annotations/ava_train_v2.2.csv"),
+        Path("data/ava/annotations/ava_val_v2.2.csv"),
+    ),
+    temporary_root: Path = Path("data/temp/ava_eval_shards"),
+    state_path: Path | None = None,
+    yolo_model: str = "yolov8n.pt",
+    device: str = "auto",
+    workers: int = 2,
+    min_free_bytes: int = DEFAULT_MIN_FREE_BYTES,
+    network_attempts: int = 5,
+) -> dict[str, Any]:
+    """Write shards for evaluation-only videos into a directory of their own.
+
+    The same download and feature path as ``expand_ava_dataset`` is used, so
+    test features match training features, but only registry videos are
+    accepted and the output may never be the training shard directory. A
+    marker file records that the directory is evaluation-only.
+    """
+
+    from .ava_shards import completed_shard_video_ids
+    from .eval_registry import EvaluationLeakageError, eval_only_video_ids
+
+    requested = [str(video_id) for video_id in video_ids]
+    outside = sorted(set(requested) - eval_only_video_ids())
+    if outside:
+        raise EvaluationLeakageError(
+            f"evaluation shards accept only registry videos; not registered: {', '.join(outside)}"
+        )
+    if shard_dir.resolve() == training_shard_dir.resolve():
+        raise EvaluationLeakageError(
+            "evaluation shards must not share the training shard directory"
+        )
+    shard_dir.mkdir(parents=True, exist_ok=True)
+    _write_json_atomic(
+        shard_dir / "EVALUATION_ONLY.json",
+        {
+            "schema_version": EVALUATION_SHARD_SCHEMA,
+            "purpose": "test-only shards for registry videos; never train or select on these",
+            "video_ids": sorted(requested),
+        },
+    )
+    state_path = state_path or shard_dir / "build_state.json"
+    completed = completed_shard_video_ids(shard_dir) & set(requested)
+    state: dict[str, Any] = {
+        "schema_version": EVALUATION_SHARD_SCHEMA,
+        "requested_video_ids": requested,
+        "already_completed": sorted(completed),
+        "downloads": {},
+        "features": {},
+    }
+    pending = [video_id for video_id in requested if video_id not in completed]
+    if not pending:
+        state["completed_video_ids"] = sorted(completed)
+        _write_json_atomic(state_path, state)
+        return state
+    network = wait_for_network(attempts=network_attempts)
+    if not network["available"]:
+        state["network_unavailable"] = network
+        _write_json_atomic(state_path, state)
+        return state
+    inventory = fetch_ava_inventory()
+    coverage = load_video_coverage(annotation_paths)
+    batch_root = temporary_root / "batch_0001"
+    batch, storage = _storage_safe_batch(
+        pending,
+        inventory,
+        destination_dir=batch_root / "videos",
+        master_cache=Path("unused"),
+        batch_size=len(pending),
+        min_free_bytes=min_free_bytes,
+        reserve_master_rebuild=False,
+    )
+    state["storage"] = storage
+    if len(batch) < len(pending):
+        state["storage_blocked"] = sorted(set(pending) - set(batch))
+        _write_json_atomic(state_path, state)
+        return state
+    started = time.perf_counter()
+    downloads = _download_batch(batch, inventory, batch_root / "videos", workers)
+    state["downloads"] = {
+        video_id: {
+            key: value.as_posix() if isinstance(value, Path) else value
+            for key, value in result.items()
+        }
+        for video_id, result in downloads.items()
+    }
+    media = {
+        video_id: Path(result["path"])
+        for video_id, result in downloads.items()
+        if result.get("status") in {"cached", "downloaded"}
+    }
+    if media:
+        state["features"] = _process_downloaded_batch(
+            media=media,
+            coverage=coverage,
+            annotation_paths=annotation_paths,
+            batch_root=batch_root,
+            cache_dir=temporary_root / "unused_legacy_cache",
+            embedding_cache_dir=temporary_root / "embedding_cache",
+            yolo_model=yolo_model,
+            device=device,
+            shard_dir=shard_dir,
+            legacy_cache=False,
+        )
+    completed = completed_shard_video_ids(shard_dir) & set(requested)
+    state["completed_video_ids"] = sorted(completed)
+    state["seconds"] = round(time.perf_counter() - started, 1)
+    if completed == set(requested):
+        _safe_remove_tree(batch_root, temporary_root)
+        state["temporary_batch_deleted"] = True
+    _write_json_atomic(state_path, state)
+    return state

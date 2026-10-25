@@ -254,6 +254,7 @@ class ShardGraphDataset:
         *,
         feature_attribute: str = "visual_noleak_x",
         cache_shards: int = 2,
+        extra_shard_dirs: Sequence[Path] = (),
     ) -> None:
         self.shard_dir = Path(shard_dir)
         self.feature_attribute = feature_attribute
@@ -261,8 +262,16 @@ class ShardGraphDataset:
         self._cache: OrderedDict[str, list[Any]] = OrderedDict()
         self.index: list[tuple[str, int]] = []
         self.blocks: dict[str, list[int]] = {}
+        # Each video is read from the first directory holding its shard; extra
+        # directories hold evaluation-only shards kept apart from training data.
+        directories = [self.shard_dir, *map(Path, extra_shard_dirs)]
+        self.video_dirs: dict[str, Path] = {}
         for video_id in video_ids:
-            metadata = validate_shard(self.shard_dir, video_id)
+            self.video_dirs[video_id] = next(
+                (path for path in directories if shard_paths(path, video_id)[0].is_file()),
+                self.shard_dir,
+            )
+            metadata = validate_shard(self.video_dirs[video_id], video_id)
             first = len(self.index)
             self.index.extend((video_id, local) for local in range(int(metadata["graphs"])))
             self.blocks[video_id] = list(range(first, len(self.index)))
@@ -275,7 +284,7 @@ class ShardGraphDataset:
         if video_id in self._cache:
             self._cache.move_to_end(video_id)
             return self._cache[video_id]
-        graphs = load_shard(self.shard_dir, video_id)
+        graphs = load_shard(self.video_dirs[video_id], video_id)
         self.loads += 1
         self._cache[video_id] = graphs
         while len(self._cache) > self.cache_shards:

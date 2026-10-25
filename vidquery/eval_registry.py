@@ -43,3 +43,23 @@ def assert_not_trained_on(
         raise EvaluationLeakageError(
             f"{context} would use evaluation-only videos: {', '.join(overlap)}"
         )
+
+
+# The registry's calibration videos already served as the AVA80 checkpoints'
+# model-selection set; every other registry video is test-only.
+SELECTION_ALLOWED_GROUPS = ("ava_holdout_v1_calibration",)
+
+
+def assert_not_selected_on(
+    validation_video_ids: Iterable[str],
+    path: Path = DEFAULT_REGISTRY,
+    *,
+    allowed_groups: Iterable[str] = SELECTION_ALLOWED_GROUPS,
+    context: str = "model selection",
+) -> None:
+    allowed = eval_only_video_ids(path, groups=allowed_groups)
+    overlap = sorted(set(map(str, validation_video_ids)) & (eval_only_video_ids(path) - allowed))
+    if overlap:
+        raise EvaluationLeakageError(
+            f"{context} would use test-only evaluation videos: {', '.join(overlap)}"
+        )
