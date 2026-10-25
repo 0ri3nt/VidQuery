@@ -45,7 +45,23 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--seed", type=int, default=2026)
+    parser.add_argument(
+        "--version-tag",
+        default="v2",
+        help="Model version suffix; use a new tag (e.g. v3-scale119) for any retrain",
+    )
+    parser.add_argument(
+        "--compare-checkpoint",
+        type=Path,
+        action="append",
+        default=[],
+        help="Also evaluate these checkpoints on the same test graphs (repeatable)",
+    )
     args = parser.parse_args()
+    for kind in ("mlp", "gat"):
+        target = args.output_dir / f"vidor-relation-pair-visual-{kind}-{args.version_tag}.pt"
+        if target.exists():
+            raise SystemExit(f"{target} exists; choose a new --version-tag or --output-dir")
 
     manifest = json.loads(args.baseline_manifest.read_text(encoding="utf-8"))
     source_manifest_path = Path(manifest.get("source_split_manifest", args.baseline_manifest))
@@ -71,7 +87,27 @@ def main() -> None:
         batch_size=args.batch_size,
         seed=args.seed,
         device_name=args.device,
+        version_tag=args.version_tag,
     )
+    comparisons = {}
+    if args.compare_checkpoint:
+        import torch
+
+        from scripts.train_vidor_detector_matched import _evaluate_checkpoint, _summary
+        from vidquery.vidor_relation import _graph_split
+
+        graphs = torch.load(
+            args.output_dir / "vidor_relation_pair_visual_graphs.pt",
+            map_location="cpu",
+            weights_only=False,
+        )["graphs"]
+        test_graphs = _graph_split(graphs, split)["test"]
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        for path in args.compare_checkpoint:
+            comparisons[path.as_posix()] = _summary(_evaluate_checkpoint(path, test_graphs, device))
+        (args.output_dir / "comparison_on_new_test.json").write_text(
+            json.dumps(comparisons, indent=2) + "\n", encoding="utf-8"
+        )
     print(
         json.dumps(
             {
@@ -86,6 +122,7 @@ def main() -> None:
                     "validation": report["relationship_gnn"]["validation_metrics"],
                     "test": report["relationship_gnn"]["test_metrics"],
                 },
+                "compared_checkpoints_on_same_test": comparisons,
             },
             indent=2,
         )

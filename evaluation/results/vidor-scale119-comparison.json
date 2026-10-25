@@ -1,0 +1,96 @@
+{
+  "schema_version": "vidor-scale119-comparison-v1",
+  "staged_archives": [
+    "training-video-part1.zip",
+    "training-video-part2.zip"
+  ],
+  "dataset": {
+    "detector_matching": {
+      "box_source": "annotation"
+    },
+    "graphs": 714,
+    "candidate_edges": 21976,
+    "positive_candidate_edges": 15066,
+    "feasible_positive_instances": 19303,
+    "proposed_positive_instances": 19303,
+    "candidate_edge_recall": 1.0,
+    "visual_cache": {
+      "encoder": "torchvision-resnet18-imagenet1k-v1-frozen",
+      "feature_dim": 512,
+      "subject_roi": true,
+      "object_roi": true,
+      "union_box": true,
+      "computed_once_and_cached": true
+    },
+    "selected_videos": 119,
+    "split_video_counts": {
+      "train": 99,
+      "validation": 11,
+      "test": 9
+    },
+    "cache": "data/app/models/vidor_relation_scale119/vidor_relation_pair_visual_graphs.pt",
+    "cache_sha256": "fd1a9fca78148ea160c96aacd204f5e767355c52fd09f765ccba1c8b787eefb4"
+  },
+  "validation_winner": "relationship_gnn",
+  "new_models": {
+    "pairwise_mlp": {
+      "model_version": "vidor-relation-pair-visual-mlp-v3-scale119",
+      "validation": {
+        "macro_f1_supported_predicates": 0.281228,
+        "micro_f1": 0.405746,
+        "mean_average_precision_supported_predicates": 0.273138,
+        "supported_predicates": 29,
+        "candidate_edges": 1733,
+        "positive_labels": 1583
+      },
+      "test": {
+        "macro_f1_supported_predicates": 0.143337,
+        "micro_f1": 0.33564,
+        "mean_average_precision_supported_predicates": 0.213001,
+        "supported_predicates": 23,
+        "candidate_edges": 1507,
+        "positive_labels": 1281
+      }
+    },
+    "relationship_gnn": {
+      "model_version": "vidor-relation-pair-visual-gat-v3-scale119",
+      "validation": {
+        "macro_f1_supported_predicates": 0.296246,
+        "micro_f1": 0.355146,
+        "mean_average_precision_supported_predicates": 0.264547,
+        "supported_predicates": 29,
+        "candidate_edges": 1733,
+        "positive_labels": 1583
+      },
+      "test": {
+        "macro_f1_supported_predicates": 0.179592,
+        "micro_f1": 0.289089,
+        "mean_average_precision_supported_predicates": 0.19239,
+        "supported_predicates": 23,
+        "candidate_edges": 1507,
+        "positive_labels": 1281
+      }
+    }
+  },
+  "active_models_on_same_test": {
+    "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-gat-v2.pt": {
+      "macro_f1_supported_predicates": 0.142474,
+      "micro_f1": 0.339678,
+      "mean_average_precision_supported_predicates": 0.170084,
+      "supported_predicates": 23,
+      "candidate_edges": 1507,
+      "positive_labels": 1281,
+      "predicted_relations_per_edge": 1.8693
+    },
+    "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-mlp-v2.pt": {
+      "macro_f1_supported_predicates": 0.136925,
+      "micro_f1": 0.28679,
+      "mean_average_precision_supported_predicates": 0.158285,
+      "supported_predicates": 23,
+      "candidate_edges": 1507,
+      "positive_labels": 1281,
+      "predicted_relations_per_edge": 3.0279
+    }
+  },
+  "note": "Active v2 trained on 57 of these 99 train videos; the 9 test videos are disjoint from both training sets."
+}
