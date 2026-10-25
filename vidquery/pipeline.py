@@ -29,6 +29,7 @@ from .models import (
     WhisperTranscriber,
     YoloVisualDetector,
     assign_speakers,
+    whisper_decoding_mode,
 )
 from .segments import (
     ActionEvidence,
@@ -425,6 +426,11 @@ class VideoProcessingService:
                     ),
                     "whisper_model": (
                         self.settings.whisper_model if self.settings.enable_whisper else None
+                    ),
+                    "whisper_decoding": (
+                        whisper_decoding_mode(self.settings)
+                        if self.settings.enable_whisper
+                        else None
                     ),
                     "transcription_status": transcription_status,
                     "transcript_segment_count": len(transcripts),

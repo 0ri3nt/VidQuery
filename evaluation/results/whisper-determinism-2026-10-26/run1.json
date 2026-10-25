@@ -1,0 +1,19 @@
+{
+ "files": 40,
+ "repeats": 3,
+ "whisper_model": "tiny",
+ "modes": {
+  "greedy": {
+   "files_identical_across_repeats": 40,
+   "share_identical": 1.0,
+   "files_with_speech_text": 31,
+   "seconds": 177.3
+  },
+  "fallback": {
+   "files_identical_across_repeats": 17,
+   "share_identical": 0.425,
+   "files_with_speech_text": 25,
+   "seconds": 285.7
+  }
+ }
+}

@@ -265,16 +265,41 @@ class WhisperTranscriber:
             )
         return self._model
 
+    def decoding_options(self) -> dict[str, Any]:
+        """Greedy temperature-0 decoding unless the sampling fallback is enabled.
+
+        Whisper's default retries a failed window at temperatures 0.2-1.0 with
+        random sampling, so re-indexing the same video can change its
+        transcript (and every feature derived from it). ``temperature=0.0``
+        disables that fallback; ``WHISPER_TEMPERATURE_FALLBACK=true`` restores
+        the library default.
+        """
+
+        if getattr(self.settings, "whisper_temperature_fallback", False):
+            return {}
+        return {"temperature": 0.0}
+
     def transcribe(self, audio_path: Path, video_id: str) -> list[TranscriptSegment]:
         model = self._load()
         audio = _decode_audio_for_whisper(audio_path)
         word_timestamps = bool(getattr(self.settings, "whisper_word_timestamps", True))
+        options = self.decoding_options()
         try:
-            result = model.transcribe(audio, verbose=False, word_timestamps=word_timestamps)
+            result = model.transcribe(
+                audio, verbose=False, word_timestamps=word_timestamps, **options
+            )
         except TypeError:
             # Very old openai-whisper builds predate word_timestamps.
-            result = model.transcribe(audio, verbose=False)
+            result = model.transcribe(audio, verbose=False, **options)
         return parse_whisper_result(result, video_id)
+
+
+def whisper_decoding_mode(settings: Settings) -> str:
+    """Name recorded in segment metadata so indexes built either way stay traceable."""
+
+    if getattr(settings, "whisper_temperature_fallback", False):
+        return "temperature_fallback_sampling"
+    return "greedy_temperature_0"
 
 
 def parse_whisper_result(result: dict[str, Any], video_id: str) -> list[TranscriptSegment]:

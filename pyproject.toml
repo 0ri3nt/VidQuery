@@ -86,7 +86,8 @@ markers = [
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-exclude = ["data", "tmp", ".venv-local"]
+# Archived one-off run scripts are kept verbatim as a record of what was run.
+exclude = ["data", "tmp", ".venv-local", "evaluation/results/**/run_scripts"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]

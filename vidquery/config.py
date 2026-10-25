@@ -295,6 +295,9 @@ class Settings:
     whisper_word_timestamps: bool = field(
         default_factory=lambda: _bool_env("WHISPER_WORD_TIMESTAMPS", True)
     )
+    whisper_temperature_fallback: bool = field(
+        default_factory=lambda: _bool_env("WHISPER_TEMPERATURE_FALLBACK", False)
+    )
     challenge_manifest_path: Path = field(
         default_factory=lambda: _path_env(
             "CHALLENGE_MANIFEST_PATH", Path("evaluation/queries_challenge.json")

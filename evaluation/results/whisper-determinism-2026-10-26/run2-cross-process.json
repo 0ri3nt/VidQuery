@@ -1,0 +1,17 @@
+{
+ "files": 40,
+ "repeats": 1,
+ "whisper_model": "tiny",
+ "modes": {
+  "greedy": {
+   "files_identical_across_repeats": 40,
+   "share_identical": 1.0,
+   "files_with_speech_text": 31,
+   "seconds": 54.7
+  }
+ },
+ "greedy_cross_process": {
+  "files": 40,
+  "identical": 40
+ }
+}

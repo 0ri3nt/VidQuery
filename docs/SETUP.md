@@ -53,7 +53,7 @@ is cached, switch back to `false` and `1`.
 | Component | Setting | Expected local file or directory |
 |---|---|---|
 | YOLO | `YOLO_MODEL` | `data/app/models/yolo/yolov8n.pt` |
-| Whisper | `WHISPER_MODEL=tiny`, `WHISPER_CACHE_DIR` | `data/app/models/whisper/tiny.pt` |
+| Whisper | `WHISPER_MODEL=tiny`, `WHISPER_CACHE_DIR`, `WHISPER_TEMPERATURE_FALLBACK=false` (deterministic) | `data/app/models/whisper/tiny.pt` |
 | Pyannote | `PYANNOTE_CACHE_DIR` | `data/app/models/pyannote/models--pyannote--speaker-diarization-3.1/` |
 | MiniLM | `SENTENCE_EMBEDDING_CACHE_DIR` | `data/app/models/sentence_transformers/models--sentence-transformers--all-MiniLM-L6-v2/` |
 | OpenCLIP | `APPEARANCE_CACHE_DIR` | `data/app/models/appearance/ViT-B-32.pt` |
@@ -130,6 +130,15 @@ always missing from `data/app/cache/torch`. Cache it, then reprocess.
 **Whisper fails on Apple Silicon with a SparseMPS `NotImplementedError`.**
 VidQuery already forces Whisper onto the CPU when the resolved device is MPS.
 Other models still use MPS.
+
+**Re-indexing the same video gives a different transcript.** This happens
+with `WHISPER_TEMPERATURE_FALLBACK=true`: Whisper retries a failed window at
+temperatures 0.2–1.0 with random sampling. The default (`false`) decodes
+greedily at temperature 0. On 40 Charades clips that gave identical
+transcripts in 40/40 files across 3 repeats and across processes, against
+17/40 with the fallback (`evaluation/results/whisper-determinism-2026-10-26/`).
+Segment metadata records the mode as `whisper_decoding`. Videos indexed
+before this change carry no `whisper_decoding` key and used the fallback.
 
 **A reprocess appears to fail or hang in the UI.** Diarization on CPU is the
 slowest stage and can take several minutes for a short clip. A second click

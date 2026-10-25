@@ -1,0 +1,17 @@
+{
+ "left": "data/app/benchmark/determinism_check/a/index.sqlite3",
+ "right": "data/app/benchmark/determinism_check/b/index.sqlite3",
+ "segments_compared": 131,
+ "segments_only_left": 0,
+ "segments_only_right": 0,
+ "segments_differing_by_field": {
+  "actions": 0,
+  "detections": 0,
+  "frame_count": 0,
+  "ocr_text": 0,
+  "relationships": 0,
+  "speakers": 0,
+  "transcript": 0
+ },
+ "identical": true
+}

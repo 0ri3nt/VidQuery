@@ -1,0 +1,13 @@
+{
+ "comparison": "same 20 videos, original v2 index vs v2 control rebuild (both Whisper temperature fallback)",
+ "segments_compared": 131,
+ "segments_differing_by_field": {
+  "actions": 45,
+  "detections": 0,
+  "frame_count": 0,
+  "ocr_text": 0,
+  "relationships": 54,
+  "speakers": 7,
+  "transcript": 66
+ }
+}
