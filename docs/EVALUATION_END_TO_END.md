@@ -273,6 +273,18 @@ detector-matched.
 - **More data helps a little.** Going from 57 to 99 training videos raises
   GATv2 macro F1 from 0.142 to 0.180 and mAP from 0.170 to 0.192 on the same
   9 test videos; micro F1 falls from 0.340 to 0.289.
+- **At 400 training videos it helps clearly** (`vidor-scale500-comparison.json`).
+  On a new, larger 50-video test split, scored for every checkpoint, GATv2
+  macro F1 rises 0.071 → 0.095 → 0.171 and mAP 0.088 → 0.110 → 0.187 at
+  57 → 99 → 400 training videos. Versus the previous active v2: macro F1
+  +0.099 [0.068, 0.131], mAP +0.099 [0.071, 0.135], micro F1 +0.013
+  [−0.018, 0.039] (video-level bootstrap). The test videos share none with
+  any training or validation split. `vidor-relation-pair-visual-gat-v3-scale500`
+  is now the active relation model in the local `.env`. The AVA indexes above
+  were built with v2 and were not reprocessed.
+
+Temporal localization of free-form sentences (Charades-STA + NA-VMR) is a
+separate benchmark: see [EVALUATION_CHARADES_STA.md](EVALUATION_CHARADES_STA.md).
 
 ### Reproduce the second round
 

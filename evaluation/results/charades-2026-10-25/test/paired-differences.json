@@ -1,0 +1,73 @@
+{
+ "schema_version": "charades-test-paired-v1",
+ "resampling": "test videos, 2000 resamples, seed 2026",
+ "fixed_window": [
+  0.1,
+  0.4
+ ],
+ "comparisons": {
+  "selected_T1_vs_default_T0 (R@1@0.5, review2 no abstention, expand:10 vs segment)": {
+   "difference": 0.3175,
+   "ci95": [
+    0.2751,
+    0.3616
+   ],
+   "queries": 863,
+   "videos": 300
+  },
+  "selected_T1_vs_fixed_window_baseline (R@1@0.5)": {
+   "difference": 0.1472,
+   "ci95": [
+    0.0937,
+    0.2005
+   ],
+   "queries": 863,
+   "videos": 300
+  },
+  "review1_vs_review2_ranking (T1, expand:10, R@1@0.5)": {
+   "difference": 0.0023,
+   "ci95": [
+    -0.0206,
+    0.0248
+   ],
+   "queries": 863,
+   "videos": 300
+  },
+  "ablation_soft_only_T4_vs_T1 (R@1@0.5, expand:10)": {
+   "difference": -0.1564,
+   "ci95": [
+    -0.1965,
+    -0.1177
+   ],
+   "queries": 863,
+   "videos": 300
+  },
+  "ablation_frame_only_strict_T5_vs_T1 (R@1@0.5, expand:10)": {
+   "difference": -0.2155,
+   "ci95": [
+    -0.2545,
+    -0.1803
+   ],
+   "queries": 863,
+   "videos": 300
+  },
+  "span_expand10_vs_segment (T1, R@1@0.5)": {
+   "difference": 0.1564,
+   "ci95": [
+    0.1212,
+    0.1942
+   ],
+   "queries": 863,
+   "videos": 300
+  },
+  "abstention_p1_preserving_T2_vs_none_T1 (gated P@1, expand:10)": {
+   "difference": -0.0023,
+   "ci95": [
+    -0.0059,
+    0.0
+   ],
+   "queries": 863,
+   "videos": 300
+  }
+ }
+}

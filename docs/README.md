@@ -42,6 +42,8 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 | [FINAL_CAPSTONE_EVIDENCE.md](FINAL_CAPSTONE_EVIDENCE.md) | claims that are safe, and unsafe, to make |
 | [EVALUATION_FINAL.md](EVALUATION_FINAL.md) | 62-query independent retrieval benchmark |
 | [EVALUATION_END_TO_END.md](EVALUATION_END_TO_END.md) | model-only end-to-end action benchmark, learned trust, and abstention ablations |
+| [EVALUATION_CHARADES_STA.md](EVALUATION_CHARADES_STA.md) | Charades-STA + NA-VMR temporal localization and answerability benchmark (separate from AVA) |
+| [PROGRESS_2026-10-25.md](PROGRESS_2026-10-25.md) | work log, measured results, and approval gates for pending expansions |
 | [AUDIT_2026-10.md](AUDIT_2026-10.md) | codebase, dataset-coverage, hardware, feasibility, and cost audit |
 | [NEO4J_VERIFICATION.md](NEO4J_VERIFICATION.md) | live Neo4j verification |
 | [PIPELINE_REPRODUCTION.md](PIPELINE_REPRODUCTION.md) | end-to-end reproduction record |

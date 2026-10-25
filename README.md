@@ -194,6 +194,31 @@ Movie footage does not cover speech, OCR, or lecture queries. Details are in
 [docs/EVALUATION_END_TO_END.md](docs/EVALUATION_END_TO_END.md) and
 [docs/PROGRESS_2026-10-25.md](docs/PROGRESS_2026-10-25.md).
 
+### Temporal localization and answerability (Charades-STA + NA-VMR, model-only)
+
+300 Charades-STA test videos indexed end to end from raw video, with 863
+human-written sentence queries plus 1,718 non-answerable NA-VMR queries
+(863 in-domain, 855 out-of-domain). All settings were chosen on 150 separate
+validation videos and test was run once. This benchmark measures moment
+localization, not action recognition, so it is reported separately from the
+AVA benchmark above.
+
+| System (Review-2) | P@1 [95% CI] | R@1@0.5 | R@1@0.7 | R@5@0.5 | In-domain negatives rejected | Out-of-domain negatives rejected |
+|---|---:|---:|---:|---:|---:|---:|
+| Content-blind fixed window (from validation) | n/a | 0.269 | 0.092 | n/a | n/a | n/a |
+| Default settings | 0.094 [0.08, 0.11] | 0.099 | 0.038 | 0.284 | 0.55 | 1.00 |
+| Soft constraints + frame-level OpenCLIP similarity + 10 s spans | **0.414 [0.38, 0.45]** | **0.416** | **0.187** | **0.870** | 0.01 | 1.00 |
+
+The selected settings beat the default by +0.318 R@1@0.5 (95% CI
+[0.275, 0.362]) and the content-blind baseline by +0.147 ([0.094, 0.201]).
+Out-of-domain negatives are rejected reliably. In-domain negatives
+(plausible sentences about other Charades videos) are not separable by
+confidence (AUROC 0.60). The default settings reject more of them only
+because they also return nothing for 48% of positives. The new settings are
+off by default (`SOFT_CONSTRAINT_MATCHING`, `ENABLE_FRAME_SEMANTIC_RETRIEVAL`;
+frame embeddings need `scripts/backfill_frame_embeddings.py` for existing
+indexes). Details: [docs/EVALUATION_CHARADES_STA.md](docs/EVALUATION_CHARADES_STA.md).
+
 ### Independent retrieval benchmark (Review-1, labelled evidence)
 
 These numbers are **not end-to-end**. The synthetic `final_demo` video's
@@ -224,16 +249,21 @@ These are capstone-scale results, not broad-domain claims. Details are in
 | Model | Split | Supported macro F1 | Micro F1 | mAP |
 |---|---|---:|---:|---:|
 | AVA 80-label GATv2 v5 (active) | 3 held-out videos | 0.072086 | 0.462054 | 0.086745 |
-| VidOR pair-visual GATv2 v2 (active) | 4 held-out videos | 0.178194 | 0.371113 | 0.191364 |
+| VidOR pair-visual GATv2 v3-scale500 (active) | 50 held-out videos | 0.170506 | 0.328170 | 0.186719 |
+| VidOR pair-visual GATv2 v2 (previous) | same 50 held-out videos | 0.071177 | 0.315536 | 0.088219 |
 
-Both are weak on held-out data because of small test sets, label imbalance, and
-domain shift. Both are small graph heads over frozen ImageNet ResNet-18
-features, trained on a small share of the available data:
+On the same 50 test videos, v3-scale500 beats v2 by +0.099 macro F1 (95% CI
+[0.068, 0.131]) and +0.099 mAP ([0.071, 0.135]); micro F1 is not significantly
+different. v2 scored 0.178 macro F1 on its own 4-video test split, which shows
+how unstable tiny test sets are. Both models are still weak on held-out data
+because of label imbalance and domain shift. Both are small graph heads over
+frozen ImageNet ResNet-18 features, trained on a small share of the available
+data:
 
 | Model | Trained on | Available labelled data | Share |
 |---|---|---|---:|
 | AVA action GNN v5 | 24 train videos (30 incl. val/test), 35,095 supervised persons | 299 AVA v2.2 train+val videos, 426,346 person boxes | 10% of videos |
-| VidOR relation GNN v2 | 57 train videos (67 incl. val/test), 402 frames | 7,000 VidOR training videos | 1% of videos |
+| VidOR relation GNN v3-scale500 | 400 train videos (500 incl. val/test), 2,400 frames | 7,000 VidOR training videos | 6% of videos |
 
 The action model's best validation epoch was epoch 1; validation loss rose
 from then on. That is why Review-2 down-weights them rather than trusting them.
@@ -334,5 +364,7 @@ The full index is [docs/README.md](docs/README.md). Key documents:
 - [GNN status](docs/GNN_STATUS.md)
 - [Final evaluation](docs/EVALUATION_FINAL.md)
 - [End-to-end evaluation](docs/EVALUATION_END_TO_END.md)
+- [Temporal localization: Charades-STA + NA-VMR](docs/EVALUATION_CHARADES_STA.md)
+- [Work log and approval gates](docs/PROGRESS_2026-10-25.md)
 - [Codebase, data, and cost audit](docs/AUDIT_2026-10.md)
 - [Final demo guide](docs/FINAL_DEMO_GUIDE.md)

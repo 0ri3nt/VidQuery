@@ -1,0 +1,84 @@
+{
+ "schema_version": "vidor-full-expansion-estimate-v1",
+ "measured": {
+  "annotated_training_videos": 7000,
+  "staged_videos": 500,
+  "staged_share": 0.0714,
+  "archive_gb": {
+   "training_parts_1_8": 25.92,
+   "validation": 3.06,
+   "source": "Hugging Face shangxd/vidor file listing"
+  },
+  "range_read_staging": {
+   "part2": {
+    "videos": 52,
+    "seconds": 206,
+    "bytes": 313199138
+   },
+   "parts3_8": {
+    "videos": 381,
+    "seconds": 1387,
+    "bytes": 2268264320
+   },
+   "seconds_per_video": 3.68,
+   "effective_mb_per_s": 1.62
+  },
+  "raw_download_mb_per_s_ava_s3": 9.2,
+  "frames_per_video": 6,
+  "frame_bytes_mean": 25547,
+  "graph_cache": {
+   "graphs": 3000,
+   "bytes": 270398498,
+   "bytes_per_graph": 90133
+  },
+  "build_and_train_wall_seconds_500": 1048,
+  "training_seconds_500": {
+   "gat": 175.845,
+   "mlp": 90.583
+  },
+  "graph_build_seconds_per_graph_estimate": 0.247,
+  "free_disk_gb_now": 31.1
+ },
+ "estimates": {
+  "staging_range_reads_hours": 6.6,
+  "staging_whole_archives_hours": 2.6,
+  "frames_gb_total": 1.07,
+  "graph_cache_gb_total_current_format": 3.79,
+  "feature_extraction_hours": 2.7,
+  "training_hours_gat_plus_mlp": 1.3,
+  "peak_extra_disk_gb_whole_archive_path": 8.8,
+  "total_hours_range_path": 10.6,
+  "total_hours_whole_archive_path": 6.6
+ },
+ "assumptions": [
+  "new videos all go to training; the 50/50 validation/test videos stay fixed",
+  "6 frames per video and the same pair-visual features as the 500-video run",
+  "Hugging Face download speed similar to the measured 9.2 MB/s AVA S3 rate (not measured for HF)",
+  "local frame extraction ~1 s/video for the whole-archive path (not measured)",
+  "graph build rate measured while Charades indexing shared the GPU; may be faster alone",
+  "training time scales linearly with training graphs at similar epoch counts"
+ ],
+ "scaling_evidence_same_50_test_videos": {
+  "train_videos": [
+   57,
+   99,
+   400
+  ],
+  "gat_macro_f1": [
+   0.0712,
+   0.0951,
+   0.1705
+  ],
+  "gat_map": [
+   0.0882,
+   0.1101,
+   0.1867
+  ]
+ },
+ "recommendation": "Next step 2,000 videos (~1,500 more by range reads: ~1.5 h staging, ~0.6 h features, ~0.3 h training) and check the scaling curve; go to all 7,000 only if macro F1/mAP keep rising.",
+ "risks": [
+  "RAM (estimate, not measured): the graph builder keeps every graph in memory and reloads the saved cache to verify it; the trainer torch.loads the whole cache. At 7,000 videos that is ~3.8 GB on disk and roughly 2x in peak RAM during build (~7-8 GB) on a 15.6 GB machine. Feasible but tight; 2,000 videos (~1.1 GB cache) carries no such risk.",
+  "Hugging Face throughput for whole archives is not measured; range reads measured 1.62 MB/s.",
+  "Validation/test stay at 50/50 videos, so per-predicate test support does not grow."
+ ]
+}

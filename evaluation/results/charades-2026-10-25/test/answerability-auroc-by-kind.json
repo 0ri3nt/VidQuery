@@ -1,0 +1,15 @@
+{
+ "schema_version": "charades-auroc-by-kind-v1",
+ "key": "review2_full|expand:10",
+ "score": "max fused confidence; no result = lowest",
+ "auroc_positive_vs_kind": {
+  "T0-default-strict-noframe": {
+   "in_domain_negative": 0.5399,
+   "out_of_domain_negative": 0.7349
+  },
+  "T1-selected-soft-frame": {
+   "in_domain_negative": 0.6001,
+   "out_of_domain_negative": 0.9995
+  }
+ }
+}
