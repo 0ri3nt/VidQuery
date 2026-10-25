@@ -33,7 +33,6 @@ import numpy as np
 import torch
 
 from vidquery.ava_ablation import StaticActionModel, train_static_ablation
-from vidquery.eval_registry import assert_not_trained_on
 from vidquery.ava_gnn80 import (
     AVA80_LABELS,
     AVA80_NOLEAK_ATTRIBUTE,
@@ -44,6 +43,7 @@ from vidquery.ava_gnn80 import (
     drop_leaking_columns,
     leaking_column_indices,
 )
+from vidquery.eval_registry import assert_not_trained_on
 
 ACTIVE = Path("data/app/models/ava80_scaling/30/ablations/ava80-gat-v5-scale30-roi-frame.pt")
 
