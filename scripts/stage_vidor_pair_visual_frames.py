@@ -129,14 +129,30 @@ def main() -> None:
         "frame_root": args.frame_root.as_posix(),
         "raw_video_retention": "none; temporary MP4 deleted immediately after frame extraction",
     }
-    proof_path = args.frame_root / "staging_report.json"
+    # One report per archive part; never overwrite an earlier part's record.
+    proof_path = args.frame_root / (
+        "staging_report.json" if args.part == 1 else f"staging_report_part{args.part}.json"
+    )
     proof_path.write_text(json.dumps(proof, indent=2) + "\n", encoding="utf-8")
     staged_set = set(staged_video_ids)
+    manifest_path = args.frame_root / "split_manifest.json"
+    previous_archives: list[str] = []
+    if manifest_path.is_file():
+        previous = json.loads(manifest_path.read_text(encoding="utf-8"))
+        backup = args.frame_root / f"split_manifest.before-part{args.part}.json"
+        if not backup.exists():
+            backup.write_text(json.dumps(previous, indent=2) + "\n", encoding="utf-8")
+        # Accumulate across archive parts instead of replacing earlier parts.
+        staged_set |= {str(row["video_id"]) for row in previous.get("selected_videos", [])}
+        previous_archives = list(
+            previous.get("source_archives") or [previous.get("source_archive")]
+        )
     staged_manifest = {
         "schema_version": "vidor-relation-pair-visual-split-v2",
         "seed": int(manifest["seed"]),
         "source_split_manifest": args.manifest.as_posix(),
         "source_archive": filename,
+        "source_archives": sorted({item for item in [*previous_archives, filename] if item}),
         "selected_videos": [
             row for row in manifest["selected_videos"] if str(row["video_id"]) in staged_set
         ],
@@ -145,9 +161,7 @@ def main() -> None:
             for name in ("train", "validation", "test")
         },
     }
-    (args.frame_root / "split_manifest.json").write_text(
-        json.dumps(staged_manifest, indent=2) + "\n", encoding="utf-8"
-    )
+    manifest_path.write_text(json.dumps(staged_manifest, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(proof, indent=2))
 
 

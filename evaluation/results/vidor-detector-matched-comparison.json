@@ -1,0 +1,2005 @@
+{
+  "schema_version": "vidor-detector-matched-comparison-v1",
+  "created_at": "2026-10-25T12:01:03.447196+00:00",
+  "detector": {
+    "weights": "yolov8n.pt",
+    "confidence": 0.25,
+    "iou": 0.45,
+    "frames_processed": 402
+  },
+  "split_video_counts": {
+    "train": 57,
+    "validation": 6,
+    "test": 4
+  },
+  "detector_matching": {
+    "box_source": "detector_matched",
+    "minimum_iou": 0.5,
+    "annotated_objects": 2174,
+    "detector_matched_objects": 1087,
+    "object_match_rate": 0.5,
+    "annotated_relation_instances": 10104,
+    "relation_instances_with_both_endpoints_detected": 2779,
+    "relation_recall_ceiling": 0.275
+  },
+  "detector_dataset": {
+    "graphs": 287,
+    "candidate_edges": 3186,
+    "positive_candidate_edges": 2149,
+    "feasible_positive_instances": 2779,
+    "proposed_positive_instances": 2779,
+    "candidate_edge_recall": 1.0,
+    "negative_sampling": {
+      "policy": "all positives + nearest plausible hard negatives + seeded random/background negatives",
+      "hard_negative_ratio": 2.0,
+      "random_negative_ratio": 1.0,
+      "positive_edges": 2149,
+      "hard_nearby_negative_edges": 504,
+      "random_background_negative_edges": 533,
+      "all_possible_directed_pairs": 3262
+    },
+    "visual_cache": {
+      "encoder": "torchvision-resnet18-imagenet1k-v1-frozen",
+      "feature_dim": 512,
+      "subject_roi": true,
+      "object_roi": true,
+      "union_box": true,
+      "computed_once_and_cached": true
+    },
+    "selected_videos": 67,
+    "split_video_counts": {
+      "train": 57,
+      "validation": 6,
+      "test": 4
+    },
+    "cache": "data/app/models/vidor_relation_detector_v3/vidor_relation_pair_visual_graphs.pt",
+    "cache_sha256": "9c70ba1b839c55d2f41c6cb4900e3daba23425f6cc9617d9a8883de675be8177"
+  },
+  "validation_winner_v3": "mlp",
+  "validation_v3": {
+    "mlp": {
+      "macro_f1_supported_predicates": 0.174422,
+      "micro_f1": 0.354749,
+      "mean_average_precision_supported_predicates": 0.152729,
+      "supported_predicates": 14,
+      "candidate_edges": 212,
+      "positive_labels": 171
+    },
+    "gat": {
+      "macro_f1_supported_predicates": 0.153604,
+      "micro_f1": 0.228956,
+      "mean_average_precision_supported_predicates": 0.132073,
+      "supported_predicates": 14,
+      "candidate_edges": 212,
+      "positive_labels": 171
+    }
+  },
+  "predicates": [
+    "above",
+    "away",
+    "behind",
+    "beneath",
+    "bite",
+    "caress",
+    "carry",
+    "chase",
+    "clean",
+    "close",
+    "cut",
+    "drive",
+    "feed",
+    "get_off",
+    "get_on",
+    "grab",
+    "hit",
+    "hold",
+    "hold_hand_of",
+    "hug",
+    "in_front_of",
+    "inside",
+    "kick",
+    "kiss",
+    "knock",
+    "lean_on",
+    "lick",
+    "lift",
+    "next_to",
+    "open",
+    "pat",
+    "play(instrument)",
+    "point_to",
+    "press",
+    "pull",
+    "push",
+    "release",
+    "ride",
+    "shake_hand_with",
+    "shout_at",
+    "smell",
+    "speak_to",
+    "squeeze",
+    "throw",
+    "touch",
+    "towards",
+    "use",
+    "watch",
+    "wave",
+    "wave_hand_to"
+  ],
+  "test": {
+    "active_gat_v2_annotation_trained": {
+      "checkpoint": "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-gat-v2.pt",
+      "test_on_detector_boxes": {
+        "macro_f1_supported_predicates": 0.204216,
+        "micro_f1": 0.412346,
+        "mean_average_precision_supported_predicates": 0.253198,
+        "supported_predicates": 15,
+        "candidate_edges": 288,
+        "positive_labels": 304,
+        "predicted_relations_per_edge": 1.7569
+      },
+      "per_predicate_on_detector_boxes": [
+        {
+          "predicate": "above",
+          "precision": 0.571429,
+          "recall": 0.222222,
+          "f1": 0.32,
+          "support": 18,
+          "average_precision": 0.404913,
+          "threshold": 0.7
+        },
+        {
+          "predicate": "away",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15,
+          "average_precision": 0.052536,
+          "threshold": 0.6
+        },
+        {
+          "predicate": "behind",
+          "precision": 0.104167,
+          "recall": 0.625,
+          "f1": 0.178571,
+          "support": 16,
+          "average_precision": 0.12952,
+          "threshold": 0.55
+        },
+        {
+          "predicate": "beneath",
+          "precision": 0.5,
+          "recall": 0.055556,
+          "f1": 0.1,
+          "support": 18,
+          "average_precision": 0.377314,
+          "threshold": 0.85
+        },
+        {
+          "predicate": "bite",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "caress",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "carry",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "chase",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.1
+        },
+        {
+          "predicate": "clean",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "close",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "cut",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "drive",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "feed",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_off",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_on",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "grab",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.35
+        },
+        {
+          "predicate": "hit",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hold",
+          "precision": 0.125,
+          "recall": 0.333333,
+          "f1": 0.181818,
+          "support": 3,
+          "average_precision": 0.186096,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "hold_hand_of",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "hug",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "in_front_of",
+          "precision": 0.608696,
+          "recall": 0.533333,
+          "f1": 0.568528,
+          "support": 105,
+          "average_precision": 0.663335,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "inside",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kiss",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "knock",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lean_on",
+          "precision": 0.666667,
+          "recall": 1.0,
+          "f1": 0.8,
+          "support": 4,
+          "average_precision": 0.8875,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "lick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lift",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "next_to",
+          "precision": 0.405,
+          "recall": 0.89011,
+          "f1": 0.556701,
+          "support": 91,
+          "average_precision": 0.59371,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "open",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pat",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "play(instrument)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "point_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.008929,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "press",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pull",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.02439,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "push",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "release",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.1,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "ride",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4,
+          "average_precision": 0.070951,
+          "threshold": 0.85
+        },
+        {
+          "predicate": "shake_hand_with",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "shout_at",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "smell",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "speak_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2,
+          "average_precision": 0.018376,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "squeeze",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "throw",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "touch",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "towards",
+          "precision": 0.056604,
+          "recall": 0.375,
+          "f1": 0.098361,
+          "support": 8,
+          "average_precision": 0.092078,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "use",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "watch",
+          "precision": 0.189189,
+          "recall": 0.411765,
+          "f1": 0.259259,
+          "support": 17,
+          "average_precision": 0.188327,
+          "threshold": 0.75
+        },
+        {
+          "predicate": "wave",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "wave_hand_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        }
+      ],
+      "test_on_annotation_boxes": {
+        "macro_f1_supported_predicates": 0.178194,
+        "micro_f1": 0.371113,
+        "mean_average_precision_supported_predicates": 0.191364,
+        "supported_predicates": 17,
+        "candidate_edges": 740,
+        "positive_labels": 702,
+        "predicted_relations_per_edge": 1.7459
+      }
+    },
+    "active_mlp_v2_annotation_trained": {
+      "checkpoint": "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-mlp-v2.pt",
+      "test_on_detector_boxes": {
+        "macro_f1_supported_predicates": 0.244068,
+        "micro_f1": 0.369983,
+        "mean_average_precision_supported_predicates": 0.260658,
+        "supported_predicates": 15,
+        "candidate_edges": 288,
+        "positive_labels": 304,
+        "predicted_relations_per_edge": 2.9236
+      },
+      "per_predicate_on_detector_boxes": [
+        {
+          "predicate": "above",
+          "precision": 0.555556,
+          "recall": 0.277778,
+          "f1": 0.37037,
+          "support": 18,
+          "average_precision": 0.414526,
+          "threshold": 0.65
+        },
+        {
+          "predicate": "away",
+          "precision": 0.04712,
+          "recall": 0.6,
+          "f1": 0.087379,
+          "support": 15,
+          "average_precision": 0.055429,
+          "threshold": 0.25
+        },
+        {
+          "predicate": "behind",
+          "precision": 0.086538,
+          "recall": 0.5625,
+          "f1": 0.15,
+          "support": 16,
+          "average_precision": 0.11239,
+          "threshold": 0.35
+        },
+        {
+          "predicate": "beneath",
+          "precision": 0.666667,
+          "recall": 0.333333,
+          "f1": 0.444444,
+          "support": 18,
+          "average_precision": 0.526829,
+          "threshold": 0.8
+        },
+        {
+          "predicate": "bite",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "caress",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "carry",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.65
+        },
+        {
+          "predicate": "chase",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.2
+        },
+        {
+          "predicate": "clean",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "close",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "cut",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "drive",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "feed",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_off",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_on",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "grab",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.2
+        },
+        {
+          "predicate": "hit",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hold",
+          "precision": 0.1,
+          "recall": 0.333333,
+          "f1": 0.153846,
+          "support": 3,
+          "average_precision": 0.137037,
+          "threshold": 0.65
+        },
+        {
+          "predicate": "hold_hand_of",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "hug",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "in_front_of",
+          "precision": 0.573427,
+          "recall": 0.780952,
+          "f1": 0.66129,
+          "support": 105,
+          "average_precision": 0.626873,
+          "threshold": 0.55
+        },
+        {
+          "predicate": "inside",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kiss",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.1
+        },
+        {
+          "predicate": "knock",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lean_on",
+          "precision": 0.666667,
+          "recall": 1.0,
+          "f1": 0.8,
+          "support": 4,
+          "average_precision": 0.8875,
+          "threshold": 0.4
+        },
+        {
+          "predicate": "lick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lift",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "next_to",
+          "precision": 0.34188,
+          "recall": 0.879121,
+          "f1": 0.492308,
+          "support": 91,
+          "average_precision": 0.469877,
+          "threshold": 0.3
+        },
+        {
+          "predicate": "open",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pat",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "play(instrument)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "point_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.004762,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "press",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pull",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.066667,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "push",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "release",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.022727,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "ride",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4,
+          "average_precision": 0.108369,
+          "threshold": 0.85
+        },
+        {
+          "predicate": "shake_hand_with",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "shout_at",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "smell",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "speak_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2,
+          "average_precision": 0.05,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "squeeze",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "throw",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "touch",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "towards",
+          "precision": 0.064516,
+          "recall": 0.5,
+          "f1": 0.114286,
+          "support": 8,
+          "average_precision": 0.097148,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "use",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "watch",
+          "precision": 0.266667,
+          "recall": 0.705882,
+          "f1": 0.387097,
+          "support": 17,
+          "average_precision": 0.329736,
+          "threshold": 0.85
+        },
+        {
+          "predicate": "wave",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "wave_hand_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        }
+      ],
+      "test_on_annotation_boxes": {
+        "macro_f1_supported_predicates": 0.182475,
+        "micro_f1": 0.319328,
+        "mean_average_precision_supported_predicates": 0.210712,
+        "supported_predicates": 17,
+        "candidate_edges": 740,
+        "positive_labels": 702,
+        "predicted_relations_per_edge": 2.75
+      }
+    },
+    "gat_v3_detector_trained": {
+      "checkpoint": "data/app/models/vidor_relation_detector_v3/vidor-relation-pair-visual-gat-v3-detector.pt",
+      "test_on_detector_boxes": {
+        "macro_f1_supported_predicates": 0.11053,
+        "micro_f1": 0.245671,
+        "mean_average_precision_supported_predicates": 0.154563,
+        "supported_predicates": 15,
+        "candidate_edges": 288,
+        "positive_labels": 304,
+        "predicted_relations_per_edge": 5.3611
+      },
+      "per_predicate_on_detector_boxes": [
+        {
+          "predicate": "above",
+          "precision": 0.07234,
+          "recall": 0.944444,
+          "f1": 0.134387,
+          "support": 18,
+          "average_precision": 0.149737,
+          "threshold": 0.1
+        },
+        {
+          "predicate": "away",
+          "precision": 0.333333,
+          "recall": 0.066667,
+          "f1": 0.111111,
+          "support": 15,
+          "average_precision": 0.191226,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "behind",
+          "precision": 0.065728,
+          "recall": 0.875,
+          "f1": 0.122271,
+          "support": 16,
+          "average_precision": 0.321131,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "beneath",
+          "precision": 0.073394,
+          "recall": 0.888889,
+          "f1": 0.135593,
+          "support": 18,
+          "average_precision": 0.175817,
+          "threshold": 0.1
+        },
+        {
+          "predicate": "bite",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "caress",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "carry",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "chase",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "clean",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "close",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "cut",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "drive",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "feed",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_off",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_on",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "grab",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hit",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hold",
+          "precision": 0.021127,
+          "recall": 1.0,
+          "f1": 0.041379,
+          "support": 3,
+          "average_precision": 0.078431,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "hold_hand_of",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hug",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "in_front_of",
+          "precision": 0.37234,
+          "recall": 1.0,
+          "f1": 0.542636,
+          "support": 105,
+          "average_precision": 0.438686,
+          "threshold": 0.3
+        },
+        {
+          "predicate": "inside",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kiss",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "knock",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lean_on",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4,
+          "average_precision": 0.10195,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lift",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "next_to",
+          "precision": 0.340541,
+          "recall": 0.692308,
+          "f1": 0.456522,
+          "support": 91,
+          "average_precision": 0.418895,
+          "threshold": 0.45
+        },
+        {
+          "predicate": "open",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pat",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "play(instrument)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "point_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.003584,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "press",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pull",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.055556,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "push",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "release",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.125,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "ride",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4,
+          "average_precision": 0.01571,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "shake_hand_with",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "shout_at",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "smell",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "speak_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2,
+          "average_precision": 0.017155,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "squeeze",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "throw",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "touch",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "towards",
+          "precision": 0.029412,
+          "recall": 0.875,
+          "f1": 0.056911,
+          "support": 8,
+          "average_precision": 0.108103,
+          "threshold": 0.1
+        },
+        {
+          "predicate": "use",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "watch",
+          "precision": 0.055556,
+          "recall": 0.058824,
+          "f1": 0.057143,
+          "support": 17,
+          "average_precision": 0.117468,
+          "threshold": 0.6
+        },
+        {
+          "predicate": "wave",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "wave_hand_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        }
+      ]
+    },
+    "mlp_v3_detector_trained": {
+      "checkpoint": "data/app/models/vidor_relation_detector_v3/vidor-relation-pair-visual-mlp-v3-detector.pt",
+      "test_on_detector_boxes": {
+        "macro_f1_supported_predicates": 0.133177,
+        "micro_f1": 0.307155,
+        "mean_average_precision_supported_predicates": 0.204665,
+        "supported_predicates": 15,
+        "candidate_edges": 288,
+        "positive_labels": 304,
+        "predicted_relations_per_edge": 2.9236
+      },
+      "per_predicate_on_detector_boxes": [
+        {
+          "predicate": "above",
+          "precision": 0.111111,
+          "recall": 0.666667,
+          "f1": 0.190476,
+          "support": 18,
+          "average_precision": 0.197522,
+          "threshold": 0.35
+        },
+        {
+          "predicate": "away",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15,
+          "average_precision": 0.047888,
+          "threshold": 0.6
+        },
+        {
+          "predicate": "behind",
+          "precision": 0.333333,
+          "recall": 0.0625,
+          "f1": 0.105263,
+          "support": 16,
+          "average_precision": 0.228339,
+          "threshold": 0.85
+        },
+        {
+          "predicate": "beneath",
+          "precision": 0.291667,
+          "recall": 0.388889,
+          "f1": 0.333333,
+          "support": 18,
+          "average_precision": 0.309816,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "bite",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "caress",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "carry",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "chase",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "clean",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "close",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "cut",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "drive",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "feed",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_off",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "get_on",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "grab",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hit",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hold",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3,
+          "average_precision": 0.060516,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "hold_hand_of",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "hug",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "in_front_of",
+          "precision": 0.519084,
+          "recall": 0.647619,
+          "f1": 0.576271,
+          "support": 105,
+          "average_precision": 0.572703,
+          "threshold": 0.3
+        },
+        {
+          "predicate": "inside",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "kiss",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.25
+        },
+        {
+          "predicate": "knock",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lean_on",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4,
+          "average_precision": 0.63961,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lick",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "lift",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "next_to",
+          "precision": 0.297959,
+          "recall": 0.802198,
+          "f1": 0.434524,
+          "support": 91,
+          "average_precision": 0.437885,
+          "threshold": 0.15
+        },
+        {
+          "predicate": "open",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pat",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "play(instrument)",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "point_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.004673,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "press",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "pull",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.142857,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "push",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "release",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1,
+          "average_precision": 0.034483,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "ride",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4,
+          "average_precision": 0.013555,
+          "threshold": 0.5
+        },
+        {
+          "predicate": "shake_hand_with",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "shout_at",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "smell",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "speak_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2,
+          "average_precision": 0.17316,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "squeeze",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "throw",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "touch",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "towards",
+          "precision": 0.020833,
+          "recall": 0.625,
+          "f1": 0.040323,
+          "support": 8,
+          "average_precision": 0.028722,
+          "threshold": 0.05
+        },
+        {
+          "predicate": "use",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "watch",
+          "precision": 0.217391,
+          "recall": 0.588235,
+          "f1": 0.31746,
+          "support": 17,
+          "average_precision": 0.178247,
+          "threshold": 0.7
+        },
+        {
+          "predicate": "wave",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        },
+        {
+          "predicate": "wave_hand_to",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0,
+          "average_precision": null,
+          "threshold": 1.0
+        }
+      ]
+    }
+  }
+}

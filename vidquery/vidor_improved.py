@@ -279,6 +279,88 @@ def controlled_candidate_pairs(
     )
 
 
+def _iou(left: Sequence[float], right: Sequence[float]) -> float:
+    ix1, iy1 = max(left[0], right[0]), max(left[1], right[1])
+    ix2, iy2 = min(left[2], right[2]), min(left[3], right[3])
+    intersection = max(0.0, ix2 - ix1) * max(0.0, iy2 - iy1)
+    union = (
+        (left[2] - left[0]) * (left[3] - left[1])
+        + (right[2] - right[0]) * (right[3] - right[1])
+        - intersection
+    )
+    return intersection / union if union > 0 else 0.0
+
+
+def match_detections_to_annotations(
+    observations: Sequence[dict[str, Any]],
+    categories: dict[int, str],
+    detections: Sequence[tuple[Sequence[float], str, float]],
+    *,
+    width: float,
+    height: float,
+    minimum_iou: float = 0.5,
+) -> dict[int, tuple[list[float], str]]:
+    """Greedy one-to-one IoU matching of detector boxes to annotated objects.
+
+    A detection matches an annotation only if its COCO label maps to the same
+    VidOR class (any detected ``person`` may match adult/child/baby).  Returns
+    ``tid -> (node features from the detector box, detector-mapped class)``.
+    """
+
+    from .vidor_relation import mapped_vidor_class
+
+    mapped = [
+        (list(box), mapped_vidor_class(label), float(confidence))
+        for box, label, confidence in detections
+    ]
+    pairs: list[tuple[float, int, int]] = []
+    for gt_index, row in enumerate(observations):
+        category = categories[int(row["tid"])]
+        bbox = row["bbox"]
+        gt_box = [
+            float(bbox["xmin"]) / width,
+            float(bbox["ymin"]) / height,
+            float(bbox["xmax"]) / width,
+            float(bbox["ymax"]) / height,
+        ]
+        for det_index, (box, vidor_class, _confidence) in enumerate(mapped):
+            if vidor_class is None:
+                continue
+            compatible = vidor_class == category or (
+                vidor_class == "adult" and category in PERSON_CLASSES
+            )
+            if not compatible:
+                continue
+            overlap = _iou(gt_box, box)
+            if overlap >= minimum_iou:
+                pairs.append((overlap, gt_index, det_index))
+    matched: dict[int, tuple[list[float], str]] = {}
+    used_detections: set[int] = set()
+    for _overlap, gt_index, det_index in sorted(pairs, key=lambda item: -item[0]):
+        tid = int(observations[gt_index]["tid"])
+        if tid in matched or det_index in used_detections:
+            continue
+        box, vidor_class, confidence = mapped[det_index]
+        x1, y1, x2, y2 = (max(0.0, min(1.0, value)) for value in box)
+        box_width, box_height = max(0.0, x2 - x1), max(0.0, y2 - y1)
+        assert vidor_class is not None
+        matched[tid] = (
+            [
+                x1,
+                y1,
+                x2,
+                y2,
+                box_width * box_height,
+                box_width / max(box_height, 1e-6),
+                confidence,
+                float(vidor_class in PERSON_CLASSES),
+            ],
+            vidor_class,
+        )
+        used_detections.add(det_index)
+    return matched
+
+
 def build_improved_relation_graphs(
     annotation_zip: Path,
     selected: Sequence[dict[str, Any]],
@@ -290,8 +372,15 @@ def build_improved_relation_graphs(
     hard_negative_ratio: float = 2.0,
     random_negative_ratio: float = 1.0,
     seed: int = 2026,
+    detector: Any | None = None,
+    match_iou: float = 0.5,
 ) -> tuple[list[Any], dict[str, Any]]:
-    """Build pair-visual graphs, failing if any selected frame image is missing."""
+    """Build pair-visual graphs, failing if any selected frame image is missing.
+
+    ``detector`` (``frame_path -> [(normalized_box, coco_label, confidence)]``)
+    switches node boxes, confidences, and classes from annotations to matched
+    detector outputs, so training sees what inference sees.
+    """
 
     import torch
     from PIL import Image
@@ -331,18 +420,48 @@ def build_improved_relation_graphs(
                 )
                 if len(observations) < 2:
                     continue
-                tids = [int(row["tid"]) for row in observations]
-                class_names = [categories[tid] for tid in tids]
-                node_features = [
-                    _bbox_features(
-                        row["bbox"],
-                        float(payload["width"]),
-                        float(payload["height"]),
-                        int(row.get("generated", 0)),
-                        categories[int(row["tid"])] in PERSON_CLASSES,
+                detector_nodes: dict[int, tuple[list[float], str]] | None = None
+                if detector is not None:
+                    # Deployment-faithful nodes: YOLO boxes, confidences, and mapped
+                    # classes matched to ground truth; unmatched objects are dropped.
+                    gt_tids_all = {int(row["tid"]) for row in observations}
+                    for relation in relations:
+                        if int(relation["begin_fid"]) <= frame_id < int(relation["end_fid"]) and {
+                            int(relation["subject_tid"]),
+                            int(relation["object_tid"]),
+                        } <= gt_tids_all:
+                            counts["gt_relation_instances"] += 1
+                    detector_nodes = match_detections_to_annotations(
+                        observations,
+                        categories,
+                        detector(_frame_path(frame_root, payload, frame_id)),
+                        width=float(payload["width"]),
+                        height=float(payload["height"]),
+                        minimum_iou=match_iou,
                     )
-                    for row in observations
-                ]
+                    counts["gt_objects"] += len(observations)
+                    counts["detector_matched_objects"] += len(detector_nodes)
+                    observations = [
+                        row for row in observations if int(row["tid"]) in detector_nodes
+                    ]
+                    if len(observations) < 2:
+                        continue
+                tids = [int(row["tid"]) for row in observations]
+                if detector_nodes is not None:
+                    class_names = [detector_nodes[tid][1] for tid in tids]
+                    node_features = [detector_nodes[tid][0] for tid in tids]
+                else:
+                    class_names = [categories[tid] for tid in tids]
+                    node_features = [
+                        _bbox_features(
+                            row["bbox"],
+                            float(payload["width"]),
+                            float(payload["height"]),
+                            int(row.get("generated", 0)),
+                            categories[int(row["tid"])] in PERSON_CLASSES,
+                        )
+                        for row in observations
+                    ]
                 tid_to_index = {tid: index for index, tid in enumerate(tids)}
                 active: defaultdict[tuple[int, int], set[str]] = defaultdict(set)
                 active_instances: list[tuple[int, int, str]] = []
@@ -433,7 +552,26 @@ def build_improved_relation_graphs(
                 counts.update(sampling)
     if not graphs:
         raise ValueError("VidOR improved graph construction produced no graphs")
+    detector_matching = (
+        {
+            "box_source": "detector_matched",
+            "minimum_iou": match_iou,
+            "annotated_objects": counts["gt_objects"],
+            "detector_matched_objects": counts["detector_matched_objects"],
+            "object_match_rate": round(
+                counts["detector_matched_objects"] / max(1, counts["gt_objects"]), 4
+            ),
+            "annotated_relation_instances": counts["gt_relation_instances"],
+            "relation_instances_with_both_endpoints_detected": feasible_positive_instances,
+            "relation_recall_ceiling": round(
+                feasible_positive_instances / max(1, counts["gt_relation_instances"]), 4
+            ),
+        }
+        if detector is not None
+        else {"box_source": "annotation"}
+    )
     return graphs, {
+        "detector_matching": detector_matching,
         "graphs": len(graphs),
         "candidate_edges": sum(int(graph.edge_y.shape[0]) for graph in graphs),
         "positive_candidate_edges": counts["positive"],
@@ -1086,6 +1224,8 @@ def build_and_train_improved_vidor(
     batch_size: int = 16,
     seed: int = 2026,
     device_name: str = "auto",
+    detector: Any | None = None,
+    version_tag: str = "v2",
 ) -> dict[str, Any]:
     """Cache visuals once, train matched models, and select using validation only."""
 
@@ -1100,6 +1240,7 @@ def build_and_train_improved_vidor(
         hard_negative_ratio=hard_negative_ratio,
         random_negative_ratio=random_negative_ratio,
         seed=seed,
+        detector=detector,
     )
     cache = output_dir / "vidor_relation_pair_visual_graphs.pt"
     torch.save(
@@ -1123,7 +1264,7 @@ def build_and_train_improved_vidor(
         graphs=graphs,
         split=split,
         output_dir=output_dir,
-        model_version="vidor-relation-pair-visual-mlp-v2",
+        model_version=f"vidor-relation-pair-visual-mlp-{version_tag}",
         use_graph=False,
         epochs=epochs,
         patience=patience,
@@ -1135,7 +1276,7 @@ def build_and_train_improved_vidor(
         graphs=graphs,
         split=split,
         output_dir=output_dir,
-        model_version="vidor-relation-pair-visual-gat-v2",
+        model_version=f"vidor-relation-pair-visual-gat-{version_tag}",
         use_graph=True,
         epochs=epochs,
         patience=patience,
