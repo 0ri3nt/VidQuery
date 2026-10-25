@@ -323,6 +323,9 @@ def main() -> None:
         help="Skip rebuilding the single in-RAM master graph cache after each batch",
     )
     expansion.add_argument("--network-attempts", type=int, default=5)
+    expansion.add_argument(
+        "--temporary-root", type=Path, default=Path("data/temp/ava_expansion")
+    )
     expansion.add_argument("--keep-raw-video", action="store_true")
     expansion.add_argument("--keep-frames", action="store_true")
     expansion.add_argument(
@@ -535,6 +538,7 @@ def main() -> None:
             legacy_cache=not args.no_legacy_cache,
             rebuild_master=not (args.no_master_cache or args.no_legacy_cache),
             network_attempts=args.network_attempts,
+            temporary_root=args.temporary_root,
         )
         print(
             json.dumps(

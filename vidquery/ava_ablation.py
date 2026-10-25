@@ -181,6 +181,26 @@ def _split_graphs(
     }
 
 
+def _streaming_normalization(dataset: Any, torch: Any) -> tuple[Any, Any]:
+    """Population mean/std over all nodes without holding every graph in memory."""
+
+    total = None
+    squares = None
+    count = 0
+    for index in range(len(dataset)):
+        values = dataset[index].x.double()
+        total = values.sum(dim=0) if total is None else total + values.sum(dim=0)
+        squared = (values * values).sum(dim=0)
+        squares = squared if squares is None else squares + squared
+        count += int(values.shape[0])
+    if total is None or squares is None or count == 0:
+        raise ValueError("cannot normalise an empty dataset")
+    mean = total / count
+    std = torch.sqrt(torch.clamp(squares / count - mean * mean, min=0.0))
+    std[std < 1e-6] = 1.0
+    return mean.float(), std.float()
+
+
 def _normalization(graphs: Sequence[Any], torch: Any) -> tuple[Any, Any]:
     values = torch.cat([graph.x for graph in graphs], dim=0)
     mean = values.mean(dim=0)
@@ -289,16 +309,32 @@ def train_static_ablation(
     weight_decay: float = 1e-4,
     schema_version: str = "ava80-gat-ablation-v2",
     extra_payload: dict[str, Any] | None = None,
+    datasets: dict[str, Any] | None = None,
+    samplers: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    """Train one static AVA model.
+
+    ``datasets`` (``train``/``validation``/``test`` -> map-style datasets such as
+    ``ShardGraphDataset``) replaces the in-memory ``graphs`` list so training can
+    stream shards; ``samplers`` then controls the visiting order per split.
+    """
     np, torch, nn = _seed_training(seed)
     from torch_geometric.loader import DataLoader
 
     started = time.perf_counter()
     device = _training_device(torch, device_name)
-    selected = _split_graphs(graphs, split, feature_attribute)
-    if any(not values for values in selected.values()):
-        raise ValueError("one or more ablation splits contain no graphs")
-    mean, std = _normalization(selected["train"], torch)
+    if datasets is not None:
+        if rare_class_sampling:
+            raise ValueError("rare-class sampling is not supported for streamed datasets")
+        selected = dict(datasets)
+        if any(len(values) == 0 for values in selected.values()):
+            raise ValueError("one or more ablation splits contain no graphs")
+        mean, std = _streaming_normalization(selected["train"], torch)
+    else:
+        selected = _split_graphs(graphs, split, feature_attribute)
+        if any(not values for values in selected.values()):
+            raise ValueError("one or more ablation splits contain no graphs")
+        mean, std = _normalization(selected["train"], torch)
     train_targets = _targets_for_graphs(selected["train"], torch)
     model_factory: Any = StaticActionModel(
         int(selected["train"][0].x.shape[1]), use_edges=use_edges, mlp_only=mlp_only
@@ -325,6 +361,8 @@ def train_static_ablation(
 
     def loader(name: str, shuffle: bool = False) -> Any:
         sampler = training_sampler if name == "train" else None
+        if samplers is not None and name in samplers:
+            sampler = samplers[name]
         return DataLoader(
             selected[name],
             batch_size=batch_size,
