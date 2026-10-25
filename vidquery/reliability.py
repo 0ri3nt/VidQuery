@@ -173,6 +173,100 @@ def load_reliability_priors(path: Path) -> dict[str, float]:
     return result
 
 
+def load_reliability_thresholds(path: Path) -> tuple[float, float] | None:
+    """Calibration-fitted ``(supported, weak)`` verdict thresholds, if the file has them."""
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    thresholds = payload.get("thresholds") if isinstance(payload, dict) else None
+    if thresholds is None:
+        return None
+    if not isinstance(thresholds, dict):
+        raise ValueError("'thresholds' must be an object")
+    supported = thresholds.get("evidence_supported_threshold")
+    weak = thresholds.get("evidence_weak_threshold")
+    for name, value in (("supported", supported), ("weak", weak)):
+        if isinstance(value, bool) or not isinstance(value, int | float):
+            raise ValueError(f"{name} threshold must be a number")
+    assert isinstance(supported, int | float) and isinstance(weak, int | float)
+    if not 0 <= weak <= supported <= 1:
+        raise ValueError("thresholds must satisfy 0 <= weak <= supported <= 1")
+    return float(supported), float(weak)
+
+
+def fit_abstention_thresholds(
+    decisions: list[Mapping[str, Any]],
+    *,
+    supported_precision: float = 0.8,
+    wrong_answer_cost: float = 1.0,
+) -> dict[str, Any]:
+    """Fit verdict thresholds on calibration decision rows.
+
+    Each row needs ``negative``, ``max_confidence`` (``None`` when nothing was
+    retrieved) and ``top1_correct``.  The system abstains when every returned
+    result is below the weak threshold, i.e. when ``max_confidence < weak``.
+
+    * ``weak`` maximises effective reliability: +1 per correct answer,
+      ``-wrong_answer_cost`` per wrong answer (any answer to a negative query is
+      wrong), 0 per abstention.  Ties keep the lower threshold (answer more).
+    * ``supported`` is the lowest confidence at which answered calibration
+      queries reach ``supported_precision``; 1.0 when no level reaches it.
+    """
+
+    if not decisions:
+        raise ValueError("threshold fitting needs at least one decision row")
+    rows = []
+    for row in decisions:
+        confidence = row.get("max_confidence")
+        rows.append(
+            (
+                float(confidence) if confidence is not None else None,
+                bool(row.get("top1_correct")) and not bool(row.get("negative")),
+            )
+        )
+    observed = [value for value, _ in rows if value is not None]
+    candidates = sorted({0.0, *observed})
+    if observed and max(observed) < 1.0:
+        # "Abstain on everything" must be reachable when every answer loses.
+        candidates.append(min(1.0, max(observed) + 1e-6))
+    best_weak, best_score = 0.0, float("-inf")
+    for threshold in candidates:
+        score = 0.0
+        for confidence, correct in rows:
+            if confidence is None or confidence < threshold:
+                continue
+            score += 1.0 if correct else -wrong_answer_cost
+        if score > best_score + 1e-12:
+            best_weak, best_score = threshold, score
+    supported = 1.0
+    for threshold in candidates:
+        answered = [
+            correct
+            for confidence, correct in rows
+            if confidence is not None and confidence >= threshold
+        ]
+        if answered and sum(answered) / len(answered) >= supported_precision:
+            supported = threshold
+            break
+    supported = max(supported, best_weak)
+    answered_at_weak = [
+        correct
+        for confidence, correct in rows
+        if confidence is not None and confidence >= best_weak
+    ]
+    return {
+        "evidence_supported_threshold": round(supported, 6),
+        "evidence_weak_threshold": round(best_weak, 6),
+        "objective": f"effective_reliability(wrong_cost={wrong_answer_cost})",
+        "objective_value_per_query": round(best_score / len(rows), 4),
+        "supported_precision_target": supported_precision,
+        "calibration_coverage": round(len(answered_at_weak) / len(rows), 4),
+        "calibration_selective_precision": (
+            round(sum(answered_at_weak) / len(answered_at_weak), 4) if answered_at_weak else None
+        ),
+        "decision_count": len(rows),
+    }
+
+
 def canonical_source(source_method: str) -> str:
     """Map an emitted source name (including model names) onto a prior key.
 

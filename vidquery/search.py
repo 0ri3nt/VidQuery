@@ -37,6 +37,7 @@ from .reliability import (
     RawContribution,
     assess_evidence,
     load_reliability_priors,
+    load_reliability_thresholds,
     reliability_rank_score,
 )
 from .storage import SQLiteRepository
@@ -926,8 +927,10 @@ class SentenceTransformerTextEncoder:
             "device": device,
             "local_files_only": not allow_downloads,
         }
-        if cache_folder is not None:
-            kwargs["cache_folder"] = str(cache_folder)
+        resolved_cache = resolve_sentence_cache_folder(model_name, cache_folder)
+        if resolved_cache is not None:
+            kwargs["cache_folder"] = str(resolved_cache)
+        self.cache_folder = resolved_cache
         self.model: Any = SentenceTransformer(model_name, **kwargs)
         self.dimensions = int(self.model.get_sentence_embedding_dimension())
 
@@ -947,6 +950,41 @@ class SentenceTransformerTextEncoder:
         return max(0.0, min(1.0, similarity))
 
 
+def _hub_cache_has_model(folder: Path, model_name: str) -> bool:
+    return (folder / ("models--" + model_name.replace("/", "--")) / "snapshots").is_dir()
+
+
+def resolve_sentence_cache_folder(
+    model_name: str, configured: str | Path | None
+) -> Path | None:
+    """Use the configured cache when it holds the model, else the standard HF cache.
+
+    ``SENTENCE_EMBEDDING_CACHE_DIR`` defaults to a project folder that is often
+    empty while the model already sits in the user's Hugging Face cache
+    (``HF_HOME`` / ``HF_HUB_CACHE``).  Falling back there keeps semantic search
+    real instead of silently degrading to the hashing encoder.
+    """
+
+    if configured is None or Path(model_name).is_dir():
+        return Path(configured) if configured is not None else None
+    configured_path = Path(configured)
+    if _hub_cache_has_model(configured_path, model_name):
+        return configured_path
+    try:
+        from huggingface_hub import constants
+    except ImportError:
+        return configured_path
+    default_cache = Path(constants.HF_HUB_CACHE)
+    if default_cache != configured_path and _hub_cache_has_model(default_cache, model_name):
+        LOGGER.info(
+            "Sentence embedding model not in %s; using the Hugging Face cache %s",
+            configured_path,
+            default_cache,
+        )
+        return default_cache
+    return configured_path
+
+
 def sentence_embedding_status(model_name: str, cache_folder: str | Path | None = None) -> str:
     try:
         import importlib.util
@@ -959,8 +997,9 @@ def sentence_embedding_status(model_name: str, cache_folder: str | Path | None =
         from huggingface_hub import snapshot_download  # type: ignore[import-not-found]
 
         kwargs: dict[str, Any] = {"repo_id": model_name, "local_files_only": True}
-        if cache_folder is not None:
-            kwargs["cache_dir"] = str(cache_folder)
+        resolved_cache = resolve_sentence_cache_folder(model_name, cache_folder)
+        if resolved_cache is not None:
+            kwargs["cache_dir"] = str(resolved_cache)
         snapshot_download(**kwargs)
     except Exception:
         return "unavailable_missing_checkpoint"
@@ -1759,24 +1798,45 @@ def configured_search_engine(
     settings: Any,
     *,
     reliability_priors: Any = _PRIORS_FROM_SETTINGS,
+    thresholds: tuple[float, float] | None = None,
 ) -> LocalHybridSearchEngine:
     """Build the local engine exactly as the API does from ``settings``.
 
     ``reliability_priors`` overrides ``RELIABILITY_PRIORS_PATH``: pass a mapping
-    for learned values or ``None`` to force the hand-picked defaults.
+    for learned values or ``None`` to force the hand-picked defaults.  A priors
+    file may also carry calibration-fitted ``(supported, weak)`` thresholds;
+    they replace the configured thresholds whenever that file is used.
     """
 
     if reliability_priors is _PRIORS_FROM_SETTINGS:
         path = getattr(settings, "reliability_priors_path", None)
         reliability_priors = load_reliability_priors(path) if path is not None else None
+        if path is not None and thresholds is None:
+            thresholds = load_reliability_thresholds(path)
+    supported, weak = thresholds or (
+        settings.evidence_supported_threshold,
+        settings.evidence_weak_threshold,
+    )
     return LocalHybridSearchEngine(
         repository,
         encoder=configured_text_encoder(settings),
         semantic_min_similarity=settings.semantic_min_similarity,
         appearance_settings=settings,
-        evidence_supported_threshold=settings.evidence_supported_threshold,
-        evidence_weak_threshold=settings.evidence_weak_threshold,
+        evidence_supported_threshold=supported,
+        evidence_weak_threshold=weak,
         reliability_priors=reliability_priors,
         phonetic_match=bool(getattr(settings, "enable_phonetic_match", False)),
         phonetic_threshold=float(getattr(settings, "phonetic_match_threshold", 0.75)),
     )
+
+
+def require_semantic_encoder(engine: LocalHybridSearchEngine, settings: Any) -> None:
+    """Refuse to evaluate on the hashing fallback when MiniLM was configured."""
+
+    mode = str(getattr(settings, "semantic_retrieval_mode", "")).strip().lower()
+    if mode == "sentence_transformer" and not getattr(engine.encoder, "is_semantic", False):
+        raise RuntimeError(
+            "SEMANTIC_RETRIEVAL_MODE=sentence_transformer but the sentence-embedding model did "
+            "not load, so search fell back to hashing. Fix SENTENCE_EMBEDDING_CACHE_DIR (or "
+            "HF_HOME) or pass --allow-hashing-fallback to evaluate the fallback on purpose."
+        )

@@ -849,18 +849,39 @@ YOLO_TO_VIDOR = {
     "dining table": "table",
     "tv": "screen/monitor",
     "monitor": "screen/monitor",
-    "potted plant": "toy",
     "boat": "watercraft",
     "truck": "bus/truck",
     "bus": "bus/truck",
-    "mouse": "hamster/rat",
     "sheep": "sheep/goat",
     "goat": "sheep/goat",
+    # One-to-one equivalents whose names differ between COCO and VidOR.
+    "airplane": "aircraft",
+    "couch": "sofa",
+    "skis": "ski",
+    "tennis racket": "racket",
+    "baseball bat": "bat",
 }
+
+# COCO classes with no valid VidOR counterpart.  They are excluded from the
+# relation model instead of being relabelled: COCO "mouse" is a computer mouse
+# (not hamster/rat) and "potted plant" is not a toy.
+YOLO_UNSUPPORTED_FOR_VIDOR = frozenset(
+    {
+        "mouse", "potted plant", "fire hydrant", "parking meter", "zebra", "giraffe",
+        "umbrella", "tie", "kite", "baseball glove", "wine glass", "fork", "knife", "spoon",
+        "bowl", "banana", "apple", "sandwich", "orange", "broccoli", "carrot", "hot dog",
+        "pizza", "donut", "bed", "remote", "keyboard", "toaster", "book", "clock", "vase",
+        "scissors", "teddy bear", "hair drier", "toothbrush",
+    }
+)
 
 
 def mapped_vidor_class(class_label: str) -> str | None:
+    """VidOR class for a detector label, or ``None`` when no valid counterpart exists."""
+
     normalized = class_label.strip().lower().replace("_", " ")
+    if normalized in YOLO_UNSUPPORTED_FOR_VIDOR:
+        return None
     direct = normalized.replace(" ", "_")
     if direct in VIDOR_OBJECTS:
         return direct

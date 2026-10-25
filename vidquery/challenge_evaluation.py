@@ -471,7 +471,10 @@ def _query_metrics(
 
     metrics.update(
         {
-            "precision_at_1": float(top1_hit),
+            # End-to-end: an abstained positive is not a correct retrieval.
+            "precision_at_1": float(top1_hit and not abstained),
+            # Threshold-free ranking quality of the top result.
+            "ranking_precision_at_1": float(top1_hit),
             "hit_at_5": float(0 < first_rank <= 5),
             "recall_at_cutoff": round(recall_at_cutoff, 4),
             "mrr": 1.0 / first_rank if first_rank else 0.0,
@@ -517,11 +520,16 @@ def _bootstrap_interval(values: list[float]) -> list[float] | None:
 
 
 def _is_error(row: dict[str, Any]) -> bool:
-    """A query answered wrongly: a missed positive, or any answer to a negative."""
+    """The top answer is wrong: a missed positive, or any answer to a negative.
+
+    Uses ranking correctness, so the risk-coverage curve does not depend on
+    whether the system itself abstained.
+    """
 
     if row["negative"]:
         return True
-    return not bool(row["metrics"].get("precision_at_1", False))
+    metrics = row["metrics"]
+    return not bool(metrics.get("ranking_precision_at_1", metrics.get("precision_at_1", False)))
 
 
 def _selective_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
@@ -563,15 +571,22 @@ def _selective_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
     curve: list[dict[str, float]] = []
     aurc: float | None = None
     if has_confidence:
-        ordered = sorted(
-            range(len(rows)), key=lambda index: (-float(confidences[index] or 0.0), index)
-        )
-        errors = 0
-        for covered, index in enumerate(ordered, start=1):
-            errors += int(_is_error(rows[index]))
-            curve.append(
-                {"coverage": round(covered / len(rows), 4), "risk": round(errors / covered, 4)}
-            )
+        # Queries with equal confidence cannot be ordered, so each tie group
+        # contributes its *expected* errors (group error rate per position).
+        groups: dict[float, list[bool]] = defaultdict(list)
+        for index, value in enumerate(confidences):
+            groups[float(value or 0.0)].append(_is_error(rows[index]))
+        errors = 0.0
+        covered = 0
+        for value in sorted(groups, reverse=True):
+            group = groups[value]
+            rate = sum(group) / len(group)
+            for _ in group:
+                covered += 1
+                errors += rate
+                curve.append(
+                    {"coverage": round(covered / len(rows), 4), "risk": round(errors / covered, 4)}
+                )
         aurc = round(sum(point["risk"] for point in curve) / len(curve), 4)
 
     true_positive = sum(bool(row["negative"] and row["metrics"].get("abstained")) for row in rows)
@@ -652,6 +667,9 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "positive_query_count": len(positives),
         "negative_query_count": len(negatives),
         "precision_at_1": round(mean(m["precision_at_1"] for m in metrics), 4) if metrics else None,
+        "ranking_precision_at_1": (
+            round(mean(m["ranking_precision_at_1"] for m in metrics), 4) if metrics else None
+        ),
         "hit_at_5": round(mean(m["hit_at_5"] for m in metrics), 4) if metrics else None,
         "recall_at_cutoff": (
             round(mean(m["recall_at_cutoff"] for m in metrics), 4) if metrics else None
@@ -692,6 +710,9 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         **_selective_metrics(rows),
         "bootstrap_95_ci": {
             "precision_at_1": _bootstrap_interval([m["precision_at_1"] for m in metrics]),
+            "ranking_precision_at_1": _bootstrap_interval(
+                [m["ranking_precision_at_1"] for m in metrics]
+            ),
             "within_tolerance_rate": _bootstrap_interval(
                 [float(bool(m["within_tolerance"])) for m in metrics]
             ),

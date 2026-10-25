@@ -33,8 +33,8 @@ from .media import VideoIngestionService
 from .neo4j import CanonicalNeo4jIndexer
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService
-from .reliability import load_reliability_priors
-from .search import LocalHybridSearchEngine, configured_search_engine
+from .reliability import load_reliability_priors, load_reliability_thresholds
+from .search import LocalHybridSearchEngine, configured_search_engine, require_semantic_encoder
 from .storage import SQLiteRepository
 
 
@@ -54,6 +54,7 @@ def run_challenge_evaluation(
     validate_only: bool,
     split: str | None = None,
     reliability_priors: str | None = None,
+    allow_hashing_fallback: bool = False,
 ) -> None:
     import hashlib
     from dataclasses import replace
@@ -81,7 +82,15 @@ def run_challenge_evaluation(
     else:
         priors_path = Path(reliability_priors)
     priors = load_reliability_priors(priors_path) if priors_path is not None else None
-    engine = configured_search_engine(repository, settings, reliability_priors=priors)
+    thresholds = load_reliability_thresholds(priors_path) if priors_path is not None else None
+    engine = configured_search_engine(
+        repository, settings, reliability_priors=priors, thresholds=thresholds
+    )
+    if not allow_hashing_fallback:
+        try:
+            require_semantic_encoder(engine, settings)
+        except RuntimeError as exc:
+            raise SystemExit(str(exc)) from exc
     run_metadata = {
         "reliability_priors": "learned" if priors_path is not None else "default_hand_picked",
         "reliability_priors_path": priors_path.as_posix() if priors_path is not None else None,
@@ -90,9 +99,12 @@ def run_challenge_evaluation(
             if priors_path is not None
             else None
         ),
-        "evidence_supported_threshold": settings.evidence_supported_threshold,
-        "evidence_weak_threshold": settings.evidence_weak_threshold,
+        "evidence_supported_threshold": engine.evidence_supported_threshold,
+        "evidence_weak_threshold": engine.evidence_weak_threshold,
+        "thresholds_source": "calibration_file" if thresholds is not None else "settings",
         "phonetic_match": settings.enable_phonetic_match,
+        "gnn_action_model_version": settings.gnn_model_version,
+        "database": settings.database_path.as_posix(),
         "text_encoder": getattr(engine.encoder, "model_name", type(engine.encoder).__name__),
         "query_planner": "groq_constrained" if use_groq else "local_parser_only",
         "manifest_sha256": hashlib.sha256(Path(dataset).read_bytes()).hexdigest(),
@@ -381,6 +393,11 @@ def main() -> None:
             "or 'default' for the hand-picked constants"
         ),
     )
+    challenge.add_argument(
+        "--allow-hashing-fallback",
+        action="store_true",
+        help="Evaluate even if the configured sentence-embedding model failed to load",
+    )
 
     action_training = subcommands.add_parser(
         "train-action-model", help="Train and validate the reduced AVA person-action model"
@@ -587,6 +604,7 @@ def main() -> None:
             validate_only=args.validate_only,
             split=args.split,
             reliability_priors=args.reliability_priors,
+            allow_hashing_fallback=args.allow_hashing_fallback,
         )
     elif args.command == "train-action-model":
         metadata = train_person_action_model(
