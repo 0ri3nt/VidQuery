@@ -1,0 +1,81 @@
+{
+  "canonical_labels": {
+    "action_query_count": 80,
+    "label_recall": 0.975,
+    "exact_single_label": 0.975,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 0,
+    "false_positive_rate": null,
+    "failures": [
+      {
+        "set": "canonical_labels",
+        "query": "person listen",
+        "expected": "listen",
+        "actions": [
+          "listen to"
+        ],
+        "spoken_terms": []
+      },
+      {
+        "set": "canonical_labels",
+        "query": "person watch",
+        "expected": "watch",
+        "actions": [
+          "watch person"
+        ],
+        "spoken_terms": []
+      }
+    ]
+  },
+  "queries_challenge_ava_holdout": {
+    "action_query_count": 32,
+    "label_recall": 1.0,
+    "exact_single_label": 1.0,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 0,
+    "false_positive_rate": null,
+    "failures": []
+  },
+  "queries_independent": {
+    "action_query_count": 14,
+    "label_recall": 1.0,
+    "exact_single_label": 1.0,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 44,
+    "false_positive_rate": 0.0227,
+    "failures": [
+      {
+        "set": "queries_independent",
+        "query": "person swimming",
+        "expected": null,
+        "actions": [
+          "swim"
+        ],
+        "spoken_terms": []
+      }
+    ]
+  },
+  "queries_multivideo": {
+    "action_query_count": 10,
+    "label_recall": 0.9,
+    "exact_single_label": 0.9,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 20,
+    "false_positive_rate": 0.0,
+    "failures": [
+      {
+        "set": "queries_multivideo",
+        "query": "person watching",
+        "expected": "watch",
+        "actions": [
+          "watch person"
+        ],
+        "spoken_terms": []
+      }
+    ]
+  }
+}

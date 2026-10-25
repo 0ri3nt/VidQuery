@@ -1,0 +1,228 @@
+{
+  "canonical_labels": {
+    "action_query_count": 80,
+    "label_recall": 0.975,
+    "exact_single_label": 0.9625,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 0,
+    "false_positive_rate": null,
+    "failures": [
+      {
+        "set": "canonical_labels",
+        "query": "person listen",
+        "expected": "listen",
+        "actions": [
+          "listen to"
+        ],
+        "spoken_terms": []
+      },
+      {
+        "set": "canonical_labels",
+        "query": "person watch",
+        "expected": "watch",
+        "actions": [
+          "watch person"
+        ],
+        "spoken_terms": []
+      }
+    ]
+  },
+  "queries_challenge_ava_holdout": {
+    "action_query_count": 32,
+    "label_recall": 0.5312,
+    "exact_single_label": 0.5312,
+    "action_intent_rate": 0.5312,
+    "filler_spoken_term_rate": 0.125,
+    "non_action_query_count": 0,
+    "false_positive_rate": null,
+    "failures": [
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "a person touching an object",
+        "expected": "touch object",
+        "actions": [],
+        "spoken_terms": [
+          "object"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "a person lying down",
+        "expected": "lie/sleep",
+        "actions": [],
+        "spoken_terms": [
+          "lying",
+          "down"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "people fighting",
+        "expected": "fight/hit person",
+        "actions": [],
+        "spoken_terms": [
+          "fighting"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone bending over",
+        "expected": "bend/bow",
+        "actions": [],
+        "spoken_terms": [
+          "bending",
+          "over"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone playing a musical instrument",
+        "expected": "play musical instrument",
+        "actions": [],
+        "spoken_terms": [
+          "playing",
+          "musical",
+          "instrument"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "a person grabbing someone",
+        "expected": "grab person",
+        "actions": [],
+        "spoken_terms": [
+          "grabbing"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone taking something from another person",
+        "expected": "take from person",
+        "actions": [],
+        "spoken_terms": [
+          "taking",
+          "something"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone handing something to another person",
+        "expected": "give/serve",
+        "actions": [],
+        "spoken_terms": [
+          "handing",
+          "something"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone falling down",
+        "expected": "fall down",
+        "actions": [],
+        "spoken_terms": [
+          "falling",
+          "down"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone answering the phone",
+        "expected": "answer phone",
+        "actions": [],
+        "spoken_terms": [
+          "answering"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone lifting another person",
+        "expected": "lift person",
+        "actions": [],
+        "spoken_terms": [
+          "lifting"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "a person brushing their teeth",
+        "expected": "brush teeth",
+        "actions": [],
+        "spoken_terms": [
+          "brushing",
+          "their",
+          "teeth"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "a person running",
+        "expected": "run/jog",
+        "actions": [],
+        "spoken_terms": [
+          "running"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "someone kneeling down",
+        "expected": "crouch/kneel",
+        "actions": [],
+        "spoken_terms": [
+          "kneeling",
+          "down"
+        ]
+      },
+      {
+        "set": "queries_challenge_ava_holdout",
+        "query": "a person getting up",
+        "expected": "get up",
+        "actions": [],
+        "spoken_terms": [
+          "getting",
+          "up"
+        ]
+      }
+    ]
+  },
+  "queries_independent": {
+    "action_query_count": 14,
+    "label_recall": 1.0,
+    "exact_single_label": 1.0,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 44,
+    "false_positive_rate": 0.0227,
+    "failures": [
+      {
+        "set": "queries_independent",
+        "query": "person swimming",
+        "expected": null,
+        "actions": [
+          "swim"
+        ],
+        "spoken_terms": []
+      }
+    ]
+  },
+  "queries_multivideo": {
+    "action_query_count": 10,
+    "label_recall": 0.9,
+    "exact_single_label": 0.9,
+    "action_intent_rate": 1.0,
+    "filler_spoken_term_rate": 0.0,
+    "non_action_query_count": 20,
+    "false_positive_rate": 0.0,
+    "failures": [
+      {
+        "set": "queries_multivideo",
+        "query": "person watching",
+        "expected": "watch",
+        "actions": [
+          "watch person"
+        ],
+        "spoken_terms": []
+      }
+    ]
+  }
+}

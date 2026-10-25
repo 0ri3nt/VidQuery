@@ -417,10 +417,10 @@ def main() -> None:
     if args.split:
         splits = {}
         for item in args.split:
-            name, _, videos = item.partition("=")
-            if name not in ("calibration", "test") or not videos:
+            name, _, listed = item.partition("=")
+            if name not in ("calibration", "test") or not listed:
                 raise SystemExit(f"invalid --split {item!r}")
-            splits[name] = tuple(video for video in videos.split(",") if video)
+            splits[name] = tuple(video for video in listed.split(",") if video)
     if args.output.exists() and not args.force:
         raise SystemExit(f"{args.output} exists; refusing to overwrite without --force")
 

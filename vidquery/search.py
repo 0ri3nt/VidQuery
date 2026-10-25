@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Protocol
 
+from .action_lexicon import AMBIGUOUS_BARE_ALIASES, is_vetoed, match_actions
 from .appearance import APPEARANCE_COLORS, cosine_similarity
 from .ava_labels import AVA_V22_ACTIONS
 from .domain import (
@@ -230,8 +231,18 @@ ACTION_ALIASES = {
     "drinks": "drink",
     "drank": "drink",
 }
+# Hand-written aliases, kept as a fallback behind the label lexicon.
+CURATED_ACTION_ALIASES = dict(ACTION_ALIASES)
 for _ava_action in AVA_V22_ACTIONS.values():
     ACTION_ALIASES.setdefault(_ava_action, _ava_action)
+# Generic fillers: never meaningful as required spoken terms.
+ACTION_FILLER_WORDS = frozenset({"object", "objects", "thing", "things", "stuff"})
+# Entity words that are part of an action's own wording ("answer phone").
+_ACTION_ABSORBED_ENTITIES = {
+    "{PHONE}": "cell phone",
+    "{COMPUTER}": "laptop",
+    "(tv|television)": "tv",
+}
 
 STOPWORDS = {
     "a",
@@ -314,6 +325,10 @@ STOPWORDS = {
     "anybody",
     "anything",
     "speaking",
+    "something",
+    "anyone",
+    "everyone",
+    "doing",
 }
 
 SPEECH_CUE_PATTERN = re.compile(
@@ -355,35 +370,6 @@ def _tokens(text: str) -> list[str]:
     return TOKEN_PATTERN.findall(text.lower())
 
 
-def _inflected_action(token: str) -> str | None:
-    """Resolve simple English inflections without enumerating every verb form."""
-
-    candidates = [token]
-    if token.endswith("ing") and len(token) > 4:
-        stem = token[:-3]
-        candidates.extend((stem, stem + "e"))
-        if len(stem) > 2 and stem[-1] == stem[-2]:
-            candidates.append(stem[:-1])
-    if token.endswith("ied") and len(token) > 4:
-        candidates.append(token[:-3] + "y")
-    elif token.endswith("ed") and len(token) > 3:
-        stem = token[:-2]
-        candidates.extend((stem, stem + "e"))
-        if len(stem) > 2 and stem[-1] == stem[-2]:
-            candidates.append(stem[:-1])
-    if token.endswith("ies") and len(token) > 4:
-        candidates.append(token[:-3] + "y")
-    elif token.endswith("es") and len(token) > 3:
-        candidates.extend((token[:-2], token[:-1]))
-    elif token.endswith("s") and len(token) > 2:
-        candidates.append(token[:-1])
-    for candidate in dict.fromkeys(candidates):
-        action = ACTION_ALIASES.get(candidate)
-        if action is not None:
-            return action
-    return None
-
-
 class StructuredQueryParser:
     def parse(self, query: str) -> QueryPlan:
         normalized = " ".join(query.lower().replace("-", " ").split())
@@ -392,21 +378,58 @@ class StructuredQueryParser:
         entities = self._extract_aliases(normalized, ENTITY_ALIASES)
         relationships = self._extract_aliases(normalized, RELATIONSHIP_ALIASES)
         relationship_tuples = self._extract_relationship_tuples(normalized)
-        actions = self._extract_aliases(normalized, ACTION_ALIASES)
+        # Actions: the explicit 80-label lexicon first, then curated legacy
+        # aliases that do not overlap a lexicon match and are not ambiguous bare words.
+        action_matches = match_actions(normalized)
+        action_spans = [(item.start, item.end) for item in action_matches]
+        actions = list(dict.fromkeys(item.label for item in action_matches))
+        for start, end, canonical in self._mentions(normalized, CURATED_ACTION_ALIASES):
+            if any(start < span_end and end > span_start for span_start, span_end in action_spans):
+                continue
+            if normalized[start:end] in AMBIGUOUS_BARE_ALIASES:
+                continue
+            if is_vetoed(canonical, normalized, start, end):
+                continue
+            action_spans.append((start, end))
+            if canonical not in actions:
+                actions.append(canonical)
+        absorbed_entities = {
+            entity
+            for item in action_matches
+            for marker, entity in _ACTION_ABSORBED_ENTITIES.items()
+            if marker in item.template
+        }
+        if absorbed_entities:
+            entity_mentions = self._mentions(normalized, ENTITY_ALIASES)
+            for entity in absorbed_entities:
+                inside_only = [
+                    any(
+                        start >= span_start and end <= span_end
+                        for span_start, span_end in action_spans
+                    )
+                    for start, end, canonical in entity_mentions
+                    if canonical == entity
+                ]
+                if inside_only and all(inside_only) and entity in entities:
+                    entities.remove(entity)
         appearance_constraints, appearance_tokens = self._extract_appearance_constraints(
             normalized, entities
         )
-        inflected_action_tokens: set[str] = set()
-        for token in _tokens(normalized):
-            action = _inflected_action(token)
-            if action is not None:
-                if action not in actions:
-                    actions.append(action)
-                inflected_action_tokens.add(token)
+        inflected_action_tokens: set[str] = {
+            token
+            for span_start, span_end in action_spans
+            for token in _tokens(normalized[span_start:span_end])
+        }
+        if actions:
+            inflected_action_tokens.update(
+                token for token in _tokens(normalized) if token in ACTION_FILLER_WORDS
+            )
         # Explicit linguistic/visible-text cues override an otherwise ambiguous
         # action homonym: "say drive" searches language, not observed driving.
+        # "while/when/as" after other words signals co-occurrence ("person
+        # sitting when X is said"); a leading "when does ..." is just a question.
         language_only_cued = (speech_cued or ocr_cued) and not re.search(
-            r"\b(?:while|when|as)\b", normalized
+            r"\S\s+(?:while|when|as)\b", normalized
         )
         if language_only_cued:
             actions = []
