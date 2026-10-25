@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 from pathlib import Path
 
 from .action_model import (
@@ -103,7 +104,13 @@ def run_challenge_evaluation(
         "evidence_weak_threshold": engine.evidence_weak_threshold,
         "thresholds_source": "calibration_file" if thresholds is not None else "settings",
         "phonetic_match": settings.enable_phonetic_match,
-        "gnn_action_model_version": settings.gnn_model_version,
+        # What the evaluated index actually contains, not what is configured now.
+        "indexed_gnn_action_model_versions": dict(
+            Counter(
+                str(segment.processing_metadata.get("gnn_model_version"))
+                for segment in repository.list_segments(None)
+            )
+        ),
         "database": settings.database_path.as_posix(),
         "text_encoder": getattr(engine.encoder, "model_name", type(engine.encoder).__name__),
         "query_planner": "groq_constrained" if use_groq else "local_parser_only",

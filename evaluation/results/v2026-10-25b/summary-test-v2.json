@@ -1,0 +1,2141 @@
+{
+  "schema_version": "challenge-summary-v1",
+  "runs": {
+    "A": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "default_hand_picked",
+      "thresholds": [
+        0.15,
+        0.45
+      ],
+      "indexed_gnn": null,
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.1707,
+          "ranking_precision_at_1": 0.1707,
+          "recall_at_cutoff": 0.0575,
+          "mrr": 0.2049,
+          "within_tolerance_rate": 0.122,
+          "intent_accuracy_strict": 0.0488,
+          "positive_answered_rate": 0.9024,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.875,
+          "selective_risk": 0.8571,
+          "aurc": null,
+          "rejection_precision": 0.4286,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2727,
+          "answerability_auroc": null,
+          "mean_latency_ms": 356.699,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0732,
+              0.2927
+            ],
+            "ranking_precision_at_1": [
+              0.0732,
+              0.2927
+            ],
+            "within_tolerance_rate": [
+              0.0244,
+              0.2195
+            ],
+            "mrr": [
+              0.0927,
+              0.3236
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0225,
+              0.0964
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.5185
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.122,
+          "ranking_precision_at_1": 0.122,
+          "recall_at_cutoff": 0.0341,
+          "mrr": 0.1463,
+          "within_tolerance_rate": 0.0976,
+          "intent_accuracy_strict": 0.0488,
+          "positive_answered_rate": 0.9024,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.875,
+          "selective_risk": 0.898,
+          "aurc": null,
+          "rejection_precision": 0.4286,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2727,
+          "answerability_auroc": null,
+          "mean_latency_ms": 352.393,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0244,
+              0.2195
+            ],
+            "ranking_precision_at_1": [
+              0.0244,
+              0.2195
+            ],
+            "within_tolerance_rate": [
+              0.0244,
+              0.1951
+            ],
+            "mrr": [
+              0.0569,
+              0.252
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0087,
+              0.0696
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.5185
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.122,
+          "ranking_precision_at_1": 0.1463,
+          "recall_at_cutoff": 0.0357,
+          "mrr": 0.1667,
+          "within_tolerance_rate": 0.122,
+          "intent_accuracy_strict": 0.0488,
+          "positive_answered_rate": 0.8537,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.8,
+          "false_abstention_rate": 0.0244,
+          "coverage": 0.8393,
+          "selective_risk": 0.8936,
+          "aurc": 0.8417,
+          "rejection_precision": 0.3333,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.25,
+          "answerability_auroc": 0.7439,
+          "mean_latency_ms": 372.695,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0244,
+              0.2195
+            ],
+            "ranking_precision_at_1": [
+              0.0488,
+              0.2683
+            ],
+            "within_tolerance_rate": [
+              0.0244,
+              0.2195
+            ],
+            "mrr": [
+              0.065,
+              0.2805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0099,
+              0.0714
+            ],
+            "aurc": [
+              0.6887,
+              0.9652
+            ],
+            "rejection_f1": [
+              0.0,
+              0.48
+            ],
+            "answerability_auroc": [
+              0.5743,
+              0.8969
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.1463,
+          "ranking_precision_at_1": 0.1463,
+          "recall_at_cutoff": 0.0357,
+          "mrr": 0.1667,
+          "within_tolerance_rate": 0.122,
+          "intent_accuracy_strict": 0.0488,
+          "positive_answered_rate": 0.9024,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.875,
+          "selective_risk": 0.8776,
+          "aurc": 0.8417,
+          "rejection_precision": 0.4286,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2727,
+          "answerability_auroc": 0.7439,
+          "mean_latency_ms": 372.695,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0488,
+              0.2683
+            ],
+            "ranking_precision_at_1": [
+              0.0488,
+              0.2683
+            ],
+            "within_tolerance_rate": [
+              0.0244,
+              0.2195
+            ],
+            "mrr": [
+              0.065,
+              0.2805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0099,
+              0.0714
+            ],
+            "aurc": [
+              0.6887,
+              0.9652
+            ],
+            "rejection_f1": [
+              0.0,
+              0.5185
+            ],
+            "answerability_auroc": [
+              0.5743,
+              0.8969
+            ]
+          }
+        }
+      }
+    },
+    "B": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "default_hand_picked",
+      "thresholds": [
+        0.15,
+        0.45
+      ],
+      "indexed_gnn": {
+        "ava80-gat-v5-scale30-roi-frame": 1621
+      },
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.3659,
+          "ranking_precision_at_1": 0.3659,
+          "recall_at_cutoff": 0.1039,
+          "mrr": 0.4053,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.6667,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 254.644,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "ranking_precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.2679,
+              0.5549
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.06,
+              0.1577
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0848,
+          "mrr": 0.3431,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 227.723,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2122,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0455,
+              0.1323
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.2683,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0794,
+          "mrr": 0.3565,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.7561,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.8,
+          "false_abstention_rate": 0.0244,
+          "coverage": 0.7679,
+          "selective_risk": 0.7442,
+          "aurc": 0.6433,
+          "rejection_precision": 0.2308,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2143,
+          "answerability_auroc": 0.7089,
+          "mean_latency_ms": 237.504,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1463,
+              0.4146
+            ],
+            "ranking_precision_at_1": [
+              0.1463,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2244,
+              0.4919
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0472,
+              0.1177
+            ],
+            "aurc": [
+              0.4637,
+              0.8202
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4138
+            ],
+            "answerability_auroc": [
+              0.5641,
+              0.8447
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0794,
+          "mrr": 0.3565,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": 0.6433,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": 0.7089,
+          "mean_latency_ms": 237.504,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1463,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1463,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2244,
+              0.4919
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0472,
+              0.1177
+            ],
+            "aurc": [
+              0.4637,
+              0.8202
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": [
+              0.5641,
+              0.8447
+            ]
+          }
+        }
+      }
+    },
+    "C": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "default_hand_picked",
+      "thresholds": [
+        0.15,
+        0.45
+      ],
+      "indexed_gnn": {
+        "ava80-gat-v7-noleak-lr0.0003": 1621
+      },
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.2683,
+          "ranking_precision_at_1": 0.2683,
+          "recall_at_cutoff": 0.0935,
+          "mrr": 0.3423,
+          "within_tolerance_rate": 0.1463,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8293,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8214,
+          "selective_risk": 0.7609,
+          "aurc": null,
+          "rejection_precision": 0.3,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.24,
+          "answerability_auroc": null,
+          "mean_latency_ms": 242.22,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1463,
+              0.4146
+            ],
+            "ranking_precision_at_1": [
+              0.1463,
+              0.4146
+            ],
+            "within_tolerance_rate": [
+              0.0488,
+              0.2683
+            ],
+            "mrr": [
+              0.2195,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0525,
+              0.1447
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4667
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2195,
+          "ranking_precision_at_1": 0.2195,
+          "recall_at_cutoff": 0.0717,
+          "mrr": 0.2935,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8293,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8214,
+          "selective_risk": 0.8043,
+          "aurc": null,
+          "rejection_precision": 0.3,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.24,
+          "answerability_auroc": null,
+          "mean_latency_ms": 246.797,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0976,
+              0.3415
+            ],
+            "ranking_precision_at_1": [
+              0.0976,
+              0.3415
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.1772,
+              0.4195
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0372,
+              0.1126
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4667
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.2195,
+          "ranking_precision_at_1": 0.2439,
+          "recall_at_cutoff": 0.0693,
+          "mrr": 0.3211,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.7805,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.8,
+          "false_abstention_rate": 0.0488,
+          "coverage": 0.7857,
+          "selective_risk": 0.7955,
+          "aurc": 0.6995,
+          "rejection_precision": 0.25,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2222,
+          "answerability_auroc": 0.7244,
+          "mean_latency_ms": 225.418,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0976,
+              0.3415
+            ],
+            "ranking_precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2033,
+              0.4512
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0365,
+              0.1089
+            ],
+            "aurc": [
+              0.5247,
+              0.8673
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4242
+            ],
+            "answerability_auroc": [
+              0.5813,
+              0.8504
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.2439,
+          "ranking_precision_at_1": 0.2439,
+          "recall_at_cutoff": 0.0693,
+          "mrr": 0.3211,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8293,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8214,
+          "selective_risk": 0.7826,
+          "aurc": 0.6995,
+          "rejection_precision": 0.3,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.24,
+          "answerability_auroc": 0.7244,
+          "mean_latency_ms": 225.418,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "ranking_precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2033,
+              0.4512
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0365,
+              0.1089
+            ],
+            "aurc": [
+              0.5247,
+              0.8673
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4667
+            ],
+            "answerability_auroc": [
+              0.5813,
+              0.8504
+            ]
+          }
+        }
+      }
+    },
+    "D": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "learned",
+      "thresholds": [
+        0.3008,
+        0.3008
+      ],
+      "indexed_gnn": null,
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.3659,
+          "ranking_precision_at_1": 0.3659,
+          "recall_at_cutoff": 0.1039,
+          "mrr": 0.4053,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.6667,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 364.054,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "ranking_precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.2679,
+              0.5549
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.06,
+              0.1577
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0848,
+          "mrr": 0.3431,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 339.092,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2122,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0455,
+              0.1323
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.0732,
+          "ranking_precision_at_1": 0.3171,
+          "recall_at_cutoff": 0.0774,
+          "mrr": 0.3593,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.0732,
+          "negative_rejection_rate": 1.0,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.3659,
+          "coverage": 0.0536,
+          "selective_risk": 0.0,
+          "aurc": 0.5573,
+          "rejection_precision": 0.283,
+          "rejection_recall": 1.0,
+          "rejection_f1": 0.4412,
+          "answerability_auroc": 0.7008,
+          "mean_latency_ms": 362.252,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0,
+              0.1463
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2211,
+              0.5008
+            ],
+            "negative_rejection_rate": [
+              1.0,
+              1.0
+            ],
+            "recall_at_cutoff": [
+              0.0441,
+              0.1165
+            ],
+            "aurc": [
+              0.397,
+              0.7572
+            ],
+            "rejection_f1": [
+              0.2812,
+              0.5789
+            ],
+            "answerability_auroc": [
+              0.5516,
+              0.8421
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.3171,
+          "ranking_precision_at_1": 0.3171,
+          "recall_at_cutoff": 0.0774,
+          "mrr": 0.3593,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7111,
+          "aurc": 0.5573,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": 0.7008,
+          "mean_latency_ms": 362.252,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2211,
+              0.5008
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0441,
+              0.1165
+            ],
+            "aurc": [
+              0.397,
+              0.7572
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": [
+              0.5516,
+              0.8421
+            ]
+          }
+        }
+      }
+    },
+    "D2": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "learned",
+      "thresholds": [
+        0.4597,
+        0.4597
+      ],
+      "indexed_gnn": null,
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.3659,
+          "ranking_precision_at_1": 0.3659,
+          "recall_at_cutoff": 0.1039,
+          "mrr": 0.4053,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.6667,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 358.072,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "ranking_precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.2679,
+              0.5549
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.06,
+              0.1577
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0848,
+          "mrr": 0.3431,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 338.451,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2122,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0455,
+              0.1323
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.0732,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0794,
+          "mrr": 0.3565,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.122,
+          "negative_rejection_rate": 1.0,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.3415,
+          "coverage": 0.0893,
+          "selective_risk": 0.4,
+          "aurc": 0.6433,
+          "rejection_precision": 0.2941,
+          "rejection_recall": 1.0,
+          "rejection_f1": 0.4545,
+          "answerability_auroc": 0.7089,
+          "mean_latency_ms": 348.887,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0,
+              0.1707
+            ],
+            "ranking_precision_at_1": [
+              0.1463,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2244,
+              0.4919
+            ],
+            "negative_rejection_rate": [
+              1.0,
+              1.0
+            ],
+            "recall_at_cutoff": [
+              0.0472,
+              0.1177
+            ],
+            "aurc": [
+              0.4637,
+              0.8202
+            ],
+            "rejection_f1": [
+              0.2903,
+              0.5974
+            ],
+            "answerability_auroc": [
+              0.5641,
+              0.8447
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0794,
+          "mrr": 0.3565,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": 0.6433,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": 0.7089,
+          "mean_latency_ms": 348.887,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1463,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1463,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2244,
+              0.4919
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0472,
+              0.1177
+            ],
+            "aurc": [
+              0.4637,
+              0.8202
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": [
+              0.5641,
+              0.8447
+            ]
+          }
+        }
+      }
+    },
+    "D3": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "learned",
+      "thresholds": [
+        0.2349,
+        1.0
+      ],
+      "indexed_gnn": null,
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.3659,
+          "ranking_precision_at_1": 0.3659,
+          "recall_at_cutoff": 0.1039,
+          "mrr": 0.4053,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.6667,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 390.011,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "ranking_precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.2679,
+              0.5549
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.06,
+              0.1577
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0848,
+          "mrr": 0.3431,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 364.364,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2122,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0455,
+              0.1323
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.0732,
+          "ranking_precision_at_1": 0.3171,
+          "recall_at_cutoff": 0.0755,
+          "mrr": 0.3593,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.0732,
+          "negative_rejection_rate": 1.0,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.3659,
+          "coverage": 0.0536,
+          "selective_risk": 0.0,
+          "aurc": 0.5581,
+          "rejection_precision": 0.283,
+          "rejection_recall": 1.0,
+          "rejection_f1": 0.4412,
+          "answerability_auroc": 0.7008,
+          "mean_latency_ms": 367.274,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0,
+              0.1463
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2211,
+              0.5008
+            ],
+            "negative_rejection_rate": [
+              1.0,
+              1.0
+            ],
+            "recall_at_cutoff": [
+              0.0435,
+              0.1127
+            ],
+            "aurc": [
+              0.3971,
+              0.7591
+            ],
+            "rejection_f1": [
+              0.2812,
+              0.5789
+            ],
+            "answerability_auroc": [
+              0.5515,
+              0.8422
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.3171,
+          "ranking_precision_at_1": 0.3171,
+          "recall_at_cutoff": 0.0755,
+          "mrr": 0.3593,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7111,
+          "aurc": 0.5581,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": 0.7008,
+          "mean_latency_ms": 367.274,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2211,
+              0.5008
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0435,
+              0.1127
+            ],
+            "aurc": [
+              0.3971,
+              0.7591
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": [
+              0.5515,
+              0.8422
+            ]
+          }
+        }
+      }
+    },
+    "D4": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "learned",
+      "thresholds": [
+        0.15,
+        0.45
+      ],
+      "indexed_gnn": null,
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.3659,
+          "ranking_precision_at_1": 0.3659,
+          "recall_at_cutoff": 0.1039,
+          "mrr": 0.4053,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.6667,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 336.669,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "ranking_precision_at_1": [
+              0.2195,
+              0.5122
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.2679,
+              0.5549
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.06,
+              0.1577
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2927,
+          "ranking_precision_at_1": 0.2927,
+          "recall_at_cutoff": 0.0848,
+          "mrr": 0.3431,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7333,
+          "aurc": null,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": null,
+          "mean_latency_ms": 326.719,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.439
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2122,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0455,
+              0.1323
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.2439,
+          "ranking_precision_at_1": 0.3171,
+          "recall_at_cutoff": 0.0755,
+          "mrr": 0.3593,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.561,
+          "negative_rejection_rate": 0.8667,
+          "negative_weak_answer_rate": 0.1333,
+          "false_abstention_rate": 0.0732,
+          "coverage": 0.4464,
+          "selective_risk": 0.6,
+          "aurc": 0.5581,
+          "rejection_precision": 0.4194,
+          "rejection_recall": 0.8667,
+          "rejection_f1": 0.5652,
+          "answerability_auroc": 0.7008,
+          "mean_latency_ms": 337.655,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2211,
+              0.5008
+            ],
+            "negative_rejection_rate": [
+              0.6667,
+              1.0
+            ],
+            "recall_at_cutoff": [
+              0.0435,
+              0.1127
+            ],
+            "aurc": [
+              0.3971,
+              0.7591
+            ],
+            "rejection_f1": [
+              0.3684,
+              0.7273
+            ],
+            "answerability_auroc": [
+              0.5515,
+              0.8422
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.3171,
+          "ranking_precision_at_1": 0.3171,
+          "recall_at_cutoff": 0.0755,
+          "mrr": 0.3593,
+          "within_tolerance_rate": 0.2683,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8049,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8036,
+          "selective_risk": 0.7111,
+          "aurc": 0.5581,
+          "rejection_precision": 0.2727,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.2308,
+          "answerability_auroc": 0.7008,
+          "mean_latency_ms": 337.655,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "ranking_precision_at_1": [
+              0.1707,
+              0.4634
+            ],
+            "within_tolerance_rate": [
+              0.1463,
+              0.4146
+            ],
+            "mrr": [
+              0.2211,
+              0.5008
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0435,
+              0.1127
+            ],
+            "aurc": [
+              0.3971,
+              0.7591
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4444
+            ],
+            "answerability_auroc": [
+              0.5515,
+              0.8422
+            ]
+          }
+        }
+      }
+    },
+    "E": {
+      "query_count": 56,
+      "split": "test",
+      "dataset": "C:/Users/Aryaman/Desktop/work/capstone/VidQuery/evaluation/queries_challenge_ava_holdout_v2.json",
+      "reliability_priors": "learned",
+      "thresholds": [
+        0.2767,
+        0.2797
+      ],
+      "indexed_gnn": {
+        "ava80-gat-v7-noleak-lr0.0003": 1621
+      },
+      "text_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+      "methods": {
+        "review1_segment_start": {
+          "precision_at_1": 0.2683,
+          "ranking_precision_at_1": 0.2683,
+          "recall_at_cutoff": 0.0935,
+          "mrr": 0.3423,
+          "within_tolerance_rate": 0.1463,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8293,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8214,
+          "selective_risk": 0.7609,
+          "aurc": null,
+          "rejection_precision": 0.3,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.24,
+          "answerability_auroc": null,
+          "mean_latency_ms": 239.462,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.1463,
+              0.4146
+            ],
+            "ranking_precision_at_1": [
+              0.1463,
+              0.4146
+            ],
+            "within_tolerance_rate": [
+              0.0488,
+              0.2683
+            ],
+            "mrr": [
+              0.2195,
+              0.4805
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0525,
+              0.1447
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4667
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_localized": {
+          "precision_at_1": 0.2195,
+          "ranking_precision_at_1": 0.2195,
+          "recall_at_cutoff": 0.0717,
+          "mrr": 0.2935,
+          "within_tolerance_rate": 0.1951,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8293,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8214,
+          "selective_risk": 0.8043,
+          "aurc": null,
+          "rejection_precision": 0.3,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.24,
+          "answerability_auroc": null,
+          "mean_latency_ms": 243.644,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0976,
+              0.3415
+            ],
+            "ranking_precision_at_1": [
+              0.0976,
+              0.3415
+            ],
+            "within_tolerance_rate": [
+              0.0732,
+              0.3171
+            ],
+            "mrr": [
+              0.1772,
+              0.4195
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0372,
+              0.1126
+            ],
+            "aurc": null,
+            "rejection_f1": [
+              0.0,
+              0.4667
+            ],
+            "answerability_auroc": null
+          }
+        },
+        "review2_full": {
+          "precision_at_1": 0.0732,
+          "ranking_precision_at_1": 0.2439,
+          "recall_at_cutoff": 0.0728,
+          "mrr": 0.3191,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.1707,
+          "negative_rejection_rate": 1.0,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.2683,
+          "coverage": 0.125,
+          "selective_risk": 0.5714,
+          "aurc": 0.7073,
+          "rejection_precision": 0.3061,
+          "rejection_recall": 1.0,
+          "rejection_f1": 0.4687,
+          "answerability_auroc": 0.7276,
+          "mean_latency_ms": 225.784,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.0,
+              0.1707
+            ],
+            "ranking_precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2012,
+              0.4512
+            ],
+            "negative_rejection_rate": [
+              1.0,
+              1.0
+            ],
+            "recall_at_cutoff": [
+              0.0392,
+              0.1123
+            ],
+            "aurc": [
+              0.528,
+              0.8717
+            ],
+            "rejection_f1": [
+              0.3019,
+              0.6111
+            ],
+            "answerability_auroc": [
+              0.5886,
+              0.8514
+            ]
+          }
+        },
+        "review2_full_no_abstention": {
+          "precision_at_1": 0.2439,
+          "ranking_precision_at_1": 0.2439,
+          "recall_at_cutoff": 0.0728,
+          "mrr": 0.3191,
+          "within_tolerance_rate": 0.2439,
+          "intent_accuracy_strict": 0.6098,
+          "positive_answered_rate": 0.8293,
+          "negative_rejection_rate": 0.2,
+          "negative_weak_answer_rate": 0.0,
+          "false_abstention_rate": 0.0,
+          "coverage": 0.8214,
+          "selective_risk": 0.7826,
+          "aurc": 0.7073,
+          "rejection_precision": 0.3,
+          "rejection_recall": 0.2,
+          "rejection_f1": 0.24,
+          "answerability_auroc": 0.7276,
+          "mean_latency_ms": 225.784,
+          "positive_query_count": 41,
+          "negative_query_count": 15,
+          "ci95": {
+            "precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "ranking_precision_at_1": [
+              0.122,
+              0.3902
+            ],
+            "within_tolerance_rate": [
+              0.122,
+              0.3902
+            ],
+            "mrr": [
+              0.2012,
+              0.4512
+            ],
+            "negative_rejection_rate": [
+              0.0,
+              0.4
+            ],
+            "recall_at_cutoff": [
+              0.0392,
+              0.1123
+            ],
+            "aurc": [
+              0.528,
+              0.8717
+            ],
+            "rejection_f1": [
+              0.0,
+              0.4667
+            ],
+            "answerability_auroc": [
+              0.5886,
+              0.8514
+            ]
+          }
+        }
+      }
+    }
+  },
+  "paired": {
+    "A[review2_full] -> B[review2_full]": {
+      "precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.1463,
+        "ci95": [
+          0.0244,
+          0.2683
+        ],
+        "wins": 7,
+        "losses": 1
+      },
+      "ranking_precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.1463,
+        "ci95": [
+          0.0244,
+          0.2683
+        ],
+        "wins": 7,
+        "losses": 1
+      },
+      "mrr": {
+        "queries": 41,
+        "mean_difference": 0.1898,
+        "ci95": [
+          0.0732,
+          0.3126
+        ],
+        "wins": 12,
+        "losses": 2
+      }
+    },
+    "A[review1_segment_start] -> B[review1_segment_start]": {
+      "precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.1951,
+        "ci95": [
+          0.0732,
+          0.3171
+        ],
+        "wins": 8,
+        "losses": 0
+      },
+      "ranking_precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.1951,
+        "ci95": [
+          0.0732,
+          0.3171
+        ],
+        "wins": 8,
+        "losses": 0
+      },
+      "mrr": {
+        "queries": 41,
+        "mean_difference": 0.2004,
+        "ci95": [
+          0.0886,
+          0.3171
+        ],
+        "wins": 11,
+        "losses": 1
+      }
+    },
+    "B[review2_full] -> C[review2_full]": {
+      "precision_at_1": {
+        "queries": 41,
+        "mean_difference": -0.0488,
+        "ci95": [
+          -0.1951,
+          0.0976
+        ],
+        "wins": 3,
+        "losses": 5
+      },
+      "ranking_precision_at_1": {
+        "queries": 41,
+        "mean_difference": -0.0488,
+        "ci95": [
+          -0.1951,
+          0.0976
+        ],
+        "wins": 3,
+        "losses": 5
+      },
+      "mrr": {
+        "queries": 41,
+        "mean_difference": -0.0354,
+        "ci95": [
+          -0.1618,
+          0.0915
+        ],
+        "wins": 7,
+        "losses": 7
+      }
+    },
+    "B[review2_full] -> D4[review2_full]": {
+      "precision_at_1": {
+        "queries": 41,
+        "mean_difference": -0.0244,
+        "ci95": [
+          -0.122,
+          0.0732
+        ],
+        "wins": 2,
+        "losses": 3
+      },
+      "ranking_precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.0244,
+        "ci95": [
+          -0.0488,
+          0.122
+        ],
+        "wins": 2,
+        "losses": 1
+      },
+      "mrr": {
+        "queries": 41,
+        "mean_difference": 0.0028,
+        "ci95": [
+          -0.0386,
+          0.05
+        ],
+        "wins": 2,
+        "losses": 4
+      }
+    },
+    "B[review1_segment_start] -> B[review2_full]": {
+      "precision_at_1": {
+        "queries": 41,
+        "mean_difference": -0.0976,
+        "ci95": [
+          -0.2195,
+          0.0244
+        ],
+        "wins": 1,
+        "losses": 5
+      },
+      "ranking_precision_at_1": {
+        "queries": 41,
+        "mean_difference": -0.0732,
+        "ci95": [
+          -0.1707,
+          0.0244
+        ],
+        "wins": 1,
+        "losses": 4
+      },
+      "mrr": {
+        "queries": 41,
+        "mean_difference": -0.0488,
+        "ci95": [
+          -0.1228,
+          0.0244
+        ],
+        "wins": 3,
+        "losses": 5
+      }
+    },
+    "B[review2_full] -> D[review2_full_no_abstention]": {
+      "precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.0488,
+        "ci95": [
+          -0.0488,
+          0.1463
+        ],
+        "wins": 3,
+        "losses": 1
+      },
+      "ranking_precision_at_1": {
+        "queries": 41,
+        "mean_difference": 0.0244,
+        "ci95": [
+          -0.0488,
+          0.122
+        ],
+        "wins": 2,
+        "losses": 1
+      },
+      "mrr": {
+        "queries": 41,
+        "mean_difference": 0.0028,
+        "ci95": [
+          -0.0386,
+          0.05
+        ],
+        "wins": 2,
+        "losses": 4
+      }
+    }
+  }
+}

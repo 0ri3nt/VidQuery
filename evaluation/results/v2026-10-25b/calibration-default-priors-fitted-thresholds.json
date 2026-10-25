@@ -1,0 +1,40 @@
+{
+  "schema_version": "reliability-priors-1.1",
+  "priors": {
+    "whisper_transcript": 0.9,
+    "whisper_word_timing": 0.9,
+    "phonetic_transcript": 0.5,
+    "easyocr": 0.8,
+    "yolo_detection": 0.8,
+    "pyannote_diarization": 0.75,
+    "bounding_box_geometry": 0.65,
+    "sentence_embedding": 0.6,
+    "openclip_appearance": 0.55,
+    "visual_attribute_model": 0.55,
+    "relationship_gnn": 0.35,
+    "gnn_action_model": 0.3,
+    "gnn_action_plus_target_resolver": 0.25,
+    "learned_action_model": 0.3,
+    "heuristic_action_mapping": 0.4,
+    "ava_ground_truth": 1.0,
+    "manual_annotation": 1.0,
+    "hashing_embedding": 0.35,
+    "unknown": 0.5
+  },
+  "priors_source": "hand_picked",
+  "thresholds": {
+    "evidence_supported_threshold": 0.4597,
+    "evidence_weak_threshold": 0.4597,
+    "objective": "effective_reliability(wrong_cost=1.0)",
+    "objective_value_per_query": 0.0833,
+    "supported_precision_target": 0.8,
+    "calibration_coverage": 0.1167,
+    "calibration_selective_precision": 0.8571,
+    "decision_count": 60,
+    "decisions_file": "evaluation/results/v2026-10-25b/calibration-decisions-default-priors.json",
+    "decisions_priors": "default_hand_picked"
+  },
+  "split": "calibration",
+  "manifest_sha256": "9d1aecf9a1249570f9b63350e8fda9343b8c6e094ca971a0bbd35f09e31fef2c",
+  "created_at": "2026-10-25T11:51:31.825745+00:00"
+}

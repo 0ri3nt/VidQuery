@@ -1,0 +1,764 @@
+{
+  "schema_version": "reliability-calibration-1.1",
+  "split": "calibration",
+  "limit": 1,
+  "manifest": "evaluation\\queries_challenge_ava_holdout.json",
+  "manifest_sha256": "9d1aecf9a1249570f9b63350e8fda9343b8c6e094ca971a0bbd35f09e31fef2c",
+  "created_at": "2026-10-25T11:50:58.239346+00:00",
+  "query_count": 60,
+  "observation_count": 94,
+  "observations": [
+    {
+      "query_id": "ava-0f39OWEqJ24-a74",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9293,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a74",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8357,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a14",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9347,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a14",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9631,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a54",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9293,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a54",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9246,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a08",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8744,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a08",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9835,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a64",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8903,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a64",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.7256,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a27",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8315,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a27",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8613,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a01",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.7688,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a01",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9412,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a41",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8427,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a41",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9906,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a66",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8998,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a66",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6939,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a72",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8411,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a72",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.807,
+      "correct": true
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a78",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9002,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a78",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.4229,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a65",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9104,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a65",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6454,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a70",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8206,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-a70",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9577,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-n49",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9306,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-n49",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6032,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-n29",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8948,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-n29",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.647,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-n48",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9255,
+      "correct": false
+    },
+    {
+      "query_id": "ava-0f39OWEqJ24-n48",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8243,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a49",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.875,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a49",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.7553,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a14",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9062,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a14",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9482,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a01",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9239,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a01",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9843,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a08",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8561,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a08",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9741,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a28",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.4021,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a28",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.4347,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a66",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.93,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a66",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6878,
+      "correct": true
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a27",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8591,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a27",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6483,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a73",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9155,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a73",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.0917,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a63",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8703,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a63",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.2562,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a65",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8912,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a65",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6859,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a29",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9284,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a29",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6542,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a54",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.544,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a54",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8292,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a38",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8914,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-a38",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8724,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-n10",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8801,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-n10",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9521,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-n48",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9176,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-n48",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9222,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-n64",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.82,
+      "correct": false
+    },
+    {
+      "query_id": "ava-9mLYmkonWZQ-n64",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8943,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a11",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9406,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a11",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9431,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a01",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9442,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a01",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9716,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a14",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9399,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a14",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9756,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a03",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9268,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a03",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.978,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a10",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9393,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a10",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9486,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a70",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9486,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a70",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8974,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a27",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9252,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a27",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6461,
+      "correct": true
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a29",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.84,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a29",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6559,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a25",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9206,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a25",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.2397,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a20",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9428,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a20",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.7549,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a65",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9437,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a65",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.7164,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a66",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9395,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-a66",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.7844,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-n08",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9566,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-n08",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.9507,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-n49",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.8312,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-n49",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.8386,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-n64",
+      "rank": 1,
+      "source_method": "yolo_detection",
+      "modality": "entity",
+      "raw_score": 0.9113,
+      "correct": false
+    },
+    {
+      "query_id": "ava-covMYDBa5dk-n64",
+      "rank": 1,
+      "source_method": "gnn_action_model",
+      "modality": "action",
+      "raw_score": 0.6579,
+      "correct": false
+    }
+  ]
+}
