@@ -93,7 +93,7 @@ def main() -> None:
     if args.compare_checkpoint:
         import torch
 
-        from scripts.train_vidor_detector_matched import _evaluate_checkpoint, _summary
+        from vidquery.vidor_improved import evaluate_relation_checkpoint, scalar_metrics
         from vidquery.vidor_relation import _graph_split
 
         graphs = torch.load(
@@ -104,7 +104,9 @@ def main() -> None:
         test_graphs = _graph_split(graphs, split)["test"]
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         for path in args.compare_checkpoint:
-            comparisons[path.as_posix()] = _summary(_evaluate_checkpoint(path, test_graphs, device))
+            comparisons[path.as_posix()] = scalar_metrics(
+                evaluate_relation_checkpoint(path, test_graphs, device)
+            )
         (args.output_dir / "comparison_on_new_test.json").write_text(
             json.dumps(comparisons, indent=2) + "\n", encoding="utf-8"
         )

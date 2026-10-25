@@ -1316,3 +1316,46 @@ def build_and_train_improved_vidor(
         json.dumps(report, indent=2) + "\n", encoding="utf-8"
     )
     return report
+
+
+def evaluate_relation_checkpoint(path: Path, graphs: Sequence[Any], device: Any) -> dict[str, Any]:
+    """Score a saved relation checkpoint on graphs with its own frozen thresholds."""
+
+    import numpy as np
+    import torch
+    from torch_geometric.loader import DataLoader
+
+    from .vidor_relation import _metrics
+
+    payload = torch.load(path, map_location="cpu", weights_only=True)
+    factory: Any = ImprovedRelationModel(use_graph=bool(payload["use_graph"]))
+    model = factory.to(device)
+    model.load_state_dict(payload["state_dict"])
+    model.eval()
+    predictions, targets = [], []
+    with torch.inference_mode():
+        for raw in DataLoader(list(graphs), batch_size=16, shuffle=False):
+            batch = raw.to(device)
+            logits = model(
+                batch.x,
+                batch.class_ids,
+                batch.node_visual,
+                batch.node_motion,
+                batch.edge_index,
+                batch.edge_attr,
+                batch.union_visual,
+            )
+            predictions.append(torch.sigmoid(logits).cpu())
+            targets.append(batch.edge_y.cpu())
+    target = torch.cat(targets).numpy()
+    probability = torch.cat(predictions).numpy()
+    thresholds = payload["thresholds"].numpy()
+    metrics = _metrics(target, probability, thresholds, np)
+    metrics["predicted_relations_per_edge"] = round(
+        float((probability >= thresholds[None, :]).sum(axis=1).mean()), 4
+    )
+    return metrics
+
+
+def scalar_metrics(metrics: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in metrics.items() if not isinstance(value, list | dict)}

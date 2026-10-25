@@ -38,7 +38,9 @@ def test_unanswerable_queries_use_the_negative_category():
 def test_verification_and_category_survive_into_a_valid_manifest(tmp_path):
     store = ChallengeManifestStore(tmp_path / "challenge.json")
     store.upsert_query(_query())
-    store.upsert_query(_query(id="ocr-lecture-01", category="ocr", query="slide that says Kubernetes"))
+    store.upsert_query(
+        _query(id="ocr-lecture-01", category="ocr", query="slide that says Kubernetes")
+    )
     store.set_video_split("lecture_os_01", "test")
     manifest = store.load()
     validate_manifest(manifest)

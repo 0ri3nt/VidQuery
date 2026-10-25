@@ -25,16 +25,16 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-import numpy as np
 import torch
 
 from vidquery.config import get_settings
 from vidquery.eval_registry import assert_not_trained_on
 from vidquery.vidor_improved import (
-    ImprovedRelationModel,
     build_and_train_improved_vidor,
+    evaluate_relation_checkpoint,
+    scalar_metrics,
 )
-from vidquery.vidor_relation import VIDOR_PREDICATES, _graph_split, _metrics
+from vidquery.vidor_relation import VIDOR_PREDICATES, _graph_split
 
 ACTIVE_DIR = Path("data/app/models/vidor_relation_pair_visual")
 
@@ -75,43 +75,6 @@ class YoloFrameDetector:
                 )
             )
         return output
-
-
-def _evaluate_checkpoint(path: Path, graphs: list[Any], device: torch.device) -> dict[str, Any]:
-    from torch_geometric.loader import DataLoader
-
-    payload = torch.load(path, map_location="cpu", weights_only=True)
-    factory: Any = ImprovedRelationModel(use_graph=bool(payload["use_graph"]))
-    model = factory.to(device)
-    model.load_state_dict(payload["state_dict"])
-    model.eval()
-    predictions, targets = [], []
-    with torch.inference_mode():
-        for raw in DataLoader(graphs, batch_size=16, shuffle=False):
-            batch = raw.to(device)
-            logits = model(
-                batch.x,
-                batch.class_ids,
-                batch.node_visual,
-                batch.node_motion,
-                batch.edge_index,
-                batch.edge_attr,
-                batch.union_visual,
-            )
-            predictions.append(torch.sigmoid(logits).cpu())
-            targets.append(batch.edge_y.cpu())
-    target = torch.cat(targets).numpy()
-    probability = torch.cat(predictions).numpy()
-    thresholds = payload["thresholds"].numpy()
-    metrics = _metrics(target, probability, thresholds, np)
-    metrics["predicted_relations_per_edge"] = round(
-        float((probability >= thresholds[None, :]).sum(axis=1).mean()), 4
-    )
-    return metrics
-
-
-def _summary(metrics: dict[str, Any]) -> dict[str, Any]:
-    return {key: value for key, value in metrics.items() if not isinstance(value, list | dict)}
 
 
 def main() -> None:
@@ -187,15 +150,15 @@ def main() -> None:
         ("gat_v3_detector_trained", args.output_dir / name.format("gat", "v3-detector")),
         ("mlp_v3_detector_trained", args.output_dir / name.format("mlp", "v3-detector")),
     ):
-        on_detector = _evaluate_checkpoint(path, detector_test, device)
+        on_detector = evaluate_relation_checkpoint(path, detector_test, device)
         comparison[label] = {
             "checkpoint": path.as_posix(),
-            "test_on_detector_boxes": _summary(on_detector),
+            "test_on_detector_boxes": scalar_metrics(on_detector),
             "per_predicate_on_detector_boxes": on_detector.get("per_predicate"),
         }
         if "active" in label:
-            comparison[label]["test_on_annotation_boxes"] = _summary(
-                _evaluate_checkpoint(path, annotation_test, device)
+            comparison[label]["test_on_annotation_boxes"] = scalar_metrics(
+                evaluate_relation_checkpoint(path, annotation_test, device)
             )
     result = {
         "schema_version": "vidor-detector-matched-comparison-v1",
@@ -213,8 +176,8 @@ def main() -> None:
         },
         "validation_winner_v3": winner,
         "validation_v3": {
-            "mlp": _summary(report["pairwise_mlp"]["validation_metrics"]),
-            "gat": _summary(report["relationship_gnn"]["validation_metrics"]),
+            "mlp": scalar_metrics(report["pairwise_mlp"]["validation_metrics"]),
+            "gat": scalar_metrics(report["relationship_gnn"]["validation_metrics"]),
         },
         "predicates": list(VIDOR_PREDICATES),
         "test": comparison,
