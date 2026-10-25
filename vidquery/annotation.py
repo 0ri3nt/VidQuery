@@ -26,7 +26,11 @@ from .challenge_evaluation import (
 )
 from .domain import StrictModel
 
-ChallengeCategory = Literal["ambiguous", "timestamp", "action_relation", "negative"]
+# speech / ocr / object let a lecture benchmark report those query types separately;
+# "timestamp" remains the generic precise-moment category.
+ChallengeCategory = Literal[
+    "ambiguous", "timestamp", "action_relation", "speech", "ocr", "object", "negative"
+]
 VideoSplit = Literal["calibration", "test"]
 HypothesisId = Literal["visible_action", "spoken_mention", "visible_object", "visible_text"]
 QueryIntent = Literal[
@@ -67,6 +71,8 @@ class AnnotatedQuery(StrictModel):
     tolerance_seconds: float = Field(default=2.0, ge=0.5, le=10.0)
     relevant: list[AnnotatedMoment] = Field(default_factory=list, max_length=20)
     annotator: str = Field(default="", max_length=32)
+    # Second person who independently checked answerability and the interval.
+    verified_by: str = Field(default="", max_length=32)
     notes: str = Field(default="", max_length=1000)
 
     @field_validator("query")

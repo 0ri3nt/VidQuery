@@ -171,8 +171,8 @@ Use the **Annotate** tab in the web UI (`http://127.0.0.1:8000/#annotate`):
 2. Scrub to the moment and press `[` (start), `P` (peak), and `]` (end), or use
    the buttons. The arrow keys step 0.1 s; with Shift they step 1 s.
 3. Enter the query, choose a category (`timestamp`, `ambiguous`,
-   `action_relation`, or `negative`), and tick the readings that are actually
-   present in the video.
+   `action_relation`, `speech`, `ocr`, `object`, or `negative`), and tick the
+   readings that are actually present in the video.
 4. Save. Entries are written to `evaluation/queries_challenge.json`
    (`CHALLENGE_MANIFEST_PATH`) and validated on every write.
 
@@ -194,11 +194,32 @@ python -m vidquery evaluate-challenge --split test \
 `--use-groq` allows the constrained planner; by default the run is fully
 deterministic. Tune on `calibration` only and report `test`.
 
-**Status:** the benchmark, the annotation page, and the split support are
-implemented and tested. No annotated manifest exists yet, so there are **no
-measured Review-2 benchmark numbers**. Do not report timestamp-error or
-abstention improvements until `evaluation/results/challenge-test.json` exists
-from a real manifest.
+#### Lecture benchmark conventions
+
+- **Videos.** 5–10 real lecture or classroom recordings, named before upload
+  (`lecture_os_01.mp4`). Put whole videos in one split, for example 2–3 in
+  `calibration` and the rest in `test`. None may come from AVA, VidOR, or the
+  evaluation-only registry (`evaluation/eval_only_videos.json`).
+- **About 20 queries per video**, roughly 25% `negative`. Cover `speech` (a
+  spoken phrase, peak at the onset of the first word), `ocr` (text on a slide,
+  interval while it is legible), `object`, `action_relation`, `timestamp`
+  (other precise moments), and `ambiguous` (more than one reading present).
+- **Negatives** state what is absent and whether it is in-domain ("someone
+  writing on the board" in a talk with no board) or out-of-domain. Check the
+  whole video before saving a negative.
+- **Verification.** A second person re-watches each interval and negative and
+  enters their initials in *Verified by*. Disagreements go in *Notes*; keep
+  the query only once both agree, and report the share of queries that
+  needed changes.
+- **Phonetic matching.** For speech queries with technical terms, run the test
+  split twice with `ENABLE_PHONETIC_MATCH=false` and `true`; everything else
+  must stay identical.
+
+**Status:** the AVA held-out benchmarks
+(`evaluation/queries_challenge_ava_holdout*.json`) have measured results in
+`evaluation/results/v2026-10-25b/`. They cover action queries on movie
+footage only. No lecture manifest exists yet, so there are no measured speech,
+OCR, or phonetic-matching results.
 
 ## Configuration
 

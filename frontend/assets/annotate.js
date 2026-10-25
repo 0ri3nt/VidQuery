@@ -16,8 +16,8 @@ const INTENT_OPTIONS = [
   "ocr_search",
   "multimodal_search",
 ];
-const CATEGORY_PREFIX = { timestamp: "ts", ambiguous: "amb", action_relation: "ar", negative: "neg" };
-const CATEGORY_LABEL = { timestamp: "timestamp", ambiguous: "ambiguous", action_relation: "action / relation", negative: "negative" };
+const CATEGORY_PREFIX = { timestamp: "ts", ambiguous: "amb", action_relation: "ar", speech: "sp", ocr: "ocr", object: "obj", negative: "neg" };
+const CATEGORY_LABEL = { timestamp: "timestamp", ambiguous: "ambiguous", action_relation: "action / relation", speech: "speech", ocr: "on-screen text", object: "object", negative: "negative" };
 const annotation = { videos: [], queries: [], summary: null, moments: [], editingId: null };
 
 const round1 = (value) => Math.round(Number(value) * 10) / 10;
@@ -146,7 +146,7 @@ function updateCategoryState() {
 function clearAnnotationForm() {
   annotation.editingId = null;
   annotation.moments = [];
-  ["#ann-query", "#ann-start", "#ann-peak", "#ann-end", "#ann-notes"].forEach((selector) => { $(selector).value = ""; });
+  ["#ann-query", "#ann-start", "#ann-peak", "#ann-end", "#ann-notes", "#ann-verified-by"].forEach((selector) => { $(selector).value = ""; });
   $("#ann-tolerance").value = "2";
   $$("input[name='ann-hypothesis'], input[name='ann-intent']").forEach((input) => { input.checked = false; });
   $("#ann-id").readOnly = false;
@@ -164,6 +164,7 @@ function editAnnotation(id) {
   $("#ann-category").value = item.category;
   $("#ann-tolerance").value = item.tolerance_seconds ?? 2;
   $("#ann-notes").value = item.notes || "";
+  $("#ann-verified-by").value = item.verified_by || "";
   $$("input[name='ann-hypothesis']").forEach((input) => { input.checked = (item.expected_hypothesis_ids || []).includes(input.value); });
   $$("input[name='ann-intent']").forEach((input) => { input.checked = (item.expected_intents || []).includes(input.value); });
   annotation.moments = item.relevant.map(({ peak_time, start_time, end_time }) => ({ peak_time, start_time, end_time }));
@@ -277,6 +278,7 @@ $("#annotation-form").addEventListener("submit", async (event) => {
     tolerance_seconds: Number($("#ann-tolerance").value) || 2,
     relevant: category === "negative" ? [] : annotation.moments,
     annotator,
+    verified_by: $("#ann-verified-by").value.trim(),
     notes: $("#ann-notes").value.trim(),
   };
   if (!annotation.editingId && annotation.queries.some((item) => item.id === body.id)) {

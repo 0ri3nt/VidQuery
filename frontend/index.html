@@ -113,6 +113,9 @@
                 <option value="timestamp">timestamp</option>
                 <option value="ambiguous">ambiguous</option>
                 <option value="action_relation">action / relation</option>
+                <option value="speech">speech (spoken words)</option>
+                <option value="ocr">on-screen text</option>
+                <option value="object">object</option>
                 <option value="negative">negative (does not happen)</option>
               </select></label>
               <label>ID <input id="ann-id" pattern="[A-Za-z0-9_.\-]{1,64}" required /></label>
@@ -135,6 +138,7 @@
             <div class="annotation-row">
               <label>Tolerance (s) <input id="ann-tolerance" type="number" min="0.5" max="10" step="0.5" value="2" /></label>
               <label>Annotator <input id="ann-annotator" maxlength="32" placeholder="initials" /></label>
+              <label>Verified by <input id="ann-verified-by" maxlength="32" placeholder="second annotator" /></label>
             </div>
             <label>Notes <input id="ann-notes" maxlength="1000" placeholder="What makes this query hard or ambiguous?" /></label>
             <div class="annotation-row">
