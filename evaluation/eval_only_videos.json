@@ -1,0 +1,22 @@
+{
+  "schema_version": "eval-only-registry-v1",
+  "description": "Videos reserved for evaluation or calibration. No training split, expansion run, or checkpoint may use them for weight training. The calibration videos may serve only as model-selection validation, as they already did for the AVA80 v5 checkpoint.",
+  "groups": {
+    "ava_holdout_v1_calibration": {
+      "purpose": "reliability calibration (and existing GNN validation)",
+      "dataset": "AVA v2.2",
+      "video_ids": ["0f39OWEqJ24", "9mLYmkonWZQ", "covMYDBa5dk"]
+    },
+    "ava_holdout_v1_test": {
+      "purpose": "held-out test of the 2026-10-25 benchmark; its parser failures were inspected, so it is no longer untouched for parser evaluation",
+      "dataset": "AVA v2.2",
+      "video_ids": ["hbYvDvJrpNk", "t0V4drbYDnc", "zR725veL-DI"]
+    },
+    "ava_holdout_v2_test": {
+      "purpose": "untouched held-out test for the final comparison; queries use pre-registered PHRASES_V2",
+      "dataset": "AVA v2.2 (official validation videos)",
+      "selection_rule": "official AVA v2.2 val videos not in any split, expansion-completed set, existing benchmark, or local media; ordered by sha256(video_id); first three",
+      "video_ids": ["2PpxiG0WU18", "NO2esmws190", "uNT6HrrnqPU"]
+    }
+  }
+}

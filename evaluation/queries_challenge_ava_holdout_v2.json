@@ -1,0 +1,4317 @@
+{
+  "schema_version": "challenge-1.0",
+  "description": "Model-only action benchmark on held-out AVA v2.2 windows. Ground truth from official AVA annotations; indexes built from raw media by the full pipeline.",
+  "builder": "ava-holdout-benchmark-v1",
+  "phrase_set": "v2",
+  "created_at": "2026-10-25T11:48:04.782022+00:00",
+  "window": {
+    "source_start_seconds": 900,
+    "duration_seconds": 900
+  },
+  "selection_rules": {
+    "positives_per_video": 15,
+    "negatives_per_video": 5,
+    "max_keyframe_coverage_for_positive": 0.25,
+    "min_keyframes_for_positive": 3,
+    "negative_order": "global AVA frequency, descending, synonyms of present labels excluded"
+  },
+  "annotation_sources": {
+    "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+    "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+  },
+  "training_overlap_audit": {
+    "data/app/models/ava80_scaling/30/ablations/ava80-gat-v5-scale30-roi-frame.metadata.json": {
+      "training_videos": 24,
+      "overlap_with_benchmark": []
+    },
+    "data/app/models/ava80_final/ava80-gat-v6-scale37-roi-frame-rare.metadata.json": {
+      "training_videos": 31,
+      "overlap_with_benchmark": []
+    }
+  },
+  "limitations": [
+    "Movie footage, not lectures or classrooms; speech, OCR, and ambiguity are not covered.",
+    "AVA caps object/person interactions at three per person, so negatives are near-exhaustive.",
+    "Query wording is fixed per label and was written by the benchmark author, not examiners."
+  ],
+  "coverage": {
+    "ava_2PpxiG0WU18_w900": {
+      "annotated_keyframes": 734,
+      "labels_present": 26,
+      "positive_candidates": 15,
+      "excluded_as_ubiquitous": [
+        "listen to",
+        "sit",
+        "stand",
+        "talk to",
+        "watch person"
+      ],
+      "positive_labels": [
+        "walk",
+        "ride",
+        "drive",
+        "carry/hold",
+        "kiss",
+        "touch object",
+        "hug",
+        "grab person",
+        "close",
+        "run/jog",
+        "bend/bow",
+        "lie/sleep",
+        "open",
+        "dress/put on clothing",
+        "give/serve"
+      ],
+      "negative_labels": [
+        "answer phone",
+        "smoke",
+        "eat",
+        "crouch/kneel",
+        "read"
+      ]
+    },
+    "ava_NO2esmws190_w900": {
+      "annotated_keyframes": 834,
+      "labels_present": 31,
+      "positive_candidates": 11,
+      "excluded_as_ubiquitous": [
+        "carry/hold",
+        "listen to",
+        "stand",
+        "talk to",
+        "walk",
+        "watch person"
+      ],
+      "positive_labels": [
+        "sit",
+        "touch object",
+        "lie/sleep",
+        "bend/bow",
+        "grab person",
+        "run/jog",
+        "hug",
+        "crouch/kneel",
+        "dance",
+        "give/serve",
+        "push person"
+      ],
+      "negative_labels": [
+        "ride",
+        "answer phone",
+        "smoke",
+        "eat",
+        "drink"
+      ]
+    },
+    "ava_uNT6HrrnqPU_w900": {
+      "annotated_keyframes": 787,
+      "labels_present": 41,
+      "positive_candidates": 25,
+      "excluded_as_ubiquitous": [
+        "carry/hold",
+        "listen to",
+        "sit",
+        "stand",
+        "talk to",
+        "walk",
+        "watch person"
+      ],
+      "positive_labels": [
+        "dance",
+        "hand clap",
+        "ride",
+        "grab person",
+        "run/jog",
+        "touch object",
+        "lie/sleep",
+        "drink",
+        "play musical instrument",
+        "kiss",
+        "bend/bow",
+        "eat",
+        "listen",
+        "crouch/kneel",
+        "fishing"
+      ],
+      "negative_labels": [
+        "answer phone",
+        "read",
+        "fight/hit person",
+        "martial art",
+        "open"
+      ]
+    }
+  },
+  "videos": {
+    "ava_2PpxiG0WU18_w900": {
+      "split": "test"
+    },
+    "ava_NO2esmws190_w900": {
+      "split": "test"
+    },
+    "ava_uNT6HrrnqPU_w900": {
+      "split": "test"
+    }
+  },
+  "queries": [
+    {
+      "id": "ava-2PpxiG0WU18-a14",
+      "query": "people walking around",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 31.0,
+          "start_time": 29.5,
+          "end_time": 32.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 34.5,
+          "start_time": 33.5,
+          "end_time": 35.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 50.5,
+          "start_time": 49.5,
+          "end_time": 51.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 322.5,
+          "start_time": 318.5,
+          "end_time": 326.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 331.0,
+          "start_time": 329.5,
+          "end_time": 332.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 337.0,
+          "start_time": 333.5,
+          "end_time": 340.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 345.5,
+          "start_time": 341.5,
+          "end_time": 349.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 370.0,
+          "start_time": 369.5,
+          "end_time": 370.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 415.0,
+          "start_time": 414.5,
+          "end_time": 415.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 517.0,
+          "start_time": 516.5,
+          "end_time": 517.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 531.0,
+          "start_time": 522.5,
+          "end_time": 539.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 546.5,
+          "start_time": 543.5,
+          "end_time": 549.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 571.0,
+          "start_time": 570.5,
+          "end_time": 571.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 643.5,
+          "start_time": 641.5,
+          "end_time": 645.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 694.0,
+          "start_time": 693.5,
+          "end_time": 694.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 696.5,
+          "start_time": 695.5,
+          "end_time": 697.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 709.0,
+          "start_time": 707.5,
+          "end_time": 710.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 726.0,
+          "start_time": 723.5,
+          "end_time": 728.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 740.0,
+          "start_time": 738.5,
+          "end_time": 741.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 743.0,
+          "start_time": 742.5,
+          "end_time": 743.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 754.0,
+          "start_time": 751.5,
+          "end_time": 756.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 761.5,
+          "start_time": 758.5,
+          "end_time": 764.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 768.5,
+          "start_time": 765.5,
+          "end_time": 771.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 793.0,
+          "start_time": 791.5,
+          "end_time": 794.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 814.5,
+          "start_time": 812.5,
+          "end_time": 816.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 819.5,
+          "start_time": 818.5,
+          "end_time": 820.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 824.0,
+          "start_time": 822.5,
+          "end_time": 825.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 831.0,
+          "start_time": 830.5,
+          "end_time": 831.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 835.0,
+          "start_time": 834.5,
+          "end_time": 835.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 862.0,
+          "start_time": 860.5,
+          "end_time": 863.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 897.0,
+          "start_time": 896.5,
+          "end_time": 897.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 14 'walk' on 114/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a49",
+      "query": "someone riding a bike",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 59.0,
+          "start_time": 52.5,
+          "end_time": 65.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 70.5,
+          "start_time": 68.5,
+          "end_time": 72.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 80.0,
+          "start_time": 77.5,
+          "end_time": 82.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 85.5,
+          "start_time": 84.5,
+          "end_time": 86.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 91.0,
+          "start_time": 88.5,
+          "end_time": 93.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 100.5,
+          "start_time": 97.5,
+          "end_time": 103.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 108.0,
+          "start_time": 107.5,
+          "end_time": 108.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 111.0,
+          "start_time": 110.5,
+          "end_time": 111.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 114.0,
+          "start_time": 113.5,
+          "end_time": 114.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 117.0,
+          "start_time": 115.5,
+          "end_time": 118.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 125.5,
+          "start_time": 120.5,
+          "end_time": 130.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 135.5,
+          "start_time": 133.5,
+          "end_time": 137.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 141.0,
+          "start_time": 140.5,
+          "end_time": 141.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 143.0,
+          "start_time": 142.5,
+          "end_time": 143.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 147.0,
+          "start_time": 146.5,
+          "end_time": 147.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 149.5,
+          "start_time": 148.5,
+          "end_time": 150.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 156.0,
+          "start_time": 155.5,
+          "end_time": 156.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 167.5,
+          "start_time": 166.5,
+          "end_time": 168.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 170.5,
+          "start_time": 169.5,
+          "end_time": 171.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 186.0,
+          "start_time": 185.5,
+          "end_time": 186.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 197.0,
+          "start_time": 196.5,
+          "end_time": 197.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 203.0,
+          "start_time": 202.5,
+          "end_time": 203.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 207.0,
+          "start_time": 206.5,
+          "end_time": 207.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 225.5,
+          "start_time": 224.5,
+          "end_time": 226.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 231.0,
+          "start_time": 230.5,
+          "end_time": 231.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 234.0,
+          "start_time": 233.5,
+          "end_time": 234.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 251.5,
+          "start_time": 250.5,
+          "end_time": 252.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 256.0,
+          "start_time": 255.5,
+          "end_time": 256.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 264.0,
+          "start_time": 263.5,
+          "end_time": 264.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 273.0,
+          "start_time": 272.5,
+          "end_time": 273.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 275.0,
+          "start_time": 274.5,
+          "end_time": 275.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 279.0,
+          "start_time": 278.5,
+          "end_time": 279.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 289.0,
+          "start_time": 288.5,
+          "end_time": 289.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 293.0,
+          "start_time": 292.5,
+          "end_time": 293.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 297.0,
+          "start_time": 296.5,
+          "end_time": 297.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 301.0,
+          "start_time": 298.5,
+          "end_time": 303.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 365.5,
+          "start_time": 364.5,
+          "end_time": 366.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 431.0,
+          "start_time": 430.5,
+          "end_time": 431.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 434.0,
+          "start_time": 432.5,
+          "end_time": 435.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 442.0,
+          "start_time": 440.5,
+          "end_time": 443.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 445.0,
+          "start_time": 444.5,
+          "end_time": 445.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 448.0,
+          "start_time": 447.5,
+          "end_time": 448.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 450.5,
+          "start_time": 449.5,
+          "end_time": 451.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 454.0,
+          "start_time": 453.5,
+          "end_time": 454.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 477.5,
+          "start_time": 476.5,
+          "end_time": 478.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 482.0,
+          "start_time": 479.5,
+          "end_time": 484.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 496.5,
+          "start_time": 494.5,
+          "end_time": 498.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 49 'ride' on 113/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a28",
+      "query": "a person driving a car",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 54.0,
+          "start_time": 52.5,
+          "end_time": 55.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 57.0,
+          "start_time": 56.5,
+          "end_time": 57.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 67.0,
+          "start_time": 65.5,
+          "end_time": 68.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 74.0,
+          "start_time": 73.5,
+          "end_time": 74.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 80.5,
+          "start_time": 75.5,
+          "end_time": 85.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 95.5,
+          "start_time": 93.5,
+          "end_time": 97.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 102.0,
+          "start_time": 101.5,
+          "end_time": 102.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 104.0,
+          "start_time": 103.5,
+          "end_time": 104.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 107.0,
+          "start_time": 106.5,
+          "end_time": 107.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 111.5,
+          "start_time": 108.5,
+          "end_time": 114.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 118.0,
+          "start_time": 115.5,
+          "end_time": 120.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 125.0,
+          "start_time": 123.5,
+          "end_time": 126.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 131.0,
+          "start_time": 130.5,
+          "end_time": 131.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 135.5,
+          "start_time": 133.5,
+          "end_time": 137.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 145.5,
+          "start_time": 144.5,
+          "end_time": 146.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 151.5,
+          "start_time": 149.5,
+          "end_time": 153.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 194.0,
+          "start_time": 193.5,
+          "end_time": 194.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 197.0,
+          "start_time": 196.5,
+          "end_time": 197.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 217.0,
+          "start_time": 216.5,
+          "end_time": 217.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 225.0,
+          "start_time": 224.5,
+          "end_time": 225.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 227.0,
+          "start_time": 226.5,
+          "end_time": 227.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 253.0,
+          "start_time": 252.5,
+          "end_time": 253.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 255.0,
+          "start_time": 254.5,
+          "end_time": 255.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 281.0,
+          "start_time": 280.5,
+          "end_time": 281.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 287.0,
+          "start_time": 286.5,
+          "end_time": 287.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 290.5,
+          "start_time": 289.5,
+          "end_time": 291.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 301.0,
+          "start_time": 299.5,
+          "end_time": 302.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 351.0,
+          "start_time": 350.5,
+          "end_time": 351.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 430.0,
+          "start_time": 428.5,
+          "end_time": 431.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 434.0,
+          "start_time": 433.5,
+          "end_time": 434.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 437.0,
+          "start_time": 436.5,
+          "end_time": 437.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 439.0,
+          "start_time": 438.5,
+          "end_time": 439.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 448.0,
+          "start_time": 446.5,
+          "end_time": 449.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 451.5,
+          "start_time": 450.5,
+          "end_time": 452.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 454.0,
+          "start_time": 453.5,
+          "end_time": 454.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 456.5,
+          "start_time": 455.5,
+          "end_time": 457.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 476.5,
+          "start_time": 475.5,
+          "end_time": 477.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 481.5,
+          "start_time": 478.5,
+          "end_time": 484.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 495.0,
+          "start_time": 494.5,
+          "end_time": 495.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 497.0,
+          "start_time": 496.5,
+          "end_time": 497.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 28 'drive' on 89/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a17",
+      "query": "a person carrying an object",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 7.0,
+          "start_time": 5.5,
+          "end_time": 8.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 17.0,
+          "start_time": 14.5,
+          "end_time": 19.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 32.0,
+          "start_time": 30.5,
+          "end_time": 33.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 36.5,
+          "start_time": 35.5,
+          "end_time": 37.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 50.0,
+          "start_time": 49.5,
+          "end_time": 50.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 52.0,
+          "start_time": 51.5,
+          "end_time": 52.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 92.5,
+          "start_time": 91.5,
+          "end_time": 93.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 98.0,
+          "start_time": 97.5,
+          "end_time": 98.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 104.0,
+          "start_time": 103.5,
+          "end_time": 104.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 113.0,
+          "start_time": 112.5,
+          "end_time": 113.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 228.0,
+          "start_time": 226.5,
+          "end_time": 229.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 293.0,
+          "start_time": 291.5,
+          "end_time": 294.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 306.0,
+          "start_time": 305.5,
+          "end_time": 306.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 324.0,
+          "start_time": 323.5,
+          "end_time": 324.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 345.0,
+          "start_time": 342.5,
+          "end_time": 347.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 355.0,
+          "start_time": 354.5,
+          "end_time": 355.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 359.0,
+          "start_time": 358.5,
+          "end_time": 359.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 516.0,
+          "start_time": 515.5,
+          "end_time": 516.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 698.0,
+          "start_time": 696.5,
+          "end_time": 699.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 762.0,
+          "start_time": 760.5,
+          "end_time": 763.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 766.5,
+          "start_time": 765.5,
+          "end_time": 767.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 798.0,
+          "start_time": 797.5,
+          "end_time": 798.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 837.0,
+          "start_time": 836.5,
+          "end_time": 837.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 17 'carry/hold' on 46/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a72",
+      "query": "a couple kissing",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 234.0,
+          "start_time": 232.5,
+          "end_time": 235.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 243.5,
+          "start_time": 237.5,
+          "end_time": 249.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 663.5,
+          "start_time": 662.5,
+          "end_time": 664.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 670.5,
+          "start_time": 669.5,
+          "end_time": 671.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 777.0,
+          "start_time": 774.5,
+          "end_time": 779.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 72 'kiss' on 24/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a59",
+      "query": "a person touches something",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 6.0,
+          "start_time": 5.5,
+          "end_time": 6.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 11.5,
+          "start_time": 10.5,
+          "end_time": 12.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 698.0,
+          "start_time": 697.5,
+          "end_time": 698.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 747.0,
+          "start_time": 746.5,
+          "end_time": 747.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 800.0,
+          "start_time": 799.5,
+          "end_time": 800.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 833.0,
+          "start_time": 832.5,
+          "end_time": 833.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 840.0,
+          "start_time": 839.5,
+          "end_time": 840.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 842.5,
+          "start_time": 841.5,
+          "end_time": 843.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 879.0,
+          "start_time": 878.5,
+          "end_time": 879.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 886.0,
+          "start_time": 883.5,
+          "end_time": 888.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 896.0,
+          "start_time": 893.5,
+          "end_time": 898.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 59 'touch object' on 21/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a70",
+      "query": "two people embrace",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 654.5,
+          "start_time": 653.5,
+          "end_time": 655.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 657.5,
+          "start_time": 656.5,
+          "end_time": 658.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 664.0,
+          "start_time": 663.5,
+          "end_time": 664.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 670.5,
+          "start_time": 669.5,
+          "end_time": 671.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 674.0,
+          "start_time": 672.5,
+          "end_time": 675.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 677.0,
+          "start_time": 676.5,
+          "end_time": 677.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 679.0,
+          "start_time": 678.5,
+          "end_time": 679.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 683.5,
+          "start_time": 681.5,
+          "end_time": 685.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 688.0,
+          "start_time": 687.5,
+          "end_time": 688.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 691.5,
+          "start_time": 690.5,
+          "end_time": 692.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 775.0,
+          "start_time": 774.5,
+          "end_time": 775.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 70 'hug' on 20/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a66",
+      "query": "someone grabs a person",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 30.0,
+          "start_time": 29.5,
+          "end_time": 30.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 36.0,
+          "start_time": 35.5,
+          "end_time": 36.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 46.0,
+          "start_time": 45.5,
+          "end_time": 46.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 50.0,
+          "start_time": 49.5,
+          "end_time": 50.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 246.0,
+          "start_time": 245.5,
+          "end_time": 246.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 651.5,
+          "start_time": 650.5,
+          "end_time": 652.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 655.0,
+          "start_time": 654.5,
+          "end_time": 655.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 681.0,
+          "start_time": 680.5,
+          "end_time": 681.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 688.0,
+          "start_time": 687.5,
+          "end_time": 688.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 690.0,
+          "start_time": 689.5,
+          "end_time": 690.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 771.0,
+          "start_time": 769.5,
+          "end_time": 772.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 775.0,
+          "start_time": 774.5,
+          "end_time": 775.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 781.0,
+          "start_time": 780.5,
+          "end_time": 781.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 66 'grab person' on 16/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a22",
+      "query": "a person shuts the door",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 518.0,
+          "start_time": 517.5,
+          "end_time": 518.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 698.5,
+          "start_time": 696.5,
+          "end_time": 700.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 746.5,
+          "start_time": 744.5,
+          "end_time": 748.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 793.5,
+          "start_time": 792.5,
+          "end_time": 794.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 839.5,
+          "start_time": 837.5,
+          "end_time": 841.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 22 'close' on 15/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a10",
+      "query": "someone jogging",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 371.5,
+          "start_time": 370.5,
+          "end_time": 372.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 374.0,
+          "start_time": 373.5,
+          "end_time": 374.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 377.5,
+          "start_time": 375.5,
+          "end_time": 379.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 419.0,
+          "start_time": 416.5,
+          "end_time": 421.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 516.0,
+          "start_time": 515.5,
+          "end_time": 516.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 10 'run/jog' on 13/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a01",
+      "query": "a person bowing",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 26.0,
+          "start_time": 25.5,
+          "end_time": 26.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 32.0,
+          "start_time": 31.5,
+          "end_time": 32.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 867.0,
+          "start_time": 865.5,
+          "end_time": 868.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 871.0,
+          "start_time": 870.5,
+          "end_time": 871.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 875.0,
+          "start_time": 874.5,
+          "end_time": 875.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 879.0,
+          "start_time": 876.5,
+          "end_time": 881.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 1 'bend/bow' on 12/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a08",
+      "query": "someone sleeping",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 804.0,
+          "start_time": 801.5,
+          "end_time": 806.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 882.5,
+          "start_time": 881.5,
+          "end_time": 883.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 891.5,
+          "start_time": 889.5,
+          "end_time": 893.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 8 'lie/sleep' on 11/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a38",
+      "query": "a person opens a door",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 423.0,
+          "start_time": 422.5,
+          "end_time": 423.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 743.5,
+          "start_time": 742.5,
+          "end_time": 744.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 766.5,
+          "start_time": 765.5,
+          "end_time": 767.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 834.5,
+          "start_time": 833.5,
+          "end_time": 835.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 38 'open' on 7/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a26",
+      "query": "a person getting dressed",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 32.0,
+          "start_time": 30.5,
+          "end_time": 33.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 36.0,
+          "start_time": 35.5,
+          "end_time": 36.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 26 'dress/put on clothing' on 4/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-a65",
+      "query": "a person gives an object to someone",
+      "category": "action_relation",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 76.0,
+          "start_time": 75.5,
+          "end_time": 76.5
+        },
+        {
+          "source_video_id": "ava_2PpxiG0WU18_w900",
+          "peak_time": 228.0,
+          "start_time": 226.5,
+          "end_time": 229.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 65 'give/serve' on 4/734 keyframes"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-n15",
+      "query": "a person on a phone call",
+      "category": "negative",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 15 'answer phone' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-n54",
+      "query": "someone smoking a cigarette",
+      "category": "negative",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 54 'smoke' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-n29",
+      "query": "someone eats food",
+      "category": "negative",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 29 'eat' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-n03",
+      "query": "a person crouching",
+      "category": "negative",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 3 'crouch/kneel' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-2PpxiG0WU18-n48",
+      "query": "a person reading a book",
+      "category": "negative",
+      "source_video_id": "ava_2PpxiG0WU18_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 48 'read' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-NO2esmws190-a11",
+      "query": "people seated",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 6.5,
+          "start_time": 1.5,
+          "end_time": 11.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 23.0,
+          "start_time": 21.5,
+          "end_time": 24.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 31.5,
+          "start_time": 27.5,
+          "end_time": 35.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 100.5,
+          "start_time": 99.5,
+          "end_time": 101.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 104.0,
+          "start_time": 102.5,
+          "end_time": 105.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 372.0,
+          "start_time": 371.5,
+          "end_time": 372.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 474.5,
+          "start_time": 472.5,
+          "end_time": 476.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 568.5,
+          "start_time": 567.5,
+          "end_time": 569.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 573.0,
+          "start_time": 572.5,
+          "end_time": 573.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 577.0,
+          "start_time": 576.5,
+          "end_time": 577.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 580.0,
+          "start_time": 578.5,
+          "end_time": 581.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 587.5,
+          "start_time": 586.5,
+          "end_time": 588.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 590.0,
+          "start_time": 589.5,
+          "end_time": 590.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 593.5,
+          "start_time": 592.5,
+          "end_time": 594.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 601.0,
+          "start_time": 597.5,
+          "end_time": 604.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 609.0,
+          "start_time": 607.5,
+          "end_time": 610.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 625.0,
+          "start_time": 624.5,
+          "end_time": 625.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 628.0,
+          "start_time": 627.5,
+          "end_time": 628.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 634.5,
+          "start_time": 633.5,
+          "end_time": 635.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 642.0,
+          "start_time": 640.5,
+          "end_time": 643.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 655.0,
+          "start_time": 654.5,
+          "end_time": 655.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 662.0,
+          "start_time": 661.5,
+          "end_time": 662.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 671.0,
+          "start_time": 669.5,
+          "end_time": 672.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 678.0,
+          "start_time": 676.5,
+          "end_time": 679.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 683.5,
+          "start_time": 682.5,
+          "end_time": 684.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 701.0,
+          "start_time": 688.5,
+          "end_time": 713.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 715.5,
+          "start_time": 714.5,
+          "end_time": 716.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 722.0,
+          "start_time": 720.5,
+          "end_time": 723.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 729.5,
+          "start_time": 726.5,
+          "end_time": 732.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 743.5,
+          "start_time": 734.5,
+          "end_time": 752.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 757.0,
+          "start_time": 753.5,
+          "end_time": 760.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 769.0,
+          "start_time": 767.5,
+          "end_time": 770.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 787.5,
+          "start_time": 786.5,
+          "end_time": 788.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 795.5,
+          "start_time": 793.5,
+          "end_time": 797.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 811.5,
+          "start_time": 810.5,
+          "end_time": 812.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 824.0,
+          "start_time": 823.5,
+          "end_time": 824.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 827.0,
+          "start_time": 826.5,
+          "end_time": 827.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 829.5,
+          "start_time": 828.5,
+          "end_time": 830.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 833.0,
+          "start_time": 832.5,
+          "end_time": 833.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 836.0,
+          "start_time": 834.5,
+          "end_time": 837.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 855.5,
+          "start_time": 854.5,
+          "end_time": 856.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 863.0,
+          "start_time": 862.5,
+          "end_time": 863.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 874.0,
+          "start_time": 864.5,
+          "end_time": 883.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 889.5,
+          "start_time": 886.5,
+          "end_time": 892.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 11 'sit' on 178/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a59",
+      "query": "a person touches something",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 42.0,
+          "start_time": 41.5,
+          "end_time": 42.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 57.0,
+          "start_time": 56.5,
+          "end_time": 57.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 70.5,
+          "start_time": 69.5,
+          "end_time": 71.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 101.0,
+          "start_time": 100.5,
+          "end_time": 101.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 115.0,
+          "start_time": 114.5,
+          "end_time": 115.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 195.5,
+          "start_time": 194.5,
+          "end_time": 196.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 375.5,
+          "start_time": 374.5,
+          "end_time": 376.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 382.5,
+          "start_time": 381.5,
+          "end_time": 383.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 476.0,
+          "start_time": 475.5,
+          "end_time": 476.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 479.5,
+          "start_time": 478.5,
+          "end_time": 480.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 482.0,
+          "start_time": 481.5,
+          "end_time": 482.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 533.5,
+          "start_time": 526.5,
+          "end_time": 540.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 568.5,
+          "start_time": 567.5,
+          "end_time": 569.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 634.0,
+          "start_time": 633.5,
+          "end_time": 634.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 643.0,
+          "start_time": 642.5,
+          "end_time": 643.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 650.0,
+          "start_time": 648.5,
+          "end_time": 651.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 670.0,
+          "start_time": 669.5,
+          "end_time": 670.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 677.0,
+          "start_time": 676.5,
+          "end_time": 677.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 684.0,
+          "start_time": 683.5,
+          "end_time": 684.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 696.0,
+          "start_time": 695.5,
+          "end_time": 696.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 701.5,
+          "start_time": 700.5,
+          "end_time": 702.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 709.5,
+          "start_time": 708.5,
+          "end_time": 710.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 754.0,
+          "start_time": 752.5,
+          "end_time": 755.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 787.5,
+          "start_time": 786.5,
+          "end_time": 788.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 835.5,
+          "start_time": 834.5,
+          "end_time": 836.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 879.0,
+          "start_time": 878.5,
+          "end_time": 879.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 59 'touch object' on 53/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a08",
+      "query": "someone sleeping",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 170.5,
+          "start_time": 169.5,
+          "end_time": 171.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 190.0,
+          "start_time": 189.5,
+          "end_time": 190.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 193.0,
+          "start_time": 192.5,
+          "end_time": 193.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 469.0,
+          "start_time": 467.5,
+          "end_time": 470.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 626.0,
+          "start_time": 623.5,
+          "end_time": 628.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 634.5,
+          "start_time": 633.5,
+          "end_time": 635.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 642.0,
+          "start_time": 640.5,
+          "end_time": 643.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 650.5,
+          "start_time": 648.5,
+          "end_time": 652.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 656.0,
+          "start_time": 655.5,
+          "end_time": 656.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 666.0,
+          "start_time": 659.5,
+          "end_time": 672.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 678.0,
+          "start_time": 676.5,
+          "end_time": 679.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 683.5,
+          "start_time": 682.5,
+          "end_time": 684.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 8 'lie/sleep' on 40/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a01",
+      "query": "a person bowing",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 49.0,
+          "start_time": 48.5,
+          "end_time": 49.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 51.0,
+          "start_time": 50.5,
+          "end_time": 51.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 66.0,
+          "start_time": 65.5,
+          "end_time": 66.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 105.0,
+          "start_time": 104.5,
+          "end_time": 105.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 113.0,
+          "start_time": 112.5,
+          "end_time": 113.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 126.0,
+          "start_time": 125.5,
+          "end_time": 126.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 181.0,
+          "start_time": 180.5,
+          "end_time": 181.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 195.5,
+          "start_time": 194.5,
+          "end_time": 196.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 199.0,
+          "start_time": 198.5,
+          "end_time": 199.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 350.0,
+          "start_time": 348.5,
+          "end_time": 351.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 375.0,
+          "start_time": 374.5,
+          "end_time": 375.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 380.0,
+          "start_time": 379.5,
+          "end_time": 380.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 382.5,
+          "start_time": 381.5,
+          "end_time": 383.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 569.0,
+          "start_time": 568.5,
+          "end_time": 569.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 695.0,
+          "start_time": 692.5,
+          "end_time": 697.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 700.0,
+          "start_time": 699.5,
+          "end_time": 700.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 704.5,
+          "start_time": 702.5,
+          "end_time": 706.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 744.0,
+          "start_time": 742.5,
+          "end_time": 745.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 748.0,
+          "start_time": 747.5,
+          "end_time": 748.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 810.0,
+          "start_time": 809.5,
+          "end_time": 810.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 835.5,
+          "start_time": 834.5,
+          "end_time": 836.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 893.0,
+          "start_time": 892.5,
+          "end_time": 893.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 1 'bend/bow' on 36/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a66",
+      "query": "someone grabs a person",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 66.0,
+          "start_time": 65.5,
+          "end_time": 66.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 84.5,
+          "start_time": 83.5,
+          "end_time": 85.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 88.0,
+          "start_time": 87.5,
+          "end_time": 88.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 107.0,
+          "start_time": 106.5,
+          "end_time": 107.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 199.0,
+          "start_time": 198.5,
+          "end_time": 199.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 284.0,
+          "start_time": 283.5,
+          "end_time": 284.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 335.0,
+          "start_time": 334.5,
+          "end_time": 335.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 353.0,
+          "start_time": 352.5,
+          "end_time": 353.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 393.5,
+          "start_time": 392.5,
+          "end_time": 394.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 410.5,
+          "start_time": 409.5,
+          "end_time": 411.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 416.0,
+          "start_time": 415.5,
+          "end_time": 416.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 459.0,
+          "start_time": 458.5,
+          "end_time": 459.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 461.0,
+          "start_time": 460.5,
+          "end_time": 461.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 786.0,
+          "start_time": 785.5,
+          "end_time": 786.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 789.0,
+          "start_time": 788.5,
+          "end_time": 789.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 812.0,
+          "start_time": 811.5,
+          "end_time": 812.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 851.0,
+          "start_time": 850.5,
+          "end_time": 851.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 862.5,
+          "start_time": 859.5,
+          "end_time": 865.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 66 'grab person' on 26/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a10",
+      "query": "someone jogging",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 52.0,
+          "start_time": 48.5,
+          "end_time": 55.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 58.5,
+          "start_time": 57.5,
+          "end_time": 59.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 62.5,
+          "start_time": 61.5,
+          "end_time": 63.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 73.0,
+          "start_time": 72.5,
+          "end_time": 73.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 88.5,
+          "start_time": 86.5,
+          "end_time": 90.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 93.5,
+          "start_time": 91.5,
+          "end_time": 95.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 459.0,
+          "start_time": 458.5,
+          "end_time": 459.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 661.0,
+          "start_time": 660.5,
+          "end_time": 661.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 784.0,
+          "start_time": 783.5,
+          "end_time": 784.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 10 'run/jog' on 23/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a70",
+      "query": "two people embrace",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 244.0,
+          "start_time": 242.5,
+          "end_time": 245.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 248.0,
+          "start_time": 246.5,
+          "end_time": 249.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 401.5,
+          "start_time": 399.5,
+          "end_time": 403.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 405.0,
+          "start_time": 404.5,
+          "end_time": 405.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 412.0,
+          "start_time": 411.5,
+          "end_time": 412.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 424.0,
+          "start_time": 423.5,
+          "end_time": 424.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 427.0,
+          "start_time": 426.5,
+          "end_time": 427.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 443.0,
+          "start_time": 441.5,
+          "end_time": 444.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 449.5,
+          "start_time": 447.5,
+          "end_time": 451.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 70 'hug' on 21/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a03",
+      "query": "a person crouching",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 98.5,
+          "start_time": 97.5,
+          "end_time": 99.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 702.0,
+          "start_time": 701.5,
+          "end_time": 702.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 792.0,
+          "start_time": 790.5,
+          "end_time": 793.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 799.5,
+          "start_time": 797.5,
+          "end_time": 801.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 804.5,
+          "start_time": 803.5,
+          "end_time": 805.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 810.0,
+          "start_time": 809.5,
+          "end_time": 810.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 3 'crouch/kneel' on 13/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a04",
+      "query": "someone dancing",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 639.5,
+          "start_time": 638.5,
+          "end_time": 640.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 647.5,
+          "start_time": 646.5,
+          "end_time": 648.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 657.0,
+          "start_time": 656.5,
+          "end_time": 657.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 660.0,
+          "start_time": 659.5,
+          "end_time": 660.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 4 'dance' on 6/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a65",
+      "query": "a person gives an object to someone",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 207.0,
+          "start_time": 206.5,
+          "end_time": 207.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 692.0,
+          "start_time": 691.5,
+          "end_time": 692.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 695.0,
+          "start_time": 694.5,
+          "end_time": 695.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 705.0,
+          "start_time": 704.5,
+          "end_time": 705.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 65 'give/serve' on 4/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-a76",
+      "query": "someone shoves another person",
+      "category": "action_relation",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 69.0,
+          "start_time": 68.5,
+          "end_time": 69.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 85.0,
+          "start_time": 84.5,
+          "end_time": 85.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 112.0,
+          "start_time": 111.5,
+          "end_time": 112.5
+        },
+        {
+          "source_video_id": "ava_NO2esmws190_w900",
+          "peak_time": 789.0,
+          "start_time": 788.5,
+          "end_time": 789.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 76 'push person' on 4/834 keyframes"
+    },
+    {
+      "id": "ava-NO2esmws190-n49",
+      "query": "someone riding a bike",
+      "category": "negative",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 49 'ride' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-NO2esmws190-n15",
+      "query": "a person on a phone call",
+      "category": "negative",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 15 'answer phone' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-NO2esmws190-n54",
+      "query": "someone smoking a cigarette",
+      "category": "negative",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 54 'smoke' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-NO2esmws190-n29",
+      "query": "someone eats food",
+      "category": "negative",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 29 'eat' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-NO2esmws190-n27",
+      "query": "someone takes a drink",
+      "category": "negative",
+      "source_video_id": "ava_NO2esmws190_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 27 'drink' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a04",
+      "query": "someone dancing",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 243.0,
+          "start_time": 242.5,
+          "end_time": 243.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 245.0,
+          "start_time": 244.5,
+          "end_time": 245.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 250.0,
+          "start_time": 249.5,
+          "end_time": 250.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 252.0,
+          "start_time": 251.5,
+          "end_time": 252.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 264.0,
+          "start_time": 263.5,
+          "end_time": 264.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 266.5,
+          "start_time": 265.5,
+          "end_time": 267.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 508.0,
+          "start_time": 506.5,
+          "end_time": 509.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 511.5,
+          "start_time": 510.5,
+          "end_time": 512.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 514.5,
+          "start_time": 513.5,
+          "end_time": 515.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 518.0,
+          "start_time": 516.5,
+          "end_time": 519.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 525.0,
+          "start_time": 524.5,
+          "end_time": 525.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 540.5,
+          "start_time": 539.5,
+          "end_time": 541.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 547.5,
+          "start_time": 542.5,
+          "end_time": 552.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 560.5,
+          "start_time": 557.5,
+          "end_time": 563.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 572.0,
+          "start_time": 571.5,
+          "end_time": 572.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 602.5,
+          "start_time": 597.5,
+          "end_time": 607.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 614.0,
+          "start_time": 611.5,
+          "end_time": 616.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 619.5,
+          "start_time": 617.5,
+          "end_time": 621.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 628.0,
+          "start_time": 626.5,
+          "end_time": 629.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 634.5,
+          "start_time": 630.5,
+          "end_time": 638.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 644.0,
+          "start_time": 641.5,
+          "end_time": 646.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 669.0,
+          "start_time": 668.5,
+          "end_time": 669.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 686.0,
+          "start_time": 682.5,
+          "end_time": 689.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 773.5,
+          "start_time": 772.5,
+          "end_time": 774.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 4 'dance' on 82/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a67",
+      "query": "people applauding",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 505.0,
+          "start_time": 504.5,
+          "end_time": 505.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 513.5,
+          "start_time": 507.5,
+          "end_time": 519.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 522.5,
+          "start_time": 521.5,
+          "end_time": 523.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 534.0,
+          "start_time": 531.5,
+          "end_time": 536.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 540.0,
+          "start_time": 539.5,
+          "end_time": 540.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 548.0,
+          "start_time": 547.5,
+          "end_time": 548.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 555.0,
+          "start_time": 552.5,
+          "end_time": 557.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 560.0,
+          "start_time": 559.5,
+          "end_time": 560.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 565.5,
+          "start_time": 561.5,
+          "end_time": 569.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 573.0,
+          "start_time": 572.5,
+          "end_time": 573.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 580.5,
+          "start_time": 578.5,
+          "end_time": 582.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 599.0,
+          "start_time": 598.5,
+          "end_time": 599.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 616.0,
+          "start_time": 614.5,
+          "end_time": 617.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 621.0,
+          "start_time": 620.5,
+          "end_time": 621.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 626.5,
+          "start_time": 625.5,
+          "end_time": 627.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 629.0,
+          "start_time": 628.5,
+          "end_time": 629.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 632.0,
+          "start_time": 631.5,
+          "end_time": 632.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 637.0,
+          "start_time": 635.5,
+          "end_time": 638.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 646.0,
+          "start_time": 644.5,
+          "end_time": 647.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 649.0,
+          "start_time": 648.5,
+          "end_time": 649.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 682.0,
+          "start_time": 676.5,
+          "end_time": 687.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 67 'hand clap' on 68/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a49",
+      "query": "someone riding a bike",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 6.0,
+          "start_time": 5.5,
+          "end_time": 6.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 9.5,
+          "start_time": 7.5,
+          "end_time": 11.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 380.5,
+          "start_time": 379.5,
+          "end_time": 381.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 383.0,
+          "start_time": 382.5,
+          "end_time": 383.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 391.5,
+          "start_time": 384.5,
+          "end_time": 398.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 407.0,
+          "start_time": 402.5,
+          "end_time": 411.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 413.5,
+          "start_time": 412.5,
+          "end_time": 414.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 416.0,
+          "start_time": 415.5,
+          "end_time": 416.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 733.5,
+          "start_time": 732.5,
+          "end_time": 734.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 736.0,
+          "start_time": 735.5,
+          "end_time": 736.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 740.0,
+          "start_time": 739.5,
+          "end_time": 740.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 742.5,
+          "start_time": 741.5,
+          "end_time": 743.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 751.5,
+          "start_time": 750.5,
+          "end_time": 752.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 758.5,
+          "start_time": 756.5,
+          "end_time": 760.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 851.5,
+          "start_time": 850.5,
+          "end_time": 852.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 855.0,
+          "start_time": 854.5,
+          "end_time": 855.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 858.0,
+          "start_time": 857.5,
+          "end_time": 858.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 862.0,
+          "start_time": 860.5,
+          "end_time": 863.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 867.5,
+          "start_time": 865.5,
+          "end_time": 869.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 49 'ride' on 57/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a66",
+      "query": "someone grabs a person",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 162.0,
+          "start_time": 161.5,
+          "end_time": 162.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 307.0,
+          "start_time": 306.5,
+          "end_time": 307.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 309.0,
+          "start_time": 308.5,
+          "end_time": 309.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 321.0,
+          "start_time": 320.5,
+          "end_time": 321.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 326.5,
+          "start_time": 324.5,
+          "end_time": 328.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 330.0,
+          "start_time": 329.5,
+          "end_time": 330.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 420.0,
+          "start_time": 419.5,
+          "end_time": 420.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 425.0,
+          "start_time": 424.5,
+          "end_time": 425.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 433.0,
+          "start_time": 430.5,
+          "end_time": 435.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 437.5,
+          "start_time": 436.5,
+          "end_time": 438.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 505.5,
+          "start_time": 503.5,
+          "end_time": 507.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 515.0,
+          "start_time": 513.5,
+          "end_time": 516.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 538.0,
+          "start_time": 536.5,
+          "end_time": 539.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 591.0,
+          "start_time": 590.5,
+          "end_time": 591.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 604.5,
+          "start_time": 603.5,
+          "end_time": 605.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 618.0,
+          "start_time": 617.5,
+          "end_time": 618.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 621.0,
+          "start_time": 620.5,
+          "end_time": 621.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 629.0,
+          "start_time": 628.5,
+          "end_time": 629.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 634.0,
+          "start_time": 633.5,
+          "end_time": 634.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 652.0,
+          "start_time": 651.5,
+          "end_time": 652.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 655.0,
+          "start_time": 654.5,
+          "end_time": 655.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 712.0,
+          "start_time": 711.5,
+          "end_time": 712.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 714.0,
+          "start_time": 713.5,
+          "end_time": 714.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 801.5,
+          "start_time": 800.5,
+          "end_time": 802.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 814.0,
+          "start_time": 813.5,
+          "end_time": 814.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 819.0,
+          "start_time": 818.5,
+          "end_time": 819.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 823.0,
+          "start_time": 822.5,
+          "end_time": 823.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 830.0,
+          "start_time": 829.5,
+          "end_time": 830.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 66 'grab person' on 45/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a10",
+      "query": "someone jogging",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 205.0,
+          "start_time": 204.5,
+          "end_time": 205.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 418.0,
+          "start_time": 417.5,
+          "end_time": 418.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 423.0,
+          "start_time": 419.5,
+          "end_time": 426.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 454.0,
+          "start_time": 453.5,
+          "end_time": 454.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 456.0,
+          "start_time": 455.5,
+          "end_time": 456.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 483.5,
+          "start_time": 482.5,
+          "end_time": 484.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 503.0,
+          "start_time": 502.5,
+          "end_time": 503.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 525.0,
+          "start_time": 524.5,
+          "end_time": 525.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 539.0,
+          "start_time": 538.5,
+          "end_time": 539.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 591.0,
+          "start_time": 590.5,
+          "end_time": 591.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 597.0,
+          "start_time": 596.5,
+          "end_time": 597.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 665.0,
+          "start_time": 664.5,
+          "end_time": 665.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 748.0,
+          "start_time": 747.5,
+          "end_time": 748.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 750.0,
+          "start_time": 749.5,
+          "end_time": 750.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 755.0,
+          "start_time": 753.5,
+          "end_time": 756.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 770.0,
+          "start_time": 769.5,
+          "end_time": 770.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 772.0,
+          "start_time": 771.5,
+          "end_time": 772.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 785.0,
+          "start_time": 784.5,
+          "end_time": 785.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 845.5,
+          "start_time": 842.5,
+          "end_time": 848.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 850.0,
+          "start_time": 849.5,
+          "end_time": 850.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 10 'run/jog' on 34/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a59",
+      "query": "a person touches something",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 12.5,
+          "start_time": 11.5,
+          "end_time": 13.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 29.5,
+          "start_time": 28.5,
+          "end_time": 30.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 37.0,
+          "start_time": 36.5,
+          "end_time": 37.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 121.0,
+          "start_time": 120.5,
+          "end_time": 121.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 177.0,
+          "start_time": 176.5,
+          "end_time": 177.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 195.0,
+          "start_time": 194.5,
+          "end_time": 195.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 303.0,
+          "start_time": 302.5,
+          "end_time": 303.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 325.0,
+          "start_time": 323.5,
+          "end_time": 326.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 331.5,
+          "start_time": 329.5,
+          "end_time": 333.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 627.0,
+          "start_time": 626.5,
+          "end_time": 627.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 629.0,
+          "start_time": 628.5,
+          "end_time": 629.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 669.0,
+          "start_time": 668.5,
+          "end_time": 669.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 712.0,
+          "start_time": 710.5,
+          "end_time": 713.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 59 'touch object' on 22/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a08",
+      "query": "someone sleeping",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 297.0,
+          "start_time": 292.5,
+          "end_time": 301.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 319.0,
+          "start_time": 317.5,
+          "end_time": 320.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 340.0,
+          "start_time": 339.5,
+          "end_time": 340.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 343.0,
+          "start_time": 341.5,
+          "end_time": 344.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 892.0,
+          "start_time": 890.5,
+          "end_time": 893.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 8 'lie/sleep' on 19/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a27",
+      "query": "someone takes a drink",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 437.5,
+          "start_time": 436.5,
+          "end_time": 438.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 454.5,
+          "start_time": 453.5,
+          "end_time": 455.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 473.0,
+          "start_time": 471.5,
+          "end_time": 474.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 480.0,
+          "start_time": 479.5,
+          "end_time": 480.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 482.0,
+          "start_time": 481.5,
+          "end_time": 482.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 491.0,
+          "start_time": 489.5,
+          "end_time": 492.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 511.0,
+          "start_time": 510.5,
+          "end_time": 511.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 513.0,
+          "start_time": 512.5,
+          "end_time": 513.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 553.0,
+          "start_time": 552.5,
+          "end_time": 553.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 634.0,
+          "start_time": 633.5,
+          "end_time": 634.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 679.5,
+          "start_time": 678.5,
+          "end_time": 680.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 776.0,
+          "start_time": 775.5,
+          "end_time": 776.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 27 'drink' on 19/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a41",
+      "query": "someone playing the guitar",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 485.0,
+          "start_time": 482.5,
+          "end_time": 487.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 507.0,
+          "start_time": 506.5,
+          "end_time": 507.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 510.0,
+          "start_time": 509.5,
+          "end_time": 510.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 514.0,
+          "start_time": 512.5,
+          "end_time": 515.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 594.5,
+          "start_time": 592.5,
+          "end_time": 596.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 682.5,
+          "start_time": 680.5,
+          "end_time": 684.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 41 'play musical instrument' on 18/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a72",
+      "query": "a couple kissing",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 338.5,
+          "start_time": 337.5,
+          "end_time": 339.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 696.5,
+          "start_time": 695.5,
+          "end_time": 697.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 717.5,
+          "start_time": 716.5,
+          "end_time": 718.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 720.0,
+          "start_time": 719.5,
+          "end_time": 720.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 825.5,
+          "start_time": 824.5,
+          "end_time": 826.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 829.0,
+          "start_time": 827.5,
+          "end_time": 830.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 882.5,
+          "start_time": 881.5,
+          "end_time": 883.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 886.5,
+          "start_time": 884.5,
+          "end_time": 888.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 72 'kiss' on 18/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a01",
+      "query": "a person bowing",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 271.0,
+          "start_time": 270.5,
+          "end_time": 271.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 273.0,
+          "start_time": 272.5,
+          "end_time": 273.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 275.0,
+          "start_time": 274.5,
+          "end_time": 275.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 278.0,
+          "start_time": 276.5,
+          "end_time": 279.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 302.5,
+          "start_time": 301.5,
+          "end_time": 303.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 338.5,
+          "start_time": 337.5,
+          "end_time": 339.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 398.0,
+          "start_time": 397.5,
+          "end_time": 398.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 575.0,
+          "start_time": 574.5,
+          "end_time": 575.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 617.0,
+          "start_time": 616.5,
+          "end_time": 617.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 627.0,
+          "start_time": 626.5,
+          "end_time": 627.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 629.0,
+          "start_time": 628.5,
+          "end_time": 629.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 683.0,
+          "start_time": 682.5,
+          "end_time": 683.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 1 'bend/bow' on 16/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a29",
+      "query": "someone eats food",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 493.5,
+          "start_time": 489.5,
+          "end_time": 497.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 527.0,
+          "start_time": 526.5,
+          "end_time": 527.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 648.0,
+          "start_time": 647.5,
+          "end_time": 648.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 650.0,
+          "start_time": 649.5,
+          "end_time": 650.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 668.0,
+          "start_time": 667.5,
+          "end_time": 668.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 670.0,
+          "start_time": 669.5,
+          "end_time": 670.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 672.5,
+          "start_time": 671.5,
+          "end_time": 673.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 29 'eat' on 15/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a37",
+      "query": "someone listening to music",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 508.0,
+          "start_time": 506.5,
+          "end_time": 509.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 513.0,
+          "start_time": 511.5,
+          "end_time": 514.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 518.0,
+          "start_time": 517.5,
+          "end_time": 518.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 534.0,
+          "start_time": 533.5,
+          "end_time": 534.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 546.0,
+          "start_time": 545.5,
+          "end_time": 546.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 599.0,
+          "start_time": 598.5,
+          "end_time": 599.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 632.0,
+          "start_time": 631.5,
+          "end_time": 632.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 679.0,
+          "start_time": 678.5,
+          "end_time": 679.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 683.0,
+          "start_time": 681.5,
+          "end_time": 684.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 37 'listen' on 15/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a03",
+      "query": "a person crouching",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 348.0,
+          "start_time": 344.5,
+          "end_time": 351.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 355.0,
+          "start_time": 354.5,
+          "end_time": 355.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 359.5,
+          "start_time": 358.5,
+          "end_time": 360.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 371.0,
+          "start_time": 370.5,
+          "end_time": 371.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 375.0,
+          "start_time": 373.5,
+          "end_time": 376.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 3 'crouch/kneel' on 14/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-a33",
+      "query": "someone goes fishing",
+      "category": "action_relation",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": false,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 348.5,
+          "start_time": 344.5,
+          "end_time": 352.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 376.0,
+          "start_time": 375.5,
+          "end_time": 376.5
+        },
+        {
+          "source_video_id": "ava_uNT6HrrnqPU_w900",
+          "peak_time": 378.0,
+          "start_time": 377.5,
+          "end_time": 378.5
+        }
+      ],
+      "annotator": "ava_v2.2_official",
+      "notes": "AVA label 33 'fishing' on 10/787 keyframes"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-n15",
+      "query": "a person on a phone call",
+      "category": "negative",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 15 'answer phone' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-n48",
+      "query": "a person reading a book",
+      "category": "negative",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 48 'read' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-n64",
+      "query": "someone punches another person",
+      "category": "negative",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 64 'fight/hit person' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-n09",
+      "query": "people doing kung fu",
+      "category": "negative",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 9 'martial art' is absent from this video's full annotation"
+    },
+    {
+      "id": "ava-uNT6HrrnqPU-n38",
+      "query": "a person opens a door",
+      "category": "negative",
+      "source_video_id": "ava_uNT6HrrnqPU_w900",
+      "negative": true,
+      "expected_intents": [
+        "action_search"
+      ],
+      "tolerance_seconds": 2.0,
+      "annotator": "ava_v2.2_official",
+      "notes": "in-domain negative: AVA label 38 'open' is absent from this video's full annotation"
+    }
+  ]
+}

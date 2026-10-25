@@ -33,6 +33,7 @@ import numpy as np
 import torch
 
 from vidquery.ava_ablation import StaticActionModel, train_static_ablation
+from vidquery.eval_registry import assert_not_trained_on
 from vidquery.ava_gnn80 import (
     AVA80_LABELS,
     AVA80_NOLEAK_ATTRIBUTE,
@@ -206,6 +207,7 @@ def main() -> None:
             raise SystemExit(f"{path} exists; choose a new versioned path")
 
     split = json.loads(args.split.read_text(encoding="utf-8"))
+    assert_not_trained_on(split["train"], context="AVA leakage-free training split")
     load_started = time.perf_counter()
     graphs = _load_graphs(args.graph_cache, split)
     load_seconds = time.perf_counter() - load_started

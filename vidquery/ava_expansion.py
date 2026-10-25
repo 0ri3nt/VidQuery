@@ -993,6 +993,10 @@ def expand_ava_dataset(
 ) -> dict[str, Any]:
     if not legacy_cache and shard_dir is None:
         raise ValueError("disabling the legacy cache requires a shard directory")
+    from .eval_registry import eval_only_video_ids
+
+    # Held-out evaluation videos are never downloaded into the training pool.
+    evaluation_only = eval_only_video_ids()
     if rebuild_master and not legacy_cache:
         raise ValueError("the master cache is rebuilt from legacy per-video caches")
     if target_videos < 1:
@@ -1069,7 +1073,7 @@ def expand_ava_dataset(
             coverage,
             completed,
             target_videos=target_videos,
-            excluded_video_ids=failed | attempted,
+            excluded_video_ids=failed | attempted | evaluation_only,
             target_support=target_support,
         )
         candidates = list(selection["selected_video_ids"])
