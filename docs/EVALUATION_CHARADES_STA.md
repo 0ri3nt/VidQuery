@@ -218,6 +218,63 @@ often name nothing the parser can match).
   human sentence per moment; they do not transfer to lectures (speech/OCR),
   which are still unlabelled.
 
+## Relation model v3-scale500 vs v2 (rebuilt index, 26 October 2026)
+
+The test index was rebuilt from raw video with `vidor-relation-pair-visual-gat-v3-scale500`
+(`data/app/benchmark/charades_v3/`, 300/300 videos, 0 errors) and evaluated
+with the identical protocol, queries, flags, and thresholds
+(`test-v3relation/`). A rebuild turned out not to be deterministic: Whisper
+transcripts differ in ~43% of segments between two rebuilds with the *same*
+model (likely Whisper's temperature-fallback sampling on Charades' mostly
+non-speech audio), and the action GNN, which reads transcripts, follows.
+A control rebuild with v2 (`charades_v2_rerun/`, `test-v2relation-rerun/`)
+therefore measures that noise. Detections are identical across all three
+indexes, and the v2 rerun's relation-GNN evidence is identical to the
+original's, so relation evidence is the only systematic difference in
+v2-rerun → v3.
+
+Verification: every stored `relationship_gnn` relation records the model
+version read from the loaded checkpoint. The v3 index holds 44,160 such
+relations, all `vidor-relation-pair-visual-gat-v3-scale500`; the v2 indexes
+hold 36,911, all `…-gat-v2`. v3 changed the relation evidence in 1,590 of
+1,935 test segments. Checkpoint SHA-256 `9682909d…` matches its metadata.
+
+| Selected config (T1, expand:10) | Original v2 index (the 41.4% run) | v2 control rebuild | v3 rebuild |
+|---|---:|---:|---:|
+| P@1 [95% CI] | 0.414 [0.381, 0.445] | 0.399 [0.365, 0.430] | 0.407 [0.374, 0.439] |
+| R@1@0.5 | 0.416 | 0.402 | 0.409 |
+| R@1@0.7 | 0.187 | 0.185 | 0.175 |
+| R@5@0.5 | 0.870 | 0.870 | 0.871 |
+| In-domain negatives rejected | 0.008 | 0.008 | 0.008 |
+| Out-of-domain negatives rejected | 0.997 | 0.997 | 0.994 |
+| AUROC in-domain / out-of-domain | 0.600 / 0.9995 | 0.602 / 0.9996 | 0.600 / 0.9994 |
+| Rejection F1 / AURC | 0.665 / 0.780 | 0.665 / 0.780 | 0.664 / 0.780 |
+
+Paired differences (video bootstrap; `test-v3relation/comparison-v2-v2rerun-v3.json`):
+
+| Comparison | P@1 | R@1@0.7 | R@5@0.5 | Out-of-domain rejected |
+|---|---:|---:|---:|---:|
+| Noise: v2 original → v2 rerun | −0.015 [−0.038, 0.006] | −0.001 [−0.014, 0.012] | 0.000 [−0.012, 0.009] | 0.000 |
+| **Model: v2 rerun → v3** | **+0.008 [−0.011, 0.026]** | −0.010 [−0.021, −0.001] | +0.001 [−0.007, 0.009] | −0.002 [−0.007, 0.000] |
+| As run: v2 original → v3 | −0.007 [−0.033, 0.016] | −0.012 [−0.026, 0.003] | +0.001 [−0.008, 0.010] | −0.002 [−0.007, 0.000] |
+
+T2 (P@1-preserving threshold) gives the same positive-side differences; T0
+(default) gives v2 rerun → v3 P@1 0.000 [−0.016, 0.018].
+
+**Conclusion: no measurable improvement.** The v3 relation model, although
+much better on VidOR, does not change Charades-STA localization or
+answerability beyond run-to-run noise. The P@1 difference is inside the
+noise band (±0.015) of a same-model rebuild. R@1@0.7 is slightly lower, by
+0.010, with a CI that just excludes 0; as one of many comparisons, it is not
+strong evidence either way. That is expected: only 12 of 2,581 queries are
+parsed as relationship searches, and Charades sentences rarely name a VidOR
+predicate. The 41.4% figure itself carries about ±1.5 points of rebuild
+noise.
+
+Note: NA-VMR reuses some query IDs across videos (2,581 queries, 2,083
+unique IDs), so per-query comparisons must match rows by position; the
+evaluator's summaries are unaffected.
+
 ## Reproduce
 
 ```bash

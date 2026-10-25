@@ -1,0 +1,380 @@
+{
+ "schema_version": "charades-v2-vs-v3-relation-v1",
+ "key": "review2_full|expand:10",
+ "resampling": "test videos, 2000 resamples, seed 2026",
+ "runs": {
+  "T1-selected-soft-frame": {
+   "side_by_side": {
+    "precision_at_1": {
+     "v2_index": 0.4137,
+     "v3_index": 0.4067
+    },
+    "r1_iou0.5": {
+     "v2_index": 0.416,
+     "v3_index": 0.409
+    },
+    "r1_iou0.7": {
+     "v2_index": 0.1866,
+     "v3_index": 0.175
+    },
+    "r5_iou0.5": {
+     "v2_index": 0.8702,
+     "v3_index": 0.8714
+    },
+    "mean_iou": {
+     "v2_index": 0.3651,
+     "v3_index": 0.3614
+    },
+    "positive_answered_rate": {
+     "v2_index": 0.9907,
+     "v3_index": 0.9907
+    },
+    "coverage": {
+     "v2_index": 0.6641,
+     "v3_index": 0.6649
+    },
+    "aurc": {
+     "v2_index": 0.7803,
+     "v3_index": 0.7801
+    },
+    "rejection_f1": {
+     "v2_index": 0.6646,
+     "v3_index": 0.6636
+    },
+    "answerability_auroc": {
+     "v2_index": 0.7939,
+     "v3_index": 0.7925
+    },
+    "rejected_in_domain_negative": {
+     "v2_index": 0.0081,
+     "v3_index": 0.0081
+    },
+    "auroc_vs_in_domain_negative": {
+     "v2_index": 0.6001,
+     "v3_index": 0.5999
+    },
+    "rejected_out_of_domain_negative": {
+     "v2_index": 0.9965,
+     "v3_index": 0.9942
+    },
+    "auroc_vs_out_of_domain_negative": {
+     "v2_index": 0.9994,
+     "v3_index": 0.9994
+    }
+   },
+   "paired_v3_minus_v2": {
+    "precision_at_1": {
+     "difference": -0.007,
+     "ci95": [
+      -0.0331,
+      0.0164
+     ],
+     "queries_improved": 32,
+     "queries_worsened": 38
+    },
+    "r1_iou0.5": {
+     "difference": -0.007,
+     "ci95": [
+      -0.0331,
+      0.0164
+     ],
+     "queries_improved": 32,
+     "queries_worsened": 38
+    },
+    "r1_iou0.7": {
+     "difference": -0.0116,
+     "ci95": [
+      -0.026,
+      0.0033
+     ],
+     "queries_improved": 11,
+     "queries_worsened": 21
+    },
+    "r5_iou0.5": {
+     "difference": 0.0012,
+     "ci95": [
+      -0.0076,
+      0.0103
+     ],
+     "queries_improved": 7,
+     "queries_worsened": 6
+    },
+    "rejected_in_domain_negative": {
+     "difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "rejected_out_of_domain_negative": {
+     "difference": -0.0028,
+     "ci95": [
+      -0.0088,
+      0.0
+     ]
+    }
+   },
+   "queries_with_changed_top1_interval": 130,
+   "queries": 2083
+  },
+  "T2-selected-p1-preserving-thresholds": {
+   "side_by_side": {
+    "precision_at_1": {
+     "v2_index": 0.4137,
+     "v3_index": 0.4067
+    },
+    "r1_iou0.5": {
+     "v2_index": 0.416,
+     "v3_index": 0.409
+    },
+    "r1_iou0.7": {
+     "v2_index": 0.1866,
+     "v3_index": 0.175
+    },
+    "r5_iou0.5": {
+     "v2_index": 0.8702,
+     "v3_index": 0.8714
+    },
+    "mean_iou": {
+     "v2_index": 0.3651,
+     "v3_index": 0.3614
+    },
+    "positive_answered_rate": {
+     "v2_index": 0.9907,
+     "v3_index": 0.9907
+    },
+    "coverage": {
+     "v2_index": 0.6625,
+     "v3_index": 0.6633
+    },
+    "aurc": {
+     "v2_index": 0.7803,
+     "v3_index": 0.7801
+    },
+    "rejection_f1": {
+     "v2_index": 0.6667,
+     "v3_index": 0.6656
+    },
+    "answerability_auroc": {
+     "v2_index": 0.7939,
+     "v3_index": 0.7925
+    },
+    "rejected_in_domain_negative": {
+     "v2_index": 0.0093,
+     "v3_index": 0.0093
+    },
+    "auroc_vs_in_domain_negative": {
+     "v2_index": 0.6001,
+     "v3_index": 0.5999
+    },
+    "rejected_out_of_domain_negative": {
+     "v2_index": 1.0,
+     "v3_index": 0.9977
+    },
+    "auroc_vs_out_of_domain_negative": {
+     "v2_index": 0.9994,
+     "v3_index": 0.9994
+    }
+   },
+   "paired_v3_minus_v2": {
+    "precision_at_1": {
+     "difference": -0.007,
+     "ci95": [
+      -0.0331,
+      0.0164
+     ],
+     "queries_improved": 32,
+     "queries_worsened": 38
+    },
+    "r1_iou0.5": {
+     "difference": -0.007,
+     "ci95": [
+      -0.0331,
+      0.0164
+     ],
+     "queries_improved": 32,
+     "queries_worsened": 38
+    },
+    "r1_iou0.7": {
+     "difference": -0.0116,
+     "ci95": [
+      -0.026,
+      0.0033
+     ],
+     "queries_improved": 11,
+     "queries_worsened": 21
+    },
+    "r5_iou0.5": {
+     "difference": 0.0012,
+     "ci95": [
+      -0.0076,
+      0.0103
+     ],
+     "queries_improved": 7,
+     "queries_worsened": 6
+    },
+    "rejected_in_domain_negative": {
+     "difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "rejected_out_of_domain_negative": {
+     "difference": -0.0028,
+     "ci95": [
+      -0.0088,
+      0.0
+     ]
+    }
+   },
+   "queries_with_changed_top1_interval": 130,
+   "queries": 2083
+  },
+  "T0-default-strict-noframe": {
+   "side_by_side": {
+    "precision_at_1": {
+     "v2_index": 0.1495,
+     "v3_index": 0.1448
+    },
+    "r1_iou0.5": {
+     "v2_index": 0.1495,
+     "v3_index": 0.1448
+    },
+    "r1_iou0.7": {
+     "v2_index": 0.0718,
+     "v3_index": 0.0626
+    },
+    "r5_iou0.5": {
+     "v2_index": 0.3847,
+     "v3_index": 0.3893
+    },
+    "mean_iou": {
+     "v2_index": 0.14,
+     "v3_index": 0.1392
+    },
+    "positive_answered_rate": {
+     "v2_index": 0.5133,
+     "v3_index": 0.5272
+    },
+    "coverage": {
+     "v2_index": 0.3224,
+     "v3_index": 0.3255
+    },
+    "aurc": {
+     "v2_index": 0.8792,
+     "v3_index": 0.8867
+    },
+    "rejection_f1": {
+     "v2_index": 0.7667,
+     "v3_index": 0.7707
+    },
+    "answerability_auroc": {
+     "v2_index": 0.6368,
+     "v3_index": 0.6433
+    },
+    "rejected_in_domain_negative": {
+     "v2_index": 0.5516,
+     "v3_index": 0.5585
+    },
+    "auroc_vs_in_domain_negative": {
+     "v2_index": 0.5399,
+     "v3_index": 0.5457
+    },
+    "rejected_out_of_domain_negative": {
+     "v2_index": 0.9977,
+     "v3_index": 0.9953
+    },
+    "auroc_vs_out_of_domain_negative": {
+     "v2_index": 0.7344,
+     "v3_index": 0.742
+    }
+   },
+   "paired_v3_minus_v2": {
+    "precision_at_1": {
+     "difference": -0.0046,
+     "ci95": [
+      -0.0253,
+      0.0152
+     ],
+     "queries_improved": 18,
+     "queries_worsened": 22
+    },
+    "r1_iou0.5": {
+     "difference": -0.0046,
+     "ci95": [
+      -0.0253,
+      0.0152
+     ],
+     "queries_improved": 18,
+     "queries_worsened": 22
+    },
+    "r1_iou0.7": {
+     "difference": -0.0093,
+     "ci95": [
+      -0.0236,
+      0.0035
+     ],
+     "queries_improved": 5,
+     "queries_worsened": 13
+    },
+    "r5_iou0.5": {
+     "difference": 0.0046,
+     "ci95": [
+      -0.0106,
+      0.0232
+     ],
+     "queries_improved": 15,
+     "queries_worsened": 11
+    },
+    "rejected_in_domain_negative": {
+     "difference": 0.007,
+     "ci95": [
+      -0.0012,
+      0.0164
+     ]
+    },
+    "rejected_out_of_domain_negative": {
+     "difference": -0.0028,
+     "ci95": [
+      -0.0091,
+      0.0
+     ]
+    }
+   },
+   "queries_with_changed_top1_interval": 96,
+   "queries": 2083
+  }
+ },
+ "index_drift": {
+  "detections_differs": 0,
+  "transcript_differs": 845,
+  "actions_differs": 549,
+  "ocr_evidence_differs": 51,
+  "speakers_differs": 139,
+  "frame_ids_differs": 1894,
+  "entities_differs": 0,
+  "segments_compared": 1935,
+  "segment_missing_in_v2_index": 13
+ },
+ "relation_sources": {
+  "v2_index": {
+   "relationship_gnn": 36911,
+   "bounding_box_geometry": 43941,
+   "gnn_action_plus_target_resolver": 10004
+  },
+  "v3_index": {
+   "relationship_gnn": 44160,
+   "bounding_box_geometry": 43941,
+   "gnn_action_plus_target_resolver": 9972
+  }
+ },
+ "relation_gnn_model_versions_on_evidence": {
+  "v2_index": {
+   "vidor-relation-pair-visual-gat-v2": 36911
+  },
+  "v3_index": {
+   "vidor-relation-pair-visual-gat-v3-scale500": 44160
+  }
+ }
+}
