@@ -1,0 +1,78 @@
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+groq_1 deterministic_clear generated_supported Find where architecture is discussed.
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable Find a person near a laptop.
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable Find where someone discusses deployment while a laptop is vi
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable Find where SPEAKER_01 discusses architecture.
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable Find a person near a whiteboard.
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable SQLite metadata
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable Docker Neo4j
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable SPEAKER_00 deployment
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person near laptop
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable whiteboard architecture
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable Find where someone talks about Kubernetes.
+groq_1 deterministic_clear insufficient_evidence Find a person riding a horse.
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable Find where SPEAKER_01 discusses Docker.
+Constrained query planning unavailable: RAGProviderError
+groq_1 fallback_provider_unavailable insufficient_evidence zzzxylophone quantum penguin
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable Find where architecture is discussed.
+groq_2 deterministic_clear generated_supported Find a person near a laptop.
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable Find where someone discusses deployment while a laptop is vi
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable Find where SPEAKER_01 discusses architecture.
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable Find a person near a whiteboard.
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable SQLite metadata
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable Docker Neo4j
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable SPEAKER_00 deployment
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person near laptop
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable whiteboard architecture
+Constrained query planning unavailable: RAGProviderError
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable Find where someone talks about Kubernetes.
+groq_2 deterministic_clear insufficient_evidence Find a person riding a horse.
+Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable Find where SPEAKER_01 discusses Docker.
+Constrained query planning unavailable: RAGProviderError
+groq_2 fallback_provider_unavailable insufficient_evidence zzzxylophone quantum penguin
+fallback deterministic_clear unavailable_missing_api_key Find where architecture is discussed.
+fallback deterministic_clear unavailable_missing_api_key Find a person near a laptop.
+fallback fallback_provider_unconfigured unavailable_missing_api_key Find where someone discusses deployment while a laptop is vi
+fallback deterministic_clear unavailable_missing_api_key Find where SPEAKER_01 discusses architecture.
+fallback deterministic_clear unavailable_missing_api_key Find a person near a whiteboard.
+fallback fallback_provider_unconfigured unavailable_missing_api_key SQLite metadata
+fallback fallback_provider_unconfigured unavailable_missing_api_key Docker Neo4j
+fallback deterministic_clear unavailable_missing_api_key SPEAKER_00 deployment
+fallback deterministic_clear unavailable_missing_api_key person near laptop
+fallback fallback_provider_unconfigured unavailable_missing_api_key whiteboard architecture
+fallback fallback_provider_unconfigured unavailable_missing_api_key Find where someone talks about Kubernetes.
+fallback deterministic_clear unavailable_missing_api_key Find a person riding a horse.
+fallback deterministic_clear unavailable_missing_api_key Find where SPEAKER_01 discusses Docker.
+fallback fallback_provider_unconfigured unavailable_missing_api_key zzzxylophone quantum penguin

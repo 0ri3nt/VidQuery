@@ -1,0 +1,7 @@
+baseline rc=0
+missing_penalty rc=0
+stopwords rc=0
+missing_penalty+stopwords rc=0
+no_transcripts rc=0
+missing_penalty+stopwords+no_transcripts rc=0
+missing_verdict_only rc=0

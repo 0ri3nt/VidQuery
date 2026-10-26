@@ -1,0 +1,18 @@
+index yolov8n rc=0 ready=50 errors=0
+yolov8n T1-selected-soft-frame rc=0
+yolov8n T0-default-strict-noframe rc=0
+index yolov8s rc=0 ready=50 errors=0
+yolov8s T1-selected-soft-frame rc=0
+yolov8s T0-default-strict-noframe rc=0
+index yolov8m rc=0 ready=50 errors=0
+yolov8m T1-selected-soft-frame rc=0
+yolov8m T0-default-strict-noframe rc=0
+index yolo11s rc=0 ready=50 errors=0
+yolo11s T1-selected-soft-frame rc=0
+yolo11s T0-default-strict-noframe rc=0
+index yolo11m rc=0 ready=50 errors=0
+yolo11m T1-selected-soft-frame rc=0
+yolo11m T0-default-strict-noframe rc=0
+index yolo26s rc=0 ready=50 errors=0
+yolo26s T1-selected-soft-frame rc=0
+yolo26s T0-default-strict-noframe rc=0

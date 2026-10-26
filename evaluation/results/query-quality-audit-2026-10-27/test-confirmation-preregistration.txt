@@ -1,0 +1,1 @@
+pre-registered 2026-10-26T18:52:46Z: single confirmatory test run of variant missing_penalty (selected on validation), T1 settings, vs evaluation/results/charades-integrated-2026-10-26/det-ava8-vidor4/test-T1-selected-soft-frame.json

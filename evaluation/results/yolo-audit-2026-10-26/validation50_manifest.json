@@ -1,0 +1,5037 @@
+{
+ "schema_version": "moment-benchmark-1.0",
+ "created_at": "2026-10-25T16:32:00.233815+00:00",
+ "selection_rule": "test: Charades-STA test videos by sha256(video id), first N; validation: Charades-STA train videos by sha256(video id), first M; all STA positives and NA-VMR negatives of those videos",
+ "sources": {
+  "sta_train": {
+   "path": "data/source/charades/annotations/Charades_sta_train.txt",
+   "sha256": "47ec9b6b488fca753373d9cc29b07a959f7237a922cb29463cd088cd6198e805"
+  },
+  "sta_test": {
+   "path": "data/source/charades/annotations/Charades_sta_test.txt",
+   "sha256": "fab341679c20b0917173dcffffde367a71113fe63f3a645558cef2ebfbfefb55"
+  },
+  "durations": {
+   "path": "data/source/charades/annotations/Charades_duration.json",
+   "sha256": "a0e3896f0d99ee7c9b09ac2b605cd6a83fdcd2cb579579959a4d880edc855221"
+  },
+  "navmr_id_neg_test": {
+   "path": "data/source/charades/annotations/navmr_charades_id_neg_test.jsonl",
+   "sha256": "f50628677c70b6c5484ab66b4c532e7a49ced8370a442888bcffde414e701f3f"
+  },
+  "navmr_ood_neg_test": {
+   "path": "data/source/charades/annotations/navmr_charades_ood_neg_test.jsonl",
+   "sha256": "774520b6150d78bb62216bfbb35b306298531397a85289ed6ca1e1bc20a9e79e"
+  },
+  "navmr_id_neg_train": {
+   "path": "data/source/charades/annotations/navmr_charades_id_neg_train.jsonl",
+   "sha256": "f4a9ab9bf1aa2ed80e6c78dc46d4b7b7aebd250da32d986b7afe4babc2b5647d"
+  },
+  "navmr_ood_neg_train": {
+   "path": "data/source/charades/annotations/navmr_charades_ood_neg_train.jsonl",
+   "sha256": "6afbbaeb0b93f47b9ee92a23939fde8c9d712b0bf33032bded00a3c22cb876bd"
+  }
+ },
+ "licences": {
+  "charades_videos": "AI2 Charades licence: non-commercial academic research only, no redistribution",
+  "charades_sta": "no licence stated (TALL, Gao et al. 2017); research evaluation only",
+  "na_vmr": "no licence stated (keflanagan/MomentofUntruth); research evaluation only"
+ },
+ "splits": {
+  "validation": {
+   "videos": [
+    "C6F8V",
+    "ICALV",
+    "1PALI",
+    "MMTED",
+    "6BFKO",
+    "8LWV7",
+    "BART9",
+    "IZTHW",
+    "GXZHG",
+    "5DYQR",
+    "IIFVE",
+    "SL9ZD",
+    "FW1L0",
+    "N8XDV",
+    "N8R3F",
+    "G2VOP",
+    "MVPQF",
+    "P5ANU",
+    "04LAX",
+    "5MRPU",
+    "T5E2T",
+    "GG1X2",
+    "Z5JZD",
+    "VPBIO",
+    "TCM46",
+    "NAWO1",
+    "88TGX",
+    "H8UJ3",
+    "OEIRN",
+    "X5QMG",
+    "I2DHG",
+    "OL2JP",
+    "5XKVP",
+    "5ZGRN",
+    "VNQES",
+    "A58GR",
+    "FPFFN",
+    "NHXI3",
+    "YX3W8",
+    "9ONDD",
+    "A2DDA",
+    "LAJ9K",
+    "R9382",
+    "H4IT6",
+    "EOA7I",
+    "Y49WR",
+    "SJQVM",
+    "CXKFB",
+    "VD6P1",
+    "VTOYP"
+   ],
+   "queries": [
+    {
+     "id": "validation-sta-270",
+     "video": "VD6P1",
+     "query": "person fixes his hair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 7.0,
+     "end": 13.1
+    },
+    {
+     "id": "validation-sta-365",
+     "video": "04LAX",
+     "query": "person pours it into a glass.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.9,
+     "end": 22.7
+    },
+    {
+     "id": "validation-sta-366",
+     "video": "04LAX",
+     "query": "person drinks from the glass.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.2,
+     "end": 27.26
+    },
+    {
+     "id": "validation-sta-831",
+     "video": "5ZGRN",
+     "query": "a person opens a cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.4
+    },
+    {
+     "id": "validation-sta-832",
+     "video": "5ZGRN",
+     "query": "person closes the cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.6,
+     "end": 15.8
+    },
+    {
+     "id": "validation-sta-833",
+     "video": "5ZGRN",
+     "query": "a person is putting food in a cupboard.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.2,
+     "end": 13.0
+    },
+    {
+     "id": "validation-sta-884",
+     "video": "IZTHW",
+     "query": "person laughing at what is on the screen.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 29.4,
+     "end": 32.9
+    },
+    {
+     "id": "validation-sta-1227",
+     "video": "YX3W8",
+     "query": "a person is throwing clothes on a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.1,
+     "end": 7.6
+    },
+    {
+     "id": "validation-sta-2169",
+     "video": "6BFKO",
+     "query": "person the laptop lights up.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 23.8,
+     "end": 28.49
+    },
+    {
+     "id": "validation-sta-2582",
+     "video": "BART9",
+     "query": "a person puts groceries onto a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.9,
+     "end": 22.2
+    },
+    {
+     "id": "validation-sta-2698",
+     "video": "OEIRN",
+     "query": "person eats a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 2.3,
+     "end": 18.0
+    },
+    {
+     "id": "validation-sta-2699",
+     "video": "OEIRN",
+     "query": "person take some medicine.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.3,
+     "end": 36.7
+    },
+    {
+     "id": "validation-sta-2700",
+     "video": "OEIRN",
+     "query": "person they take the medicine.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.3,
+     "end": 36.7
+    },
+    {
+     "id": "validation-sta-2701",
+     "video": "OEIRN",
+     "query": "person takes some with a glass of water.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 25.6,
+     "end": 30.0
+    },
+    {
+     "id": "validation-sta-2702",
+     "video": "OEIRN",
+     "query": "a person sits on a sofa eating a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 2.3,
+     "end": 18.0
+    },
+    {
+     "id": "validation-sta-2703",
+     "video": "OEIRN",
+     "query": "the person takes medicine off a table.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.3,
+     "end": 36.7
+    },
+    {
+     "id": "validation-sta-3128",
+     "video": "88TGX",
+     "query": "a person opens the refrigerator.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.3,
+     "end": 8.2
+    },
+    {
+     "id": "validation-sta-3129",
+     "video": "88TGX",
+     "query": "person opening the refrigerator door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.3,
+     "end": 8.2
+    },
+    {
+     "id": "validation-sta-3209",
+     "video": "A58GR",
+     "query": "person laugh as they put a towel in it.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.0,
+     "end": 25.4
+    },
+    {
+     "id": "validation-sta-3210",
+     "video": "A58GR",
+     "query": "person puts clothes in it.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 16.3,
+     "end": 26.1
+    },
+    {
+     "id": "validation-sta-3211",
+     "video": "A58GR",
+     "query": "a person takes a box from a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.4,
+     "end": 9.4
+    },
+    {
+     "id": "validation-sta-3212",
+     "video": "A58GR",
+     "query": "a person takes a box off a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.4,
+     "end": 9.4
+    },
+    {
+     "id": "validation-sta-3213",
+     "video": "A58GR",
+     "query": "person put a towel inside.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.0,
+     "end": 25.4
+    },
+    {
+     "id": "validation-sta-3313",
+     "video": "8LWV7",
+     "query": "person they awaken.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.0,
+     "end": 13.8
+    },
+    {
+     "id": "validation-sta-3314",
+     "video": "8LWV7",
+     "query": "a person awakens on a bed.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.0,
+     "end": 13.8
+    },
+    {
+     "id": "validation-sta-3548",
+     "video": "G2VOP",
+     "query": "a person stands in a doorway sneezing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 4.7
+    },
+    {
+     "id": "validation-sta-3549",
+     "video": "G2VOP",
+     "query": "person put clothes onto a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 14.8,
+     "end": 25.45
+    },
+    {
+     "id": "validation-sta-3853",
+     "video": "SJQVM",
+     "query": "person pouring water into a glass.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 11.0,
+     "end": 17.8
+    },
+    {
+     "id": "validation-sta-3854",
+     "video": "SJQVM",
+     "query": "a person snuggles with a blanket.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 12.2
+    },
+    {
+     "id": "validation-sta-3979",
+     "video": "H8UJ3",
+     "query": "the person turned on the light.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 8.6
+    },
+    {
+     "id": "validation-sta-3980",
+     "video": "H8UJ3",
+     "query": "the person opened the book.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.1,
+     "end": 23.1
+    },
+    {
+     "id": "validation-sta-3981",
+     "video": "H8UJ3",
+     "query": "the person sits down on a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.1,
+     "end": 17.5
+    },
+    {
+     "id": "validation-sta-3982",
+     "video": "H8UJ3",
+     "query": "a person turns on the lights to the dining room.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 8.6
+    },
+    {
+     "id": "validation-sta-4152",
+     "video": "Z5JZD",
+     "query": "person closes the pantry door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.9,
+     "end": 25.7
+    },
+    {
+     "id": "validation-sta-4153",
+     "video": "Z5JZD",
+     "query": "person puts them on a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.3,
+     "end": 19.8
+    },
+    {
+     "id": "validation-sta-4154",
+     "video": "Z5JZD",
+     "query": "person closes the door to the cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.9,
+     "end": 25.7
+    },
+    {
+     "id": "validation-sta-4155",
+     "video": "Z5JZD",
+     "query": "a person is putting some groceries in a bag away.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.4,
+     "end": 16.3
+    },
+    {
+     "id": "validation-sta-4299",
+     "video": "FPFFN",
+     "query": "person turns lights off.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.7,
+     "end": 18.32
+    },
+    {
+     "id": "validation-sta-4300",
+     "video": "FPFFN",
+     "query": "person is walking across room holding a phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.0,
+     "end": 9.6
+    },
+    {
+     "id": "validation-sta-4301",
+     "video": "FPFFN",
+     "query": "person walks through doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.7,
+     "end": 18.32
+    },
+    {
+     "id": "validation-sta-4458",
+     "video": "CXKFB",
+     "query": "person they start sneezing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.1,
+     "end": 19.1
+    },
+    {
+     "id": "validation-sta-4459",
+     "video": "CXKFB",
+     "query": "causes the person to start sneezing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.1,
+     "end": 19.1
+    },
+    {
+     "id": "validation-sta-4513",
+     "video": "R9382",
+     "query": "a person is cooking on the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 12.0
+    },
+    {
+     "id": "validation-sta-4514",
+     "video": "R9382",
+     "query": "person pulls something out of the fridge that he eats.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 22.8,
+     "end": 27.7
+    },
+    {
+     "id": "validation-sta-4515",
+     "video": "R9382",
+     "query": "person close the door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.2,
+     "end": 21.1
+    },
+    {
+     "id": "validation-sta-4516",
+     "video": "R9382",
+     "query": "person eat it.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 22.8,
+     "end": 27.7
+    },
+    {
+     "id": "validation-sta-4517",
+     "video": "R9382",
+     "query": "person take out a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.1,
+     "end": 21.9
+    },
+    {
+     "id": "validation-sta-4518",
+     "video": "R9382",
+     "query": "a person is cooking at the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 12.0
+    },
+    {
+     "id": "validation-sta-4580",
+     "video": "P5ANU",
+     "query": "person pouring a cup of coffee.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.9,
+     "end": 27.1
+    },
+    {
+     "id": "validation-sta-4820",
+     "video": "LAJ9K",
+     "query": "a person is walking near the doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.9,
+     "end": 9.0
+    },
+    {
+     "id": "validation-sta-4821",
+     "video": "A2DDA",
+     "query": "person take some medicine.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.9,
+     "end": 10.8
+    },
+    {
+     "id": "validation-sta-4971",
+     "video": "5MRPU",
+     "query": "person take a picture of themselves.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 27.0,
+     "end": 34.4
+    },
+    {
+     "id": "validation-sta-5094",
+     "video": "GXZHG",
+     "query": "person run to the couch.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.1,
+     "end": 14.7
+    },
+    {
+     "id": "validation-sta-5095",
+     "video": "GXZHG",
+     "query": "person starts running to the sofa.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.1,
+     "end": 14.7
+    },
+    {
+     "id": "validation-sta-5342",
+     "video": "NHXI3",
+     "query": "person walks into the room which has the light on.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 24.2,
+     "end": 29.2
+    },
+    {
+     "id": "validation-sta-5343",
+     "video": "NHXI3",
+     "query": "person takes a book from the table in the entryway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.5,
+     "end": 13.4
+    },
+    {
+     "id": "validation-sta-5344",
+     "video": "NHXI3",
+     "query": "person turned on the light.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 24.2,
+     "end": 29.2
+    },
+    {
+     "id": "validation-sta-5345",
+     "video": "NHXI3",
+     "query": "person turns on the light.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 24.2,
+     "end": 29.2
+    },
+    {
+     "id": "validation-sta-5346",
+     "video": "NHXI3",
+     "query": "person takes out a book.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.5,
+     "end": 13.4
+    },
+    {
+     "id": "validation-sta-5347",
+     "video": "NHXI3",
+     "query": "person walks through another doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 21.6,
+     "end": 27.6
+    },
+    {
+     "id": "validation-sta-5348",
+     "video": "NHXI3",
+     "query": "person walks toward a doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 21.6,
+     "end": 27.6
+    },
+    {
+     "id": "validation-sta-5849",
+     "video": "MVPQF",
+     "query": "person puts the bags on the bottom shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.9,
+     "end": 10.4
+    },
+    {
+     "id": "validation-sta-5850",
+     "video": "MVPQF",
+     "query": "a person puts clothes on a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.9,
+     "end": 10.4
+    },
+    {
+     "id": "validation-sta-6002",
+     "video": "Y49WR",
+     "query": "person takes a picture.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.4,
+     "end": 23.0
+    },
+    {
+     "id": "validation-sta-6003",
+     "video": "Y49WR",
+     "query": "person getting dressed takes a picture in mirror.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.4,
+     "end": 23.0
+    },
+    {
+     "id": "validation-sta-6026",
+     "video": "5DYQR",
+     "query": "a person opens a cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.3,
+     "end": 9.8
+    },
+    {
+     "id": "validation-sta-6457",
+     "video": "GG1X2",
+     "query": "person takes their shoes off.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.2,
+     "end": 17.0
+    },
+    {
+     "id": "validation-sta-6458",
+     "video": "GG1X2",
+     "query": "person closing the door behind them.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.0,
+     "end": 11.1
+    },
+    {
+     "id": "validation-sta-6676",
+     "video": "IIFVE",
+     "query": "a person is throwing clothes on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.9,
+     "end": 9.7
+    },
+    {
+     "id": "validation-sta-6885",
+     "video": "VTOYP",
+     "query": "person start laughing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 14.1,
+     "end": 24.3
+    },
+    {
+     "id": "validation-sta-7089",
+     "video": "SL9ZD",
+     "query": "a person puts a box on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 5.5
+    },
+    {
+     "id": "validation-sta-7211",
+     "video": "TCM46",
+     "query": "person turns the light off.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.0,
+     "end": 23.13
+    },
+    {
+     "id": "validation-sta-7212",
+     "video": "TCM46",
+     "query": "person finally turning off a light on the stairs.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.0,
+     "end": 23.13
+    },
+    {
+     "id": "validation-sta-7346",
+     "video": "I2DHG",
+     "query": "person drinking from a cup.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.1,
+     "end": 23.4
+    },
+    {
+     "id": "validation-sta-7347",
+     "video": "I2DHG",
+     "query": "one person was undressing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.8,
+     "end": 11.4
+    },
+    {
+     "id": "validation-sta-7348",
+     "video": "I2DHG",
+     "query": "person putting their clothes on the bed.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 11.4
+    },
+    {
+     "id": "validation-sta-7349",
+     "video": "I2DHG",
+     "query": "person another was smiling.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.7,
+     "end": 30.86
+    },
+    {
+     "id": "validation-sta-7350",
+     "video": "I2DHG",
+     "query": "a person walks through a doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 5.2
+    },
+    {
+     "id": "validation-sta-7571",
+     "video": "5XKVP",
+     "query": "a person is sitting on a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.3
+    },
+    {
+     "id": "validation-sta-7572",
+     "video": "5XKVP",
+     "query": "person stand up.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.5,
+     "end": 7.6
+    },
+    {
+     "id": "validation-sta-7573",
+     "video": "5XKVP",
+     "query": "a person is sitting in a chair at a desk.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.3
+    },
+    {
+     "id": "validation-sta-7574",
+     "video": "5XKVP",
+     "query": "person throw the shoes.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 5.7,
+     "end": 11.5
+    },
+    {
+     "id": "validation-sta-7591",
+     "video": "H4IT6",
+     "query": "a person walks through a doorway holding a phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 4.4
+    },
+    {
+     "id": "validation-sta-7592",
+     "video": "H4IT6",
+     "query": "person someone holding a phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 4.4
+    },
+    {
+     "id": "validation-sta-7608",
+     "video": "EOA7I",
+     "query": "person opens door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 17.1,
+     "end": 25.7
+    },
+    {
+     "id": "validation-sta-8410",
+     "video": "FW1L0",
+     "query": "person eating by the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 2.0,
+     "end": 8.5
+    },
+    {
+     "id": "validation-sta-8544",
+     "video": "MMTED",
+     "query": "person lifts up their head to look out a window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.7,
+     "end": 22.18
+    },
+    {
+     "id": "validation-sta-8545",
+     "video": "MMTED",
+     "query": "person look out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.7,
+     "end": 22.18
+    },
+    {
+     "id": "validation-sta-8764",
+     "video": "VPBIO",
+     "query": "person they start undressing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 16.1,
+     "end": 23.9
+    },
+    {
+     "id": "validation-sta-8765",
+     "video": "VPBIO",
+     "query": "a person is putting groceries on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.7,
+     "end": 9.6
+    },
+    {
+     "id": "validation-sta-8766",
+     "video": "VPBIO",
+     "query": "person they begin to undress.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 16.1,
+     "end": 23.9
+    },
+    {
+     "id": "validation-sta-8767",
+     "video": "VPBIO",
+     "query": "a person is holding a bag of groceries.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.5,
+     "end": 5.5
+    },
+    {
+     "id": "validation-sta-9053",
+     "video": "1PALI",
+     "query": "person they open a window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.3,
+     "end": 16.7
+    },
+    {
+     "id": "validation-sta-9054",
+     "video": "1PALI",
+     "query": "the person opens the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.3,
+     "end": 16.7
+    },
+    {
+     "id": "validation-sta-9598",
+     "video": "9ONDD",
+     "query": "a person is cooking on a stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 15.1
+    },
+    {
+     "id": "validation-sta-9599",
+     "video": "9ONDD",
+     "query": "person open the refrigerator to grab eggs.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.5,
+     "end": 20.5
+    },
+    {
+     "id": "validation-sta-9600",
+     "video": "9ONDD",
+     "query": "the person is closing the refrigerator.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 18.8,
+     "end": 24.5
+    },
+    {
+     "id": "validation-sta-9601",
+     "video": "9ONDD",
+     "query": "a person is cooking some food on the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 15.1
+    },
+    {
+     "id": "validation-sta-9798",
+     "video": "C6F8V",
+     "query": "a person is standing in front of a mirror laughing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 14.0,
+     "end": 18.67
+    },
+    {
+     "id": "validation-sta-10817",
+     "video": "OL2JP",
+     "query": "person fixes a broken door knob at the bathroom door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 14.1
+    },
+    {
+     "id": "validation-sta-10818",
+     "video": "OL2JP",
+     "query": "a person is fixing a doorknob.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 14.1
+    },
+    {
+     "id": "validation-sta-11260",
+     "video": "VNQES",
+     "query": "person put the box down on a table.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 23.9,
+     "end": 31.0
+    },
+    {
+     "id": "validation-sta-11261",
+     "video": "VNQES",
+     "query": "person they put the box on a table.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 23.9,
+     "end": 31.0
+    },
+    {
+     "id": "validation-sta-11262",
+     "video": "VNQES",
+     "query": "a person is laughing at something in a box.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.0,
+     "end": 13.4
+    },
+    {
+     "id": "validation-sta-11531",
+     "video": "N8R3F",
+     "query": "person throws a pair of shoes at a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.9,
+     "end": 9.2
+    },
+    {
+     "id": "validation-sta-11532",
+     "video": "N8R3F",
+     "query": "person throws some shoes on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.9,
+     "end": 9.2
+    },
+    {
+     "id": "validation-sta-11749",
+     "video": "N8XDV",
+     "query": "this person takes a look out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.8,
+     "end": 16.1
+    },
+    {
+     "id": "validation-sta-11750",
+     "video": "N8XDV",
+     "query": "the person turns to look out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.8,
+     "end": 16.1
+    },
+    {
+     "id": "validation-sta-11751",
+     "video": "N8XDV",
+     "query": "person eating a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.8,
+     "end": 7.9
+    },
+    {
+     "id": "validation-sta-11752",
+     "video": "N8XDV",
+     "query": "person looks out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.8,
+     "end": 16.1
+    },
+    {
+     "id": "validation-sta-11994",
+     "video": "NAWO1",
+     "query": "the person is holding their phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 5.0,
+     "end": 10.2
+    },
+    {
+     "id": "validation-sta-12057",
+     "video": "ICALV",
+     "query": "one person is eating the remains of a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.2
+    },
+    {
+     "id": "validation-sta-12058",
+     "video": "ICALV",
+     "query": "one person is eating.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.2
+    },
+    {
+     "id": "validation-sta-12059",
+     "video": "ICALV",
+     "query": "one person is eating a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.2
+    },
+    {
+     "id": "validation-sta-12088",
+     "video": "T5E2T",
+     "query": "person eating a muffin.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 37.6,
+     "end": 44.6
+    },
+    {
+     "id": "validation-sta-12089",
+     "video": "T5E2T",
+     "query": "a person is awakening from a bed.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.4,
+     "end": 21.5
+    },
+    {
+     "id": "validation-sta-12192",
+     "video": "X5QMG",
+     "query": "the sitting person fixes the positioning of the chairs.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 11.4
+    },
+    {
+     "id": "validation-in_domain_negative-train38",
+     "video": "I2DHG",
+     "query": "a person is opening a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train119",
+     "video": "R9382",
+     "query": "a person runs into the closet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train121",
+     "video": "R9382",
+     "query": "person opening a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train305",
+     "video": "Z5JZD",
+     "query": "person holding a cup.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train370",
+     "video": "5MRPU",
+     "query": "person they close the laptop.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train451",
+     "video": "H4IT6",
+     "query": "the person is throwing a blanket on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train460",
+     "video": "NHXI3",
+     "query": "person closes a door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train492",
+     "video": "OEIRN",
+     "query": "person they stand up.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train500",
+     "video": "R9382",
+     "query": "person take a camera out.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train538",
+     "video": "BART9",
+     "query": "person drinking from a glass of water.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train556",
+     "video": "NHXI3",
+     "query": "a person puts down a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train601",
+     "video": "T5E2T",
+     "query": "a person holding a laptop puts it on the stove.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1025",
+     "video": "SJQVM",
+     "query": "a person is walking through a hallway sneezing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1034",
+     "video": "FPFFN",
+     "query": "person makes a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1204",
+     "video": "OL2JP",
+     "query": "the person begins eating the food in the bowl.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1283",
+     "video": "Z5JZD",
+     "query": "one person eats from a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1584",
+     "video": "8LWV7",
+     "query": "person someone sitting at a table with food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2217",
+     "video": "OL2JP",
+     "query": "a person is pouring something into a glass.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2241",
+     "video": "5ZGRN",
+     "query": "person begin laughing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2243",
+     "video": "9ONDD",
+     "query": "person takes a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2538",
+     "video": "9ONDD",
+     "query": "person closes the bedroom door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2705",
+     "video": "I2DHG",
+     "query": "person turns off the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2718",
+     "video": "8LWV7",
+     "query": "person close the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2819",
+     "video": "IIFVE",
+     "query": "person takes their shoes off.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2901",
+     "video": "ICALV",
+     "query": "person opens the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3400",
+     "video": "Y49WR",
+     "query": "a person is sitting on a bed eating some food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3603",
+     "video": "5XKVP",
+     "query": "a person is holding a picture.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3758",
+     "video": "NHXI3",
+     "query": "person they start eating some food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3803",
+     "video": "6BFKO",
+     "query": "person throwing clothes on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3940",
+     "video": "88TGX",
+     "query": "person puts it back on a shelf.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3979",
+     "video": "NHXI3",
+     "query": "the person turned on the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4029",
+     "video": "NHXI3",
+     "query": "person someone is in their kitchen washing dishes.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4037",
+     "video": "Y49WR",
+     "query": "a person is sitting on a pillow on a chair.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4064",
+     "video": "A58GR",
+     "query": "a person opens a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4123",
+     "video": "C6F8V",
+     "query": "a person is eating a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4211",
+     "video": "VPBIO",
+     "query": "person pour a cup of coffee.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4328",
+     "video": "P5ANU",
+     "query": "a person takes some clothes out of a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4422",
+     "video": "IZTHW",
+     "query": "a person puts food on the table.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4427",
+     "video": "N8XDV",
+     "query": "person turning off the light behind them.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4458",
+     "video": "NHXI3",
+     "query": "person they start sneezing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4629",
+     "video": "VPBIO",
+     "query": "a person is sitting on the sofa holding a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4630",
+     "video": "1PALI",
+     "query": "person puts the book down on the couch.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4773",
+     "video": "I2DHG",
+     "query": "person they take a camera out.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4787",
+     "video": "NHXI3",
+     "query": "the person puts down the box on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4886",
+     "video": "A58GR",
+     "query": "person puts away a box of cereal.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4947",
+     "video": "CXKFB",
+     "query": "a person is sneezing by the stove.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5050",
+     "video": "GXZHG",
+     "query": "the person inside turns around a takes a picture.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5157",
+     "video": "VNQES",
+     "query": "person serve themselves a glass of water to drink.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5315",
+     "video": "5XKVP",
+     "query": "person sitting down to eat a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5379",
+     "video": "GG1X2",
+     "query": "person turns on the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5712",
+     "video": "9ONDD",
+     "query": "a person stands by a door laughing throwing a pillow.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5767",
+     "video": "G2VOP",
+     "query": "person take a sandwich out of the bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5823",
+     "video": "TCM46",
+     "query": "a person throws a broom in the corner.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5868",
+     "video": "ICALV",
+     "query": "person opening a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5886",
+     "video": "VD6P1",
+     "query": "a person walks through a doorway.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5898",
+     "video": "MMTED",
+     "query": "person open the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5912",
+     "video": "A58GR",
+     "query": "person laughing in front of a mirror.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5927",
+     "video": "5XKVP",
+     "query": "person takes a book out of their bookbag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5965",
+     "video": "FW1L0",
+     "query": "person runs out room with pillow.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6058",
+     "video": "N8R3F",
+     "query": "person begins dressing again.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6138",
+     "video": "5XKVP",
+     "query": "person sits in a chair.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6657",
+     "video": "5DYQR",
+     "query": "a person holding a pillow walks into the room.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6670",
+     "video": "H8UJ3",
+     "query": "a person throws a book onto the table.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6811",
+     "video": "X5QMG",
+     "query": "a person is throwing a blanket on the bed.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6820",
+     "video": "04LAX",
+     "query": "person watches something visible in the mirror.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6889",
+     "video": "NAWO1",
+     "query": "person closing the door behind.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7129",
+     "video": "N8XDV",
+     "query": "person eating it.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7173",
+     "video": "VTOYP",
+     "query": "a person takes some medicine.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7224",
+     "video": "CXKFB",
+     "query": "person take picture with camera.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7242",
+     "video": "I2DHG",
+     "query": "a person opens the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7258",
+     "video": "FPFFN",
+     "query": "person pour some coffee in a glass.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7721",
+     "video": "MMTED",
+     "query": "a person walks through a doorway.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7747",
+     "video": "VPBIO",
+     "query": "person takes off their wet shoes.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7802",
+     "video": "5ZGRN",
+     "query": "the person turns off the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7849",
+     "video": "A58GR",
+     "query": "a person is laughing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7885",
+     "video": "MVPQF",
+     "query": "person close the book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7978",
+     "video": "VPBIO",
+     "query": "person they close the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8061",
+     "video": "N8R3F",
+     "query": "person they open another door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8122",
+     "video": "88TGX",
+     "query": "person eating a snack.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8239",
+     "video": "ICALV",
+     "query": "person closing the door on the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8287",
+     "video": "1PALI",
+     "query": "person they start sneezing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8357",
+     "video": "R9382",
+     "query": "the person in the video opened the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8364",
+     "video": "R9382",
+     "query": "person they put their shoes on.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8452",
+     "video": "OEIRN",
+     "query": "a person puts their bag on the table.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8744",
+     "video": "H4IT6",
+     "query": "person start watching television.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8922",
+     "video": "GXZHG",
+     "query": "a person undresses in the bathroom.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9010",
+     "video": "VNQES",
+     "query": "person they close their laptop.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9012",
+     "video": "OEIRN",
+     "query": "person begin smiling.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9089",
+     "video": "TCM46",
+     "query": "a person is fixing a light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9122",
+     "video": "SL9ZD",
+     "query": "person drinking from a coffee cup.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9212",
+     "video": "T5E2T",
+     "query": "the person begins to work on a doorknob opening.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9399",
+     "video": "N8XDV",
+     "query": "a person pours coffee into a cup.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9624",
+     "video": "GG1X2",
+     "query": "person open the closet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9790",
+     "video": "MVPQF",
+     "query": "a man opens a door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9825",
+     "video": "H8UJ3",
+     "query": "person closing the door behind him.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9860",
+     "video": "FPFFN",
+     "query": "a person closes cabinet drawers.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9895",
+     "video": "OEIRN",
+     "query": "person eats food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10198",
+     "video": "A2DDA",
+     "query": "person closes a laptop lid.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10289",
+     "video": "H8UJ3",
+     "query": "the person closes a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10367",
+     "video": "YX3W8",
+     "query": "a person is opening a door to the bathroom.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10774",
+     "video": "Z5JZD",
+     "query": "person close the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11058",
+     "video": "LAJ9K",
+     "query": "person begin playing a short puzzle game on their phone.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11083",
+     "video": "5ZGRN",
+     "query": "a person is sitting on a chair holding books.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11136",
+     "video": "EOA7I",
+     "query": "a person is washing dishes using a sponge.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11325",
+     "video": "I2DHG",
+     "query": "person drinking from a glass mug.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11410",
+     "video": "H8UJ3",
+     "query": "a person is washing their hands in a sink.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11458",
+     "video": "A58GR",
+     "query": "person they begin throwing some clothes on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11587",
+     "video": "R9382",
+     "query": "person puts a bag on a shelf.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11706",
+     "video": "N8XDV",
+     "query": "person a boy comes into the room eating a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11723",
+     "video": "9ONDD",
+     "query": "person put their shoes on.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11761",
+     "video": "OEIRN",
+     "query": "a person runs around a room holding a pillow.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11782",
+     "video": "OEIRN",
+     "query": "person opens the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12072",
+     "video": "SJQVM",
+     "query": "person drinking from a glass.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12096",
+     "video": "VNQES",
+     "query": "person they take off their shoes.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12197",
+     "video": "Z5JZD",
+     "query": "a person is seen eating some food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12373",
+     "video": "G2VOP",
+     "query": "person closes medicine cabinet door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12380",
+     "video": "04LAX",
+     "query": "person close the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-30324",
+     "video": "VD6P1",
+     "query": "A crested auklet displays its colorful bill plates to attract a mate.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-30442",
+     "video": "04LAX",
+     "query": "She draws a vector to represent the direction and magnitude of the force.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-30443",
+     "video": "04LAX",
+     "query": "He creates a table of values to identify the pattern in the sequence.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31024",
+     "video": "5ZGRN",
+     "query": "A tiger lazily yawned, revealing its impressive set of teeth.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31025",
+     "video": "5ZGRN",
+     "query": "The cougar silently watched its prey from a concealed position.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31026",
+     "video": "5ZGRN",
+     "query": "A leopard cub playfully swatted at a butterfly.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31089",
+     "video": "IZTHW",
+     "query": "The Siberian tiger's orange coat faded to white on its underbelly for camouflage in the snow.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31515",
+     "video": "YX3W8",
+     "query": "A guanaco takes a dust bath, rolling in the dry earth.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-32659",
+     "video": "6BFKO",
+     "query": "The scientist analyzed the data from the baryon acoustic oscillation survey, measuring the universe's expansion history.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33171",
+     "video": "BART9",
+     "query": "The engineer used a network analyzer to measure the return loss of the antenna.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33310",
+     "video": "OEIRN",
+     "query": "The zebra foal frolicked alongside its mother, learning the ways of the herd.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33312",
+     "video": "OEIRN",
+     "query": "The Arabian mare nickered softly, greeting her foal with a gentle nuzzle.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33314",
+     "video": "OEIRN",
+     "query": "The racehorse pranced nervously in the starting gate, eager for the race to begin.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33316",
+     "video": "OEIRN",
+     "query": "The Przewalski's horse shook its head, dislodging the flies that pestered it.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33317",
+     "video": "OEIRN",
+     "query": "The miniature horse stood patiently, allowing a child to groom its coat.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33318",
+     "video": "OEIRN",
+     "query": "The Friesian stallion arched its neck, presenting its magnificent presence.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33829",
+     "video": "88TGX",
+     "query": "A bee fly, a bumblebee mimic, sips nectar from a wildflower using its long proboscis.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33830",
+     "video": "88TGX",
+     "query": "A square-headed wasp carries a paralyzed tree cricket back to its nest.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33936",
+     "video": "A58GR",
+     "query": "A treehopper slowly climbs the stem of a plant, its body perfectly camouflaged to resemble a thorn or bud.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33937",
+     "video": "A58GR",
+     "query": "A net-winged beetle rests on a leaf, its delicate, lace-like wing covers providing a stunning display.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33940",
+     "video": "A58GR",
+     "query": "A snakefly perches on a twig, its long, slender body and elongated neck giving it a unique, serpentine appearance.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33941",
+     "video": "A58GR",
+     "query": "A mole cricket burrows through the soil, using its powerful, shovel-like front legs to create intricate underground tunnels.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33942",
+     "video": "A58GR",
+     "query": "A webspinner works tirelessly to construct a silken web, which it uses for both shelter and to capture prey.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34057",
+     "video": "8LWV7",
+     "query": "A leveret explored a patch of soft, spongy moss.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34058",
+     "video": "8LWV7",
+     "query": "A rabbit darted through a narrow tunnel in a hedge.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34340",
+     "video": "G2VOP",
+     "query": "The wombat used its rodent-like front teeth to gnaw on tough roots and vegetation.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34341",
+     "video": "G2VOP",
+     "query": "A quoll arched its back and hissed aggressively when threatened by a potential predator.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34708",
+     "video": "SJQVM",
+     "query": "A Malay weasel snatches a frog from a lily pad.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34709",
+     "video": "SJQVM",
+     "query": "A Vietnamese weasel chases a mouse through a rice paddy.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34867",
+     "video": "H8UJ3",
+     "query": "She adjusted the focus of the microscope to observe the sample more closely.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34868",
+     "video": "H8UJ3",
+     "query": "He measured the wavelength of the light using a spectrometer.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34869",
+     "video": "H8UJ3",
+     "query": "The scientist calibrated the photodetector before starting the experiment.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34870",
+     "video": "H8UJ3",
+     "query": "She placed the polarizing filter in front of the light source.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35065",
+     "video": "Z5JZD",
+     "query": "A giant trevally hunts in the surf zone, chasing down baitfish with powerful bursts of speed.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35066",
+     "video": "Z5JZD",
+     "query": "The physicist carefully aligned the laser beam with the particle detector.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35067",
+     "video": "Z5JZD",
+     "query": "She adjusted the settings on the oscilloscope to measure the signal from the photomultiplier tube.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35068",
+     "video": "Z5JZD",
+     "query": "He donned his protective goggles before entering the radiation-controlled area.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35230",
+     "video": "FPFFN",
+     "query": "A harbor seal uses its front flippers to steer while swimming.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35231",
+     "video": "FPFFN",
+     "query": "A Weddell seal pup takes shelter in an ice crevice during a storm.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35232",
+     "video": "FPFFN",
+     "query": "A ringed seal maintains several breathing holes in case of predators.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35429",
+     "video": "CXKFB",
+     "query": "A marmoset scampers up a tree trunk, searching for insects.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35430",
+     "video": "CXKFB",
+     "query": "A langur sits in a meditative pose, gazing out at the horizon.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35493",
+     "video": "R9382",
+     "query": "A tamarin uses its long, slender fingers to extract insects from the crevices of tree bark.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35494",
+     "video": "R9382",
+     "query": "A macaque lounges in a natural hot spring, its body submerged in the warm, soothing water.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35495",
+     "video": "R9382",
+     "query": "A proboscis monkey leaps from one riverbank to another, showcasing its powerful hindlimbs.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35496",
+     "video": "R9382",
+     "query": "A lemur uses its specialized comb-like teeth to groom its lush fur.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35497",
+     "video": "R9382",
+     "query": "A howler monkey moves through the canopy, using its prehensile tail as a fifth limb for added stability.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35498",
+     "video": "R9382",
+     "query": "A vervet monkey engages in a lively game of chase with its playmates.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35571",
+     "video": "P5ANU",
+     "query": "The actuary calculates the probability of ruin for an insurance company.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35874",
+     "video": "LAJ9K",
+     "query": "A pack rat dragged a shiny object into its nest, adding to its collection.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35877",
+     "video": "A2DDA",
+     "query": "A kangaroo rat hopped across the desert sand, its tail acting as a balance.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36059",
+     "video": "5MRPU",
+     "query": "A giant garter snake swims through the reeds of a freshwater marsh.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36201",
+     "video": "GXZHG",
+     "query": "The umpire calls a check swing a strike.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36202",
+     "video": "GXZHG",
+     "query": "The catcher calls for a changeup.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36500",
+     "video": "NHXI3",
+     "query": "The player steals the ball with a well-timed interception.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36501",
+     "video": "NHXI3",
+     "query": "The midfielder drives a shot towards the far post.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36502",
+     "video": "NHXI3",
+     "query": "The defender clears the ball out of the circle.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36503",
+     "video": "NHXI3",
+     "query": "The forward pokes the ball past the goalkeeper.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36504",
+     "video": "NHXI3",
+     "query": "The goalkeeper makes a sprawling save with the stick.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36505",
+     "video": "NHXI3",
+     "query": "The cyclists line up at the starting line.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36506",
+     "video": "NHXI3",
+     "query": "The race begins with a countdown.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37106",
+     "video": "MVPQF",
+     "query": "Skiers glide effortlessly over rollers and bumps.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37108",
+     "video": "MVPQF",
+     "query": "Skiers anticipate each gate, planning their approach.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37290",
+     "video": "Y49WR",
+     "query": "The archer practices shooting in different weather conditions to adapt their technique.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37291",
+     "video": "Y49WR",
+     "query": "The archer tunes their arrows to match the weight of their bow.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37318",
+     "video": "5DYQR",
+     "query": "The batsman plays a cut shot behind square for runs.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37844",
+     "video": "GG1X2",
+     "query": "A long-eared owl tilted its head curiously, listening intently for the rustling of prey.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37846",
+     "video": "GG1X2",
+     "query": "A great gray owl plunged into a deep snowdrift, emerging with a vole clutched in its beak.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38113",
+     "video": "IIFVE",
+     "query": "The Somali golden mole paused at the entrance to its burrow, its nose twitching as it detected a potential threat.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38359",
+     "video": "VTOYP",
+     "query": "A three-toed amphiuma swam slowly through the murky waters of a cypress swamp.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38607",
+     "video": "SL9ZD",
+     "query": "A wattled jacana picks at insects on the surface of the water, its wattles swinging with each movement.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38759",
+     "video": "TCM46",
+     "query": "Pygmy armadillos rapidly relocated when threatened, essentially swimming their way through sandy soil.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38760",
+     "video": "TCM46",
+     "query": "Nine-banded armadillos huddled together in a tight sphere formation, creating an impenetrable spiny phalanx.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    }
+   ],
+   "durations": {
+    "C6F8V": 18.67,
+    "ICALV": 31.28,
+    "1PALI": 16.7,
+    "MMTED": 22.18,
+    "6BFKO": 28.49,
+    "8LWV7": 30.79,
+    "BART9": 32.86,
+    "IZTHW": 32.9,
+    "GXZHG": 16.78,
+    "5DYQR": 17.44,
+    "IIFVE": 25.98,
+    "SL9ZD": 30.44,
+    "FW1L0": 30.84,
+    "N8XDV": 17.76,
+    "N8R3F": 19.69,
+    "G2VOP": 25.45,
+    "MVPQF": 32.35,
+    "P5ANU": 28.42,
+    "04LAX": 27.26,
+    "5MRPU": 37.9,
+    "T5E2T": 48.67,
+    "GG1X2": 26.26,
+    "Z5JZD": 27.26,
+    "VPBIO": 31.72,
+    "TCM46": 23.13,
+    "NAWO1": 48.16,
+    "88TGX": 31.21,
+    "H8UJ3": 52.66,
+    "OEIRN": 40.57,
+    "X5QMG": 30.86,
+    "I2DHG": 30.86,
+    "OL2JP": 29.44,
+    "5XKVP": 13.12,
+    "5ZGRN": 29.01,
+    "VNQES": 39.36,
+    "A58GR": 32.14,
+    "FPFFN": 18.32,
+    "NHXI3": 31.65,
+    "YX3W8": 28.17,
+    "9ONDD": 31.97,
+    "A2DDA": 30.23,
+    "LAJ9K": 25.1,
+    "R9382": 27.7,
+    "H4IT6": 8.82,
+    "EOA7I": 30.77,
+    "Y49WR": 24.13,
+    "SJQVM": 27.96,
+    "CXKFB": 26.87,
+    "VD6P1": 25.45,
+    "VTOYP": 28.21
+   },
+   "query_counts": {
+    "positive": 349,
+    "in_domain_negative": 349,
+    "out_of_domain_negative": 217
+   },
+   "skipped_invalid_intervals": 0
+  },
+  "test": {
+   "videos": [
+    "C6F8V",
+    "ICALV",
+    "1PALI",
+    "MMTED",
+    "6BFKO",
+    "8LWV7",
+    "BART9",
+    "IZTHW",
+    "GXZHG",
+    "5DYQR",
+    "IIFVE",
+    "SL9ZD",
+    "FW1L0",
+    "N8XDV",
+    "N8R3F",
+    "G2VOP",
+    "MVPQF",
+    "P5ANU",
+    "04LAX",
+    "5MRPU",
+    "T5E2T",
+    "GG1X2",
+    "Z5JZD",
+    "VPBIO",
+    "TCM46",
+    "NAWO1",
+    "88TGX",
+    "H8UJ3",
+    "OEIRN",
+    "X5QMG",
+    "I2DHG",
+    "OL2JP",
+    "5XKVP",
+    "5ZGRN",
+    "VNQES",
+    "A58GR",
+    "FPFFN",
+    "NHXI3",
+    "YX3W8",
+    "9ONDD",
+    "A2DDA",
+    "LAJ9K",
+    "R9382",
+    "H4IT6",
+    "EOA7I",
+    "Y49WR",
+    "SJQVM",
+    "CXKFB",
+    "VD6P1",
+    "VTOYP"
+   ],
+   "queries": [
+    {
+     "id": "validation-sta-270",
+     "video": "VD6P1",
+     "query": "person fixes his hair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 7.0,
+     "end": 13.1
+    },
+    {
+     "id": "validation-sta-365",
+     "video": "04LAX",
+     "query": "person pours it into a glass.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.9,
+     "end": 22.7
+    },
+    {
+     "id": "validation-sta-366",
+     "video": "04LAX",
+     "query": "person drinks from the glass.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.2,
+     "end": 27.26
+    },
+    {
+     "id": "validation-sta-831",
+     "video": "5ZGRN",
+     "query": "a person opens a cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.4
+    },
+    {
+     "id": "validation-sta-832",
+     "video": "5ZGRN",
+     "query": "person closes the cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.6,
+     "end": 15.8
+    },
+    {
+     "id": "validation-sta-833",
+     "video": "5ZGRN",
+     "query": "a person is putting food in a cupboard.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.2,
+     "end": 13.0
+    },
+    {
+     "id": "validation-sta-884",
+     "video": "IZTHW",
+     "query": "person laughing at what is on the screen.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 29.4,
+     "end": 32.9
+    },
+    {
+     "id": "validation-sta-1227",
+     "video": "YX3W8",
+     "query": "a person is throwing clothes on a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.1,
+     "end": 7.6
+    },
+    {
+     "id": "validation-sta-2169",
+     "video": "6BFKO",
+     "query": "person the laptop lights up.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 23.8,
+     "end": 28.49
+    },
+    {
+     "id": "validation-sta-2582",
+     "video": "BART9",
+     "query": "a person puts groceries onto a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.9,
+     "end": 22.2
+    },
+    {
+     "id": "validation-sta-2698",
+     "video": "OEIRN",
+     "query": "person eats a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 2.3,
+     "end": 18.0
+    },
+    {
+     "id": "validation-sta-2699",
+     "video": "OEIRN",
+     "query": "person take some medicine.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.3,
+     "end": 36.7
+    },
+    {
+     "id": "validation-sta-2700",
+     "video": "OEIRN",
+     "query": "person they take the medicine.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.3,
+     "end": 36.7
+    },
+    {
+     "id": "validation-sta-2701",
+     "video": "OEIRN",
+     "query": "person takes some with a glass of water.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 25.6,
+     "end": 30.0
+    },
+    {
+     "id": "validation-sta-2702",
+     "video": "OEIRN",
+     "query": "a person sits on a sofa eating a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 2.3,
+     "end": 18.0
+    },
+    {
+     "id": "validation-sta-2703",
+     "video": "OEIRN",
+     "query": "the person takes medicine off a table.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.3,
+     "end": 36.7
+    },
+    {
+     "id": "validation-sta-3128",
+     "video": "88TGX",
+     "query": "a person opens the refrigerator.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.3,
+     "end": 8.2
+    },
+    {
+     "id": "validation-sta-3129",
+     "video": "88TGX",
+     "query": "person opening the refrigerator door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.3,
+     "end": 8.2
+    },
+    {
+     "id": "validation-sta-3209",
+     "video": "A58GR",
+     "query": "person laugh as they put a towel in it.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.0,
+     "end": 25.4
+    },
+    {
+     "id": "validation-sta-3210",
+     "video": "A58GR",
+     "query": "person puts clothes in it.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 16.3,
+     "end": 26.1
+    },
+    {
+     "id": "validation-sta-3211",
+     "video": "A58GR",
+     "query": "a person takes a box from a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.4,
+     "end": 9.4
+    },
+    {
+     "id": "validation-sta-3212",
+     "video": "A58GR",
+     "query": "a person takes a box off a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.4,
+     "end": 9.4
+    },
+    {
+     "id": "validation-sta-3213",
+     "video": "A58GR",
+     "query": "person put a towel inside.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.0,
+     "end": 25.4
+    },
+    {
+     "id": "validation-sta-3313",
+     "video": "8LWV7",
+     "query": "person they awaken.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.0,
+     "end": 13.8
+    },
+    {
+     "id": "validation-sta-3314",
+     "video": "8LWV7",
+     "query": "a person awakens on a bed.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.0,
+     "end": 13.8
+    },
+    {
+     "id": "validation-sta-3548",
+     "video": "G2VOP",
+     "query": "a person stands in a doorway sneezing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 4.7
+    },
+    {
+     "id": "validation-sta-3549",
+     "video": "G2VOP",
+     "query": "person put clothes onto a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 14.8,
+     "end": 25.45
+    },
+    {
+     "id": "validation-sta-3853",
+     "video": "SJQVM",
+     "query": "person pouring water into a glass.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 11.0,
+     "end": 17.8
+    },
+    {
+     "id": "validation-sta-3854",
+     "video": "SJQVM",
+     "query": "a person snuggles with a blanket.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 12.2
+    },
+    {
+     "id": "validation-sta-3979",
+     "video": "H8UJ3",
+     "query": "the person turned on the light.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 8.6
+    },
+    {
+     "id": "validation-sta-3980",
+     "video": "H8UJ3",
+     "query": "the person opened the book.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.1,
+     "end": 23.1
+    },
+    {
+     "id": "validation-sta-3981",
+     "video": "H8UJ3",
+     "query": "the person sits down on a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.1,
+     "end": 17.5
+    },
+    {
+     "id": "validation-sta-3982",
+     "video": "H8UJ3",
+     "query": "a person turns on the lights to the dining room.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 8.6
+    },
+    {
+     "id": "validation-sta-4152",
+     "video": "Z5JZD",
+     "query": "person closes the pantry door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.9,
+     "end": 25.7
+    },
+    {
+     "id": "validation-sta-4153",
+     "video": "Z5JZD",
+     "query": "person puts them on a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.3,
+     "end": 19.8
+    },
+    {
+     "id": "validation-sta-4154",
+     "video": "Z5JZD",
+     "query": "person closes the door to the cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.9,
+     "end": 25.7
+    },
+    {
+     "id": "validation-sta-4155",
+     "video": "Z5JZD",
+     "query": "a person is putting some groceries in a bag away.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.4,
+     "end": 16.3
+    },
+    {
+     "id": "validation-sta-4299",
+     "video": "FPFFN",
+     "query": "person turns lights off.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.7,
+     "end": 18.32
+    },
+    {
+     "id": "validation-sta-4300",
+     "video": "FPFFN",
+     "query": "person is walking across room holding a phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.0,
+     "end": 9.6
+    },
+    {
+     "id": "validation-sta-4301",
+     "video": "FPFFN",
+     "query": "person walks through doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.7,
+     "end": 18.32
+    },
+    {
+     "id": "validation-sta-4458",
+     "video": "CXKFB",
+     "query": "person they start sneezing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.1,
+     "end": 19.1
+    },
+    {
+     "id": "validation-sta-4459",
+     "video": "CXKFB",
+     "query": "causes the person to start sneezing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.1,
+     "end": 19.1
+    },
+    {
+     "id": "validation-sta-4513",
+     "video": "R9382",
+     "query": "a person is cooking on the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 12.0
+    },
+    {
+     "id": "validation-sta-4514",
+     "video": "R9382",
+     "query": "person pulls something out of the fridge that he eats.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 22.8,
+     "end": 27.7
+    },
+    {
+     "id": "validation-sta-4515",
+     "video": "R9382",
+     "query": "person close the door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.2,
+     "end": 21.1
+    },
+    {
+     "id": "validation-sta-4516",
+     "video": "R9382",
+     "query": "person eat it.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 22.8,
+     "end": 27.7
+    },
+    {
+     "id": "validation-sta-4517",
+     "video": "R9382",
+     "query": "person take out a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.1,
+     "end": 21.9
+    },
+    {
+     "id": "validation-sta-4518",
+     "video": "R9382",
+     "query": "a person is cooking at the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 12.0
+    },
+    {
+     "id": "validation-sta-4580",
+     "video": "P5ANU",
+     "query": "person pouring a cup of coffee.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 20.9,
+     "end": 27.1
+    },
+    {
+     "id": "validation-sta-4820",
+     "video": "LAJ9K",
+     "query": "a person is walking near the doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.9,
+     "end": 9.0
+    },
+    {
+     "id": "validation-sta-4821",
+     "video": "A2DDA",
+     "query": "person take some medicine.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.9,
+     "end": 10.8
+    },
+    {
+     "id": "validation-sta-4971",
+     "video": "5MRPU",
+     "query": "person take a picture of themselves.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 27.0,
+     "end": 34.4
+    },
+    {
+     "id": "validation-sta-5094",
+     "video": "GXZHG",
+     "query": "person run to the couch.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.1,
+     "end": 14.7
+    },
+    {
+     "id": "validation-sta-5095",
+     "video": "GXZHG",
+     "query": "person starts running to the sofa.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.1,
+     "end": 14.7
+    },
+    {
+     "id": "validation-sta-5342",
+     "video": "NHXI3",
+     "query": "person walks into the room which has the light on.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 24.2,
+     "end": 29.2
+    },
+    {
+     "id": "validation-sta-5343",
+     "video": "NHXI3",
+     "query": "person takes a book from the table in the entryway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.5,
+     "end": 13.4
+    },
+    {
+     "id": "validation-sta-5344",
+     "video": "NHXI3",
+     "query": "person turned on the light.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 24.2,
+     "end": 29.2
+    },
+    {
+     "id": "validation-sta-5345",
+     "video": "NHXI3",
+     "query": "person turns on the light.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 24.2,
+     "end": 29.2
+    },
+    {
+     "id": "validation-sta-5346",
+     "video": "NHXI3",
+     "query": "person takes out a book.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.5,
+     "end": 13.4
+    },
+    {
+     "id": "validation-sta-5347",
+     "video": "NHXI3",
+     "query": "person walks through another doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 21.6,
+     "end": 27.6
+    },
+    {
+     "id": "validation-sta-5348",
+     "video": "NHXI3",
+     "query": "person walks toward a doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 21.6,
+     "end": 27.6
+    },
+    {
+     "id": "validation-sta-5849",
+     "video": "MVPQF",
+     "query": "person puts the bags on the bottom shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.9,
+     "end": 10.4
+    },
+    {
+     "id": "validation-sta-5850",
+     "video": "MVPQF",
+     "query": "a person puts clothes on a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.9,
+     "end": 10.4
+    },
+    {
+     "id": "validation-sta-6002",
+     "video": "Y49WR",
+     "query": "person takes a picture.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.4,
+     "end": 23.0
+    },
+    {
+     "id": "validation-sta-6003",
+     "video": "Y49WR",
+     "query": "person getting dressed takes a picture in mirror.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 15.4,
+     "end": 23.0
+    },
+    {
+     "id": "validation-sta-6026",
+     "video": "5DYQR",
+     "query": "a person opens a cabinet.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 4.3,
+     "end": 9.8
+    },
+    {
+     "id": "validation-sta-6457",
+     "video": "GG1X2",
+     "query": "person takes their shoes off.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.2,
+     "end": 17.0
+    },
+    {
+     "id": "validation-sta-6458",
+     "video": "GG1X2",
+     "query": "person closing the door behind them.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.0,
+     "end": 11.1
+    },
+    {
+     "id": "validation-sta-6676",
+     "video": "IIFVE",
+     "query": "a person is throwing clothes on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.9,
+     "end": 9.7
+    },
+    {
+     "id": "validation-sta-6885",
+     "video": "VTOYP",
+     "query": "person start laughing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 14.1,
+     "end": 24.3
+    },
+    {
+     "id": "validation-sta-7089",
+     "video": "SL9ZD",
+     "query": "a person puts a box on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 5.5
+    },
+    {
+     "id": "validation-sta-7211",
+     "video": "TCM46",
+     "query": "person turns the light off.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.0,
+     "end": 23.13
+    },
+    {
+     "id": "validation-sta-7212",
+     "video": "TCM46",
+     "query": "person finally turning off a light on the stairs.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.0,
+     "end": 23.13
+    },
+    {
+     "id": "validation-sta-7346",
+     "video": "I2DHG",
+     "query": "person drinking from a cup.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.1,
+     "end": 23.4
+    },
+    {
+     "id": "validation-sta-7347",
+     "video": "I2DHG",
+     "query": "one person was undressing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.8,
+     "end": 11.4
+    },
+    {
+     "id": "validation-sta-7348",
+     "video": "I2DHG",
+     "query": "person putting their clothes on the bed.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 11.4
+    },
+    {
+     "id": "validation-sta-7349",
+     "video": "I2DHG",
+     "query": "person another was smiling.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 19.7,
+     "end": 30.86
+    },
+    {
+     "id": "validation-sta-7350",
+     "video": "I2DHG",
+     "query": "a person walks through a doorway.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 5.2
+    },
+    {
+     "id": "validation-sta-7571",
+     "video": "5XKVP",
+     "query": "a person is sitting on a chair.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.3
+    },
+    {
+     "id": "validation-sta-7572",
+     "video": "5XKVP",
+     "query": "person stand up.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.5,
+     "end": 7.6
+    },
+    {
+     "id": "validation-sta-7573",
+     "video": "5XKVP",
+     "query": "a person is sitting in a chair at a desk.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.3
+    },
+    {
+     "id": "validation-sta-7574",
+     "video": "5XKVP",
+     "query": "person throw the shoes.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 5.7,
+     "end": 11.5
+    },
+    {
+     "id": "validation-sta-7591",
+     "video": "H4IT6",
+     "query": "a person walks through a doorway holding a phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 4.4
+    },
+    {
+     "id": "validation-sta-7592",
+     "video": "H4IT6",
+     "query": "person someone holding a phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 4.4
+    },
+    {
+     "id": "validation-sta-7608",
+     "video": "EOA7I",
+     "query": "person opens door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 17.1,
+     "end": 25.7
+    },
+    {
+     "id": "validation-sta-8410",
+     "video": "FW1L0",
+     "query": "person eating by the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 2.0,
+     "end": 8.5
+    },
+    {
+     "id": "validation-sta-8544",
+     "video": "MMTED",
+     "query": "person lifts up their head to look out a window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.7,
+     "end": 22.18
+    },
+    {
+     "id": "validation-sta-8545",
+     "video": "MMTED",
+     "query": "person look out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.7,
+     "end": 22.18
+    },
+    {
+     "id": "validation-sta-8764",
+     "video": "VPBIO",
+     "query": "person they start undressing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 16.1,
+     "end": 23.9
+    },
+    {
+     "id": "validation-sta-8765",
+     "video": "VPBIO",
+     "query": "a person is putting groceries on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.7,
+     "end": 9.6
+    },
+    {
+     "id": "validation-sta-8766",
+     "video": "VPBIO",
+     "query": "person they begin to undress.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 16.1,
+     "end": 23.9
+    },
+    {
+     "id": "validation-sta-8767",
+     "video": "VPBIO",
+     "query": "a person is holding a bag of groceries.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.5,
+     "end": 5.5
+    },
+    {
+     "id": "validation-sta-9053",
+     "video": "1PALI",
+     "query": "person they open a window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.3,
+     "end": 16.7
+    },
+    {
+     "id": "validation-sta-9054",
+     "video": "1PALI",
+     "query": "the person opens the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 9.3,
+     "end": 16.7
+    },
+    {
+     "id": "validation-sta-9598",
+     "video": "9ONDD",
+     "query": "a person is cooking on a stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 15.1
+    },
+    {
+     "id": "validation-sta-9599",
+     "video": "9ONDD",
+     "query": "person open the refrigerator to grab eggs.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 13.5,
+     "end": 20.5
+    },
+    {
+     "id": "validation-sta-9600",
+     "video": "9ONDD",
+     "query": "the person is closing the refrigerator.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 18.8,
+     "end": 24.5
+    },
+    {
+     "id": "validation-sta-9601",
+     "video": "9ONDD",
+     "query": "a person is cooking some food on the stove.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 15.1
+    },
+    {
+     "id": "validation-sta-9798",
+     "video": "C6F8V",
+     "query": "a person is standing in front of a mirror laughing.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 14.0,
+     "end": 18.67
+    },
+    {
+     "id": "validation-sta-10817",
+     "video": "OL2JP",
+     "query": "person fixes a broken door knob at the bathroom door.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 14.1
+    },
+    {
+     "id": "validation-sta-10818",
+     "video": "OL2JP",
+     "query": "a person is fixing a doorknob.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 14.1
+    },
+    {
+     "id": "validation-sta-11260",
+     "video": "VNQES",
+     "query": "person put the box down on a table.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 23.9,
+     "end": 31.0
+    },
+    {
+     "id": "validation-sta-11261",
+     "video": "VNQES",
+     "query": "person they put the box on a table.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 23.9,
+     "end": 31.0
+    },
+    {
+     "id": "validation-sta-11262",
+     "video": "VNQES",
+     "query": "a person is laughing at something in a box.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 6.0,
+     "end": 13.4
+    },
+    {
+     "id": "validation-sta-11531",
+     "video": "N8R3F",
+     "query": "person throws a pair of shoes at a shelf.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.9,
+     "end": 9.2
+    },
+    {
+     "id": "validation-sta-11532",
+     "video": "N8R3F",
+     "query": "person throws some shoes on the floor.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 3.9,
+     "end": 9.2
+    },
+    {
+     "id": "validation-sta-11749",
+     "video": "N8XDV",
+     "query": "this person takes a look out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.8,
+     "end": 16.1
+    },
+    {
+     "id": "validation-sta-11750",
+     "video": "N8XDV",
+     "query": "the person turns to look out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.8,
+     "end": 16.1
+    },
+    {
+     "id": "validation-sta-11751",
+     "video": "N8XDV",
+     "query": "person eating a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 1.8,
+     "end": 7.9
+    },
+    {
+     "id": "validation-sta-11752",
+     "video": "N8XDV",
+     "query": "person looks out the window.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 8.8,
+     "end": 16.1
+    },
+    {
+     "id": "validation-sta-11994",
+     "video": "NAWO1",
+     "query": "the person is holding their phone.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 5.0,
+     "end": 10.2
+    },
+    {
+     "id": "validation-sta-12057",
+     "video": "ICALV",
+     "query": "one person is eating the remains of a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.2
+    },
+    {
+     "id": "validation-sta-12058",
+     "video": "ICALV",
+     "query": "one person is eating.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.2
+    },
+    {
+     "id": "validation-sta-12059",
+     "video": "ICALV",
+     "query": "one person is eating a sandwich.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 6.2
+    },
+    {
+     "id": "validation-sta-12088",
+     "video": "T5E2T",
+     "query": "person eating a muffin.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 37.6,
+     "end": 44.6
+    },
+    {
+     "id": "validation-sta-12089",
+     "video": "T5E2T",
+     "query": "a person is awakening from a bed.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 12.4,
+     "end": 21.5
+    },
+    {
+     "id": "validation-sta-12192",
+     "video": "X5QMG",
+     "query": "the sitting person fixes the positioning of the chairs.",
+     "answerable": true,
+     "kind": "positive",
+     "start": 0.0,
+     "end": 11.4
+    },
+    {
+     "id": "validation-in_domain_negative-train38",
+     "video": "I2DHG",
+     "query": "a person is opening a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train119",
+     "video": "R9382",
+     "query": "a person runs into the closet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train121",
+     "video": "R9382",
+     "query": "person opening a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train305",
+     "video": "Z5JZD",
+     "query": "person holding a cup.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train370",
+     "video": "5MRPU",
+     "query": "person they close the laptop.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train451",
+     "video": "H4IT6",
+     "query": "the person is throwing a blanket on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train460",
+     "video": "NHXI3",
+     "query": "person closes a door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train492",
+     "video": "OEIRN",
+     "query": "person they stand up.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train500",
+     "video": "R9382",
+     "query": "person take a camera out.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train538",
+     "video": "BART9",
+     "query": "person drinking from a glass of water.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train556",
+     "video": "NHXI3",
+     "query": "a person puts down a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train601",
+     "video": "T5E2T",
+     "query": "a person holding a laptop puts it on the stove.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1025",
+     "video": "SJQVM",
+     "query": "a person is walking through a hallway sneezing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1034",
+     "video": "FPFFN",
+     "query": "person makes a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1204",
+     "video": "OL2JP",
+     "query": "the person begins eating the food in the bowl.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1283",
+     "video": "Z5JZD",
+     "query": "one person eats from a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train1584",
+     "video": "8LWV7",
+     "query": "person someone sitting at a table with food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2217",
+     "video": "OL2JP",
+     "query": "a person is pouring something into a glass.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2241",
+     "video": "5ZGRN",
+     "query": "person begin laughing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2243",
+     "video": "9ONDD",
+     "query": "person takes a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2538",
+     "video": "9ONDD",
+     "query": "person closes the bedroom door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2705",
+     "video": "I2DHG",
+     "query": "person turns off the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2718",
+     "video": "8LWV7",
+     "query": "person close the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2819",
+     "video": "IIFVE",
+     "query": "person takes their shoes off.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train2901",
+     "video": "ICALV",
+     "query": "person opens the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3400",
+     "video": "Y49WR",
+     "query": "a person is sitting on a bed eating some food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3603",
+     "video": "5XKVP",
+     "query": "a person is holding a picture.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3758",
+     "video": "NHXI3",
+     "query": "person they start eating some food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3803",
+     "video": "6BFKO",
+     "query": "person throwing clothes on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3940",
+     "video": "88TGX",
+     "query": "person puts it back on a shelf.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train3979",
+     "video": "NHXI3",
+     "query": "the person turned on the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4029",
+     "video": "NHXI3",
+     "query": "person someone is in their kitchen washing dishes.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4037",
+     "video": "Y49WR",
+     "query": "a person is sitting on a pillow on a chair.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4064",
+     "video": "A58GR",
+     "query": "a person opens a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4123",
+     "video": "C6F8V",
+     "query": "a person is eating a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4211",
+     "video": "VPBIO",
+     "query": "person pour a cup of coffee.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4328",
+     "video": "P5ANU",
+     "query": "a person takes some clothes out of a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4422",
+     "video": "IZTHW",
+     "query": "a person puts food on the table.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4427",
+     "video": "N8XDV",
+     "query": "person turning off the light behind them.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4458",
+     "video": "NHXI3",
+     "query": "person they start sneezing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4629",
+     "video": "VPBIO",
+     "query": "a person is sitting on the sofa holding a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4630",
+     "video": "1PALI",
+     "query": "person puts the book down on the couch.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4773",
+     "video": "I2DHG",
+     "query": "person they take a camera out.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4787",
+     "video": "NHXI3",
+     "query": "the person puts down the box on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4886",
+     "video": "A58GR",
+     "query": "person puts away a box of cereal.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train4947",
+     "video": "CXKFB",
+     "query": "a person is sneezing by the stove.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5050",
+     "video": "GXZHG",
+     "query": "the person inside turns around a takes a picture.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5157",
+     "video": "VNQES",
+     "query": "person serve themselves a glass of water to drink.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5315",
+     "video": "5XKVP",
+     "query": "person sitting down to eat a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5379",
+     "video": "GG1X2",
+     "query": "person turns on the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5712",
+     "video": "9ONDD",
+     "query": "a person stands by a door laughing throwing a pillow.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5767",
+     "video": "G2VOP",
+     "query": "person take a sandwich out of the bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5823",
+     "video": "TCM46",
+     "query": "a person throws a broom in the corner.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5868",
+     "video": "ICALV",
+     "query": "person opening a bag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5886",
+     "video": "VD6P1",
+     "query": "a person walks through a doorway.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5898",
+     "video": "MMTED",
+     "query": "person open the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5912",
+     "video": "A58GR",
+     "query": "person laughing in front of a mirror.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5927",
+     "video": "5XKVP",
+     "query": "person takes a book out of their bookbag.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train5965",
+     "video": "FW1L0",
+     "query": "person runs out room with pillow.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6058",
+     "video": "N8R3F",
+     "query": "person begins dressing again.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6138",
+     "video": "5XKVP",
+     "query": "person sits in a chair.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6657",
+     "video": "5DYQR",
+     "query": "a person holding a pillow walks into the room.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6670",
+     "video": "H8UJ3",
+     "query": "a person throws a book onto the table.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6811",
+     "video": "X5QMG",
+     "query": "a person is throwing a blanket on the bed.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6820",
+     "video": "04LAX",
+     "query": "person watches something visible in the mirror.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train6889",
+     "video": "NAWO1",
+     "query": "person closing the door behind.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7129",
+     "video": "N8XDV",
+     "query": "person eating it.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7173",
+     "video": "VTOYP",
+     "query": "a person takes some medicine.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7224",
+     "video": "CXKFB",
+     "query": "person take picture with camera.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7242",
+     "video": "I2DHG",
+     "query": "a person opens the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7258",
+     "video": "FPFFN",
+     "query": "person pour some coffee in a glass.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7721",
+     "video": "MMTED",
+     "query": "a person walks through a doorway.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7747",
+     "video": "VPBIO",
+     "query": "person takes off their wet shoes.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7802",
+     "video": "5ZGRN",
+     "query": "the person turns off the light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7849",
+     "video": "A58GR",
+     "query": "a person is laughing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7885",
+     "video": "MVPQF",
+     "query": "person close the book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train7978",
+     "video": "VPBIO",
+     "query": "person they close the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8061",
+     "video": "N8R3F",
+     "query": "person they open another door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8122",
+     "video": "88TGX",
+     "query": "person eating a snack.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8239",
+     "video": "ICALV",
+     "query": "person closing the door on the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8287",
+     "video": "1PALI",
+     "query": "person they start sneezing.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8357",
+     "video": "R9382",
+     "query": "the person in the video opened the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8364",
+     "video": "R9382",
+     "query": "person they put their shoes on.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8452",
+     "video": "OEIRN",
+     "query": "a person puts their bag on the table.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8744",
+     "video": "H4IT6",
+     "query": "person start watching television.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train8922",
+     "video": "GXZHG",
+     "query": "a person undresses in the bathroom.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9010",
+     "video": "VNQES",
+     "query": "person they close their laptop.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9012",
+     "video": "OEIRN",
+     "query": "person begin smiling.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9089",
+     "video": "TCM46",
+     "query": "a person is fixing a light.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9122",
+     "video": "SL9ZD",
+     "query": "person drinking from a coffee cup.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9212",
+     "video": "T5E2T",
+     "query": "the person begins to work on a doorknob opening.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9399",
+     "video": "N8XDV",
+     "query": "a person pours coffee into a cup.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9624",
+     "video": "GG1X2",
+     "query": "person open the closet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9790",
+     "video": "MVPQF",
+     "query": "a man opens a door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9825",
+     "video": "H8UJ3",
+     "query": "person closing the door behind him.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9860",
+     "video": "FPFFN",
+     "query": "a person closes cabinet drawers.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train9895",
+     "video": "OEIRN",
+     "query": "person eats food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10198",
+     "video": "A2DDA",
+     "query": "person closes a laptop lid.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10289",
+     "video": "H8UJ3",
+     "query": "the person closes a book.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10367",
+     "video": "YX3W8",
+     "query": "a person is opening a door to the bathroom.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train10774",
+     "video": "Z5JZD",
+     "query": "person close the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11058",
+     "video": "LAJ9K",
+     "query": "person begin playing a short puzzle game on their phone.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11083",
+     "video": "5ZGRN",
+     "query": "a person is sitting on a chair holding books.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11136",
+     "video": "EOA7I",
+     "query": "a person is washing dishes using a sponge.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11325",
+     "video": "I2DHG",
+     "query": "person drinking from a glass mug.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11410",
+     "video": "H8UJ3",
+     "query": "a person is washing their hands in a sink.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11458",
+     "video": "A58GR",
+     "query": "person they begin throwing some clothes on the floor.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11587",
+     "video": "R9382",
+     "query": "person puts a bag on a shelf.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11706",
+     "video": "N8XDV",
+     "query": "person a boy comes into the room eating a sandwich.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11723",
+     "video": "9ONDD",
+     "query": "person put their shoes on.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11761",
+     "video": "OEIRN",
+     "query": "a person runs around a room holding a pillow.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train11782",
+     "video": "OEIRN",
+     "query": "person opens the cabinet.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12072",
+     "video": "SJQVM",
+     "query": "person drinking from a glass.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12096",
+     "video": "VNQES",
+     "query": "person they take off their shoes.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12197",
+     "video": "Z5JZD",
+     "query": "a person is seen eating some food.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12373",
+     "video": "G2VOP",
+     "query": "person closes medicine cabinet door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-in_domain_negative-train12380",
+     "video": "04LAX",
+     "query": "person close the door.",
+     "answerable": false,
+     "kind": "in_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-30324",
+     "video": "VD6P1",
+     "query": "A crested auklet displays its colorful bill plates to attract a mate.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-30442",
+     "video": "04LAX",
+     "query": "She draws a vector to represent the direction and magnitude of the force.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-30443",
+     "video": "04LAX",
+     "query": "He creates a table of values to identify the pattern in the sequence.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31024",
+     "video": "5ZGRN",
+     "query": "A tiger lazily yawned, revealing its impressive set of teeth.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31025",
+     "video": "5ZGRN",
+     "query": "The cougar silently watched its prey from a concealed position.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31026",
+     "video": "5ZGRN",
+     "query": "A leopard cub playfully swatted at a butterfly.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31089",
+     "video": "IZTHW",
+     "query": "The Siberian tiger's orange coat faded to white on its underbelly for camouflage in the snow.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-31515",
+     "video": "YX3W8",
+     "query": "A guanaco takes a dust bath, rolling in the dry earth.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-32659",
+     "video": "6BFKO",
+     "query": "The scientist analyzed the data from the baryon acoustic oscillation survey, measuring the universe's expansion history.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33171",
+     "video": "BART9",
+     "query": "The engineer used a network analyzer to measure the return loss of the antenna.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33310",
+     "video": "OEIRN",
+     "query": "The zebra foal frolicked alongside its mother, learning the ways of the herd.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33312",
+     "video": "OEIRN",
+     "query": "The Arabian mare nickered softly, greeting her foal with a gentle nuzzle.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33314",
+     "video": "OEIRN",
+     "query": "The racehorse pranced nervously in the starting gate, eager for the race to begin.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33316",
+     "video": "OEIRN",
+     "query": "The Przewalski's horse shook its head, dislodging the flies that pestered it.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33317",
+     "video": "OEIRN",
+     "query": "The miniature horse stood patiently, allowing a child to groom its coat.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33318",
+     "video": "OEIRN",
+     "query": "The Friesian stallion arched its neck, presenting its magnificent presence.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33829",
+     "video": "88TGX",
+     "query": "A bee fly, a bumblebee mimic, sips nectar from a wildflower using its long proboscis.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33830",
+     "video": "88TGX",
+     "query": "A square-headed wasp carries a paralyzed tree cricket back to its nest.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33936",
+     "video": "A58GR",
+     "query": "A treehopper slowly climbs the stem of a plant, its body perfectly camouflaged to resemble a thorn or bud.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33937",
+     "video": "A58GR",
+     "query": "A net-winged beetle rests on a leaf, its delicate, lace-like wing covers providing a stunning display.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33940",
+     "video": "A58GR",
+     "query": "A snakefly perches on a twig, its long, slender body and elongated neck giving it a unique, serpentine appearance.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33941",
+     "video": "A58GR",
+     "query": "A mole cricket burrows through the soil, using its powerful, shovel-like front legs to create intricate underground tunnels.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-33942",
+     "video": "A58GR",
+     "query": "A webspinner works tirelessly to construct a silken web, which it uses for both shelter and to capture prey.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34057",
+     "video": "8LWV7",
+     "query": "A leveret explored a patch of soft, spongy moss.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34058",
+     "video": "8LWV7",
+     "query": "A rabbit darted through a narrow tunnel in a hedge.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34340",
+     "video": "G2VOP",
+     "query": "The wombat used its rodent-like front teeth to gnaw on tough roots and vegetation.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34341",
+     "video": "G2VOP",
+     "query": "A quoll arched its back and hissed aggressively when threatened by a potential predator.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34708",
+     "video": "SJQVM",
+     "query": "A Malay weasel snatches a frog from a lily pad.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34709",
+     "video": "SJQVM",
+     "query": "A Vietnamese weasel chases a mouse through a rice paddy.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34867",
+     "video": "H8UJ3",
+     "query": "She adjusted the focus of the microscope to observe the sample more closely.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34868",
+     "video": "H8UJ3",
+     "query": "He measured the wavelength of the light using a spectrometer.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34869",
+     "video": "H8UJ3",
+     "query": "The scientist calibrated the photodetector before starting the experiment.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-34870",
+     "video": "H8UJ3",
+     "query": "She placed the polarizing filter in front of the light source.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35065",
+     "video": "Z5JZD",
+     "query": "A giant trevally hunts in the surf zone, chasing down baitfish with powerful bursts of speed.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35066",
+     "video": "Z5JZD",
+     "query": "The physicist carefully aligned the laser beam with the particle detector.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35067",
+     "video": "Z5JZD",
+     "query": "She adjusted the settings on the oscilloscope to measure the signal from the photomultiplier tube.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35068",
+     "video": "Z5JZD",
+     "query": "He donned his protective goggles before entering the radiation-controlled area.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35230",
+     "video": "FPFFN",
+     "query": "A harbor seal uses its front flippers to steer while swimming.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35231",
+     "video": "FPFFN",
+     "query": "A Weddell seal pup takes shelter in an ice crevice during a storm.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35232",
+     "video": "FPFFN",
+     "query": "A ringed seal maintains several breathing holes in case of predators.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35429",
+     "video": "CXKFB",
+     "query": "A marmoset scampers up a tree trunk, searching for insects.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35430",
+     "video": "CXKFB",
+     "query": "A langur sits in a meditative pose, gazing out at the horizon.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35493",
+     "video": "R9382",
+     "query": "A tamarin uses its long, slender fingers to extract insects from the crevices of tree bark.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35494",
+     "video": "R9382",
+     "query": "A macaque lounges in a natural hot spring, its body submerged in the warm, soothing water.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35495",
+     "video": "R9382",
+     "query": "A proboscis monkey leaps from one riverbank to another, showcasing its powerful hindlimbs.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35496",
+     "video": "R9382",
+     "query": "A lemur uses its specialized comb-like teeth to groom its lush fur.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35497",
+     "video": "R9382",
+     "query": "A howler monkey moves through the canopy, using its prehensile tail as a fifth limb for added stability.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35498",
+     "video": "R9382",
+     "query": "A vervet monkey engages in a lively game of chase with its playmates.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35571",
+     "video": "P5ANU",
+     "query": "The actuary calculates the probability of ruin for an insurance company.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35874",
+     "video": "LAJ9K",
+     "query": "A pack rat dragged a shiny object into its nest, adding to its collection.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-35877",
+     "video": "A2DDA",
+     "query": "A kangaroo rat hopped across the desert sand, its tail acting as a balance.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36059",
+     "video": "5MRPU",
+     "query": "A giant garter snake swims through the reeds of a freshwater marsh.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36201",
+     "video": "GXZHG",
+     "query": "The umpire calls a check swing a strike.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36202",
+     "video": "GXZHG",
+     "query": "The catcher calls for a changeup.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36500",
+     "video": "NHXI3",
+     "query": "The player steals the ball with a well-timed interception.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36501",
+     "video": "NHXI3",
+     "query": "The midfielder drives a shot towards the far post.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36502",
+     "video": "NHXI3",
+     "query": "The defender clears the ball out of the circle.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36503",
+     "video": "NHXI3",
+     "query": "The forward pokes the ball past the goalkeeper.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36504",
+     "video": "NHXI3",
+     "query": "The goalkeeper makes a sprawling save with the stick.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36505",
+     "video": "NHXI3",
+     "query": "The cyclists line up at the starting line.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-36506",
+     "video": "NHXI3",
+     "query": "The race begins with a countdown.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37106",
+     "video": "MVPQF",
+     "query": "Skiers glide effortlessly over rollers and bumps.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37108",
+     "video": "MVPQF",
+     "query": "Skiers anticipate each gate, planning their approach.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37290",
+     "video": "Y49WR",
+     "query": "The archer practices shooting in different weather conditions to adapt their technique.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37291",
+     "video": "Y49WR",
+     "query": "The archer tunes their arrows to match the weight of their bow.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37318",
+     "video": "5DYQR",
+     "query": "The batsman plays a cut shot behind square for runs.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37844",
+     "video": "GG1X2",
+     "query": "A long-eared owl tilted its head curiously, listening intently for the rustling of prey.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-37846",
+     "video": "GG1X2",
+     "query": "A great gray owl plunged into a deep snowdrift, emerging with a vole clutched in its beak.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38113",
+     "video": "IIFVE",
+     "query": "The Somali golden mole paused at the entrance to its burrow, its nose twitching as it detected a potential threat.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38359",
+     "video": "VTOYP",
+     "query": "A three-toed amphiuma swam slowly through the murky waters of a cypress swamp.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38607",
+     "video": "SL9ZD",
+     "query": "A wattled jacana picks at insects on the surface of the water, its wattles swinging with each movement.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38759",
+     "video": "TCM46",
+     "query": "Pygmy armadillos rapidly relocated when threatened, essentially swimming their way through sandy soil.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    },
+    {
+     "id": "validation-out_of_domain_negative-38760",
+     "video": "TCM46",
+     "query": "Nine-banded armadillos huddled together in a tight sphere formation, creating an impenetrable spiny phalanx.",
+     "answerable": false,
+     "kind": "out_of_domain_negative"
+    }
+   ],
+   "durations": {
+    "C6F8V": 18.67,
+    "ICALV": 31.28,
+    "1PALI": 16.7,
+    "MMTED": 22.18,
+    "6BFKO": 28.49,
+    "8LWV7": 30.79,
+    "BART9": 32.86,
+    "IZTHW": 32.9,
+    "GXZHG": 16.78,
+    "5DYQR": 17.44,
+    "IIFVE": 25.98,
+    "SL9ZD": 30.44,
+    "FW1L0": 30.84,
+    "N8XDV": 17.76,
+    "N8R3F": 19.69,
+    "G2VOP": 25.45,
+    "MVPQF": 32.35,
+    "P5ANU": 28.42,
+    "04LAX": 27.26,
+    "5MRPU": 37.9,
+    "T5E2T": 48.67,
+    "GG1X2": 26.26,
+    "Z5JZD": 27.26,
+    "VPBIO": 31.72,
+    "TCM46": 23.13,
+    "NAWO1": 48.16,
+    "88TGX": 31.21,
+    "H8UJ3": 52.66,
+    "OEIRN": 40.57,
+    "X5QMG": 30.86,
+    "I2DHG": 30.86,
+    "OL2JP": 29.44,
+    "5XKVP": 13.12,
+    "5ZGRN": 29.01,
+    "VNQES": 39.36,
+    "A58GR": 32.14,
+    "FPFFN": 18.32,
+    "NHXI3": 31.65,
+    "YX3W8": 28.17,
+    "9ONDD": 31.97,
+    "A2DDA": 30.23,
+    "LAJ9K": 25.1,
+    "R9382": 27.7,
+    "H4IT6": 8.82,
+    "EOA7I": 30.77,
+    "Y49WR": 24.13,
+    "SJQVM": 27.96,
+    "CXKFB": 26.87,
+    "VD6P1": 25.45,
+    "VTOYP": 28.21
+   },
+   "query_counts": {
+    "positive": 349,
+    "in_domain_negative": 349,
+    "out_of_domain_negative": 217
+   },
+   "skipped_invalid_intervals": 0
+  }
+ },
+ "subset_note": "First 50 validation videos of evaluation/charades_sta_navmr_benchmark.json (manifest order); 'test' duplicates validation so the evaluator never reads the frozen test split."
+}

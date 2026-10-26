@@ -1,0 +1,161 @@
+{"profile": "det-ava8-vidor4", "profiles_file": "evaluation/configs/model_profiles_2026-10-26.json", "overrides": {"WHISPER_TEMPERATURE_FALLBACK": "false", "ENABLE_GNN_ACTIONS": "true", "ENABLE_RELATION_GNN": "true", "ENABLE_NEO4J": "false", "HF_HUB_OFFLINE": "1", "GNN_CHECKPOINT": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.pt", "GNN_METADATA": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.metadata.json", "GNN_MODEL_VERSION": "ava80-gat-v8-noleak-scale100-lr0.0003", "RELATION_GNN_CHECKPOINT": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.pt", "RELATION_GNN_METADATA": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.metadata.json", "RELATION_GNN_MODEL_VERSION": "vidor-relation-pair-visual-gat-v4-scale2000", "DATABASE_PATH": "data/app/benchmark/query_audit_2026-10-27/index.sqlite3", "UPLOAD_DIR": "data/app/benchmark/query_audit_2026-10-27/uploads", "GENERATED_DIR": "data/app/benchmark/charades_integrated_2026-10-26/det-ava8-vidor4/generated", "SOFT_CONSTRAINT_MATCHING": "true", "ENABLE_FRAME_SEMANTIC_RETRIEVAL": "true", "FRAME_SEMANTIC_WEIGHT": "1.0", "FRAME_SEMANTIC_FLOOR": "0.18", "FRAME_SEMANTIC_CEILING": "0.32"}, "checkpoint_status": {"ava_action_gnn": "available_validated", "vidor_relation_gnn": "available_validated"}}
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\timm\models\layers\__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+{
+ "queries": 915,
+ "by_kind": {
+  "positive": 349,
+  "in_domain_negative": 349,
+  "out_of_domain_negative": 217
+ },
+ "intents": {
+  "multimodal_search": 710,
+  "action_search": 62,
+  "relationship_search": 6,
+  "transcript_search": 137
+ },
+ "queries_with_spoken_terms": 753,
+ "spoken_terms_found_in_that_videos_transcript": 1,
+ "most_common_spoken_terms": [
+  [
+   "its",
+   79
+  ],
+  [
+   "their",
+   52
+  ],
+  [
+   "into",
+   44
+  ],
+  [
+   "takes",
+   40
+  ],
+  [
+   "puts",
+   36
+  ],
+  [
+   "through",
+   34
+  ],
+  [
+   "off",
+   33
+  ],
+  [
+   "floor",
+   28
+  ],
+  [
+   "out",
+   27
+  ],
+  [
+   "sneezing",
+   27
+  ],
+  [
+   "cabinet",
+   26
+  ],
+  [
+   "glass",
+   25
+  ],
+  [
+   "take",
+   24
+  ],
+  [
+   "shoes",
+   24
+  ],
+  [
+   "some",
+   23
+  ],
+  [
+   "food",
+   23
+  ],
+  [
+   "laughing",
+   23
+  ],
+  [
+   "door",
+   22
+  ],
+  [
+   "shelf",
+   22
+  ],
+  [
+   "starts",
+   19
+  ],
+  [
+   "turns",
+   19
+  ],
+  [
+   "box",
+   19
+  ],
+  [
+   "he",
+   19
+  ],
+  [
+   "closet",
+   18
+  ],
+  [
+   "start",
+   18
+  ]
+ ],
+ "hypothesis_path_queries": 137,
+ "hypothesis_order_mismatch": 0,
+ "hypothesis_near_duplicate_pairs": 0,
+ "positive": {
+  "answered": 349,
+  "verdicts": {
+   "weak": 297,
+   "supported": 50,
+   "insufficient": 2
+  },
+  "action_queries": 186,
+  "action_queries_top1_missing_every_action": 115,
+  "supported_top1_missing_every_action": 40,
+  "supported_or_weak_with_only_person_entity_and_no_action": 77,
+  "explanation_dominated_by_entity": 338
+ },
+ "in_domain_negative": {
+  "answered": 349,
+  "verdicts": {
+   "supported": 53,
+   "weak": 294,
+   "insufficient": 2
+  },
+  "action_queries": 198,
+  "action_queries_top1_missing_every_action": 136,
+  "supported_top1_missing_every_action": 45,
+  "supported_or_weak_with_only_person_entity_and_no_action": 81,
+  "explanation_dominated_by_entity": 340
+ },
+ "out_of_domain_negative": {
+  "answered": 63,
+  "verdicts": {
+   "insufficient": 63
+  },
+  "action_queries": 38,
+  "action_queries_top1_missing_every_action": 27,
+  "supported_top1_missing_every_action": 0,
+  "supported_or_weak_with_only_person_entity_and_no_action": 0,
+  "explanation_dominated_by_entity": 2
+ }
+}

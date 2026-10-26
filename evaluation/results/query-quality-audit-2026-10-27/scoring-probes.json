@@ -1,0 +1,197 @@
+{
+ "routing": {
+  "person opens the closet door.": {
+   "intent": "multimodal_search",
+   "entities": [
+    "person"
+   ],
+   "actions": [
+    "open"
+   ],
+   "spoken_terms": [
+    "closet",
+    "door"
+   ]
+  },
+  "person puts their shoes on.": {
+   "intent": "multimodal_search",
+   "entities": [
+    "person"
+   ],
+   "actions": [],
+   "spoken_terms": [
+    "puts",
+    "their",
+    "shoes"
+   ]
+  },
+  "person takes a towel out of the closet.": {
+   "intent": "multimodal_search",
+   "entities": [
+    "person"
+   ],
+   "actions": [],
+   "spoken_terms": [
+    "takes",
+    "towel",
+    "out",
+    "closet"
+   ]
+  },
+  "person starts sneezing.": {
+   "intent": "multimodal_search",
+   "entities": [
+    "person"
+   ],
+   "actions": [],
+   "spoken_terms": [
+    "starts",
+    "sneezing"
+   ]
+  },
+  "he walks into the room.": {
+   "intent": "multimodal_search",
+   "entities": [],
+   "actions": [
+    "walk"
+   ],
+   "spoken_terms": [
+    "he",
+    "into",
+    "room"
+   ]
+  }
+ },
+ "verdicts": {
+  "soft=False | person only, no action | person cooking at the stove.": "no result (rejected)",
+  "soft=False | person only, no action | person cooking.": "no result (rejected)",
+  "soft=False | person only, no action | person.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 1.0,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=False | person only, no action | person near a laptop.": "no result (rejected)",
+  "soft=False | person only, no action | person with a laptop and a bottle.": "no result (rejected)",
+  "soft=False | person + matching action 'cook' | person cooking at the stove.": {
+   "verdict": "weak",
+   "confidence": 0.2422,
+   "score": 0.5333,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.24 -> weak. Low-reliability model output (gnn_action_model, hashing_embedding) is down-weighted."
+  },
+  "soft=False | person + matching action 'cook' | person cooking.": {
+   "verdict": "weak",
+   "confidence": 0.3855,
+   "score": 0.8,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.39 -> weak. Low-reliability model output (gnn_action_model) is down-weighted."
+  },
+  "soft=False | person + matching action 'cook' | person.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 1.0,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=False | person + matching action 'cook' | person near a laptop.": "no result (rejected)",
+  "soft=False | person + matching action 'cook' | person with a laptop and a bottle.": "no result (rejected)",
+  "soft=False | person + laptop (both present) | person cooking at the stove.": "no result (rejected)",
+  "soft=False | person + laptop (both present) | person cooking.": "no result (rejected)",
+  "soft=False | person + laptop (both present) | person.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 1.0,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=False | person + laptop (both present) | person near a laptop.": "no result (rejected)",
+  "soft=False | person + laptop (both present) | person with a laptop and a bottle.": "no result (rejected)",
+  "soft=True | person only, no action | person cooking at the stove.": {
+   "verdict": "weak",
+   "confidence": 0.26,
+   "score": 0.3333,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.26 -> weak. Low-reliability model output (hashing_embedding) is down-weighted."
+  },
+  "soft=True | person only, no action | person cooking.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 0.5,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person only, no action | person.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 1.0,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person only, no action | person near a laptop.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 0.25,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person only, no action | person with a laptop and a bottle.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 0.3333,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person + matching action 'cook' | person cooking at the stove.": {
+   "verdict": "weak",
+   "confidence": 0.2422,
+   "score": 0.5333,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.24 -> weak. Low-reliability model output (gnn_action_model, hashing_embedding) is down-weighted."
+  },
+  "soft=True | person + matching action 'cook' | person cooking.": {
+   "verdict": "weak",
+   "confidence": 0.3855,
+   "score": 0.8,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.39 -> weak. Low-reliability model output (gnn_action_model) is down-weighted."
+  },
+  "soft=True | person + matching action 'cook' | person.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 1.0,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person + matching action 'cook' | person near a laptop.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 0.25,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person + matching action 'cook' | person with a laptop and a bottle.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 0.3333,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person + laptop (both present) | person cooking at the stove.": {
+   "verdict": "weak",
+   "confidence": 0.26,
+   "score": 0.3333,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.26 -> weak. Low-reliability model output (hashing_embedding) is down-weighted."
+  },
+  "soft=True | person + laptop (both present) | person cooking.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 0.5,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person + laptop (both present) | person.": {
+   "verdict": "supported",
+   "confidence": 0.728,
+   "score": 1.0,
+   "explanation": "entity evidence from yolo_detection (match 0.91 x reliability 0.80) dominates; fused confidence 0.73 -> supported."
+  },
+  "soft=True | person + laptop (both present) | person near a laptop.": {
+   "verdict": "supported",
+   "confidence": 0.684,
+   "score": 0.5,
+   "explanation": "entity evidence from yolo_detection (match 0.85 x reliability 0.80) dominates; fused confidence 0.68 -> supported."
+  },
+  "soft=True | person + laptop (both present) | person with a laptop and a bottle.": {
+   "verdict": "supported",
+   "confidence": 0.684,
+   "score": 0.6667,
+   "explanation": "entity evidence from yolo_detection (match 0.85 x reliability 0.80) dominates; fused confidence 0.68 -> supported."
+  }
+ }
+}

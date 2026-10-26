@@ -1,0 +1,280 @@
+{
+ "frames": 200,
+ "conf": 0.25,
+ "iou": 0.45,
+ "results": {
+  "yolov8n.pt": {
+   "ms_per_frame": 8.5,
+   "detections_per_frame": 2.73,
+   "person_per_frame": 1.04,
+   "top_classes": [
+    [
+     "person",
+     209
+    ],
+    [
+     "chair",
+     57
+    ],
+    [
+     "bottle",
+     51
+    ],
+    [
+     "tv",
+     39
+    ],
+    [
+     "cup",
+     35
+    ],
+    [
+     "refrigerator",
+     30
+    ],
+    [
+     "laptop",
+     15
+    ],
+    [
+     "bed",
+     14
+    ]
+   ]
+  },
+  "yolov8s.pt": {
+   "ms_per_frame": 8.1,
+   "detections_per_frame": 3.38,
+   "person_per_frame": 1.02,
+   "top_classes": [
+    [
+     "person",
+     205
+    ],
+    [
+     "chair",
+     81
+    ],
+    [
+     "cup",
+     52
+    ],
+    [
+     "refrigerator",
+     47
+    ],
+    [
+     "bottle",
+     46
+    ],
+    [
+     "tv",
+     43
+    ],
+    [
+     "microwave",
+     25
+    ],
+    [
+     "laptop",
+     23
+    ]
+   ]
+  },
+  "yolov8m.pt": {
+   "ms_per_frame": 12.9,
+   "detections_per_frame": 3.1,
+   "person_per_frame": 1.0,
+   "top_classes": [
+    [
+     "person",
+     200
+    ],
+    [
+     "chair",
+     68
+    ],
+    [
+     "bottle",
+     56
+    ],
+    [
+     "cup",
+     46
+    ],
+    [
+     "tv",
+     40
+    ],
+    [
+     "refrigerator",
+     31
+    ],
+    [
+     "laptop",
+     25
+    ],
+    [
+     "oven",
+     23
+    ]
+   ]
+  },
+  "yolo11n.pt": {
+   "ms_per_frame": 14.6,
+   "detections_per_frame": 2.71,
+   "person_per_frame": 0.95,
+   "top_classes": [
+    [
+     "person",
+     190
+    ],
+    [
+     "bottle",
+     67
+    ],
+    [
+     "chair",
+     59
+    ],
+    [
+     "tv",
+     41
+    ],
+    [
+     "refrigerator",
+     34
+    ],
+    [
+     "bed",
+     20
+    ],
+    [
+     "oven",
+     19
+    ],
+    [
+     "cup",
+     18
+    ]
+   ]
+  },
+  "yolo11s.pt": {
+   "ms_per_frame": 13.2,
+   "detections_per_frame": 2.81,
+   "person_per_frame": 1.0,
+   "top_classes": [
+    [
+     "person",
+     201
+    ],
+    [
+     "chair",
+     68
+    ],
+    [
+     "tv",
+     44
+    ],
+    [
+     "refrigerator",
+     35
+    ],
+    [
+     "bottle",
+     28
+    ],
+    [
+     "cup",
+     24
+    ],
+    [
+     "bed",
+     23
+    ],
+    [
+     "dining table",
+     19
+    ]
+   ]
+  },
+  "yolo11m.pt": {
+   "ms_per_frame": 16.6,
+   "detections_per_frame": 2.96,
+   "person_per_frame": 1.02,
+   "top_classes": [
+    [
+     "person",
+     205
+    ],
+    [
+     "chair",
+     67
+    ],
+    [
+     "bottle",
+     43
+    ],
+    [
+     "tv",
+     36
+    ],
+    [
+     "bed",
+     30
+    ],
+    [
+     "refrigerator",
+     29
+    ],
+    [
+     "cup",
+     26
+    ],
+    [
+     "oven",
+     25
+    ]
+   ]
+  },
+  "yolo26s.pt": {
+   "ms_per_frame": 17.5,
+   "detections_per_frame": 2.98,
+   "person_per_frame": 1.04,
+   "top_classes": [
+    [
+     "person",
+     208
+    ],
+    [
+     "chair",
+     72
+    ],
+    [
+     "tv",
+     44
+    ],
+    [
+     "cup",
+     39
+    ],
+    [
+     "bottle",
+     35
+    ],
+    [
+     "refrigerator",
+     30
+    ],
+    [
+     "bed",
+     28
+    ],
+    [
+     "oven",
+     25
+    ]
+   ]
+  }
+ }
+}

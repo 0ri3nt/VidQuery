@@ -1,0 +1,57 @@
+{
+ "key": "review2_full|expand:10",
+ "videos": 300,
+ "queries": 2581,
+ "metrics": {
+  "baseline": {
+   "p1": 0.4044032444959444,
+   "in_domain_rejected": 0.008111239860950173,
+   "positives_abstained": 0.009269988412514484,
+   "out_of_domain_rejected": 0.9929824561403509,
+   "auroc_pos_vs_in_domain": 0.6030702137172734,
+   "supported_count": 230,
+   "supported_precision": 0.23043478260869565
+  },
+  "missing_penalty": {
+   "p1": 0.3858632676709154,
+   "in_domain_rejected": 0.0880648899188876,
+   "positives_abstained": 0.03244495944380069,
+   "out_of_domain_rejected": 0.9964912280701754,
+   "auroc_pos_vs_in_domain": 0.6278235264894215,
+   "supported_count": 27,
+   "supported_precision": 0.5555555555555556
+  }
+ },
+ "paired_vs_baseline": {
+  "missing_penalty": {
+   "p1": {
+    "difference": -0.0185,
+    "ci95": [
+     -0.0312,
+     -0.007
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.08,
+    "ci95": [
+     0.0588,
+     0.1028
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0232,
+    "ci95": [
+     0.0097,
+     0.0403
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0248,
+    "ci95": [
+     -0.0046,
+     0.0557
+    ]
+   }
+  }
+ }
+}

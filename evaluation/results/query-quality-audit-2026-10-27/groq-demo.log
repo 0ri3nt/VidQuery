@@ -1,0 +1,164 @@
+{"profile": "det-ava8-vidor4", "profiles_file": "evaluation/configs/model_profiles_2026-10-26.json", "overrides": {"WHISPER_TEMPERATURE_FALLBACK": "false", "ENABLE_GNN_ACTIONS": "true", "ENABLE_RELATION_GNN": "true", "ENABLE_NEO4J": "false", "HF_HUB_OFFLINE": "1", "GNN_CHECKPOINT": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.pt", "GNN_METADATA": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.metadata.json", "GNN_MODEL_VERSION": "ava80-gat-v8-noleak-scale100-lr0.0003", "RELATION_GNN_CHECKPOINT": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.pt", "RELATION_GNN_METADATA": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.metadata.json", "RELATION_GNN_MODEL_VERSION": "vidor-relation-pair-visual-gat-v4-scale2000", "DATABASE_PATH": "C:/Users/Aryaman/AppData/Local/Temp/claude/c--Users-Aryaman-Desktop-work-capstone/f7fe97e8-5f76-41ae-a68d-2236af2f6e22/scratchpad/live/library_a/test.sqlite3", "UPLOAD_DIR": "C:/Users/Aryaman/AppData/Local/Temp/claude/c--Users-Aryaman-Desktop-work-capstone/f7fe97e8-5f76-41ae-a68d-2236af2f6e22/scratchpad/live/library_a/uploads", "GENERATED_DIR": "C:/Users/Aryaman/AppData/Local/Temp/claude/c--Users-Aryaman-Desktop-work-capstone/f7fe97e8-5f76-41ae-a68d-2236af2f6e22/scratchpad/live/library_a/generated", "SOFT_CONSTRAINT_MATCHING": "true", "ENABLE_FRAME_SEMANTIC_RETRIEVAL": "true", "FRAME_SEMANTIC_WEIGHT": "1.0", "FRAME_SEMANTIC_FLOOR": "0.18", "FRAME_SEMANTIC_CEILING": "0.32"}, "checkpoint_status": {"ava_action_gnn": "available_validated", "vidor_relation_gnn": "available_validated"}}
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\timm\models\layers\__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person holding a cup.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person reading a newspaper.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person drinking from a cup.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person puts his shoes on.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person near a chair.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person cooking at the stove.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person picks up something from the stove.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person vacuuming the floor.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person laughing at a phone.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+groq_1 fallback_provider_unavailable insufficient_evidence A sparrowhawk chases a small bird through a dense forest.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable a person walks through a doorway.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person drinking from a cup.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person holding a cup.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person smiling.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person sitting on the bed.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person wearing glasses.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person cooking at the stove.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person opens the refrigerator.
+groq_1 fallback_provider_unavailable insufficient_evidence A sparrowhawk chases a small bird through a dense forest.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable a person is watching television on the sofa.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person sitting on the couch.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq returned an invalid structured answer
+groq_1 deterministic_hypotheses provider_unavailable a television screen.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person opens door to closet.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person takes a towel out of the closet.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person holding a towel.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 deterministic_clear provider_unavailable person eating a sandwich.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_1 fallback_provider_unavailable provider_unavailable person washing dishes in the sink.
+groq_1 fallback_provider_unavailable insufficient_evidence A sparrowhawk chases a small bird through a dense forest.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person holding a cup.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person reading a newspaper.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person drinking from a cup.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person puts his shoes on.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person near a chair.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person cooking at the stove.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person picks up something from the stove.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person vacuuming the floor.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person laughing at a phone.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+groq_2 fallback_provider_unavailable insufficient_evidence A sparrowhawk chases a small bird through a dense forest.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable a person walks through a doorway.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person drinking from a cup.
+groq_2 deterministic_clear generated_supported person holding a cup.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person smiling.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person sitting on the bed.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person wearing glasses.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person cooking at the stove.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person opens the refrigerator.
+groq_2 fallback_provider_unavailable insufficient_evidence A sparrowhawk chases a small bird through a dense forest.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable a person is watching television on the sofa.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person sitting on the couch.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_hypotheses provider_unavailable a television screen.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person opens door to closet.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person takes a towel out of the closet.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person holding a towel.
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 deterministic_clear provider_unavailable person eating a sandwich.
+WARNING:vidquery.query_planner:Constrained query planning unavailable: RAGProviderError
+WARNING:vidquery.rag:Grounded answer generation unavailable: Groq request failed: HTTPError (HTTP 429)
+groq_2 fallback_provider_unavailable provider_unavailable person washing dishes in the sink.
+groq_2 fallback_provider_unavailable insufficient_evidence A sparrowhawk chases a small bird through a dense forest.
+fallback deterministic_clear unavailable_missing_api_key person holding a cup.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person reading a newspaper.
+fallback deterministic_clear unavailable_missing_api_key person drinking from a cup.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person puts his shoes on.
+fallback deterministic_clear unavailable_missing_api_key person near a chair.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person cooking at the stove.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person picks up something from the stove.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person vacuuming the floor.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person laughing at a phone.
+fallback fallback_provider_unconfigured unavailable_missing_api_key A sparrowhawk chases a small bird through a dense forest.
+fallback fallback_provider_unconfigured unavailable_missing_api_key a person walks through a doorway.
+fallback deterministic_clear unavailable_missing_api_key person drinking from a cup.
+fallback deterministic_clear unavailable_missing_api_key person holding a cup.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person smiling.
+fallback deterministic_clear unavailable_missing_api_key person sitting on the bed.
+fallback deterministic_clear unavailable_missing_api_key person wearing glasses.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person cooking at the stove.
+fallback deterministic_clear unavailable_missing_api_key person opens the refrigerator.
+fallback fallback_provider_unconfigured unavailable_missing_api_key A sparrowhawk chases a small bird through a dense forest.
+fallback deterministic_clear unavailable_missing_api_key a person is watching television on the sofa.
+fallback deterministic_clear unavailable_missing_api_key person sitting on the couch.
+fallback deterministic_hypotheses unavailable_missing_api_key a television screen.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person opens door to closet.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person takes a towel out of the closet.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person holding a towel.
+fallback deterministic_clear unavailable_missing_api_key person eating a sandwich.
+fallback fallback_provider_unconfigured unavailable_missing_api_key person washing dishes in the sink.
+fallback fallback_provider_unconfigured unavailable_missing_api_key A sparrowhawk chases a small bird through a dense forest.

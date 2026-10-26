@@ -1,0 +1,7953 @@
+{
+ "summary": {
+  "records": 126,
+  "rag_status": {
+   "groq_1": {
+    "provider_unavailable": 36,
+    "insufficient_evidence": 5,
+    "generated_supported": 1
+   },
+   "groq_2": {
+    "provider_unavailable": 35,
+    "insufficient_evidence": 5,
+    "generated_supported": 2
+   },
+   "fallback": {
+    "unavailable_missing_api_key": 42
+   }
+  },
+  "planner_status": {
+   "groq_1": {
+    "deterministic_clear": 19,
+    "fallback_provider_unavailable": 22,
+    "deterministic_hypotheses": 1
+   },
+   "groq_2": {
+    "deterministic_clear": 19,
+    "fallback_provider_unavailable": 22,
+    "deterministic_hypotheses": 1
+   },
+   "fallback": {
+    "deterministic_clear": 19,
+    "fallback_provider_unconfigured": 22,
+    "deterministic_hypotheses": 1
+   }
+  },
+  "groq_answers_with_issues": 1,
+  "groq_supported_answers": 3,
+  "issue_types": {
+   "supported answer citing only weak/insufficient results": 1
+  },
+  "queries_compared": 42,
+  "plan_differs_between_groq_runs": 0,
+  "top_differs_between_groq_runs": 0,
+  "answer_text_differs_between_groq_runs": 3,
+  "supported_flag_differs_between_groq_runs": 3,
+  "plan_differs_groq_vs_fallback": 0,
+  "top_differs_groq_vs_fallback": 0
+ },
+ "checks": [
+  {
+   "query": "person holding a cup.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person reading a newspaper.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person puts his shoes on.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near a chair.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person picks up something from the stove.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person vacuuming the floor.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person laughing at a phone.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "a person walks through a doorway.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person holding a cup.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person smiling.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person sitting on the bed.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person wearing glasses.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person opens the refrigerator.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "I2DHG.mp4",
+   "run": "groq_1",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "a person is watching television on the sofa.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person sitting on the couch.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "a television screen.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person opens door to closet.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person takes a towel out of the closet.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person holding a towel.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person eating a sandwich.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person washing dishes in the sink.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "GG4UR.mp4",
+   "run": "groq_1",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "person holding a cup.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person reading a newspaper.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person puts his shoes on.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near a chair.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person picks up something from the stove.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person vacuuming the floor.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person laughing at a phone.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "OM2NF.mp4",
+   "run": "groq_2",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "a person walks through a doorway.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person holding a cup.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Yes, the person is holding a cup.",
+   "cited_verdicts": [
+    "weak",
+    "weak",
+    "weak"
+   ],
+   "interpretation": "single",
+   "issues": [
+    "supported answer citing only weak/insufficient results"
+   ]
+  },
+  {
+   "query": "person smiling.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person sitting on the bed.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person wearing glasses.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person opens the refrigerator.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "I2DHG.mp4",
+   "run": "groq_2",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "a person is watching television on the sofa.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person sitting on the couch.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "a television screen.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person opens door to closet.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person takes a towel out of the closet.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person holding a towel.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person eating a sandwich.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person washing dishes in the sink.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "GG4UR.mp4",
+   "run": "groq_2",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "person holding a cup.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person reading a newspaper.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person puts his shoes on.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near a chair.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person picks up something from the stove.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person vacuuming the floor.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person laughing at a phone.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "OM2NF.mp4",
+   "run": "fallback",
+   "kind": "out_of_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "a person walks through a doorway.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person holding a cup.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person smiling.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person sitting on the bed.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person wearing glasses.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person opens the refrigerator.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "I2DHG.mp4",
+   "run": "fallback",
+   "kind": "out_of_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "a person is watching television on the sofa.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person sitting on the couch.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "a television screen.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person opens door to closet.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person takes a towel out of the closet.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person holding a towel.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person eating a sandwich.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person washing dishes in the sink.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "GG4UR.mp4",
+   "run": "fallback",
+   "kind": "out_of_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Architecture is discussed in the video at the beginning (0\u20135\u202fs) where the speakers say, \u201cWe discuss the software architecture,\u201d and again around 15\u201320\u202fs where they refer to the whiteboard showing the retrieval architecture.",
+   "cited_verdicts": [
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a whiteboard.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "SQLite metadata",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Docker Neo4j",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "SPEAKER_00 deployment",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near laptop",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "whiteboard architecture",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone talks about Kubernetes.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person riding a horse.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses Docker.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "zzzxylophone quantum penguin",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Yes, the evidence shows a person near a laptop.",
+   "cited_verdicts": [
+    "supported",
+    "supported",
+    "supported",
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a whiteboard.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "SQLite metadata",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Docker Neo4j",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "SPEAKER_00 deployment",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near laptop",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "whiteboard architecture",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone talks about Kubernetes.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person riding a horse.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses Docker.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "in_domain_negative",
+   "rag_status": "provider_unavailable",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "zzzxylophone quantum penguin",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a whiteboard.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "SQLite metadata",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Docker Neo4j",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "SPEAKER_00 deployment",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near laptop",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "whiteboard architecture",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone talks about Kubernetes.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person riding a horse.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses Docker.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "zzzxylophone quantum penguin",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "out_of_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  }
+ ],
+ "comparisons": [
+  {
+   "query": "person holding a cup.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:0:5000",
+    "video_title": "OM2NF.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 3.9969414708744613,
+    "score": 0.8799,
+    "verdict": "weak",
+    "confidence": 0.4385,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_6a3cce00c8a1bf8bf0af] hold cup[det_c0da5f689904086792ff] (directed, confidence 0.95, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000004000 (openclip).",
+    "entities": [
+     "cup",
+     "dining table",
+     "laptop",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "drink",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "hold",
+     "in_front_of",
+     "inside",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:0:5000",
+    "video_title": "OM2NF.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 3.9969414708744613,
+    "score": 0.8799,
+    "verdict": "weak",
+    "confidence": 0.4385,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_6a3cce00c8a1bf8bf0af] hold cup[det_c0da5f689904086792ff] (directed, confidence 0.95, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000004000 (openclip).",
+    "entities": [
+     "cup",
+     "dining table",
+     "laptop",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "drink",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "hold",
+     "in_front_of",
+     "inside",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     3.5,
+     7.5
+    ],
+    [
+     15.0,
+     18.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [
+     "hold"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "hold",
+      "object": "cup",
+      "directionality": "directed"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [
+     "hold"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "hold",
+      "object": "cup",
+      "directionality": "directed"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person reading a newspaper.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:5000:10000",
+    "video_title": "OM2NF.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 9.001807312665091,
+    "score": 0.7414,
+    "verdict": "weak",
+    "confidence": 0.3156,
+    "match_reason": "Matched visual entities person, actions read (gnn_action_model, confidence 0.97), visual-text similarity 0.319 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000009000 (openclip).",
+    "entities": [
+     "book",
+     "cup",
+     "dining table",
+     "laptop",
+     "person",
+     "remote"
+    ],
+    "actions": [
+     "carry/hold",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "near",
+     "overlaps_with",
+     "pat",
+     "point_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:5000:10000",
+    "video_title": "OM2NF.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 9.001807312665091,
+    "score": 0.7414,
+    "verdict": "weak",
+    "confidence": 0.3156,
+    "match_reason": "Matched visual entities person, actions read (gnn_action_model, confidence 0.97), visual-text similarity 0.319 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000009000 (openclip).",
+    "entities": [
+     "book",
+     "cup",
+     "dining table",
+     "laptop",
+     "person",
+     "remote"
+    ],
+    "actions": [
+     "carry/hold",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "near",
+     "overlaps_with",
+     "pat",
+     "point_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     24
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "read"
+    ],
+    "spoken_terms": [
+     "newspaper"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "read"
+    ],
+    "spoken_terms": [
+     "newspaper"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:15000:20000",
+    "video_title": "OM2NF.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.987765883497845,
+    "score": 0.9532,
+    "verdict": "supported",
+    "confidence": 0.5011,
+    "match_reason": "Matched visual entities person/cup, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.318 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000016000 (openclip).",
+    "entities": [
+     "book",
+     "cup",
+     "dining table",
+     "laptop",
+     "microwave",
+     "person",
+     "remote"
+    ],
+    "actions": [
+     "carry/hold",
+     "drink",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm. 1.5 cm. 1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "inside",
+     "left_of",
+     "lift",
+     "near",
+     "overlaps_with",
+     "use",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:15000:20000",
+    "video_title": "OM2NF.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.987765883497845,
+    "score": 0.9532,
+    "verdict": "supported",
+    "confidence": 0.5011,
+    "match_reason": "Matched visual entities person/cup, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.318 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000016000 (openclip).",
+    "entities": [
+     "book",
+     "cup",
+     "dining table",
+     "laptop",
+     "microwave",
+     "person",
+     "remote"
+    ],
+    "actions": [
+     "carry/hold",
+     "drink",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm. 1.5 cm. 1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "inside",
+     "left_of",
+     "lift",
+     "near",
+     "overlaps_with",
+     "use",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     2.2,
+     8.8
+    ],
+    [
+     15.5,
+     18.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "drink"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "drink"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person puts his shoes on.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:25000:30000",
+    "video_title": "OM2NF.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.997497567079105,
+    "score": 0.571,
+    "verdict": "weak",
+    "confidence": 0.2719,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.280 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "entities": [
+     "chair",
+     "cup",
+     "dining table",
+     "microwave",
+     "oven",
+     "person",
+     "refrigerator",
+     "remote"
+    ],
+    "actions": [
+     "listen to",
+     "read",
+     "sit",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "below",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:25000:30000",
+    "video_title": "OM2NF.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.997497567079105,
+    "score": 0.571,
+    "verdict": "weak",
+    "confidence": 0.2719,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.280 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "entities": [
+     "chair",
+     "cup",
+     "dining table",
+     "microwave",
+     "oven",
+     "person",
+     "refrigerator",
+     "remote"
+    ],
+    "actions": [
+     "listen to",
+     "read",
+     "sit",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "below",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     23.7,
+     34.8
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "puts",
+     "his",
+     "shoes"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "puts",
+     "his",
+     "shoes"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person near a chair.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:25000:30000",
+    "video_title": "OM2NF.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 28.01334630891144,
+    "score": 0.7359,
+    "verdict": "weak",
+    "confidence": 0.3098,
+    "match_reason": "Matched visual entities person/chair, relationship person[det_278752007000f33e20ef] near chair[det_92cb561b27bbac04c37a] (symmetric, confidence 0.61, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "entities": [
+     "chair",
+     "cup",
+     "dining table",
+     "microwave",
+     "oven",
+     "person",
+     "refrigerator",
+     "remote"
+    ],
+    "actions": [
+     "listen to",
+     "read",
+     "sit",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "below",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [
+     "person near chair"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:25000:30000",
+    "video_title": "OM2NF.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 28.01334630891144,
+    "score": 0.7359,
+    "verdict": "weak",
+    "confidence": 0.3098,
+    "match_reason": "Matched visual entities person/chair, relationship person[det_278752007000f33e20ef] near chair[det_92cb561b27bbac04c37a] (symmetric, confidence 0.61, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "entities": [
+     "chair",
+     "cup",
+     "dining table",
+     "microwave",
+     "oven",
+     "person",
+     "refrigerator",
+     "remote"
+    ],
+    "actions": [
+     "listen to",
+     "read",
+     "sit",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "below",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [
+     "person near chair"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     25,
+     35
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "chair"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "chair",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "chair"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "chair",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:35000:40000",
+    "video_title": "OM2NF.mp4",
+    "start": 35.0,
+    "end": 40.0,
+    "peak": 37.98832197970249,
+    "score": 0.4883,
+    "verdict": "weak",
+    "confidence": 0.3252,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "entities": [
+     "microwave",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "lift/pick up",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:35000:40000",
+    "video_title": "OM2NF.mp4",
+    "start": 35.0,
+    "end": 40.0,
+    "peak": 37.98832197970249,
+    "score": 0.4883,
+    "verdict": "weak",
+    "confidence": 0.3252,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "entities": [
+     "microwave",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "lift/pick up",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     35.5,
+     44.03
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "cook"
+    ],
+    "spoken_terms": [
+     "stove"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "cook"
+    ],
+    "spoken_terms": [
+     "stove"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person picks up something from the stove.",
+   "video": "OM2NF.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:40000:44001",
+    "video_title": "OM2NF.mp4",
+    "start": 40.0,
+    "end": 44.00111219240929,
+    "peak": 42.993187821493116,
+    "score": 0.6365,
+    "verdict": "weak",
+    "confidence": 0.3222,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person, actions lift/pick up (gnn_action_model, confidence 0.40), visual-text similarity 0.317 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000043000 (openclip).",
+    "entities": [
+     "microwave",
+     "person",
+     "remote"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "lift/pick up",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm. 1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:40000:44001",
+    "video_title": "OM2NF.mp4",
+    "start": 40.0,
+    "end": 44.00111219240929,
+    "peak": 42.993187821493116,
+    "score": 0.6365,
+    "verdict": "weak",
+    "confidence": 0.3222,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person, actions lift/pick up (gnn_action_model, confidence 0.40), visual-text similarity 0.317 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000043000 (openclip).",
+    "entities": [
+     "microwave",
+     "person",
+     "remote"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "lift/pick up",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm. 1.5 cm. 1.5 cm. 1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     36,
+     44.03
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "lift/pick up"
+    ],
+    "spoken_terms": [
+     "stove"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "lift/pick up"
+    ],
+    "spoken_terms": [
+     "stove"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person vacuuming the floor.",
+   "video": "OM2NF.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:30000:35000",
+    "video_title": "OM2NF.mp4",
+    "start": 30.0,
+    "end": 35.0,
+    "peak": 34.999304879744194,
+    "score": 0.5934,
+    "verdict": "weak",
+    "confidence": 0.293,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.289 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000035000 (openclip).",
+    "entities": [
+     "chair",
+     "cup",
+     "dining table",
+     "microwave",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person",
+     "write_on"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:30000:35000",
+    "video_title": "OM2NF.mp4",
+    "start": 30.0,
+    "end": 35.0,
+    "peak": 34.999304879744194,
+    "score": 0.5934,
+    "verdict": "weak",
+    "confidence": 0.293,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.289 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000035000 (openclip).",
+    "entities": [
+     "chair",
+     "cup",
+     "dining table",
+     "microwave",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person",
+     "write_on"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "vacuuming",
+     "floor"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "vacuuming",
+     "floor"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person laughing at a phone.",
+   "video": "OM2NF.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:0:5000",
+    "video_title": "OM2NF.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.3852,
+    "verdict": "weak",
+    "confidence": 0.2745,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.272 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000000000 (openclip).",
+    "entities": [
+     "cup",
+     "dining table",
+     "laptop",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "drink",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "hold",
+     "in_front_of",
+     "inside",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:0:5000",
+    "video_title": "OM2NF.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.3852,
+    "verdict": "weak",
+    "confidence": 0.2745,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.272 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000000000 (openclip).",
+    "entities": [
+     "cup",
+     "dining table",
+     "laptop",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "drink",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "hold",
+     "in_front_of",
+     "inside",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "cell phone"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "laughing"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "cell phone"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "laughing"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "OM2NF.mp4",
+   "kind": "out_of_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:20000:25000",
+    "video_title": "OM2NF.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.0474,
+    "verdict": "insufficient",
+    "confidence": 0.0162,
+    "match_reason": "Matched appearance evidence unavailable (fallback ranking), visual-text similarity 0.182 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000025000 (openclip).",
+    "entities": [
+     "cup",
+     "dining table",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "talk_to",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "9be43e27-698a-4997-9fc3-841ee51a2d96:20000:25000",
+    "video_title": "OM2NF.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.0474,
+    "verdict": "insufficient",
+    "confidence": 0.0162,
+    "match_reason": "Matched appearance evidence unavailable (fallback ranking), visual-text similarity 0.182 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000025000 (openclip).",
+    "entities": [
+     "cup",
+     "dining table",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person"
+    ],
+    "transcript": "1.5 cm.",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "talk_to",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "bird"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sparrowhawk",
+     "chases",
+     "through",
+     "dense",
+     "forest"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "bird",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": "small bird"
+     }
+    ]
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "bird"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sparrowhawk",
+     "chases",
+     "through",
+     "dense",
+     "forest"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "bird",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": "small bird"
+     }
+    ]
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "a person walks through a doorway.",
+   "video": "I2DHG.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5739,
+    "verdict": "weak",
+    "confidence": 0.2935,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.281 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000000000 (openclip).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5739,
+    "verdict": "weak",
+    "confidence": 0.2935,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.281 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000000000 (openclip).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     5.2
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "walks",
+     "through",
+     "doorway"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "walks",
+     "through",
+     "doorway"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "I2DHG.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.015910154422087,
+    "score": 0.5972,
+    "verdict": "supported",
+    "confidence": 0.4843,
+    "match_reason": "Matched visual entities person/cup, visual-text similarity 0.291 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000015000 (openclip).",
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.015910154422087,
+    "score": 0.5972,
+    "verdict": "supported",
+    "confidence": 0.4843,
+    "match_reason": "Matched visual entities person/cup, visual-text similarity 0.291 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000015000 (openclip).",
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     13.1,
+     23.4
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "drink"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "drink"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person holding a cup.",
+   "video": "I2DHG.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": false,
+   "supported_same_across_groq_runs": false,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.015910154422087,
+    "score": 0.8388,
+    "verdict": "weak",
+    "confidence": 0.3778,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_429d7c7c57e8475d70c6] hold cup[det_efe39c2b90d47b8b763b] (directed, confidence 0.92, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000015000 (openclip).",
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.015910154422087,
+    "score": 0.8388,
+    "verdict": "weak",
+    "confidence": 0.3778,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_429d7c7c57e8475d70c6] hold cup[det_efe39c2b90d47b8b763b] (directed, confidence 0.92, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000015000 (openclip).",
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     14,
+     21.5
+    ],
+    [
+     24,
+     26
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [
+     "hold"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "hold",
+      "object": "cup",
+      "directionality": "directed"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "cup"
+    ],
+    "relationships": [
+     "hold"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "hold",
+      "object": "cup",
+      "directionality": "directed"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person smiling.",
+   "video": "I2DHG.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 21.993448759943846,
+    "score": 0.512,
+    "verdict": "weak",
+    "confidence": 0.2794,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.255 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000022000 (openclip).",
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 21.993448759943846,
+    "score": 0.512,
+    "verdict": "weak",
+    "confidence": 0.2794,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.255 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000022000 (openclip).",
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     19.7,
+     30.86
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "smiling"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "smiling"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person sitting on the bed.",
+   "video": "I2DHG.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.6875,
+    "verdict": "supported",
+    "confidence": 0.4782,
+    "match_reason": "Matched visual entities person, actions sit (gnn_action_model, confidence 0.82), visual-text similarity 0.283 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000026000 (openclip).",
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.6875,
+    "verdict": "supported",
+    "confidence": 0.4782,
+    "match_reason": "Matched visual entities person, actions sit (gnn_action_model, confidence 0.82), visual-text similarity 0.283 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000026000 (openclip).",
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     14,
+     21.5
+    ],
+    [
+     24,
+     26
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "bed"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "sit"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "bed"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "sit"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person wearing glasses.",
+   "video": "I2DHG.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.7912,
+    "verdict": "supported",
+    "confidence": 0.5002,
+    "match_reason": "Matched visual entities person, appearance attributes glasses=True (visual_attribute_model, confidence 0.87); appearance match 'a person wearing glasses' (open_clip/ViT-B-32, cosine 0.279), visual-text similarity 0.248 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000025000 (openclip).",
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.7912,
+    "verdict": "supported",
+    "confidence": 0.5002,
+    "match_reason": "Matched visual entities person, appearance attributes glasses=True (visual_attribute_model, confidence 0.87); appearance match 'a person wearing glasses' (open_clip/ViT-B-32, cosine 0.279), visual-text similarity 0.248 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000025000 (openclip).",
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     14,
+     21.5
+    ],
+    [
+     24,
+     26
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "person",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": true,
+      "hat": null,
+      "bag": null,
+      "description": "a person wearing glasses"
+     }
+    ]
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "person",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": true,
+      "hat": null,
+      "bag": null,
+      "description": "a person wearing glasses"
+     }
+    ]
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "I2DHG.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.4024,
+    "verdict": "weak",
+    "confidence": 0.2785,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.265 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000002000 (openclip).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.4024,
+    "verdict": "weak",
+    "confidence": 0.2785,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.265 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000002000 (openclip).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "cook"
+    ],
+    "spoken_terms": [
+     "stove"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "cook"
+    ],
+    "spoken_terms": [
+     "stove"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person opens the refrigerator.",
+   "video": "I2DHG.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5795,
+    "verdict": "supported",
+    "confidence": 0.4697,
+    "match_reason": "Matched visual entities refrigerator/person, visual-text similarity 0.283 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000000000 (openclip).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5795,
+    "verdict": "supported",
+    "confidence": 0.4697,
+    "match_reason": "Matched visual entities refrigerator/person, visual-text similarity 0.283 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000000000 (openclip).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "refrigerator",
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "open"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "refrigerator",
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "open"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "I2DHG.mp4",
+   "kind": "out_of_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "match_reason": "Matched appearance evidence unavailable (fallback ranking).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "match_reason": "Matched appearance evidence unavailable (fallback ranking).",
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "bird"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sparrowhawk",
+     "chases",
+     "through",
+     "dense",
+     "forest"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "bird",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": "small bird"
+     }
+    ]
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "bird"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sparrowhawk",
+     "chases",
+     "through",
+     "dense",
+     "forest"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "bird",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": "small bird"
+     }
+    ]
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "a person is watching television on the sofa.",
+   "video": "GG4UR.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.0010000000000001,
+    "score": 0.5924,
+    "verdict": "supported",
+    "confidence": 0.5107,
+    "match_reason": "Matched visual entities person/couch, visual-text similarity 0.289 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000002000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.0010000000000001,
+    "score": 0.5924,
+    "verdict": "supported",
+    "confidence": 0.5107,
+    "match_reason": "Matched visual entities person/couch, visual-text similarity 0.289 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000002000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     3.6
+    ],
+    [
+     0,
+     7.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "couch"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "watch"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "couch"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "watch"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person sitting on the couch.",
+   "video": "GG4UR.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 4.0040000000000004,
+    "score": 0.9387,
+    "verdict": "supported",
+    "confidence": 0.4572,
+    "match_reason": "Matched visual entities person/couch, actions sit (gnn_action_model, confidence 0.98), visual-text similarity 0.297 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000001000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 4.0040000000000004,
+    "score": 0.9387,
+    "verdict": "supported",
+    "confidence": 0.4572,
+    "match_reason": "Matched visual entities person/couch, actions sit (gnn_action_model, confidence 0.98), visual-text similarity 0.297 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000001000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     7.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "couch"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "sit"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "couch"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "sit"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "a television screen.",
+   "video": "GG4UR.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_hypotheses",
+    "deterministic_hypotheses",
+    "deterministic_hypotheses"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.006,
+    "score": 0.8654,
+    "verdict": "weak",
+    "confidence": 0.4192,
+    "match_reason": "Matched visual entities tv, visual-text similarity 0.282 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000006000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.006,
+    "score": 0.8654,
+    "verdict": "weak",
+    "confidence": 0.4192,
+    "match_reason": "Matched visual entities tv, visual-text similarity 0.282 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000006000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     7.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "visual_search",
+    "visual_entities": [
+     "tv"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "visual_search",
+    "visual_entities": [
+     "tv"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person opens door to closet.",
+   "video": "GG4UR.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 13.013,
+    "score": 0.7075,
+    "verdict": "weak",
+    "confidence": 0.3124,
+    "match_reason": "Matched visual entities person, actions open (gnn_action_model, confidence 0.97), visual-text similarity 0.301 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000013000 (openclip).",
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 13.013,
+    "score": 0.7075,
+    "verdict": "weak",
+    "confidence": 0.3124,
+    "match_reason": "Matched visual entities person, actions open (gnn_action_model, confidence 0.97), visual-text similarity 0.301 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000013000 (openclip).",
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     10,
+     15.4
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "open"
+    ],
+    "spoken_terms": [
+     "closet"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "open"
+    ],
+    "spoken_terms": [
+     "closet"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person takes a towel out of the closet.",
+   "video": "GG4UR.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.651,
+    "verdict": "weak",
+    "confidence": 0.316,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000017000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.651,
+    "verdict": "weak",
+    "confidence": 0.316,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000017000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     13.5,
+     18.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "takes",
+     "towel",
+     "out",
+     "closet"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "takes",
+     "towel",
+     "out",
+     "closet"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person holding a towel.",
+   "video": "GG4UR.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.5176,
+    "verdict": "weak",
+    "confidence": 0.2808,
+    "match_reason": "Matched visual entities person, actions carry/hold (gnn_action_model, confidence 0.86), visual-text similarity 0.282 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000016000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.5176,
+    "verdict": "weak",
+    "confidence": 0.2808,
+    "match_reason": "Matched visual entities person, actions carry/hold (gnn_action_model, confidence 0.86), visual-text similarity 0.282 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000016000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     14.5,
+     18.5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [
+     "hold"
+    ],
+    "relationship_tuples": [],
+    "actions": [
+     "carry/hold"
+    ],
+    "spoken_terms": [
+     "towel"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [
+     "hold"
+    ],
+    "relationship_tuples": [],
+    "actions": [
+     "carry/hold"
+    ],
+    "spoken_terms": [
+     "towel"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person eating a sandwich.",
+   "video": "GG4UR.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 15.0,
+    "score": 0.3236,
+    "verdict": "supported",
+    "confidence": 0.4897,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.246 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000016000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 15.0,
+    "score": 0.3236,
+    "verdict": "supported",
+    "confidence": 0.4897,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.246 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000016000 (openclip).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "sandwich",
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "eat"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "sandwich",
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "eat"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person washing dishes in the sink.",
+   "video": "GG4UR.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.3187,
+    "verdict": "weak",
+    "confidence": 0.2628,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.244 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000013000 (openclip).",
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.3187,
+    "verdict": "weak",
+    "confidence": 0.2628,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.244 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000013000 (openclip).",
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "sink"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "washing",
+     "dishes"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "sink"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "washing",
+     "dishes"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "GG4UR.mp4",
+   "kind": "out_of_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.5,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "match_reason": "Matched appearance evidence unavailable (fallback ranking).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.5,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "match_reason": "Matched appearance evidence unavailable (fallback ranking).",
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "bird"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sparrowhawk",
+     "chases",
+     "through",
+     "dense",
+     "forest"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "bird",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": "small bird"
+     }
+    ]
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "bird"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sparrowhawk",
+     "chases",
+     "through",
+     "dense",
+     "forest"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "bird",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": "small bird"
+     }
+    ]
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": false,
+   "supported_same_across_groq_runs": false,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     15,
+     20
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": false,
+   "supported_same_across_groq_runs": false,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     25
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "laptop",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "laptop",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "match_reason": "Matched spoken terms deployment, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "match_reason": "Matched spoken terms deployment, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     10,
+     15
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "deployment"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "deployment"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.7783,
+    "verdict": "supported",
+    "confidence": 0.6832,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.7783,
+    "verdict": "supported",
+    "confidence": 0.6832,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     15,
+     20
+    ]
+   ],
+   "groq_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_01",
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_01",
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find a person near a whiteboard.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     25
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "whiteboard",
+     "person"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "whiteboard",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "whiteboard",
+     "person"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "whiteboard",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "SQLite metadata",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 7.0,
+    "score": 0.7272,
+    "verdict": "supported",
+    "confidence": 0.7161,
+    "match_reason": "Matched spoken terms sqlite/metadata, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 7.0,
+    "score": 0.7272,
+    "verdict": "supported",
+    "confidence": 0.7161,
+    "match_reason": "Matched spoken terms sqlite/metadata, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     5,
+     10
+    ]
+   ],
+   "groq_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sqlite",
+     "metadata"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "sqlite",
+     "metadata"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Docker Neo4j",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.8189,
+    "verdict": "supported",
+    "confidence": 0.7443,
+    "match_reason": "Matched spoken terms docker/neo4j, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.8189,
+    "verdict": "supported",
+    "confidence": 0.7443,
+    "match_reason": "Matched spoken terms docker/neo4j, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     10,
+     15
+    ]
+   ],
+   "groq_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "docker",
+     "neo4j"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "docker",
+     "neo4j"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "SPEAKER_00 deployment",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.675,
+    "verdict": "supported",
+    "confidence": 0.645,
+    "match_reason": "Matched spoken terms deployment, speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.675,
+    "verdict": "supported",
+    "confidence": 0.645,
+    "match_reason": "Matched spoken terms deployment, speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     10,
+     15
+    ]
+   ],
+   "groq_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "deployment"
+    ],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_00",
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "deployment"
+    ],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_00",
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "person near laptop",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     25
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "laptop",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "laptop",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "whiteboard architecture",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.8549,
+    "verdict": "supported",
+    "confidence": 0.702,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.8549,
+    "verdict": "supported",
+    "confidence": 0.702,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     15,
+     20
+    ]
+   ],
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "whiteboard"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "whiteboard"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where someone talks about Kubernetes.",
+   "video": "final_demo.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5836,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5836,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "kubernetes"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "kubernetes"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find a person riding a horse.",
+   "video": "final_demo.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": null,
+   "fallback_top": null,
+   "truth": null,
+   "groq_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "horse"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "ride"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "horse"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [
+     "ride"
+    ],
+    "spoken_terms": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses Docker.",
+   "video": "final_demo.mp4",
+   "kind": "in_domain_negative",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.7704,
+    "verdict": "supported",
+    "confidence": 0.6802,
+    "match_reason": "Matched spoken terms docker, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.7704,
+    "verdict": "supported",
+    "confidence": 0.6802,
+    "match_reason": "Matched spoken terms docker, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": null,
+   "groq_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "docker"
+    ],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_01",
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "docker"
+    ],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_01",
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "zzzxylophone quantum penguin",
+   "video": "final_demo.mp4",
+   "kind": "out_of_domain_negative",
+   "planner_status": [
+    "fallback_provider_unavailable",
+    "fallback_provider_unavailable",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": null,
+   "fallback_top": null,
+   "truth": null,
+   "groq_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "zzzxylophone",
+     "quantum",
+     "penguin"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "zzzxylophone",
+     "quantum",
+     "penguin"
+    ],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  }
+ ]
+}

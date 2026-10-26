@@ -1,0 +1,252 @@
+{
+ "key": "review2_full|expand:10",
+ "videos": 150,
+ "queries": 915,
+ "metrics": {
+  "baseline": {
+   "p1": 0.3495702005730659,
+   "in_domain_rejected": 0.0057306590257879654,
+   "positives_abstained": 0.0057306590257879654,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.5944039868309784,
+   "supported_count": 103,
+   "supported_precision": 0.17475728155339806
+  },
+  "missing_penalty": {
+   "p1": 0.34097421203438394,
+   "in_domain_rejected": 0.08022922636103152,
+   "positives_abstained": 0.017191977077363897,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.6763819673073291,
+   "supported_count": 9,
+   "supported_precision": 0.1111111111111111
+  },
+  "missing_verdict_only": {
+   "p1": 0.3495702005730659,
+   "in_domain_rejected": 0.014326647564469915,
+   "positives_abstained": 0.011461318051575931,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.6640339570282674,
+   "supported_count": 9,
+   "supported_precision": 0.1111111111111111
+  },
+  "stopwords": {
+   "p1": 0.3495702005730659,
+   "in_domain_rejected": 0.0057306590257879654,
+   "positives_abstained": 0.0057306590257879654,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.5955492976248142,
+   "supported_count": 109,
+   "supported_precision": 0.1834862385321101
+  },
+  "missing_penalty+stopwords": {
+   "p1": 0.33810888252148996,
+   "in_domain_rejected": 0.07449856733524356,
+   "positives_abstained": 0.017191977077363897,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.6778638927430809,
+   "supported_count": 9,
+   "supported_precision": 0.1111111111111111
+  },
+  "no_transcripts": {
+   "p1": 0.3753581661891118,
+   "in_domain_rejected": 0.0028653295128939827,
+   "positives_abstained": 0.0,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.5915468674313019,
+   "supported_count": 103,
+   "supported_precision": 0.17475728155339806
+  },
+  "missing_penalty+stopwords+no_transcripts": {
+   "p1": 0.36103151862464183,
+   "in_domain_rejected": 0.07449856733524356,
+   "positives_abstained": 0.008595988538681949,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.6745880575693138,
+   "supported_count": 9,
+   "supported_precision": 0.1111111111111111
+  }
+ },
+ "paired_vs_baseline": {
+  "missing_penalty": {
+   "p1": {
+    "difference": -0.0086,
+    "ci95": [
+     -0.0215,
+     0.0029
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.0745,
+    "ci95": [
+     0.0473,
+     0.1046
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0115,
+    "ci95": [
+     0.0,
+     0.0269
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.082,
+    "ci95": [
+     0.0429,
+     0.1253
+    ]
+   }
+  },
+  "missing_verdict_only": {
+   "p1": {
+    "difference": 0.0,
+    "ci95": [
+     -0.0085,
+     0.0084
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.0086,
+    "ci95": [
+     0.0,
+     0.0199
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0057,
+    "ci95": [
+     0.0,
+     0.0146
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0696,
+    "ci95": [
+     0.0334,
+     0.1091
+    ]
+   }
+  },
+  "stopwords": {
+   "p1": {
+    "difference": 0.0,
+    "ci95": [
+     -0.0084,
+     0.0083
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0011,
+    "ci95": [
+     -0.0131,
+     0.0152
+    ]
+   }
+  },
+  "missing_penalty+stopwords": {
+   "p1": {
+    "difference": -0.0115,
+    "ci95": [
+     -0.0256,
+     0.0
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.0688,
+    "ci95": [
+     0.0438,
+     0.0962
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0115,
+    "ci95": [
+     0.0,
+     0.0262
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0835,
+    "ci95": [
+     0.0427,
+     0.1265
+    ]
+   }
+  },
+  "no_transcripts": {
+   "p1": {
+    "difference": 0.0258,
+    "ci95": [
+     0.0,
+     0.0525
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": -0.0029,
+    "ci95": [
+     -0.0092,
+     0.0
+    ]
+   },
+   "positives_abstained": {
+    "difference": -0.0057,
+    "ci95": [
+     -0.0183,
+     0.0
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": -0.0029,
+    "ci95": [
+     -0.011,
+     0.0059
+    ]
+   }
+  },
+  "missing_penalty+stopwords+no_transcripts": {
+   "p1": {
+    "difference": 0.0115,
+    "ci95": [
+     -0.0148,
+     0.0402
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.0688,
+    "ci95": [
+     0.0441,
+     0.0951
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0029,
+    "ci95": [
+     -0.0059,
+     0.0125
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0802,
+    "ci95": [
+     0.0363,
+     0.1247
+    ]
+   }
+  }
+ }
+}

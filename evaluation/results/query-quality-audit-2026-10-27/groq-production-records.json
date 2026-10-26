@@ -1,0 +1,8180 @@
+[
+ {
+  "run": "groq_1",
+  "query": "Find where architecture is discussed.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ],
+   [
+    0,
+    5
+   ]
+  ],
+  "http": 200,
+  "seconds": 2.17,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "generated_supported",
+  "answer": {
+   "answer": "Architecture is discussed in the video at the beginning (0\u20135\u202fs) where the speakers say, \u201cWe discuss the software architecture,\u201d and again around 15\u201320\u202fs where they refer to the whiteboard showing the retrieval architecture.",
+   "supported": true,
+   "evidence_ids": [
+    "E1",
+    "E2"
+   ],
+   "citations": [
+    {
+     "evidence_id": "E1",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 0.0,
+     "end_time": 5.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 1.6
+    },
+    {
+     "evidence_id": "E2",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 15.0,
+     "end_time": 20.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 16.78
+    }
+   ]
+  },
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.6274,
+    "verdict": "supported",
+    "confidence": 0.6854,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.1808,
+    "verdict": "insufficient",
+    "confidence": 0.0556,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find a person near a laptop.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.22,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "laptop",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find where someone discusses deployment while a laptop is visible.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.55,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "deployment"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "match_reason": "Matched spoken terms deployment, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5877,
+    "verdict": "weak",
+    "confidence": 0.332,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5835,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5743,
+    "verdict": "weak",
+    "confidence": 0.3249,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5715,
+    "verdict": "weak",
+    "confidence": 0.3234,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find where SPEAKER_01 discusses architecture.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.15,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.7783,
+    "verdict": "supported",
+    "confidence": 0.6832,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.5848,
+    "verdict": "weak",
+    "confidence": 0.4063,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5697,
+    "verdict": "weak",
+    "confidence": 0.4007,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find a person near a whiteboard.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.21,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "whiteboard",
+    "person"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "whiteboard",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "SQLite metadata",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    5,
+    10
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.72,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "sqlite",
+    "metadata"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 7.0,
+    "score": 0.7272,
+    "verdict": "supported",
+    "confidence": 0.7161,
+    "match_reason": "Matched spoken terms sqlite/metadata, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Docker Neo4j",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 1.26,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker",
+    "neo4j"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.8189,
+    "verdict": "supported",
+    "confidence": 0.7443,
+    "match_reason": "Matched spoken terms docker/neo4j, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "SPEAKER_00 deployment",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.18,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "deployment"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_00",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.675,
+    "verdict": "supported",
+    "confidence": 0.645,
+    "match_reason": "Matched spoken terms deployment, speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "person near laptop",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.25,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "laptop",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "whiteboard architecture",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.32,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "whiteboard"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.8549,
+    "verdict": "supported",
+    "confidence": 0.702,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.8232,
+    "verdict": "supported",
+    "confidence": 0.6853,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.6191,
+    "verdict": "weak",
+    "confidence": 0.3485,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5958,
+    "verdict": "weak",
+    "confidence": 0.3362,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5926,
+    "verdict": "weak",
+    "confidence": 0.3346,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find where someone talks about Kubernetes.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.56,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "kubernetes"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5836,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find a person riding a horse.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.04,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "horse"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "ride"
+   ],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "insufficient_evidence",
+  "answer": {
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "supported": false,
+   "evidence_ids": [],
+   "citations": []
+  },
+  "results": []
+ },
+ {
+  "run": "groq_1",
+  "query": "Find where SPEAKER_01 discusses Docker.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.26,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.7704,
+    "verdict": "supported",
+    "confidence": 0.6802,
+    "match_reason": "Matched spoken terms docker, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "zzzxylophone quantum penguin",
+  "video": "final_demo.mp4",
+  "kind": "out_of_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.43,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "zzzxylophone",
+    "quantum",
+    "penguin"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "insufficient_evidence",
+  "answer": {
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "supported": false,
+   "evidence_ids": [],
+   "citations": []
+  },
+  "results": []
+ },
+ {
+  "run": "groq_2",
+  "query": "Find where architecture is discussed.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ],
+   [
+    0,
+    5
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.25,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.6274,
+    "verdict": "supported",
+    "confidence": 0.6854,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.1808,
+    "verdict": "insufficient",
+    "confidence": 0.0556,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Find a person near a laptop.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.67,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "laptop",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "generated_supported",
+  "answer": {
+   "answer": "Yes, the evidence shows a person near a laptop.",
+   "supported": true,
+   "evidence_ids": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5"
+   ],
+   "citations": [
+    {
+     "evidence_id": "E1",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 0.0,
+     "end_time": 5.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 0.0
+    },
+    {
+     "evidence_id": "E2",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 5.0,
+     "end_time": 10.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 5.0
+    },
+    {
+     "evidence_id": "E3",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 10.0,
+     "end_time": 15.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 10.0
+    },
+    {
+     "evidence_id": "E4",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 15.0,
+     "end_time": 20.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 15.0
+    },
+    {
+     "evidence_id": "E5",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 20.0,
+     "end_time": 25.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 20.0
+    }
+   ]
+  },
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Find where someone discusses deployment while a laptop is visible.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.75,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "deployment"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "match_reason": "Matched spoken terms deployment, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5877,
+    "verdict": "weak",
+    "confidence": 0.332,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5835,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5743,
+    "verdict": "weak",
+    "confidence": 0.3249,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5715,
+    "verdict": "weak",
+    "confidence": 0.3234,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Find where SPEAKER_01 discusses architecture.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.22,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.7783,
+    "verdict": "supported",
+    "confidence": 0.6832,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.5848,
+    "verdict": "weak",
+    "confidence": 0.4063,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5697,
+    "verdict": "weak",
+    "confidence": 0.4007,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Find a person near a whiteboard.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.22,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "whiteboard",
+    "person"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "whiteboard",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "SQLite metadata",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    5,
+    10
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.78,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "sqlite",
+    "metadata"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 7.0,
+    "score": 0.7272,
+    "verdict": "supported",
+    "confidence": 0.7161,
+    "match_reason": "Matched spoken terms sqlite/metadata, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Docker Neo4j",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.63,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker",
+    "neo4j"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.8189,
+    "verdict": "supported",
+    "confidence": 0.7443,
+    "match_reason": "Matched spoken terms docker/neo4j, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "SPEAKER_00 deployment",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.19,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "deployment"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_00",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.675,
+    "verdict": "supported",
+    "confidence": 0.645,
+    "match_reason": "Matched spoken terms deployment, speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "person near laptop",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.24,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "laptop",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "whiteboard architecture",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.44,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "whiteboard"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.8549,
+    "verdict": "supported",
+    "confidence": 0.702,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.8232,
+    "verdict": "supported",
+    "confidence": 0.6853,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.6191,
+    "verdict": "weak",
+    "confidence": 0.3485,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5958,
+    "verdict": "weak",
+    "confidence": 0.3362,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5926,
+    "verdict": "weak",
+    "confidence": 0.3346,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Find where someone talks about Kubernetes.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.41,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "kubernetes"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5836,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "Find a person riding a horse.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.03,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "horse"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "ride"
+   ],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "insufficient_evidence",
+  "answer": {
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "supported": false,
+   "evidence_ids": [],
+   "citations": []
+  },
+  "results": []
+ },
+ {
+  "run": "groq_2",
+  "query": "Find where SPEAKER_01 discusses Docker.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.29,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.7704,
+    "verdict": "supported",
+    "confidence": 0.6802,
+    "match_reason": "Matched spoken terms docker, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_2",
+  "query": "zzzxylophone quantum penguin",
+  "video": "final_demo.mp4",
+  "kind": "out_of_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.3,
+  "planner_status": "fallback_provider_unavailable",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "zzzxylophone",
+    "quantum",
+    "penguin"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "insufficient_evidence",
+  "answer": {
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "supported": false,
+   "evidence_ids": [],
+   "citations": []
+  },
+  "results": []
+ },
+ {
+  "run": "fallback",
+  "query": "Find where architecture is discussed.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ],
+   [
+    0,
+    5
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.08,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.6274,
+    "verdict": "supported",
+    "confidence": 0.6854,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.1808,
+    "verdict": "insufficient",
+    "confidence": 0.0556,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find a person near a laptop.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.26,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "laptop",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find where someone discusses deployment while a laptop is visible.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.05,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "deployment"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "match_reason": "Matched spoken terms deployment, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5877,
+    "verdict": "weak",
+    "confidence": 0.332,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5835,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5743,
+    "verdict": "weak",
+    "confidence": 0.3249,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5715,
+    "verdict": "weak",
+    "confidence": 0.3234,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person/laptop.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find where SPEAKER_01 discusses architecture.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.04,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.7783,
+    "verdict": "supported",
+    "confidence": 0.6832,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.5848,
+    "verdict": "weak",
+    "confidence": 0.4063,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5697,
+    "verdict": "weak",
+    "confidence": 0.4007,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find a person near a whiteboard.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.04,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "whiteboard",
+    "person"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "whiteboard",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities whiteboard/person, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:colleague] near whiteboard[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:whiteboard] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near whiteboard"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "SQLite metadata",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    5,
+    10
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.16,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "sqlite",
+    "metadata"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 7.0,
+    "score": 0.7272,
+    "verdict": "supported",
+    "confidence": 0.7161,
+    "match_reason": "Matched spoken terms sqlite/metadata, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Docker Neo4j",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.16,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker",
+    "neo4j"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.8189,
+    "verdict": "supported",
+    "confidence": 0.7443,
+    "match_reason": "Matched spoken terms docker/neo4j, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "SPEAKER_00 deployment",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.03,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "deployment"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_00",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.675,
+    "verdict": "supported",
+    "confidence": 0.645,
+    "match_reason": "Matched spoken terms deployment, speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_00.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person near laptop",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    25
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.04,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "laptop"
+   ],
+   "relationships": [
+    "near"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "near",
+     "object": "laptop",
+     "directionality": "symmetric"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:0:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "match_reason": "Matched visual entities person/laptop, relationship person[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:presenter] near laptop[manual:4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:laptop] (symmetric, confidence 1.00, manual_annotation).",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "whiteboard architecture",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "http": 200,
+  "seconds": 0.03,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "whiteboard"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 16.78,
+    "score": 0.8549,
+    "verdict": "supported",
+    "confidence": 0.702,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.8232,
+    "verdict": "supported",
+    "confidence": 0.6853,
+    "match_reason": "Matched spoken terms architecture, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.6191,
+    "verdict": "weak",
+    "confidence": 0.3485,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5958,
+    "verdict": "weak",
+    "confidence": 0.3362,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5926,
+    "verdict": "weak",
+    "confidence": 0.3346,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities whiteboard.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find where someone talks about Kubernetes.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.03,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "kubernetes"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.5836,
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 4,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 5,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:20000:25000",
+    "video_title": "final_demo.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.2857,
+    "match_reason": "Matched visual entities person.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The system searches speech, objects, and relationships.",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find a person riding a horse.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.03,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "horse"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "ride"
+   ],
+   "spoken_terms": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": []
+ },
+ {
+  "run": "fallback",
+  "query": "Find where SPEAKER_01 discusses Docker.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.03,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker"
+   ],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": [
+   {
+    "rank": 1,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.44,
+    "score": 0.7704,
+    "verdict": "supported",
+    "confidence": 0.6802,
+    "match_reason": "Matched spoken terms docker, sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 2,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "rank": 3,
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "match_reason": "Matched speaker SPEAKER_01.",
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "zzzxylophone quantum penguin",
+  "video": "final_demo.mp4",
+  "kind": "out_of_domain_negative",
+  "truth": null,
+  "http": 200,
+  "seconds": 0.18,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "transcript_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "zzzxylophone",
+    "quantum",
+    "penguin"
+   ],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "results": []
+ }
+]

@@ -1,0 +1,766 @@
+{
+ "subset": {
+  "videos": 50,
+  "queries": 307
+ },
+ "settings": {
+  "T1": {
+   "metrics": {
+    "yolov8n": {
+     "p1": 0.3076923076923077,
+     "r5": 0.8803418803418803,
+     "in_domain_rejected": 0.008547008547008548
+    },
+    "yolov8s": {
+     "p1": 0.358974358974359,
+     "r5": 0.905982905982906,
+     "in_domain_rejected": 0.0
+    },
+    "yolov8m": {
+     "p1": 0.29914529914529914,
+     "r5": 0.8803418803418803,
+     "in_domain_rejected": 0.0
+    },
+    "yolo11s": {
+     "p1": 0.358974358974359,
+     "r5": 0.8717948717948718,
+     "in_domain_rejected": 0.0
+    },
+    "yolo11m": {
+     "p1": 0.3162393162393162,
+     "r5": 0.8547008547008547,
+     "in_domain_rejected": 0.0
+    },
+    "yolo26s": {
+     "p1": 0.29914529914529914,
+     "r5": 0.8974358974358975,
+     "in_domain_rejected": 0.0
+    },
+    "original_index_yolov8n": {
+     "p1": 0.29914529914529914,
+     "r5": 0.8632478632478633,
+     "in_domain_rejected": 0.008547008547008548
+    }
+   },
+   "paired_vs_yolov8n_rebuild": {
+    "yolov8s": {
+     "p1": {
+      "difference": 0.0513,
+      "ci95": [
+       -0.0407,
+       0.1391
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0256,
+      "ci95": [
+       0.0,
+       0.0543
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0294,
+       0.0
+      ],
+      "significant": false
+     }
+    },
+    "yolov8m": {
+     "p1": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.1287,
+       0.0932
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0,
+      "ci95": [
+       -0.0328,
+       0.0357
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0294,
+       0.0
+      ],
+      "significant": false
+     }
+    },
+    "yolo11s": {
+     "p1": {
+      "difference": 0.0513,
+      "ci95": [
+       -0.036,
+       0.124
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0645,
+       0.0381
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0294,
+       0.0
+      ],
+      "significant": false
+     }
+    },
+    "yolo11m": {
+     "p1": {
+      "difference": 0.0085,
+      "ci95": [
+       -0.0899,
+       0.1029
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": -0.0256,
+      "ci95": [
+       -0.0763,
+       0.0194
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0294,
+       0.0
+      ],
+      "significant": false
+     }
+    },
+    "yolo26s": {
+     "p1": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.084,
+       0.0702
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0171,
+      "ci95": [
+       -0.0155,
+       0.0504
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0294,
+       0.0
+      ],
+      "significant": false
+     }
+    }
+   },
+   "rebuild_noise_yolov8n_vs_original": {
+    "p1": {
+     "difference": 0.0085,
+     "ci95": [
+      -0.0182,
+      0.0388
+     ],
+     "significant": false
+    },
+    "r5": {
+     "difference": 0.0171,
+     "ci95": [
+      0.0,
+      0.0513
+     ],
+     "significant": false
+    },
+    "in_domain_rejected": {
+     "difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "significant": false
+    }
+   }
+  },
+  "T0": {
+   "metrics": {
+    "yolov8n": {
+     "p1": 0.1111111111111111,
+     "r5": 0.47863247863247865,
+     "in_domain_rejected": 0.6410256410256411
+    },
+    "yolov8s": {
+     "p1": 0.23931623931623933,
+     "r5": 0.5128205128205128,
+     "in_domain_rejected": 0.6324786324786325
+    },
+    "yolov8m": {
+     "p1": 0.15384615384615385,
+     "r5": 0.47863247863247865,
+     "in_domain_rejected": 0.6239316239316239
+    },
+    "yolo11s": {
+     "p1": 0.1623931623931624,
+     "r5": 0.5042735042735043,
+     "in_domain_rejected": 0.6324786324786325
+    },
+    "yolo11m": {
+     "p1": 0.1452991452991453,
+     "r5": 0.49572649572649574,
+     "in_domain_rejected": 0.6239316239316239
+    },
+    "yolo26s": {
+     "p1": 0.1282051282051282,
+     "r5": 0.5042735042735043,
+     "in_domain_rejected": 0.6410256410256411
+    },
+    "original_index_yolov8n": {
+     "p1": 0.1111111111111111,
+     "r5": 0.47863247863247865,
+     "in_domain_rejected": 0.6410256410256411
+    }
+   },
+   "paired_vs_yolov8n_rebuild": {
+    "yolov8s": {
+     "p1": {
+      "difference": 0.1282,
+      "ci95": [
+       0.0407,
+       0.2033
+      ],
+      "significant": true
+     },
+     "r5": {
+      "difference": 0.0342,
+      "ci95": [
+       -0.0177,
+       0.084
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0536,
+       0.0381
+      ],
+      "significant": false
+     }
+    },
+    "yolov8m": {
+     "p1": {
+      "difference": 0.0427,
+      "ci95": [
+       -0.0242,
+       0.1066
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0,
+      "ci95": [
+       -0.0513,
+       0.0463
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0171,
+      "ci95": [
+       -0.0631,
+       0.0296
+      ],
+      "significant": false
+     }
+    },
+    "yolo11s": {
+     "p1": {
+      "difference": 0.0513,
+      "ci95": [
+       -0.0102,
+       0.1111
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0256,
+      "ci95": [
+       -0.0297,
+       0.0769
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0085,
+      "ci95": [
+       -0.0493,
+       0.0286
+      ],
+      "significant": false
+     }
+    },
+    "yolo11m": {
+     "p1": {
+      "difference": 0.0342,
+      "ci95": [
+       -0.0273,
+       0.0924
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0171,
+      "ci95": [
+       -0.0357,
+       0.08
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": -0.0171,
+      "ci95": [
+       -0.0566,
+       0.0259
+      ],
+      "significant": false
+     }
+    },
+    "yolo26s": {
+     "p1": {
+      "difference": 0.0171,
+      "ci95": [
+       -0.0522,
+       0.0893
+      ],
+      "significant": false
+     },
+     "r5": {
+      "difference": 0.0256,
+      "ci95": [
+       -0.0244,
+       0.0763
+      ],
+      "significant": false
+     },
+     "in_domain_rejected": {
+      "difference": 0.0,
+      "ci95": [
+       -0.0339,
+       0.0345
+      ],
+      "significant": false
+     }
+    }
+   },
+   "rebuild_noise_yolov8n_vs_original": {
+    "p1": {
+     "difference": 0.0,
+     "ci95": [
+      -0.0252,
+      0.0248
+     ],
+     "significant": false
+    },
+    "r5": {
+     "difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "significant": false
+    },
+    "in_domain_rejected": {
+     "difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "significant": false
+    }
+   }
+  }
+ },
+ "detectors_completed": [
+  "yolov8n",
+  "yolov8s",
+  "yolov8m",
+  "yolo11s",
+  "yolo11m",
+  "yolo26s"
+ ],
+ "latency": {
+  "yolov8n": {
+   "videos": 50,
+   "mean_seconds_per_video": 9.6,
+   "median_seconds_per_video": 8.5
+  },
+  "yolov8s": {
+   "videos": 50,
+   "mean_seconds_per_video": 10.63,
+   "median_seconds_per_video": 9.3
+  },
+  "yolov8m": {
+   "videos": 50,
+   "mean_seconds_per_video": 10.3,
+   "median_seconds_per_video": 9.35
+  },
+  "yolo11s": {
+   "videos": 50,
+   "mean_seconds_per_video": 13.33,
+   "median_seconds_per_video": 12.05
+  },
+  "yolo11m": {
+   "videos": 50,
+   "mean_seconds_per_video": 14.69,
+   "median_seconds_per_video": 13.6
+  },
+  "yolo26s": {
+   "videos": 50,
+   "mean_seconds_per_video": 14.62,
+   "median_seconds_per_video": 13.45
+  }
+ },
+ "index_stats": {
+  "yolov8n": {
+   "segments": 313,
+   "detections_per_segment": 13.91,
+   "distinct_entities_per_segment": 3.27,
+   "actions_per_segment": 6.51,
+   "relations_per_segment": 58.82
+  },
+  "yolov8s": {
+   "segments": 313,
+   "detections_per_segment": 17.51,
+   "distinct_entities_per_segment": 4.01,
+   "actions_per_segment": 6.58,
+   "relations_per_segment": 82.8
+  },
+  "yolov8m": {
+   "segments": 313,
+   "detections_per_segment": 17.35,
+   "distinct_entities_per_segment": 3.85,
+   "actions_per_segment": 6.53,
+   "relations_per_segment": 73.2
+  },
+  "yolo11s": {
+   "segments": 313,
+   "detections_per_segment": 14.94,
+   "distinct_entities_per_segment": 3.51,
+   "actions_per_segment": 6.58,
+   "relations_per_segment": 59.78
+  },
+  "yolo11m": {
+   "segments": 313,
+   "detections_per_segment": 16.74,
+   "distinct_entities_per_segment": 3.64,
+   "actions_per_segment": 6.47,
+   "relations_per_segment": 72.52
+  },
+  "yolo26s": {
+   "segments": 313,
+   "detections_per_segment": 15.49,
+   "distinct_entities_per_segment": 3.34,
+   "actions_per_segment": 6.53,
+   "relations_per_segment": 67.12
+  }
+ },
+ "per_frame_microbenchmark": {
+  "frames": 200,
+  "conf": 0.25,
+  "iou": 0.45,
+  "results": {
+   "yolov8n.pt": {
+    "ms_per_frame": 8.5,
+    "detections_per_frame": 2.73,
+    "person_per_frame": 1.04,
+    "top_classes": [
+     [
+      "person",
+      209
+     ],
+     [
+      "chair",
+      57
+     ],
+     [
+      "bottle",
+      51
+     ],
+     [
+      "tv",
+      39
+     ],
+     [
+      "cup",
+      35
+     ],
+     [
+      "refrigerator",
+      30
+     ],
+     [
+      "laptop",
+      15
+     ],
+     [
+      "bed",
+      14
+     ]
+    ]
+   },
+   "yolov8s.pt": {
+    "ms_per_frame": 8.1,
+    "detections_per_frame": 3.38,
+    "person_per_frame": 1.02,
+    "top_classes": [
+     [
+      "person",
+      205
+     ],
+     [
+      "chair",
+      81
+     ],
+     [
+      "cup",
+      52
+     ],
+     [
+      "refrigerator",
+      47
+     ],
+     [
+      "bottle",
+      46
+     ],
+     [
+      "tv",
+      43
+     ],
+     [
+      "microwave",
+      25
+     ],
+     [
+      "laptop",
+      23
+     ]
+    ]
+   },
+   "yolov8m.pt": {
+    "ms_per_frame": 12.9,
+    "detections_per_frame": 3.1,
+    "person_per_frame": 1.0,
+    "top_classes": [
+     [
+      "person",
+      200
+     ],
+     [
+      "chair",
+      68
+     ],
+     [
+      "bottle",
+      56
+     ],
+     [
+      "cup",
+      46
+     ],
+     [
+      "tv",
+      40
+     ],
+     [
+      "refrigerator",
+      31
+     ],
+     [
+      "laptop",
+      25
+     ],
+     [
+      "oven",
+      23
+     ]
+    ]
+   },
+   "yolo11n.pt": {
+    "ms_per_frame": 14.6,
+    "detections_per_frame": 2.71,
+    "person_per_frame": 0.95,
+    "top_classes": [
+     [
+      "person",
+      190
+     ],
+     [
+      "bottle",
+      67
+     ],
+     [
+      "chair",
+      59
+     ],
+     [
+      "tv",
+      41
+     ],
+     [
+      "refrigerator",
+      34
+     ],
+     [
+      "bed",
+      20
+     ],
+     [
+      "oven",
+      19
+     ],
+     [
+      "cup",
+      18
+     ]
+    ]
+   },
+   "yolo11s.pt": {
+    "ms_per_frame": 13.2,
+    "detections_per_frame": 2.81,
+    "person_per_frame": 1.0,
+    "top_classes": [
+     [
+      "person",
+      201
+     ],
+     [
+      "chair",
+      68
+     ],
+     [
+      "tv",
+      44
+     ],
+     [
+      "refrigerator",
+      35
+     ],
+     [
+      "bottle",
+      28
+     ],
+     [
+      "cup",
+      24
+     ],
+     [
+      "bed",
+      23
+     ],
+     [
+      "dining table",
+      19
+     ]
+    ]
+   },
+   "yolo11m.pt": {
+    "ms_per_frame": 16.6,
+    "detections_per_frame": 2.96,
+    "person_per_frame": 1.02,
+    "top_classes": [
+     [
+      "person",
+      205
+     ],
+     [
+      "chair",
+      67
+     ],
+     [
+      "bottle",
+      43
+     ],
+     [
+      "tv",
+      36
+     ],
+     [
+      "bed",
+      30
+     ],
+     [
+      "refrigerator",
+      29
+     ],
+     [
+      "cup",
+      26
+     ],
+     [
+      "oven",
+      25
+     ]
+    ]
+   },
+   "yolo26s.pt": {
+    "ms_per_frame": 17.5,
+    "detections_per_frame": 2.98,
+    "person_per_frame": 1.04,
+    "top_classes": [
+     [
+      "person",
+      208
+     ],
+     [
+      "chair",
+      72
+     ],
+     [
+      "tv",
+      44
+     ],
+     [
+      "cup",
+      39
+     ],
+     [
+      "bottle",
+      35
+     ],
+     [
+      "refrigerator",
+      30
+     ],
+     [
+      "bed",
+      28
+     ],
+     [
+      "oven",
+      25
+     ]
+    ]
+   }
+  }
+ }
+}

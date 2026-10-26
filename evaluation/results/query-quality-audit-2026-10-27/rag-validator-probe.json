@@ -1,0 +1,27 @@
+{
+ "valid citation, wrong time in text": {
+  "status": "generated_supported",
+  "accepted_as_supported": true,
+  "shown_text": "The person drinks at 00:42."
+ },
+ "valid citation, action absent from evidence": {
+  "status": "generated_supported",
+  "accepted_as_supported": true,
+  "shown_text": "The person is cooking at the stove."
+ },
+ "supported answer although every result is 'insufficient'": {
+  "status": "generated_supported",
+  "accepted_as_supported": true,
+  "shown_text": "Yes, the person cooks here."
+ },
+ "invented evidence id": {
+  "status": "rejected_invalid_evidence_ids",
+  "accepted_as_supported": false,
+  "shown_text": "The generated answer was rejected because its citations did not match retrieved evidence."
+ },
+ "supported without citations": {
+  "status": "rejected_invalid_evidence_ids",
+  "accepted_as_supported": false,
+  "shown_text": "The generated answer was rejected because its citations did not match retrieved evidence."
+ }
+}

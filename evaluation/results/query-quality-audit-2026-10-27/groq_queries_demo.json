@@ -1,0 +1,289 @@
+[
+ {
+  "video": "OM2NF.mp4",
+  "query": "person holding a cup.",
+  "kind": "positive",
+  "truth": [
+   [
+    3.5,
+    7.5
+   ],
+   [
+    15.0,
+    18.5
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person reading a newspaper.",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    24
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person drinking from a cup.",
+  "kind": "positive",
+  "truth": [
+   [
+    2.2,
+    8.8
+   ],
+   [
+    15.5,
+    18.5
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person puts his shoes on.",
+  "kind": "positive",
+  "truth": [
+   [
+    23.7,
+    34.8
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person near a chair.",
+  "kind": "positive",
+  "truth": [
+   [
+    25,
+    35
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person cooking at the stove.",
+  "kind": "positive",
+  "truth": [
+   [
+    35.5,
+    44.03
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person picks up something from the stove.",
+  "kind": "positive",
+  "truth": [
+   [
+    36,
+    44.03
+   ]
+  ]
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person vacuuming the floor.",
+  "kind": "in_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "person laughing at a phone.",
+  "kind": "in_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "OM2NF.mp4",
+  "query": "A sparrowhawk chases a small bird through a dense forest.",
+  "kind": "out_of_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "a person walks through a doorway.",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    5.2
+   ]
+  ]
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person drinking from a cup.",
+  "kind": "positive",
+  "truth": [
+   [
+    13.1,
+    23.4
+   ]
+  ]
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person holding a cup.",
+  "kind": "positive",
+  "truth": [
+   [
+    14,
+    21.5
+   ],
+   [
+    24,
+    26
+   ]
+  ]
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person smiling.",
+  "kind": "positive",
+  "truth": [
+   [
+    19.7,
+    30.86
+   ]
+  ]
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person sitting on the bed.",
+  "kind": "positive",
+  "truth": [
+   [
+    14,
+    21.5
+   ],
+   [
+    24,
+    26
+   ]
+  ]
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person wearing glasses.",
+  "kind": "positive",
+  "truth": [
+   [
+    14,
+    21.5
+   ],
+   [
+    24,
+    26
+   ]
+  ]
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person cooking at the stove.",
+  "kind": "in_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "person opens the refrigerator.",
+  "kind": "in_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "I2DHG.mp4",
+  "query": "A sparrowhawk chases a small bird through a dense forest.",
+  "kind": "out_of_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "a person is watching television on the sofa.",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    3.6
+   ],
+   [
+    0,
+    7.5
+   ]
+  ]
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "person sitting on the couch.",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    7.5
+   ]
+  ]
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "a television screen.",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    7.5
+   ]
+  ]
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "person opens door to closet.",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15.4
+   ]
+  ]
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "person takes a towel out of the closet.",
+  "kind": "positive",
+  "truth": [
+   [
+    13.5,
+    18.5
+   ]
+  ]
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "person holding a towel.",
+  "kind": "positive",
+  "truth": [
+   [
+    14.5,
+    18.5
+   ]
+  ]
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "person eating a sandwich.",
+  "kind": "in_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "person washing dishes in the sink.",
+  "kind": "in_domain_negative",
+  "truth": null
+ },
+ {
+  "video": "GG4UR.mp4",
+  "query": "A sparrowhawk chases a small bird through a dense forest.",
+  "kind": "out_of_domain_negative",
+  "truth": null
+ }
+]
