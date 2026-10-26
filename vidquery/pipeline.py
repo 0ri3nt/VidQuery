@@ -46,6 +46,22 @@ class ProcessingConflictError(RuntimeError):
     pass
 
 
+_DIGESTS: dict[tuple[str, int, int], str] = {}
+
+
+def checkpoint_digest(path: Path) -> str | None:
+    """SHA-256 of a model file, cached per (path, size, mtime); ``None`` if missing."""
+
+    try:
+        stat = Path(path).stat()
+    except OSError:
+        return None
+    key = (str(Path(path).resolve()), stat.st_size, stat.st_mtime_ns)
+    if key not in _DIGESTS:
+        _DIGESTS[key] = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    return _DIGESTS[key]
+
+
 def _preserves_annotation_evidence(segment: CanonicalSegment) -> bool:
     metadata = segment.processing_metadata
     return bool(
@@ -458,6 +474,11 @@ class VideoProcessingService:
                         else None
                     ),
                     "relationship_gnn_predictions_used": bool(learned_relationships),
+                    "relationship_gnn_checkpoint_sha256": (
+                        checkpoint_digest(self.settings.relation_gnn_checkpoint)
+                        if learned_relationship_status == "available_validated"
+                        else None
+                    ),
                     "relationship_raw_observation_count": raw_relationship_count,
                     "relationship_interval_count": len(relationships),
                     "relationship_smoothing_status": relationship_smoothing_status,
@@ -479,6 +500,12 @@ class VideoProcessingService:
                         else None
                     ),
                     "gnn_action_inference_enabled": self.settings.enable_gnn_actions,
+                    "gnn_checkpoint_sha256": (
+                        checkpoint_digest(self.settings.gnn_action_checkpoint)
+                        if self.settings.enable_gnn_actions
+                        and learned_action_status == "available_validated"
+                        else None
+                    ),
                     "learned_action_predictions_used": bool(learned_actions),
                 },
             )

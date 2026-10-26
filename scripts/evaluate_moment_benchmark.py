@@ -22,6 +22,28 @@ from vidquery.reliability import load_reliability_priors, load_reliability_thres
 from vidquery.search import configured_search_engine, require_semantic_encoder
 from vidquery.storage import SQLiteRepository
 
+INDEXED_MODEL_KEYS = (
+    "whisper_decoding",
+    "gnn_model_version",
+    "gnn_checkpoint_sha256",
+    "relationship_gnn_model_version",
+    "relationship_gnn_checkpoint_sha256",
+)
+
+
+def _indexed_models(repository: SQLiteRepository) -> dict[str, dict[str, int]]:
+    """Segment counts per value of each model-provenance key in the index.
+
+    Indexes built before 26 October 2026 lack ``whisper_decoding`` (they used
+    the temperature fallback) and the checkpoint hashes; those show as None.
+    """
+
+    counts: dict[str, Counter[str]] = {key: Counter() for key in INDEXED_MODEL_KEYS}
+    for segment in repository.list_segments(None):
+        for key in INDEXED_MODEL_KEYS:
+            counts[key][str(segment.processing_metadata.get(key))] += 1
+    return {key: dict(value) for key, value in counts.items()}
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -108,6 +130,16 @@ def main() -> None:
                 for segment in repository.list_segments(None)
             )
         ),
+        "indexed_models": _indexed_models(repository),
+        "search_settings": {
+            "query_planner": "rule-based only (LLM planner disabled for evaluation)",
+            "soft_constraint_matching": settings.soft_constraint_matching,
+            "frame_semantic_retrieval": settings.enable_frame_semantic_retrieval,
+            "frame_semantic_weight": settings.frame_semantic_weight,
+            "frame_semantic_floor": settings.frame_semantic_floor,
+            "frame_semantic_ceiling": settings.frame_semantic_ceiling,
+            "neo4j": settings.enable_neo4j,
+        },
         "started_at": started.isoformat(),
         "finished_at": datetime.now(UTC).isoformat(),
     }
