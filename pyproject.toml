@@ -38,8 +38,15 @@ diarization = [
   "speechbrain==1.0.3",
   "soundfile==0.13.1",
 ]
-gnn-experimental = ["torch>=2.1,<2.6", "torch-geometric==2.7.0"]
-evaluation = ["sentence-transformers==5.1.2"]
+# scikit-learn: VidOR relation metrics; pandas: AVA dataset expansion (extraction/preprocessor.py).
+gnn-experimental = [
+  "torch>=2.1,<2.6",
+  "torch-geometric==2.7.0",
+  "scikit-learn==1.6.1",
+  "pandas==2.2.3",
+]
+# scipy: exact bootstrap average precision (vidquery/ava_compare.py); psutil: training/run RAM logs.
+evaluation = ["sentence-transformers==5.1.2", "scipy==1.17.0", "psutil==6.0.0"]
 ocr = ["easyocr==1.7.2", "rapidfuzz==3.12.2"]
 streamlit = ["streamlit==1.56.0", "requests==2.33.1"]
 dev = [
@@ -65,6 +72,10 @@ full = [
   "rapidfuzz==3.12.2",
   "huggingface-hub>=0.33,<2",
   "remotezip==0.12.3",
+  "scikit-learn==1.6.1",
+  "scipy==1.17.0",
+  "psutil==6.0.0",
+  "pandas==2.2.3",
 ]
 
 [project.scripts]

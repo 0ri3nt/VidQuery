@@ -323,9 +323,9 @@ evaluation/     query manifests and machine-readable results
 database/       Neo4j schema and parameterized Cypher examples
 demo/           controlled-demo manifest
 docs/           documentation (index: docs/README.md)
-extraction/, modelling/, core/, retrieval/, api/, app/
+extraction/, modelling/, core/, api/, app/
                 original AVA research pipeline, kept for reproduction
-archive/        retired entry scripts and the old Go downloader (see archive/README.md)
+archive/        retired entry scripts, old Go downloader, retrieval/ wrappers, superseded runs
 ```
 
 `data/app/` (models, caches, uploads, extracted media, the SQLite database), raw

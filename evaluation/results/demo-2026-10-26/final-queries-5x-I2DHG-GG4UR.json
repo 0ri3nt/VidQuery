@@ -1,0 +1,150 @@
+{
+ "I2DHG": {
+  "a person walks through a doorway.": {
+   "outcomes_over_5_runs": [
+    [
+     0.0,
+     1.003,
+     "frame",
+     "weak",
+     0.2935
+    ]
+   ],
+   "match_reason": "Matched visual entities person, visual-text similarity 0.281 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000000000 (openclip)."
+  },
+  "person drinking from a cup.": {
+   "outcomes_over_5_runs": [
+    [
+     15.0,
+     18.016,
+     "frame",
+     "supported",
+     0.4843
+    ]
+   ],
+   "match_reason": "Matched visual entities person/cup, visual-text similarity 0.291 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000015000 (openclip)."
+  },
+  "person holding a cup.": {
+   "outcomes_over_5_runs": [
+    [
+     15.0,
+     18.016,
+     "frame",
+     "weak",
+     0.3778
+    ]
+   ],
+   "match_reason": "Matched visual entities person/cup, relationship person[det_429d7c7c57e8475d70c6] hold cup[det_efe39c2b90d47b8b763b] (directed, confidence 0.92, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000015000 (openclip)."
+  },
+  "person smiling.": {
+   "outcomes_over_5_runs": [
+    [
+     20.0,
+     21.993,
+     "frame",
+     "weak",
+     0.2794
+    ]
+   ],
+   "match_reason": "Matched visual entities person, visual-text similarity 0.255 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000022000 (openclip)."
+  },
+  "person sitting on the bed.": {
+   "outcomes_over_5_runs": [
+    [
+     25.0,
+     25.002,
+     "frame",
+     "supported",
+     0.4782
+    ]
+   ],
+   "match_reason": "Matched visual entities person, actions sit (gnn_action_model, confidence 0.82), visual-text similarity 0.283 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000026000 (openclip)."
+  },
+  "person wearing glasses.": {
+   "outcomes_over_5_runs": [
+    [
+     25.0,
+     25.002,
+     "frame",
+     "supported",
+     0.5002
+    ]
+   ],
+   "match_reason": "Matched visual entities person, appearance attributes glasses=True (visual_attribute_model, confidence 0.87); appearance match 'a person wearing glasses' (open_clip/ViT-B-32, cosine 0.279), visual-text similarity 0.248 at frame 2a380720-4895-4799-b892-73b60eae8c5b_000000025000 (openclip)."
+  }
+ },
+ "GG4UR": {
+  "a person is watching television on the sofa.": {
+   "outcomes_over_5_runs": [
+    [
+     0.0,
+     1.001,
+     "frame",
+     "supported",
+     0.5107
+    ]
+   ],
+   "match_reason": "Matched visual entities person/couch, visual-text similarity 0.289 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000002000 (openclip)."
+  },
+  "person sitting on the couch.": {
+   "outcomes_over_5_runs": [
+    [
+     0.0,
+     4.004,
+     "frame",
+     "supported",
+     0.4572
+    ]
+   ],
+   "match_reason": "Matched visual entities person/couch, actions sit (gnn_action_model, confidence 0.98), visual-text similarity 0.297 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000001000 (openclip)."
+  },
+  "a television screen.": {
+   "outcomes_over_5_runs": [
+    [
+     5.0,
+     6.006,
+     "frame",
+     "weak",
+     0.4192
+    ]
+   ],
+   "match_reason": "Matched visual entities tv, visual-text similarity 0.282 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000006000 (openclip)."
+  },
+  "person opens door to closet.": {
+   "outcomes_over_5_runs": [
+    [
+     10.0,
+     13.013,
+     "frame",
+     "weak",
+     0.3124
+    ]
+   ],
+   "match_reason": "Matched visual entities person, actions open (gnn_action_model, confidence 0.97), visual-text similarity 0.301 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000013000 (openclip)."
+  },
+  "person takes a towel out of the closet.": {
+   "outcomes_over_5_runs": [
+    [
+     15.0,
+     16.984,
+     "frame",
+     "weak",
+     0.316
+    ]
+   ],
+   "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000017000 (openclip)."
+  },
+  "person holding a towel.": {
+   "outcomes_over_5_runs": [
+    [
+     15.0,
+     16.984,
+     "frame",
+     "weak",
+     0.2808
+    ]
+   ],
+   "match_reason": "Matched visual entities person, actions carry/hold (gnn_action_model, confidence 0.86), visual-text similarity 0.282 at frame 0c824a7b-9237-4fb6-b202-a96cb5810308_000000016000 (openclip)."
+  }
+ }
+}
