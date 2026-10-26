@@ -8,7 +8,6 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 |---|---|
 | [SETUP.md](SETUP.md) | install, credentials, model cache layout, health check, troubleshooting |
 | [RUN_AND_TEST.md](RUN_AND_TEST.md) | running, examiner-style testing, demo-day checklist, reporting issues |
-| [TEAMMATE_IMPROVEMENT_PLAN.md](TEAMMATE_IMPROVEMENT_PLAN.md) | phased plan: demo hardening, end-to-end benchmark, learned reliability, paper |
 | [API.md](API.md) | HTTP endpoints, search request and response contract, health states |
 | [FINAL_DEMO_GUIDE.md](FINAL_DEMO_GUIDE.md) | controlled demo script and expected results |
 | [UI_QA.md](UI_QA.md) | browser and deployment QA |
@@ -47,16 +46,19 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 | [EXPERIMENTS_2026-10-26.md](EXPERIMENTS_2026-10-26.md) | deterministic Whisper, AVA 24->94 and VidOR 400->1,900 training-video experiments with paired CIs |
 | [AUDIT_2026-10.md](AUDIT_2026-10.md) | codebase, dataset-coverage, hardware, feasibility, and cost audit |
 | [NEO4J_VERIFICATION.md](NEO4J_VERIFICATION.md) | live Neo4j verification |
-| [PIPELINE_REPRODUCTION.md](PIPELINE_REPRODUCTION.md) | end-to-end reproduction record |
+| [PIPELINE_REPRODUCTION.md](archive/PIPELINE_REPRODUCTION.md) | end-to-end reproduction record |
 
 ## Historical records
 
-Kept for traceability; each is superseded by a document above.
+Kept for traceability; each is superseded by a document above. Files under
+`archive/` are indexed in [archive/README.md](archive/README.md).
 
 | Document | Superseded by |
 |---|---|
-| [IMPLEMENTATION_AUDIT.md](IMPLEMENTATION_AUDIT.md) | baseline audit before the application existed |
-| [EVALUATION.md](EVALUATION.md) | [EVALUATION_FINAL.md](EVALUATION_FINAL.md) |
-| [DEMO_GUIDE.md](DEMO_GUIDE.md) | [FINAL_DEMO_GUIDE.md](FINAL_DEMO_GUIDE.md) |
+| [IMPLEMENTATION_AUDIT.md](archive/IMPLEMENTATION_AUDIT.md) | baseline audit before the application existed |
+| [EVALUATION.md](archive/EVALUATION.md) | [EVALUATION_FINAL.md](EVALUATION_FINAL.md) |
+| [DEMO_GUIDE.md](archive/DEMO_GUIDE.md) | [FINAL_DEMO_GUIDE.md](FINAL_DEMO_GUIDE.md) |
+| [TEAMMATE_IMPROVEMENT_PLAN.md](archive/TEAMMATE_IMPROVEMENT_PLAN.md) | [PROGRESS_2026-10-25.md](PROGRESS_2026-10-25.md), [EXPERIMENTS_2026-10-26.md](EXPERIMENTS_2026-10-26.md) |
+| [IMPLEMENTATION_PROGRESS_SLIDES.md](archive/IMPLEMENTATION_PROGRESS_SLIDES.md) | presentation draft in `presentation/` |
 | [VIDOR_RELATION_GNN.md](VIDOR_RELATION_GNN.md) | [VIDOR_RELATION_FINAL_PASS.md](VIDOR_RELATION_FINAL_PASS.md) |
 | [LIBRARY_REFRESH_VERIFICATION.md](LIBRARY_REFRESH_VERIFICATION.md) | [SETUP.md](SETUP.md) |

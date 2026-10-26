@@ -197,7 +197,7 @@ Phase–2 limitations:
 - There were no automated pytest tests at the original Phase–2 baseline.
 - There was no complete reproducible Docker workflow.
 
-The post-Phase–2 work transformed these prototypes into an integrated, testable vertical slice. The detailed baseline audit is available in [`docs/IMPLEMENTATION_AUDIT.md`](IMPLEMENTATION_AUDIT.md).
+The post-Phase–2 work transformed these prototypes into an integrated, testable vertical slice. The detailed baseline audit is available in [`docs/archive/IMPLEMENTATION_AUDIT.md`](archive/IMPLEMENTATION_AUDIT.md).
 
 ---
 

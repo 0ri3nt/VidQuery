@@ -1,6 +1,6 @@
 # Demo guide
 
-> **Historical record.** This document captures the first artifact-backed demo. For the current demo, use [FINAL_DEMO_GUIDE.md](FINAL_DEMO_GUIDE.md).
+> **Historical record.** This document captures the first artifact-backed demo. For the current demo, use [FINAL_DEMO_GUIDE.md](../FINAL_DEMO_GUIDE.md).
 
 ## Reliable artifact-backed demo
 

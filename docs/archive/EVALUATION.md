@@ -1,6 +1,6 @@
 # Evaluation
 
-> **Historical record.** This document captures the early smoke and 35-query evaluation. Current results are in [EVALUATION_FINAL.md](EVALUATION_FINAL.md) and [REVIEW2.md](REVIEW2.md).
+> **Historical record.** This document captures the early smoke and 35-query evaluation. Current results are in [EVALUATION_FINAL.md](../EVALUATION_FINAL.md) and [REVIEW2.md](../REVIEW2.md).
 
 ## Reproducible smoke evaluation
 

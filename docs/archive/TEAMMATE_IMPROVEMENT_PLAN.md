@@ -5,9 +5,9 @@ that survives examiners' live queries and a paper that survives review. It is
 written to be followed phase by phase, with an AI coding agent doing most of
 the editing. Read the whole file once before starting.
 
-Background reading, in this order: [../README.md](../README.md),
-[ARCHITECTURE.md](ARCHITECTURE.md), [REVIEW2.md](REVIEW2.md),
-[GNN_STATUS.md](GNN_STATUS.md), and [RUN_AND_TEST.md](RUN_AND_TEST.md).
+Background reading, in this order: [../README.md](../../README.md),
+[ARCHITECTURE.md](../ARCHITECTURE.md), [REVIEW2.md](../REVIEW2.md),
+[GNN_STATUS.md](../GNN_STATUS.md), and [RUN_AND_TEST.md](../RUN_AND_TEST.md).
 
 ## Why this plan exists
 
@@ -84,7 +84,7 @@ Give these rules to your AI coding agent at the start of every session.
 
 Goal: the system runs on your laptop exactly as on `main`.
 
-1. Clone and install (see [SETUP.md](SETUP.md); Windows commands are there):
+1. Clone and install (see [SETUP.md](../SETUP.md); Windows commands are there):
 
    ```bash
    git clone https://github.com/0ri3nt/VidQuery.git && cd VidQuery
@@ -112,10 +112,10 @@ Goal: the system runs on your laptop exactly as on `main`.
    - `data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-gat-v2.pt`
      and `.metadata.json`
 
-   Then cache the ResNet-18 backbone as shown in [SETUP.md](SETUP.md), section 3.
+   Then cache the ResNet-18 backbone as shown in [SETUP.md](../SETUP.md), section 3.
 
 4. Start the server and check health. Every key should match the table in
-   [RUN_AND_TEST.md](RUN_AND_TEST.md#2-check-health-before-every-session).
+   [RUN_AND_TEST.md](../RUN_AND_TEST.md#2-check-health-before-every-session).
 
    ```bash
    python -m vidquery serve --host 127.0.0.1 --port 8000
@@ -209,7 +209,7 @@ only "about" was returned as a result.
   `docs/GNN_STATUS.md`). That file is not in git; get it from whoever trained
   the model. `hbYvDvJrpNk` is a known test-split video. Do not use AVA training
   videos in any reported result.
-- Run the examiner test list in [RUN_AND_TEST.md](RUN_AND_TEST.md#4-test-it-like-an-examiner)
+- Run the examiner test list in [RUN_AND_TEST.md](../RUN_AND_TEST.md#4-test-it-like-an-examiner)
   and keep a short list of queries that work well.
 
 **Phase 1 done when:** all checks pass, and the examiner test list works on
@@ -226,7 +226,7 @@ Goal: numbers that come only from the models, on real videos and real queries.
    reasonable start is 2 calibration videos and 3 test videos, with different
    content in each split.
 3. **Label about 60 queries per split** from the video itself, without running
-   them in Search first. Targets per [REVIEW2.md](REVIEW2.md#labelling-ground-truth):
+   them in Search first. Targets per [REVIEW2.md](../REVIEW2.md#labelling-ground-truth):
    at least 15 ambiguous, 15 timestamp, 10 action/relation, and 5 negative.
    - Make negatives of two kinds and say which in the notes field:
      `in-domain` (plausible but false, such as "person riding a bicycle" in a
