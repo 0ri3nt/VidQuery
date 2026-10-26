@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Search inside videos with timestamped visual and spoken evidence." />
     <title>VidQuery</title>
-    <link rel="stylesheet" href="/assets/app.css" />
-    <script src="/assets/app.js?v=20260930-annotate" defer></script>
+    <link rel="stylesheet" href="/assets/app.css?v=20261026-remove" />
+    <script src="/assets/app.js?v=20261026-remove" defer></script>
     <script src="/assets/annotate.js?v=20260930-annotate" defer></script>
   </head>
   <body>
@@ -61,7 +61,7 @@
       </section>
 
       <section id="library-view" class="view">
-        <div class="page-heading"><p class="eyebrow">PERSISTENT INDEX</p><h1>Your video library</h1><p>Processing state survives API restarts. Retry failed or completed videos without uploading again.</p></div>
+        <div class="page-heading"><p class="eyebrow">PERSISTENT INDEX</p><h1>Your video library</h1><p>Processing state survives API restarts. Retry failed or completed videos without uploading again, or remove a video from this library.</p></div>
         <div id="library-state" class="state-panel">Loading videos&hellip;</div>
         <div id="video-list" class="video-list"></div>
       </section>
@@ -165,6 +165,20 @@
         <p id="player-transcript"></p>
       </div>
     </dialog>
+
+    <dialog id="remove-dialog" class="confirm-dialog" aria-labelledby="remove-title" aria-describedby="remove-description">
+      <form method="dialog">
+        <p class="eyebrow">REMOVE FROM THIS LIBRARY</p>
+        <h2 id="remove-title">Remove &ldquo;<span id="remove-name"></span>&rdquo;?</h2>
+        <p id="remove-description">Its search index entries are deleted from this library. Its uploaded media and generated frames move to this library&rsquo;s trash, where they can be restored from the command line. Source files outside this library are never touched, and other libraries are not affected.</p>
+        <div class="dialog-actions">
+          <button value="cancel" id="remove-cancel" autofocus>Cancel</button>
+          <button value="confirm" id="remove-confirm" class="danger">Remove video</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
     <footer>
       <span>VidQuery &middot; Project 137</span>

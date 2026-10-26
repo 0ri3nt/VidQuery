@@ -272,6 +272,39 @@ def demo(path: Path) -> None:
     print("\nStart the UI with: python -m vidquery.cli serve")
 
 
+def library_command_main(args: argparse.Namespace) -> None:
+    from dataclasses import replace
+
+    from .library import LibraryError, list_removed, restore_removed_video
+
+    overrides = {
+        field: value.resolve()
+        for field, value in (
+            ("database_path", args.database),
+            ("upload_dir", args.upload_dir),
+            ("generated_dir", args.generated_dir),
+        )
+        if value is not None
+    }
+    settings = replace(get_settings(), **overrides)
+    if not settings.database_path.is_file():
+        # Opening a repository would create an empty library at a mistyped path.
+        raise SystemExit(f"{args.command}: no library database at {settings.database_path}")
+    if args.command == "list-removed":
+        print(json.dumps(list_removed(settings), indent=2))
+        return
+    try:
+        result = restore_removed_video(
+            settings,
+            SQLiteRepository(settings.database_path),
+            args.entry,
+            neo4j_factory=lambda: CanonicalNeo4jIndexer.from_settings(settings),
+        )
+    except LibraryError as exc:
+        raise SystemExit(f"restore-video: {exc}") from exc
+    print(json.dumps(result, indent=2))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="VidQuery canonical application CLI")
     subcommands = parser.add_subparsers(dest="command", required=True)
@@ -359,6 +392,17 @@ def main() -> None:
         default=[],
         help="Backfill only this registered video ID; repeat to select multiple",
     )
+
+    for name, help_text in (
+        ("list-removed", "List videos removed from this library and their trash entries"),
+        ("restore-video", "Restore a video removed from this library from its trash entry"),
+    ):
+        library_command = subcommands.add_parser(name, help=help_text)
+        if name == "restore-video":
+            library_command.add_argument("entry", type=Path, help="Trash entry directory")
+        library_command.add_argument("--database", type=Path, help="Library DATABASE_PATH")
+        library_command.add_argument("--upload-dir", type=Path, help="Library UPLOAD_DIR")
+        library_command.add_argument("--generated-dir", type=Path, help="Library GENERATED_DIR")
 
     search = subcommands.add_parser("search", help="Search locally indexed canonical segments")
     search.add_argument("query")
@@ -556,6 +600,8 @@ def main() -> None:
         refresh_library(args.video_id)
     elif args.command == "backfill-gnn-actions":
         backfill_gnn_actions(args.video_id)
+    elif args.command in {"list-removed", "restore-video"}:
+        library_command_main(args)
     elif args.command == "search":
         run_search(args.query, args.video_id, args.limit)
     elif args.command == "diagnose-query":

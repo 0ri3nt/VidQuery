@@ -9,6 +9,7 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 | [SETUP.md](SETUP.md) | install, credentials, model cache layout, health check, troubleshooting |
 | [RUN_AND_TEST.md](RUN_AND_TEST.md) | running, examiner-style testing, demo-day checklist, reporting issues |
 | [API.md](API.md) | HTTP endpoints, search request and response contract, health states |
+| [LIBRARIES.md](LIBRARIES.md) | libraries, the 4-video demo library, removing videos to a library trash, restoring |
 | [FINAL_DEMO_GUIDE.md](FINAL_DEMO_GUIDE.md) | controlled demo script and expected results |
 | [UI_QA.md](UI_QA.md) | browser and deployment QA |
 | [RETRIEVAL_DIAGNOSTICS.md](RETRIEVAL_DIAGNOSTICS.md) | `diagnose-query`, failure taxonomy, custom-video case study |

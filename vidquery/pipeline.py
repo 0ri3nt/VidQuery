@@ -4,6 +4,8 @@ import hashlib
 import logging
 import traceback
 from collections import defaultdict
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
 from threading import RLock
 
@@ -230,6 +232,20 @@ class VideoProcessingService:
     def _finish(self, video_id: str) -> None:
         with self._active_lock:
             self._active.discard(video_id)
+
+    @contextmanager
+    def reserved(self, video_id: str) -> Iterator[None]:
+        """Hold ``video_id``'s processing slot, e.g. while it is removed from the library.
+
+        Raises ``ProcessingConflictError`` if the video is processing; while held,
+        :meth:`process` for the same video raises it instead.
+        """
+
+        self._begin(video_id)
+        try:
+            yield
+        finally:
+            self._finish(video_id)
 
     def process(self, video_id: str) -> VideoRecord:
         self._begin(video_id)

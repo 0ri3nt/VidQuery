@@ -1,5 +1,6 @@
 const views = ["search", "library", "upload", "annotate"];
-const state = { videos: [], poller: null, lastQuery: "" };
+const state = { videos: [], poller: null, lastQuery: "", pendingRemoval: null, toastTimer: null };
+const REMOVABLE_STATES = new Set(["UPLOADED", "READY", "FAILED"]);
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -183,7 +184,7 @@ function renderResults(payload) {
     const peakLabel = localization ? `<span class="peak">⏱ ${formatPeak(localization.peak_time)}</span>` : "";
     const precision = localization ? `<span class="precision" title="${escapeHtml((localization.evidence || []).join("\n"))}">${escapeHtml(PRECISION_LABEL[localization.precision] || localization.precision)} · ${escapeHtml(localization.source)}</span>` : "";
     const hypothesisTags = (item.supporting_hypotheses || []).map((value) => `<span class="hyp-tag">${escapeHtml(value.replaceAll("_", " "))}</span>`).join("");
-    return `<article class="result-card">
+    return `<article class="result-card" data-video-id="${escapeHtml(item.video_id)}">
       <div class="thumbnail"><img src="${escapeHtml(item.thumbnail_url)}" alt="Frame near ${formatTime(seekTimeFor(item))}" loading="lazy" onerror="this.style.display='none'" /><span>${formatTime(item.start_time)}–${formatTime(item.end_time)}</span>${peakLabel}</div>
       <div class="result-main"><p class="eyebrow">RESULT ${index + 1} ${hypothesisTags}</p><h3>${escapeHtml(item.video_title)}</h3><div class="result-meta">${confidenceBadge(item)}${precision}</div><p class="reason">${escapeHtml(item.match_reason)}</p><p class="transcript">${escapeHtml(item.transcript || "No speech in this segment.")}</p><div class="evidence">${evidence.map((value) => `<span>${escapeHtml(value)}</span>`).join("")}</div></div>
       <div class="score"><small>score</small><strong>${Math.round(item.score * 100)}</strong><button class="play-button" data-result='${escapeHtml(JSON.stringify(item))}'>Play</button></div>
@@ -254,8 +255,12 @@ async function refreshLibrary() {
       list.innerHTML = '<div class="state-panel">No videos yet. Upload an MP4 to build the first index.</div>';
       return;
     }
-    list.innerHTML = state.videos.map((video) => `<article class="video-row"><div><h3>${escapeHtml(video.display_name)}</h3><p>${formatTime(video.duration)} · ${video.width}×${video.height} · ${Number(video.fps).toFixed(2)} fps${video.warnings.length ? ` · ${video.warnings.length} warning(s)` : ""}</p><p>${escapeHtml(video.failure_message || video.current_stage || "")}</p></div><span class="badge ${escapeHtml(video.state)}">${escapeHtml(video.state)}</span><button class="retry" data-id="${escapeHtml(video.video_id)}">${video.state === "FAILED" ? "Retry" : "Reprocess"}</button></article>`).join("");
+    list.innerHTML = state.videos.map((video) => {
+      const removable = REMOVABLE_STATES.has(video.state);
+      return `<article class="video-row" data-id="${escapeHtml(video.video_id)}"><div><h3>${escapeHtml(video.display_name)}</h3><p>${formatTime(video.duration)} · ${video.width}×${video.height} · ${Number(video.fps).toFixed(2)} fps${video.warnings.length ? ` · ${video.warnings.length} warning(s)` : ""}</p><p>${escapeHtml(video.failure_message || video.current_stage || "")}</p></div><span class="badge ${escapeHtml(video.state)}">${escapeHtml(video.state)}</span><div class="video-actions"><button class="retry" data-id="${escapeHtml(video.video_id)}">${video.state === "FAILED" ? "Retry" : "Reprocess"}</button><button class="remove-video" data-id="${escapeHtml(video.video_id)}"${removable ? "" : ' disabled title="Wait until processing finishes"'} aria-label="Remove ${escapeHtml(video.display_name)} from this library">Remove</button></div></article>`;
+    }).join("");
     $$('.retry').forEach((button) => button.addEventListener("click", () => reprocess(button.dataset.id)));
+    $$('.remove-video').forEach((button) => button.addEventListener("click", () => askRemove(button.dataset.id)));
   } catch (error) {
     panel.className = "state-panel error";
     panel.textContent = error.message;
@@ -283,6 +288,59 @@ async function reprocess(videoId) {
   if (!response.ok) {
     const payload = await response.json();
     alert(payload.detail || "Could not start processing");
+  }
+  refreshLibrary();
+}
+
+function showToast(message, kind = "success") {
+  const toast = $("#toast");
+  toast.className = `toast ${kind}`;
+  toast.setAttribute("role", kind === "error" ? "alert" : "status");
+  toast.textContent = message;
+  clearTimeout(state.toastTimer);
+  state.toastTimer = setTimeout(() => toast.classList.add("hidden"), kind === "error" ? 9000 : 6000);
+}
+
+function askRemove(videoId) {
+  const video = state.videos.find((item) => item.video_id === videoId);
+  if (!video) return;
+  state.pendingRemoval = video;
+  $("#remove-name").textContent = video.display_name;
+  const dialog = $("#remove-dialog");
+  dialog.returnValue = "";
+  dialog.showModal();
+}
+
+// Escape and the Cancel button close the dialog with a returnValue other than
+// "confirm", so only the Remove button sends a request.
+$("#remove-dialog").addEventListener("close", () => {
+  const video = state.pendingRemoval;
+  state.pendingRemoval = null;
+  if (video && $("#remove-dialog").returnValue === "confirm") removeVideo(video);
+});
+
+async function removeVideo(video) {
+  const row = $$(".video-row").find((item) => item.dataset.id === video.video_id);
+  if (row) {
+    row.classList.add("removing");
+    row.querySelectorAll("button").forEach((button) => { button.disabled = true; });
+  }
+  try {
+    const response = await fetch(`/api/videos/${encodeURIComponent(video.video_id)}`, { method: "DELETE" });
+    let payload = {};
+    try { payload = await response.json(); } catch (_) {}
+    if (!response.ok) throw new Error(payload.detail || `HTTP ${response.status}`);
+    state.videos = state.videos.filter((item) => item.video_id !== video.video_id);
+    if (row) row.remove();
+    updateVideoFilter(state.videos);
+    $$(".result-card").filter((card) => card.dataset.videoId === video.video_id).forEach((card) => card.remove());
+    if (!$("#results-section").classList.contains("hidden")) {
+      const remaining = $$(".result-card").length;
+      $("#result-count").textContent = `${remaining} result${remaining === 1 ? "" : "s"}`;
+    }
+    showToast(`Removed “${video.display_name}” from this library. Its files are in the library trash and can be restored.`);
+  } catch (error) {
+    showToast(`Could not remove “${video.display_name}”: ${error.message}`, "error");
   }
   refreshLibrary();
 }

@@ -43,6 +43,40 @@ class CanonicalNeo4jIndexer:
         for statement in statements:
             self.run_query(statement)
 
+    def remove_video(self, video_id: str) -> None:
+        """Delete one video's mirrored subgraph; shared nodes are left alone."""
+
+        self.run_query(
+            """
+            MATCH (owned)
+            WHERE owned.video_id = $video_id
+              AND (owned:EntityOccurrence
+                   OR owned:TranscriptSegment
+                   OR owned:Speaker
+                   OR owned:RelationshipEvidence
+                   OR owned:OCRText
+                   OR owned:EntityAppearance
+                   OR owned:Segment)
+            DETACH DELETE owned
+            """,
+            {"video_id": video_id},
+        )
+        self.run_query(
+            """
+            MATCH (v:Video {video_id: $video_id})
+            OPTIONAL MATCH (v)-[:HAS_SEGMENT]->(s:Segment)
+            DETACH DELETE s, v
+            """,
+            {"video_id": video_id},
+        )
+        self.run_query(
+            """
+            MATCH (action:Action)
+            WHERE NOT (action)<-[:HAS_ACTION]-(:Segment)
+            DELETE action
+            """
+        )
+
     def ingest(
         self,
         video: VideoRecord,

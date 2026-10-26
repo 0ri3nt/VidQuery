@@ -295,6 +295,83 @@ class SQLiteRepository:
             output.append(EntityAppearance.model_validate(data))
         return output
 
+    # Parent table first: rows are inserted in this order and deleted in reverse.
+    VIDEO_TABLES = ("videos", "segments", "entity_appearances")
+
+    def export_video_rows(self, video_id: str) -> dict[str, list[dict]]:
+        """Every stored row of one video, column for column, for an exact restore."""
+
+        with self._connect() as connection:
+            rows = {
+                table: [
+                    dict(row)
+                    for row in connection.execute(
+                        f"SELECT * FROM {table} WHERE video_id = ?", (video_id,)
+                    )
+                ]
+                for table in self.VIDEO_TABLES
+            }
+        if not rows["videos"]:
+            raise VideoNotFoundError(video_id)
+        return rows
+
+    def delete_video(
+        self, video_id: str, *, expected_counts: dict[str, int] | None = None
+    ) -> dict[str, int]:
+        """Delete one video and its rows in a single transaction.
+
+        Children are deleted explicitly before the video so the result does not
+        depend on ``ON DELETE CASCADE``.  When ``expected_counts`` is given and
+        any table holds a different number of rows (the video changed after it
+        was exported), nothing is deleted and ``RuntimeError`` is raised.
+        """
+
+        with self._lock, self._connect() as connection:
+            deleted: dict[str, int] = {}
+            for table in reversed(self.VIDEO_TABLES):
+                cursor = connection.execute(
+                    f"DELETE FROM {table} WHERE video_id = ?", (video_id,)
+                )
+                deleted[table] = cursor.rowcount
+            if deleted["videos"] != 1:
+                connection.rollback()
+                raise VideoNotFoundError(video_id)
+            if expected_counts is not None and any(
+                deleted[table] != expected_counts.get(table, 0) for table in deleted
+            ):
+                connection.rollback()
+                raise RuntimeError(
+                    f"Rows of {video_id} changed while it was being removed: "
+                    f"expected {expected_counts}, found {deleted}"
+                )
+        return {table: deleted[table] for table in self.VIDEO_TABLES}
+
+    def insert_video_rows(self, rows: dict[str, list[dict]]) -> dict[str, int]:
+        """Insert rows produced by :meth:`export_video_rows` in one transaction.
+
+        Column names are checked against the live schema, so a tampered export
+        cannot inject SQL; constraint violations roll everything back.
+        """
+
+        with self._lock, self._connect() as connection:
+            inserted: dict[str, int] = {}
+            for table in self.VIDEO_TABLES:
+                columns = {
+                    row["name"] for row in connection.execute(f"PRAGMA table_info({table})")
+                }
+                for row in rows.get(table, []):
+                    unknown = set(row) - columns
+                    if unknown:
+                        raise ValueError(f"{table} has no column(s) {sorted(unknown)}")
+                    names = list(row)
+                    connection.execute(
+                        f"INSERT INTO {table} ({', '.join(names)}) "
+                        f"VALUES ({', '.join('?' for _ in names)})",
+                        [row[name] for name in names],
+                    )
+                inserted[table] = len(rows.get(table, []))
+        return inserted
+
     def health_check(self) -> bool:
         try:
             with self._connect() as connection:

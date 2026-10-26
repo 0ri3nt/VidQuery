@@ -116,6 +116,11 @@ class FrameSemanticIndex:
                 self._videos[video_id] = None
         return self._videos[video_id]
 
+    def forget(self, video_id: str) -> None:
+        """Drop the cached embeddings of a video whose files moved."""
+
+        self._videos.pop(video_id, None)
+
     def best_frame(
         self, video_id: str, frame_ids: list[str], text_vector: np.ndarray
     ) -> tuple[float, str] | None:

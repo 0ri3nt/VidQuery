@@ -29,6 +29,45 @@ Reprocessing preserves and merges controlled-demo manual overlays and
 `legacy_ava_fused_adapter` evidence by timestamp; ordinary stale model output is
 replaced. The equivalent all-library CLI is `python -m vidquery refresh-library`.
 
+### `DELETE /api/videos/{video_id}`
+
+Removes the video from **this server's library** (its `DATABASE_PATH`,
+`UPLOAD_DIR` and `GENERATED_DIR`). Nothing is permanently deleted:
+
+- the video, segment and entity-appearance rows are exported to the library's trash, then deleted in one transaction;
+- the media file is moved to the trash only when it lies inside `UPLOAD_DIR` and no other video uses it. Media registered in place from elsewhere (a dataset clip, a shared source) is never touched;
+- `GENERATED_DIR/{video_id}` (frames, audio, frame embeddings) is moved to the trash.
+
+The trash is `<directory of DATABASE_PATH>/library_trash/<database file stem>/`,
+one entry per removal. [LIBRARIES.md](LIBRARIES.md) describes the entry format
+and how to restore. Returns `200`:
+
+```json
+{"video_id":"uuid","display_name":"clip.mp4","removed":true,
+ "trash_entry":"…/library_trash/vidquery/20261026T171411397898Z-uuid",
+ "rows_deleted":{"videos":1,"segments":9,"entity_appearances":18},
+ "files":[{"kind":"media","path":"…/uploads/uuid.mp4","action":"moved","reason":""},
+          {"kind":"generated","path":"…/generated/uuid","action":"moved","reason":""}],
+ "neo4j":"disabled","warnings":[],
+ "restore_command":"python -m vidquery restore-video \"…\" --database \"…\" --upload-dir \"…\" --generated-dir \"…\""}
+```
+
+`files[].action` is `moved`, `left_in_place` (with a `reason`), `missing`
+(the media file was already gone) or `absent` (no generated directory).
+
+| Status | Meaning | Library state |
+|---|---|---|
+| `404` | not in this library, including a repeated request after a successful removal | unchanged |
+| `409` | the video is processing (state other than `UPLOADED`, `READY`, `FAILED`), another removal in this library holds the lock for more than 30 s, or a file is in use (for example, open in a player) | unchanged; files already moved are moved back |
+| `422` | malformed id: it must match `[A-Za-z0-9][A-Za-z0-9._-]{0,127}` and contain no `..` | unchanged |
+| `500` | an unexpected failure. `Removal failed and was rolled back` means the library is unchanged. `could not be moved back` names the trash manifest that lists the files left in the trash. | see message |
+
+Removals in one library run one at a time, and a removal reserves the video's
+processing slot so the pipeline cannot process it concurrently. With
+`ENABLE_NEO4J=true` the video's graph nodes are deleted after the SQLite commit.
+If that fails, `neo4j` is `"stale"` and a warning is returned. Results are
+unaffected because graph candidates are always filtered through SQLite.
+
 ## Search
 
 ### `POST /api/search`

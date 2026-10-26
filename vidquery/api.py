@@ -34,6 +34,12 @@ from .domain import (
     VideoRecord,
 )
 from .hypotheses import fuse_hypotheses
+from .library import (
+    InvalidVideoIdError,
+    LibraryRemovalService,
+    RemovalConflictError,
+    RemovalFailedError,
+)
 from .media import MediaValidationError, UploadTooLargeError, VideoIngestionService
 from .pipeline import VideoProcessingService
 from .query_planner import QueryPlanningService, query_planner_component_status
@@ -72,6 +78,19 @@ def create_app(
     application.state.rag = GroundedAnswerService(active_settings)
     application.state.query_planner = QueryPlanningService(active_settings)
     application.state.annotations = ChallengeManifestStore(active_settings.challenge_manifest_path)
+
+    def neo4j_indexer():
+        from .neo4j import CanonicalNeo4jIndexer
+
+        return CanonicalNeo4jIndexer.from_settings(active_settings)
+
+    application.state.library = LibraryRemovalService(
+        active_settings,
+        active_repository,
+        processor=active_processor,
+        frame_index=getattr(application.state.search, "frame_semantic_index", None),
+        neo4j_factory=neo4j_indexer,
+    )
 
     application.add_middleware(
         CORSMiddleware,
@@ -237,6 +256,24 @@ def create_app(
             raise HTTPException(status_code=409, detail="Video is already processing")
         background_tasks.add_task(request.app.state.processor.process, video_id)
         return UploadResponse(video_id=video_id, state=record.state)
+
+    @application.delete("/api/videos/{video_id}")
+    def remove_video(video_id: str, request: Request) -> dict[str, Any]:
+        """Remove a video from this library; its files go to the library's trash."""
+
+        library: LibraryRemovalService = request.app.state.library
+        try:
+            return library.remove(video_id).as_dict()
+        except InvalidVideoIdError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        except VideoNotFoundError as exc:
+            raise HTTPException(
+                status_code=404, detail="Video was not found in this library"
+            ) from exc
+        except RemovalConflictError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+        except RemovalFailedError as exc:
+            raise HTTPException(status_code=500, detail=str(exc)) from exc
 
     @application.post("/api/search", response_model=SearchResponse)
     def search(payload: SearchRequest, request: Request) -> SearchResponse:
