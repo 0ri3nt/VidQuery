@@ -265,6 +265,13 @@ data:
 | AVA action GNN v5 | 24 train videos (30 incl. val/test), 35,095 supervised persons | 299 AVA v2.2 train+val videos, 426,346 person boxes | 10% of videos |
 | VidOR relation GNN v3-scale500 | 400 train videos (500 incl. val/test), 2,400 frames | 7,000 VidOR training videos | 6% of videos |
 
+Larger-data candidates (26 October 2026, not activated): VidOR GATv2 trained on
+1,900 videos reaches test macro F1 0.218 / mAP 0.242 on the same 50 test videos
+(+0.048 [0.015, 0.073] macro F1 over the active v3-scale500), and the leakage-free
+AVA GATv2 trained on 94 videos reaches test macro F1 0.088 on 6 test videos
+(+0.016 [0.012, 0.021] over the same recipe on 24 videos). See
+[docs/EXPERIMENTS_2026-10-26.md](docs/EXPERIMENTS_2026-10-26.md).
+
 The action model's best validation epoch was epoch 1; validation loss rose
 from then on. That is why Review-2 down-weights them rather than trusting them.
 See [docs/GNN_STATUS.md](docs/GNN_STATUS.md).
@@ -365,6 +372,7 @@ The full index is [docs/README.md](docs/README.md). Key documents:
 - [Final evaluation](docs/EVALUATION_FINAL.md)
 - [End-to-end evaluation](docs/EVALUATION_END_TO_END.md)
 - [Temporal localization: Charades-STA + NA-VMR](docs/EVALUATION_CHARADES_STA.md)
+- [Experiments, 26 Oct: Whisper determinism, AVA 94, VidOR 1,900](docs/EXPERIMENTS_2026-10-26.md)
 - [Work log and approval gates](docs/PROGRESS_2026-10-25.md)
 - [Codebase, data, and cost audit](docs/AUDIT_2026-10.md)
 - [Final demo guide](docs/FINAL_DEMO_GUIDE.md)

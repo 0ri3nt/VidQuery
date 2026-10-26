@@ -116,3 +116,104 @@ Mean AP rises on every video for both architectures.
 
 Free system RAM dropped to 0.6–1.3 GB for a few minutes while other
 applications were open; no step failed.
+
+## 3. VidOR relation classification: 400 → 1,900 training videos
+
+### Protocol
+
+- **Selection** (`split-manifest-scale2000.json`): the next 1,500 videos under the existing
+  rare-predicate ranking (the 500-video selection is its exact prefix), all
+  added to train. The 50 validation and 50 test videos are unchanged.
+- **Frozen frame choice**: frame-selection counts stay at the 500-video values. All 500 earlier
+  videos keep their frames (checked on the selection), the 3,000 copied
+  frames match by SHA-256, and all 600 validation and test graphs in the new
+  cache are byte-identical to the 500-video cache, with a largest visual
+  feature difference of 0.0 (`graph-invariant-validation-test.json`).
+- **Models**: MLP and GAT trained from scratch (`v4-scale2000`), and both
+  warm-started from the matching `v3-scale500` checkpoint
+  (`v4-scale2000-warm`) on the same cached graphs. Test was withheld during
+  training.
+- **Test**: scored once, after `validation-decision.json`, on the 50-video
+  test graphs of the 500-video cache. These are the graphs every earlier
+  VidOR comparison used; the v2 and v3 numbers below reproduce
+  `vidor-scale500-comparison.json` exactly. Paired video-level bootstrap,
+  2,000 resamples.
+
+### Validation (same 50 videos) and test
+
+| Model | Train videos | Validation macro F1 | Validation mAP | Test macro F1 | Test mAP | Test micro F1 |
+|---|---:|---:|---:|---:|---:|---:|
+| GAT v2 (previous) | 57 | — (own 6-video split) | — | 0.071 | 0.088 | 0.316 |
+| MLP v2 | 57 | — | — | 0.072 | 0.081 | 0.289 |
+| GAT v3-scale500 (active in local `.env`) | 400 | 0.240 | 0.202 | 0.171 | 0.187 | 0.328 |
+| MLP v3-scale500 | 400 | 0.245 | 0.211 | 0.166 | 0.172 | 0.374 |
+| **GAT v4-scale2000 (runtime-eligible validation choice)** | 1,900 | 0.288 | 0.251 | **0.218** | **0.242** | 0.355 |
+| MLP v4-scale2000 | 1,900 | 0.287 | 0.260 | 0.233 | 0.239 | 0.387 |
+| GAT v4-scale2000-warm | 1,900 | 0.268 | 0.243 | 0.214 | 0.237 | 0.349 |
+| MLP v4-scale2000-warm (overall validation choice) | 1,900 | 0.292 | 0.262 | 0.231 | 0.255 | 0.386 |
+
+The runtime predictor requires a GNN, so the GAT is the only model that can
+be activated.
+
+Paired differences, test (video bootstrap; `*` = CI excludes 0):
+
+| Comparison | Macro F1 | mAP | Micro F1 |
+|---|---|---|---|
+| GAT v4 − GAT v2 | +0.147 [0.104, 0.185]* | +0.154 [0.114, 0.200]* | +0.039 [0.001, 0.076]* |
+| GAT v4-warm − GAT v2 | +0.143 [0.098, 0.187]* | +0.149 [0.105, 0.195]* | +0.034 [−0.001, 0.068] |
+| **GAT v4 − GAT v3-scale500** | **+0.048 [0.015, 0.073]*** | **+0.056 [0.021, 0.085]*** | **+0.027 [0.006, 0.047]*** |
+| GAT v4-warm − GAT v3-scale500 | +0.044 [0.016, 0.071]* | +0.050 [0.020, 0.074]* | +0.021 [0.006, 0.038]* |
+| MLP v4 − MLP v3-scale500 | +0.067 [0.029, 0.089]* | +0.067 [0.030, 0.092]* | +0.013 [−0.007, 0.033] |
+| MLP v4-warm − MLP v3-scale500 | +0.065 [0.032, 0.094]* | +0.083 [0.039, 0.104]* | +0.012 [−0.005, 0.031] |
+| GAT v4-warm − GAT v4 (warm start) | −0.004 [−0.023, 0.021] | −0.006 [−0.033, 0.019] | −0.005 [−0.025, 0.012] |
+| MLP v4-warm − MLP v4 (warm start) | −0.002 [−0.017, 0.022] | +0.016 [−0.010, 0.028] | −0.001 [−0.012, 0.011] |
+| MLP v4 − GAT v4 | +0.015 [−0.011, 0.032] | −0.003 [−0.029, 0.018] | +0.032 [0.017, 0.048]* |
+
+Per video (50 test videos, macro F1): GAT v4 beats GAT v3-scale500 on 34
+(15 worse) and GAT v2 on 47. Per-video metrics for every model are in
+`test-comparison.json`.
+
+### What this supports
+
+- **More data helps, significantly.** Going from 400 to 1,900 training videos raises test macro F1 by 0.048 and
+  mAP by 0.056 for the GAT (+28% and +30%), and by about 0.065 for the MLP.
+  Every CI excludes 0.
+- **Returns are diminishing but still positive.** GAT test macro F1 at 57 → 99 → 400 → 1,900 training videos is
+  0.071 → 0.095 → 0.171 → 0.218. The last 4.75× step added 0.047; the step
+  before it, 4×, added 0.076.
+- **Warm-starting from v3-scale500 gives no measurable benefit.** It also gives no measurable harm; every CI includes 0.
+- **MLP vs GAT**: no significant macro F1 or mAP difference. The MLP has a higher micro F1.
+  As with AVA, message passing adds nothing measurable.
+- Validation overestimates test by 0.05–0.07 macro F1 for every model. So
+  validation ranking among close candidates (within about 0.02) is not
+  reliable. Validation preferred the warm MLP over the scratch MLP by 0.005;
+  on test the order reversed by 0.002.
+
+### Runtime and resources (measured)
+
+| Step | Wall time | Notes |
+|---|---:|---|
+| Frame staging, 8 archive parts (1,500 new videos; 500 reused from copies) | 111 min | one Hugging Face read timeout in part 5; retried; 12,000 frames, 325 MB |
+| Graph build (12,000 graphs, 297,420 candidate edges) + MLP + GAT, scratch | 28 min | MLP 69 s, GAT 105 s on GPU; cache 843 MB |
+| Warm-start MLP + GAT (reused cache) | 4 min | GAT 168 s |
+| Test comparison (8 models, 2,000 video resamples) | 25.5 min | CPU-bound |
+
+Peak Python RSS 4.17 GB, during the graph build. Free system RAM fell to
+0.73 GB, with browsers open, and no step failed. Free disk was at least
+22.0 GB.
+
+## Recommended next steps
+
+1. Review before promoting anything; production defaults are unchanged.
+   - **VidOR**: `gat-v4-scale2000` is the runtime-eligible candidate. It is significantly better than
+     the active v3-scale500 on relation classification. Activating it means
+     changing three `.env` lines and keeping a backup. Existing indexes keep
+     their old relation evidence until reprocessed.
+   - **AVA**: `gat-v8-noleak-scale100` is significantly better on classification, but its
+     absolute macro F1 is 0.088. It also needs a runtime check of the
+     leakage-free schema in the indexing path before any activation.
+2. **Data scaling continues to pay for both models.** For AVA, the next step is the remaining
+   eligible AVA videos (about 196, about 100 GB). For VidOR, the next step is
+   about 4,000 videos. The graph builder's RAM (4.2 GB at 2,000) would need
+   streaming or sharding for the full 7,000.
+3. **Larger test sets would tighten the AVA CIs.** AVA has only 6 test videos.

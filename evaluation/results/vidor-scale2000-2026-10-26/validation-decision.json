@@ -1,0 +1,185 @@
+{
+ "schema_version": "vidor-validation-decision-v1",
+ "written_before_test": true,
+ "validation_set": "the fixed 50 validation videos of the scale-500 split (graphs verified byte-identical in the 2,000 cache); v2 metrics come from its own 6-video validation split and are not comparable",
+ "candidates": {
+  "gat_v2": {
+   "checkpoint": "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-gat-v2.pt",
+   "sha256": "0da6be0b16d704083e785aa468ff7f34836bd071378bce6b8531a700fce3fa39",
+   "train_videos": 57,
+   "validation_videos": 6,
+   "use_graph": true,
+   "warm_start": null,
+   "selected_epoch": 17,
+   "test_status_at_decision": "evaluated during its own earlier run (baseline)",
+   "validation": {
+    "macro_f1_supported_predicates": 0.308495,
+    "mean_average_precision_supported_predicates": 0.287223,
+    "micro_f1": 0.401693
+   }
+  },
+  "mlp_v2": {
+   "checkpoint": "data/app/models/vidor_relation_pair_visual/vidor-relation-pair-visual-mlp-v2.pt",
+   "sha256": "9b17006200b32c27af3fb7d74ffa79e84fe4e708bf9b35b5909b7654367a8f8a",
+   "train_videos": 57,
+   "validation_videos": 6,
+   "use_graph": false,
+   "warm_start": null,
+   "selected_epoch": 13,
+   "test_status_at_decision": "evaluated during its own earlier run (baseline)",
+   "validation": {
+    "macro_f1_supported_predicates": 0.270589,
+    "mean_average_precision_supported_predicates": 0.222036,
+    "micro_f1": 0.351224
+   }
+  },
+  "gat_v3_scale500": {
+   "checkpoint": "data/app/models/vidor_relation_scale500/vidor-relation-pair-visual-gat-v3-scale500.pt",
+   "sha256": "9682909da7002cbec3caa2f850940e0af00f06213de2fde328a676de3a2ec5ef",
+   "train_videos": 400,
+   "validation_videos": 50,
+   "use_graph": true,
+   "warm_start": null,
+   "selected_epoch": 14,
+   "test_status_at_decision": "evaluated during its own earlier run (baseline)",
+   "validation": {
+    "macro_f1_supported_predicates": 0.240247,
+    "mean_average_precision_supported_predicates": 0.201754,
+    "micro_f1": 0.335386
+   }
+  },
+  "mlp_v3_scale500": {
+   "checkpoint": "data/app/models/vidor_relation_scale500/vidor-relation-pair-visual-mlp-v3-scale500.pt",
+   "sha256": "991dd68e82810e94cdaaa84d32f58dc1770a9de2c6bcd3a9c5c3b484d893d6f1",
+   "train_videos": 400,
+   "validation_videos": 50,
+   "use_graph": false,
+   "warm_start": null,
+   "selected_epoch": 11,
+   "test_status_at_decision": "evaluated during its own earlier run (baseline)",
+   "validation": {
+    "macro_f1_supported_predicates": 0.24504,
+    "mean_average_precision_supported_predicates": 0.211056,
+    "micro_f1": 0.394195
+   }
+  },
+  "gat_v4_scale2000": {
+   "checkpoint": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.pt",
+   "sha256": "efd44bec44e4686281ce2982d7cb20a5d1a043068a88510eeb9688ad3700bc7b",
+   "train_videos": 1900,
+   "validation_videos": 50,
+   "use_graph": true,
+   "warm_start": null,
+   "selected_epoch": 4,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_predicates": 0.287809,
+    "mean_average_precision_supported_predicates": 0.251249,
+    "micro_f1": 0.364978
+   }
+  },
+  "mlp_v4_scale2000": {
+   "checkpoint": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-mlp-v4-scale2000.pt",
+   "sha256": "ae399b918f1f4ca02eefa7325ff424cb719f57e4fd61ccd84f6937e3f5b8b04b",
+   "train_videos": 1900,
+   "validation_videos": 50,
+   "use_graph": false,
+   "warm_start": null,
+   "selected_epoch": 8,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_predicates": 0.286666,
+    "mean_average_precision_supported_predicates": 0.260404,
+    "micro_f1": 0.37965
+   }
+  },
+  "gat_v4_scale2000_warm": {
+   "checkpoint": "data/app/models/vidor_relation_scale2000_warm/vidor-relation-pair-visual-gat-v4-scale2000-warm.pt",
+   "sha256": "fd388719ec338798b1a79f1a7620223cdcedef35abec086b5e14b8ccc2d500ef",
+   "train_videos": 1900,
+   "validation_videos": 50,
+   "use_graph": true,
+   "warm_start": {
+    "checkpoint": "data/app/models/vidor_relation_scale500/vidor-relation-pair-visual-gat-v3-scale500.pt",
+    "sha256": "9682909da7002cbec3caa2f850940e0af00f06213de2fde328a676de3a2ec5ef",
+    "model_version": "vidor-relation-pair-visual-gat-v3-scale500"
+   },
+   "selected_epoch": 11,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_predicates": 0.267966,
+    "mean_average_precision_supported_predicates": 0.242733,
+    "micro_f1": 0.361648
+   }
+  },
+  "mlp_v4_scale2000_warm": {
+   "checkpoint": "data/app/models/vidor_relation_scale2000_warm/vidor-relation-pair-visual-mlp-v4-scale2000-warm.pt",
+   "sha256": "5a7da4301f4571a494c0ab02dad0374ba8d067c535ffeab314abbe7fcec733cf",
+   "train_videos": 1900,
+   "validation_videos": 50,
+   "use_graph": false,
+   "warm_start": {
+    "checkpoint": "data/app/models/vidor_relation_scale500/vidor-relation-pair-visual-mlp-v3-scale500.pt",
+    "sha256": "991dd68e82810e94cdaaa84d32f58dc1770a9de2c6bcd3a9c5c3b484d893d6f1",
+    "model_version": "vidor-relation-pair-visual-mlp-v3-scale500"
+   },
+   "selected_epoch": 8,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_predicates": 0.291717,
+    "mean_average_precision_supported_predicates": 0.261612,
+    "micro_f1": 0.374778
+   }
+  }
+ },
+ "selection_rule": "validation supported-predicate macro F1, tie-break validation mAP",
+ "overall_validation_choice": "mlp_v4_scale2000_warm",
+ "runtime_eligible_choice": "gat_v4_scale2000",
+ "runtime_note": "ImprovedVidORRelationPredictor requires a GNN checkpoint, so only GAT models can be activated",
+ "pre_registered_comparisons": [
+  [
+   "gat_v2",
+   "gat_v4_scale2000"
+  ],
+  [
+   "gat_v2",
+   "gat_v4_scale2000_warm"
+  ],
+  [
+   "gat_v3_scale500",
+   "gat_v4_scale2000"
+  ],
+  [
+   "gat_v3_scale500",
+   "gat_v4_scale2000_warm"
+  ],
+  [
+   "mlp_v3_scale500",
+   "mlp_v4_scale2000"
+  ],
+  [
+   "mlp_v3_scale500",
+   "mlp_v4_scale2000_warm"
+  ],
+  [
+   "gat_v4_scale2000",
+   "gat_v4_scale2000_warm"
+  ],
+  [
+   "mlp_v4_scale2000",
+   "mlp_v4_scale2000_warm"
+  ],
+  [
+   "gat_v4_scale2000",
+   "mlp_v4_scale2000"
+  ],
+  [
+   "gat_v2",
+   "gat_v3_scale500"
+  ]
+ ],
+ "test_graphs": "scale-500 cache, 50 test videos (the set every earlier VidOR comparison used)",
+ "significance_rule": "claim only if the paired 95% video-bootstrap CI excludes 0",
+ "promotion": "none; production defaults unchanged pending review",
+ "created_at": "2026-10-26T08:42:35.273430+00:00"
+}
