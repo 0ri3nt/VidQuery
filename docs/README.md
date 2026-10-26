@@ -42,6 +42,7 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 | [EVALUATION_FINAL.md](EVALUATION_FINAL.md) | 62-query independent retrieval benchmark |
 | [EVALUATION_END_TO_END.md](EVALUATION_END_TO_END.md) | model-only end-to-end action benchmark, learned trust, and abstention ablations |
 | [EVALUATION_CHARADES_STA.md](EVALUATION_CHARADES_STA.md) | Charades-STA + NA-VMR temporal localization and answerability benchmark (separate from AVA) |
+| [INTEGRATED_EVALUATION_2026-10-26.md](INTEGRATED_EVALUATION_2026-10-26.md) | Charades-STA/NA-VMR with AVA v8, VidOR v4, deterministic Whisper: full-rebuild ablations and paired CIs |
 | [PROGRESS_2026-10-25.md](PROGRESS_2026-10-25.md) | work log, measured results, and approval gates for pending expansions |
 | [EXPERIMENTS_2026-10-26.md](EXPERIMENTS_2026-10-26.md) | deterministic Whisper, AVA 24->94 and VidOR 400->1,900 training-video experiments with paired CIs |
 | [AUDIT_2026-10.md](AUDIT_2026-10.md) | codebase, dataset-coverage, hardware, feasibility, and cost audit |

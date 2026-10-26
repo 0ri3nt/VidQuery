@@ -1,0 +1,17 @@
+{
+ "left": "data/app/benchmark/charades_integrated_2026-10-26/det-ava5-vidor2/index-snapshot.sqlite3",
+ "right": "data/app/benchmark/charades_integrated_2026-10-26/det-ava8-vidor2/index-snapshot.sqlite3",
+ "segments_compared": 1935,
+ "segments_only_left": 0,
+ "segments_only_right": 0,
+ "segments_differing_by_field": {
+  "actions": 1793,
+  "detections": 0,
+  "frame_count": 0,
+  "ocr_text": 0,
+  "relationships": 1615,
+  "speakers": 0,
+  "transcript": 0
+ },
+ "identical": false
+}

@@ -1,0 +1,17 @@
+index_det-ava8-vidor4_start 2026-10-26T09:29:05Z
+index_det-ava8-vidor4_end 2026-10-26T10:33:13Z
+eval_det-ava8-vidor4_start 2026-10-26T10:35:25Z
+eval_det-ava8-vidor4_end 2026-10-26T10:58:57Z
+index_det-ava5-vidor2_start 2026-10-26T10:58:57Z
+index_det-ava5-vidor2_end 2026-10-26T12:06:58Z
+eval_det-ava5-vidor2_start 2026-10-26T12:08:22Z
+eval_det-ava5-vidor2_end 2026-10-26T12:21:05Z
+index_det-ava8-vidor2_start 2026-10-26T12:21:06Z
+index_det-ava8-vidor2_end 2026-10-26T13:09:40Z
+eval_det-ava8-vidor2_start 2026-10-26T13:12:15Z
+eval_det-ava8-vidor2_end 2026-10-26T13:41:23Z
+index_det-ava5-vidor4_start 2026-10-26T13:41:23Z
+index_det-ava5-vidor4_end 2026-10-26T14:48:35Z
+eval_det-ava5-vidor4_start 2026-10-26T14:49:39Z
+eval_det-ava5-vidor4_end 2026-10-26T15:00:40Z
+all_done 2026-10-26T15:00:40Z
