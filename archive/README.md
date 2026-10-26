@@ -2,8 +2,8 @@
 
 Files kept for the record that the current VidQuery application, tests, and
 experiments do not use. Tracked files were moved here with `git mv` (history is
-preserved) during the 26 October 2026 cleanup; the superseded results were untracked
-and are now tracked here; nothing in `vidquery/`,
+preserved) during the 26 October 2026 cleanup; the superseded results were never tracked
+(the repository ignores `*.json` outside `evaluation/`) and stay local-only here; nothing in `vidquery/`,
 `scripts/`, `tests/`, or the Dockerfile references them.
 
 | Folder | Contents | Replaced by |
