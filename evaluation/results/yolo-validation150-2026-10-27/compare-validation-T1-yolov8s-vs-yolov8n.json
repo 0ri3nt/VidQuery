@@ -1,0 +1,83 @@
+{
+ "key": "review2_full|expand:10",
+ "videos": 150,
+ "queries": 915,
+ "metrics": {
+  "yolov8n": {
+   "p1": 0.3553008595988539,
+   "in_domain_rejected": 0.0057306590257879654,
+   "positives_abstained": 0.0057306590257879654,
+   "p5_r5_iou05": 0.839541547277937,
+   "r1_iou05": 0.36103151862464183,
+   "r1_iou07": 0.15759312320916904,
+   "r5_iou07": 0.4355300859598854,
+   "false_acceptance_in_domain": 0.994269340974212,
+   "false_acceptance_out_of_domain": 0.0,
+   "out_of_domain_rejected": 1.0,
+   "auroc_pos_vs_in_domain": 0.597031223060566,
+   "supported_count": 109,
+   "supported_precision": 0.1834862385321101
+  },
+  "yolov8s": {
+   "p1": 0.37249283667621774,
+   "in_domain_rejected": 0.0,
+   "positives_abstained": 0.0,
+   "p5_r5_iou05": 0.8595988538681948,
+   "r1_iou05": 0.37249283667621774,
+   "r1_iou07": 0.14613180515759314,
+   "r5_iou07": 0.4498567335243553,
+   "false_acceptance_in_domain": 1.0,
+   "false_acceptance_out_of_domain": 0.004608294930875556,
+   "out_of_domain_rejected": 0.9953917050691244,
+   "auroc_pos_vs_in_domain": 0.5972405809476112,
+   "supported_count": 115,
+   "supported_precision": 0.1826086956521739
+  }
+ },
+ "paired_vs_yolov8n": {
+  "yolov8s": {
+   "p1": {
+    "difference": 0.0172,
+    "ci95": [
+     -0.0282,
+     0.0635
+    ]
+   },
+   "p5_r5_iou05": {
+    "difference": 0.0201,
+    "ci95": [
+     -0.0053,
+     0.0458
+    ]
+   },
+   "r1_iou07": {
+    "difference": -0.0115,
+    "ci95": [
+     -0.0435,
+     0.0178
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": -0.0057,
+    "ci95": [
+     -0.0146,
+     0.0
+    ]
+   },
+   "positives_abstained": {
+    "difference": -0.0057,
+    "ci95": [
+     -0.018,
+     0.0
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0002,
+    "ci95": [
+     -0.0132,
+     0.0125
+    ]
+   }
+  }
+ }
+}

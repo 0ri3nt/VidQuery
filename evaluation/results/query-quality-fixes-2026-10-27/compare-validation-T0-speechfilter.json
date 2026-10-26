@@ -1,0 +1,83 @@
+{
+ "key": "review2_full|expand:10",
+ "videos": 150,
+ "queries": 915,
+ "metrics": {
+  "baseline": {
+   "p1": 0.14613180515759314,
+   "in_domain_rejected": 0.5902578796561605,
+   "positives_abstained": 0.4383954154727794,
+   "p5_r5_iou05": 0.4326647564469914,
+   "r1_iou05": 0.1518624641833811,
+   "r1_iou07": 0.04871060171919771,
+   "r5_iou07": 0.18911174785100288,
+   "false_acceptance_in_domain": 0.4097421203438395,
+   "false_acceptance_out_of_domain": 0.004608294930875556,
+   "out_of_domain_rejected": 0.9953917050691244,
+   "auroc_pos_vs_in_domain": 0.5878317912004006,
+   "supported_count": 9,
+   "supported_precision": 0.4444444444444444
+  },
+  "speechfilter": {
+   "p1": 0.15759312320916904,
+   "in_domain_rejected": 0.5902578796561605,
+   "positives_abstained": 0.4383954154727794,
+   "p5_r5_iou05": 0.4355300859598854,
+   "r1_iou05": 0.16332378223495703,
+   "r1_iou07": 0.05157593123209169,
+   "r5_iou07": 0.18911174785100288,
+   "false_acceptance_in_domain": 0.4097421203438395,
+   "false_acceptance_out_of_domain": 0.004608294930875556,
+   "out_of_domain_rejected": 0.9953917050691244,
+   "auroc_pos_vs_in_domain": 0.5895271795798064,
+   "supported_count": 9,
+   "supported_precision": 0.4444444444444444
+  }
+ },
+ "paired_vs_baseline": {
+  "speechfilter": {
+   "p1": {
+    "difference": 0.0115,
+    "ci95": [
+     -0.0085,
+     0.0329
+    ]
+   },
+   "p5_r5_iou05": {
+    "difference": 0.0029,
+    "ci95": [
+     0.0,
+     0.0091
+    ]
+   },
+   "r1_iou07": {
+    "difference": 0.0029,
+    "ci95": [
+     -0.0125,
+     0.02
+    ]
+   },
+   "in_domain_rejected": {
+    "difference": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "positives_abstained": {
+    "difference": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "auroc_pos_vs_in_domain": {
+    "difference": 0.0017,
+    "ci95": [
+     -0.0032,
+     0.007
+    ]
+   }
+  }
+ }
+}

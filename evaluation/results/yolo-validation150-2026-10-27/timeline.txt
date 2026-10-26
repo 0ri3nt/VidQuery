@@ -1,0 +1,7 @@
+index_yolov8n_start 2026-10-26T20:34:46Z
+index_yolov8n_end 2026-10-26T21:14:52Z
+backfill_yolov8n_end 2026-10-26T21:16:52Z
+index_yolov8s_start 2026-10-26T21:16:55Z
+index_yolov8s_end 2026-10-26T21:51:38Z
+backfill_yolov8s_end 2026-10-26T21:52:19Z
+all_indexed 2026-10-26T21:52:19Z

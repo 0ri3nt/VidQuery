@@ -1,0 +1,2 @@
+{"weights": "yolov8n.pt", "weights_mb": 6.5, "frames": 186, "ms_per_frame": 18.3, "peak_process_rss_gb": 1.21, "peak_cuda_allocated_mb": 81.7}
+{"weights": "yolov8s.pt", "weights_mb": 22.6, "frames": 186, "ms_per_frame": 17.8, "peak_process_rss_gb": 1.25, "peak_cuda_allocated_mb": 96.9}

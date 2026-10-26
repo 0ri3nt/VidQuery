@@ -1,0 +1,373 @@
+{
+ "base_url": "http://127.0.0.1:8002",
+ "repeats": 1,
+ "video_ids": {
+  "OM2NF": "9be43e27-698a-4997-9fc3-841ee51a2d96",
+  "GG4UR": "0c824a7b-9237-4fb6-b202-a96cb5810308",
+  "I2DHG": "2a380720-4895-4799-b892-73b60eae8c5b",
+  "Untitled design": "9eafb6c6-0ff4-413f-ae05-755dcabeb892"
+ },
+ "queries": [
+  {
+   "video": "OM2NF",
+   "query": "person holding a cup.",
+   "expected": {
+    "segment_start": 0.0,
+    "peak": 3.997,
+    "verdict": "weak",
+    "confidence": 0.4385
+   },
+   "runs": [
+    {
+     "segment_start": 0.0,
+     "peak": 3.9969414708744613,
+     "verdict": "weak",
+     "confidence": 0.4385
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "OM2NF",
+   "query": "person reading a newspaper.",
+   "expected": {
+    "segment_start": 5.0,
+    "peak": 9.002,
+    "verdict": "weak",
+    "confidence": 0.3156
+   },
+   "runs": [
+    {
+     "segment_start": 5.0,
+     "peak": 9.001807312665091,
+     "verdict": "weak",
+     "confidence": 0.3156
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "OM2NF",
+   "query": "person drinking from a cup.",
+   "expected": {
+    "segment_start": 15.0,
+    "peak": 15.988,
+    "verdict": "supported",
+    "confidence": 0.5011
+   },
+   "runs": [
+    {
+     "segment_start": 15.0,
+     "peak": 15.987765883497845,
+     "verdict": "supported",
+     "confidence": 0.5011
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "OM2NF",
+   "query": "person puts his shoes on.",
+   "expected": {
+    "segment_start": 25.0,
+    "peak": 25.997,
+    "verdict": "weak",
+    "confidence": 0.2719
+   },
+   "runs": [
+    {
+     "segment_start": 25.0,
+     "peak": 25.997497567079105,
+     "verdict": "weak",
+     "confidence": 0.2719
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "OM2NF",
+   "query": "person near a chair.",
+   "expected": {
+    "segment_start": 25.0,
+    "peak": 28.013,
+    "verdict": "weak",
+    "confidence": 0.3098
+   },
+   "runs": [
+    {
+     "segment_start": 25.0,
+     "peak": 28.01334630891144,
+     "verdict": "weak",
+     "confidence": 0.3098
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "OM2NF",
+   "query": "person cooking at the stove.",
+   "expected": {
+    "segment_start": 35.0,
+    "peak": 37.988,
+    "verdict": "weak",
+    "confidence": 0.3252
+   },
+   "runs": [
+    {
+     "segment_start": 35.0,
+     "peak": 37.98832197970249,
+     "verdict": "weak",
+     "confidence": 0.3252
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "OM2NF",
+   "query": "person picks up something from the stove.",
+   "expected": {
+    "segment_start": 40.0,
+    "peak": 42.993,
+    "verdict": "weak",
+    "confidence": 0.3222
+   },
+   "runs": [
+    {
+     "segment_start": 40.0,
+     "peak": 42.993187821493116,
+     "verdict": "weak",
+     "confidence": 0.3222
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "I2DHG",
+   "query": "a person walks through a doorway.",
+   "expected": {
+    "segment_start": 0.0,
+    "peak": 1.003,
+    "verdict": "weak",
+    "confidence": 0.2935
+   },
+   "runs": [
+    {
+     "segment_start": 0.0,
+     "peak": 1.002740824921452,
+     "verdict": "weak",
+     "confidence": 0.2935
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "I2DHG",
+   "query": "person drinking from a cup.",
+   "expected": {
+    "segment_start": 15.0,
+    "peak": 18.016,
+    "verdict": "supported",
+    "confidence": 0.4843
+   },
+   "runs": [
+    {
+     "segment_start": 15.0,
+     "peak": 18.015910154422087,
+     "verdict": "supported",
+     "confidence": 0.4843
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "I2DHG",
+   "query": "person holding a cup.",
+   "expected": {
+    "segment_start": 15.0,
+    "peak": 18.016,
+    "verdict": "weak",
+    "confidence": 0.3778
+   },
+   "runs": [
+    {
+     "segment_start": 15.0,
+     "peak": 18.015910154422087,
+     "verdict": "weak",
+     "confidence": 0.3778
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "I2DHG",
+   "query": "person smiling.",
+   "expected": {
+    "segment_start": 20.0,
+    "peak": 21.993,
+    "verdict": "weak",
+    "confidence": 0.2794
+   },
+   "runs": [
+    {
+     "segment_start": 20.0,
+     "peak": 21.993448759943846,
+     "verdict": "weak",
+     "confidence": 0.2794
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "I2DHG",
+   "query": "person sitting on the bed.",
+   "expected": {
+    "segment_start": 25.0,
+    "peak": 25.002,
+    "verdict": "supported",
+    "confidence": 0.4782
+   },
+   "runs": [
+    {
+     "segment_start": 25.0,
+     "peak": 25.0016712347082,
+     "verdict": "supported",
+     "confidence": 0.4782
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "I2DHG",
+   "query": "person wearing glasses.",
+   "expected": {
+    "segment_start": 25.0,
+    "peak": 25.002,
+    "verdict": "supported",
+    "confidence": 0.5002
+   },
+   "runs": [
+    {
+     "segment_start": 25.0,
+     "peak": 25.0016712347082,
+     "verdict": "supported",
+     "confidence": 0.5002
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "GG4UR",
+   "query": "a person is watching television on the sofa.",
+   "expected": {
+    "segment_start": 0.0,
+    "peak": 1.001,
+    "verdict": "supported",
+    "confidence": 0.5107
+   },
+   "runs": [
+    {
+     "segment_start": 0.0,
+     "peak": 1.0010000000000001,
+     "verdict": "supported",
+     "confidence": 0.5107
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "GG4UR",
+   "query": "person sitting on the couch.",
+   "expected": {
+    "segment_start": 0.0,
+    "peak": 4.004,
+    "verdict": "supported",
+    "confidence": 0.4572
+   },
+   "runs": [
+    {
+     "segment_start": 0.0,
+     "peak": 4.0040000000000004,
+     "verdict": "supported",
+     "confidence": 0.4572
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "GG4UR",
+   "query": "a television screen.",
+   "expected": {
+    "segment_start": 5.0,
+    "peak": 6.006,
+    "verdict": "weak",
+    "confidence": 0.4192
+   },
+   "runs": [
+    {
+     "segment_start": 5.0,
+     "peak": 6.006,
+     "verdict": "weak",
+     "confidence": 0.4192
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "GG4UR",
+   "query": "person opens door to closet.",
+   "expected": {
+    "segment_start": 10.0,
+    "peak": 13.013,
+    "verdict": "weak",
+    "confidence": 0.3124
+   },
+   "runs": [
+    {
+     "segment_start": 10.0,
+     "peak": 13.013,
+     "verdict": "weak",
+     "confidence": 0.3124
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "GG4UR",
+   "query": "person takes a towel out of the closet.",
+   "expected": {
+    "segment_start": 15.0,
+    "peak": 16.984,
+    "verdict": "weak",
+    "confidence": 0.316
+   },
+   "runs": [
+    {
+     "segment_start": 15.0,
+     "peak": 16.983633333333334,
+     "verdict": "weak",
+     "confidence": 0.316
+    }
+   ],
+   "match": true
+  },
+  {
+   "video": "GG4UR",
+   "query": "person holding a towel.",
+   "expected": {
+    "segment_start": 15.0,
+    "peak": 16.984,
+    "verdict": "weak",
+    "confidence": 0.2808
+   },
+   "runs": [
+    {
+     "segment_start": 15.0,
+     "peak": 16.983633333333334,
+     "verdict": "weak",
+     "confidence": 0.2808
+    }
+   ],
+   "match": true
+  }
+ ]
+}

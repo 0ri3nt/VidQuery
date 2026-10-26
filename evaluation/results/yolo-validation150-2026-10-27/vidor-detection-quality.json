@@ -1,0 +1,65 @@
+{
+ "held_out_videos": 100,
+ "frames": 600,
+ "confidence": 0.25,
+ "iou": 0.45,
+ "metrics": {
+  "yolov8n": {
+   "object_recall": 0.5244366403277729,
+   "relation_recall": 0.32725309012360493,
+   "matched_share_of_mappable_detections": 0.676481691204228,
+   "detections_per_frame": 4.905
+  },
+  "yolov8s": {
+   "object_recall": 0.5973075797483173,
+   "relation_recall": 0.3969158766350654,
+   "matched_share_of_mappable_detections": 0.627420842299416,
+   "detections_per_frame": 6.241666666666666
+  }
+ },
+ "ms_per_frame": {
+  "yolov8n": 48.6,
+  "yolov8s": 48.6
+ },
+ "counts": {
+  "yolov8n": {
+   "gt_objects": 3417,
+   "matched_objects": 1792,
+   "gt_relations": 16666,
+   "relations_both_matched": 5454,
+   "mappable_detections": 2649,
+   "detections": 2943
+  },
+  "yolov8s": {
+   "gt_objects": 3417,
+   "matched_objects": 2041,
+   "gt_relations": 16666,
+   "relations_both_matched": 6615,
+   "mappable_detections": 3253,
+   "detections": 3745
+  }
+ },
+ "yolov8s_minus_yolov8n": {
+  "object_recall": {
+   "difference": 0.0729,
+   "ci95": [
+    0.0578,
+    0.0874
+   ]
+  },
+  "relation_recall": {
+   "difference": 0.0697,
+   "ci95": [
+    0.0509,
+    0.0884
+   ]
+  },
+  "matched_share_of_mappable_detections": {
+   "difference": -0.0491,
+   "ci95": [
+    -0.0708,
+    -0.0281
+   ]
+  }
+ }
+}

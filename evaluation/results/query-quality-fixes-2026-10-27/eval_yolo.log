@@ -1,0 +1,4 @@
+yolo150-yolov8n T0 validation rc=0
+yolo150-yolov8n T1 validation rc=0
+yolo150-yolov8s T0 validation rc=0
+yolo150-yolov8s T1 validation rc=0

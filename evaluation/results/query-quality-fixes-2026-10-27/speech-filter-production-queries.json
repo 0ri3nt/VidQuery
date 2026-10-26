@@ -1,0 +1,511 @@
+{
+ "summary": {
+  "unfiltered": {
+   "positives_top1_correct": 10,
+   "positives": 10,
+   "negatives_rejected": 2,
+   "negatives": 4
+  },
+  "filtered": {
+   "positives_top1_correct": 10,
+   "positives": 10,
+   "negatives_rejected": 2,
+   "negatives": 4
+  }
+ },
+ "identical_top1": true,
+ "runs": {
+  "unfiltered": [
+   {
+    "query": "Find where architecture is discussed.",
+    "kind": "positive",
+    "truth": [
+     [
+      15,
+      20
+     ],
+     [
+      0,
+      5
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "transcript": "We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find a person near a laptop.",
+    "kind": "positive",
+    "truth": [
+     [
+      0,
+      25
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.925,
+    "transcript": "We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find where someone discusses deployment while a laptop is visible.",
+    "kind": "positive",
+    "truth": [
+     [
+      10,
+      15
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find where SPEAKER_01 discusses architecture.",
+    "kind": "positive",
+    "truth": [
+     [
+      15,
+      20
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     15.0,
+     20.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6832,
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find a person near a whiteboard.",
+    "kind": "positive",
+    "truth": [
+     [
+      0,
+      25
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.925,
+    "transcript": "We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "SQLite metadata",
+    "kind": "positive",
+    "truth": [
+     [
+      5,
+      10
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     5.0,
+     10.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.7161,
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "top1_correct": true
+   },
+   {
+    "query": "Docker Neo4j",
+    "kind": "positive",
+    "truth": [
+     [
+      10,
+      15
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.7443,
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": true
+   },
+   {
+    "query": "SPEAKER_00 deployment",
+    "kind": "positive",
+    "truth": [
+     [
+      10,
+      15
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.645,
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": true
+   },
+   {
+    "query": "person near laptop",
+    "kind": "positive",
+    "truth": [
+     [
+      0,
+      25
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.925,
+    "transcript": "We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "whiteboard architecture",
+    "kind": "positive",
+    "truth": [
+     [
+      15,
+      20
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     15.0,
+     20.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.702,
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find where someone talks about Kubernetes.",
+    "kind": "in_domain_negative",
+    "truth": null,
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "weak",
+    "confidence": 0.3298,
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": false
+   },
+   {
+    "query": "Find a person riding a horse.",
+    "kind": "in_domain_negative",
+    "truth": null,
+    "interpretation": "insufficient_evidence",
+    "top": null,
+    "verdict": null,
+    "confidence": null,
+    "transcript": null,
+    "top1_correct": false
+   },
+   {
+    "query": "Find where SPEAKER_01 discusses Docker.",
+    "kind": "in_domain_negative",
+    "truth": null,
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6802,
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": false
+   },
+   {
+    "query": "zzzxylophone quantum penguin",
+    "kind": "out_of_domain_negative",
+    "truth": null,
+    "interpretation": "insufficient_evidence",
+    "top": null,
+    "verdict": null,
+    "confidence": null,
+    "transcript": null,
+    "top1_correct": false
+   }
+  ],
+  "filtered": [
+   {
+    "query": "Find where architecture is discussed.",
+    "kind": "positive",
+    "truth": [
+     [
+      15,
+      20
+     ],
+     [
+      0,
+      5
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6968,
+    "transcript": "We discuss the software architecture. We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find a person near a laptop.",
+    "kind": "positive",
+    "truth": [
+     [
+      0,
+      25
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.925,
+    "transcript": "We discuss the software architecture. We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find where someone discusses deployment while a laptop is visible.",
+    "kind": "positive",
+    "truth": [
+     [
+      10,
+      15
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6662,
+    "transcript": "Deployment uses Docker for the back-end and Neo4j graph. Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find where SPEAKER_01 discusses architecture.",
+    "kind": "positive",
+    "truth": [
+     [
+      15,
+      20
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     15.0,
+     20.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6847,
+    "transcript": "This whiteboard shows the retrieval architecture. This whiteboard shows the retrieval architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find a person near a whiteboard.",
+    "kind": "positive",
+    "truth": [
+     [
+      0,
+      25
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.925,
+    "transcript": "We discuss the software architecture. We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "SQLite metadata",
+    "kind": "positive",
+    "truth": [
+     [
+      5,
+      10
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     5.0,
+     10.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6902,
+    "transcript": "The laptop runs the API with SQLite metadata. The laptop runs the API with SQLite metadata.",
+    "top1_correct": true
+   },
+   {
+    "query": "Docker Neo4j",
+    "kind": "positive",
+    "truth": [
+     [
+      10,
+      15
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.7281,
+    "transcript": "Deployment uses Docker for the back-end and Neo4j graph. Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": true
+   },
+   {
+    "query": "SPEAKER_00 deployment",
+    "kind": "positive",
+    "truth": [
+     [
+      10,
+      15
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.645,
+    "transcript": "Deployment uses Docker for the back-end and Neo4j graph. Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": true
+   },
+   {
+    "query": "person near laptop",
+    "kind": "positive",
+    "truth": [
+     [
+      0,
+      25
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     0.0,
+     5.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.925,
+    "transcript": "We discuss the software architecture. We discuss the software architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "whiteboard architecture",
+    "kind": "positive",
+    "truth": [
+     [
+      15,
+      20
+     ]
+    ],
+    "interpretation": "single",
+    "top": [
+     15.0,
+     20.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.71,
+    "transcript": "This whiteboard shows the retrieval architecture. This whiteboard shows the retrieval architecture.",
+    "top1_correct": true
+   },
+   {
+    "query": "Find where someone talks about Kubernetes.",
+    "kind": "in_domain_negative",
+    "truth": null,
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "weak",
+    "confidence": 0.3306,
+    "transcript": "Deployment uses Docker for the back-end and Neo4j graph. Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": false
+   },
+   {
+    "query": "Find a person riding a horse.",
+    "kind": "in_domain_negative",
+    "truth": null,
+    "interpretation": "insufficient_evidence",
+    "top": null,
+    "verdict": null,
+    "confidence": null,
+    "transcript": null,
+    "top1_correct": false
+   },
+   {
+    "query": "Find where SPEAKER_01 discusses Docker.",
+    "kind": "in_domain_negative",
+    "truth": null,
+    "interpretation": "single",
+    "top": [
+     10.0,
+     15.0
+    ],
+    "verdict": "supported",
+    "confidence": 0.6845,
+    "transcript": "Deployment uses Docker for the back-end and Neo4j graph. Deployment uses Docker for the backend and Neo4j graph.",
+    "top1_correct": false
+   },
+   {
+    "query": "zzzxylophone quantum penguin",
+    "kind": "out_of_domain_negative",
+    "truth": null,
+    "interpretation": "insufficient_evidence",
+    "top": null,
+    "verdict": null,
+    "confidence": null,
+    "transcript": null,
+    "top1_correct": false
+   }
+  ]
+ }
+}

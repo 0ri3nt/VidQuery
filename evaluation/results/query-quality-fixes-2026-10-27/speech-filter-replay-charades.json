@@ -1,0 +1,15 @@
+{
+ "source": "data/app/benchmark/query_audit_2026-10-27/index.sqlite3",
+ "target": "data/app/benchmark/speech_filter_2026-10-27/charades-filtered.sqlite3",
+ "segments": 2935,
+ "gate_diarization": 2935,
+ "segments_changed": 1357,
+ "segments_transcript_emptied": 1304,
+ "utterance_drops_by_reason": {
+  "no_diarized_speech": 2221,
+  "repetition": 340,
+  "no_words": 133
+ },
+ "transcript_words_before": 67025,
+ "transcript_words_after": 3496
+}

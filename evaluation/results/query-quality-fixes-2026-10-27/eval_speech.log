@@ -1,0 +1,4 @@
+baseline T1 validation rc=0
+speechfilter T1 validation rc=0
+baseline T0 validation rc=0
+speechfilter T0 validation rc=0
