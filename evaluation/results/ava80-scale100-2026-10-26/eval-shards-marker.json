@@ -1,0 +1,9 @@
+{
+  "schema_version": "ava80-evaluation-only-shards-v1",
+  "purpose": "test-only shards for registry videos; never train or select on these",
+  "video_ids": [
+    "2PpxiG0WU18",
+    "NO2esmws190",
+    "uNT6HrrnqPU"
+  ]
+}

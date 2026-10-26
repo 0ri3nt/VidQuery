@@ -1,0 +1,189 @@
+{
+ "schema_version": "ava80-validation-decision-v1",
+ "written_before_test": true,
+ "validation_set": [
+  "0f39OWEqJ24",
+  "9mLYmkonWZQ",
+  "covMYDBa5dk"
+ ],
+ "candidates": {
+  "legacy_gat_24": {
+   "checkpoint": "data/app/models/ava80_noleak/ava80-gat-v7-noleak-lr0.0003.pt",
+   "sha256": "618ef6862857e113e6f0fe930d4de2dd448537723d74782662c6a66f9c84ccaf",
+   "train_videos": 24,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "two-layer GATv2",
+   "feature_attribute": "visual_noleak_x",
+   "learning_rate": 0.0003,
+   "best_epoch": 11,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_classes": 0.131866,
+    "mean_average_precision": 0.095128,
+    "micro_f1": 0.463723
+   }
+  },
+  "legacy_mlp_24": {
+   "checkpoint": "data/app/models/ava80_noleak/ava80-mlp-v7-noleak-lr0.0003.pt",
+   "sha256": "da03b0e5d9a819ae9ef0d20c820ff79081fe69adf426dab3e4e36cd5eddbc7f0",
+   "train_videos": 24,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "MLP",
+   "feature_attribute": "visual_noleak_x",
+   "learning_rate": 0.0003,
+   "best_epoch": 10,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_classes": 0.116289,
+    "mean_average_precision": 0.107006,
+    "micro_f1": 0.435855
+   }
+  },
+  "stream_gat_24": {
+   "checkpoint": "data/app/models/ava80_shard_stream_check/ava80-gat-v7-noleak-shardstream-lr0.0003.pt",
+   "sha256": "e5718f8a956ba0a07518a3f2f36be65c9860bab33f1f8e4c4dd4a1f33240877e",
+   "train_videos": 24,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "two-layer GATv2",
+   "feature_attribute": "visual_noleak_x",
+   "learning_rate": 0.0003,
+   "best_epoch": 6,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_classes": 0.122941,
+    "mean_average_precision": 0.10262,
+    "micro_f1": 0.460904
+   }
+  },
+  "stream_mlp_24": {
+   "checkpoint": "data/app/models/ava80_scale100_baselines/ava80-mlp-v7-noleak-shardstream-s30-lr0.0003.pt",
+   "sha256": "23b41f789262a2ea5a9868d3bc429be2beebd3948ee6d813e08431edb26ad505",
+   "train_videos": 24,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "MLP",
+   "feature_attribute": "visual_noleak_x",
+   "learning_rate": 0.0003,
+   "best_epoch": 4,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_classes": 0.153833,
+    "mean_average_precision": 0.11663,
+    "micro_f1": 0.444382
+   }
+  },
+  "stream_gat_94": {
+   "checkpoint": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.pt",
+   "sha256": "ad0063c6c64c2178fa583eb3563a644b9890b427037214b81db3a284692f74fa",
+   "train_videos": 94,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "two-layer GATv2",
+   "feature_attribute": "visual_noleak_x",
+   "learning_rate": 0.0003,
+   "best_epoch": 7,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_classes": 0.163723,
+    "mean_average_precision": 0.136736,
+    "micro_f1": 0.450636
+   }
+  },
+  "stream_mlp_94": {
+   "checkpoint": "data/app/models/ava80_scale100/ava80-mlp-v8-noleak-scale100-lr0.0003.pt",
+   "sha256": "72f72bc22c1ce501e3c1de98764d50794d59c2d4b3e6662c4ff52be236de4a9b",
+   "train_videos": 94,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "MLP",
+   "feature_attribute": "visual_noleak_x",
+   "learning_rate": 0.0003,
+   "best_epoch": 14,
+   "test_status_at_decision": "withheld_until_final_selection",
+   "validation": {
+    "macro_f1_supported_classes": 0.160517,
+    "mean_average_precision": 0.11618,
+    "micro_f1": 0.45351
+   }
+  },
+  "active_v5_leaky_reference": {
+   "checkpoint": "data/app/models/ava80_scaling/30/ablations/ava80-gat-v5-scale30-roi-frame.pt",
+   "sha256": "68e4d54e08dc52aef74e5af911c449db67a63fe322a78aead3330fa668b2ab00",
+   "train_videos": 24,
+   "validation_videos": [
+    "0f39OWEqJ24",
+    "9mLYmkonWZQ",
+    "covMYDBa5dk"
+   ],
+   "architecture": "two-layer GATv2",
+   "feature_attribute": "visual_x",
+   "learning_rate": null,
+   "best_epoch": null,
+   "test_status_at_decision": "evaluated earlier on the 3 base test videos (reference only)",
+   "validation": {
+    "macro_f1_supported_classes": 0.12538,
+    "mean_average_precision": 0.108653,
+    "micro_f1": 0.446537
+   }
+  }
+ },
+ "selection_rule": "highest validation macro F1 (supported classes, all persons), tie-break validation mAP",
+ "scale100_validation_choice": "stream_gat_94",
+ "pre_registered_comparisons": [
+  [
+   "stream_gat_24",
+   "stream_gat_94",
+   "data scaling, GAT, same trainer"
+  ],
+  [
+   "stream_mlp_24",
+   "stream_mlp_94",
+   "data scaling, MLP, same trainer"
+  ],
+  [
+   "legacy_gat_24",
+   "stream_gat_94",
+   "vs existing leakage-free baseline"
+  ],
+  [
+   "legacy_gat_24",
+   "stream_mlp_94",
+   "vs existing leakage-free baseline"
+  ],
+  [
+   "stream_gat_94",
+   "stream_mlp_94",
+   "GAT vs MLP at 94 training videos"
+  ],
+  [
+   "legacy_mlp_24",
+   "stream_mlp_94",
+   "vs existing leakage-free MLP baseline"
+  ]
+ ],
+ "primary_metric": "test macro F1 (supported classes, all supervised persons); mAP and micro F1 secondary; detector-only persons reported",
+ "significance_rule": "claim only if the paired 95% CI (keyframe-within-video bootstrap) excludes 0; the video-level bootstrap and per-video results are reported as a conservative check",
+ "promotion": "none; production defaults unchanged pending review",
+ "created_at": "2026-10-26T06:05:22.713101+00:00"
+}

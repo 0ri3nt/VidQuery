@@ -1,0 +1,1185 @@
+{
+  "dropped_feature_names": [
+    "detector_confidence",
+    "annotation_only"
+  ],
+  "source_shard_dir": "data/app/features/ava80_shards",
+  "source_split_manifest": "evaluation/ava80_scale100_split.json",
+  "test_shard_dirs": [
+    "data/app/features/ava80_eval_shards"
+  ],
+  "schema_version": "ava80-gat-ablation-v3-noleak",
+  "model_version": "ava80-mlp-v8-noleak-scale100-lr0.0003",
+  "task": "person-centric AVA 80-label multilabel action classification",
+  "optimizer": {
+    "name": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "batch_size": 32,
+    "epochs": 60,
+    "patience": 10
+  },
+  "feature_attribute": "visual_noleak_x",
+  "feature_schema": {
+    "base_attribute": "visual_x",
+    "backbone": "torchvision-resnet18-imagenet1k-v1",
+    "dropped_feature_names": [
+      "detector_confidence",
+      "annotation_only"
+    ],
+    "dropped_feature_columns": [
+      8,
+      9
+    ],
+    "source_shard_schema": "ava80-slim-shard-v1"
+  },
+  "architecture": "MLP",
+  "graph_edges_consumed": false,
+  "loss_mode": "bce_positive_weights",
+  "sampling": {
+    "strategy": "uniform_shuffle"
+  },
+  "checkpoint_selection": {
+    "primary": "validation_macro_f1_supported_classes",
+    "tie_break": "validation_mean_average_precision",
+    "best_epoch": 14,
+    "best_validation_loss": 0.32359105
+  },
+  "split": {
+    "train": [
+      "-5KQ66BBWC4",
+      "-FaXLcSFjUI",
+      "-IELREHX_js",
+      "-OyDO1g74vc",
+      "-XpUuIgyUHE",
+      "-ZFgsrolSxo",
+      "053oq2xB3oU",
+      "1ReZIMmD_8E",
+      "2DUITARAsWQ",
+      "2fwni_Kjf2M",
+      "2qQs3Y9OJX0",
+      "55Ihr6uVIDA",
+      "5LrOQEt_XVM",
+      "7YpF6DntOYw",
+      "8JSxLhDMGtE",
+      "9F2voT6QWvQ",
+      "9QbzS8bZXFE",
+      "9Y_l9NsnYE0",
+      "AYebXQ8eUkM",
+      "B1MAUxpKaV8",
+      "C25wkwAMB-w",
+      "C3qk4yAMANk",
+      "CMCPhm2L400",
+      "G4qq1MRXCiY",
+      "GozLjpMNADg",
+      "HKjR70GCRPE",
+      "Hi8QeP_VPu0",
+      "IKdBLciu_-A",
+      "IzvOYVMltkI",
+      "J1jDc2rTJlg",
+      "KHHgQ_Pe4cI",
+      "KVq6If6ozMY",
+      "KWoSGtglCms",
+      "Ma2hgTmveKQ",
+      "N5UD8FGzDek",
+      "NEQ7Wpf-EtI",
+      "OGNnUvJq9RI",
+      "OfMdakd4bHI",
+      "Ov0za6Xb1LM",
+      "PcFEhUKhN6g",
+      "PmElx9ZVByw",
+      "QCLQYnt3aMo",
+      "T26G6_AjJZ4",
+      "TCmNvNLRWrc",
+      "TM5MPJIq1Is",
+      "UOfuzrwkclM",
+      "UOyyTUX5Vo4",
+      "U_WzY2k8IBM",
+      "UgZFdrNT6W0",
+      "Vmef_8MY46w",
+      "WKqbLbU68wU",
+      "WlgxRNCHQzw",
+      "YYWdB7h1INo",
+      "_Ca3gOdOHxU",
+      "_dBTTYDRdRQ",
+      "_ithRWANKB0",
+      "aMYcLyh9OhU",
+      "b-YoBU0XT90",
+      "bAVXp1oGjHA",
+      "fNcxxBjEOgw",
+      "fpprSy6AzKk",
+      "gjasEUDkbuc",
+      "iSlDMboCSao",
+      "j5jmjhGBW44",
+      "jqZpiHlJUig",
+      "kMy-6RtoOVU",
+      "lDmLcWWBp1E",
+      "lT1zdTL-3SM",
+      "lWXhqIAvarw",
+      "o4xQ-BEa3Ss",
+      "oD_wxyTHJ2I",
+      "oWhvucAskhk",
+      "phrYEKv0rmw",
+      "pieVIsGmLsc",
+      "qx2vAO5ofmo",
+      "r2llOyS-BmE",
+      "rUYsoIIE37A",
+      "rXFlJbXyZyc",
+      "rk8Xm0EAOWs",
+      "sUVhd0YTKgw",
+      "skiZueh4lfY",
+      "tghXjom3120",
+      "tt0t_a1EDCE",
+      "wEAeql4z1O0",
+      "x-6CtPWVi6E",
+      "xO4ABy2iOQA",
+      "xeGWXqSvC-8",
+      "xmqSaQPzL1E",
+      "xp67EC-Hvwk",
+      "y7ncweROe9U",
+      "yMtGmGa8KZ0",
+      "yn9WN9lsHRE",
+      "yvgCGJ6vfkY",
+      "zC5Fh2tTS1U"
+    ],
+    "validation": [
+      "0f39OWEqJ24",
+      "9mLYmkonWZQ",
+      "covMYDBa5dk"
+    ],
+    "test": [
+      "hbYvDvJrpNk",
+      "t0V4drbYDnc",
+      "zR725veL-DI",
+      "2PpxiG0WU18",
+      "NO2esmws190",
+      "uNT6HrrnqPU"
+    ]
+  },
+  "graph_counts": {
+    "train": 73863,
+    "validation": 2245,
+    "test": 4900
+  },
+  "sample_counts": {
+    "train": 146850,
+    "validation": 3378,
+    "test": 10459
+  },
+  "validation_metrics": {
+    "macro_f1": 0.114369,
+    "macro_f1_supported_classes": 0.160517,
+    "micro_f1": 0.45351,
+    "mean_average_precision": 0.11618,
+    "supported_classes": 57,
+    "per_class": [
+      {
+        "action_id": 1,
+        "label": "bend/bow",
+        "precision": 0.395062,
+        "recall": 0.313725,
+        "f1": 0.349727,
+        "support": 204,
+        "average_precision": 0.322581,
+        "threshold": 0.875
+      },
+      {
+        "action_id": 2,
+        "label": "crawl",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4,
+        "average_precision": 0.006272,
+        "threshold": 0.05
+      },
+      {
+        "action_id": 3,
+        "label": "crouch/kneel",
+        "precision": 0.293103,
+        "recall": 0.173469,
+        "f1": 0.217949,
+        "support": 98,
+        "average_precision": 0.211584,
+        "threshold": 0.575
+      },
+      {
+        "action_id": 4,
+        "label": "dance",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 5,
+        "label": "fall down",
+        "precision": 0.076923,
+        "recall": 0.333333,
+        "f1": 0.125,
+        "support": 3,
+        "average_precision": 0.012688,
+        "threshold": 0.65
+      },
+      {
+        "action_id": 6,
+        "label": "get up",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 13,
+        "average_precision": 0.023071,
+        "threshold": 0.575
+      },
+      {
+        "action_id": 7,
+        "label": "jump/leap",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.001,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 8,
+        "label": "lie/sleep",
+        "precision": 0.695652,
+        "recall": 0.542373,
+        "f1": 0.609524,
+        "support": 59,
+        "average_precision": 0.534709,
+        "threshold": 0.95
+      },
+      {
+        "action_id": 9,
+        "label": "martial art",
+        "precision": 0.125,
+        "recall": 0.333333,
+        "f1": 0.181818,
+        "support": 3,
+        "average_precision": 0.053457,
+        "threshold": 0.55
+      },
+      {
+        "action_id": 10,
+        "label": "run/jog",
+        "precision": 0.203125,
+        "recall": 0.342105,
+        "f1": 0.254902,
+        "support": 38,
+        "average_precision": 0.160729,
+        "threshold": 0.8
+      },
+      {
+        "action_id": 11,
+        "label": "sit",
+        "precision": 0.470226,
+        "recall": 0.530093,
+        "f1": 0.498368,
+        "support": 864,
+        "average_precision": 0.469339,
+        "threshold": 0.375
+      },
+      {
+        "action_id": 12,
+        "label": "stand",
+        "precision": 0.687538,
+        "recall": 0.626749,
+        "f1": 0.655738,
+        "support": 1787,
+        "average_precision": 0.722332,
+        "threshold": 0.3
+      },
+      {
+        "action_id": 13,
+        "label": "swim",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 14,
+        "label": "walk",
+        "precision": 0.341646,
+        "recall": 0.415152,
+        "f1": 0.374829,
+        "support": 330,
+        "average_precision": 0.329458,
+        "threshold": 0.8
+      },
+      {
+        "action_id": 15,
+        "label": "answer phone",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 16,
+        "label": "brush teeth",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 10,
+        "average_precision": 0.001991,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 17,
+        "label": "carry/hold",
+        "precision": 0.378478,
+        "recall": 0.714569,
+        "f1": 0.494852,
+        "support": 1009,
+        "average_precision": 0.448381,
+        "threshold": 0.425
+      },
+      {
+        "action_id": 18,
+        "label": "catch",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2,
+        "average_precision": 0.000761,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 19,
+        "label": "chop",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 20,
+        "label": "climb",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7,
+        "average_precision": 0.00775,
+        "threshold": 0.15
+      },
+      {
+        "action_id": 21,
+        "label": "clink glass",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 22,
+        "label": "close",
+        "precision": 0.181818,
+        "recall": 0.666667,
+        "f1": 0.285714,
+        "support": 3,
+        "average_precision": 0.124454,
+        "threshold": 0.6
+      },
+      {
+        "action_id": 23,
+        "label": "cook",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 3,
+        "average_precision": 0.002559,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 24,
+        "label": "cut",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 25,
+        "label": "dig",
+        "precision": 0.15,
+        "recall": 0.230769,
+        "f1": 0.181818,
+        "support": 13,
+        "average_precision": 0.151029,
+        "threshold": 0.2
+      },
+      {
+        "action_id": 26,
+        "label": "dress/put on clothing",
+        "precision": 0.004464,
+        "recall": 0.4,
+        "f1": 0.00883,
+        "support": 5,
+        "average_precision": 0.00216,
+        "threshold": 0.05
+      },
+      {
+        "action_id": 27,
+        "label": "drink",
+        "precision": 0.2,
+        "recall": 0.333333,
+        "f1": 0.25,
+        "support": 48,
+        "average_precision": 0.144322,
+        "threshold": 0.625
+      },
+      {
+        "action_id": 28,
+        "label": "drive",
+        "precision": 0.137931,
+        "recall": 0.173913,
+        "f1": 0.153846,
+        "support": 23,
+        "average_precision": 0.099546,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 29,
+        "label": "eat",
+        "precision": 0.070423,
+        "recall": 0.25,
+        "f1": 0.10989,
+        "support": 20,
+        "average_precision": 0.032161,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 30,
+        "label": "enter",
+        "precision": 0.285714,
+        "recall": 0.5,
+        "f1": 0.363636,
+        "support": 4,
+        "average_precision": 0.125646,
+        "threshold": 0.625
+      },
+      {
+        "action_id": 31,
+        "label": "exit",
+        "precision": 0.1,
+        "recall": 1.0,
+        "f1": 0.181818,
+        "support": 1,
+        "average_precision": 0.038462,
+        "threshold": 0.125
+      },
+      {
+        "action_id": 32,
+        "label": "extract",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.000847,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 33,
+        "label": "fishing",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 34,
+        "label": "hit object",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.00081,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 35,
+        "label": "kick object",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 36,
+        "label": "lift/pick up",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5,
+        "average_precision": 0.014813,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 37,
+        "label": "listen",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.000467,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 38,
+        "label": "open",
+        "precision": 0.5,
+        "recall": 0.111111,
+        "f1": 0.181818,
+        "support": 9,
+        "average_precision": 0.13121,
+        "threshold": 0.95
+      },
+      {
+        "action_id": 39,
+        "label": "paint",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 40,
+        "label": "play board game",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 41,
+        "label": "play musical instrument",
+        "precision": 0.024845,
+        "recall": 0.307692,
+        "f1": 0.045977,
+        "support": 13,
+        "average_precision": 0.024611,
+        "threshold": 0.475
+      },
+      {
+        "action_id": 42,
+        "label": "play with pets",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 43,
+        "label": "point to",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 44,
+        "label": "press",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.000973,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 45,
+        "label": "pull",
+        "precision": 0.009009,
+        "recall": 0.25,
+        "f1": 0.017391,
+        "support": 4,
+        "average_precision": 0.00813,
+        "threshold": 0.075
+      },
+      {
+        "action_id": 46,
+        "label": "push",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.030303,
+        "threshold": 0.3
+      },
+      {
+        "action_id": 47,
+        "label": "put down",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7,
+        "average_precision": 0.00924,
+        "threshold": 0.375
+      },
+      {
+        "action_id": 48,
+        "label": "read",
+        "precision": 0.001548,
+        "recall": 0.5,
+        "f1": 0.003086,
+        "support": 2,
+        "average_precision": 0.001181,
+        "threshold": 0.05
+      },
+      {
+        "action_id": 49,
+        "label": "ride",
+        "precision": 0.206557,
+        "recall": 0.663158,
+        "f1": 0.315,
+        "support": 95,
+        "average_precision": 0.233374,
+        "threshold": 0.45
+      },
+      {
+        "action_id": 50,
+        "label": "row boat",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 51,
+        "label": "sail boat",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 52,
+        "label": "shoot",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 53,
+        "label": "shovel",
+        "precision": 0.333333,
+        "recall": 0.285714,
+        "f1": 0.307692,
+        "support": 7,
+        "average_precision": 0.073793,
+        "threshold": 0.375
+      },
+      {
+        "action_id": 54,
+        "label": "smoke",
+        "precision": 0.264706,
+        "recall": 0.157895,
+        "f1": 0.197802,
+        "support": 57,
+        "average_precision": 0.145035,
+        "threshold": 0.9
+      },
+      {
+        "action_id": 55,
+        "label": "stir",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 56,
+        "label": "take photo",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 57,
+        "label": "text on phone",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 58,
+        "label": "throw",
+        "precision": 0.06383,
+        "recall": 0.75,
+        "f1": 0.117647,
+        "support": 4,
+        "average_precision": 0.02828,
+        "threshold": 0.3
+      },
+      {
+        "action_id": 59,
+        "label": "touch object",
+        "precision": 0.229167,
+        "recall": 0.247191,
+        "f1": 0.237838,
+        "support": 89,
+        "average_precision": 0.13581,
+        "threshold": 0.7
+      },
+      {
+        "action_id": 60,
+        "label": "turn",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.003268,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 61,
+        "label": "watch",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 62,
+        "label": "work on computer",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 63,
+        "label": "write",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 12,
+        "average_precision": 0.004209,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 64,
+        "label": "fight/hit person",
+        "precision": 0.1875,
+        "recall": 0.222222,
+        "f1": 0.20339,
+        "support": 27,
+        "average_precision": 0.091373,
+        "threshold": 0.75
+      },
+      {
+        "action_id": 65,
+        "label": "give/serve",
+        "precision": 0.123077,
+        "recall": 0.363636,
+        "f1": 0.183908,
+        "support": 22,
+        "average_precision": 0.048514,
+        "threshold": 0.55
+      },
+      {
+        "action_id": 66,
+        "label": "grab person",
+        "precision": 0.2,
+        "recall": 0.034483,
+        "f1": 0.058824,
+        "support": 29,
+        "average_precision": 0.021656,
+        "threshold": 0.85
+      },
+      {
+        "action_id": 67,
+        "label": "hand clap",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 68,
+        "label": "hand shake",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.002331,
+        "threshold": 0.075
+      },
+      {
+        "action_id": 69,
+        "label": "hand wave",
+        "precision": 0.012195,
+        "recall": 0.166667,
+        "f1": 0.022727,
+        "support": 6,
+        "average_precision": 0.003949,
+        "threshold": 0.1
+      },
+      {
+        "action_id": 70,
+        "label": "hug",
+        "precision": 0.12931,
+        "recall": 0.333333,
+        "f1": 0.186335,
+        "support": 45,
+        "average_precision": 0.102401,
+        "threshold": 0.575
+      },
+      {
+        "action_id": 71,
+        "label": "kick person",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1,
+        "average_precision": 0.005618,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 72,
+        "label": "kiss",
+        "precision": 0.192308,
+        "recall": 0.434783,
+        "f1": 0.266667,
+        "support": 23,
+        "average_precision": 0.097865,
+        "threshold": 0.5
+      },
+      {
+        "action_id": 73,
+        "label": "lift person",
+        "precision": 0.016949,
+        "recall": 0.047619,
+        "f1": 0.025,
+        "support": 21,
+        "average_precision": 0.01883,
+        "threshold": 0.3
+      },
+      {
+        "action_id": 74,
+        "label": "listen to",
+        "precision": 0.359223,
+        "recall": 0.536232,
+        "f1": 0.430233,
+        "support": 759,
+        "average_precision": 0.379894,
+        "threshold": 0.4
+      },
+      {
+        "action_id": 75,
+        "label": "play with kids",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 76,
+        "label": "push person",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2,
+        "average_precision": 0.003763,
+        "threshold": 0.15
+      },
+      {
+        "action_id": 77,
+        "label": "sing to",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 0,
+        "average_precision": null,
+        "threshold": 1.0
+      },
+      {
+        "action_id": 78,
+        "label": "take from person",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 13,
+        "average_precision": 0.007251,
+        "threshold": 0.2
+      },
+      {
+        "action_id": 79,
+        "label": "talk to",
+        "precision": 0.423584,
+        "recall": 0.635375,
+        "f1": 0.5083,
+        "support": 1012,
+        "average_precision": 0.502392,
+        "threshold": 0.525
+      },
+      {
+        "action_id": 80,
+        "label": "watch person",
+        "precision": 0.397378,
+        "recall": 0.85016,
+        "f1": 0.541603,
+        "support": 1248,
+        "average_precision": 0.463625,
+        "threshold": 0.275
+      }
+    ]
+  },
+  "test_metrics": null,
+  "test_evaluation_status": "withheld_until_final_selection",
+  "thresholds_disabled_for_insufficient_validation": [
+    4,
+    13,
+    15,
+    19,
+    21,
+    24,
+    33,
+    35,
+    39,
+    40,
+    42,
+    43,
+    50,
+    51,
+    52,
+    55,
+    56,
+    57,
+    61,
+    62,
+    67,
+    75,
+    77
+  ],
+  "inference_latency_mean_milliseconds_per_graph": 0.0101,
+  "history": [
+    {
+      "epoch": 1,
+      "training_loss": 0.29891754,
+      "validation_loss": 0.32479733,
+      "validation_macro_f1_supported_classes": 0.12537,
+      "validation_mean_average_precision": 0.103747
+    },
+    {
+      "epoch": 2,
+      "training_loss": 0.25295633,
+      "validation_loss": 0.28635268,
+      "validation_macro_f1_supported_classes": 0.123535,
+      "validation_mean_average_precision": 0.118144
+    },
+    {
+      "epoch": 3,
+      "training_loss": 0.23322599,
+      "validation_loss": 0.29792493,
+      "validation_macro_f1_supported_classes": 0.127428,
+      "validation_mean_average_precision": 0.120343
+    },
+    {
+      "epoch": 4,
+      "training_loss": 0.22120024,
+      "validation_loss": 0.29661358,
+      "validation_macro_f1_supported_classes": 0.133826,
+      "validation_mean_average_precision": 0.122091
+    },
+    {
+      "epoch": 5,
+      "training_loss": 0.21173437,
+      "validation_loss": 0.29891866,
+      "validation_macro_f1_supported_classes": 0.144071,
+      "validation_mean_average_precision": 0.12203
+    },
+    {
+      "epoch": 6,
+      "training_loss": 0.20287258,
+      "validation_loss": 0.28853788,
+      "validation_macro_f1_supported_classes": 0.146847,
+      "validation_mean_average_precision": 0.119972
+    },
+    {
+      "epoch": 7,
+      "training_loss": 0.19631611,
+      "validation_loss": 0.29981458,
+      "validation_macro_f1_supported_classes": 0.149704,
+      "validation_mean_average_precision": 0.116853
+    },
+    {
+      "epoch": 8,
+      "training_loss": 0.19027093,
+      "validation_loss": 0.30208887,
+      "validation_macro_f1_supported_classes": 0.140055,
+      "validation_mean_average_precision": 0.119006
+    },
+    {
+      "epoch": 9,
+      "training_loss": 0.1847299,
+      "validation_loss": 0.30189092,
+      "validation_macro_f1_supported_classes": 0.140705,
+      "validation_mean_average_precision": 0.118065
+    },
+    {
+      "epoch": 10,
+      "training_loss": 0.18094501,
+      "validation_loss": 0.30309392,
+      "validation_macro_f1_supported_classes": 0.138622,
+      "validation_mean_average_precision": 0.113233
+    },
+    {
+      "epoch": 11,
+      "training_loss": 0.1761693,
+      "validation_loss": 0.31076361,
+      "validation_macro_f1_supported_classes": 0.144803,
+      "validation_mean_average_precision": 0.119765
+    },
+    {
+      "epoch": 12,
+      "training_loss": 0.17347547,
+      "validation_loss": 0.32195412,
+      "validation_macro_f1_supported_classes": 0.158996,
+      "validation_mean_average_precision": 0.119202
+    },
+    {
+      "epoch": 13,
+      "training_loss": 0.17003226,
+      "validation_loss": 0.33237361,
+      "validation_macro_f1_supported_classes": 0.150842,
+      "validation_mean_average_precision": 0.113848
+    },
+    {
+      "epoch": 14,
+      "training_loss": 0.16716954,
+      "validation_loss": 0.32359105,
+      "validation_macro_f1_supported_classes": 0.160517,
+      "validation_mean_average_precision": 0.11618
+    },
+    {
+      "epoch": 15,
+      "training_loss": 0.16478949,
+      "validation_loss": 0.34656014,
+      "validation_macro_f1_supported_classes": 0.139593,
+      "validation_mean_average_precision": 0.112933
+    },
+    {
+      "epoch": 16,
+      "training_loss": 0.16147619,
+      "validation_loss": 0.34940538,
+      "validation_macro_f1_supported_classes": 0.15801,
+      "validation_mean_average_precision": 0.113577
+    },
+    {
+      "epoch": 17,
+      "training_loss": 0.16031469,
+      "validation_loss": 0.35330512,
+      "validation_macro_f1_supported_classes": 0.135961,
+      "validation_mean_average_precision": 0.116656
+    },
+    {
+      "epoch": 18,
+      "training_loss": 0.15746226,
+      "validation_loss": 0.36193492,
+      "validation_macro_f1_supported_classes": 0.146891,
+      "validation_mean_average_precision": 0.110134
+    },
+    {
+      "epoch": 19,
+      "training_loss": 0.15615839,
+      "validation_loss": 0.35628782,
+      "validation_macro_f1_supported_classes": 0.137973,
+      "validation_mean_average_precision": 0.108536
+    },
+    {
+      "epoch": 20,
+      "training_loss": 0.15383868,
+      "validation_loss": 0.37626341,
+      "validation_macro_f1_supported_classes": 0.128748,
+      "validation_mean_average_precision": 0.110018
+    },
+    {
+      "epoch": 21,
+      "training_loss": 0.15295865,
+      "validation_loss": 0.37789148,
+      "validation_macro_f1_supported_classes": 0.142315,
+      "validation_mean_average_precision": 0.108779
+    },
+    {
+      "epoch": 22,
+      "training_loss": 0.15151309,
+      "validation_loss": 0.38830797,
+      "validation_macro_f1_supported_classes": 0.134101,
+      "validation_mean_average_precision": 0.109114
+    },
+    {
+      "epoch": 23,
+      "training_loss": 0.14970202,
+      "validation_loss": 0.37539454,
+      "validation_macro_f1_supported_classes": 0.135982,
+      "validation_mean_average_precision": 0.110994
+    },
+    {
+      "epoch": 24,
+      "training_loss": 0.14827152,
+      "validation_loss": 0.38582324,
+      "validation_macro_f1_supported_classes": 0.133177,
+      "validation_mean_average_precision": 0.110321
+    }
+  ],
+  "seed": 2026,
+  "hardware": {
+    "device": "cuda",
+    "name": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "training_duration_seconds": 590.083,
+  "checkpoint": "data/app/models/ava80_scale100/ava80-mlp-v8-noleak-scale100-lr0.0003.pt",
+  "checkpoint_sha256": "72f72bc22c1ce501e3c1de98764d50794d59c2d4b3e6662c4ff52be236de4a9b",
+  "semantic_scope": "predicts person actions only; target resolution remains separate"
+}

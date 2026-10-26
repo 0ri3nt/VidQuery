@@ -1,0 +1,4352 @@
+{
+  "schema_version": "ava80-storage-aware-expansion-v1",
+  "target_videos": 100,
+  "batch_size": 2,
+  "initial_validated_video_count": 97,
+  "completed_video_ids": [
+    "-5KQ66BBWC4",
+    "-FaXLcSFjUI",
+    "-IELREHX_js",
+    "-OyDO1g74vc",
+    "-XpUuIgyUHE",
+    "-ZFgsrolSxo",
+    "053oq2xB3oU",
+    "0f39OWEqJ24",
+    "1ReZIMmD_8E",
+    "2DUITARAsWQ",
+    "2fwni_Kjf2M",
+    "2qQs3Y9OJX0",
+    "55Ihr6uVIDA",
+    "5LrOQEt_XVM",
+    "7YpF6DntOYw",
+    "8JSxLhDMGtE",
+    "9F2voT6QWvQ",
+    "9QbzS8bZXFE",
+    "9Y_l9NsnYE0",
+    "9mLYmkonWZQ",
+    "AYebXQ8eUkM",
+    "B1MAUxpKaV8",
+    "C25wkwAMB-w",
+    "C3qk4yAMANk",
+    "CMCPhm2L400",
+    "G4qq1MRXCiY",
+    "GozLjpMNADg",
+    "HKjR70GCRPE",
+    "Hi8QeP_VPu0",
+    "IKdBLciu_-A",
+    "IzvOYVMltkI",
+    "J1jDc2rTJlg",
+    "KHHgQ_Pe4cI",
+    "KVq6If6ozMY",
+    "KWoSGtglCms",
+    "Ma2hgTmveKQ",
+    "N5UD8FGzDek",
+    "NEQ7Wpf-EtI",
+    "OGNnUvJq9RI",
+    "OfMdakd4bHI",
+    "Ov0za6Xb1LM",
+    "PcFEhUKhN6g",
+    "PmElx9ZVByw",
+    "QCLQYnt3aMo",
+    "T26G6_AjJZ4",
+    "TCmNvNLRWrc",
+    "TM5MPJIq1Is",
+    "UOfuzrwkclM",
+    "UOyyTUX5Vo4",
+    "U_WzY2k8IBM",
+    "UgZFdrNT6W0",
+    "Vmef_8MY46w",
+    "WKqbLbU68wU",
+    "WlgxRNCHQzw",
+    "YYWdB7h1INo",
+    "_Ca3gOdOHxU",
+    "_dBTTYDRdRQ",
+    "_ithRWANKB0",
+    "aMYcLyh9OhU",
+    "b-YoBU0XT90",
+    "bAVXp1oGjHA",
+    "covMYDBa5dk",
+    "fNcxxBjEOgw",
+    "fpprSy6AzKk",
+    "gjasEUDkbuc",
+    "hbYvDvJrpNk",
+    "iSlDMboCSao",
+    "j5jmjhGBW44",
+    "jqZpiHlJUig",
+    "kMy-6RtoOVU",
+    "lDmLcWWBp1E",
+    "lT1zdTL-3SM",
+    "lWXhqIAvarw",
+    "o4xQ-BEa3Ss",
+    "oD_wxyTHJ2I",
+    "oWhvucAskhk",
+    "phrYEKv0rmw",
+    "pieVIsGmLsc",
+    "qx2vAO5ofmo",
+    "r2llOyS-BmE",
+    "rUYsoIIE37A",
+    "rXFlJbXyZyc",
+    "rk8Xm0EAOWs",
+    "sUVhd0YTKgw",
+    "skiZueh4lfY",
+    "t0V4drbYDnc",
+    "tghXjom3120",
+    "tt0t_a1EDCE",
+    "wEAeql4z1O0",
+    "x-6CtPWVi6E",
+    "xO4ABy2iOQA",
+    "xeGWXqSvC-8",
+    "xmqSaQPzL1E",
+    "xp67EC-Hvwk",
+    "y7ncweROe9U",
+    "yMtGmGa8KZ0",
+    "yn9WN9lsHRE",
+    "yvgCGJ6vfkY",
+    "zC5Fh2tTS1U",
+    "zR725veL-DI"
+  ],
+  "failed_video_ids": [],
+  "batches": [
+    {
+      "batch": 1,
+      "requested_video_ids": [
+        "_dBTTYDRdRQ",
+        "CMCPhm2L400"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27778498560,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 19188563968,
+        "estimated_batch_bytes": 1094954949,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "_dBTTYDRdRQ": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0001/videos/_dBTTYDRdRQ.webm",
+          "bytes": 228631351,
+          "inventory_bytes": 228631351,
+          "inventory_size_matches": true,
+          "sha256": "843e12272ca296e198b8e340a9be9f5bb2ea175bb8324219d0357e35091d77e5",
+          "downloader": "resumable_curl"
+        },
+        "CMCPhm2L400": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0001/videos/CMCPhm2L400.mkv",
+          "bytes": 256659117,
+          "inventory_bytes": 256659117,
+          "inventory_size_matches": true,
+          "sha256": "b6865f54f1a698691bd364cb402dd248c4fb16ad6f00ff7933f6ee3056148c78",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "_dBTTYDRdRQ": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "_dBTTYDRdRQ",
+            "graphs": 796,
+            "nodes": 2414,
+            "edges": 12192,
+            "supervised_persons": 1712,
+            "annotation_only_persons": 89,
+            "action_rows": 4328,
+            "bytes": 5489036,
+            "sha256": "591f4c76796e057e2b35d635d69560993cd73d508394f0164e2bb44634066585",
+            "provenance": {
+              "source_media_filename": "_dBTTYDRdRQ.webm",
+              "source_media_bytes": 228631351,
+              "source_media_sha256": "843e12272ca296e198b8e340a9be9f5bb2ea175bb8324219d0357e35091d77e5",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 800,
+                "extracted_frames": 800,
+                "scene_graphs": 800
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "CMCPhm2L400": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "CMCPhm2L400",
+            "graphs": 778,
+            "nodes": 1938,
+            "edges": 6146,
+            "supervised_persons": 1360,
+            "annotation_only_persons": 75,
+            "action_rows": 3706,
+            "bytes": 4379276,
+            "sha256": "d24c2f5272c3352d70d4247c737befe8ef4c5ac70dbf278e1bff62583c5a3aad",
+            "provenance": {
+              "source_media_filename": "CMCPhm2L400.mkv",
+              "source_media_bytes": 256659117,
+              "source_media_sha256": "b6865f54f1a698691bd364cb402dd248c4fb16ad6f00ff7933f6ee3056148c78",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 778,
+                "extracted_frames": 778,
+                "scene_graphs": 778
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "_dBTTYDRdRQ": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "CMCPhm2L400": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 2,
+      "requested_video_ids": [
+        "-5KQ66BBWC4",
+        "aMYcLyh9OhU"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27758465024,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 19168530432,
+        "estimated_batch_bytes": 1144056244,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "aMYcLyh9OhU": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0002/videos/aMYcLyh9OhU.mkv",
+          "bytes": 264746297,
+          "inventory_bytes": 264746297,
+          "inventory_size_matches": true,
+          "sha256": "622baf3aa0c84014dafbebe56cc902149afb0ff2d8da0f0fb7c8876ad5bed574",
+          "downloader": "resumable_curl"
+        },
+        "-5KQ66BBWC4": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0002/videos/-5KQ66BBWC4.mkv",
+          "bytes": 263240949,
+          "inventory_bytes": 263240949,
+          "inventory_size_matches": true,
+          "sha256": "b706185ac2fe0c6110886911aa3965e3403f190ea7520e514d07e9ffa0c7194d",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "aMYcLyh9OhU": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "aMYcLyh9OhU",
+            "graphs": 813,
+            "nodes": 2058,
+            "edges": 5368,
+            "supervised_persons": 1419,
+            "annotation_only_persons": 35,
+            "action_rows": 4066,
+            "bytes": 4580364,
+            "sha256": "726d0c6fbdfa6705ad1d412b495c5956dbbeb5bd428ace82c2a555a8621174b4",
+            "provenance": {
+              "source_media_filename": "aMYcLyh9OhU.mkv",
+              "source_media_bytes": 264746297,
+              "source_media_sha256": "622baf3aa0c84014dafbebe56cc902149afb0ff2d8da0f0fb7c8876ad5bed574",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 813,
+                "extracted_frames": 813,
+                "scene_graphs": 813
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "-5KQ66BBWC4": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "-5KQ66BBWC4",
+            "graphs": 728,
+            "nodes": 1423,
+            "edges": 2582,
+            "supervised_persons": 1051,
+            "annotation_only_persons": 56,
+            "action_rows": 2408,
+            "bytes": 3289612,
+            "sha256": "8d07fd8cd4a1bc61d0a0a98c570382512dbcb2d0ebe79cbf7cfb17a78817dab9",
+            "provenance": {
+              "source_media_filename": "-5KQ66BBWC4.mkv",
+              "source_media_bytes": 263240949,
+              "source_media_sha256": "b706185ac2fe0c6110886911aa3965e3403f190ea7520e514d07e9ffa0c7194d",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 730,
+                "extracted_frames": 730,
+                "scene_graphs": 730
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "aMYcLyh9OhU": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "-5KQ66BBWC4": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 3,
+      "requested_video_ids": [
+        "tghXjom3120",
+        "gjasEUDkbuc"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27565142016,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18975207424,
+        "estimated_batch_bytes": 1160425137,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "tghXjom3120": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0003/videos/tghXjom3120.mkv",
+          "bytes": 271100039,
+          "inventory_bytes": 271100039,
+          "inventory_size_matches": true,
+          "sha256": "7c9577eef325b348f5a41244963afca21a2ffdbd5074e590c01f4688ae9c1555",
+          "downloader": "resumable_curl"
+        },
+        "gjasEUDkbuc": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0003/videos/gjasEUDkbuc.mkv",
+          "bytes": 271121027,
+          "inventory_bytes": 271121027,
+          "inventory_size_matches": true,
+          "sha256": "a176cda2692d92f5c81efa1376e8e5ae2998343adc2f759dea97d29e348cc2ab",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "tghXjom3120": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "tghXjom3120",
+            "graphs": 820,
+            "nodes": 2126,
+            "edges": 6498,
+            "supervised_persons": 1609,
+            "annotation_only_persons": 43,
+            "action_rows": 3944,
+            "bytes": 4756236,
+            "sha256": "8a1e825c377c0264858d8e663085959bc51fe7c43ff74d754ec6e5aeb9491ffb",
+            "provenance": {
+              "source_media_filename": "tghXjom3120.mkv",
+              "source_media_bytes": 271100039,
+              "source_media_sha256": "7c9577eef325b348f5a41244963afca21a2ffdbd5074e590c01f4688ae9c1555",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 821,
+                "extracted_frames": 821,
+                "scene_graphs": 821
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "gjasEUDkbuc": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "gjasEUDkbuc",
+            "graphs": 770,
+            "nodes": 3359,
+            "edges": 18654,
+            "supervised_persons": 1794,
+            "annotation_only_persons": 38,
+            "action_rows": 4488,
+            "bytes": 7361548,
+            "sha256": "11b3b87414ba0c4f6aceb80d01f327d3d818231d6209eccb7aa1053ed2ad66c1",
+            "provenance": {
+              "source_media_filename": "gjasEUDkbuc.mkv",
+              "source_media_bytes": 271121027,
+              "source_media_sha256": "a176cda2692d92f5c81efa1376e8e5ae2998343adc2f759dea97d29e348cc2ab",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 771,
+                "extracted_frames": 771,
+                "scene_graphs": 771
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "tghXjom3120": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "gjasEUDkbuc": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 4,
+      "requested_video_ids": [
+        "OfMdakd4bHI",
+        "IzvOYVMltkI"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27529187328,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18939252736,
+        "estimated_batch_bytes": 1177794531,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "OfMdakd4bHI": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0004/videos/OfMdakd4bHI.mkv",
+          "bytes": 277283412,
+          "inventory_bytes": 277283412,
+          "inventory_size_matches": true,
+          "sha256": "1cebdcd090c2e81dacdd092a34d74e1c1e68f0a5ae456bfe2d325866ec538e7f",
+          "downloader": "resumable_curl"
+        },
+        "IzvOYVMltkI": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0004/videos/IzvOYVMltkI.mp4",
+          "bytes": 280041475,
+          "inventory_bytes": 280041475,
+          "inventory_size_matches": true,
+          "sha256": "84f3388c3345a1944c3f5baa8480353bbce4df13f16e0b18684cf70de4aa09aa",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "OfMdakd4bHI": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "OfMdakd4bHI",
+            "graphs": 817,
+            "nodes": 2275,
+            "edges": 5734,
+            "supervised_persons": 1620,
+            "annotation_only_persons": 46,
+            "action_rows": 4364,
+            "bytes": 4967116,
+            "sha256": "b1a7578ce4d9ae4f2efce1f3210d4d8084b3f374d76b4f5aa360221957d248e8",
+            "provenance": {
+              "source_media_filename": "OfMdakd4bHI.mkv",
+              "source_media_bytes": 277283412,
+              "source_media_sha256": "1cebdcd090c2e81dacdd092a34d74e1c1e68f0a5ae456bfe2d325866ec538e7f",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 818,
+                "extracted_frames": 818,
+                "scene_graphs": 818
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "IzvOYVMltkI": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "IzvOYVMltkI",
+            "graphs": 836,
+            "nodes": 3177,
+            "edges": 12504,
+            "supervised_persons": 1891,
+            "annotation_only_persons": 64,
+            "action_rows": 5262,
+            "bytes": 6829196,
+            "sha256": "563ecd4189b764a012016da555310aef5a88cdfdc4f9cecd929da76cf56ef815",
+            "provenance": {
+              "source_media_filename": "IzvOYVMltkI.mp4",
+              "source_media_bytes": 280041475,
+              "source_media_sha256": "84f3388c3345a1944c3f5baa8480353bbce4df13f16e0b18684cf70de4aa09aa",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 838,
+                "extracted_frames": 838,
+                "scene_graphs": 838
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "OfMdakd4bHI": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "IzvOYVMltkI": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 5,
+      "requested_video_ids": [
+        "2qQs3Y9OJX0",
+        "9Y_l9NsnYE0"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27489849344,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18899914752,
+        "estimated_batch_bytes": 1204745065,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "9Y_l9NsnYE0": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0005/videos/9Y_l9NsnYE0.mp4",
+          "bytes": 299051037,
+          "inventory_bytes": 299051037,
+          "inventory_size_matches": true,
+          "sha256": "2b4eda4b7d0e82cbd0488203e68f36e8a492361f40a066578c84ad6bababeb62",
+          "downloader": "resumable_curl"
+        },
+        "2qQs3Y9OJX0": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0005/videos/2qQs3Y9OJX0.mkv",
+          "bytes": 281709097,
+          "inventory_bytes": 281709097,
+          "inventory_size_matches": true,
+          "sha256": "df89dd1ccdf6953435d17fd5b57ccdab524bae428e7b81e0aaf8e581a471c667",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "9Y_l9NsnYE0": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "9Y_l9NsnYE0",
+            "graphs": 887,
+            "nodes": 4037,
+            "edges": 21776,
+            "supervised_persons": 2248,
+            "annotation_only_persons": 8,
+            "action_rows": 5661,
+            "bytes": 8774668,
+            "sha256": "165e760b083f798946b532a71f1fc2ad5bd45987246c14625e6009f2e1f36b40",
+            "provenance": {
+              "source_media_filename": "9Y_l9NsnYE0.mp4",
+              "source_media_bytes": 299051037,
+              "source_media_sha256": "2b4eda4b7d0e82cbd0488203e68f36e8a492361f40a066578c84ad6bababeb62",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 887,
+                "extracted_frames": 887,
+                "scene_graphs": 887
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "2qQs3Y9OJX0": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "2qQs3Y9OJX0",
+            "graphs": 865,
+            "nodes": 3559,
+            "edges": 17468,
+            "supervised_persons": 2442,
+            "annotation_only_persons": 81,
+            "action_rows": 6421,
+            "bytes": 7740556,
+            "sha256": "af03868872f80f3d5609899273a0fb227ea00c1623d181bbb6d3e89331c37cdb",
+            "provenance": {
+              "source_media_filename": "2qQs3Y9OJX0.mkv",
+              "source_media_bytes": 281709097,
+              "source_media_sha256": "df89dd1ccdf6953435d17fd5b57ccdab524bae428e7b81e0aaf8e581a471c667",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 865,
+                "extracted_frames": 865,
+                "scene_graphs": 865
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "9Y_l9NsnYE0": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "2qQs3Y9OJX0": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 6,
+      "requested_video_ids": [
+        "NEQ7Wpf-EtI",
+        "PcFEhUKhN6g"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27439452160,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18849517568,
+        "estimated_batch_bytes": 1268806483,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "NEQ7Wpf-EtI": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0006/videos/NEQ7Wpf-EtI.mkv",
+          "bytes": 309996323,
+          "inventory_bytes": 309996323,
+          "inventory_size_matches": true,
+          "sha256": "cbe0a6d826e3ca411aa2a8efa3a2176345b60c58da433f3c7cd24da81bb00a72",
+          "downloader": "resumable_curl"
+        },
+        "PcFEhUKhN6g": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0006/videos/PcFEhUKhN6g.mkv",
+          "bytes": 326469392,
+          "inventory_bytes": 326469392,
+          "inventory_size_matches": true,
+          "sha256": "68ab2c64d7c22ef09f6cf5a94c6ceb7c4dca9805b0107d006cf9efbe9bb39566",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "NEQ7Wpf-EtI": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "NEQ7Wpf-EtI",
+            "graphs": 854,
+            "nodes": 4150,
+            "edges": 28918,
+            "supervised_persons": 2358,
+            "annotation_only_persons": 173,
+            "action_rows": 5325,
+            "bytes": 9273036,
+            "sha256": "bd45c3482c081679b84a7b3627cfabaca18d8eeb98604ca8ef3e1242fe1b7e46",
+            "provenance": {
+              "source_media_filename": "NEQ7Wpf-EtI.mkv",
+              "source_media_bytes": 309996323,
+              "source_media_sha256": "cbe0a6d826e3ca411aa2a8efa3a2176345b60c58da433f3c7cd24da81bb00a72",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 854,
+                "extracted_frames": 854,
+                "scene_graphs": 854
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "PcFEhUKhN6g": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "PcFEhUKhN6g",
+            "graphs": 561,
+            "nodes": 1347,
+            "edges": 2864,
+            "supervised_persons": 915,
+            "annotation_only_persons": 37,
+            "action_rows": 2417,
+            "bytes": 3000268,
+            "sha256": "40a26f6e7df1ab5f1739a2d2a8ecce81fdc517fac3303f27c092a092452d6e9a",
+            "provenance": {
+              "source_media_filename": "PcFEhUKhN6g.mkv",
+              "source_media_bytes": 326469392,
+              "source_media_sha256": "68ab2c64d7c22ef09f6cf5a94c6ceb7c4dca9805b0107d006cf9efbe9bb39566",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 566,
+                "extracted_frames": 566,
+                "scene_graphs": 566
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "NEQ7Wpf-EtI": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "PcFEhUKhN6g": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 7,
+      "requested_video_ids": [
+        "UgZFdrNT6W0",
+        "lT1zdTL-3SM"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27410022400,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18820087808,
+        "estimated_batch_bytes": 1346186752,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "lT1zdTL-3SM": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0007/videos/lT1zdTL-3SM.mkv",
+          "bytes": 352209189,
+          "inventory_bytes": 352209189,
+          "inventory_size_matches": true,
+          "sha256": "64ae22b4ab0ff8c957b354abf04afc8aeec4b8d39c93f05a7a4db31f5678e6cf",
+          "downloader": "resumable_curl"
+        },
+        "UgZFdrNT6W0": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0007/videos/UgZFdrNT6W0.mkv",
+          "bytes": 351543716,
+          "inventory_bytes": 351543716,
+          "inventory_size_matches": true,
+          "sha256": "a5a05affb8d9b7860354840e4518c8627799a935db457b7ac35a0606ceb8362b",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "lT1zdTL-3SM": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "lT1zdTL-3SM",
+            "graphs": 774,
+            "nodes": 2525,
+            "edges": 9140,
+            "supervised_persons": 1510,
+            "annotation_only_persons": 107,
+            "action_rows": 3504,
+            "bytes": 5506252,
+            "sha256": "a6ccd5f268e4877f10abb1df6e05c6a4b27252b3a495567e26166d3fb0bf64e0",
+            "provenance": {
+              "source_media_filename": "lT1zdTL-3SM.mkv",
+              "source_media_bytes": 352209189,
+              "source_media_sha256": "64ae22b4ab0ff8c957b354abf04afc8aeec4b8d39c93f05a7a4db31f5678e6cf",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 774,
+                "extracted_frames": 774,
+                "scene_graphs": 774
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "UgZFdrNT6W0": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "UgZFdrNT6W0",
+            "graphs": 800,
+            "nodes": 2571,
+            "edges": 8180,
+            "supervised_persons": 1299,
+            "annotation_only_persons": 32,
+            "action_rows": 3238,
+            "bytes": 5564748,
+            "sha256": "2e1268bd3adb216604a46d774c0c86463c05b1028c9d43d054d3f5eb10d2a9ff",
+            "provenance": {
+              "source_media_filename": "UgZFdrNT6W0.mkv",
+              "source_media_bytes": 351543716,
+              "source_media_sha256": "a5a05affb8d9b7860354840e4518c8627799a935db457b7ac35a0606ceb8362b",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 801,
+                "extracted_frames": 801,
+                "scene_graphs": 801
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "lT1zdTL-3SM": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "UgZFdrNT6W0": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 8,
+      "requested_video_ids": [
+        "fNcxxBjEOgw",
+        "5LrOQEt_XVM"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27360489472,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18770554880,
+        "estimated_batch_bytes": 1458743529,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "5LrOQEt_XVM": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0008/videos/5LrOQEt_XVM.mp4",
+          "bytes": 402543443,
+          "inventory_bytes": 402543443,
+          "inventory_size_matches": true,
+          "sha256": "5ba022c6a5b9d0dcae7ac7f222f1bdc5a2ebe388b00c15bce1d3d9a5e5a9f7b9",
+          "downloader": "resumable_curl"
+        },
+        "fNcxxBjEOgw": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0008/videos/fNcxxBjEOgw.mkv",
+          "bytes": 399084920,
+          "inventory_bytes": 399084920,
+          "inventory_size_matches": true,
+          "sha256": "0e357b6c3fe9a720e51c597dd8cc4b9d78b3718b178a96624bc0882fd158fab5",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "5LrOQEt_XVM": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "5LrOQEt_XVM",
+            "graphs": 858,
+            "nodes": 3612,
+            "edges": 14684,
+            "supervised_persons": 1960,
+            "annotation_only_persons": 34,
+            "action_rows": 6483,
+            "bytes": 7688652,
+            "sha256": "a05b477a38c4c18d634f920672d9140a616c2cbd2bc3c4e539464923177ccedf",
+            "provenance": {
+              "source_media_filename": "5LrOQEt_XVM.mp4",
+              "source_media_bytes": 402543443,
+              "source_media_sha256": "5ba022c6a5b9d0dcae7ac7f222f1bdc5a2ebe388b00c15bce1d3d9a5e5a9f7b9",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 858,
+                "extracted_frames": 858,
+                "scene_graphs": 858
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "fNcxxBjEOgw": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "fNcxxBjEOgw",
+            "graphs": 769,
+            "nodes": 3073,
+            "edges": 19468,
+            "supervised_persons": 1950,
+            "annotation_only_persons": 111,
+            "action_rows": 4372,
+            "bytes": 6918796,
+            "sha256": "8e61662ae3bf9cbe3263e02f488f11fb0fd4edbb806cd0dc45849eee2f9e0b1a",
+            "provenance": {
+              "source_media_filename": "fNcxxBjEOgw.mkv",
+              "source_media_bytes": 399084920,
+              "source_media_sha256": "0e357b6c3fe9a720e51c597dd8cc4b9d78b3718b178a96624bc0882fd158fab5",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 769,
+                "extracted_frames": 769,
+                "scene_graphs": 769
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "5LrOQEt_XVM": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "fNcxxBjEOgw": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 9,
+      "requested_video_ids": [
+        "yvgCGJ6vfkY",
+        "U_WzY2k8IBM"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27252310016,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18662375424,
+        "estimated_batch_bytes": 1537910219,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "yvgCGJ6vfkY": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0009/videos/yvgCGJ6vfkY.mkv",
+          "bytes": 431822945,
+          "inventory_bytes": 431822945,
+          "inventory_size_matches": true,
+          "sha256": "b94e2635ed4c58f475b89306b1344d9142a0d88252ccde154825308ee123ff31",
+          "downloader": "resumable_curl"
+        },
+        "U_WzY2k8IBM": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0009/videos/U_WzY2k8IBM.mkv",
+          "bytes": 438646019,
+          "inventory_bytes": 438646019,
+          "inventory_size_matches": true,
+          "sha256": "3d5e13d40c97caabfed9db28e98f68df01d2457a6ff2b15ddf471ecaa22370ad",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "yvgCGJ6vfkY": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "yvgCGJ6vfkY",
+            "graphs": 847,
+            "nodes": 2062,
+            "edges": 5664,
+            "supervised_persons": 1577,
+            "annotation_only_persons": 72,
+            "action_rows": 4306,
+            "bytes": 4637132,
+            "sha256": "f15807d77a785be6aab437940aceb5cdd996dde3696e3c1bde73eaa82efb58cb",
+            "provenance": {
+              "source_media_filename": "yvgCGJ6vfkY.mkv",
+              "source_media_bytes": 431822945,
+              "source_media_sha256": "b94e2635ed4c58f475b89306b1344d9142a0d88252ccde154825308ee123ff31",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 847,
+                "extracted_frames": 847,
+                "scene_graphs": 847
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "U_WzY2k8IBM": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "U_WzY2k8IBM",
+            "graphs": 745,
+            "nodes": 1820,
+            "edges": 4780,
+            "supervised_persons": 1356,
+            "annotation_only_persons": 21,
+            "action_rows": 2882,
+            "bytes": 4080588,
+            "sha256": "a075d11254e18040fc2b2a506244edf89df69372bf63178874b6e335cb17292c",
+            "provenance": {
+              "source_media_filename": "U_WzY2k8IBM.mkv",
+              "source_media_bytes": 438646019,
+              "source_media_sha256": "3d5e13d40c97caabfed9db28e98f68df01d2457a6ff2b15ddf471ecaa22370ad",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 746,
+                "extracted_frames": 746,
+                "scene_graphs": 746
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "yvgCGJ6vfkY": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "U_WzY2k8IBM": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 10,
+      "requested_video_ids": [
+        "oWhvucAskhk",
+        "UOfuzrwkclM"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27390672896,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18800738304,
+        "estimated_batch_bytes": 1559384105,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "UOfuzrwkclM": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0010/videos/UOfuzrwkclM.mkv",
+          "bytes": 446099580,
+          "inventory_bytes": 446099580,
+          "inventory_size_matches": true,
+          "sha256": "58dd55a46ebd72fdbba6c39ad5599c7f582b876ef6b406221cf5aa171c1c1953",
+          "downloader": "resumable_curl"
+        },
+        "oWhvucAskhk": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0010/videos/oWhvucAskhk.mkv",
+          "bytes": 443042327,
+          "inventory_bytes": 443042327,
+          "inventory_size_matches": true,
+          "sha256": "d13387a23459093f8fb7204f53568b7ac81cd7367d60e24dea174f8908edfb48",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "UOfuzrwkclM": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "UOfuzrwkclM",
+            "graphs": 786,
+            "nodes": 3008,
+            "edges": 12870,
+            "supervised_persons": 1715,
+            "annotation_only_persons": 159,
+            "action_rows": 4570,
+            "bytes": 6510476,
+            "sha256": "11966ed66986f65b740028622c1896b8b4fdc3a67dd216323f9b3064173ce26c",
+            "provenance": {
+              "source_media_filename": "UOfuzrwkclM.mkv",
+              "source_media_bytes": 446099580,
+              "source_media_sha256": "58dd55a46ebd72fdbba6c39ad5599c7f582b876ef6b406221cf5aa171c1c1953",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 786,
+                "extracted_frames": 786,
+                "scene_graphs": 786
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "oWhvucAskhk": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "oWhvucAskhk",
+            "graphs": 797,
+            "nodes": 2613,
+            "edges": 11668,
+            "supervised_persons": 2042,
+            "annotation_only_persons": 23,
+            "action_rows": 5679,
+            "bytes": 5799628,
+            "sha256": "07dbcb50fcb67f314ddcc2b6f75a62649f5eb5bff522f7a071d137a2d6ca6bdd",
+            "provenance": {
+              "source_media_filename": "oWhvucAskhk.mkv",
+              "source_media_bytes": 443042327,
+              "source_media_sha256": "d13387a23459093f8fb7204f53568b7ac81cd7367d60e24dea174f8908edfb48",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 799,
+                "extracted_frames": 799,
+                "scene_graphs": 799
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "UOfuzrwkclM": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "oWhvucAskhk": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 11,
+      "requested_video_ids": [
+        "J1jDc2rTJlg",
+        "yn9WN9lsHRE"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27359744000,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18769809408,
+        "estimated_batch_bytes": 1601130328,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "J1jDc2rTJlg": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0011/videos/J1jDc2rTJlg.mkv",
+          "bytes": 461314007,
+          "inventory_bytes": 461314007,
+          "inventory_size_matches": true,
+          "sha256": "cfbee73950f167fdf5e2855c8bf8eac4841bde0e30fbe455bf7d0f9e09fee9c8",
+          "downloader": "resumable_curl"
+        },
+        "yn9WN9lsHRE": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0011/videos/yn9WN9lsHRE.mkv",
+          "bytes": 464128964,
+          "inventory_bytes": 464128964,
+          "inventory_size_matches": true,
+          "sha256": "fab2f3d576f352d423dd261d27edc94c8c6389147988f3936ea237e936c6b0ac",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "J1jDc2rTJlg": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "J1jDc2rTJlg",
+            "graphs": 812,
+            "nodes": 2189,
+            "edges": 8878,
+            "supervised_persons": 1546,
+            "annotation_only_persons": 35,
+            "action_rows": 3453,
+            "bytes": 4968204,
+            "sha256": "1d1ace97d1dfd4a319ed7a0f8ec1c11997b696385286f2bffcc33bba67f2a9ed",
+            "provenance": {
+              "source_media_filename": "J1jDc2rTJlg.mkv",
+              "source_media_bytes": 461314007,
+              "source_media_sha256": "cfbee73950f167fdf5e2855c8bf8eac4841bde0e30fbe455bf7d0f9e09fee9c8",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 812,
+                "extracted_frames": 812,
+                "scene_graphs": 812
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "yn9WN9lsHRE": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "yn9WN9lsHRE",
+            "graphs": 712,
+            "nodes": 1742,
+            "edges": 4284,
+            "supervised_persons": 1226,
+            "annotation_only_persons": 64,
+            "action_rows": 3163,
+            "bytes": 3891020,
+            "sha256": "22ee123bbc5ff0ba0b51f360f4fa9f35384e4cf5ec45cc8de5880d89095fe8a3",
+            "provenance": {
+              "source_media_filename": "yn9WN9lsHRE.mkv",
+              "source_media_bytes": 464128964,
+              "source_media_sha256": "fab2f3d576f352d423dd261d27edc94c8c6389147988f3936ea237e936c6b0ac",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 712,
+                "extracted_frames": 712,
+                "scene_graphs": 712
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "J1jDc2rTJlg": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "yn9WN9lsHRE": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 12,
+      "requested_video_ids": [
+        "xp67EC-Hvwk",
+        "rXFlJbXyZyc"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27144581120,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18554646528,
+        "estimated_batch_bytes": 1639936510,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "rXFlJbXyZyc": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0012/videos/rXFlJbXyZyc.mkv",
+          "bytes": 480749023,
+          "inventory_bytes": 480749023,
+          "inventory_size_matches": true,
+          "sha256": "76e565917c64bdbb802d9587ae92fcb9bcb0f527b987f2e8fde32ee0fb467e4c",
+          "downloader": "resumable_curl"
+        },
+        "xp67EC-Hvwk": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0012/videos/xp67EC-Hvwk.mkv",
+          "bytes": 478438454,
+          "inventory_bytes": 478438454,
+          "inventory_size_matches": true,
+          "sha256": "a7798698cf8a90dc0ac60da0bc7aedea88644b3f0a059b112848d1bafa2977b2",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "rXFlJbXyZyc": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "rXFlJbXyZyc",
+            "graphs": 794,
+            "nodes": 2730,
+            "edges": 11980,
+            "supervised_persons": 1479,
+            "annotation_only_persons": 17,
+            "action_rows": 4041,
+            "bytes": 6008204,
+            "sha256": "df06070a92ba2e72eb3f8887b64e0be3067b9f29503aa0461ac1ec6b43be6bc3",
+            "provenance": {
+              "source_media_filename": "rXFlJbXyZyc.mkv",
+              "source_media_bytes": 480749023,
+              "source_media_sha256": "76e565917c64bdbb802d9587ae92fcb9bcb0f527b987f2e8fde32ee0fb467e4c",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 794,
+                "extracted_frames": 794,
+                "scene_graphs": 794
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "xp67EC-Hvwk": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "xp67EC-Hvwk",
+            "graphs": 814,
+            "nodes": 1997,
+            "edges": 4606,
+            "supervised_persons": 1458,
+            "annotation_only_persons": 60,
+            "action_rows": 3973,
+            "bytes": 4442316,
+            "sha256": "1a7b85efca171cb0f380f833a42678da96f488cb87eb9b92b78ca159397e0281",
+            "provenance": {
+              "source_media_filename": "xp67EC-Hvwk.mkv",
+              "source_media_bytes": 478438454,
+              "source_media_sha256": "a7798698cf8a90dc0ac60da0bc7aedea88644b3f0a059b112848d1bafa2977b2",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 815,
+                "extracted_frames": 815,
+                "scene_graphs": 815
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "rXFlJbXyZyc": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "xp67EC-Hvwk": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 13,
+      "requested_video_ids": [
+        "bAVXp1oGjHA",
+        "rk8Xm0EAOWs"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27107266560,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18517331968,
+        "estimated_batch_bytes": 1652752075,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "bAVXp1oGjHA": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0013/videos/bAVXp1oGjHA.mkv",
+          "bytes": 481668624,
+          "inventory_bytes": 481668624,
+          "inventory_size_matches": true,
+          "sha256": "2c795f45a47800f4f201636d2c986ac3c8e63e6413c50546e970ead43ae30857",
+          "downloader": "resumable_curl"
+        },
+        "rk8Xm0EAOWs": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0013/videos/rk8Xm0EAOWs.mkv",
+          "bytes": 488662823,
+          "inventory_bytes": 488662823,
+          "inventory_size_matches": true,
+          "sha256": "e719e61bd0b45f4f784bc7c0ed579dd17dacb0070ebc905f492b69db43c10f63",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "bAVXp1oGjHA": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "bAVXp1oGjHA",
+            "graphs": 831,
+            "nodes": 1830,
+            "edges": 4040,
+            "supervised_persons": 1334,
+            "annotation_only_persons": 27,
+            "action_rows": 3519,
+            "bytes": 4151948,
+            "sha256": "e5ced0dc519dc6946d0872cedf7ef361eb32587e0b408b6a5385eb32f91a7817",
+            "provenance": {
+              "source_media_filename": "bAVXp1oGjHA.mkv",
+              "source_media_bytes": 481668624,
+              "source_media_sha256": "2c795f45a47800f4f201636d2c986ac3c8e63e6413c50546e970ead43ae30857",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 831,
+                "extracted_frames": 831,
+                "scene_graphs": 831
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "rk8Xm0EAOWs": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "rk8Xm0EAOWs",
+            "graphs": 853,
+            "nodes": 2386,
+            "edges": 6896,
+            "supervised_persons": 1633,
+            "annotation_only_persons": 39,
+            "action_rows": 4815,
+            "bytes": 5247372,
+            "sha256": "48f5ee268867e53534b5698fedf0891004a75fa03acde0b0fec08cea89b52c04",
+            "provenance": {
+              "source_media_filename": "rk8Xm0EAOWs.mkv",
+              "source_media_bytes": 488662823,
+              "source_media_sha256": "e719e61bd0b45f4f784bc7c0ed579dd17dacb0070ebc905f492b69db43c10f63",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 853,
+                "extracted_frames": 853,
+                "scene_graphs": 853
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "bAVXp1oGjHA": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "rk8Xm0EAOWs": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 14,
+      "requested_video_ids": [
+        "1ReZIMmD_8E",
+        "KWoSGtglCms"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27083116544,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18493181952,
+        "estimated_batch_bytes": 1675835806,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "KWoSGtglCms": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0014/videos/KWoSGtglCms.mkv",
+          "bytes": 496575755,
+          "inventory_bytes": 496575755,
+          "inventory_size_matches": true,
+          "sha256": "bd967ee48fda0caa083b757e781e426dd0ff272280042e9dff6f07e694111bb7",
+          "downloader": "resumable_curl"
+        },
+        "1ReZIMmD_8E": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0014/videos/1ReZIMmD_8E.mp4",
+          "bytes": 493828501,
+          "inventory_bytes": 493828501,
+          "inventory_size_matches": true,
+          "sha256": "a0a8c7e682d3d69733c64ce3358ec90c7d3a2f79de294ea16d424f0c23df146d",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "KWoSGtglCms": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "KWoSGtglCms",
+            "graphs": 837,
+            "nodes": 2702,
+            "edges": 11240,
+            "supervised_persons": 1543,
+            "annotation_only_persons": 54,
+            "action_rows": 3851,
+            "bytes": 5970572,
+            "sha256": "00308d1b937b488913acee19dc29c1c0fe2724264e74940072ce0472cfd80b4c",
+            "provenance": {
+              "source_media_filename": "KWoSGtglCms.mkv",
+              "source_media_bytes": 496575755,
+              "source_media_sha256": "bd967ee48fda0caa083b757e781e426dd0ff272280042e9dff6f07e694111bb7",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 838,
+                "extracted_frames": 838,
+                "scene_graphs": 838
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "1ReZIMmD_8E": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "1ReZIMmD_8E",
+            "graphs": 841,
+            "nodes": 3243,
+            "edges": 11804,
+            "supervised_persons": 1851,
+            "annotation_only_persons": 31,
+            "action_rows": 6161,
+            "bytes": 6911820,
+            "sha256": "cca8014a10508a52eae1e9f133e588328bf3c667ed727575566260fabd811bfb",
+            "provenance": {
+              "source_media_filename": "1ReZIMmD_8E.mp4",
+              "source_media_bytes": 493828501,
+              "source_media_sha256": "a0a8c7e682d3d69733c64ce3358ec90c7d3a2f79de294ea16d424f0c23df146d",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 841,
+                "extracted_frames": 841,
+                "scene_graphs": 841
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "KWoSGtglCms": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "1ReZIMmD_8E": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 15,
+      "requested_video_ids": [
+        "OGNnUvJq9RI",
+        "KVq6If6ozMY"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27213914112,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18623979520,
+        "estimated_batch_bytes": 1709109849,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "KVq6If6ozMY": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0015/videos/KVq6If6ozMY.mkv",
+          "bytes": 511399278,
+          "inventory_bytes": 511399278,
+          "inventory_size_matches": true,
+          "sha256": "114b173c013cf07662e0dc5a6860f1e06fe9f1ece0c2a6753f8c857222a99371",
+          "downloader": "resumable_curl"
+        },
+        "OGNnUvJq9RI": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0015/videos/OGNnUvJq9RI.mkv",
+          "bytes": 507938929,
+          "inventory_bytes": 507938929,
+          "inventory_size_matches": true,
+          "sha256": "c983020423cdf75b0e54da10aa497457fc5fc56be4cb3b4c3af924df157dc66f",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "KVq6If6ozMY": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "KVq6If6ozMY",
+            "graphs": 750,
+            "nodes": 1794,
+            "edges": 3702,
+            "supervised_persons": 1096,
+            "annotation_only_persons": 47,
+            "action_rows": 2775,
+            "bytes": 3990412,
+            "sha256": "11f4bccd035fad0b163ec75ef8ade0aec596d43aa337f4bcf7127fd921c4bbf8",
+            "provenance": {
+              "source_media_filename": "KVq6If6ozMY.mkv",
+              "source_media_bytes": 511399278,
+              "source_media_sha256": "114b173c013cf07662e0dc5a6860f1e06fe9f1ece0c2a6753f8c857222a99371",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 750,
+                "extracted_frames": 750,
+                "scene_graphs": 750
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "OGNnUvJq9RI": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "OGNnUvJq9RI",
+            "graphs": 777,
+            "nodes": 1963,
+            "edges": 4958,
+            "supervised_persons": 1522,
+            "annotation_only_persons": 37,
+            "action_rows": 3486,
+            "bytes": 4363148,
+            "sha256": "45918d28db0dccca7c8aa8f21457e2c7084394be4e26f5fcbcf3d0c5607f9a1d",
+            "provenance": {
+              "source_media_filename": "OGNnUvJq9RI.mkv",
+              "source_media_bytes": 507938929,
+              "source_media_sha256": "c983020423cdf75b0e54da10aa497457fc5fc56be4cb3b4c3af924df157dc66f",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 790,
+                "extracted_frames": 790,
+                "scene_graphs": 790
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "KVq6If6ozMY": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "OGNnUvJq9RI": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 16,
+      "requested_video_ids": [
+        "T26G6_AjJZ4",
+        "HKjR70GCRPE"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27189358592,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18599424000,
+        "estimated_batch_bytes": 1766513188,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "HKjR70GCRPE": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0016/videos/HKjR70GCRPE.mp4",
+          "bytes": 536726088,
+          "inventory_bytes": 536726088,
+          "inventory_size_matches": true,
+          "sha256": "1e26e543e162d6f079d20dd05ec7791e68d9521053aa1acbb6247e9c811ef5b6",
+          "downloader": "resumable_curl"
+        },
+        "T26G6_AjJZ4": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0016/videos/T26G6_AjJZ4.mkv",
+          "bytes": 532528066,
+          "inventory_bytes": 532528066,
+          "inventory_size_matches": true,
+          "sha256": "06513efce1deb0440f97add92d1a42652c982c3b28849ad21801d7cc16e2d7a1",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "HKjR70GCRPE": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "HKjR70GCRPE",
+            "graphs": 838,
+            "nodes": 2890,
+            "edges": 9644,
+            "supervised_persons": 2009,
+            "annotation_only_persons": 145,
+            "action_rows": 5280,
+            "bytes": 6211532,
+            "sha256": "b24913e85169df9a1806b0758e7fd81e388f5ec4820b0e27864eafb0018bfc7c",
+            "provenance": {
+              "source_media_filename": "HKjR70GCRPE.mp4",
+              "source_media_bytes": 536726088,
+              "source_media_sha256": "1e26e543e162d6f079d20dd05ec7791e68d9521053aa1acbb6247e9c811ef5b6",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 838,
+                "extracted_frames": 838,
+                "scene_graphs": 838
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "T26G6_AjJZ4": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "T26G6_AjJZ4",
+            "graphs": 847,
+            "nodes": 2487,
+            "edges": 7918,
+            "supervised_persons": 1779,
+            "annotation_only_persons": 54,
+            "action_rows": 4855,
+            "bytes": 5460236,
+            "sha256": "354bf3d8690fe42a1184db8dad1fc06feb73c540fb5e13e4cab0eb53cd5bca1b",
+            "provenance": {
+              "source_media_filename": "T26G6_AjJZ4.mkv",
+              "source_media_bytes": 532528066,
+              "source_media_sha256": "06513efce1deb0440f97add92d1a42652c982c3b28849ad21801d7cc16e2d7a1",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 847,
+                "extracted_frames": 847,
+                "scene_graphs": 847
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "HKjR70GCRPE": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "T26G6_AjJZ4": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 17,
+      "requested_video_ids": [
+        "_Ca3gOdOHxU",
+        "IKdBLciu_-A"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27123040256,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18533105664,
+        "estimated_batch_bytes": 1794529452,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "IKdBLciu_-A": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0017/videos/IKdBLciu_-A.mp4",
+          "bytes": 551708510,
+          "inventory_bytes": 551708510,
+          "inventory_size_matches": true,
+          "sha256": "c1235a9927433a069fdaf8e46a992a11ef3bdb0c9326723fac7a471f8bd38678",
+          "downloader": "resumable_curl"
+        },
+        "_Ca3gOdOHxU": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0017/videos/_Ca3gOdOHxU.mp4",
+          "bytes": 541907613,
+          "inventory_bytes": 541907613,
+          "inventory_size_matches": true,
+          "sha256": "c1f83640c08e93df2b943943fc693db8e1e7496e901e53c31bd2abfe1216f410",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "IKdBLciu_-A": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "IKdBLciu_-A",
+            "graphs": 793,
+            "nodes": 2164,
+            "edges": 5954,
+            "supervised_persons": 1491,
+            "annotation_only_persons": 35,
+            "action_rows": 3509,
+            "bytes": 4765964,
+            "sha256": "5d644f59a414bfa9e8f56abe6eb47b06a80d715dadba9012374041550f1b7fc2",
+            "provenance": {
+              "source_media_filename": "IKdBLciu_-A.mp4",
+              "source_media_bytes": 551708510,
+              "source_media_sha256": "c1235a9927433a069fdaf8e46a992a11ef3bdb0c9326723fac7a471f8bd38678",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 794,
+                "extracted_frames": 794,
+                "scene_graphs": 794
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "_Ca3gOdOHxU": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "_Ca3gOdOHxU",
+            "graphs": 818,
+            "nodes": 2937,
+            "edges": 14170,
+            "supervised_persons": 1980,
+            "annotation_only_persons": 104,
+            "action_rows": 5522,
+            "bytes": 6486860,
+            "sha256": "c6ce85fe41222609d38697c757a5a1b35464fee3ed14b71c30d8342f02e61d0e",
+            "provenance": {
+              "source_media_filename": "_Ca3gOdOHxU.mp4",
+              "source_media_bytes": 541907613,
+              "source_media_sha256": "c1f83640c08e93df2b943943fc693db8e1e7496e901e53c31bd2abfe1216f410",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 818,
+                "extracted_frames": 818,
+                "scene_graphs": 818
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "IKdBLciu_-A": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "_Ca3gOdOHxU": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 18,
+      "requested_video_ids": [
+        "pieVIsGmLsc",
+        "oD_wxyTHJ2I"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27099545600,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18509611008,
+        "estimated_batch_bytes": 1848205883,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "pieVIsGmLsc": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0018/videos/pieVIsGmLsc.mkv",
+          "bytes": 568681577,
+          "inventory_bytes": 568681577,
+          "inventory_size_matches": true,
+          "sha256": "075d10528cfc56a94538750be8b46a5c0797e936a897ffa523674d45a3eaeee4",
+          "downloader": "resumable_curl"
+        },
+        "oD_wxyTHJ2I": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0018/videos/oD_wxyTHJ2I.mp4",
+          "bytes": 571609703,
+          "inventory_bytes": 571609703,
+          "inventory_size_matches": true,
+          "sha256": "aaeeaef3ada3e254da779de5575552164857a84533d505b7c573c49d6454b4aa",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "pieVIsGmLsc": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "pieVIsGmLsc",
+            "graphs": 819,
+            "nodes": 1865,
+            "edges": 3928,
+            "supervised_persons": 1436,
+            "annotation_only_persons": 73,
+            "action_rows": 3698,
+            "bytes": 4193036,
+            "sha256": "a95aa88e59f35777b7e3b7cd2fa06c62f89932171d4d83d99c8183d040b187dd",
+            "provenance": {
+              "source_media_filename": "pieVIsGmLsc.mkv",
+              "source_media_bytes": 568681577,
+              "source_media_sha256": "075d10528cfc56a94538750be8b46a5c0797e936a897ffa523674d45a3eaeee4",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 825,
+                "extracted_frames": 825,
+                "scene_graphs": 825
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "oD_wxyTHJ2I": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "oD_wxyTHJ2I",
+            "graphs": 728,
+            "nodes": 2380,
+            "edges": 8684,
+            "supervised_persons": 1342,
+            "annotation_only_persons": 33,
+            "action_rows": 3168,
+            "bytes": 5192268,
+            "sha256": "41ecc7a6dd48139d83799cd4135f8761eea5be14f06712a643ef9a3345c3765f",
+            "provenance": {
+              "source_media_filename": "oD_wxyTHJ2I.mp4",
+              "source_media_bytes": 571609703,
+              "source_media_sha256": "aaeeaef3ada3e254da779de5575552164857a84533d505b7c573c49d6454b4aa",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 729,
+                "extracted_frames": 729,
+                "scene_graphs": 729
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "pieVIsGmLsc": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "oD_wxyTHJ2I": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 19,
+      "requested_video_ids": [
+        "8JSxLhDMGtE",
+        "WlgxRNCHQzw"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 27063865344,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18473930752,
+        "estimated_batch_bytes": 1955778472,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "8JSxLhDMGtE": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0019/videos/8JSxLhDMGtE.mkv",
+          "bytes": 604655329,
+          "inventory_bytes": 604655329,
+          "inventory_size_matches": true,
+          "sha256": "4b2ea192cd052b8c1c17504b5ba41a900dcef29557c73bdb7c994988f5968222",
+          "downloader": "resumable_curl"
+        },
+        "WlgxRNCHQzw": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0019/videos/WlgxRNCHQzw.mkv",
+          "bytes": 629177333,
+          "inventory_bytes": 629177333,
+          "inventory_size_matches": true,
+          "sha256": "58e1cbd9a113b1977e78c82915a7a37b27ab5eef66b249dbb75b25262de3646b",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "8JSxLhDMGtE": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "8JSxLhDMGtE",
+            "graphs": 531,
+            "nodes": 1259,
+            "edges": 3168,
+            "supervised_persons": 856,
+            "annotation_only_persons": 63,
+            "action_rows": 2206,
+            "bytes": 2835340,
+            "sha256": "ce545ccbda127bc8ccc5f1eae8c462fbd73266cd2c2c3874b8b32163ddca0f27",
+            "provenance": {
+              "source_media_filename": "8JSxLhDMGtE.mkv",
+              "source_media_bytes": 604655329,
+              "source_media_sha256": "4b2ea192cd052b8c1c17504b5ba41a900dcef29557c73bdb7c994988f5968222",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 531,
+                "extracted_frames": 531,
+                "scene_graphs": 531
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "WlgxRNCHQzw": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "WlgxRNCHQzw",
+            "graphs": 784,
+            "nodes": 1849,
+            "edges": 3966,
+            "supervised_persons": 1296,
+            "annotation_only_persons": 52,
+            "action_rows": 2930,
+            "bytes": 4131340,
+            "sha256": "f4fdf5c2020fcddaf82aef611b6f5db0a333315a041b32e6da4febdc700ec48f",
+            "provenance": {
+              "source_media_filename": "WlgxRNCHQzw.mkv",
+              "source_media_bytes": 629177333,
+              "source_media_sha256": "58e1cbd9a113b1977e78c82915a7a37b27ab5eef66b249dbb75b25262de3646b",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 787,
+                "extracted_frames": 787,
+                "scene_graphs": 787
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "8JSxLhDMGtE": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "WlgxRNCHQzw": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 20,
+      "requested_video_ids": [
+        "r2llOyS-BmE",
+        "Ma2hgTmveKQ"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 26666745856,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18076811264,
+        "estimated_batch_bytes": 2047977884,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "Ma2hgTmveKQ": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0020/videos/Ma2hgTmveKQ.mkv",
+          "bytes": 672110347,
+          "inventory_bytes": 672110347,
+          "inventory_size_matches": true,
+          "sha256": "d3939ecea16b6eb069396b4dfa585f62dc49f5dcbdac7e4d790519ebdca0ef18",
+          "downloader": "resumable_curl"
+        },
+        "r2llOyS-BmE": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0020/videos/r2llOyS-BmE.mkv",
+          "bytes": 641895716,
+          "inventory_bytes": 641895716,
+          "inventory_size_matches": true,
+          "sha256": "aa0bce8d9ee619e12f2b6225ffead05dccab9e8a95892932444ab23a22e716a0",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "Ma2hgTmveKQ": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "Ma2hgTmveKQ",
+            "graphs": 859,
+            "nodes": 3955,
+            "edges": 27118,
+            "supervised_persons": 2474,
+            "annotation_only_persons": 84,
+            "action_rows": 5912,
+            "bytes": 8863628,
+            "sha256": "8e3874854e349e1e1eff7996134a395a6095fd7cd75ff87c73bfc1c84115c1dc",
+            "provenance": {
+              "source_media_filename": "Ma2hgTmveKQ.mkv",
+              "source_media_bytes": 672110347,
+              "source_media_sha256": "d3939ecea16b6eb069396b4dfa585f62dc49f5dcbdac7e4d790519ebdca0ef18",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 859,
+                "extracted_frames": 859,
+                "scene_graphs": 859
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "r2llOyS-BmE": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "r2llOyS-BmE",
+            "graphs": 863,
+            "nodes": 3833,
+            "edges": 16244,
+            "supervised_persons": 2036,
+            "annotation_only_persons": 74,
+            "action_rows": 5833,
+            "bytes": 8140684,
+            "sha256": "0c0313cd2b8c232b073048bb5b381c0aafb58464ce4b06e8399d61ef85d1938d",
+            "provenance": {
+              "source_media_filename": "r2llOyS-BmE.mkv",
+              "source_media_bytes": 641895716,
+              "source_media_sha256": "aa0bce8d9ee619e12f2b6225ffead05dccab9e8a95892932444ab23a22e716a0",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 863,
+                "extracted_frames": 863,
+                "scene_graphs": 863
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "Ma2hgTmveKQ": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "r2llOyS-BmE": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 21,
+      "requested_video_ids": [
+        "phrYEKv0rmw",
+        "UOyyTUX5Vo4"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25918189568,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 17328254976,
+        "estimated_batch_bytes": 2150740033,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "phrYEKv0rmw": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0021/videos/phrYEKv0rmw.mkv",
+          "bytes": 696881672,
+          "inventory_bytes": 696881672,
+          "inventory_size_matches": true,
+          "sha256": "83dbf21469c39bfa9a38d1c9a3bbae68c1ead21152491fe5e88ba4ba435b794e",
+          "downloader": "resumable_curl"
+        },
+        "UOyyTUX5Vo4": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0021/videos/UOyyTUX5Vo4.mkv",
+          "bytes": 706482782,
+          "inventory_bytes": 706482782,
+          "inventory_size_matches": true,
+          "sha256": "8744784b9b8153b4c0be0475c76204b6af36da1a07616e4b849b009f690a966e",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "phrYEKv0rmw": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "phrYEKv0rmw",
+            "graphs": 856,
+            "nodes": 3265,
+            "edges": 12496,
+            "supervised_persons": 2199,
+            "annotation_only_persons": 118,
+            "action_rows": 6624,
+            "bytes": 6998092,
+            "sha256": "6e518ffc40314bcf45e4d18f4686a3a8b401f43df8228ac6ff9c0a426ef65f71",
+            "provenance": {
+              "source_media_filename": "phrYEKv0rmw.mkv",
+              "source_media_bytes": 696881672,
+              "source_media_sha256": "83dbf21469c39bfa9a38d1c9a3bbae68c1ead21152491fe5e88ba4ba435b794e",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 856,
+                "extracted_frames": 856,
+                "scene_graphs": 856
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "UOyyTUX5Vo4": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "UOyyTUX5Vo4",
+            "graphs": 767,
+            "nodes": 2044,
+            "edges": 5192,
+            "supervised_persons": 1363,
+            "annotation_only_persons": 45,
+            "action_rows": 3411,
+            "bytes": 4500364,
+            "sha256": "cffccb1a2e6a82bb8621287a124925ecde95f065fd6e7fce19d30db68d53e588",
+            "provenance": {
+              "source_media_filename": "UOyyTUX5Vo4.mkv",
+              "source_media_bytes": 706482782,
+              "source_media_sha256": "8744784b9b8153b4c0be0475c76204b6af36da1a07616e4b849b009f690a966e",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 767,
+                "extracted_frames": 767,
+                "scene_graphs": 767
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "phrYEKv0rmw": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "UOyyTUX5Vo4": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 22,
+      "requested_video_ids": [
+        "Vmef_8MY46w",
+        "skiZueh4lfY"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25653153792,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 17063219200,
+        "estimated_batch_bytes": 2216768326,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "Vmef_8MY46w": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0022/videos/Vmef_8MY46w.mkv",
+          "bytes": 729350676,
+          "inventory_bytes": 729350676,
+          "inventory_size_matches": true,
+          "sha256": "01798a580922b4fc557ce18a446015f7884e5589c40f0e6c514425c8f6d62946",
+          "downloader": "resumable_curl"
+        },
+        "skiZueh4lfY": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0022/videos/skiZueh4lfY.mkv",
+          "bytes": 731429685,
+          "inventory_bytes": 731429685,
+          "inventory_size_matches": true,
+          "sha256": "1488b9b20fa0fdcaea605a374c2f96cfc1e422ec9ea130d17145477ac7c831b3",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "Vmef_8MY46w": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "Vmef_8MY46w",
+            "graphs": 816,
+            "nodes": 2495,
+            "edges": 11288,
+            "supervised_persons": 1655,
+            "annotation_only_persons": 28,
+            "action_rows": 4322,
+            "bytes": 5603020,
+            "sha256": "45f3e075de6b9da5232cbaa3d0701c3069681b678088a9288f512e134b711d0e",
+            "provenance": {
+              "source_media_filename": "Vmef_8MY46w.mkv",
+              "source_media_bytes": 729350676,
+              "source_media_sha256": "01798a580922b4fc557ce18a446015f7884e5589c40f0e6c514425c8f6d62946",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 816,
+                "extracted_frames": 816,
+                "scene_graphs": 816
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "skiZueh4lfY": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "skiZueh4lfY",
+            "graphs": 771,
+            "nodes": 2204,
+            "edges": 6906,
+            "supervised_persons": 1067,
+            "annotation_only_persons": 21,
+            "action_rows": 2512,
+            "bytes": 4855692,
+            "sha256": "dfaf1b81686c6ac2abd4521a7234b7a78e37ea9cb506cda38b5a978613d24a67",
+            "provenance": {
+              "source_media_filename": "skiZueh4lfY.mkv",
+              "source_media_bytes": 731429685,
+              "source_media_sha256": "1488b9b20fa0fdcaea605a374c2f96cfc1e422ec9ea130d17145477ac7c831b3",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 787,
+                "extracted_frames": 787,
+                "scene_graphs": 787
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "Vmef_8MY46w": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "skiZueh4lfY": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 23,
+      "requested_video_ids": [
+        "TCmNvNLRWrc",
+        "QCLQYnt3aMo"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25747648512,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 17157713920,
+        "estimated_batch_bytes": 2280100394,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "QCLQYnt3aMo": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0023/videos/QCLQYnt3aMo.webm",
+          "bytes": 760046574,
+          "inventory_bytes": 760046574,
+          "inventory_size_matches": true,
+          "sha256": "de966301165f957c8daa81af123e26e5d332a15890b3798452444c4c76cb70c8",
+          "downloader": "resumable_curl"
+        },
+        "TCmNvNLRWrc": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0023/videos/TCmNvNLRWrc.mkv",
+          "bytes": 755805150,
+          "inventory_bytes": 755805150,
+          "inventory_size_matches": true,
+          "sha256": "21fdbb43081208a9e535119a220e05ddbef85ed15cb1d187b74cb0b00ee35f69",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "QCLQYnt3aMo": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "QCLQYnt3aMo",
+            "graphs": 818,
+            "nodes": 2214,
+            "edges": 5992,
+            "supervised_persons": 1510,
+            "annotation_only_persons": 35,
+            "action_rows": 3785,
+            "bytes": 4877836,
+            "sha256": "4ad1475d2db94ad0b207ef2471485b45722bccaa9f48e4d7a7d6af33fdfa6c0e",
+            "provenance": {
+              "source_media_filename": "QCLQYnt3aMo.webm",
+              "source_media_bytes": 760046574,
+              "source_media_sha256": "de966301165f957c8daa81af123e26e5d332a15890b3798452444c4c76cb70c8",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 826,
+                "extracted_frames": 826,
+                "scene_graphs": 826
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "TCmNvNLRWrc": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "TCmNvNLRWrc",
+            "graphs": 848,
+            "nodes": 3396,
+            "edges": 13302,
+            "supervised_persons": 2185,
+            "annotation_only_persons": 95,
+            "action_rows": 6715,
+            "bytes": 7248652,
+            "sha256": "77a86f98c65297d89b36d1951dce80685bea59216a7273c67507a31457b77b91",
+            "provenance": {
+              "source_media_filename": "TCmNvNLRWrc.mkv",
+              "source_media_bytes": 755805150,
+              "source_media_sha256": "21fdbb43081208a9e535119a220e05ddbef85ed15cb1d187b74cb0b00ee35f69",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 850,
+                "extracted_frames": 850,
+                "scene_graphs": 850
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "QCLQYnt3aMo": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "TCmNvNLRWrc": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 24,
+      "requested_video_ids": [
+        "o4xQ-BEa3Ss",
+        "B1MAUxpKaV8"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25493213184,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 16903278592,
+        "estimated_batch_bytes": 2343784949,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "o4xQ-BEa3Ss": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0024/videos/o4xQ-BEa3Ss.mkv",
+          "bytes": 761622467,
+          "inventory_bytes": 761622467,
+          "inventory_size_matches": true,
+          "sha256": "28e8562c4562534257e61c6f83273e2cf0d0c12228fb427491c441e29ce4e9aa",
+          "downloader": "resumable_curl"
+        },
+        "B1MAUxpKaV8": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0024/videos/B1MAUxpKaV8.mkv",
+          "bytes": 809607131,
+          "inventory_bytes": 809607131,
+          "inventory_size_matches": true,
+          "sha256": "c3ef94d08f047d0e42a5e768e43a927987fc5159a9fbdffd885f122d4712c367",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "o4xQ-BEa3Ss": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "o4xQ-BEa3Ss",
+            "graphs": 810,
+            "nodes": 2401,
+            "edges": 7248,
+            "supervised_persons": 1695,
+            "annotation_only_persons": 56,
+            "action_rows": 4752,
+            "bytes": 5244428,
+            "sha256": "12d1771a6c0cbfa68124c3eb0f5f3de00bbcc82676f21e2f7f91159b38b1b83f",
+            "provenance": {
+              "source_media_filename": "o4xQ-BEa3Ss.mkv",
+              "source_media_bytes": 761622467,
+              "source_media_sha256": "28e8562c4562534257e61c6f83273e2cf0d0c12228fb427491c441e29ce4e9aa",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 811,
+                "extracted_frames": 811,
+                "scene_graphs": 811
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "B1MAUxpKaV8": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "B1MAUxpKaV8",
+            "graphs": 782,
+            "nodes": 2205,
+            "edges": 6746,
+            "supervised_persons": 1535,
+            "annotation_only_persons": 56,
+            "action_rows": 3862,
+            "bytes": 4861324,
+            "sha256": "11a509631dd548b72c1061b5b6cdc26d6b1f002d1926437235ba744bb0bcf227",
+            "provenance": {
+              "source_media_filename": "B1MAUxpKaV8.mkv",
+              "source_media_bytes": 809607131,
+              "source_media_sha256": "c3ef94d08f047d0e42a5e768e43a927987fc5159a9fbdffd885f122d4712c367",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 782,
+                "extracted_frames": 782,
+                "scene_graphs": 782
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "o4xQ-BEa3Ss": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "B1MAUxpKaV8": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 25,
+      "requested_video_ids": [
+        "x-6CtPWVi6E",
+        "iSlDMboCSao"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25419911168,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 16829976576,
+        "estimated_batch_bytes": 2466995737,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "x-6CtPWVi6E": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0025/videos/x-6CtPWVi6E.mkv",
+          "bytes": 814742970,
+          "inventory_bytes": 814742970,
+          "inventory_size_matches": true,
+          "sha256": "b05045c4720eb8d5233af2efd4e2023613503dc78bc28f465dbc67bdbe80f794",
+          "downloader": "resumable_curl"
+        },
+        "iSlDMboCSao": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0025/videos/iSlDMboCSao.mkv",
+          "bytes": 863626444,
+          "inventory_bytes": 863626444,
+          "inventory_size_matches": true,
+          "sha256": "a7fffbb63adf03a299abe4bec7c687accf31e92468f5f6eb8dc1161c19ffd016",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "x-6CtPWVi6E": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "x-6CtPWVi6E",
+            "graphs": 721,
+            "nodes": 1607,
+            "edges": 3432,
+            "supervised_persons": 1168,
+            "annotation_only_persons": 96,
+            "action_rows": 2500,
+            "bytes": 3632652,
+            "sha256": "b10ad6b269ecce8dfd31342f0b88ea85ce89519de5c63d25cdbe0f336b4fbc35",
+            "provenance": {
+              "source_media_filename": "x-6CtPWVi6E.mkv",
+              "source_media_bytes": 814742970,
+              "source_media_sha256": "b05045c4720eb8d5233af2efd4e2023613503dc78bc28f465dbc67bdbe80f794",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 723,
+                "extracted_frames": 723,
+                "scene_graphs": 723
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "iSlDMboCSao": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "iSlDMboCSao",
+            "graphs": 697,
+            "nodes": 1716,
+            "edges": 4368,
+            "supervised_persons": 1270,
+            "annotation_only_persons": 34,
+            "action_rows": 2925,
+            "bytes": 3835724,
+            "sha256": "11e092602b3d213e2e8f04763da8c557e2280a58cb5a4230ec19bcf1b6458552",
+            "provenance": {
+              "source_media_filename": "iSlDMboCSao.mkv",
+              "source_media_bytes": 863626444,
+              "source_media_sha256": "a7fffbb63adf03a299abe4bec7c687accf31e92468f5f6eb8dc1161c19ffd016",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 697,
+                "extracted_frames": 697,
+                "scene_graphs": 697
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "x-6CtPWVi6E": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "iSlDMboCSao": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 26,
+      "requested_video_ids": [
+        "j5jmjhGBW44",
+        "KHHgQ_Pe4cI"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25183490048,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 16593555456,
+        "estimated_batch_bytes": 2558559193,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "j5jmjhGBW44": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0026/videos/j5jmjhGBW44.mkv",
+          "bytes": 872299176,
+          "inventory_bytes": 872299176,
+          "inventory_size_matches": true,
+          "sha256": "11ca021c63c6e5ad238fa8e219f4588ee360004df7e26123412fe268a01abed8",
+          "downloader": "resumable_curl"
+        },
+        "KHHgQ_Pe4cI": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0026/videos/KHHgQ_Pe4cI.mkv",
+          "bytes": 885690634,
+          "inventory_bytes": 885690634,
+          "inventory_size_matches": true,
+          "sha256": "f79bc64894ef48c820c4e4fe99c7aa720207c5744097d1bdf3db921763de689c",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "j5jmjhGBW44": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "j5jmjhGBW44",
+            "graphs": 690,
+            "nodes": 1815,
+            "edges": 5458,
+            "supervised_persons": 1195,
+            "annotation_only_persons": 62,
+            "action_rows": 2657,
+            "bytes": 4047116,
+            "sha256": "49b445b9ce292294c3ac47c09e78cdbdaac7d3bc4e6f10cb8829a714c19204fa",
+            "provenance": {
+              "source_media_filename": "j5jmjhGBW44.mkv",
+              "source_media_bytes": 872299176,
+              "source_media_sha256": "11ca021c63c6e5ad238fa8e219f4588ee360004df7e26123412fe268a01abed8",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 696,
+                "extracted_frames": 696,
+                "scene_graphs": 696
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "KHHgQ_Pe4cI": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "KHHgQ_Pe4cI",
+            "graphs": 823,
+            "nodes": 1765,
+            "edges": 3548,
+            "supervised_persons": 1252,
+            "annotation_only_persons": 26,
+            "action_rows": 3089,
+            "bytes": 4010700,
+            "sha256": "d588eb8946c7545acf8120ba0055ff712cca54e89cfa4c4cd40f3e25db57e191",
+            "provenance": {
+              "source_media_filename": "KHHgQ_Pe4cI.mkv",
+              "source_media_bytes": 885690634,
+              "source_media_sha256": "f79bc64894ef48c820c4e4fe99c7aa720207c5744097d1bdf3db921763de689c",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 826,
+                "extracted_frames": 826,
+                "scene_graphs": 826
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "j5jmjhGBW44": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "KHHgQ_Pe4cI": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 27,
+      "requested_video_ids": [
+        "Hi8QeP_VPu0",
+        "2fwni_Kjf2M"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 25172504576,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 16582569984,
+        "estimated_batch_bytes": 2657645818,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "Hi8QeP_VPu0": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0027/videos/Hi8QeP_VPu0.mkv",
+          "bytes": 886888847,
+          "inventory_bytes": 886888847,
+          "inventory_size_matches": true,
+          "sha256": "7c50de2e8e91f606315bb9eff664a58f3cd131eca4463eff703255928b1dbaf3",
+          "downloader": "resumable_curl"
+        },
+        "2fwni_Kjf2M": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0027/videos/2fwni_Kjf2M.mkv",
+          "bytes": 957263246,
+          "inventory_bytes": 957263246,
+          "inventory_size_matches": true,
+          "sha256": "c1d6feb413286ae64cdcf98720168bdc3a29bcc72f54211d4e6286c34a538768",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "Hi8QeP_VPu0": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "Hi8QeP_VPu0",
+            "graphs": 822,
+            "nodes": 2231,
+            "edges": 6066,
+            "supervised_persons": 1528,
+            "annotation_only_persons": 12,
+            "action_rows": 4570,
+            "bytes": 4914380,
+            "sha256": "01c71d9b65a26de8496f5505e079baf802d227364b8f5f8347916b1057ad3906",
+            "provenance": {
+              "source_media_filename": "Hi8QeP_VPu0.mkv",
+              "source_media_bytes": 886888847,
+              "source_media_sha256": "7c50de2e8e91f606315bb9eff664a58f3cd131eca4463eff703255928b1dbaf3",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 823,
+                "extracted_frames": 823,
+                "scene_graphs": 823
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "2fwni_Kjf2M": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "2fwni_Kjf2M",
+            "graphs": 769,
+            "nodes": 1937,
+            "edges": 4490,
+            "supervised_persons": 1134,
+            "annotation_only_persons": 16,
+            "action_rows": 2742,
+            "bytes": 4288588,
+            "sha256": "37ee9b022ead022d4ff111e417a91aae4d11efa96185a5af7cde6cfb8e2ce4ca",
+            "provenance": {
+              "source_media_filename": "2fwni_Kjf2M.mkv",
+              "source_media_bytes": 957263246,
+              "source_media_sha256": "c1d6feb413286ae64cdcf98720168bdc3a29bcc72f54211d4e6286c34a538768",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 769,
+                "extracted_frames": 769,
+                "scene_graphs": 769
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "Hi8QeP_VPu0": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "2fwni_Kjf2M": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 28,
+      "requested_video_ids": [
+        "7YpF6DntOYw",
+        "tt0t_a1EDCE"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 24887611392,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 16297676800,
+        "estimated_batch_bytes": 3734004275,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "7YpF6DntOYw": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0028/videos/7YpF6DntOYw.mkv",
+          "bytes": 1176993633,
+          "inventory_bytes": 1176993633,
+          "inventory_size_matches": true,
+          "sha256": "b1261c9fc9bc7f22496598fec6ce5be75e4df622de369ec579c9d037cc0195a9",
+          "downloader": "resumable_curl"
+        },
+        "tt0t_a1EDCE": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0028/videos/tt0t_a1EDCE.mkv",
+          "bytes": 1603122336,
+          "inventory_bytes": 1603122336,
+          "inventory_size_matches": true,
+          "sha256": "ded0bdd9c9c9bc873e50e6ba998ebc73b8e32fcd0052650e30a6fc4a423a9310",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "7YpF6DntOYw": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "7YpF6DntOYw",
+            "graphs": 788,
+            "nodes": 2466,
+            "edges": 7610,
+            "supervised_persons": 1564,
+            "annotation_only_persons": 52,
+            "action_rows": 3365,
+            "bytes": 5347980,
+            "sha256": "ec24badf82bc39736af39634f9ef77f2e09c57056205a4d651c5b38f1619e535",
+            "provenance": {
+              "source_media_filename": "7YpF6DntOYw.mkv",
+              "source_media_bytes": 1176993633,
+              "source_media_sha256": "b1261c9fc9bc7f22496598fec6ce5be75e4df622de369ec579c9d037cc0195a9",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 791,
+                "extracted_frames": 791,
+                "scene_graphs": 791
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "tt0t_a1EDCE": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "tt0t_a1EDCE",
+            "graphs": 672,
+            "nodes": 1855,
+            "edges": 5916,
+            "supervised_persons": 1218,
+            "annotation_only_persons": 20,
+            "action_rows": 2912,
+            "bytes": 4117580,
+            "sha256": "0f42bff09b3020c36567cb6ef5546f2f7eefe194c9257b10c7377f8451c64a30",
+            "provenance": {
+              "source_media_filename": "tt0t_a1EDCE.mkv",
+              "source_media_bytes": 1603122336,
+              "source_media_sha256": "ded0bdd9c9c9bc873e50e6ba998ebc73b8e32fcd0052650e30a6fc4a423a9310",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 674,
+                "extracted_frames": 674,
+                "scene_graphs": 674
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "7YpF6DntOYw": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "tt0t_a1EDCE": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 29,
+      "requested_video_ids": [
+        "GozLjpMNADg",
+        "AYebXQ8eUkM"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 24752021504,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 16162086912,
+        "estimated_batch_bytes": 5004677838,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "GozLjpMNADg": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0029/videos/GozLjpMNADg.mkv",
+          "bytes": 1834818730,
+          "inventory_bytes": 1834818730,
+          "inventory_size_matches": true,
+          "sha256": "8a86897ea2693e30210ebd95365adc5df4a7c7266e2fe55a3f2b2151b656a0a1",
+          "downloader": "resumable_curl"
+        },
+        "AYebXQ8eUkM": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0029/videos/AYebXQ8eUkM.mkv",
+          "bytes": 2050230772,
+          "inventory_bytes": 2050230772,
+          "inventory_size_matches": true,
+          "sha256": "861811860420f790141a6b7bd57a6c439bf9534432b58895778b257ed39c582d",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "GozLjpMNADg": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "GozLjpMNADg",
+            "graphs": 746,
+            "nodes": 2650,
+            "edges": 11640,
+            "supervised_persons": 1808,
+            "annotation_only_persons": 108,
+            "action_rows": 5237,
+            "bytes": 5807180,
+            "sha256": "a669d29df158a139a842963fabc333f66191d0ef6b3bbe2024a1df33ec6047b9",
+            "provenance": {
+              "source_media_filename": "GozLjpMNADg.mkv",
+              "source_media_bytes": 1834818730,
+              "source_media_sha256": "8a86897ea2693e30210ebd95365adc5df4a7c7266e2fe55a3f2b2151b656a0a1",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 746,
+                "extracted_frames": 746,
+                "scene_graphs": 746
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "AYebXQ8eUkM": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "AYebXQ8eUkM",
+            "graphs": 834,
+            "nodes": 2306,
+            "edges": 8880,
+            "supervised_persons": 1614,
+            "annotation_only_persons": 17,
+            "action_rows": 3774,
+            "bytes": 5188236,
+            "sha256": "3f7d665c2433e7dab502bc05892003df42c3d214f44d597c529b515f370fceea",
+            "provenance": {
+              "source_media_filename": "AYebXQ8eUkM.mkv",
+              "source_media_bytes": 2050230772,
+              "source_media_sha256": "861811860420f790141a6b7bd57a6c439bf9534432b58895778b257ed39c582d",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 834,
+                "extracted_frames": 834,
+                "scene_graphs": 834
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "GozLjpMNADg": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "AYebXQ8eUkM": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 30,
+      "requested_video_ids": [
+        "9F2voT6QWvQ",
+        "xmqSaQPzL1E"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 26952794112,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18362859520,
+        "estimated_batch_bytes": 7045974787,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "9F2voT6QWvQ": {
+          "status": "failed",
+          "path": "data/temp/ava_shard_scale100/batch_0030/videos/9F2voT6QWvQ.mkv",
+          "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+          "partial_bytes": 0,
+          "curl_error": "curl: (56) Recv failure: Connection was reset\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com",
+          "downloader": "python_stream_fallback_after_curl"
+        },
+        "xmqSaQPzL1E": {
+          "status": "failed",
+          "path": "data/temp/ava_shard_scale100/batch_0030/videos/xmqSaQPzL1E.mkv",
+          "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>",
+          "partial_bytes": 0,
+          "curl_error": "curl: (56) Recv failure: Connection was reset\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com\ncurl: (6) Could not resolve host: s3.amazonaws.com",
+          "downloader": "python_stream_fallback_after_curl"
+        }
+      },
+      "features": {},
+      "cleanup": {},
+      "dns_failed_video_ids": [
+        "9F2voT6QWvQ",
+        "xmqSaQPzL1E"
+      ]
+    },
+    {
+      "batch": 31,
+      "requested_video_ids": [
+        "9F2voT6QWvQ",
+        "xmqSaQPzL1E"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 26819604480,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 18229669888,
+        "estimated_batch_bytes": 7045974787,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "9F2voT6QWvQ": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0031/videos/9F2voT6QWvQ.mkv",
+          "bytes": 2161506497,
+          "inventory_bytes": 2161506497,
+          "inventory_size_matches": true,
+          "sha256": "dd0737dcb8713de1a2ea30b0dde4784e0df828c0585cbbc7e8f65287805c2da1",
+          "downloader": "resumable_curl"
+        },
+        "xmqSaQPzL1E": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0031/videos/xmqSaQPzL1E.mkv",
+          "bytes": 3498583830,
+          "inventory_bytes": 3498583830,
+          "inventory_size_matches": true,
+          "sha256": "7332e9ab02179f1f4e396ce1ec424dd1eabe7499c7f16530dd74aa1523c673e4",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "9F2voT6QWvQ": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "9F2voT6QWvQ",
+            "graphs": 827,
+            "nodes": 3542,
+            "edges": 17752,
+            "supervised_persons": 2090,
+            "annotation_only_persons": 56,
+            "action_rows": 4155,
+            "bytes": 7685708,
+            "sha256": "1ea7af772659d3111123f3ca8438a813c7d2ef4a822a61011da4c74c29c5b708",
+            "provenance": {
+              "source_media_filename": "9F2voT6QWvQ.mkv",
+              "source_media_bytes": 2161506497,
+              "source_media_sha256": "dd0737dcb8713de1a2ea30b0dde4784e0df828c0585cbbc7e8f65287805c2da1",
+              "annotation_split": "validation",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "val",
+                "requested_timestamps": 827,
+                "extracted_frames": 827,
+                "scene_graphs": 827
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "xmqSaQPzL1E": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "xmqSaQPzL1E",
+            "graphs": 839,
+            "nodes": 1763,
+            "edges": 3562,
+            "supervised_persons": 1511,
+            "annotation_only_persons": 43,
+            "action_rows": 3997,
+            "bytes": 4024780,
+            "sha256": "54840cf606f00c28c6a0a71fe4daf493a3adf06a265e8080405594fb7325080e",
+            "provenance": {
+              "source_media_filename": "xmqSaQPzL1E.mkv",
+              "source_media_bytes": 3498583830,
+              "source_media_sha256": "7332e9ab02179f1f4e396ce1ec424dd1eabe7499c7f16530dd74aa1523c673e4",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 839,
+                "extracted_frames": 839,
+                "scene_graphs": 839
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "9F2voT6QWvQ": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        },
+        "xmqSaQPzL1E": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    },
+    {
+      "batch": 32,
+      "requested_video_ids": [
+        "sUVhd0YTKgw"
+      ],
+      "storage": {
+        "free_bytes_before_batch": 26123587584,
+        "minimum_free_bytes": 8589934592,
+        "master_rebuild_reserve_bytes": 0,
+        "usable_batch_bytes": 17533652992,
+        "estimated_batch_bytes": 4539457872,
+        "within_class_aware_pool_order": "smallest_source_media_first",
+        "skipped_candidates": []
+      },
+      "downloads": {
+        "sUVhd0YTKgw": {
+          "status": "downloaded",
+          "path": "data/temp/ava_shard_scale100/batch_0032/videos/sUVhd0YTKgw.mkv",
+          "bytes": 3713932536,
+          "inventory_bytes": 3713932536,
+          "inventory_size_matches": true,
+          "sha256": "d147d5aaec567c1d35dd4f9ed38bb1bf90f950645a672a1207a1a6ddc6de8bc7",
+          "downloader": "resumable_curl"
+        }
+      },
+      "features": {
+        "sUVhd0YTKgw": {
+          "status": "validated",
+          "shard": {
+            "schema_version": "ava80-slim-shard-v1",
+            "video_id": "sUVhd0YTKgw",
+            "graphs": 812,
+            "nodes": 2589,
+            "edges": 11328,
+            "supervised_persons": 1758,
+            "annotation_only_persons": 114,
+            "action_rows": 4209,
+            "bytes": 5758668,
+            "sha256": "7f3bbcdf69fe7c13f0da0f8ce9bdfc975ce25522511a771b74c646e47cdecc81",
+            "provenance": {
+              "source_media_filename": "sUVhd0YTKgw.mkv",
+              "source_media_bytes": 3713932536,
+              "source_media_sha256": "d147d5aaec567c1d35dd4f9ed38bb1bf90f950645a672a1207a1a6ddc6de8bc7",
+              "annotation_split": "train",
+              "annotation_paths": [
+                "data/ava/annotations/ava_train_v2.2.csv",
+                "data/ava/annotations/ava_val_v2.2.csv"
+              ],
+              "annotation_sha256": {
+                "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+                "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+              },
+              "timestamps": {
+                "split": "train",
+                "requested_timestamps": 813,
+                "extracted_frames": 813,
+                "scene_graphs": 813
+              },
+              "yolo_model": "yolov8n.pt",
+              "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+              "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+              "temporal_context_seconds": [
+                -1.0,
+                0.0,
+                1.0
+              ]
+            }
+          }
+        }
+      },
+      "cleanup": {
+        "sUVhd0YTKgw": {
+          "raw_media_deleted_after_validation": true,
+          "frames_deleted_after_validation": true
+        }
+      },
+      "temporary_batch_deleted_after_master_validation": true
+    }
+  ],
+  "baseline_video_ids": [],
+  "transient_failure_video_ids": [],
+  "completed_video_count": 100,
+  "selected_video_history": [
+    "_dBTTYDRdRQ",
+    "CMCPhm2L400",
+    "-5KQ66BBWC4",
+    "aMYcLyh9OhU",
+    "tghXjom3120",
+    "gjasEUDkbuc",
+    "OfMdakd4bHI",
+    "IzvOYVMltkI",
+    "2qQs3Y9OJX0",
+    "9Y_l9NsnYE0",
+    "NEQ7Wpf-EtI",
+    "PcFEhUKhN6g",
+    "UgZFdrNT6W0",
+    "lT1zdTL-3SM",
+    "fNcxxBjEOgw",
+    "5LrOQEt_XVM",
+    "yvgCGJ6vfkY",
+    "U_WzY2k8IBM",
+    "oWhvucAskhk",
+    "UOfuzrwkclM",
+    "J1jDc2rTJlg",
+    "yn9WN9lsHRE",
+    "xp67EC-Hvwk",
+    "rXFlJbXyZyc",
+    "bAVXp1oGjHA",
+    "rk8Xm0EAOWs",
+    "1ReZIMmD_8E",
+    "KWoSGtglCms",
+    "OGNnUvJq9RI",
+    "KVq6If6ozMY",
+    "T26G6_AjJZ4",
+    "HKjR70GCRPE",
+    "_Ca3gOdOHxU",
+    "IKdBLciu_-A",
+    "pieVIsGmLsc",
+    "oD_wxyTHJ2I",
+    "8JSxLhDMGtE",
+    "WlgxRNCHQzw",
+    "r2llOyS-BmE",
+    "Ma2hgTmveKQ",
+    "phrYEKv0rmw",
+    "UOyyTUX5Vo4",
+    "Vmef_8MY46w",
+    "skiZueh4lfY",
+    "TCmNvNLRWrc",
+    "QCLQYnt3aMo",
+    "o4xQ-BEa3Ss",
+    "B1MAUxpKaV8",
+    "x-6CtPWVi6E",
+    "iSlDMboCSao",
+    "j5jmjhGBW44",
+    "KHHgQ_Pe4cI",
+    "Hi8QeP_VPu0",
+    "2fwni_Kjf2M",
+    "7YpF6DntOYw",
+    "tt0t_a1EDCE",
+    "GozLjpMNADg",
+    "AYebXQ8eUkM",
+    "9F2voT6QWvQ",
+    "xmqSaQPzL1E",
+    "9F2voT6QWvQ",
+    "xmqSaQPzL1E",
+    "sUVhd0YTKgw"
+  ],
+  "target_reached": true,
+  "final_action_coverage": {
+    "actions_present": 0,
+    "actions_at_or_above_target_support": 0
+  }
+}

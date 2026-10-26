@@ -1,0 +1,185 @@
+{
+  "schema_version": "ava80-evaluation-only-shards-v1",
+  "requested_video_ids": [
+    "2PpxiG0WU18",
+    "NO2esmws190",
+    "uNT6HrrnqPU"
+  ],
+  "already_completed": [],
+  "downloads": {
+    "2PpxiG0WU18": {
+      "status": "downloaded",
+      "path": "data/temp/ava_eval_shards/batch_0001/videos/2PpxiG0WU18.mkv",
+      "bytes": 194844910,
+      "inventory_bytes": 194844910,
+      "inventory_size_matches": true,
+      "sha256": "87d06ec90b2903bd534b4fdbab79934b3f32ead5dd2229c7f0a6fb76e20dd1b8",
+      "downloader": "resumable_curl"
+    },
+    "NO2esmws190": {
+      "status": "downloaded",
+      "path": "data/temp/ava_eval_shards/batch_0001/videos/NO2esmws190.mkv",
+      "bytes": 437553409,
+      "inventory_bytes": 437553409,
+      "inventory_size_matches": true,
+      "sha256": "e043d9c6ea675260860c7360735459f8cdfc70f91e66be0103d7717e62556ed8",
+      "downloader": "resumable_curl"
+    },
+    "uNT6HrrnqPU": {
+      "status": "downloaded",
+      "path": "data/temp/ava_eval_shards/batch_0001/videos/uNT6HrrnqPU.webm",
+      "bytes": 678749777,
+      "inventory_bytes": 678749777,
+      "inventory_size_matches": true,
+      "sha256": "e1063397ef8cd185cd5fa803b2135c5d1fab154ee8214dee8aa520bf68ca58b8",
+      "downloader": "resumable_curl"
+    }
+  },
+  "features": {
+    "2PpxiG0WU18": {
+      "status": "validated",
+      "shard": {
+        "schema_version": "ava80-slim-shard-v1",
+        "video_id": "2PpxiG0WU18",
+        "graphs": 727,
+        "nodes": 1269,
+        "edges": 1618,
+        "supervised_persons": 1079,
+        "annotation_only_persons": 42,
+        "action_rows": 2394,
+        "bytes": 2983308,
+        "sha256": "296a865d9274d59cedef59b637bf430dc8a3962a9c90d65aae7edee569f2d6c0",
+        "provenance": {
+          "source_media_filename": "2PpxiG0WU18.mkv",
+          "source_media_bytes": 194844910,
+          "source_media_sha256": "87d06ec90b2903bd534b4fdbab79934b3f32ead5dd2229c7f0a6fb76e20dd1b8",
+          "annotation_split": "validation",
+          "annotation_paths": [
+            "data/ava/annotations/ava_train_v2.2.csv",
+            "data/ava/annotations/ava_val_v2.2.csv"
+          ],
+          "annotation_sha256": {
+            "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+            "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+          },
+          "timestamps": {
+            "split": "val",
+            "requested_timestamps": 734,
+            "extracted_frames": 734,
+            "scene_graphs": 734
+          },
+          "yolo_model": "yolov8n.pt",
+          "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+          "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+          "temporal_context_seconds": [
+            -1.0,
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "NO2esmws190": {
+      "status": "validated",
+      "shard": {
+        "schema_version": "ava80-slim-shard-v1",
+        "video_id": "NO2esmws190",
+        "graphs": 833,
+        "nodes": 3052,
+        "edges": 16070,
+        "supervised_persons": 2084,
+        "annotation_only_persons": 98,
+        "action_rows": 5338,
+        "bytes": 6787084,
+        "sha256": "08807031b3598071624982852e36a95da6d59f26e585e774ace28467c2f21fcf",
+        "provenance": {
+          "source_media_filename": "NO2esmws190.mkv",
+          "source_media_bytes": 437553409,
+          "source_media_sha256": "e043d9c6ea675260860c7360735459f8cdfc70f91e66be0103d7717e62556ed8",
+          "annotation_split": "validation",
+          "annotation_paths": [
+            "data/ava/annotations/ava_train_v2.2.csv",
+            "data/ava/annotations/ava_val_v2.2.csv"
+          ],
+          "annotation_sha256": {
+            "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+            "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+          },
+          "timestamps": {
+            "split": "val",
+            "requested_timestamps": 834,
+            "extracted_frames": 834,
+            "scene_graphs": 834
+          },
+          "yolo_model": "yolov8n.pt",
+          "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+          "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+          "temporal_context_seconds": [
+            -1.0,
+            0.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "uNT6HrrnqPU": {
+      "status": "validated",
+      "shard": {
+        "schema_version": "ava80-slim-shard-v1",
+        "video_id": "uNT6HrrnqPU",
+        "graphs": 786,
+        "nodes": 3201,
+        "edges": 18404,
+        "supervised_persons": 2022,
+        "annotation_only_persons": 90,
+        "action_rows": 5106,
+        "bytes": 7100684,
+        "sha256": "22627cfed4de6324fda2f0f5b62f56ef82f05a646e0b436432b84be0153f1dda",
+        "provenance": {
+          "source_media_filename": "uNT6HrrnqPU.webm",
+          "source_media_bytes": 678749777,
+          "source_media_sha256": "e1063397ef8cd185cd5fa803b2135c5d1fab154ee8214dee8aa520bf68ca58b8",
+          "annotation_split": "validation",
+          "annotation_paths": [
+            "data/ava/annotations/ava_train_v2.2.csv",
+            "data/ava/annotations/ava_val_v2.2.csv"
+          ],
+          "annotation_sha256": {
+            "data/ava/annotations/ava_train_v2.2.csv": "a578c2983dcc7383cf6adb875c371079d8423bea243ad15a973ed8745019ae22",
+            "data/ava/annotations/ava_val_v2.2.csv": "22bf70e789d919180d0f437bbe8ae1d98f3951d2e765ccde60c1b92f9d8826ab"
+          },
+          "timestamps": {
+            "split": "val",
+            "requested_timestamps": 787,
+            "extracted_frames": 787,
+            "scene_graphs": 787
+          },
+          "yolo_model": "yolov8n.pt",
+          "visual_backbone": "torchvision-resnet18-imagenet1k-v1",
+          "temporal_clip_encoder": "frozen-resnet18-short-clip-pool-v1",
+          "temporal_context_seconds": [
+            -1.0,
+            0.0,
+            1.0
+          ]
+        }
+      }
+    }
+  },
+  "storage": {
+    "free_bytes_before_batch": 27739070464,
+    "minimum_free_bytes": 8589934592,
+    "master_rebuild_reserve_bytes": 0,
+    "usable_batch_bytes": 19149135872,
+    "estimated_batch_bytes": 2313126677,
+    "within_class_aware_pool_order": "smallest_source_media_first",
+    "skipped_candidates": []
+  },
+  "completed_video_ids": [
+    "2PpxiG0WU18",
+    "NO2esmws190",
+    "uNT6HrrnqPU"
+  ],
+  "seconds": 511.1,
+  "temporary_batch_deleted": true
+}
