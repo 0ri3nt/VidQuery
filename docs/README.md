@@ -45,6 +45,7 @@ Start with the [project README](../README.md), then [SETUP.md](SETUP.md).
 | [EVALUATION_CHARADES_STA.md](EVALUATION_CHARADES_STA.md) | Charades-STA + NA-VMR temporal localization and answerability benchmark (separate from AVA) |
 | [INTEGRATED_EVALUATION_2026-10-26.md](INTEGRATED_EVALUATION_2026-10-26.md) | Charades-STA/NA-VMR with AVA v8, VidOR v4, deterministic Whisper: full-rebuild ablations and paired CIs |
 | [QUERY_QUALITY_AUDIT_2026-10-26.md](QUERY_QUALITY_AUDIT_2026-10-26.md) | YOLO detector comparison, Groq answer and planner checks, retrieval/verdict bugs with measured fixes (none applied) |
+| [QUERY_QUALITY_FIXES_2026-10-27.md](QUERY_QUALITY_FIXES_2026-10-27.md) | fixes for the audited issues: parsing, Groq answer checks and fallback notices, opt-in verdict fix and speech filter, YOLOv8s validation; before/after numbers and rollback |
 | [PROGRESS_2026-10-25.md](PROGRESS_2026-10-25.md) | work log, measured results, and approval gates for pending expansions |
 | [EXPERIMENTS_2026-10-26.md](EXPERIMENTS_2026-10-26.md) | deterministic Whisper, AVA 24->94 and VidOR 400->1,900 training-video experiments with paired CIs |
 | [AUDIT_2026-10.md](AUDIT_2026-10.md) | codebase, dataset-coverage, hardware, feasibility, and cost audit |

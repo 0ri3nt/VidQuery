@@ -189,10 +189,24 @@ class QueryPlanningService:
                 payload=self._request_payload(query),
                 timeout=self.timeout,
             )
+        except Exception as exc:
+            LOGGER.warning(
+                "Constrained query planning unavailable (%s: %s); using the local parser",
+                type(exc).__name__,
+                exc,
+            )
+            # Not cached: once the provider recovers (for example after a rate-limit
+            # window), the same query is planned by it again.
+            return self._restatus(fallback, "fallback_provider_unavailable")
+        try:
             provider = self._parse_provider_plan(envelope)
             planned = self._validated_plan(provider)
         except Exception as exc:
-            LOGGER.warning("Constrained query planning unavailable: %s", type(exc).__name__)
+            LOGGER.warning(
+                "Constrained query plan rejected (%s: %s); using the local parser",
+                type(exc).__name__,
+                exc,
+            )
             return finish(self._restatus(fallback, "fallback_provider_unavailable"))
 
         if provider.confidence < self.min_confidence:

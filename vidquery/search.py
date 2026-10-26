@@ -34,6 +34,7 @@ from .relationships import (
 from .reliability import (
     DEFAULT_SUPPORTED_THRESHOLD,
     DEFAULT_WEAK_THRESHOLD,
+    UNMATCHED_CONSTRAINT,
     RawContribution,
     assess_evidence,
     load_reliability_priors,
@@ -332,6 +333,93 @@ STOPWORDS = {
     "anyone",
     "everyone",
     "doing",
+    # Pronouns, prepositions, auxiliaries and aspect fillers. Without these,
+    # "he walks into the room" searched transcripts for "he" and "into"
+    # (82% of Charades validation queries had such spoken terms).
+    "its",
+    "s",  # possessive/contraction remainder: "person's", "it's"
+    "their",
+    "theirs",
+    "into",
+    "he",
+    "she",
+    "his",
+    "her",
+    "hers",
+    "him",
+    "them",
+    "we",
+    "us",
+    "our",
+    "your",
+    "some",
+    "any",
+    "out",
+    "off",
+    "through",
+    "up",
+    "down",
+    "by",
+    "over",
+    "under",
+    "onto",
+    "upon",
+    "this",
+    "these",
+    "those",
+    "then",
+    "than",
+    "who",
+    "whom",
+    "what",
+    "which",
+    "here",
+    "first",
+    "again",
+    "also",
+    "just",
+    "very",
+    "has",
+    "have",
+    "had",
+    "having",
+    "been",
+    "being",
+    "were",
+    "will",
+    "would",
+    "could",
+    "should",
+    "as",
+    "if",
+    "so",
+    "or",
+    "but",
+    "not",
+    "after",
+    "before",
+    "around",
+    "across",
+    "toward",
+    "towards",
+    "away",
+    "back",
+    "all",
+    "both",
+    "himself",
+    "herself",
+    "themselves",
+    "itself",
+    "start",
+    "starts",
+    "started",
+    "starting",
+    "begin",
+    "begins",
+    "began",
+    "beginning",
+    "continues",
+    "continue",
 }
 
 SPEECH_CUE_PATTERN = re.compile(
@@ -1054,6 +1142,7 @@ class LocalHybridSearchEngine:
         phonetic_match: bool = False,
         phonetic_threshold: float = DEFAULT_PHONETIC_THRESHOLD,
         soft_constraints: bool = False,
+        count_unmatched_constraints: bool = False,
         frame_semantic_index: Any | None = None,
         frame_semantic_weight: float = 1.0,
         frame_semantic_floor: float = 0.18,
@@ -1079,6 +1168,9 @@ class LocalHybridSearchEngine:
         # Soft constraints: a segment missing a parsed entity/action/relation is
         # down-weighted (partial match) instead of discarded.
         self.soft_constraints = soft_constraints
+        # Under soft constraints, each missing parsed entity/action/relation
+        # adds zero evidence to the verdict instead of being ignored by it.
+        self.count_unmatched_constraints = count_unmatched_constraints
         # Optional frame-level OpenCLIP text-to-visual evidence (FrameSemanticIndex).
         self.frame_semantic_index = frame_semantic_index
         if frame_semantic_ceiling <= frame_semantic_floor or frame_semantic_weight < 0:
@@ -1331,6 +1423,7 @@ class LocalHybridSearchEngine:
         appearance_match_evidence: list[AppearanceMatchEvidence] = []
         rejected = ScoredEvidence(0.0, [], [], [], [])
         phonetic_surface_terms: list[str] = []
+        unmatched_contributions: list[RawContribution] = []
         encoder_source = (
             self.encoder.model_name if self.encoder.is_semantic else "hashing_embedding"
         )
@@ -1476,6 +1569,10 @@ class LocalHybridSearchEngine:
             contributions.append(
                 RawContribution("entity", detector_confidence, "yolo_detection")
             )
+            unmatched_contributions.extend(
+                RawContribution("entity", 0.0, UNMATCHED_CONSTRAINT)
+                for _ in range(len(plan.visual_entities) - len(matched))
+            )
 
         if plan.actions:
             action_set = {item.lower() for item in segment.actions}
@@ -1511,6 +1608,10 @@ class LocalHybridSearchEngine:
                         str(action_sources.get(action, "unknown")),
                     )
                 )
+            unmatched_contributions.extend(
+                RawContribution("action", 0.0, UNMATCHED_CONSTRAINT)
+                for _ in range(len(plan.actions) - len(matched))
+            )
 
         if plan.relationship_tuples:
             confidences: list[float] = []
@@ -1522,6 +1623,9 @@ class LocalHybridSearchEngine:
                     if not self.soft_constraints:
                         return rejected
                     confidences.append(0.0)
+                    unmatched_contributions.append(
+                        RawContribution("relationship", 0.0, UNMATCHED_CONSTRAINT)
+                    )
                     continue
                 best = matches[0]
                 confidences.append(best.confidence)
@@ -1553,6 +1657,10 @@ class LocalHybridSearchEngine:
                     len(matched) / len(plan.relationships),
                     f"relationships {'/'.join(matched)}" if matched else "",
                 )
+            )
+            unmatched_contributions.extend(
+                RawContribution("relationship", 0.0, UNMATCHED_CONSTRAINT)
+                for _ in range(len(plan.relationships) - len(matched))
             )
             for predicate in matched:
                 best_relationship = max(
@@ -1627,6 +1735,8 @@ class LocalHybridSearchEngine:
         total_weight = sum(weight for weight, _, _ in components)
         score = sum(weight * value for weight, value, _ in components) / total_weight
         reasons = [reason for _, value, reason in components if value > 0 and reason]
+        if self.soft_constraints and self.count_unmatched_constraints:
+            contributions.extend(unmatched_contributions)
         return ScoredEvidence(
             score=score,
             reasons=reasons,
@@ -1885,6 +1995,9 @@ def configured_search_engine(
         phonetic_match=bool(getattr(settings, "enable_phonetic_match", False)),
         phonetic_threshold=float(getattr(settings, "phonetic_match_threshold", 0.75)),
         soft_constraints=bool(getattr(settings, "soft_constraint_matching", False)),
+        count_unmatched_constraints=bool(
+            getattr(settings, "unmatched_constraint_evidence", False)
+        ),
         frame_semantic_index=_configured_frame_semantic_index(settings),
         frame_semantic_weight=float(getattr(settings, "frame_semantic_weight", 1.0)),
         frame_semantic_floor=float(getattr(settings, "frame_semantic_floor", 0.18)),

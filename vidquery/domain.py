@@ -394,6 +394,9 @@ class EvidenceAssessment(StrictModel):
     verdict: EvidenceVerdict
     contributions: list[EvidenceContribution] = Field(default_factory=list)
     explanation: str = ""
+    # Set only when unmatched query constraints lowered ``confidence``: the
+    # confidence without them, which ranking keeps using.
+    ranking_confidence: float | None = Field(default=None, ge=0, le=1)
 
 
 class QueryHypothesis(StrictModel):

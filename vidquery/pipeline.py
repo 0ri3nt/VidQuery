@@ -39,6 +39,7 @@ from .segments import (
     build_spatial_relationships,
     resolved_action_relationship,
 )
+from .speech_filter import filter_transcripts
 from .storage import SQLiteRepository
 
 LOGGER = logging.getLogger(__name__)
@@ -330,6 +331,7 @@ class VideoProcessingService:
             speakers = []
             transcription_status = "not_started"
             diarization_status = "not_started"
+            speech_filter_summary: dict[str, object] = {"applied": False}
             audio_path = self.audio_extractor.extract(video, work_dir / "audio.wav")
             if audio_path is None:
                 transcription_status = "no_audio"
@@ -373,6 +375,10 @@ class VideoProcessingService:
                             "Pyannote diarization is required but disabled"
                         )
                 transcripts = assign_speakers(transcripts, speakers)
+                if self.settings.transcript_speech_filter:
+                    transcripts, speech_filter_summary = filter_transcripts(
+                        transcripts, diarization_completed=diarization_status == "completed"
+                    )
 
             stage = "scene relationship generation"
             self.repository.update_state(
@@ -466,6 +472,7 @@ class VideoProcessingService:
                     ),
                     "transcription_status": transcription_status,
                     "transcript_segment_count": len(transcripts),
+                    "transcript_speech_filter": speech_filter_summary,
                     "whisper_inference_used": (
                         self.settings.enable_whisper and transcription_status == "completed"
                     ),

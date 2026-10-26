@@ -18,6 +18,7 @@ the API can abstain instead of returning a confident wrong timestamp.
 from __future__ import annotations
 
 import json
+from collections import Counter
 from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,6 +31,8 @@ from .domain import (
     EvidenceVerdict,
     QueryPlan,
 )
+
+UNMATCHED_CONSTRAINT = "unmatched_constraint"
 
 # Priors are documented design constants derived from the measured results in
 # docs/GNN_STATUS.md and docs/EVALUATION_FINAL.md. They are *not* calibrated
@@ -58,6 +61,9 @@ SOURCE_RELIABILITY: dict[str, float] = {
     "manual_annotation": 1.00,
     "hashing_embedding": 0.35,
     "unknown": 0.50,
+    # A parsed query constraint the segment lacks (UNMATCHED_CONSTRAINT_EVIDENCE).
+    # Its raw score is always 0, so the prior only labels it.
+    UNMATCHED_CONSTRAINT: 1.00,
 }
 
 # How central each modality is to each retrieval intent.
@@ -356,11 +362,20 @@ def assess_evidence(
     weighted: list[EvidenceContribution] = []
     numerator = 0.0
     denominator = 0.0
+    # Ranking keeps the confidence of the evidence that is present.
+    ranking_numerator = 0.0
+    ranking_denominator = 0.0
+    unmatched: list[EvidenceModality] = []
     for item in contributions:
         raw = max(0.0, min(1.0, item.raw_score))
         prior = reliability_prior(item.source_method, priors)
         weight = modality_weight(plan.intent, item.modality)
         value = raw * prior
+        if item.source_method == UNMATCHED_CONSTRAINT:
+            unmatched.append(item.modality)
+        else:
+            ranking_numerator += weight * value
+            ranking_denominator += weight
         numerator += weight * value
         denominator += weight
         weighted.append(
@@ -401,17 +416,33 @@ def assess_evidence(
         if weak_sources:
             names = ", ".join(sorted({item.source_method for item in weak_sources}))
             explanation += f" Low-reliability model output ({names}) is down-weighted."
+    ranking_confidence = None
+    if unmatched:
+        names = ", ".join(f"{count} {modality}" for modality, count in Counter(unmatched).items())
+        explanation += f" Unmatched query constraints ({names}) count as zero evidence."
+        ranking = ranking_numerator / ranking_denominator if ranking_denominator else 0.0
+        ranking_confidence = round(max(0.0, min(1.0, ranking)), 4)
     return EvidenceAssessment(
         confidence=round(confidence, 4),
         verdict=verdict,
         contributions=weighted,
         explanation=explanation,
+        ranking_confidence=ranking_confidence,
     )
 
 
 def reliability_rank_score(score: float, assessment: EvidenceAssessment | None) -> float:
-    """Blend the transparent rank score with fused evidence confidence."""
+    """Blend the transparent rank score with fused evidence confidence.
+
+    Unmatched-constraint evidence lowers the verdict only: ranking uses the
+    confidence of the evidence that is present, so candidate order is unchanged.
+    """
 
     if assessment is None:
         return score
-    return max(0.0, min(1.0, 0.5 * score + 0.5 * assessment.confidence))
+    confidence = (
+        assessment.ranking_confidence
+        if assessment.ranking_confidence is not None
+        else assessment.confidence
+    )
+    return max(0.0, min(1.0, 0.5 * score + 0.5 * confidence))

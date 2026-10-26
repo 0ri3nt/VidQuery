@@ -34,6 +34,9 @@ def settings_factory(tmp_path):
             enable_relation_gnn=False,
             semantic_retrieval_mode="hashing",
             enable_rag_generation=False,
+            # Never reach the real provider from tests: the developer's .env key
+            # would otherwise spend live Groq quota on planner calls.
+            groq_api_key="",
             enable_ocr=False,
             max_upload_size=20 * 1024 * 1024,
             frame_sample_rate=2.0,

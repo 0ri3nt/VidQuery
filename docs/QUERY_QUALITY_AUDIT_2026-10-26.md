@@ -228,6 +228,9 @@ They are indexed as speech with a fixed reliability of 0.90 and feed the sentenc
 
 - **Whisper's own confidence does not separate them:** hallucinations have a *higher* median, 0.41 vs 0.32.
 - **Speaker labels do not separate them either:** every utterance carries one.
+  *Correction (27 Oct):* utterances without diarized speech carry the label `UNKNOWN`, which was
+  counted as a speaker here. 98.8% of the pattern-matched hallucinations are `UNKNOWN`; see
+  [QUERY_QUALITY_FIXES_2026-10-27.md](QUERY_QUALITY_FIXES_2026-10-27.md) §2.
 
 Counterfactual without transcript evidence (an upper bound for a perfect speech-activity gate on clips without speech): P@1 +0.026 [0.000, 0.052], with no change in rejection.
 

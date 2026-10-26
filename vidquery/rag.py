@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -20,6 +21,162 @@ from .domain import (
 
 LOGGER = logging.getLogger(__name__)
 GROQ_CHAT_COMPLETIONS_URL = "https://api.groq.com/openai/v1/chat/completions"
+
+# Claim checks on generated answers (see verify_answer_claims).
+TIME_TOLERANCE_SECONDS = 1.0
+NUMBER_TOLERANCE = 0.011
+_CLOCK = re.compile(r"(?<![\d.:])(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.(\d+))?(?![\d:])")
+_UNIT = r"\s*(?:s|sec|secs|second|seconds)\b"
+_SECONDS_RANGE = re.compile(
+    r"(?<![\d.])(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)?)" + _UNIT, re.I
+)
+_SECONDS = re.compile(r"(?<![\d.])(\d+(?:\.\d+)?)" + _UNIT, re.I)
+_DECIMAL = re.compile(r"(?<![\d.:])(0?\.\d+|1\.0+)(?!\d|\.\d)(?!\s*(?:s|sec|secs|seconds?)\b)")
+_PERCENT = re.compile(r"(?<![\d.])(\d{1,3}(?:\.\d+)?)\s?%")
+_SPEAKER = re.compile(r"\bspeaker[_ ]?(\d+)\b", re.I)
+_QUOTE = re.compile("[\"“”]([^\"“”]{3,})[\"“”]")
+_TRANSCRIPT_CUES = re.compile(r"\b(?:transcript|says?|said|saying|spoken|speech|utters?)\b", re.I)
+_OCR_CUES = re.compile(r"\b(?:ocr|on-screen text|on screen text|written|caption)\b", re.I)
+
+
+def _normalize(text: str) -> str:
+    return " ".join(re.sub(r"[^a-z0-9_ ]+", " ", text.lower()).split())
+
+
+def _mentioned_times(text: str) -> list[float]:
+    times: list[float] = []
+    for match in _CLOCK.finditer(text):
+        first, second, third, fraction = match.groups()
+        if third is None:
+            value = int(first) * 60 + int(second)
+        else:
+            value = int(first) * 3600 + int(second) * 60 + int(third)
+        times.append(value + (float(f"0.{fraction}") if fraction else 0.0))
+    remainder = _CLOCK.sub(" ", text)
+    for match in _SECONDS_RANGE.finditer(remainder):
+        times.extend((float(match.group(1)), float(match.group(2))))
+    remainder = _SECONDS_RANGE.sub(" ", remainder)
+    times.extend(float(match.group(1)) for match in _SECONDS.finditer(remainder))
+    return times
+
+
+def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
+    """Reasons a generated answer's text is not backed by its cited results.
+
+    Checks timestamps, objects, actions, speakers, quoted speech/text,
+    confidence numbers and named evidence sources against the cited results
+    only. An empty list means every checked claim is backed.
+    """
+
+    from .action_lexicon import match_actions
+    from .search import ENTITY_ALIASES, StructuredQueryParser
+
+    reasons: list[str] = []
+    windows = [(item.start_time, item.end_time) for item in cited]
+    bad_times = [
+        value
+        for value in _mentioned_times(text)
+        if not any(
+            start - TIME_TOLERANCE_SECONDS <= value <= end + TIME_TOLERANCE_SECONDS
+            for start, end in windows
+        )
+    ]
+    if bad_times:
+        reasons.append(f"timestamps outside every cited segment: {bad_times}")
+
+    spoken = " ".join(
+        [item.transcript for item in cited]
+        + [ocr.text for item in cited for ocr in item.ocr_evidence]
+    )
+    normalized_spoken = _normalize(spoken)
+    evidence_entities = {entity.lower() for item in cited for entity in item.entities}
+    for item in cited:
+        for relation in item.matched_relationships:
+            evidence_entities.update({relation.source_class.lower(), relation.target_class.lower()})
+        evidence_entities.update(match.entity_class.lower() for match in item.appearance_matches)
+    evidence_entities.update(
+        StructuredQueryParser._extract_aliases(normalized_spoken, ENTITY_ALIASES)
+    )
+    claimed_entities = StructuredQueryParser._extract_aliases(_normalize(text), ENTITY_ALIASES)
+    missing_entities = sorted(set(claimed_entities) - evidence_entities)
+    if missing_entities:
+        reasons.append(f"objects not in the cited evidence: {missing_entities}")
+
+    evidence_actions = {action.lower() for item in cited for action in item.actions}
+    evidence_actions.update(match.label for match in match_actions(normalized_spoken))
+    claimed_actions = {match.label for match in match_actions(_normalize(text))}
+    missing_actions = sorted(claimed_actions - evidence_actions)
+    if missing_actions:
+        reasons.append(f"actions not in the cited evidence: {missing_actions}")
+
+    evidence_speakers = {speaker.upper() for item in cited for speaker in item.speakers}
+    claimed_speakers = {f"SPEAKER_{int(match.group(1)):02d}" for match in _SPEAKER.finditer(text)}
+    if claimed_speakers - evidence_speakers:
+        reasons.append(
+            f"speakers not in the cited evidence: {sorted(claimed_speakers - evidence_speakers)}"
+        )
+
+    misquoted = [
+        quote.strip()
+        for quote in _QUOTE.findall(text)
+        if _normalize(quote) and _normalize(quote) not in normalized_spoken
+    ]
+    if misquoted:
+        reasons.append(f"quotes not found in cited transcripts or on-screen text: {misquoted}")
+
+    known_numbers = [
+        value
+        for item in cited
+        for value in (
+            item.score,
+            item.evidence.confidence if item.evidence is not None else None,
+            item.localization.confidence if item.localization is not None else None,
+            *(relation.confidence for relation in item.matched_relationships),
+        )
+        if value is not None
+    ]
+    claimed_numbers = [float(value) for value in _DECIMAL.findall(text)] + [
+        float(value) / 100 for value in _PERCENT.findall(text)
+    ]
+    unbacked = [
+        value
+        for value in claimed_numbers
+        if not any(abs(value - known) <= NUMBER_TOLERANCE for known in known_numbers)
+    ]
+    if unbacked:
+        reasons.append(f"scores or confidences not in the cited evidence: {unbacked}")
+
+    if _TRANSCRIPT_CUES.search(text) and not any(item.transcript.strip() for item in cited):
+        reasons.append("cites speech but no cited segment has a transcript")
+    if _OCR_CUES.search(text) and not any(item.ocr_evidence for item in cited):
+        reasons.append("cites on-screen text but no cited segment has OCR evidence")
+    return reasons
+
+
+def _clock(seconds: float) -> str:
+    whole = int(max(0.0, seconds))
+    return f"{whole // 60:02d}:{whole % 60:02d}"
+
+
+def weak_evidence_answer(response: SearchResponse, cited: list[SearchResult]) -> str:
+    """Deterministic wording for an answer the system's verdicts do not support."""
+
+    verdicts = sorted({item.evidence.verdict if item.evidence else "unassessed" for item in cited})
+    best = max((item.evidence.confidence for item in cited if item.evidence), default=0.0)
+    moments = "; ".join(
+        f"{item.video_title} {_clock(item.start_time)}-{_clock(item.end_time)}"
+        + (f" (peak {_clock(item.localization.peak_time)})" if item.localization else "")
+        for item in cited[:3]
+    )
+    prefix = (
+        "No retrieved moment has sufficient evidence"
+        if response.interpretation == "insufficient_evidence"
+        else "The retrieved evidence does not confirm this"
+    )
+    return (
+        f"{prefix} (system verdict: {'/'.join(verdicts)}, best confidence {best:.2f}). "
+        f"Closest moments: {moments}."
+    )
 
 
 class RAGProviderError(RuntimeError):
@@ -157,7 +314,7 @@ class GroundedAnswerService:
                     "Content-Type": "application/json",
                     "User-Agent": "VidQuery/0.2 grounded-rag",
                 },
-                payload=self._request_payload(query, evidence),
+                payload=self._request_payload(query, evidence, response.interpretation),
                 timeout=self.timeout,
             )
             generated = self._parse_provider_answer(envelope)
@@ -167,6 +324,9 @@ class GroundedAnswerService:
 
         unique_ids = list(dict.fromkeys(generated.evidence_ids))
         invalid_ids = [item for item in unique_ids if item not in evidence]
+        result_by_id = {
+            f"E{index}": result for index, result in enumerate(eligible, start=1)
+        }
         if invalid_ids or (generated.supported and not unique_ids):
             return RAGOutcome(
                 answer=GroundedAnswer(
@@ -187,13 +347,50 @@ class GroundedAnswerService:
                 status="generated_unsupported",
             )
 
-        result_by_id = {
-            f"E{index}": result for index, result in enumerate(eligible, start=1)
-        }
+        cited = [result_by_id[evidence_id] for evidence_id in unique_ids]
         citations = [
             self._citation(evidence_id, result_by_id[evidence_id])
             for evidence_id in unique_ids
         ]
+        reasons = verify_answer_claims(generated.answer, cited)
+        if reasons:
+            LOGGER.warning("Generated answer rejected: %s", "; ".join(reasons))
+            return RAGOutcome(
+                answer=GroundedAnswer(
+                    answer=(
+                        "The generated answer was rejected because the retrieved evidence "
+                        "does not back it: " + "; ".join(reasons) + "."
+                    ),
+                    supported=False,
+                ),
+                status="rejected_unverified_claims",
+            )
+        # The deterministic verdicts stay authoritative: a generated answer may
+        # only claim support that at least one cited result's verdict gives.
+        # (Results without an assessment carry no verdict to contradict.)
+        assessed = [item for item in cited if item.evidence is not None]
+        if response.interpretation == "insufficient_evidence" or (
+            assessed
+            and not any(
+                item.evidence is not None and item.evidence.verdict == "supported"
+                for item in assessed
+            )
+        ):
+            status = (
+                "downgraded_insufficient_evidence"
+                if response.interpretation == "insufficient_evidence"
+                else "downgraded_weak_evidence"
+            )
+            LOGGER.info("Generated answer %s", status)
+            return RAGOutcome(
+                answer=GroundedAnswer(
+                    answer=weak_evidence_answer(response, cited),
+                    supported=False,
+                    evidence_ids=unique_ids,
+                    citations=citations,
+                ),
+                status=status,
+            )
         return RAGOutcome(
             answer=GroundedAnswer(
                 answer=generated.answer,
@@ -299,7 +496,10 @@ class GroundedAnswerService:
         }
 
     def _request_payload(
-        self, query: str, evidence: dict[str, dict[str, Any]]
+        self,
+        query: str,
+        evidence: dict[str, dict[str, Any]],
+        interpretation: str = "single",
     ) -> dict[str, Any]:
         schema = {
             "type": "object",
@@ -327,13 +527,20 @@ class GroundedAnswerService:
                         "Answer only from the supplied VidQuery evidence. Do not infer facts "
                         "outside it. Cite only supplied evidence IDs. If the evidence does not "
                         "directly support an answer, set supported=false and evidence_ids=[]. "
+                        "Set supported=true only if a cited item's evidence_verdict is "
+                        "'supported'. Mention only times inside the cited segments, quote "
+                        "transcripts exactly, and do not state scores you were not given. "
                         "Return only the required JSON object."
                     ),
                 },
                 {
                     "role": "user",
                     "content": json.dumps(
-                        {"query": query, "retrieved_evidence": evidence},
+                        {
+                            "query": query,
+                            "system_interpretation": interpretation,
+                            "retrieved_evidence": evidence,
+                        },
                         ensure_ascii=False,
                         separators=(",", ":"),
                     ),

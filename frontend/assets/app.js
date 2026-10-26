@@ -20,6 +20,19 @@ const formatPeak = (seconds) => {
   return `${formatTime(whole)}.${tenths}`;
 };
 const seekTimeFor = (item) => (item.localization ? item.localization.peak_time : item.start_time);
+// Shown whenever Groq was not used as configured, so users know which path produced the result.
+const PLANNER_NOTICES = {
+  fallback_provider_unavailable: "Local query planner used: Groq unavailable (rate limit or network)",
+  fallback_provider_unconfigured: "Local query planner used: Groq not configured",
+  fallback_low_confidence: "Local query planner used: Groq plan below the confidence threshold",
+};
+const ANSWER_NOTICES = {
+  provider_unavailable: "No generated answer: Groq unavailable (rate limit or network)",
+  rejected_unverified_claims: "Generated answer rejected: it made claims the evidence does not back",
+  rejected_invalid_evidence_ids: "Generated answer rejected: it cited evidence that was not retrieved",
+  downgraded_weak_evidence: "Generated answer downgraded: the system's verdicts are weak",
+  downgraded_insufficient_evidence: "Generated answer downgraded: the evidence is insufficient",
+};
 const PRECISION_LABEL = {
   word: "word timing",
   frame: "frame observation",
@@ -156,6 +169,10 @@ function renderResults(payload) {
     chips.push(`ambiguous · ${payload.query_ambiguities.join(" ")}`);
   }
   $("#parsed-query").innerHTML = chips.map((value) => `<span class="chip">${escapeHtml(value)}</span>`).join("");
+  const notices = [PLANNER_NOTICES[payload.query_planner_status], ANSWER_NOTICES[payload.rag_status]].filter(Boolean);
+  const noticeBox = $("#pipeline-notices");
+  noticeBox.innerHTML = notices.map((value) => `<span class="notice">${escapeHtml(value)}</span>`).join("");
+  noticeBox.classList.toggle("hidden", !notices.length);
   renderGeneratedAnswer(payload.generated_answer, payload.results);
   if (!payload.results.length) {
     results.innerHTML = '<div class="state-panel">No indexed moment matched. Try fewer constraints or process another video.</div>';
@@ -201,12 +218,12 @@ function renderGeneratedAnswer(answer, rankedResults) {
     card.innerHTML = "";
     return;
   }
-  const citations = answer.supported ? (answer.citations || []) : [];
+  const citations = answer.citations || [];
   card.className = `answer-card ${answer.supported ? "supported" : "unsupported"}`;
-  card.innerHTML = `<p class="eyebrow">GROUNDED ANSWER</p>
+  card.innerHTML = `<p class="eyebrow">${answer.supported ? "GROUNDED ANSWER" : "EVIDENCE CHECK"}</p>
     <p class="answer-text">${escapeHtml(answer.answer)}</p>
     <div class="answer-citations">${citations.map((citation) => `<button class="answer-citation" data-evidence-id="${escapeHtml(citation.evidence_id)}">${escapeHtml(citation.evidence_id)} \u00b7 ${escapeHtml(citation.video_title)} \u00b7 ${citation.peak_time != null ? formatPeak(citation.peak_time) : `${formatTime(citation.start_time)}\u2013${formatTime(citation.end_time)}`}</button>`).join("")}</div>
-    ${answer.supported ? "<small>Synthesized only from the cited ranked evidence.</small>" : ""}`;
+    ${answer.supported ? "<small>Synthesized only from the cited ranked evidence.</small>" : (citations.length ? "<small>Not confirmed by the system's verdicts; these are the closest moments.</small>" : "")}`;
   $$('.answer-citation').forEach((button) => button.addEventListener("click", () => {
     const citation = citations.find((item) => item.evidence_id === button.dataset.evidenceId);
     if (!citation) return;

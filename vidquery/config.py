@@ -242,6 +242,16 @@ class Settings:
     soft_constraint_matching: bool = field(
         default_factory=lambda: _bool_env("SOFT_CONSTRAINT_MATCHING", False)
     )
+    # With soft constraints, count each parsed entity/action/relation a segment
+    # lacks as zero evidence in the verdict (ranking is unchanged).
+    unmatched_constraint_evidence: bool = field(
+        default_factory=lambda: _bool_env("UNMATCHED_CONSTRAINT_EVIDENCE", False)
+    )
+    # Drop Whisper utterances that are not speech (vidquery.speech_filter) before
+    # indexing. Takes effect only when a video is (re)processed.
+    transcript_speech_filter: bool = field(
+        default_factory=lambda: _bool_env("TRANSCRIPT_SPEECH_FILTER", False)
+    )
     sentence_embedding_cache_dir: Path = field(
         default_factory=lambda: _path_env(
             "SENTENCE_EMBEDDING_CACHE_DIR", Path("data/app/models/sentence_transformers")
