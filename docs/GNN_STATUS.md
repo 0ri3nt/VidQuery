@@ -2,6 +2,12 @@
 
 Evidence date: 13 August 2026.
 
+> **Update, 26 October 2026:** the active checkpoints are now AVA
+> `ava80-gat-v8-noleak-scale100-lr0.0003` and VidOR
+> `vidor-relation-pair-visual-gat-v4-scale2000`. The sections below describe the
+> earlier v5/v2 models and remain as history; current results are in
+> [EXPERIMENTS_2026-10-26.md](EXPERIMENTS_2026-10-26.md).
+
 ## Verified conclusion
 
 VidQuery now has two genuinely trained PyTorch Geometric models:

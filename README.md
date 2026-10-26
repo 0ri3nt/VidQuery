@@ -248,9 +248,11 @@ These are capstone-scale results, not broad-domain claims. Details are in
 
 | Model | Split | Supported macro F1 | Micro F1 | mAP |
 |---|---|---:|---:|---:|
-| AVA 80-label GATv2 v5 (active) | 3 held-out videos | 0.072086 | 0.462054 | 0.086745 |
-| VidOR pair-visual GATv2 v3-scale500 (active) | 50 held-out videos | 0.170506 | 0.328170 | 0.186719 |
-| VidOR pair-visual GATv2 v2 (previous) | same 50 held-out videos | 0.071177 | 0.315536 | 0.088219 |
+| AVA 80-label GATv2 v8, leakage-free, 94 training videos (active) | 6 held-out videos | 0.088 | 0.500 | 0.089 |
+| AVA 80-label GATv2 v5 (previous) | same 6 held-out videos | 0.071 | 0.453 | 0.077 |
+| VidOR pair-visual GATv2 v4-scale2000 (active) | 50 held-out videos | 0.218 | 0.355 | 0.242 |
+| VidOR pair-visual GATv2 v3-scale500 (previous) | same 50 held-out videos | 0.171 | 0.328 | 0.187 |
+| VidOR pair-visual GATv2 v2 (earlier) | same 50 held-out videos | 0.071 | 0.316 | 0.088 |
 
 On the same 50 test videos, v3-scale500 beats v2 by +0.099 macro F1 (95% CI
 [0.068, 0.131]) and +0.099 mAP ([0.071, 0.135]); micro F1 is not significantly
@@ -262,14 +264,13 @@ data:
 
 | Model | Trained on | Available labelled data | Share |
 |---|---|---|---:|
-| AVA action GNN v5 | 24 train videos (30 incl. val/test), 35,095 supervised persons | 299 AVA v2.2 train+val videos, 426,346 person boxes | 10% of videos |
-| VidOR relation GNN v3-scale500 | 400 train videos (500 incl. val/test), 2,400 frames | 7,000 VidOR training videos | 6% of videos |
+| AVA action GNN v8 | 94 train videos (103 incl. val/test), 73,863 training graphs | 299 AVA v2.2 train+val videos, 426,346 person boxes | 31% of videos |
+| VidOR relation GNN v4-scale2000 | 1,900 train videos (2,000 incl. val/test), 11,400 frames | 7,000 VidOR training videos | 27% of videos |
 
-Larger-data candidates (26 October 2026, not activated): VidOR GATv2 trained on
-1,900 videos reaches test macro F1 0.218 / mAP 0.242 on the same 50 test videos
-(+0.048 [0.015, 0.073] macro F1 over the active v3-scale500), and the leakage-free
-AVA GATv2 trained on 94 videos reaches test macro F1 0.088 on 6 test videos
-(+0.016 [0.012, 0.021] over the same recipe on 24 videos). See
+Both were activated on 26 October 2026. VidOR v4 beats v3-scale500 by +0.048 macro
+F1 (95% CI [0.015, 0.073]) on the same 50 test videos. AVA v8 beats the same recipe
+on 24 videos by +0.016 [0.012, 0.021] and the earlier leakage-free baseline by
++0.015 [0.011, 0.020]; its absolute macro F1 (0.088) is still low. See
 [docs/EXPERIMENTS_2026-10-26.md](docs/EXPERIMENTS_2026-10-26.md).
 
 The action model's best validation epoch was epoch 1; validation loss rose
