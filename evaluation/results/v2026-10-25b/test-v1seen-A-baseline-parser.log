@@ -1,0 +1,45 @@
+[WARN] category 'ambiguous' has 0 queries; the Review-2 protocol asks for at least 15
+[WARN] category 'timestamp' has 0 queries; the Review-2 protocol asks for at least 15
+{
+  "precision_at_1": {
+    "review1": 0.2,
+    "review2": 0.1556,
+    "delta": -0.0444
+  },
+  "within_tolerance_rate": {
+    "review1": 0.1333,
+    "review2": 0.1333,
+    "delta": 0.0
+  },
+  "temporal_iou": {
+    "review1": 0.0442,
+    "review2": 0.082,
+    "delta": 0.0378
+  },
+  "mean_abs_timestamp_error_on_hits": {
+    "review1": 2.111,
+    "review2": 1.0,
+    "delta": -1.111
+  },
+  "intent_accuracy_strict": {
+    "review1": 0.3111,
+    "review2": 0.3111,
+    "delta": 0.0
+  },
+  "intent_accuracy_lenient": {
+    "review1": 0.3111,
+    "review2": 0.3111,
+    "delta": 0.0
+  },
+  "confident_wrong_rate": {
+    "review1": 0.7167,
+    "review2": 0.0167,
+    "delta": -0.7
+  },
+  "negative_rejection_rate": {
+    "review1": 0.2,
+    "review2": 0.2,
+    "delta": 0.0
+  }
+}
+Wrote machine-readable results to C:\Users\Aryaman\Desktop\work\capstone\VidQuery\evaluation\results\v2026-10-25b\test-v1seen-A-baseline-parser.json

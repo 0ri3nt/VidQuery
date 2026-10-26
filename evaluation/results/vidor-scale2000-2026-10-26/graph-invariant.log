@@ -1,0 +1,14 @@
+{
+ "graphs_old": 600,
+ "graphs_new": 600,
+ "extra_graphs_in_new": 0,
+ "exact_field_mismatches": [],
+ "exact_field_mismatch_count": 0,
+ "max_visual_feature_abs_difference": 0.0,
+ "visual_atol": 0.0001,
+ "identical_within_tolerance": true,
+ "splits": [
+  "validation",
+  "test"
+ ]
+}

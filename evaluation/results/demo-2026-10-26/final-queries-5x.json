@@ -1,0 +1,58 @@
+{
+ "person holding a cup.": [
+  [
+   0.0,
+   3.997,
+   "weak",
+   0.4385
+  ]
+ ],
+ "person reading a newspaper.": [
+  [
+   5.0,
+   9.002,
+   "weak",
+   0.3156
+  ]
+ ],
+ "person drinking from a cup.": [
+  [
+   15.0,
+   15.988,
+   "supported",
+   0.5011
+  ]
+ ],
+ "person puts his shoes on.": [
+  [
+   25.0,
+   25.997,
+   "weak",
+   0.2719
+  ]
+ ],
+ "person near a chair.": [
+  [
+   25.0,
+   28.013,
+   "weak",
+   0.3098
+  ]
+ ],
+ "person cooking at the stove.": [
+  [
+   35.0,
+   37.988,
+   "weak",
+   0.3252
+  ]
+ ],
+ "person picks up something from the stove.": [
+  [
+   40.0,
+   42.993,
+   "weak",
+   0.3222
+  ]
+ ]
+}

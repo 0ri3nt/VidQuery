@@ -1,0 +1,24 @@
+{
+  "model_version": "ava80-mlp-v8-noleak-scale100-lr0.0003",
+  "checkpoint_sha256": "72f72bc22c1ce501e3c1de98764d50794d59c2d4b3e6662c4ff52be236de4a9b",
+  "best_epoch": 14,
+  "epochs_run": 24,
+  "graph_counts": {
+    "train": 73863,
+    "validation": 2245,
+    "test": 4900
+  },
+  "validation": {
+    "macro_f1_supported_classes": 0.160517,
+    "micro_f1": 0.45351,
+    "mean_average_precision": 0.11618
+  },
+  "test": "withheld",
+  "wall_seconds": 593.5,
+  "peak_process_memory_mb": 1388.4,
+  "shard_loads": {
+    "train": 2539,
+    "validation": 150,
+    "test": 6
+  }
+}

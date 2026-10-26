@@ -1,0 +1,75 @@
+[AVA download 1/2] 9F2voT6QWvQ: downloaded
+[AVA download 2/2] xmqSaQPzL1E: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] xmqSaQPzL1E - 839 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1720 total  (2.1 avg/frame)
+
+  Done in 27.0s
+  Found 1 videos in TRAIN split.
+    Processed 839 frames for xmqSaQPzL1E
+  Done. Total graphs for train: 839
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] 9F2voT6QWvQ - 827 frames
+      Detections : 3486 total  (4.2 avg/frame)
+
+  Done in 21.0s
+  Found 1 videos in VAL split.
+    Processed 827 frames for 9F2voT6QWvQ
+  Done. Total graphs for val: 827
+[visual embeddings] 100/1666 graphs
+[visual embeddings] 200/1666 graphs
+[visual embeddings] 300/1666 graphs
+[visual embeddings] 400/1666 graphs
+[visual embeddings] 500/1666 graphs
+[visual embeddings] 600/1666 graphs
+[visual embeddings] 700/1666 graphs
+[visual embeddings] 800/1666 graphs
+[visual embeddings] 900/1666 graphs
+[visual embeddings] 1000/1666 graphs
+[visual embeddings] 1100/1666 graphs
+[visual embeddings] 1200/1666 graphs
+[visual embeddings] 1300/1666 graphs
+[visual embeddings] 1400/1666 graphs
+[visual embeddings] 1500/1666 graphs
+[visual embeddings] 1600/1666 graphs
+[AVA download 1/1] sUVhd0YTKgw: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] sUVhd0YTKgw - 813 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2476 total  (3.0 avg/frame)
+
+  Done in 15.2s
+  Found 1 videos in TRAIN split.
+    Processed 813 frames for sUVhd0YTKgw
+  Done. Total graphs for train: 813
+[visual embeddings] 100/812 graphs
+[visual embeddings] 200/812 graphs
+[visual embeddings] 300/812 graphs
+[visual embeddings] 400/812 graphs
+[visual embeddings] 500/812 graphs
+[visual embeddings] 600/812 graphs
+[visual embeddings] 700/812 graphs
+[visual embeddings] 800/812 graphs
+{
+  "target_videos": 100,
+  "completed_video_count": 100,
+  "target_reached": true,
+  "failed_video_ids": [],
+  "state": "data\\app\\features\\ava80_shards\\expansion_state_scale100.json"
+}

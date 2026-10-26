@@ -324,6 +324,7 @@ demo/           controlled-demo manifest
 docs/           documentation (index: docs/README.md)
 extraction/, modelling/, core/, retrieval/, api/, app/
                 original AVA research pipeline, kept for reproduction
+archive/        retired entry scripts and the old Go downloader (see archive/README.md)
 ```
 
 `data/app/` (models, caches, uploads, extracted media, the SQLite database), raw

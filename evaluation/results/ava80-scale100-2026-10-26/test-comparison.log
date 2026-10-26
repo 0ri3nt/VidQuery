@@ -1,0 +1,90 @@
+{
+ "all_persons": {
+  "legacy_gat_24": {
+   "macro_f1_supported_classes": 0.073142,
+   "mean_average_precision": 0.070587,
+   "micro_f1": 0.506594,
+   "supported_classes": 70
+  },
+  "legacy_mlp_24": {
+   "macro_f1_supported_classes": 0.075109,
+   "mean_average_precision": 0.073017,
+   "micro_f1": 0.475144,
+   "supported_classes": 70
+  },
+  "stream_gat_24": {
+   "macro_f1_supported_classes": 0.071919,
+   "mean_average_precision": 0.073756,
+   "micro_f1": 0.48752,
+   "supported_classes": 70
+  },
+  "stream_mlp_24": {
+   "macro_f1_supported_classes": 0.068185,
+   "mean_average_precision": 0.070716,
+   "micro_f1": 0.46696,
+   "supported_classes": 70
+  },
+  "stream_gat_94": {
+   "macro_f1_supported_classes": 0.088091,
+   "mean_average_precision": 0.089019,
+   "micro_f1": 0.499653,
+   "supported_classes": 70
+  },
+  "stream_mlp_94": {
+   "macro_f1_supported_classes": 0.086444,
+   "mean_average_precision": 0.087983,
+   "micro_f1": 0.484585,
+   "supported_classes": 70
+  },
+  "active_v5_leaky_reference": {
+   "macro_f1_supported_classes": 0.07107,
+   "mean_average_precision": 0.076754,
+   "micro_f1": 0.452721,
+   "supported_classes": 70
+  }
+ },
+ "detector_only": {
+  "legacy_gat_24": {
+   "macro_f1_supported_classes": 0.073767,
+   "mean_average_precision": 0.071381,
+   "micro_f1": 0.509842,
+   "supported_classes": 70
+  },
+  "legacy_mlp_24": {
+   "macro_f1_supported_classes": 0.075603,
+   "mean_average_precision": 0.073712,
+   "micro_f1": 0.478676,
+   "supported_classes": 70
+  },
+  "stream_gat_24": {
+   "macro_f1_supported_classes": 0.072315,
+   "mean_average_precision": 0.074629,
+   "micro_f1": 0.490819,
+   "supported_classes": 70
+  },
+  "stream_mlp_24": {
+   "macro_f1_supported_classes": 0.068567,
+   "mean_average_precision": 0.071392,
+   "micro_f1": 0.469753,
+   "supported_classes": 70
+  },
+  "stream_gat_94": {
+   "macro_f1_supported_classes": 0.088802,
+   "mean_average_precision": 0.089968,
+   "micro_f1": 0.502962,
+   "supported_classes": 70
+  },
+  "stream_mlp_94": {
+   "macro_f1_supported_classes": 0.086261,
+   "mean_average_precision": 0.089322,
+   "micro_f1": 0.486561,
+   "supported_classes": 70
+  },
+  "active_v5_leaky_reference": {
+   "macro_f1_supported_classes": 0.071841,
+   "mean_average_precision": 0.078227,
+   "micro_f1": 0.457012,
+   "supported_classes": 70
+  }
+ }
+}

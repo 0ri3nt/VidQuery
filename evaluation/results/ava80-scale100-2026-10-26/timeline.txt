@@ -1,0 +1,14 @@
+expansion_start 2026-10-25T22:48:39Z
+expansion_end 2026-10-26T02:18:02Z
+resume_after_dns_outage 2026-10-26T04:49:00Z
+expansion_start 2026-10-26T04:49:00Z
+expansion_end 2026-10-26T05:37:38Z
+train_ava80-mlp-v7-noleak-shardstream-s30-lr0.0003_start 2026-10-26T05:37:39Z
+train_ava80-mlp-v7-noleak-shardstream-s30-lr0.0003_end 2026-10-26T05:40:00Z
+train_ava80-gat-v8-noleak-scale100-lr0.0003_start 2026-10-26T05:40:00Z
+train_ava80-gat-v8-noleak-scale100-lr0.0003_end 2026-10-26T05:54:47Z
+train_ava80-mlp-v8-noleak-scale100-lr0.0003_start 2026-10-26T05:54:47Z
+train_ava80-mlp-v8-noleak-scale100-lr0.0003_end 2026-10-26T06:04:42Z
+all_training_end 2026-10-26T06:04:42Z
+test_comparison_start 2026-10-26T06:05:22Z
+test_comparison_end 2026-10-26T06:18:31Z

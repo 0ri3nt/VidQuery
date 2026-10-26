@@ -1,0 +1,886 @@
+[
+ {
+  "query": "person drinking coffee from a glass.",
+  "event_intervals": [
+   [
+    2.2,
+    8.8
+   ]
+  ],
+  "interval_source": "Charades-STA",
+  "runs": [
+   {
+    "interpretation": "resolved",
+    "segment": [
+     15.0,
+     20.0
+    ],
+    "peak": 15.987765883497845,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "weak",
+    "confidence": 0.2798,
+    "match_reason": "Matched visual entities person, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.300 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000018000 (openclip).",
+    "hit": false,
+    "rank2_peak": 3.9969414708744613
+   },
+   {
+    "interpretation": "resolved",
+    "segment": [
+     15.0,
+     20.0
+    ],
+    "peak": 15.987765883497845,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "weak",
+    "confidence": 0.2798,
+    "match_reason": "Matched visual entities person, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.300 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000018000 (openclip).",
+    "hit": false,
+    "rank2_peak": 3.9969414708744613
+   },
+   {
+    "interpretation": "resolved",
+    "segment": [
+     15.0,
+     20.0
+    ],
+    "peak": 15.987765883497845,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "weak",
+    "confidence": 0.2798,
+    "match_reason": "Matched visual entities person, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.300 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000018000 (openclip).",
+    "hit": false,
+    "rank2_peak": 3.9969414708744613
+   }
+  ],
+  "stable": true,
+  "success_all_runs": false
+ },
+ {
+  "query": "person drinking from a cup.",
+  "event_intervals": [
+   [
+    2.2,
+    8.8
+   ],
+   [
+    15.5,
+    18.5
+   ]
+  ],
+  "interval_source": "STA [2.2,8.8]; second drink 15.5-18.5 seen in frames",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     15.0,
+     20.0
+    ],
+    "peak": 15.987765883497845,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "supported",
+    "confidence": 0.5011,
+    "match_reason": "Matched visual entities person/cup, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.318 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000016000 (openclip).",
+    "hit": true,
+    "rank2_peak": 3.9969414708744613
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     15.0,
+     20.0
+    ],
+    "peak": 15.987765883497845,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "supported",
+    "confidence": 0.5011,
+    "match_reason": "Matched visual entities person/cup, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.318 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000016000 (openclip).",
+    "hit": true,
+    "rank2_peak": 3.9969414708744613
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     15.0,
+     20.0
+    ],
+    "peak": 15.987765883497845,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "supported",
+    "confidence": 0.5011,
+    "match_reason": "Matched visual entities person/cup, actions drink (gnn_action_model, confidence 0.87), visual-text similarity 0.318 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000016000 (openclip).",
+    "hit": true,
+    "rank2_peak": 3.9969414708744613
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person reading a newspaper.",
+  "event_intervals": [
+   [
+    0.0,
+    24.0
+   ]
+  ],
+  "interval_source": "frames",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     5.0,
+     10.0
+    ],
+    "peak": 9.001807312665091,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.3156,
+    "match_reason": "Matched visual entities person, actions read (gnn_action_model, confidence 0.97), visual-text similarity 0.319 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000009000 (openclip).",
+    "hit": true,
+    "rank2_peak": 1.0079243709161685
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     5.0,
+     10.0
+    ],
+    "peak": 9.001807312665091,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.3156,
+    "match_reason": "Matched visual entities person, actions read (gnn_action_model, confidence 0.97), visual-text similarity 0.319 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000009000 (openclip).",
+    "hit": true,
+    "rank2_peak": 1.0079243709161685
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     5.0,
+     10.0
+    ],
+    "peak": 9.001807312665091,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.3156,
+    "match_reason": "Matched visual entities person, actions read (gnn_action_model, confidence 0.97), visual-text similarity 0.319 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000009000 (openclip).",
+    "hit": true,
+    "rank2_peak": 1.0079243709161685
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person sitting at the table.",
+  "event_intervals": [
+   [
+    0.0,
+    24.0
+   ]
+  ],
+  "interval_source": "frames",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     30.0,
+     35.0
+    ],
+    "peak": 32.010287779785905,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "weak",
+    "confidence": 0.4085,
+    "match_reason": "Matched visual entities person/dining table, actions sit (gnn_action_model, confidence 0.98), visual-text similarity 0.282 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000031000 (openclip).",
+    "hit": false,
+    "rank2_peak": 28.01334630891144
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     30.0,
+     35.0
+    ],
+    "peak": 32.010287779785905,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "weak",
+    "confidence": 0.4085,
+    "match_reason": "Matched visual entities person/dining table, actions sit (gnn_action_model, confidence 0.98), visual-text similarity 0.282 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000031000 (openclip).",
+    "hit": false,
+    "rank2_peak": 28.01334630891144
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     30.0,
+     35.0
+    ],
+    "peak": 32.010287779785905,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+disagreement",
+    "verdict": "weak",
+    "confidence": 0.4085,
+    "match_reason": "Matched visual entities person/dining table, actions sit (gnn_action_model, confidence 0.98), visual-text similarity 0.282 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000031000 (openclip).",
+    "hit": false,
+    "rank2_peak": 28.01334630891144
+   }
+  ],
+  "stable": true,
+  "success_all_runs": false
+ },
+ {
+  "query": "person opens the newspaper.",
+  "event_intervals": [
+   [
+    20.5,
+    23.0
+   ]
+  ],
+  "interval_source": "frames",
+  "runs": [
+   {
+    "interpretation": "resolved",
+    "segment": [
+     0.0,
+     5.0
+    ],
+    "peak": 2.989017099958293,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation",
+    "verdict": "supported",
+    "confidence": 0.4962,
+    "match_reason": "Matched visual entities person, appearance evidence weak or unavailable (fallback ranking), visual-text similarity 0.331 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000002000 (openclip).",
+    "hit": false,
+    "rank2_peak": 6.985958570832754
+   },
+   {
+    "interpretation": "resolved",
+    "segment": [
+     0.0,
+     5.0
+    ],
+    "peak": 2.989017099958293,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation",
+    "verdict": "supported",
+    "confidence": 0.4962,
+    "match_reason": "Matched visual entities person, appearance evidence weak or unavailable (fallback ranking), visual-text similarity 0.331 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000002000 (openclip).",
+    "hit": false,
+    "rank2_peak": 6.985958570832754
+   },
+   {
+    "interpretation": "resolved",
+    "segment": [
+     0.0,
+     5.0
+    ],
+    "peak": 2.989017099958293,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation",
+    "verdict": "supported",
+    "confidence": 0.4962,
+    "match_reason": "Matched visual entities person, appearance evidence weak or unavailable (fallback ranking), visual-text similarity 0.331 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000002000 (openclip).",
+    "hit": false,
+    "rank2_peak": 6.985958570832754
+   }
+  ],
+  "stable": true,
+  "success_all_runs": false
+ },
+ {
+  "query": "person puts his shoes on.",
+  "event_intervals": [
+   [
+    23.7,
+    34.8
+   ]
+  ],
+  "interval_source": "Charades-STA",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 25.997497567079105,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.2719,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.280 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 37.98832197970249
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 25.997497567079105,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.2719,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.280 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 37.98832197970249
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 25.997497567079105,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.2719,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.280 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 37.98832197970249
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person putting on shoes.",
+  "event_intervals": [
+   [
+    23.7,
+    34.8
+   ]
+  ],
+  "interval_source": "Charades-STA (paraphrase)",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 25.997497567079105,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.2686,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 25.997497567079105,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.2686,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 25.997497567079105,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.2686,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person bending down.",
+  "event_intervals": [
+   [
+    24.0,
+    33.5
+   ]
+  ],
+  "interval_source": "frames",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     20.0,
+     25.0
+    ],
+    "peak": 23.008480467120812,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation",
+    "verdict": "supported",
+    "confidence": 0.4767,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.263 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000025000 (openclip).",
+    "hit": false,
+    "rank2_peak": 25.997497567079105
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     20.0,
+     25.0
+    ],
+    "peak": 23.008480467120812,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation",
+    "verdict": "supported",
+    "confidence": 0.4767,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.263 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000025000 (openclip).",
+    "hit": false,
+    "rank2_peak": 25.997497567079105
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     20.0,
+     25.0
+    ],
+    "peak": 23.008480467120812,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation",
+    "verdict": "supported",
+    "confidence": 0.4767,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.263 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000025000 (openclip).",
+    "hit": false,
+    "rank2_peak": 25.997497567079105
+   }
+  ],
+  "stable": true,
+  "success_all_runs": false
+ },
+ {
+  "query": "person stands up and walks away.",
+  "event_intervals": [
+   [
+    33.0,
+    36.0
+   ]
+  ],
+  "interval_source": "frames",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 38.996246350618655,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.3282,
+    "match_reason": "Matched visual entities person, actions stand/walk (gnn_action_model, confidence 0.69), visual-text similarity 0.263 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000038000 (openclip).",
+    "hit": false,
+    "rank2_peak": 42.993187821493116
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 38.996246350618655,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.3282,
+    "match_reason": "Matched visual entities person, actions stand/walk (gnn_action_model, confidence 0.69), visual-text similarity 0.263 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000038000 (openclip).",
+    "hit": false,
+    "rank2_peak": 42.993187821493116
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 38.996246350618655,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.3282,
+    "match_reason": "Matched visual entities person, actions stand/walk (gnn_action_model, confidence 0.69), visual-text similarity 0.263 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000038000 (openclip).",
+    "hit": false,
+    "rank2_peak": 42.993187821493116
+   }
+  ],
+  "stable": true,
+  "success_all_runs": false
+ },
+ {
+  "query": "person walks to the stove to cook breakfast.",
+  "event_intervals": [
+   [
+    34.1,
+    44.03
+   ]
+  ],
+  "interval_source": "Charades-STA",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 38.996246350618655,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.307,
+    "match_reason": "Matched visual entities person, actions walk (gnn_action_model, confidence 0.76), visual-text similarity 0.312 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 38.996246350618655,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.307,
+    "match_reason": "Matched visual entities person, actions walk (gnn_action_model, confidence 0.76), visual-text similarity 0.312 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 38.996246350618655,
+    "precision": "frame",
+    "loc_source": "gnn_action_model+agreement",
+    "verdict": "weak",
+    "confidence": 0.307,
+    "match_reason": "Matched visual entities person, actions walk (gnn_action_model, confidence 0.76), visual-text similarity 0.312 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person cooking at the stove.",
+  "event_intervals": [
+   [
+    35.5,
+    44.03
+   ]
+  ],
+  "interval_source": "STA + frames (camera cuts to stove at 36 s)",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 37.98832197970249,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.3252,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 37.98832197970249,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.3252,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     35.0,
+     40.0
+    ],
+    "peak": 37.98832197970249,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+agreement",
+    "verdict": "weak",
+    "confidence": 0.3252,
+    "match_reason": "Matched visual entities person, visual-text similarity 0.313 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000037000 (openclip).",
+    "hit": true,
+    "rank2_peak": 40.0
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person picks up something from the stove.",
+  "event_intervals": [
+   [
+    36.0,
+    44.03
+   ]
+  ],
+  "interval_source": "frames",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     40.0,
+     44.00111219240929
+    ],
+    "peak": 42.993187821493116,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+disagreement",
+    "verdict": "weak",
+    "confidence": 0.3222,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person, actions lift/pick up (gnn_action_model, confidence 0.40), visual-text similarity 0.317 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000043000 (openclip).",
+    "hit": true,
+    "rank2_peak": 37.01515362157653
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     40.0,
+     44.00111219240929
+    ],
+    "peak": 42.993187821493116,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+disagreement",
+    "verdict": "weak",
+    "confidence": 0.3222,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person, actions lift/pick up (gnn_action_model, confidence 0.40), visual-text similarity 0.317 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000043000 (openclip).",
+    "hit": true,
+    "rank2_peak": 37.01515362157653
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     40.0,
+     44.00111219240929
+    ],
+    "peak": 42.993187821493116,
+    "precision": "frame",
+    "loc_source": "detector_frame_observation+disagreement",
+    "verdict": "weak",
+    "confidence": 0.3222,
+    "match_reason": "Matched sentence embedding similarity (sentence-transformers/all-MiniLM-L6-v2), visual entities person, actions lift/pick up (gnn_action_model, confidence 0.40), visual-text similarity 0.317 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000043000 (openclip).",
+    "hit": true,
+    "rank2_peak": 37.01515362157653
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "person holding a cup.",
+  "event_intervals": [
+   [
+    3.5,
+    7.5
+   ],
+   [
+    15.0,
+    18.5
+   ]
+  ],
+  "interval_source": "frames (mug lifted)",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     0.0,
+     5.0
+    ],
+    "peak": 3.9969414708744613,
+    "precision": "frame",
+    "loc_source": "relationship_relationship_gnn+agreement",
+    "verdict": "weak",
+    "confidence": 0.4385,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_6a3cce00c8a1bf8bf0af] hold cup[det_c0da5f689904086792ff] (directed, confidence 0.95, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000004000 (openclip).",
+    "hit": true,
+    "rank2_peak": 12.998748783539552
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     0.0,
+     5.0
+    ],
+    "peak": 3.9969414708744613,
+    "precision": "frame",
+    "loc_source": "relationship_relationship_gnn+agreement",
+    "verdict": "weak",
+    "confidence": 0.4385,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_6a3cce00c8a1bf8bf0af] hold cup[det_c0da5f689904086792ff] (directed, confidence 0.95, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000004000 (openclip).",
+    "hit": true,
+    "rank2_peak": 12.998748783539552
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     0.0,
+     5.0
+    ],
+    "peak": 3.9969414708744613,
+    "precision": "frame",
+    "loc_source": "relationship_relationship_gnn+agreement",
+    "verdict": "weak",
+    "confidence": 0.4385,
+    "match_reason": "Matched visual entities person/cup, relationship person[det_6a3cce00c8a1bf8bf0af] hold cup[det_c0da5f689904086792ff] (directed, confidence 0.95, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.276 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000004000 (openclip).",
+    "hit": true,
+    "rank2_peak": 12.998748783539552
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ },
+ {
+  "query": "a microwave in the kitchen.",
+  "event_intervals": [
+   [
+    35.5,
+    44.03
+   ]
+  ],
+  "interval_source": "frames (microwave above stove after cut)",
+  "runs": [
+   {
+    "interpretation": "insufficient_evidence",
+    "segment": null,
+    "peak": null,
+    "precision": null,
+    "loc_source": null,
+    "verdict": null,
+    "confidence": null,
+    "match_reason": null,
+    "hit": false,
+    "rank2_peak": null
+   },
+   {
+    "interpretation": "insufficient_evidence",
+    "segment": null,
+    "peak": null,
+    "precision": null,
+    "loc_source": null,
+    "verdict": null,
+    "confidence": null,
+    "match_reason": null,
+    "hit": false,
+    "rank2_peak": null
+   },
+   {
+    "interpretation": "insufficient_evidence",
+    "segment": null,
+    "peak": null,
+    "precision": null,
+    "loc_source": null,
+    "verdict": null,
+    "confidence": null,
+    "match_reason": null,
+    "hit": false,
+    "rank2_peak": null
+   }
+  ],
+  "stable": true,
+  "success_all_runs": false
+ },
+ {
+  "query": "person near a chair.",
+  "event_intervals": [
+   [
+    25.0,
+    35.0
+   ]
+  ],
+  "interval_source": "frames (chair visible behind person)",
+  "runs": [
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 28.01334630891144,
+    "precision": "frame",
+    "loc_source": "relationship_relationship_gnn+agreement",
+    "verdict": "weak",
+    "confidence": 0.3098,
+    "match_reason": "Matched visual entities person/chair, relationship person[det_278752007000f33e20ef] near chair[det_92cb561b27bbac04c37a] (symmetric, confidence 0.61, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 30.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 28.01334630891144,
+    "precision": "frame",
+    "loc_source": "relationship_relationship_gnn+agreement",
+    "verdict": "weak",
+    "confidence": 0.3098,
+    "match_reason": "Matched visual entities person/chair, relationship person[det_278752007000f33e20ef] near chair[det_92cb561b27bbac04c37a] (symmetric, confidence 0.61, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 30.0
+   },
+   {
+    "interpretation": "single",
+    "segment": [
+     25.0,
+     30.0
+    ],
+    "peak": 28.01334630891144,
+    "precision": "frame",
+    "loc_source": "relationship_relationship_gnn+agreement",
+    "verdict": "weak",
+    "confidence": 0.3098,
+    "match_reason": "Matched visual entities person/chair, relationship person[det_278752007000f33e20ef] near chair[det_92cb561b27bbac04c37a] (symmetric, confidence 0.61, relationship_gnn, model vidor-relation-pair-visual-gat-v4-scale2000), visual-text similarity 0.264 at frame 9be43e27-698a-4997-9fc3-841ee51a2d96_000000027000 (openclip).",
+    "hit": true,
+    "rank2_peak": 30.0
+   }
+  ],
+  "stable": true,
+  "success_all_runs": true
+ }
+]

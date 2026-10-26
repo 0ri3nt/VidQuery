@@ -1,0 +1,10 @@
+{
+  "schema_version": "vidor-pair-visual-frame-staging-v1",
+  "source_repository": "shangxd/vidor",
+  "source_archive": "training-video-part8.zip",
+  "requested_selected_videos": 2000,
+  "staged_videos": 110,
+  "not_in_this_archive": [],
+  "frame_root": "data/source/vidor/selected-frames-2000",
+  "raw_video_retention": "none; temporary MP4 deleted immediately after frame extraction"
+}

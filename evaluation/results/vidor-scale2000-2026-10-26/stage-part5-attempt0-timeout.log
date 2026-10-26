@@ -1,0 +1,99 @@
+Traceback (most recent call last):
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 653, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connection.py", line 806, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\util\ssl_.py", line 465, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\util\ssl_.py", line 509, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\ssl.py", line 1042, in _create
+    self.do_handshake()
+  File "C:\Program Files\Python312\Lib\ssl.py", line 1320, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 469, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 370, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out. (read timeout=None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\remotezip.py", line 226, in fetch
+    res, range_header = self._request(kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\remotezip.py", line 191, in _request
+    res = requests.get(self._url, stream=True, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 742, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out. (read timeout=None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aryaman\Desktop\work\capstone\VidQuery\scripts\stage_vidor_pair_visual_frames.py", line 173, in <module>
+    main()
+  File "C:\Users\Aryaman\Desktop\work\capstone\VidQuery\scripts\stage_vidor_pair_visual_frames.py", line 96, in main
+    handle.write(remote.read(member))
+                 ^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\zipfile\__init__.py", line 1567, in read
+    with self.open(name, "r", pwd) as fp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\zipfile\__init__.py", line 1620, in open
+    fheader = zef_file.read(sizeFileHeader)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\zipfile\__init__.py", line 808, in read
+    data = self._file.read(n)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\remotezip.py", line 135, in read
+    self.buffer = self._fetch_fun((position, position + fetch_size - 1), stream=stream)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\remotezip.py", line 230, in fetch
+    raise RemoteIOError(str(e))
+remotezip.RemoteIOError: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out. (read timeout=None)

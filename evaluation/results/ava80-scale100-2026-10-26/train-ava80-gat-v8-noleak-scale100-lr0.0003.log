@@ -1,0 +1,24 @@
+{
+  "model_version": "ava80-gat-v8-noleak-scale100-lr0.0003",
+  "checkpoint_sha256": "ad0063c6c64c2178fa583eb3563a644b9890b427037214b81db3a284692f74fa",
+  "best_epoch": 7,
+  "epochs_run": 17,
+  "graph_counts": {
+    "train": 73863,
+    "validation": 2245,
+    "test": 4900
+  },
+  "validation": {
+    "macro_f1_supported_classes": 0.163723,
+    "micro_f1": 0.450636,
+    "mean_average_precision": 0.136736
+  },
+  "test": "withheld",
+  "wall_seconds": 885.4,
+  "peak_process_memory_mb": 1443.7,
+  "shard_loads": {
+    "train": 1881,
+    "validation": 108,
+    "test": 6
+  }
+}

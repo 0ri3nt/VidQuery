@@ -1,0 +1,45 @@
+[WARN] category 'ambiguous' has 0 queries; the Review-2 protocol asks for at least 15
+[WARN] category 'timestamp' has 0 queries; the Review-2 protocol asks for at least 15
+{
+  "precision_at_1": {
+    "review1": 0.3333,
+    "review2": 0.0889,
+    "delta": -0.2444
+  },
+  "within_tolerance_rate": {
+    "review1": 0.1778,
+    "review2": 0.2,
+    "delta": 0.0222
+  },
+  "temporal_iou": {
+    "review1": 0.0888,
+    "review2": 0.0997,
+    "delta": 0.0109
+  },
+  "mean_abs_timestamp_error_on_hits": {
+    "review1": 2.1,
+    "review2": 2.75,
+    "delta": 0.65
+  },
+  "intent_accuracy_strict": {
+    "review1": 1.0,
+    "review2": 1.0,
+    "delta": 0.0
+  },
+  "intent_accuracy_lenient": {
+    "review1": 1.0,
+    "review2": 1.0,
+    "delta": 0.0
+  },
+  "confident_wrong_rate": {
+    "review1": 0.4333,
+    "review2": 0.0667,
+    "delta": -0.3666
+  },
+  "negative_rejection_rate": {
+    "review1": 0.4667,
+    "review2": 0.9333,
+    "delta": 0.4666
+  }
+}
+Wrote machine-readable results to C:\Users\Aryaman\Desktop\work\capstone\VidQuery\evaluation\results\v2026-10-25b\test-v1seen-D-top1-priors-fitted-thresholds.json

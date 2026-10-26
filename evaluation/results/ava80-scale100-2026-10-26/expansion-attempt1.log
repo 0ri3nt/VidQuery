@@ -1,0 +1,1104 @@
+[AVA download 1/2] _dBTTYDRdRQ: downloaded
+[AVA download 2/2] CMCPhm2L400: downloaded
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 2
+====================================================
+
+  [1/2] _dBTTYDRdRQ - 800 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2332 total  (2.9 avg/frame)
+
+  [2/2] CMCPhm2L400 - 778 frames
+      Detections : 1863 total  (2.4 avg/frame)
+
+  Done in 16.6s
+  Found 2 videos in VAL split.
+    Processed 778 frames for CMCPhm2L400
+    Processed 800 frames for _dBTTYDRdRQ
+  Done. Total graphs for val: 1578
+[visual embeddings] 100/1574 graphs
+[visual embeddings] 200/1574 graphs
+[visual embeddings] 300/1574 graphs
+[visual embeddings] 400/1574 graphs
+[visual embeddings] 500/1574 graphs
+[visual embeddings] 600/1574 graphs
+[visual embeddings] 700/1574 graphs
+[visual embeddings] 800/1574 graphs
+[visual embeddings] 900/1574 graphs
+[visual embeddings] 1000/1574 graphs
+[visual embeddings] 1100/1574 graphs
+[visual embeddings] 1200/1574 graphs
+[visual embeddings] 1300/1574 graphs
+[visual embeddings] 1400/1574 graphs
+[visual embeddings] 1500/1574 graphs
+[AVA download 1/2] aMYcLyh9OhU: downloaded
+[AVA download 2/2] -5KQ66BBWC4: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] -5KQ66BBWC4 - 730 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1369 total  (1.9 avg/frame)
+
+  [2/2] aMYcLyh9OhU - 813 frames
+      Detections : 2023 total  (2.5 avg/frame)
+
+  Done in 17.9s
+  Found 2 videos in TRAIN split.
+    Processed 730 frames for -5KQ66BBWC4
+    Processed 813 frames for aMYcLyh9OhU
+  Done. Total graphs for train: 1543
+[visual embeddings] 100/1541 graphs
+[visual embeddings] 200/1541 graphs
+[visual embeddings] 300/1541 graphs
+[visual embeddings] 400/1541 graphs
+[visual embeddings] 500/1541 graphs
+[visual embeddings] 600/1541 graphs
+[visual embeddings] 700/1541 graphs
+[visual embeddings] 800/1541 graphs
+[visual embeddings] 900/1541 graphs
+[visual embeddings] 1000/1541 graphs
+[visual embeddings] 1100/1541 graphs
+[visual embeddings] 1200/1541 graphs
+[visual embeddings] 1300/1541 graphs
+[visual embeddings] 1400/1541 graphs
+[visual embeddings] 1500/1541 graphs
+[AVA download 1/2] tghXjom3120: downloaded
+[AVA download 2/2] gjasEUDkbuc: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] gjasEUDkbuc - 771 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3326 total  (4.3 avg/frame)
+
+  Done in 10.2s
+  Found 1 videos in TRAIN split.
+    Processed 771 frames for gjasEUDkbuc
+  Done. Total graphs for train: 771
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] tghXjom3120 - 821 frames
+      Detections : 2084 total  (2.5 avg/frame)
+
+  Done in 8.2s
+  Found 1 videos in VAL split.
+    Processed 821 frames for tghXjom3120
+  Done. Total graphs for val: 821
+[visual embeddings] 100/1590 graphs
+[visual embeddings] 200/1590 graphs
+[visual embeddings] 300/1590 graphs
+[visual embeddings] 400/1590 graphs
+[visual embeddings] 500/1590 graphs
+[visual embeddings] 600/1590 graphs
+[visual embeddings] 700/1590 graphs
+[visual embeddings] 800/1590 graphs
+[visual embeddings] 900/1590 graphs
+[visual embeddings] 1000/1590 graphs
+[visual embeddings] 1100/1590 graphs
+[visual embeddings] 1200/1590 graphs
+[visual embeddings] 1300/1590 graphs
+[visual embeddings] 1400/1590 graphs
+[visual embeddings] 1500/1590 graphs
+[AVA download 1/2] OfMdakd4bHI: downloaded
+[AVA download 2/2] IzvOYVMltkI: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] OfMdakd4bHI - 818 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2230 total  (2.7 avg/frame)
+
+  Done in 9.5s
+  Found 1 videos in TRAIN split.
+    Processed 818 frames for OfMdakd4bHI
+  Done. Total graphs for train: 818
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] IzvOYVMltkI - 838 frames
+      Detections : 3123 total  (3.7 avg/frame)
+
+  Done in 8.6s
+  Found 1 videos in VAL split.
+    Processed 838 frames for IzvOYVMltkI
+  Done. Total graphs for val: 838
+[visual embeddings] 100/1653 graphs
+[visual embeddings] 200/1653 graphs
+[visual embeddings] 300/1653 graphs
+[visual embeddings] 400/1653 graphs
+[visual embeddings] 500/1653 graphs
+[visual embeddings] 600/1653 graphs
+[visual embeddings] 700/1653 graphs
+[visual embeddings] 800/1653 graphs
+[visual embeddings] 900/1653 graphs
+[visual embeddings] 1000/1653 graphs
+[visual embeddings] 1100/1653 graphs
+[visual embeddings] 1200/1653 graphs
+[visual embeddings] 1300/1653 graphs
+[visual embeddings] 1400/1653 graphs
+[visual embeddings] 1500/1653 graphs
+[visual embeddings] 1600/1653 graphs
+[AVA download 1/2] 9Y_l9NsnYE0: downloaded
+[AVA download 2/2] 2qQs3Y9OJX0: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] 2qQs3Y9OJX0 - 865 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3478 total  (4.0 avg/frame)
+
+  Done in 8.8s
+  Found 1 videos in TRAIN split.
+    Processed 865 frames for 2qQs3Y9OJX0
+  Done. Total graphs for train: 865
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] 9Y_l9NsnYE0 - 887 frames
+      Detections : 4029 total  (4.5 avg/frame)
+
+  Done in 9.2s
+  Found 1 videos in VAL split.
+    Processed 887 frames for 9Y_l9NsnYE0
+  Done. Total graphs for val: 887
+[visual embeddings] 100/1752 graphs
+[visual embeddings] 200/1752 graphs
+[visual embeddings] 300/1752 graphs
+[visual embeddings] 400/1752 graphs
+[visual embeddings] 500/1752 graphs
+[visual embeddings] 600/1752 graphs
+[visual embeddings] 700/1752 graphs
+[visual embeddings] 800/1752 graphs
+[visual embeddings] 900/1752 graphs
+[visual embeddings] 1000/1752 graphs
+[visual embeddings] 1100/1752 graphs
+[visual embeddings] 1200/1752 graphs
+[visual embeddings] 1300/1752 graphs
+[visual embeddings] 1400/1752 graphs
+[visual embeddings] 1500/1752 graphs
+[visual embeddings] 1600/1752 graphs
+[visual embeddings] 1700/1752 graphs
+[AVA download 1/2] NEQ7Wpf-EtI: downloaded
+[AVA download 2/2] PcFEhUKhN6g: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] NEQ7Wpf-EtI - 854 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3977 total  (4.7 avg/frame)
+
+  [2/2] PcFEhUKhN6g - 566 frames
+      Detections : 1318 total  (2.3 avg/frame)
+
+  Done in 13.6s
+  Found 2 videos in TRAIN split.
+    Processed 854 frames for NEQ7Wpf-EtI
+    Processed 566 frames for PcFEhUKhN6g
+  Done. Total graphs for train: 1420
+[visual embeddings] 100/1415 graphs
+[visual embeddings] 200/1415 graphs
+[visual embeddings] 300/1415 graphs
+[visual embeddings] 400/1415 graphs
+[visual embeddings] 500/1415 graphs
+[visual embeddings] 600/1415 graphs
+[visual embeddings] 700/1415 graphs
+[visual embeddings] 800/1415 graphs
+[visual embeddings] 900/1415 graphs
+[visual embeddings] 1000/1415 graphs
+[visual embeddings] 1100/1415 graphs
+[visual embeddings] 1200/1415 graphs
+[visual embeddings] 1300/1415 graphs
+[visual embeddings] 1400/1415 graphs
+[AVA download 1/2] lT1zdTL-3SM: downloaded
+[AVA download 2/2] UgZFdrNT6W0: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] lT1zdTL-3SM - 774 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2418 total  (3.1 avg/frame)
+
+  [2/2] UgZFdrNT6W0 - 801 frames
+      Detections : 2540 total  (3.2 avg/frame)
+
+  Done in 18.0s
+  Found 2 videos in TRAIN split.
+    Processed 774 frames for lT1zdTL-3SM
+    Processed 801 frames for UgZFdrNT6W0
+  Done. Total graphs for train: 1575
+[visual embeddings] 100/1574 graphs
+[visual embeddings] 200/1574 graphs
+[visual embeddings] 300/1574 graphs
+[visual embeddings] 400/1574 graphs
+[visual embeddings] 500/1574 graphs
+[visual embeddings] 600/1574 graphs
+[visual embeddings] 700/1574 graphs
+[visual embeddings] 800/1574 graphs
+[visual embeddings] 900/1574 graphs
+[visual embeddings] 1000/1574 graphs
+[visual embeddings] 1100/1574 graphs
+[visual embeddings] 1200/1574 graphs
+[visual embeddings] 1300/1574 graphs
+[visual embeddings] 1400/1574 graphs
+[visual embeddings] 1500/1574 graphs
+[AVA download 1/2] 5LrOQEt_XVM: downloaded
+[AVA download 2/2] fNcxxBjEOgw: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] 5LrOQEt_XVM - 858 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3578 total  (4.2 avg/frame)
+
+  [2/2] fNcxxBjEOgw - 769 frames
+      Detections : 2962 total  (3.9 avg/frame)
+
+  Done in 14.7s
+  Found 2 videos in TRAIN split.
+    Processed 858 frames for 5LrOQEt_XVM
+    Processed 769 frames for fNcxxBjEOgw
+  Done. Total graphs for train: 1627
+[visual embeddings] 100/1627 graphs
+[visual embeddings] 200/1627 graphs
+[visual embeddings] 300/1627 graphs
+[visual embeddings] 400/1627 graphs
+[visual embeddings] 500/1627 graphs
+[visual embeddings] 600/1627 graphs
+[visual embeddings] 700/1627 graphs
+[visual embeddings] 800/1627 graphs
+[visual embeddings] 900/1627 graphs
+[visual embeddings] 1000/1627 graphs
+[visual embeddings] 1100/1627 graphs
+[visual embeddings] 1200/1627 graphs
+[visual embeddings] 1300/1627 graphs
+[visual embeddings] 1400/1627 graphs
+[visual embeddings] 1500/1627 graphs
+[visual embeddings] 1600/1627 graphs
+[AVA download 1/2] yvgCGJ6vfkY: downloaded
+[AVA download 2/2] U_WzY2k8IBM: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] U_WzY2k8IBM - 746 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1802 total  (2.4 avg/frame)
+
+  [2/2] yvgCGJ6vfkY - 847 frames
+      Detections : 1990 total  (2.3 avg/frame)
+
+  Done in 17.8s
+  Found 2 videos in TRAIN split.
+    Processed 746 frames for U_WzY2k8IBM
+    Processed 847 frames for yvgCGJ6vfkY
+  Done. Total graphs for train: 1593
+[visual embeddings] 100/1592 graphs
+[visual embeddings] 200/1592 graphs
+[visual embeddings] 300/1592 graphs
+[visual embeddings] 400/1592 graphs
+[visual embeddings] 500/1592 graphs
+[visual embeddings] 600/1592 graphs
+[visual embeddings] 700/1592 graphs
+[visual embeddings] 800/1592 graphs
+[visual embeddings] 900/1592 graphs
+[visual embeddings] 1000/1592 graphs
+[visual embeddings] 1100/1592 graphs
+[visual embeddings] 1200/1592 graphs
+[visual embeddings] 1300/1592 graphs
+[visual embeddings] 1400/1592 graphs
+[visual embeddings] 1500/1592 graphs
+[AVA download 1/2] UOfuzrwkclM: downloaded
+[AVA download 2/2] oWhvucAskhk: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] oWhvucAskhk - 799 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2593 total  (3.2 avg/frame)
+
+  [2/2] UOfuzrwkclM - 786 frames
+      Detections : 2849 total  (3.6 avg/frame)
+
+  Done in 15.5s
+  Found 2 videos in TRAIN split.
+    Processed 799 frames for oWhvucAskhk
+    Processed 786 frames for UOfuzrwkclM
+  Done. Total graphs for train: 1585
+[visual embeddings] 100/1583 graphs
+[visual embeddings] 200/1583 graphs
+[visual embeddings] 300/1583 graphs
+[visual embeddings] 400/1583 graphs
+[visual embeddings] 500/1583 graphs
+[visual embeddings] 600/1583 graphs
+[visual embeddings] 700/1583 graphs
+[visual embeddings] 800/1583 graphs
+[visual embeddings] 900/1583 graphs
+[visual embeddings] 1000/1583 graphs
+[visual embeddings] 1100/1583 graphs
+[visual embeddings] 1200/1583 graphs
+[visual embeddings] 1300/1583 graphs
+[visual embeddings] 1400/1583 graphs
+[visual embeddings] 1500/1583 graphs
+[AVA download 1/2] J1jDc2rTJlg: downloaded
+[AVA download 2/2] yn9WN9lsHRE: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] J1jDc2rTJlg - 812 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2154 total  (2.7 avg/frame)
+
+  Done in 10.2s
+  Found 1 videos in TRAIN split.
+    Processed 812 frames for J1jDc2rTJlg
+  Done. Total graphs for train: 812
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] yn9WN9lsHRE - 712 frames
+      Detections : 1678 total  (2.4 avg/frame)
+
+  Done in 7.5s
+  Found 1 videos in VAL split.
+    Processed 712 frames for yn9WN9lsHRE
+  Done. Total graphs for val: 712
+[visual embeddings] 100/1524 graphs
+[visual embeddings] 200/1524 graphs
+[visual embeddings] 300/1524 graphs
+[visual embeddings] 400/1524 graphs
+[visual embeddings] 500/1524 graphs
+[visual embeddings] 600/1524 graphs
+[visual embeddings] 700/1524 graphs
+[visual embeddings] 800/1524 graphs
+[visual embeddings] 900/1524 graphs
+[visual embeddings] 1000/1524 graphs
+[visual embeddings] 1100/1524 graphs
+[visual embeddings] 1200/1524 graphs
+[visual embeddings] 1300/1524 graphs
+[visual embeddings] 1400/1524 graphs
+[visual embeddings] 1500/1524 graphs
+[AVA download 1/2] rXFlJbXyZyc: downloaded
+[AVA download 2/2] xp67EC-Hvwk: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] xp67EC-Hvwk - 815 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1938 total  (2.4 avg/frame)
+
+  Done in 8.1s
+  Found 1 videos in TRAIN split.
+    Processed 815 frames for xp67EC-Hvwk
+  Done. Total graphs for train: 815
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] rXFlJbXyZyc - 794 frames
+      Detections : 2713 total  (3.4 avg/frame)
+
+  Done in 8.7s
+  Found 1 videos in VAL split.
+    Processed 794 frames for rXFlJbXyZyc
+  Done. Total graphs for val: 794
+[visual embeddings] 100/1608 graphs
+[visual embeddings] 200/1608 graphs
+[visual embeddings] 300/1608 graphs
+[visual embeddings] 400/1608 graphs
+[visual embeddings] 500/1608 graphs
+[visual embeddings] 600/1608 graphs
+[visual embeddings] 700/1608 graphs
+[visual embeddings] 800/1608 graphs
+[visual embeddings] 900/1608 graphs
+[visual embeddings] 1000/1608 graphs
+[visual embeddings] 1100/1608 graphs
+[visual embeddings] 1200/1608 graphs
+[visual embeddings] 1300/1608 graphs
+[visual embeddings] 1400/1608 graphs
+[visual embeddings] 1500/1608 graphs
+[visual embeddings] 1600/1608 graphs
+[AVA download 1/2] bAVXp1oGjHA: downloaded
+[AVA download 2/2] rk8Xm0EAOWs: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] bAVXp1oGjHA - 831 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1803 total  (2.2 avg/frame)
+
+  [2/2] rk8Xm0EAOWs - 853 frames
+      Detections : 2347 total  (2.8 avg/frame)
+
+  Done in 15.2s
+  Found 2 videos in TRAIN split.
+    Processed 831 frames for bAVXp1oGjHA
+    Processed 853 frames for rk8Xm0EAOWs
+  Done. Total graphs for train: 1684
+[visual embeddings] 100/1684 graphs
+[visual embeddings] 200/1684 graphs
+[visual embeddings] 300/1684 graphs
+[visual embeddings] 400/1684 graphs
+[visual embeddings] 500/1684 graphs
+[visual embeddings] 600/1684 graphs
+[visual embeddings] 700/1684 graphs
+[visual embeddings] 800/1684 graphs
+[visual embeddings] 900/1684 graphs
+[visual embeddings] 1000/1684 graphs
+[visual embeddings] 1100/1684 graphs
+[visual embeddings] 1200/1684 graphs
+[visual embeddings] 1300/1684 graphs
+[visual embeddings] 1400/1684 graphs
+[visual embeddings] 1500/1684 graphs
+[visual embeddings] 1600/1684 graphs
+[AVA download 1/2] KWoSGtglCms: downloaded
+[AVA download 2/2] 1ReZIMmD_8E: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] 1ReZIMmD_8E - 841 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3212 total  (3.8 avg/frame)
+
+  [2/2] KWoSGtglCms - 838 frames
+      Detections : 2651 total  (3.2 avg/frame)
+
+  Done in 15.5s
+  Found 2 videos in TRAIN split.
+    Processed 841 frames for 1ReZIMmD_8E
+    Processed 838 frames for KWoSGtglCms
+  Done. Total graphs for train: 1679
+[visual embeddings] 100/1678 graphs
+[visual embeddings] 200/1678 graphs
+[visual embeddings] 300/1678 graphs
+[visual embeddings] 400/1678 graphs
+[visual embeddings] 500/1678 graphs
+[visual embeddings] 600/1678 graphs
+[visual embeddings] 700/1678 graphs
+[visual embeddings] 800/1678 graphs
+[visual embeddings] 900/1678 graphs
+[visual embeddings] 1000/1678 graphs
+[visual embeddings] 1100/1678 graphs
+[visual embeddings] 1200/1678 graphs
+[visual embeddings] 1300/1678 graphs
+[visual embeddings] 1400/1678 graphs
+[visual embeddings] 1500/1678 graphs
+[visual embeddings] 1600/1678 graphs
+[AVA download 1/2] KVq6If6ozMY: downloaded
+[AVA download 2/2] OGNnUvJq9RI: downloaded
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 2
+====================================================
+
+  [1/2] KVq6If6ozMY - 750 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1747 total  (2.3 avg/frame)
+
+  [2/2] OGNnUvJq9RI - 790 frames
+      Detections : 1956 total  (2.5 avg/frame)
+
+  Done in 15.1s
+  Found 2 videos in VAL split.
+    Processed 750 frames for KVq6If6ozMY
+    Processed 790 frames for OGNnUvJq9RI
+  Done. Total graphs for val: 1540
+[visual embeddings] 100/1527 graphs
+[visual embeddings] 200/1527 graphs
+[visual embeddings] 300/1527 graphs
+[visual embeddings] 400/1527 graphs
+[visual embeddings] 500/1527 graphs
+[visual embeddings] 600/1527 graphs
+[visual embeddings] 700/1527 graphs
+[visual embeddings] 800/1527 graphs
+[visual embeddings] 900/1527 graphs
+[visual embeddings] 1000/1527 graphs
+[visual embeddings] 1100/1527 graphs
+[visual embeddings] 1200/1527 graphs
+[visual embeddings] 1300/1527 graphs
+[visual embeddings] 1400/1527 graphs
+[visual embeddings] 1500/1527 graphs
+[AVA download 1/2] HKjR70GCRPE: downloaded
+[AVA download 2/2] T26G6_AjJZ4: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] HKjR70GCRPE - 838 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2745 total  (3.3 avg/frame)
+
+  [2/2] T26G6_AjJZ4 - 847 frames
+      Detections : 2433 total  (2.9 avg/frame)
+
+  Done in 16.2s
+  Found 2 videos in TRAIN split.
+    Processed 838 frames for HKjR70GCRPE
+    Processed 847 frames for T26G6_AjJZ4
+  Done. Total graphs for train: 1685
+[visual embeddings] 100/1685 graphs
+[visual embeddings] 200/1685 graphs
+[visual embeddings] 300/1685 graphs
+[visual embeddings] 400/1685 graphs
+[visual embeddings] 500/1685 graphs
+[visual embeddings] 600/1685 graphs
+[visual embeddings] 700/1685 graphs
+[visual embeddings] 800/1685 graphs
+[visual embeddings] 900/1685 graphs
+[visual embeddings] 1000/1685 graphs
+[visual embeddings] 1100/1685 graphs
+[visual embeddings] 1200/1685 graphs
+[visual embeddings] 1300/1685 graphs
+[visual embeddings] 1400/1685 graphs
+[visual embeddings] 1500/1685 graphs
+[visual embeddings] 1600/1685 graphs
+[AVA download 1/2] IKdBLciu_-A: downloaded
+[AVA download 2/2] _Ca3gOdOHxU: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] _Ca3gOdOHxU - 818 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2833 total  (3.5 avg/frame)
+
+  [2/2] IKdBLciu_-A - 794 frames
+      Detections : 2132 total  (2.7 avg/frame)
+
+  Done in 18.7s
+  Found 2 videos in TRAIN split.
+    Processed 794 frames for IKdBLciu_-A
+    Processed 818 frames for _Ca3gOdOHxU
+  Done. Total graphs for train: 1612
+[visual embeddings] 100/1611 graphs
+[visual embeddings] 200/1611 graphs
+[visual embeddings] 300/1611 graphs
+[visual embeddings] 400/1611 graphs
+[visual embeddings] 500/1611 graphs
+[visual embeddings] 600/1611 graphs
+[visual embeddings] 700/1611 graphs
+[visual embeddings] 800/1611 graphs
+[visual embeddings] 900/1611 graphs
+[visual embeddings] 1000/1611 graphs
+[visual embeddings] 1100/1611 graphs
+[visual embeddings] 1200/1611 graphs
+[visual embeddings] 1300/1611 graphs
+[visual embeddings] 1400/1611 graphs
+[visual embeddings] 1500/1611 graphs
+[visual embeddings] 1600/1611 graphs
+[AVA download 1/2] pieVIsGmLsc: downloaded
+[AVA download 2/2] oD_wxyTHJ2I: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] oD_wxyTHJ2I - 729 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2350 total  (3.2 avg/frame)
+
+  [2/2] pieVIsGmLsc - 825 frames
+      Detections : 1808 total  (2.2 avg/frame)
+
+  Done in 14.3s
+  Found 2 videos in TRAIN split.
+    Processed 729 frames for oD_wxyTHJ2I
+    Processed 825 frames for pieVIsGmLsc
+  Done. Total graphs for train: 1554
+[visual embeddings] 100/1547 graphs
+[visual embeddings] 200/1547 graphs
+[visual embeddings] 300/1547 graphs
+[visual embeddings] 400/1547 graphs
+[visual embeddings] 500/1547 graphs
+[visual embeddings] 600/1547 graphs
+[visual embeddings] 700/1547 graphs
+[visual embeddings] 800/1547 graphs
+[visual embeddings] 900/1547 graphs
+[visual embeddings] 1000/1547 graphs
+[visual embeddings] 1100/1547 graphs
+[visual embeddings] 1200/1547 graphs
+[visual embeddings] 1300/1547 graphs
+[visual embeddings] 1400/1547 graphs
+[visual embeddings] 1500/1547 graphs
+[AVA download 1/2] 8JSxLhDMGtE: downloaded
+[AVA download 2/2] WlgxRNCHQzw: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] 8JSxLhDMGtE - 531 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1196 total  (2.3 avg/frame)
+
+  [2/2] WlgxRNCHQzw - 787 frames
+      Detections : 1802 total  (2.3 avg/frame)
+
+  Done in 13.1s
+  Found 2 videos in TRAIN split.
+    Processed 531 frames for 8JSxLhDMGtE
+    Processed 787 frames for WlgxRNCHQzw
+  Done. Total graphs for train: 1318
+[visual embeddings] 100/1315 graphs
+[visual embeddings] 200/1315 graphs
+[visual embeddings] 300/1315 graphs
+[visual embeddings] 400/1315 graphs
+[visual embeddings] 500/1315 graphs
+[visual embeddings] 600/1315 graphs
+[visual embeddings] 700/1315 graphs
+[visual embeddings] 800/1315 graphs
+[visual embeddings] 900/1315 graphs
+[visual embeddings] 1000/1315 graphs
+[visual embeddings] 1100/1315 graphs
+[visual embeddings] 1200/1315 graphs
+[visual embeddings] 1300/1315 graphs
+[AVA download 1/2] Ma2hgTmveKQ: downloaded
+[AVA download 2/2] r2llOyS-BmE: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] Ma2hgTmveKQ - 859 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3871 total  (4.5 avg/frame)
+
+  [2/2] r2llOyS-BmE - 863 frames
+      Detections : 3759 total  (4.4 avg/frame)
+
+  Done in 19.8s
+  Found 2 videos in TRAIN split.
+    Processed 859 frames for Ma2hgTmveKQ
+    Processed 863 frames for r2llOyS-BmE
+  Done. Total graphs for train: 1722
+[visual embeddings] 100/1722 graphs
+[visual embeddings] 200/1722 graphs
+[visual embeddings] 300/1722 graphs
+[visual embeddings] 400/1722 graphs
+[visual embeddings] 500/1722 graphs
+[visual embeddings] 600/1722 graphs
+[visual embeddings] 700/1722 graphs
+[visual embeddings] 800/1722 graphs
+[visual embeddings] 900/1722 graphs
+[visual embeddings] 1000/1722 graphs
+[visual embeddings] 1100/1722 graphs
+[visual embeddings] 1200/1722 graphs
+[visual embeddings] 1300/1722 graphs
+[visual embeddings] 1400/1722 graphs
+[visual embeddings] 1500/1722 graphs
+[visual embeddings] 1600/1722 graphs
+[visual embeddings] 1700/1722 graphs
+[AVA download 1/2] phrYEKv0rmw: downloaded
+[AVA download 2/2] UOyyTUX5Vo4: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] phrYEKv0rmw - 856 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3147 total  (3.7 avg/frame)
+
+  Done in 8.8s
+  Found 1 videos in TRAIN split.
+    Processed 856 frames for phrYEKv0rmw
+  Done. Total graphs for train: 856
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] UOyyTUX5Vo4 - 767 frames
+      Detections : 1999 total  (2.6 avg/frame)
+
+  Done in 7.6s
+  Found 1 videos in VAL split.
+    Processed 767 frames for UOyyTUX5Vo4
+  Done. Total graphs for val: 767
+[visual embeddings] 100/1623 graphs
+[visual embeddings] 200/1623 graphs
+[visual embeddings] 300/1623 graphs
+[visual embeddings] 400/1623 graphs
+[visual embeddings] 500/1623 graphs
+[visual embeddings] 600/1623 graphs
+[visual embeddings] 700/1623 graphs
+[visual embeddings] 800/1623 graphs
+[visual embeddings] 900/1623 graphs
+[visual embeddings] 1000/1623 graphs
+[visual embeddings] 1100/1623 graphs
+[visual embeddings] 1200/1623 graphs
+[visual embeddings] 1300/1623 graphs
+[visual embeddings] 1400/1623 graphs
+[visual embeddings] 1500/1623 graphs
+[visual embeddings] 1600/1623 graphs
+[AVA download 1/2] Vmef_8MY46w: downloaded
+[AVA download 2/2] skiZueh4lfY: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] skiZueh4lfY - 787 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2217 total  (2.8 avg/frame)
+
+  [2/2] Vmef_8MY46w - 816 frames
+      Detections : 2467 total  (3.0 avg/frame)
+
+  Done in 24.8s
+  Found 2 videos in TRAIN split.
+    Processed 787 frames for skiZueh4lfY
+    Processed 816 frames for Vmef_8MY46w
+  Done. Total graphs for train: 1603
+[visual embeddings] 100/1587 graphs
+[visual embeddings] 200/1587 graphs
+[visual embeddings] 300/1587 graphs
+[visual embeddings] 400/1587 graphs
+[visual embeddings] 500/1587 graphs
+[visual embeddings] 600/1587 graphs
+[visual embeddings] 700/1587 graphs
+[visual embeddings] 800/1587 graphs
+[visual embeddings] 900/1587 graphs
+[visual embeddings] 1000/1587 graphs
+[visual embeddings] 1100/1587 graphs
+[visual embeddings] 1200/1587 graphs
+[visual embeddings] 1300/1587 graphs
+[visual embeddings] 1400/1587 graphs
+[visual embeddings] 1500/1587 graphs
+[AVA download 1/2] QCLQYnt3aMo: downloaded
+[AVA download 2/2] TCmNvNLRWrc: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] TCmNvNLRWrc - 850 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 3305 total  (3.9 avg/frame)
+
+  Done in 8.1s
+  Found 1 videos in TRAIN split.
+    Processed 850 frames for TCmNvNLRWrc
+  Done. Total graphs for train: 850
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] QCLQYnt3aMo - 826 frames
+      Detections : 2196 total  (2.7 avg/frame)
+
+  Done in 14.3s
+  Found 1 videos in VAL split.
+    Processed 826 frames for QCLQYnt3aMo
+  Done. Total graphs for val: 826
+[visual embeddings] 100/1666 graphs
+[visual embeddings] 200/1666 graphs
+[visual embeddings] 300/1666 graphs
+[visual embeddings] 400/1666 graphs
+[visual embeddings] 500/1666 graphs
+[visual embeddings] 600/1666 graphs
+[visual embeddings] 700/1666 graphs
+[visual embeddings] 800/1666 graphs
+[visual embeddings] 900/1666 graphs
+[visual embeddings] 1000/1666 graphs
+[visual embeddings] 1100/1666 graphs
+[visual embeddings] 1200/1666 graphs
+[visual embeddings] 1300/1666 graphs
+[visual embeddings] 1400/1666 graphs
+[visual embeddings] 1500/1666 graphs
+[visual embeddings] 1600/1666 graphs
+[AVA download 1/2] o4xQ-BEa3Ss: downloaded
+[AVA download 2/2] B1MAUxpKaV8: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 1
+====================================================
+
+  [1/1] B1MAUxpKaV8 - 782 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2149 total  (2.7 avg/frame)
+
+  Done in 9.2s
+  Found 1 videos in TRAIN split.
+    Processed 782 frames for B1MAUxpKaV8
+  Done. Total graphs for train: 782
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 1
+====================================================
+
+  [1/1] o4xQ-BEa3Ss - 811 frames
+      Detections : 2348 total  (2.9 avg/frame)
+
+  Done in 8.9s
+  Found 1 videos in VAL split.
+    Processed 811 frames for o4xQ-BEa3Ss
+  Done. Total graphs for val: 811
+[visual embeddings] 100/1592 graphs
+[visual embeddings] 200/1592 graphs
+[visual embeddings] 300/1592 graphs
+[visual embeddings] 400/1592 graphs
+[visual embeddings] 500/1592 graphs
+[visual embeddings] 600/1592 graphs
+[visual embeddings] 700/1592 graphs
+[visual embeddings] 800/1592 graphs
+[visual embeddings] 900/1592 graphs
+[visual embeddings] 1000/1592 graphs
+[visual embeddings] 1100/1592 graphs
+[visual embeddings] 1200/1592 graphs
+[visual embeddings] 1300/1592 graphs
+[visual embeddings] 1400/1592 graphs
+[visual embeddings] 1500/1592 graphs
+[AVA download 1/2] x-6CtPWVi6E: downloaded
+[AVA download 2/2] iSlDMboCSao: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] iSlDMboCSao - 697 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1682 total  (2.4 avg/frame)
+
+  [2/2] x-6CtPWVi6E - 723 frames
+      Detections : 1514 total  (2.1 avg/frame)
+
+  Done in 19.9s
+  Found 2 videos in TRAIN split.
+    Processed 697 frames for iSlDMboCSao
+    Processed 723 frames for x-6CtPWVi6E
+  Done. Total graphs for train: 1420
+[visual embeddings] 100/1418 graphs
+[visual embeddings] 200/1418 graphs
+[visual embeddings] 300/1418 graphs
+[visual embeddings] 400/1418 graphs
+[visual embeddings] 500/1418 graphs
+[visual embeddings] 600/1418 graphs
+[visual embeddings] 700/1418 graphs
+[visual embeddings] 800/1418 graphs
+[visual embeddings] 900/1418 graphs
+[visual embeddings] 1000/1418 graphs
+[visual embeddings] 1100/1418 graphs
+[visual embeddings] 1200/1418 graphs
+[visual embeddings] 1300/1418 graphs
+[visual embeddings] 1400/1418 graphs
+[AVA download 1/2] j5jmjhGBW44: downloaded
+[AVA download 2/2] KHHgQ_Pe4cI: downloaded
+
+====================================================
+  Detecting objects - split: VAL
+  Videos to process: 2
+====================================================
+
+  [1/2] j5jmjhGBW44 - 696 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1762 total  (2.5 avg/frame)
+
+  [2/2] KHHgQ_Pe4cI - 826 frames
+      Detections : 1745 total  (2.1 avg/frame)
+
+  Done in 25.5s
+  Found 2 videos in VAL split.
+    Processed 696 frames for j5jmjhGBW44
+    Processed 826 frames for KHHgQ_Pe4cI
+  Done. Total graphs for val: 1522
+[visual embeddings] 100/1513 graphs
+[visual embeddings] 200/1513 graphs
+[visual embeddings] 300/1513 graphs
+[visual embeddings] 400/1513 graphs
+[visual embeddings] 500/1513 graphs
+[visual embeddings] 600/1513 graphs
+[visual embeddings] 700/1513 graphs
+[visual embeddings] 800/1513 graphs
+[visual embeddings] 900/1513 graphs
+[visual embeddings] 1000/1513 graphs
+[visual embeddings] 1100/1513 graphs
+[visual embeddings] 1200/1513 graphs
+[visual embeddings] 1300/1513 graphs
+[visual embeddings] 1400/1513 graphs
+[visual embeddings] 1500/1513 graphs
+[AVA download 1/2] Hi8QeP_VPu0: downloaded
+[AVA download 2/2] 2fwni_Kjf2M: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] 2fwni_Kjf2M - 769 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 1921 total  (2.5 avg/frame)
+
+  [2/2] Hi8QeP_VPu0 - 823 frames
+      Detections : 2222 total  (2.7 avg/frame)
+
+  Done in 23.8s
+  Found 2 videos in TRAIN split.
+    Processed 769 frames for 2fwni_Kjf2M
+    Processed 823 frames for Hi8QeP_VPu0
+  Done. Total graphs for train: 1592
+[visual embeddings] 100/1591 graphs
+[visual embeddings] 200/1591 graphs
+[visual embeddings] 300/1591 graphs
+[visual embeddings] 400/1591 graphs
+[visual embeddings] 500/1591 graphs
+[visual embeddings] 600/1591 graphs
+[visual embeddings] 700/1591 graphs
+[visual embeddings] 800/1591 graphs
+[visual embeddings] 900/1591 graphs
+[visual embeddings] 1000/1591 graphs
+[visual embeddings] 1100/1591 graphs
+[visual embeddings] 1200/1591 graphs
+[visual embeddings] 1300/1591 graphs
+[visual embeddings] 1400/1591 graphs
+[visual embeddings] 1500/1591 graphs
+[AVA download 1/2] 7YpF6DntOYw: downloaded
+[AVA download 2/2] tt0t_a1EDCE: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] 7YpF6DntOYw - 791 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2431 total  (3.1 avg/frame)
+
+  [2/2] tt0t_a1EDCE - 674 frames
+      Detections : 1838 total  (2.7 avg/frame)
+
+  Done in 28.8s
+  Found 2 videos in TRAIN split.
+    Processed 791 frames for 7YpF6DntOYw
+    Processed 674 frames for tt0t_a1EDCE
+  Done. Total graphs for train: 1465
+[visual embeddings] 100/1460 graphs
+[visual embeddings] 200/1460 graphs
+[visual embeddings] 300/1460 graphs
+[visual embeddings] 400/1460 graphs
+[visual embeddings] 500/1460 graphs
+[visual embeddings] 600/1460 graphs
+[visual embeddings] 700/1460 graphs
+[visual embeddings] 800/1460 graphs
+[visual embeddings] 900/1460 graphs
+[visual embeddings] 1000/1460 graphs
+[visual embeddings] 1100/1460 graphs
+[visual embeddings] 1200/1460 graphs
+[visual embeddings] 1300/1460 graphs
+[visual embeddings] 1400/1460 graphs
+[AVA download 1/2] GozLjpMNADg: downloaded
+[AVA download 2/2] AYebXQ8eUkM: downloaded
+
+====================================================
+  Detecting objects - split: TRAIN
+  Videos to process: 2
+====================================================
+
+  [1/2] AYebXQ8eUkM - 834 frames
+Loading YOLO model: yolov8n.pt
+      Detections : 2289 total  (2.7 avg/frame)
+
+  [2/2] GozLjpMNADg - 746 frames
+      Detections : 2542 total  (3.4 avg/frame)
+
+  Done in 38.5s
+  Found 2 videos in TRAIN split.
+    Processed 834 frames for AYebXQ8eUkM
+    Processed 746 frames for GozLjpMNADg
+  Done. Total graphs for train: 1580
+[visual embeddings] 100/1580 graphs
+[visual embeddings] 200/1580 graphs
+[visual embeddings] 300/1580 graphs
+[visual embeddings] 400/1580 graphs
+[visual embeddings] 500/1580 graphs
+[visual embeddings] 600/1580 graphs
+[visual embeddings] 700/1580 graphs
+[visual embeddings] 800/1580 graphs
+[visual embeddings] 900/1580 graphs
+[visual embeddings] 1000/1580 graphs
+[visual embeddings] 1100/1580 graphs
+[visual embeddings] 1200/1580 graphs
+[visual embeddings] 1300/1580 graphs
+[visual embeddings] 1400/1580 graphs
+[visual embeddings] 1500/1580 graphs
+[AVA download 1/2] 9F2voT6QWvQ: failed
+[AVA download 2/2] xmqSaQPzL1E: failed
+{
+  "target_videos": 100,
+  "completed_video_count": 97,
+  "target_reached": false,
+  "failed_video_ids": [],
+  "state": "data\\app\\features\\ava80_shards\\expansion_state_scale100.json"
+}

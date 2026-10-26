@@ -329,3 +329,9 @@ data/demo/work/
 
 # Local checkpoint drop folder (copy into data/app/models)
 gnn_checkpoints_handoff/
+
+# Experiment run records (logs, timelines, small CSVs) are reproducibility
+# evidence and are kept with their results, despite the blanket rules above.
+!evaluation/results/**/*.log
+!evaluation/results/**/*.txt
+!evaluation/results/**/*.csv

@@ -7,7 +7,8 @@ This project expects AVA assets in the following modular structure:
   - ava_val_v2.2.csv
 - data/ava/videos
   - *.mp4
-  - ava_train_v2.2.txt (download list used by download.go)
+  - ava_train_v2.2.txt (download list for the archived Go downloader in archive/legacy_ava_downloader/;
+    current downloads use `python -m vidquery expand-ava-dataset`)
 - data/ava/audio
   - extracted wav files (optional)
 - data/ava/extracted_frames

@@ -1,0 +1,9 @@
+a86172dcb1111af2b00fbe0d28b3d9e89d30a59a28ae76fb5d7604029acc1523 *data/app/benchmark/charades/charades.sqlite3
+665bd7d887d9f607a8c629032cac59bd53300331c9c34cdd2ca605f18feb4203 *data/app/benchmark/charades/charades-snapshot-test.sqlite3
+b895c788f6e5fbb6f746530318203731f7ee4fa8493836cb5859c204dedaff6a *data/app/benchmark/charades/charades-snapshot-validation.sqlite3
+29fe5c3b58948f7b9f73424d586e8e391cdd9956621d6f91fab5339fe5406e56 *evaluation/results/charades-2026-10-25/test/T0-default-strict-noframe.json
+852694a83eac56a1d49cd9180f01c94dc00c9c6f0be9007ba44bc11e9c98f264 *evaluation/results/charades-2026-10-25/test/T1-selected-soft-frame.json
+99edb99de1da2e76074c49c36b51a0bebb9384d1eadf798eec1e0ec1b1c4ff73 *evaluation/results/charades-2026-10-25/test/T2-selected-p1-preserving-thresholds.json
+573c27a2d57e72cf9fabe09b5da96c752778a829d02a273d2011306975d6ece4 *evaluation/results/charades-2026-10-25/test/T3-selected-balanced-thresholds.json
+6cf2d7e201767b923f44e0be134dfe81e494aeb214a373ea345eba2a88beaaa0 *evaluation/results/charades-2026-10-25/test/T4-ablation-soft-noframe.json
+1d18abc5ef21f6252c2b888047b042e8b7e6901f04feef6a333a2a6968824687 *evaluation/results/charades-2026-10-25/test/T5-ablation-strict-frame.json

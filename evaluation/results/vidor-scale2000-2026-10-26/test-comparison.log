@@ -1,0 +1,306 @@
+{
+ "point": {
+  "gat_v2": {
+   "macro_f1_supported_predicates": 0.071177,
+   "mean_average_precision_supported_predicates": 0.088219,
+   "micro_f1": 0.315536
+  },
+  "mlp_v2": {
+   "macro_f1_supported_predicates": 0.071798,
+   "mean_average_precision_supported_predicates": 0.080733,
+   "micro_f1": 0.289071
+  },
+  "gat_v3_scale500": {
+   "macro_f1_supported_predicates": 0.170506,
+   "mean_average_precision_supported_predicates": 0.186719,
+   "micro_f1": 0.32817
+  },
+  "mlp_v3_scale500": {
+   "macro_f1_supported_predicates": 0.166306,
+   "mean_average_precision_supported_predicates": 0.172039,
+   "micro_f1": 0.37396
+  },
+  "gat_v4_scale2000": {
+   "macro_f1_supported_predicates": 0.217967,
+   "mean_average_precision_supported_predicates": 0.242396,
+   "micro_f1": 0.354722
+  },
+  "mlp_v4_scale2000": {
+   "macro_f1_supported_predicates": 0.23286,
+   "mean_average_precision_supported_predicates": 0.238953,
+   "micro_f1": 0.386569
+  },
+  "gat_v4_scale2000_warm": {
+   "macro_f1_supported_predicates": 0.21421,
+   "mean_average_precision_supported_predicates": 0.236836,
+   "micro_f1": 0.349357
+  },
+  "mlp_v4_scale2000_warm": {
+   "macro_f1_supported_predicates": 0.230993,
+   "mean_average_precision_supported_predicates": 0.255378,
+   "micro_f1": 0.385953
+  }
+ },
+ "paired": {
+  "gat_v4_scale2000 - gat_v2": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.14679,
+    "ci95": [
+     0.104058,
+     0.18497
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.154177,
+    "ci95": [
+     0.11409,
+     0.200118
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.039186,
+    "ci95": [
+     0.001079,
+     0.075885
+    ],
+    "ci_excludes_zero": true
+   }
+  },
+  "gat_v4_scale2000_warm - gat_v2": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.143033,
+    "ci95": [
+     0.098282,
+     0.187163
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.148617,
+    "ci95": [
+     0.105383,
+     0.194541
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.033821,
+    "ci95": [
+     -0.000905,
+     0.068308
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  "gat_v4_scale2000 - gat_v3_scale500": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.047461,
+    "ci95": [
+     0.014975,
+     0.073343
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.055677,
+    "ci95": [
+     0.020897,
+     0.084983
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.026552,
+    "ci95": [
+     0.005929,
+     0.04651
+    ],
+    "ci_excludes_zero": true
+   }
+  },
+  "gat_v4_scale2000_warm - gat_v3_scale500": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.043704,
+    "ci95": [
+     0.015524,
+     0.071405
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.050117,
+    "ci95": [
+     0.019688,
+     0.074355
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.021187,
+    "ci95": [
+     0.006354,
+     0.037559
+    ],
+    "ci_excludes_zero": true
+   }
+  },
+  "mlp_v4_scale2000 - mlp_v3_scale500": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.066554,
+    "ci95": [
+     0.029049,
+     0.089168
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.066914,
+    "ci95": [
+     0.030034,
+     0.092327
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.012609,
+    "ci95": [
+     -0.007128,
+     0.033014
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  "mlp_v4_scale2000_warm - mlp_v3_scale500": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.064687,
+    "ci95": [
+     0.032131,
+     0.093491
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.083339,
+    "ci95": [
+     0.03883,
+     0.103554
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.011993,
+    "ci95": [
+     -0.00534,
+     0.030796
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  "gat_v4_scale2000_warm - gat_v4_scale2000": {
+   "macro_f1_supported_predicates": {
+    "difference": -0.003757,
+    "ci95": [
+     -0.022458,
+     0.021323
+    ],
+    "ci_excludes_zero": false
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": -0.00556,
+    "ci95": [
+     -0.033153,
+     0.018997
+    ],
+    "ci_excludes_zero": false
+   },
+   "micro_f1": {
+    "difference": -0.005365,
+    "ci95": [
+     -0.025184,
+     0.012421
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  "mlp_v4_scale2000_warm - mlp_v4_scale2000": {
+   "macro_f1_supported_predicates": {
+    "difference": -0.001867,
+    "ci95": [
+     -0.016896,
+     0.022211
+    ],
+    "ci_excludes_zero": false
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.016425,
+    "ci95": [
+     -0.009819,
+     0.028142
+    ],
+    "ci_excludes_zero": false
+   },
+   "micro_f1": {
+    "difference": -0.000616,
+    "ci95": [
+     -0.011942,
+     0.011352
+    ],
+    "ci_excludes_zero": false
+   }
+  },
+  "mlp_v4_scale2000 - gat_v4_scale2000": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.014893,
+    "ci95": [
+     -0.011034,
+     0.032363
+    ],
+    "ci_excludes_zero": false
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": -0.003443,
+    "ci95": [
+     -0.029338,
+     0.018223
+    ],
+    "ci_excludes_zero": false
+   },
+   "micro_f1": {
+    "difference": 0.031847,
+    "ci95": [
+     0.016656,
+     0.047485
+    ],
+    "ci_excludes_zero": true
+   }
+  },
+  "gat_v3_scale500 - gat_v2": {
+   "macro_f1_supported_predicates": {
+    "difference": 0.099329,
+    "ci95": [
+     0.066555,
+     0.133452
+    ],
+    "ci_excludes_zero": true
+   },
+   "mean_average_precision_supported_predicates": {
+    "difference": 0.0985,
+    "ci95": [
+     0.071644,
+     0.136449
+    ],
+    "ci_excludes_zero": true
+   },
+   "micro_f1": {
+    "difference": 0.012634,
+    "ci95": [
+     -0.017872,
+     0.037838
+    ],
+    "ci_excludes_zero": false
+   }
+  }
+ }
+}
