@@ -33,6 +33,9 @@ from .domain import (
 )
 
 UNMATCHED_CONSTRAINT = "unmatched_constraint"
+CONTRADICTED_CONSTRAINT = "contradicted_constraint"
+# Verdict-only evidence: lowers the confidence shown, never the ranking.
+VERDICT_ONLY_SOURCES = frozenset({UNMATCHED_CONSTRAINT, CONTRADICTED_CONSTRAINT})
 
 # Priors are documented design constants derived from the measured results in
 # docs/GNN_STATUS.md and docs/EVALUATION_FINAL.md. They are *not* calibrated
@@ -64,6 +67,9 @@ SOURCE_RELIABILITY: dict[str, float] = {
     # A parsed query constraint the segment lacks (UNMATCHED_CONSTRAINT_EVIDENCE).
     # Its raw score is always 0, so the prior only labels it.
     UNMATCHED_CONSTRAINT: 1.00,
+    # A required pose contradicted by a confidently observed different pose
+    # (CONTRADICTION_EVIDENCE); also always raw 0.
+    CONTRADICTED_CONSTRAINT: 1.00,
 }
 
 # How central each modality is to each retrieval intent.
@@ -366,13 +372,16 @@ def assess_evidence(
     ranking_numerator = 0.0
     ranking_denominator = 0.0
     unmatched: list[EvidenceModality] = []
+    contradicted = 0
     for item in contributions:
         raw = max(0.0, min(1.0, item.raw_score))
         prior = reliability_prior(item.source_method, priors)
         weight = modality_weight(plan.intent, item.modality)
         value = raw * prior
-        if item.source_method == UNMATCHED_CONSTRAINT:
+        if item.source_method in VERDICT_ONLY_SOURCES:
             unmatched.append(item.modality)
+            if item.source_method == CONTRADICTED_CONSTRAINT:
+                contradicted += 1
         else:
             ranking_numerator += weight * value
             ranking_denominator += weight
@@ -420,6 +429,10 @@ def assess_evidence(
     if unmatched:
         names = ", ".join(f"{count} {modality}" for modality, count in Counter(unmatched).items())
         explanation += f" Unmatched query constraints ({names}) count as zero evidence."
+        if contradicted:
+            explanation += (
+                f" {contradicted} required pose(s) contradicted by another observed pose."
+            )
         ranking = ranking_numerator / ranking_denominator if ranking_denominator else 0.0
         ranking_confidence = round(max(0.0, min(1.0, ranking)), 4)
     return EvidenceAssessment(

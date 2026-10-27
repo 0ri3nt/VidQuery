@@ -21,6 +21,7 @@ from .domain import (
 
 LOGGER = logging.getLogger(__name__)
 GROQ_CHAT_COMPLETIONS_URL = "https://api.groq.com/openai/v1/chat/completions"
+DECLINED_ANSWER = "The retrieved evidence does not support an answer to this query."
 
 # Claim checks on generated answers (see verify_answer_claims).
 TIME_TOLERANCE_SECONDS = 1.0
@@ -37,6 +38,12 @@ _SPEAKER = re.compile(r"\bspeaker[_ ]?(\d+)\b", re.I)
 _QUOTE = re.compile("[\"“”]([^\"“”]{3,})[\"“”]")
 _TRANSCRIPT_CUES = re.compile(r"\b(?:transcript|says?|said|saying|spoken|speech|utters?)\b", re.I)
 _OCR_CUES = re.compile(r"\b(?:ocr|on-screen text|on screen text|written|caption)\b", re.I)
+# A negator and up to four words it governs: "is not cooking", "no laptop",
+# "isn't drinking from a cup". Applied to normalized text ("isn't" -> "isn t").
+_NEGATED = re.compile(
+    r"\b(?:no|not|never|without|none|nobody|neither|nor|cannot|"
+    r"(?:isn|aren|doesn|don|didn|wasn|weren|can|won) t)\b(?:\s+\w+){0,4}"
+)
 
 
 def _normalize(text: str) -> str:
@@ -97,14 +104,18 @@ def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
     evidence_entities.update(
         StructuredQueryParser._extract_aliases(normalized_spoken, ENTITY_ALIASES)
     )
-    claimed_entities = StructuredQueryParser._extract_aliases(_normalize(text), ENTITY_ALIASES)
+    if any(item.transcript.strip() or item.speakers for item in cited):
+        evidence_entities.add("person")  # someone is speaking, so a person is present
+    # Negated mentions ("the person is not cooking", "no laptop") are not claims.
+    asserted = _NEGATED.sub(" ", _normalize(text))
+    claimed_entities = StructuredQueryParser._extract_aliases(asserted, ENTITY_ALIASES)
     missing_entities = sorted(set(claimed_entities) - evidence_entities)
     if missing_entities:
         reasons.append(f"objects not in the cited evidence: {missing_entities}")
 
     evidence_actions = {action.lower() for item in cited for action in item.actions}
     evidence_actions.update(match.label for match in match_actions(normalized_spoken))
-    claimed_actions = {match.label for match in match_actions(_normalize(text))}
+    claimed_actions = {match.label for match in match_actions(asserted)}
     missing_actions = sorted(claimed_actions - evidence_actions)
     if missing_actions:
         reasons.append(f"actions not in the cited evidence: {missing_actions}")
@@ -561,6 +572,14 @@ class GroundedAnswerService:
         try:
             content = envelope["choices"][0]["message"]["content"]
             parsed = json.loads(content) if isinstance(content, str) else content
+            if (
+                isinstance(parsed, dict)
+                and parsed.get("supported") is False
+                and not str(parsed.get("answer") or "").strip()
+            ):
+                # Groq declines with an empty answer for weak evidence (seen live); that is
+                # a valid "not supported" answer, not a provider failure.
+                parsed = {**parsed, "answer": DECLINED_ANSWER}
             return ProviderGroundedAnswer.model_validate(parsed)
         except (KeyError, IndexError, TypeError, ValueError) as exc:
             raise RAGProviderError("Groq returned an invalid structured answer") from exc

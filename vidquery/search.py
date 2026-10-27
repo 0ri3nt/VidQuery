@@ -32,6 +32,7 @@ from .relationships import (
     relationship_directionality,
 )
 from .reliability import (
+    CONTRADICTED_CONSTRAINT,
     DEFAULT_SUPPORTED_THRESHOLD,
     DEFAULT_WEAK_THRESHOLD,
     UNMATCHED_CONSTRAINT,
@@ -422,6 +423,94 @@ STOPWORDS = {
     "continue",
 }
 
+# Everyday visible things and visible actions that neither the detector classes
+# (ENTITY_ALIASES) nor the action lexicon cover. Without this list they were
+# parsed as words to find in the transcript. Plural/-s forms are matched too.
+VISUAL_CONCEPT_WORDS = frozenset({
+    # rooms, fixtures and furniture
+    "door", "doorway", "doorknob", "window", "curtain", "blinds", "wall", "floor",
+    "ceiling", "stairs", "staircase", "step", "hallway", "corridor", "room", "kitchen",
+    "bathroom", "bedroom", "garage", "closet", "wardrobe", "cabinet", "cupboard", "drawer",
+    "shelf", "shelves", "counter", "countertop", "desk", "stove", "mirror", "lamp", "light",
+    "switch", "picture", "painting", "poster", "frame", "rug", "carpet", "mat",
+    # household items, food and drink
+    "towel", "blanket", "pillow", "sheet", "mattress", "box", "basket", "bin", "trash",
+    "garbage", "bucket", "broom", "mop", "vacuum", "cloth", "rag", "dish", "dishes",
+    "plate", "pan", "pot", "kettle", "glass", "food", "snack", "groceries", "bread",
+    "water", "coffee", "tea", "medicine", "pill", "pills", "paper", "papers", "homework",
+    "envelope", "letter", "magazine", "newspaper", "camera", "keys", "key", "wallet",
+    # clothing and the body
+    "shoe", "shoes", "sock", "socks", "shirt", "jacket", "coat", "sweater", "pants",
+    "clothes", "clothing", "hair", "face", "hand", "hands", "head",
+    # visible actions the action lexicon does not cover
+    "take", "takes", "taking", "took", "put", "puts", "putting", "turn", "turns",
+    "turning", "use", "uses", "using", "grab", "grabs", "grabbing", "tidy", "tidies",
+    "tidying", "clean", "cleans", "cleaning", "wash", "washes", "washing", "wipe",
+    "wipes", "wiping", "fix", "fixes", "fixing", "pour", "pours", "pouring", "toss",
+    "tosses", "tossing", "sneeze", "sneezes", "sneezing", "cough", "coughs", "coughing",
+    "laugh", "laughs", "laughing", "smile", "smiles", "smiling", "yawn", "yawns",
+    "yawning", "stretch", "stretches", "stretching", "look", "looks", "looking",
+    "leave", "leaves", "leaving", "enter", "enters", "entering", "undress", "undresses",
+    "undressing", "dress", "dresses", "dressing", "awaken", "awakens", "awakening",
+    "snuggle", "snuggles", "snuggling", "photograph", "photographs", "photographing",
+    # action verbs left over when the lexicon declines a match in context
+    "walk", "walks", "walking", "open", "opens", "opening", "close", "closes", "closing",
+    "sit", "sits", "sitting", "stand", "stands", "standing", "hold", "holds", "holding",
+    "eat", "eats", "eating", "drink", "drinks", "drinking", "cook", "cooks", "cooking",
+    "lie", "lies", "lying", "run", "runs", "running", "read", "reads", "reading",
+})
+
+
+def _is_visual_concept(token: str) -> bool:
+    return token in VISUAL_CONCEPT_WORDS or (
+        token.endswith("s") and token[:-1] in VISUAL_CONCEPT_WORDS
+    )
+
+
+# AVA pose actions are mutually exclusive for one person at one moment.
+POSE_ACTIONS = frozenset({
+    "bend/bow", "crawl", "crouch/kneel", "dance", "fall down", "get up", "jump/leap",
+    "lie/sleep", "martial art", "run/jog", "sit", "stand", "swim", "walk",
+})
+CONTRADICTION_MIN_CONFIDENCE = 0.6
+CONTRADICTION_MIN_MOMENTS = 2
+
+
+def pose_contradicted(action: str, segment: Any) -> bool:
+    """True when every sampled moment confidently shows a pose other than ``action``."""
+
+    if action not in POSE_ACTIONS:
+        return False
+    best: dict[float, tuple[float, str]] = {}
+    for item in segment.processing_metadata.get("gnn_action_instances", []):
+        label = str(item.get("action", ""))
+        if label not in POSE_ACTIONS:
+            continue
+        moment = round(float(item.get("timestamp", 0.0)), 3)
+        confidence = float(item.get("confidence") or 0.0)
+        if moment not in best or confidence > best[moment][0]:
+            best[moment] = (confidence, label)
+    return len(best) >= CONTRADICTION_MIN_MOMENTS and all(
+        label != action and confidence >= CONTRADICTION_MIN_CONFIDENCE
+        for confidence, label in best.values()
+    )
+
+
+def route_visual_concepts(plan: Any, query: str) -> Any:
+    """Move visible-concept words out of a plan's spoken terms (used for provider plans)."""
+
+    normalized = " ".join(query.lower().replace("-", " ").split())
+    if SPEECH_CUE_PATTERN.search(normalized) or OCR_CUE_PATTERN.search(normalized):
+        return plan
+    visual = [term for term in plan.spoken_terms if _is_visual_concept(term)]
+    if not visual:
+        return plan
+    return plan.model_copy(update={
+        "spoken_terms": [term for term in plan.spoken_terms if term not in visual],
+        "visual_concepts": list(dict.fromkeys([*plan.visual_concepts, *visual])),
+    })
+
+
 SPEECH_CUE_PATTERN = re.compile(
     r"\b(?:say|said|says|mention|mentioned|mentions|discuss|discussed|"
     r"discusses|hear|heard|spoken|talk(?:ing|s)?\s+about|"
@@ -462,6 +551,12 @@ def _tokens(text: str) -> list[str]:
 
 
 class StructuredQueryParser:
+    def __init__(self, route_visual_concepts: bool = False) -> None:
+        # VISUAL_CONCEPT_ROUTING: visible words become visual_concepts instead of
+        # spoken terms. Off by default: without the verdict fix it inflates
+        # "supported" verdicts in strict mode (see QUERY_QUALITY_FIXES docs).
+        self.route_visual_concepts = route_visual_concepts
+
     def parse(self, query: str) -> QueryPlan:
         normalized = " ".join(query.lower().replace("-", " ").split())
         speech_cued = bool(SPEECH_CUE_PATTERN.search(normalized))
@@ -587,8 +682,19 @@ class StructuredQueryParser:
             consumed.update({"another", "other"})
 
         concept_terms: list[str] = []
+        visual_concepts: list[str] = []
         for token in _tokens(normalized):
             if token in STOPWORDS or token in consumed or token.isdigit():
+                continue
+            # Unless the query asks about speech or on-screen text, a visible
+            # thing is searched for in the picture, not in the transcript.
+            if (
+                self.route_visual_concepts
+                and not (speech_cued or ocr_cued)
+                and _is_visual_concept(token)
+            ):
+                if token not in visual_concepts:
+                    visual_concepts.append(token)
                 continue
             if token not in concept_terms:
                 concept_terms.append(token)
@@ -627,6 +733,8 @@ class StructuredQueryParser:
             intent = "ocr_search"
         elif speaker:
             intent = "speaker_search"
+        elif visual_concepts:
+            intent = "visual_search"
         else:
             intent = "transcript_search" if speech_cued else "multimodal_search"
 
@@ -640,6 +748,7 @@ class StructuredQueryParser:
             ocr_terms=ocr_terms,
             speaker=speaker,
             appearance_constraints=appearance_constraints,
+            visual_concepts=visual_concepts,
         )
 
     def _extract_appearance_constraints(
@@ -1143,6 +1252,7 @@ class LocalHybridSearchEngine:
         phonetic_threshold: float = DEFAULT_PHONETIC_THRESHOLD,
         soft_constraints: bool = False,
         count_unmatched_constraints: bool = False,
+        count_contradictions: bool = False,
         frame_semantic_index: Any | None = None,
         frame_semantic_weight: float = 1.0,
         frame_semantic_floor: float = 0.18,
@@ -1171,6 +1281,7 @@ class LocalHybridSearchEngine:
         # Under soft constraints, each missing parsed entity/action/relation
         # adds zero evidence to the verdict instead of being ignored by it.
         self.count_unmatched_constraints = count_unmatched_constraints
+        self.count_contradictions = count_contradictions
         # Optional frame-level OpenCLIP text-to-visual evidence (FrameSemanticIndex).
         self.frame_semantic_index = frame_semantic_index
         if frame_semantic_ceiling <= frame_semantic_floor or frame_semantic_weight < 0:
@@ -1427,7 +1538,18 @@ class LocalHybridSearchEngine:
         encoder_source = (
             self.encoder.model_name if self.encoder.is_semantic else "hashing_embedding"
         )
-        transcript_tokens = set(_tokens(segment.transcript))
+        # A named speaker scopes the spoken words to that speaker's own utterances:
+        # "SPEAKER_01 discusses Docker" must not match SPEAKER_00 saying "Docker"
+        # in the same five-second segment.
+        speaker_scoped = bool(plan.speaker and segment.transcript_segments)
+        spoken_text = (
+            " ".join(
+                item.text for item in segment.transcript_segments if item.speaker == plan.speaker
+            )
+            if speaker_scoped
+            else segment.transcript
+        )
+        transcript_tokens = set(_tokens(spoken_text))
         ocr_tokens = {
             token for evidence in segment.ocr_evidence for token in _tokens(evidence.text)
         }
@@ -1445,7 +1567,7 @@ class LocalHybridSearchEngine:
             phonetic_matches = (
                 find_phonetic_matches(
                     [term for term in plan.spoken_terms if term not in matched_concepts],
-                    _tokens(segment.transcript),
+                    _tokens(spoken_text),
                     threshold=self.phonetic_threshold,
                 )
                 if self.phonetic_match
@@ -1456,7 +1578,7 @@ class LocalHybridSearchEngine:
             ) / len(plan.spoken_terms)
             searchable_text = " ".join(
                 [
-                    segment.transcript,
+                    spoken_text,
                     *(
                         item.text
                         for item in segment.ocr_evidence
@@ -1467,6 +1589,7 @@ class LocalHybridSearchEngine:
             cached_embedding = segment.embedding
             if (
                 plan.intent == "transcript_search"
+                or speaker_scoped
                 or cached_embedding is None
                 or len(cached_embedding) != len(query_vector)
             ):
@@ -1522,6 +1645,30 @@ class LocalHybridSearchEngine:
                 )
             if matched_ocr_for_general_concept:
                 contributions.append(RawContribution("ocr", ocr_fraction, "easyocr"))
+            contributions.append(RawContribution("semantic", vector_score, encoder_source))
+        elif plan.visual_concepts:
+            # Visible concepts carry no transcript requirement; the sentence
+            # similarity of the segment's indexed text still ranks them, and
+            # frame similarity (when enabled) scores the pixels.
+            cached_embedding = segment.embedding
+            if cached_embedding is None or len(cached_embedding) != len(query_vector):
+                cached_embedding = self.encoder.encode(
+                    " ".join([segment.transcript, *(item.text for item in segment.ocr_evidence)])
+                )
+            vector_score = self.encoder.cosine(query_vector, cached_embedding)
+            if self.encoder.is_semantic and vector_score < self.semantic_min_similarity:
+                vector_score = 0.0
+            components.append(
+                (
+                    0.65 if self.encoder.is_semantic else 0.3,
+                    vector_score,
+                    (
+                        f"sentence embedding similarity ({self.encoder.model_name})"
+                        if vector_score and self.encoder.is_semantic
+                        else ("hashing embedding similarity" if vector_score else "")
+                    ),
+                )
+            )
             contributions.append(RawContribution("semantic", vector_score, encoder_source))
 
         if plan.ocr_terms:
@@ -1612,6 +1759,12 @@ class LocalHybridSearchEngine:
                 RawContribution("action", 0.0, UNMATCHED_CONSTRAINT)
                 for _ in range(len(plan.actions) - len(matched))
             )
+            if self.count_contradictions:
+                unmatched_contributions.extend(
+                    RawContribution("action", 0.0, CONTRADICTED_CONSTRAINT)
+                    for action in plan.actions
+                    if action not in matched and pose_contradicted(action, segment)
+                )
 
         if plan.relationship_tuples:
             confidences: list[float] = []
@@ -1986,6 +2139,9 @@ def configured_search_engine(
     )
     return LocalHybridSearchEngine(
         repository,
+        parser=StructuredQueryParser(
+            route_visual_concepts=bool(getattr(settings, "visual_concept_routing", False))
+        ),
         encoder=configured_text_encoder(settings),
         semantic_min_similarity=settings.semantic_min_similarity,
         appearance_settings=settings,
@@ -1998,6 +2154,7 @@ def configured_search_engine(
         count_unmatched_constraints=bool(
             getattr(settings, "unmatched_constraint_evidence", False)
         ),
+        count_contradictions=bool(getattr(settings, "contradiction_evidence", False)),
         frame_semantic_index=_configured_frame_semantic_index(settings),
         frame_semantic_weight=float(getattr(settings, "frame_semantic_weight", 1.0)),
         frame_semantic_floor=float(getattr(settings, "frame_semantic_floor", 0.18)),

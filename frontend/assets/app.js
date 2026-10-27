@@ -158,6 +158,7 @@ function renderResults(payload) {
     ...plan.relationships.map((value) => `relation · ${value}`),
     ...plan.relationship_tuples.map((value) => `tuple · ${value.subject} ${value.predicate} ${value.object}`),
     ...plan.spoken_terms.map((value) => `spoken · ${value}`),
+    ...(plan.visual_concepts || []).map((value) => `visible · ${value}`),
     ...(plan.ocr_terms || []).map((value) => `OCR · ${value}`),
     ...(plan.speaker ? [`speaker · ${plan.speaker}`] : []),
   ];

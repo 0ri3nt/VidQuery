@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import math
-from collections import defaultdict
+from collections import OrderedDict, defaultdict
 from collections.abc import Sequence
 from functools import lru_cache
 from pathlib import Path
@@ -120,7 +120,9 @@ class OpenCLIPAppearanceEncoder:
         self.model_name = f"open_clip/{architecture}"
         self.model_version = f"{architecture}:{pretrained}:frozen:appearance-schema-v1"
         self._lock = RLock()
-        self._text_cache: dict[str, list[float]] = {}
+        # Bounded: search encodes every query text here, so an unbounded cache
+        # grew for the life of the server.
+        self._text_cache: OrderedDict[str, list[float]] = OrderedDict()
 
     def encode_images(self, images: Sequence[Image.Image]) -> list[list[float]]:
         if not images:
@@ -140,15 +142,26 @@ class OpenCLIPAppearanceEncoder:
             return []
         import torch
 
-        missing = [text for text in dict.fromkeys(texts) if text not in self._text_cache]
+        with self._lock:
+            known = {text: self._text_cache[text] for text in texts if text in self._text_cache}
+            for text in known:
+                self._text_cache.move_to_end(text)
+        missing = [text for text in dict.fromkeys(texts) if text not in known]
         if missing:
             tokens = self.tokenizer(missing).to(self.device)
             with self._lock, torch.inference_mode():
                 values = self.model.encode_text(tokens)
                 values = torch.nn.functional.normalize(values.float(), dim=-1)
-            for text, vector in zip(missing, values.cpu().tolist(), strict=True):
-                self._text_cache[text] = vector
-        return [self._text_cache[text] for text in texts]
+            fresh = dict(zip(missing, values.cpu().tolist(), strict=True))
+            known.update(fresh)
+            with self._lock:
+                self._text_cache.update(fresh)
+                while len(self._text_cache) > TEXT_CACHE_SIZE:
+                    self._text_cache.popitem(last=False)
+        return [known[text] for text in texts]
+
+
+TEXT_CACHE_SIZE = 2048
 
 
 @lru_cache(maxsize=4)

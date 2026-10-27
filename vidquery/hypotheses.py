@@ -124,6 +124,7 @@ def generate_hypotheses(query: str, plan: QueryPlan) -> list[QueryHypothesis]:
         and not plan.appearance_constraints
         and not plan.spoken_terms
         and not plan.ocr_terms
+        and not plan.visual_concepts
     ):
         spoken_tokens = _entity_surface_tokens(query, plan.visual_entities)
         if spoken_tokens:
@@ -145,7 +146,29 @@ def generate_hypotheses(query: str, plan: QueryPlan) -> list[QueryHypothesis]:
                 ),
             ]
 
-    # 3. Unclassified concept: "deployment", "kubernetes", "the meeting".
+    # 3. Visible concept only: "the closet", "towels". Searched in the picture by
+    #    default, with the spoken reading kept as an alternative.
+    if plan.visual_concepts and not _has_structure(plan) and not plan.spoken_terms:
+        concept = " ".join(plan.visual_concepts)
+        return [
+            QueryHypothesis(
+                hypothesis_id="visible_concept",
+                label=f"visible {concept}",
+                description=f"Frames that look like {concept}.",
+                plan=plan.model_copy(update={"intent": "visual_search"}),
+                prior=0.6,
+            ),
+            QueryHypothesis(
+                hypothesis_id="spoken_mention",
+                label=f"spoken '{concept}'",
+                description=f"Utterances that mention {concept}.",
+                plan=QueryPlan(intent="transcript_search",
+                               spoken_terms=list(plan.visual_concepts)),
+                prior=0.4,
+            ),
+        ]
+
+    # 4. Unclassified concept: "deployment", "kubernetes", "the meeting".
     if plan.spoken_terms and not _has_structure(plan) and not plan.ocr_terms:
         concept = " ".join(plan.spoken_terms)
         return [

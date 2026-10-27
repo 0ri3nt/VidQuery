@@ -9,6 +9,7 @@ benchmarks so the main library is untouched.
 from __future__ import annotations
 
 import argparse
+import gc
 import json
 import time
 from datetime import UTC, datetime
@@ -21,6 +22,23 @@ from vidquery.pipeline import VideoProcessingService
 from vidquery.storage import SQLiteRepository
 
 
+def release_memory() -> None:
+    """Return per-video garbage and cached GPU blocks between videos.
+
+    Opt-in (``--release-gpu-cache``): on a 20-video profile it lowered committed
+    memory by about 2.9 GB but made every video slower (+28% on average), and it
+    did not change the 3-5 MB/video steady growth.
+    """
+
+    gc.collect()
+    try:
+        import torch
+    except ImportError:
+        return
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, required=True)
@@ -28,6 +46,11 @@ def main() -> None:
     parser.add_argument("--video-dir", type=Path, required=True)
     parser.add_argument("--progress", type=Path, required=True)
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument(
+        "--release-gpu-cache",
+        action="store_true",
+        help="free cached CUDA blocks after each video (less memory, slower)",
+    )
     args = parser.parse_args()
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     videos = [video for split in args.splits for video in manifest["splits"][split]["videos"]]
@@ -67,6 +90,8 @@ def main() -> None:
         with args.progress.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(entry) + "\n")
         print(json.dumps(entry), flush=True)
+        if args.release_gpu_cache:
+            release_memory()
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ approval.
 | # | Issue | Change | Default | Evidence | Recommendation |
 |---|---|---|---|---|---|
 | 3 | Function words parsed as speech-search terms | stopword list extended | **on** | queries with a function-word spoken term 395 → 0 of 915; validation P@1 unchanged (0.3496 → 0.3496); test P@1 −0.001 (n.s.); 19/19 demo queries reproduce | **fixed and verified** |
-| 4a | Groq answers checked by citation ID only | claim checks plus verdict gate | **on** | scripted bad answers now rejected; real correct answers pass; correct answers over weak evidence are downgraded | **fixed and verified** (offline); live Groq re-audit **unverified**, quota exhausted |
+| 4a | Groq answers checked by citation ID only | claim checks plus verdict gate | **on** | scripted bad answers now rejected; real correct answers pass; correct answers over weak evidence are downgraded | **fixed and verified** (offline); live re-audit in round 2 covers 24 of 42 queries (see Round 2) |
 | 4b | Groq fallback silent; fallback cached | reason logged, provider failures not cached, UI notice | **on** | regression tests; real-browser check | **fixed and verified** |
 | 4c | Test suite called the real Groq API | tests default to no key | **on** | no provider call in the suite | **fixed and verified** |
 | 1 | Verdict ignores unmatched query constraints | `UNMATCHED_CONSTRAINT_EVIDENCE` plus fitted thresholds | off | inversion fixed (tests); ranking identical; test: in-domain false acceptance −2.9 pts [−4.2, −1.7], P@1 −0.002 (n.s.), AUROC +0.035 | **awaiting approval**, demo profile only |
@@ -85,7 +85,7 @@ Every answer Groq marks `supported` is checked against the results it cites:
 
 All are regression tests.
 
-**Unverified:** a live re-run of the Groq audit. The daily cap of 200,000 tokens was spent on 26 October, and the rolling 24-hour window had not reopened when this work ended. The harness, `evaluation/results/query-quality-audit-2026-10-27/run_scripts/groq_run.sh`, is ready to run once it does.
+**Live re-run:** done in round 2 for 24 of the 42 audit queries before the daily cap was reached again. No answer made a claim absent from its cited evidence. See [§Groq re-audit](#groq-re-audit).
 
 ### 4b. Fallback visibility (`vidquery/query_planner.py`, `frontend/`)
 
@@ -291,21 +291,100 @@ YOLOv8s detects more of the labelled objects and wrongly rejects fewer positives
 
 To roll back, restore the backup and the previous `.env` line. The weights are already in `data/app/models/yolo/`.
 
-## Unresolved issues
+## Round 2: the unresolved issues
 
-- **Live Groq answer quality is unmeasured.** The daily token cap was exhausted. The planner request alone is about 3,100 tokens, which allows about 60 planner calls a day. Shrinking the prompt and caching plans on disk are not done.
-- **The answer checks are conservative.** "Someone says …" about a segment with no detected person is rejected, because "someone" maps to `person`. Negations ("the person is not cooking") are not parsed.
-- **Contradictory evidence** (a confidently detected *different* action) does not lower confidence. Only missing evidence does.
-- **Speaker attribution is per 5 s segment:** "Find where SPEAKER_01 discusses Docker." returns `supported`, but SPEAKER_00 says "Docker". Both speakers appear in that segment. This exists before and after the fixes.
-- **Routing:** non-detector nouns (floor, door, closet) and unparsed verbs (takes, puts) are still spoken terms.
-- **Indexer memory grows with every video.** The batch indexer's committed memory reached 10.7 GB after about 100 videos and pushed the pagefile into the disk (free space fell to 6 GB). Index long runs in batches (`index_videos_batch --limit`, fresh process per batch) until this is found.
-- **YOLOv8s:** retrieval benefit not established (§5).
+The issues left open by round 1 were worked through on 27 October. Decision rules are in
+[`round-2 preregistration`](../evaluation/results/query-quality-fixes2-2026-10-27/preregistration.md),
+and results are in `evaluation/results/query-quality-fixes2-2026-10-27/`.
+
+| Issue | What changed | Default | Evidence | Status |
+|---|---|---|---|---|
+| Speaker attribution | 1. A named speaker scopes the spoken words to that speaker's own utterances (scoring and localization). 2. A refresh no longer mixes labelled utterances with fresh diarization labels: labelled utterances win, overlapping model copies are dropped, and repeated refreshes stop accumulating copies. | **on** | Regression tests. On a production copy with `final_demo` re-merged: "SPEAKER_01 discusses Docker" goes from supported 0.687 (10–15 s) to weak 0.375; all 10 positive production queries unchanged. | **fixed and verified**; the production library still holds the old merged `final_demo` until it is refreshed (**awaiting approval**) |
+| Conservative answer checks | Speech in a cited segment implies a person. Negated mentions ("is not cooking", "no laptop", "isn't drinking from a cup") are not treated as claims. | **on** | Regression tests; un-negated false claims are still rejected | **fixed and verified** |
+| Groq budget | Planner request carries only aliases present in the query (12,430 → about 5,200 characters, about 3,100 → 1,300 tokens). Provider aliases are mapped to labels locally. Optional on-disk response cache keyed by the full request (`QUERY_PLAN_CACHE_PATH`). | prompt on; cache off | Regression tests (size bound, alias mapping, cache across restarts). Live: planner prompts measured at 1,157–1,174 tokens (median 1,163). Groq's rate limiter put a full-alias request at 3,011–3,060 tokens, including the 700-token completion allowance. Whether the full and reduced prompts give the same plans was not measured, because the cap was reached. | **fixed and verified**; plan equivalence **requires more evidence** |
+| Live Groq answer quality | Live re-audit with the fixed code: all 14 production queries and 10 of the 28 demo queries before the daily token cap | — | No answer made a claim, time or object absent from its cited evidence. Every in-domain and out-of-domain negative was declined, except "SPEAKER_01 discusses Docker", which the speaker fix (above) corrects. All 10 production positives were answered; 2 of 7 demo positives were answered, the rest declined over weak evidence. Repeated queries gave identical plans and answers (4 of 4). See §Groq re-audit. | **verified on 24 of 42 queries**; the remaining 18 demo queries **require more evidence** (blocked by the daily cap) |
+| Empty Groq refusal shown as an outage (found in the re-audit) | A refusal with an empty answer (`{"answer": "", "supported": false}`) is now a "not supported" answer, not `provider_unavailable` | **on** | Regression test built from the live response; an empty *supported* answer is still rejected | **fixed and verified** (offline); live confirmation blocked by the cap |
+| Rejected Groq plan labelled "Groq unavailable" (found in the re-audit) | Not changed | — | 3 of 13 planner responses were rejected by validation (invalid speaker label ×2, unsupported action label ×1). The local parser was used correctly, but the status and UI notice say "Groq unavailable (rate limit or network)". An existing test pins this status. | **awaiting approval**: add a `fallback_invalid_plan` status and notice |
+| Routing of visible words | `VISUAL_CONCEPT_ROUTING`: visible nouns and verbs outside the detector and action vocabularies become `visual_concepts` (no transcript requirement). Visible-concept-only queries keep a spoken reading. Groq plans are routed too. | **off** | Validation: P@1 −0.003 (T1) / +0.003 (T0), not significant. In strict mode, "supported" verdicts rise from 9 (44% correct) to 181 (16% correct), because the absent-transcript zero had been damping overconfident verdicts. In the demo profile with the verdict fix: no gain (AUROC −0.020, not significant). | implemented, **not recommended** |
+| Contradictory evidence | `CONTRADICTION_EVIDENCE`: a required pose (sit, stand, walk, …) contradicted at every sampled moment by a different pose (confidence ≥ 0.6, at least 2 moments) adds an extra zero to the verdict | **off** | Fires on 42% of in-domain-negative vs 25% of positive segments for pose queries. Only 48 positives and 43 in-domain negatives involve a pose, so validation shows no measurable effect (AUROC +0.003, rejection 0). | implemented, **no measured benefit** |
+| Indexer memory | 1. The OpenCLIP text-embedding cache is bounded (LRU, 2,048 texts); search encodes every query there, so it grew for the life of the server. 2. `scripts/index_videos_batch.py --release-gpu-cache` frees cached CUDA blocks after each video. | 1 **on**; 2 **off** | The 10.7 GB was **not reproduced** in a clean single-process run: committed memory plateaus at 7.5 GB once the models load, then grows 3–5 MB per video. `--release-gpu-cache` lowers the plateau to 4.6 GB but makes every video slower (+28% mean) and leaves the slope unchanged. See §Indexer memory. | cache bound **fixed and verified**; GPU-cache release opt-in, **awaiting approval** if wanted; residual 3–5 MB/video **requires more evidence** |
+| YOLOv8s | No code change: this is an evidence question, not a defect | v8n | §5 | **decision needed**: retraining the GNNs on v8s boxes is the remaining experiment |
+
+### Indexer memory
+
+Each run indexes the first 20 validation videos into a scratch library in one process (the
+production profile, `det-ava8-vidor4`), with nothing else using the GPU. Committed memory is
+read after each video.
+
+| Run | Committed after video 3 | After video 20 | Slope (videos 3–20) | Median s/video |
+|---|---|---|---|---|
+| Default | 7.50 GB | 7.59 GB | 3.1 MB/video | 8.1 |
+| `--release-gpu-cache` | 4.64 GB | 4.73 GB | 4.7 MB/video | 9.9 |
+
+- Models load during the first two videos (4.6 → 7.5 GB). After that the growth is a few MB per
+  video, about 0.3–0.5 GB per 100 videos.
+- Resident memory stays at 2.3 GB, and live Python objects grow by about 30 per video.
+- With allocation tracing, the Python heap grew by 0.7 MB over 10 videos. The largest item was the
+  appearance text cache (`vidquery/appearance.py`), which is now bounded. The rest of the slope is
+  native memory and has not been attributed.
+- Releasing the GPU cache made all 20 videos slower, so it is opt-in rather than the default.
+- The 10.7 GB observed in round 1 happened while another evaluation shared the GPU. The likely
+  cause is CUDA allocations spilling into system memory under contention, but that was not
+  measured directly. `--release-gpu-cache` is the mitigation to try if it recurs.
+
+Results: `index-memory-before-fix.json`, `index-memory-after-fix.json` and
+`index-memory-traced.json`, produced by `run_scripts/index_memory_profile.py`.
+
+### Groq re-audit
+
+The re-audit used the same queries, libraries and settings as round 1: the production copy with
+`.env` defaults, and the demo copy with the demo profile. Requests were paced at 6,000
+tokens/minute. Token use was read from each response; no keys or headers were stored.
+
+| Library | Queries answered live | Positives answered | Negatives declined | Claim-check issues |
+|---|---|---|---|---|
+| Production copy | 14 of 14 (plus 4 repeats) | 10 of 10 | 3 of 4 | 3 flags, all false positives (the speech verb "discusses" checked as a visual action) |
+| Demo copy (OM2NF only) | 10 of 28 | 2 of 7 | 3 of 3 | 0 |
+
+- **The only wrong answer:** "Find where SPEAKER_01 discusses Docker" was answered as supported.
+  That happens because the production copy still has the triplicated `final_demo` utterances.
+  On the copy with `final_demo` re-merged, the evidence is weak (0.375) and Groq declined. That
+  refusal arrived as `{"answer": "", "supported": false}`, which the app reported as a provider
+  failure; this is now fixed (see the table above).
+- **Declined demo positives:** four had only weak top evidence, so declining follows the answer
+  policy. One ("cooking at the stove") had a supported verdict, but the evidence passed to Groq
+  shows a microwave and no cooking action, so it declined. That loses recall but is grounded.
+- **Grounding:** "holding a cup" cited three supported segments, and every time it gave is inside
+  them. One of those times (27 s) falls outside the labelled moments: a detector false positive,
+  not an invented claim.
+- **Determinism:** the 4 repeated production queries gave the same plan, top result and answer
+  text.
+- **Token use:** about 2.8k tokens per production query and up to 5.3k per demo query (planner
+  plus answer). Answer prompts were 983–3,859 tokens.
+- **Daily cap:** the demo run hit Groq's tokens-per-day limit after 10 queries ("Limit 200000, Used
+  198773"); the round-1 audit from the previous night was still inside the rolling window. The
+  remaining 18 demo queries and the full-vs-reduced prompt comparison need about 110k tokens.
+  To resume once the window allows:
+
+  ```bash
+  bash evaluation/results/query-quality-fixes2-2026-10-27/run_scripts/groq_run.sh demo-rest
+  bash evaluation/results/query-quality-fixes2-2026-10-27/run_scripts/groq_run.sh prompt
+  ```
+
+Records: `groq-production-records.json`, `groq-production-speakerfix-records.json`,
+`groq-demo-records.json` (the queries after the cap are recorded as rate-limited) and
+`groq-demo-records-completed.json`. Checks: `groq-production-checks.json`, `groq-demo-checks.json`.
+The blocked prompt comparison is kept as `groq-prompt-equivalence-ratelimited.json`; every row in
+it is a 429 fallback, not a measured plan difference.
 
 ## Failed or aborted runs (kept for the record)
 
 - **First Charades replay:** printed nothing because output was filtered, and left a partial copy. Moved to the scratchpad and rerun.
 - **First launch of the fitted-threshold evaluations:** a shell edit did not apply and the commands ran without their variables. All four exited at argument parsing (exit 2) **before any evaluation**, so no test result was computed. Logs set aside, wrapper fixed, relaunched.
 - **One validation strict-mode run of the fitted configuration (exit 127):** stopped deliberately. Free disk fell to 6 GB as the YOLO indexer's committed memory grew to 10.7 GB and the pagefile expanded. Rerun after indexing.
+- **Round 2, first production Groq launch (exit 127):** printed only an import warning and made no Groq calls; cause not determined. Relaunched unchanged, and it completed.
+- **Round 2, one-query probe:** the planner call failed with a transient `URLError`, and the retry succeeded. A separate diagnostic request without the app's User-Agent got Cloudflare error 1010 (403). The app always sends its own User-Agent, so the app was not affected.
+- **Round 2, demo Groq run and prompt comparison:** stopped by the tokens-per-day cap (HTTP 429) after 10 demo queries. Rate-limited records are kept in `groq-demo-records.json` and excluded from the analysis.
 
 ## Rollback
 
@@ -315,6 +394,8 @@ To roll back, restore the backup and the previous `.env` line. The weights are a
 | `UNMATCHED_CONSTRAINT_EVIDENCE`, fitted thresholds | unset the flag and `RELIABILITY_PRIORS_PATH`; no data change |
 | `TRANSCRIPT_SPEECH_FILTER` | unset the flag. Indexes processed while it was on keep filtered transcripts: restore the database backup taken before reprocessing, or reprocess with the flag off |
 | YOLOv8s (if approved) | see §5 |
+| Round 2: speaker scoping, refresh merge, answer-check negation and speech-implies-person, reduced planner prompt, bounded text cache | `git revert` of the round-2 commit; no data change. A library refreshed with the new merge keeps its merged utterances: restore the database backup taken before the refresh |
+| `QUERY_PLAN_CACHE_PATH`, `CONTRADICTION_EVIDENCE`, `VISUAL_CONCEPT_ROUTING`, `--release-gpu-cache` | unset or omit; no data change (delete the cache file if one was written) |
 
 Existing indexes, checkpoints, weights, benchmark splits and historical results were not modified. Audit copies are under `data/app/benchmark/{query_audit_2026-10-27,speech_filter_2026-10-27,yolo_val150_2026-10-27}/`.
 
@@ -331,3 +412,12 @@ All scripts are in `evaluation/results/query-quality-fixes-2026-10-27/run_script
 | `replay_speech_filter.py SOURCE TARGET SUMMARY` | filter replay on an index copy |
 | `production_queries.py QUERIES OUT name=db …` | production query comparison |
 | `index_run.sh`, `vidor_detection_quality.py`, `detector_resources.py` (YOLO folder); `compare_runs.py` on the `validation-*-yolo150-*.json` results | YOLO |
+
+Round 2 scripts are in `evaluation/results/query-quality-fixes2-2026-10-27/run_scripts/`:
+
+| Script | Purpose |
+|---|---|
+| `eval_run.sh`, `compare_runs.py` | routing and contradiction validation runs and paired comparisons |
+| `index_memory_profile.py OUT N [--trace] [--release]` | per-video memory profile on a scratch library |
+| `groq_run.sh production\|demo\|demo-rest\|prompt` | live Groq re-audit (`groq_reaudit.py`), token-paced and capped |
+| `../../query-quality-audit-2026-10-27/run_scripts/groq_audit.py check` | round-1 answer checks applied to the round-2 records |

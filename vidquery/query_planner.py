@@ -7,11 +7,15 @@ output is validated before it can reach either SQLite or Neo4j retrieval.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
+import os
 import re
 from collections import OrderedDict
 from dataclasses import dataclass
+from pathlib import Path
+from threading import Lock
 from typing import Any, Literal
 
 from pydantic import Field
@@ -41,6 +45,7 @@ from .search import (
     SPEECH_CUE_PATTERN,
     STOPWORDS,
     StructuredQueryParser,
+    route_visual_concepts,
 )
 from .vidor_relation import VIDOR_PREDICATES
 
@@ -104,6 +109,15 @@ def _with_hypotheses(
     )
 
 
+def _aliases_in(query: str, aliases: dict[str, str]) -> dict[str, str]:
+    normalized = " ".join(query.lower().replace("-", " ").split())
+    return {
+        alias: label
+        for alias, label in aliases.items()
+        if re.search(rf"\b{re.escape(alias)}\b", normalized)
+    }
+
+
 def query_planner_component_status(settings: Settings) -> str:
     if not settings.enable_query_planner:
         return "disabled"
@@ -129,9 +143,13 @@ class QueryPlanningService:
         self.model = settings.query_planner_model.strip()
         self.min_confidence = max(0.0, min(1.0, settings.query_planner_min_confidence))
         self.timeout = max(1.0, min(60.0, settings.query_planner_timeout_seconds))
-        self.parser = parser or StructuredQueryParser()
+        self.parser = parser or StructuredQueryParser(
+            route_visual_concepts=settings.visual_concept_routing
+        )
         self.transport = transport or UrllibProviderTransport()
         self._plan_cache: OrderedDict[str, QueryPlanningOutcome] = OrderedDict()
+        self.response_cache_path: Path | None = settings.query_plan_cache_path
+        self._response_cache_lock = Lock()
         self.allowed_actions = frozenset(AVA_V22_ACTIONS.values())
         self.allowed_entities = frozenset(ENTITY_ALIASES.values())
         self.allowed_relations = frozenset(
@@ -178,17 +196,21 @@ class QueryPlanningService:
         if not self.api_key or not self.model:
             return finish(self._restatus(fallback, "fallback_provider_unconfigured"))
 
+        payload = self._request_payload(query)
         try:
-            envelope = self.transport.post_json(
-                GROQ_CHAT_COMPLETIONS_URL,
-                headers={
-                    "Authorization": f"Bearer {self.api_key}",
-                    "Content-Type": "application/json",
-                    "User-Agent": "VidQuery/0.2 constrained-query-planner",
-                },
-                payload=self._request_payload(query),
-                timeout=self.timeout,
-            )
+            envelope = self._cached_response(payload)
+            if envelope is None:
+                envelope = self.transport.post_json(
+                    GROQ_CHAT_COMPLETIONS_URL,
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "Content-Type": "application/json",
+                        "User-Agent": "VidQuery/0.2 constrained-query-planner",
+                    },
+                    payload=payload,
+                    timeout=self.timeout,
+                )
+                self._store_response(payload, envelope)
         except Exception as exc:
             LOGGER.warning(
                 "Constrained query planning unavailable (%s: %s); using the local parser",
@@ -201,6 +223,8 @@ class QueryPlanningService:
         try:
             provider = self._parse_provider_plan(envelope)
             planned = self._validated_plan(provider)
+            if self.parser.route_visual_concepts:
+                planned = route_visual_concepts(planned, query)
         except Exception as exc:
             LOGGER.warning(
                 "Constrained query plan rejected (%s: %s); using the local parser",
@@ -340,9 +364,16 @@ class QueryPlanningService:
         )
 
     def _validated_plan(self, provider: ProviderQueryPlan) -> QueryPlan:
-        actions = self._validated_values(provider.actions, self.allowed_actions, "action")
-        entities = self._validated_values(provider.entities, self.allowed_entities, "entity")
-        normalized_relations = [normalize_predicate(value) for value in provider.relations]
+        actions = self._validated_values(
+            provider.actions, self.allowed_actions, "action", ACTION_ALIASES
+        )
+        entities = self._validated_values(
+            provider.entities, self.allowed_entities, "entity", ENTITY_ALIASES
+        )
+        normalized_relations = [
+            normalize_predicate(RELATIONSHIP_ALIASES.get(value.strip().lower(), value))
+            for value in provider.relations
+        ]
         relations = self._validated_values(normalized_relations, self.allowed_relations, "relation")
         appearance = self._validated_appearance(provider.appearance)
         for constraint in appearance:
@@ -435,9 +466,67 @@ class QueryPlanningService:
             )
         return output
 
+    def _response_key(self, payload: dict[str, Any]) -> str:
+        return hashlib.sha256(
+            json.dumps(payload, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
+
+    def _read_response_cache(self) -> dict[str, str]:
+        if self.response_cache_path is None or not self.response_cache_path.is_file():
+            return {}
+        try:
+            value = json.loads(self.response_cache_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            LOGGER.warning("Ignoring unreadable query plan cache %s", self.response_cache_path)
+            return {}
+        return value if isinstance(value, dict) else {}
+
+    def _cached_response(self, payload: dict[str, Any]) -> dict[str, Any] | None:
+        """A stored provider response for exactly this request, if any."""
+
+        if self.response_cache_path is None:
+            return None
+        with self._response_cache_lock:
+            content = self._read_response_cache().get(self._response_key(payload))
+        if not isinstance(content, str):
+            return None
+        return {"choices": [{"message": {"content": content}}]}
+
+    def _store_response(self, payload: dict[str, Any], envelope: dict[str, Any]) -> None:
+        if self.response_cache_path is None:
+            return
+        try:
+            content = envelope["choices"][0]["message"]["content"]
+        except (KeyError, IndexError, TypeError):
+            return
+        if not isinstance(content, str):
+            return
+        with self._response_cache_lock:
+            cache = self._read_response_cache()
+            cache[self._response_key(payload)] = content
+            temporary = self.response_cache_path.with_name(self.response_cache_path.name + ".tmp")
+            try:
+                self.response_cache_path.parent.mkdir(parents=True, exist_ok=True)
+                temporary.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+                os.replace(temporary, self.response_cache_path)
+            except OSError as exc:
+                # The plan itself is fine; only the cache could not be saved.
+                LOGGER.warning("Could not write query plan cache (%s)", exc)
+
     @staticmethod
-    def _validated_values(values: list[str], allowed: frozenset[str], kind: str) -> list[str]:
-        normalized = list(dict.fromkeys(value.strip().lower() for value in values))
+    def _validated_values(
+        values: list[str],
+        allowed: frozenset[str],
+        kind: str,
+        aliases: dict[str, str] | None = None,
+    ) -> list[str]:
+        # A provider may answer with a known alias ("computer"); map it to the label.
+        normalized = list(
+            dict.fromkeys(
+                (aliases or {}).get(value.strip().lower(), value.strip().lower())
+                for value in values
+            )
+        )
         invalid = [value for value in normalized if value not in allowed]
         if invalid:
             raise ValueError(f"Unsupported {kind} labels")
@@ -536,10 +625,13 @@ class QueryPlanningService:
                             "allowed_entities": sorted(self.allowed_entities),
                             "allowed_relations": sorted(self.allowed_relations),
                             "allowed_appearance_colors": list(APPEARANCE_COLORS),
+                            # Only aliases that occur in the query: the full tables were
+                            # over half of the request (about 1,700 tokens) and the
+                            # provider's labels are mapped through them locally anyway.
                             "aliases": {
-                                "actions": ACTION_ALIASES,
-                                "entities": ENTITY_ALIASES,
-                                "relations": RELATIONSHIP_ALIASES,
+                                "actions": _aliases_in(query, ACTION_ALIASES),
+                                "entities": _aliases_in(query, ENTITY_ALIASES),
+                                "relations": _aliases_in(query, RELATIONSHIP_ALIASES),
                             },
                         },
                         ensure_ascii=False,

@@ -456,7 +456,11 @@ def localize_segment(
     """Return the peak-evidence moment for ``segment`` under ``plan``."""
 
     candidates: list[_Candidate] = []
-    transcript_hits = _transcript_candidates(plan.spoken_terms, segment.transcript_segments)
+    utterances = segment.transcript_segments
+    if plan.speaker:
+        # Spoken words only count when the named speaker says them.
+        utterances = [item for item in utterances if item.speaker == plan.speaker]
+    transcript_hits = _transcript_candidates(plan.spoken_terms, utterances)
     if transcript_hits:
         candidates.append(max(transcript_hits, key=lambda item: (-item.rank, item.confidence)))
     elif plan.spoken_terms and plan.intent in {"transcript_search", "multimodal_search"}:

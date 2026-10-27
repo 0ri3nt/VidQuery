@@ -154,12 +154,46 @@ def merge_preserved_evidence(
         relationships.update(
             {item.relationship_id: item for item in trusted_relationships}
         )
-        transcript_segments = {
-            item.segment_id: item for item in fresh.transcript_segments
-        }
-        transcript_segments.update(
-            {item.segment_id: item for item in preserved.transcript_segments}
-        )
+        manual_utterances = [
+            item for item in preserved.transcript_segments
+            if item.segment_id.startswith("manual:")
+        ]
+        if manual_utterances:
+            # Labelled utterances are authoritative. Diarization speaker numbers are
+            # arbitrary per video and must not mix with the labelled names, so fresh
+            # utterances that overlap a labelled one are dropped and the rest keep
+            # no speaker; earlier refreshes' model utterances are replaced.
+            labelled_spans = [(item.start_time, item.end_time) for item in manual_utterances]
+            kept_utterances = [
+                *manual_utterances,
+                *(
+                    item.model_copy(update={"speaker": "UNKNOWN"})
+                    for item in fresh.transcript_segments
+                    if not any(
+                        item.start_time < end and start < item.end_time
+                        for start, end in labelled_spans
+                    )
+                ),
+            ]
+            transcript_segments = {item.segment_id: item for item in kept_utterances}
+        else:
+            fresh_keys = {
+                (" ".join(item.text.lower().split()), round(item.start_time, 1))
+                for item in fresh.transcript_segments
+            }
+            transcript_segments = {
+                item.segment_id: item for item in fresh.transcript_segments
+            }
+            # Keep preserved utterances unless a fresh one repeats them, so refreshes
+            # do not accumulate copies of the same sentence.
+            transcript_segments.update(
+                {
+                    item.segment_id: item
+                    for item in preserved.transcript_segments
+                    if (" ".join(item.text.lower().split()), round(item.start_time, 1))
+                    not in fresh_keys
+                }
+            )
         ocr_evidence = {item.ocr_id: item for item in fresh.ocr_evidence}
 
         metadata = {**preserved.processing_metadata, **fresh.processing_metadata}
@@ -178,7 +212,10 @@ def merge_preserved_evidence(
         )
         if fresh.transcript and preserved.transcript:
             metadata["fresh_whisper_transcript"] = fresh.transcript
-        speakers = {*fresh.speakers, *preserved.speakers}
+        if manual_utterances:
+            speakers = {item.speaker for item in manual_utterances} - {"UNKNOWN"}
+        else:
+            speakers = {*fresh.speakers, *preserved.speakers}
         if speakers - {"UNKNOWN"}:
             speakers.discard("UNKNOWN")
 

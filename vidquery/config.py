@@ -221,6 +221,11 @@ class Settings:
     reliability_priors_path: Path | None = field(
         default_factory=lambda: _optional_path_env("RELIABILITY_PRIORS_PATH")
     )
+    # Optional on-disk cache of Groq planner responses, keyed by the full request,
+    # so identical queries are planned once across restarts (saves daily quota).
+    query_plan_cache_path: Path | None = field(
+        default_factory=lambda: _optional_path_env("QUERY_PLAN_CACHE_PATH")
+    )
     enable_phonetic_match: bool = field(
         default_factory=lambda: _bool_env("ENABLE_PHONETIC_MATCH", False)
     )
@@ -246,6 +251,16 @@ class Settings:
     # lacks as zero evidence in the verdict (ranking is unchanged).
     unmatched_constraint_evidence: bool = field(
         default_factory=lambda: _bool_env("UNMATCHED_CONSTRAINT_EVIDENCE", False)
+    )
+    # With UNMATCHED_CONSTRAINT_EVIDENCE: a required pose that a different, confidently
+    # observed pose contradicts counts once more as zero evidence (verdict only).
+    contradiction_evidence: bool = field(
+        default_factory=lambda: _bool_env("CONTRADICTION_EVIDENCE", False)
+    )
+    # Parse visible words ("closet", "towel", "sneezing") as visual concepts rather
+    # than words to find in the transcript.
+    visual_concept_routing: bool = field(
+        default_factory=lambda: _bool_env("VISUAL_CONCEPT_ROUTING", False)
     )
     # Drop Whisper utterances that are not speech (vidquery.speech_filter) before
     # indexing. Takes effect only when a video is (re)processed.

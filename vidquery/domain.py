@@ -323,6 +323,10 @@ class QueryPlan(StrictModel):
     relationship_tuples: list[RelationshipQuery] = Field(default_factory=list)
     actions: list[str] = Field(default_factory=list)
     spoken_terms: list[str] = Field(default_factory=list)
+    # Visible things and visible actions outside the detector and action
+    # vocabularies ("closet", "towel", "sneezing"). Scored by sentence and
+    # frame similarity; never required in the transcript.
+    visual_concepts: list[str] = Field(default_factory=list)
     ocr_terms: list[str] = Field(default_factory=list)
     speaker: str | None = None
     appearance_constraints: list[AppearanceConstraint] = Field(default_factory=list)
