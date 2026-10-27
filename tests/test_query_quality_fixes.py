@@ -306,6 +306,36 @@ def test_answer_prompt_carries_the_system_interpretation():
     assert "evidence_verdict is 'supported'" in payload["messages"][0]["content"]
 
 
+PIPELINE_TALK = [
+    _result(10.0, "supported", 0.6, entities=("person", "laptop"),
+            transcript="Our software architecture processes the video into 5 second canonical "
+                       "segments and stores them into SQLite data loss.",
+            speakers=("SPEAKER_00",)),
+]
+
+
+def test_numbers_repeated_from_the_transcript_are_not_timestamp_claims():
+    # Live Groq answer (demo library, "Find where architecture is discussed"): it restates
+    # the 10-15 s transcript, and "5 second" was misread as a timestamp at 5.0 s.
+    text = ("Our software architecture processes the video into 5 second canonical segments "
+            "and stores them into SQLite data loss.")
+    assert verify_answer_claims(text, PIPELINE_TALK) == []
+    service = _service({"answer": text, "supported": True, "evidence_ids": ["E1"]})
+    outcome = service.generate("Find where architecture is discussed", _response(PIPELINE_TALK))
+    assert outcome.status == "generated_supported" and outcome.answer.supported
+
+
+def test_timestamps_outside_the_repeated_words_are_still_checked():
+    text = ("At 5 seconds the speaker says our software architecture processes the video "
+            "into 5 second canonical segments.")
+    assert verify_answer_claims(text, PIPELINE_TALK) == [
+        "timestamps outside every cited segment: [5.0]"
+    ]
+    assert verify_answer_claims("Architecture is discussed at 5 seconds.", PIPELINE_TALK) == [
+        "timestamps outside every cited segment: [5.0]"
+    ]
+
+
 def test_empty_refusal_is_an_unsupported_answer_not_a_provider_failure():
     # Live Groq output for "Find where SPEAKER_01 discusses Docker." over weak evidence.
     weak = [_result(5.0, "weak", 0.375, transcript="The laptop runs the API.",

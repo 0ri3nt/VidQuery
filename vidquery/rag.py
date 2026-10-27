@@ -67,6 +67,38 @@ def _mentioned_times(text: str) -> list[float]:
     return times
 
 
+REPEATED_EVIDENCE_MIN_WORDS = 4
+
+
+def _without_repeated_evidence(text: str, evidence: str) -> str:
+    """Drop runs of at least four words the answer repeats verbatim from the evidence.
+
+    Numbers inside repeated speech or on-screen text ("processes the video into 5 second
+    segments") are content, not timestamp or score claims; quotes are checked separately.
+    """
+
+    words = text.split()
+    normalized = [_normalize(word) for word in words]
+    haystack = f" {_normalize(evidence)} "
+    keep = [True] * len(words)
+    start = 0
+    while start < len(words):
+        end, best = start, start
+        while end < len(words):
+            end += 1
+            phrase = " ".join(item for item in normalized[start:end] if item)
+            if phrase and f" {phrase} " not in haystack:
+                break
+            if len(phrase.split()) >= REPEATED_EVIDENCE_MIN_WORDS:
+                best = end
+        if best > start:
+            keep[start:best] = [False] * (best - start)
+            start = best
+        else:
+            start += 1
+    return " ".join(word for word, kept in zip(words, keep, strict=True) if kept)
+
+
 def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
     """Reasons a generated answer's text is not backed by its cited results.
 
@@ -79,10 +111,15 @@ def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
     from .search import ENTITY_ALIASES, StructuredQueryParser
 
     reasons: list[str] = []
+    spoken = " ".join(
+        [item.transcript for item in cited]
+        + [ocr.text for item in cited for ocr in item.ocr_evidence]
+    )
+    claims = _without_repeated_evidence(text, spoken)
     windows = [(item.start_time, item.end_time) for item in cited]
     bad_times = [
         value
-        for value in _mentioned_times(text)
+        for value in _mentioned_times(claims)
         if not any(
             start - TIME_TOLERANCE_SECONDS <= value <= end + TIME_TOLERANCE_SECONDS
             for start, end in windows
@@ -91,10 +128,6 @@ def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
     if bad_times:
         reasons.append(f"timestamps outside every cited segment: {bad_times}")
 
-    spoken = " ".join(
-        [item.transcript for item in cited]
-        + [ocr.text for item in cited for ocr in item.ocr_evidence]
-    )
     normalized_spoken = _normalize(spoken)
     evidence_entities = {entity.lower() for item in cited for entity in item.entities}
     for item in cited:
@@ -146,8 +179,8 @@ def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
         )
         if value is not None
     ]
-    claimed_numbers = [float(value) for value in _DECIMAL.findall(text)] + [
-        float(value) / 100 for value in _PERCENT.findall(text)
+    claimed_numbers = [float(value) for value in _DECIMAL.findall(claims)] + [
+        float(value) / 100 for value in _PERCENT.findall(claims)
     ]
     unbacked = [
         value
