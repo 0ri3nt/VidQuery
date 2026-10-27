@@ -160,10 +160,17 @@ def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
             f"speakers not in the cited evidence: {sorted(claimed_speakers - evidence_speakers)}"
         )
 
+    # A quoted title of a cited video ("In "final_demo.mp4" at 11 s") names it; it is
+    # not a quotation of speech or on-screen text.
+    titles = {_normalize(item.video_title) for item in cited} | {
+        _normalize(item.video_title.rsplit(".", 1)[0]) for item in cited
+    }
     misquoted = [
         quote.strip()
         for quote in _QUOTE.findall(text)
-        if _normalize(quote) and _normalize(quote) not in normalized_spoken
+        if _normalize(quote)
+        and _normalize(quote) not in normalized_spoken
+        and _normalize(quote) not in titles
     ]
     if misquoted:
         reasons.append(f"quotes not found in cited transcripts or on-screen text: {misquoted}")
@@ -200,6 +207,52 @@ def verify_answer_claims(text: str, cited: list[SearchResult]) -> list[str]:
 def _clock(seconds: float) -> str:
     whole = int(max(0.0, seconds))
     return f"{whole // 60:02d}:{whole % 60:02d}"
+
+
+def _seconds(value: float) -> str:
+    return f"{value:.1f}".removesuffix(".0") + " s"
+
+
+def located_answer(answer: str, cited: list[SearchResult]) -> str:
+    """Say where the cited evidence is when a supported answer does not.
+
+    The added location comes from the cited results themselves (title, peak or
+    start time, segment range, speaker), so it cannot add an unsupported claim.
+    An answer that only repeats a cited transcript becomes an attributed quote.
+    """
+
+    text = answer.strip()
+    spoken = " ".join(
+        [item.transcript for item in cited]
+        + [ocr.text for item in cited for ocr in item.ocr_evidence]
+    )
+    if not cited or _mentioned_times(_without_repeated_evidence(text, spoken)):
+        return text
+    for item in cited:
+        words = _normalize(text).split()
+        leftover = _normalize(_without_repeated_evidence(text, item.transcript)).split()
+        if len(words) >= REPEATED_EVIDENCE_MIN_WORDS and len(leftover) <= 2:
+            peak = item.localization.peak_time if item.localization else item.start_time
+            speaker = item.speakers[0] if len(item.speakers) == 1 else "the speaker"
+            quote = text.replace('"', "").rstrip(".")
+            return (
+                f"In {item.video_title} at {_seconds(peak)} "
+                f"({_seconds(item.start_time).removesuffix(' s')}–{_seconds(item.end_time)}), "
+                f'{speaker} says: "{quote}."'
+            )
+    places: dict[str, list[str]] = {}
+    for item in cited[:3]:
+        peak = item.localization.peak_time if item.localization else item.start_time
+        places.setdefault(item.video_title, []).append(_seconds(peak))
+
+    def joined(values: list[str]) -> str:
+        return values[0] if len(values) == 1 else ", ".join(values[:-1]) + " and " + values[-1]
+
+    where = joined([f"{title} at {joined(times)}" for title, times in places.items()])
+    first = text.split(" ", 1)[0]
+    if first in {"A", "An", "The"} or (first[1:].isalpha() and first[1:].islower()):
+        text = text[0].lower() + text[1:]  # "A person ..." but not "SPEAKER_00 ..." or "I"
+    return f"In {where}: {text}"
 
 
 def weak_evidence_answer(response: SearchResponse, cited: list[SearchResult]) -> str:
@@ -437,7 +490,7 @@ class GroundedAnswerService:
             )
         return RAGOutcome(
             answer=GroundedAnswer(
-                answer=generated.answer,
+                answer=located_answer(generated.answer, cited),
                 supported=True,
                 evidence_ids=unique_ids,
                 citations=citations,
@@ -568,6 +621,13 @@ class GroundedAnswerService:
                 {
                     "role": "system",
                     "content": (
+                        "Answer the user's query directly, in one or two sentences of your own "
+                        "words: name the video_title (without quotes), say when it happens "
+                        "(the peak_time, or "
+                        "start_time to end_time, in seconds such as '11.7 s'), and say what the "
+                        "evidence shows (who speaks, what is visible or happening). Do not just "
+                        "repeat the transcript; quote at most one short exact phrase from it in "
+                        "double quotes. "
                         "Answer only from the supplied VidQuery evidence. Do not infer facts "
                         "outside it. Cite only supplied evidence IDs. If the evidence does not "
                         "directly support an answer, set supported=false and evidence_ids=[]. "

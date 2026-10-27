@@ -325,6 +325,55 @@ def test_numbers_repeated_from_the_transcript_are_not_timestamp_claims():
     assert outcome.status == "generated_supported" and outcome.answer.supported
 
 
+def test_transcript_echo_becomes_an_attributed_located_answer():
+    text = ("Our software architecture processes the video into 5 second canonical segments "
+            "and stores them into SQLite data loss.")
+    service = _service({"answer": text, "supported": True, "evidence_ids": ["E1"]})
+    outcome = service.generate("Find where architecture is discussed", _response(PIPELINE_TALK))
+    assert outcome.status == "generated_supported"
+    assert outcome.answer.answer == (
+        'In final_demo.mp4 at 11 s (10–15 s), SPEAKER_00 says: "Our software architecture '
+        'processes the video into 5 second canonical segments and stores them into SQLite '
+        'data loss."'
+    )
+    # The added location is drawn from the cited evidence, so it passes the same checks.
+    assert verify_answer_claims(outcome.answer.answer, PIPELINE_TALK) == []
+
+
+def test_answer_without_a_time_gets_the_cited_moments():
+    service = _service({"answer": "A person is near a laptop.", "supported": True,
+                        "evidence_ids": ["E1", "E2"]})
+    outcome = service.generate("Find a person near a laptop.", _response(ARCHITECTURE))
+    assert outcome.answer.answer == "In final_demo.mp4 at 1 s and 16 s: a person is near a laptop."
+
+
+def test_answer_that_already_says_when_is_unchanged():
+    text = "Architecture is discussed in final_demo.mp4 at 16 s, where the speaker explains it."
+    service = _service({"answer": text, "supported": True, "evidence_ids": ["E2"]})
+    outcome = service.generate("Find where architecture is discussed.", _response(ARCHITECTURE))
+    assert outcome.status == "generated_supported" and outcome.answer.answer == text
+
+
+def test_live_located_answer_with_a_quoted_title_passes():
+    # Live Groq answer to the new prompt for "Find where architecture is discussed".
+    item = PIPELINE_TALK[0].model_copy(update={"video_title": "Untitled design.mp4"})
+    text = ('In "Untitled design.mp4" at 11.72 s, the speaker discusses the software '
+            "architecture, noting it processes video into 5‑second canonical segments and "
+            "stores them in SQLite.")
+    assert verify_answer_claims(text, [item]) == []
+    assert verify_answer_claims('The speaker says "we use Kubernetes".', [item]) == [
+        "quotes not found in cited transcripts or on-screen text: ['we use Kubernetes']"
+    ]
+
+
+def test_answer_prompt_asks_for_a_direct_located_answer():
+    service = _service()
+    payload = service._request_payload("Find where architecture is discussed.", {})
+    system = payload["messages"][0]["content"]
+    assert "name the video_title" in system and "peak_time" in system
+    assert "Do not just repeat the transcript" in system
+
+
 def test_timestamps_outside_the_repeated_words_are_still_checked():
     text = ("At 5 seconds the speaker says our software architecture processes the video "
             "into 5 second canonical segments.")
