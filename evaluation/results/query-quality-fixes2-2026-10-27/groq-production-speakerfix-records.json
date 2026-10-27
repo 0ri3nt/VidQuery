@@ -1,0 +1,528 @@
+[
+ {
+  "run": "groq_1",
+  "query": "Find where SPEAKER_01 discusses architecture.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "generated_supported",
+  "answer": {
+   "answer": "SPEAKER_01 discusses architecture at 15.0\u201320.0 seconds, saying: \"This whiteboard shows the retrieval architecture.\"",
+   "supported": true,
+   "evidence_ids": [
+    "E1"
+   ],
+   "citations": [
+    {
+     "evidence_id": "E1",
+     "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+     "video_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b",
+     "video_title": "final_demo.mp4",
+     "start_time": 15.0,
+     "end_time": 20.0,
+     "stream_url": "/api/videos/4d508fd2-cb26-4caf-8c06-f7589c23764b/stream",
+     "peak_time": 19.583333333333332
+    }
+   ]
+  },
+  "groq_calls": [
+   {
+    "kind": "answer",
+    "prompt": 1644,
+    "completion": 93,
+    "total": 1737
+   }
+  ],
+  "results": [
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 19.583333333333332,
+    "score": 0.7996,
+    "verdict": "supported",
+    "confidence": 0.691,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "groq_1",
+  "query": "Find where SPEAKER_01 discusses Docker.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "provider_unavailable",
+  "answer": null,
+  "groq_calls": [
+   {
+    "kind": "answer",
+    "prompt": 1636,
+    "completion": 38,
+    "total": 1674
+   }
+  ],
+  "results": [
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find where SPEAKER_01 discusses architecture.",
+  "video": "final_demo.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    15,
+    20
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "architecture"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "results": [
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 19.583333333333332,
+    "score": 0.7996,
+    "verdict": "supported",
+    "confidence": 0.691,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "Find where SPEAKER_01 discusses Docker.",
+  "video": "final_demo.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "speaker_search",
+   "visual_entities": [],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "docker"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": "SPEAKER_01",
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "results": [
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:5000:10000",
+    "video_title": "final_demo.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "The laptop runs the API with SQLite metadata.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.5,
+    "verdict": "weak",
+    "confidence": 0.375,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ }
+]

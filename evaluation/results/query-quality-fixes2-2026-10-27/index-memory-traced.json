@@ -1,0 +1,241 @@
+{
+ "videos": 12,
+ "rows": [
+  {
+   "video": 1,
+   "seconds": 236.4,
+   "private_gb": 5.509,
+   "rss_gb": 3.051,
+   "python_objects": 703091
+  },
+  {
+   "video": 2,
+   "seconds": 52.6,
+   "private_gb": 8.37,
+   "rss_gb": 3.192,
+   "python_objects": 703380
+  },
+  {
+   "video": 3,
+   "seconds": 36.2,
+   "private_gb": 9.191,
+   "rss_gb": 4.0,
+   "python_objects": 703796
+  },
+  {
+   "video": 4,
+   "seconds": 26.4,
+   "private_gb": 9.189,
+   "rss_gb": 3.999,
+   "python_objects": 703835
+  },
+  {
+   "video": 5,
+   "seconds": 27.3,
+   "private_gb": 9.193,
+   "rss_gb": 4.0,
+   "python_objects": 703851
+  },
+  {
+   "video": 6,
+   "seconds": 21.8,
+   "private_gb": 9.195,
+   "rss_gb": 4.003,
+   "python_objects": 703883
+  },
+  {
+   "video": 7,
+   "seconds": 23.8,
+   "private_gb": 9.206,
+   "rss_gb": 4.006,
+   "python_objects": 703900
+  },
+  {
+   "video": 8,
+   "seconds": 28.7,
+   "private_gb": 9.231,
+   "rss_gb": 4.033,
+   "python_objects": 703926
+  },
+  {
+   "video": 9,
+   "seconds": 25.0,
+   "private_gb": 9.228,
+   "rss_gb": 4.024,
+   "python_objects": 703931
+  },
+  {
+   "video": 10,
+   "seconds": 18.7,
+   "private_gb": 9.242,
+   "rss_gb": 4.041,
+   "python_objects": 703937
+  },
+  {
+   "video": 11,
+   "seconds": 23.6,
+   "private_gb": 9.236,
+   "rss_gb": 4.04,
+   "python_objects": 703962
+  },
+  {
+   "video": 12,
+   "seconds": 21.9,
+   "private_gb": 9.238,
+   "rss_gb": 3.803,
+   "python_objects": 703968
+  }
+ ],
+ "top_python_growth": [
+  {
+   "kib": 192.7,
+   "count": 6168,
+   "where": [
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:358",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:383",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:223",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:149"
+   ]
+  },
+  {
+   "kib": 176.6,
+   "count": 5654,
+   "where": [
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:359",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:412",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:223",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\appearance.py:149"
+   ]
+  },
+  {
+   "kib": 126.6,
+   "count": 0,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\utils\\_contextlib.py:36",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\ultralytics\\engine\\predictor.py:324",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\ultralytics\\data\\loaders.py:447",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\ultralytics\\utils\\patches.py:43"
+   ]
+  },
+  {
+   "kib": 55.0,
+   "count": 2050,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\transformers\\modeling_utils.py:5468",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\transformers\\modeling_utils.py:843",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\utils\\_contextlib.py:116",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\transformers\\modeling_utils.py:748"
+   ]
+  },
+  {
+   "kib": 50.7,
+   "count": 1,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\whisper\\transcribe.py:161",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\whisper\\tokenizer.py:393",
+    "<string>:9",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\whisper\\tokenizer.py:145"
+   ]
+  },
+  {
+   "kib": 44.0,
+   "count": 1608,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\whisper\\tokenizer.py:393",
+    "<string>:9",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\whisper\\tokenizer.py:144",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\tiktoken\\core.py:256"
+   ]
+  },
+  {
+   "kib": 31.4,
+   "count": 304,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\utils\\data\\dataloader.py:287",
+    "<frozen abc>:119",
+    "<frozen abc>:123",
+    "<frozen abc>:123"
+   ]
+  },
+  {
+   "kib": 23.7,
+   "count": 258,
+   "where": [
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:443",
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:557",
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:415",
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:404"
+   ]
+  },
+  {
+   "kib": -4.2,
+   "count": -66,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\nn\\modules\\module.py:1747",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torchvision\\transforms\\_presets.py:62",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torchvision\\transforms\\functional.py:243",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torchvision\\transforms\\_functional_tensor.py:97"
+   ]
+  },
+  {
+   "kib": -3.8,
+   "count": -60,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\nn\\modules\\module.py:1736",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\nn\\modules\\module.py:1747",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torchvision\\transforms\\_presets.py:61",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torchvision\\transforms\\functional.py:209"
+   ]
+  },
+  {
+   "kib": -3.3,
+   "count": -11,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\matplotlib\\artist.py:1494",
+    "C:\\Program Files\\Python312\\Lib\\re\\__init__.py:177",
+    "C:\\Program Files\\Python312\\Lib\\re\\__init__.py:307",
+    "C:\\Program Files\\Python312\\Lib\\re\\_compiler.py:761"
+   ]
+  },
+  {
+   "kib": 3.0,
+   "count": 15,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\pyannote\\audio\\models\\segmentation\\PyanNet.py:227",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\einops\\einops.py:616",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\einops\\einops.py:540",
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\einops\\einops.py:235"
+   ]
+  },
+  {
+   "kib": 2.6,
+   "count": 24,
+   "where": [
+    "C:\\Users\\Aryaman\\AppData\\Roaming\\Python\\Python312\\site-packages\\torch\\utils\\data\\dataloader.py:289",
+    "<frozen abc>:119",
+    "<frozen abc>:123",
+    "<frozen abc>:123"
+   ]
+  },
+  {
+   "kib": 2.6,
+   "count": 10,
+   "where": [
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:109",
+    "C:\\Program Files\\Python312\\Lib\\re\\__init__.py:228",
+    "C:\\Program Files\\Python312\\Lib\\re\\__init__.py:307",
+    "C:\\Program Files\\Python312\\Lib\\re\\_compiler.py:761"
+   ]
+  },
+  {
+   "kib": 2.5,
+   "count": 20,
+   "where": [
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\pipeline.py:969",
+    "C:\\Users\\Aryaman\\Desktop\\work\\capstone\\VidQuery\\vidquery\\pipeline.py:1090",
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:1108",
+    "C:\\Program Files\\Python312\\Lib\\pathlib.py:103"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+Constrained query planning unavailable (RAGProviderError: Groq request failed: HTTPError (HTTP 429)); using the local parser
+False fallback_provider_unavailable person reading a newspaper.
+Constrained query planning unavailable (RAGProviderError: Groq request failed: HTTPError (HTTP 429)); using the local parser
+False fallback_provider_unavailable person puts his shoes on.
+Constrained query planning unavailable (RAGProviderError: Groq request failed: HTTPError (HTTP 429)); using the local parser
+False fallback_provider_unavailable person cooking at the stove.
+Constrained query planning unavailable (RAGProviderError: Groq request failed: HTTPError (HTTP 429)); using the local parser
+False fallback_provider_unavailable person vacuuming the floor.
+Constrained query planning unavailable (RAGProviderError: Groq request failed: HTTPError (HTTP 429)); using the local parser
+False fallback_provider_unavailable person laughing at a phone.
+Constrained query planning unavailable (RAGProviderError: Groq request failed: HTTPError (HTTP 429)); using the local parser
+False fallback_provider_unavailable person cooking at the stove.
+tokens spent 0 calls 6

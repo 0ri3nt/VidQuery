@@ -1,0 +1,405 @@
+[
+ {
+  "query": "person reading a newspaper.",
+  "reduced_status": "groq_planned_validated",
+  "full_status": "fallback_provider_unavailable",
+  "same_plan": false,
+  "reduced_plan": {
+   "intent": "visual_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "read"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": null
+    }
+   ]
+  },
+  "full_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "read"
+   ],
+   "spoken_terms": [
+    "newspaper"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "reduced_calls": [
+   {
+    "kind": "planner",
+    "prompt": 1162,
+    "completion": 190,
+    "total": 1352
+   }
+  ],
+  "full_calls": [
+   {
+    "kind": "planner",
+    "error": "Groq request failed: HTTPError (HTTP 429)",
+    "reason": "'Too Many Requests'",
+    "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_[redacted]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198773, Requested 3060. Please try again in 13m11.856s. Need more tokens? Upgrade to Dev"
+   }
+  ]
+ },
+ {
+  "query": "person puts his shoes on.",
+  "reduced_status": "groq_planned_validated",
+  "full_status": "fallback_provider_unavailable",
+  "same_plan": false,
+  "reduced_plan": {
+   "intent": "visual_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "dress/put on clothing"
+   ],
+   "spoken_terms": [
+    "puts",
+    "shoes"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": null
+    }
+   ]
+  },
+  "full_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "puts",
+    "shoes"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "reduced_calls": [
+   {
+    "kind": "planner",
+    "prompt": 1163,
+    "completion": 191,
+    "total": 1354
+   }
+  ],
+  "full_calls": [
+   {
+    "kind": "planner",
+    "error": "Groq request failed: HTTPError (HTTP 429)",
+    "reason": "'Too Many Requests'",
+    "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_[redacted]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198764, Requested 3011. Please try again in 12m46.8s. Need more tokens? Upgrade to Dev T"
+   }
+  ]
+ },
+ {
+  "query": "person cooking at the stove.",
+  "reduced_status": "groq_planned_validated",
+  "full_status": "fallback_provider_unavailable",
+  "same_plan": false,
+  "reduced_plan": {
+   "intent": "visual_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "cook"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": null
+    }
+   ]
+  },
+  "full_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "cook"
+   ],
+   "spoken_terms": [
+    "stove"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "reduced_calls": [
+   {
+    "kind": "planner",
+    "prompt": 1163,
+    "completion": 153,
+    "total": 1316
+   }
+  ],
+  "full_calls": [
+   {
+    "kind": "planner",
+    "error": "Groq request failed: HTTPError (HTTP 429)",
+    "reason": "'Too Many Requests'",
+    "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_[redacted]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198754, Requested 3011. Please try again in 12m42.479999999s. Need more tokens? Upgrade "
+   }
+  ]
+ },
+ {
+  "query": "person vacuuming the floor.",
+  "reduced_status": "groq_planned_validated",
+  "full_status": "fallback_provider_unavailable",
+  "same_plan": false,
+  "reduced_plan": {
+   "intent": "visual_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": null
+    }
+   ]
+  },
+  "full_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "vacuuming",
+    "floor"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "reduced_calls": [
+   {
+    "kind": "planner",
+    "prompt": 1163,
+    "completion": 225,
+    "total": 1388
+   }
+  ],
+  "full_calls": [
+   {
+    "kind": "planner",
+    "error": "Groq request failed: HTTPError (HTTP 429)",
+    "reason": "'Too Many Requests'",
+    "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_[redacted]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198744, Requested 2933. Please try again in 12m4.464s. Need more tokens? Upgrade to Dev "
+   }
+  ]
+ },
+ {
+  "query": "person laughing at a phone.",
+  "reduced_status": "groq_planned_validated",
+  "full_status": "fallback_provider_unavailable",
+  "same_plan": false,
+  "reduced_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "cell phone"
+   ],
+   "relationships": [
+    "interacts_with"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "interacts_with",
+     "object": "cell phone",
+     "directionality": "directed"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [
+    "laughing"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": null
+    }
+   ]
+  },
+  "full_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "cell phone"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "laughing"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "reduced_calls": [
+   {
+    "kind": "planner",
+    "prompt": 1168,
+    "completion": 277,
+    "total": 1445
+   }
+  ],
+  "full_calls": [
+   {
+    "kind": "planner",
+    "error": "Groq request failed: HTTPError (HTTP 429)",
+    "reason": "'Too Many Requests'",
+    "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_[redacted]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198735, Requested 3011. Please try again in 12m34.272s. Need more tokens? Upgrade to Dev"
+   }
+  ]
+ },
+ {
+  "query": "person cooking at the stove.",
+  "reduced_status": "groq_planned_validated",
+  "full_status": "fallback_provider_unavailable",
+  "same_plan": false,
+  "reduced_plan": {
+   "intent": "visual_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "cook"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": null
+    }
+   ]
+  },
+  "full_plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "cook"
+   ],
+   "spoken_terms": [
+    "stove"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "reduced_calls": [],
+  "full_calls": [
+   {
+    "kind": "planner",
+    "error": "Groq request failed: HTTPError (HTTP 429)",
+    "reason": "'Too Many Requests'",
+    "message": "Rate limit reached for model `openai/gpt-oss-20b` in organization `org_[redacted]` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198725, Requested 2933. Please try again in 11m56.256s. Need more tokens? Upgrade to Dev"
+   }
+  ]
+ }
+]

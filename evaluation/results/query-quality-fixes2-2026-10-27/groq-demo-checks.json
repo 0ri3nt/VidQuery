@@ -1,0 +1,162 @@
+{
+ "summary": {
+  "records": 10,
+  "rag_status": {
+   "groq_1": {
+    "generated_supported": 2,
+    "generated_unsupported": 7,
+    "insufficient_evidence": 1
+   },
+   "groq_2": {},
+   "fallback": {}
+  },
+  "planner_status": {
+   "groq_1": {
+    "deterministic_clear": 3,
+    "groq_planned_validated": 5,
+    "fallback_provider_unavailable": 2
+   },
+   "groq_2": {},
+   "fallback": {}
+  },
+  "groq_answers_with_issues": 0,
+  "groq_supported_answers": 2,
+  "issue_types": {},
+  "queries_compared": 0,
+  "plan_differs_between_groq_runs": 0,
+  "top_differs_between_groq_runs": 0,
+  "answer_text_differs_between_groq_runs": 0,
+  "supported_flag_differs_between_groq_runs": 0,
+  "plan_differs_groq_vs_fallback": 0,
+  "top_differs_groq_vs_fallback": 0
+ },
+ "checks": [
+  {
+   "query": "person holding a cup.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "The person is holding a cup at 6.01\u202fs, 15.01\u202fs, and 27.01\u202fs.",
+   "cited_verdicts": [
+    "supported",
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person reading a newspaper.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence of a person reading a newspaper was found in the provided segments.",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person drinking from a cup.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Yes, the person is drinking from a cup.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person puts his shoes on.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence found.",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person near a chair.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "There is no evidence that a person is near a chair.",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person cooking at the stove.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence of a person cooking at a stove.",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person picks up something from the stove.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence of a person picking up something from the stove.",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person vacuuming the floor.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence of a person vacuuming the floor was found in the retrieved segments.",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "person laughing at a phone.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence of a person laughing at a phone was found in the provided segments.",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "A sparrowhawk chases a small bird through a dense forest.",
+   "video": "OM2NF.mp4",
+   "run": "groq_1",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  }
+ ],
+ "comparisons": []
+}

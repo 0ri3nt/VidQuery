@@ -1,0 +1,1142 @@
+{
+ "summary": {
+  "records": 32,
+  "rag_status": {
+   "groq_1": {
+    "generated_supported": 11,
+    "generated_unsupported": 1,
+    "insufficient_evidence": 2
+   },
+   "groq_2": {
+    "generated_supported": 4
+   },
+   "fallback": {
+    "unavailable_missing_api_key": 14
+   }
+  },
+  "planner_status": {
+   "groq_1": {
+    "deterministic_clear": 8,
+    "groq_planned_validated": 4,
+    "fallback_provider_unavailable": 1,
+    "fallback_low_confidence": 1
+   },
+   "groq_2": {
+    "deterministic_clear": 3,
+    "groq_planned_validated": 1
+   },
+   "fallback": {
+    "deterministic_clear": 8,
+    "fallback_provider_unconfigured": 6
+   }
+  },
+  "groq_answers_with_issues": 3,
+  "groq_supported_answers": 15,
+  "issue_types": {
+   "actions not in cited evidence": 3
+  },
+  "queries_compared": 4,
+  "plan_differs_between_groq_runs": 0,
+  "top_differs_between_groq_runs": 0,
+  "answer_text_differs_between_groq_runs": 0,
+  "supported_flag_differs_between_groq_runs": 0,
+  "plan_differs_groq_vs_fallback": 1,
+  "top_differs_groq_vs_fallback": 0
+ },
+ "checks": [
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Architecture is discussed at 0\u20135\u202fseconds (peak at 1.6\u202fs) and again at 15\u201320\u202fseconds (peak at 16.78\u202fs).",
+   "cited_verdicts": [
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "A person is near a laptop.",
+   "cited_verdicts": [
+    "supported",
+    "supported",
+    "supported",
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Deployment is discussed at 10.0\u201315.0 seconds, when a laptop is visible.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "SPEAKER_01 discusses architecture in the segment from 15.0\u202fs to 20.0\u202fs, where he says, \"This whiteboard shows the retrieval architecture.\"",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": [
+    "actions not in cited evidence: ['discusses']"
+   ]
+  },
+  {
+   "query": "Find a person near a whiteboard.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "The person is near the whiteboard at 0.0 seconds, 5.0 seconds, 10.0 seconds, 15.0 seconds, and 20.0 seconds.",
+   "cited_verdicts": [
+    "supported",
+    "supported",
+    "supported",
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "SQLite metadata",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "The laptop runs the API with SQLite metadata.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Docker Neo4j",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Deployment uses Docker for the backend and Neo4j graph.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "SPEAKER_00 deployment",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Deployment uses Docker for the backend and Neo4j graph.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near laptop",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "The person is near the laptop.",
+   "cited_verdicts": [
+    "supported",
+    "supported",
+    "supported",
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "whiteboard architecture",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "This whiteboard shows the retrieval architecture.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Find where someone talks about Kubernetes.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "generated_unsupported",
+   "supported": false,
+   "answer": "No evidence found.",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person riding a horse.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses Docker.",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "in_domain_negative",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "SPEAKER_01 discusses Docker between 10.0\u202fs and 15.0\u202fs, saying: \"Deployment uses Docker for the backend and Neo4j graph.\"",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": [
+    "actions not in cited evidence: ['discusses']"
+   ]
+  },
+  {
+   "query": "zzzxylophone quantum penguin",
+   "video": "final_demo.mp4",
+   "run": "groq_1",
+   "kind": "out_of_domain_negative",
+   "rag_status": "insufficient_evidence",
+   "supported": false,
+   "answer": "The retrieved evidence is insufficient to answer this query.",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Architecture is discussed at 0\u20135\u202fseconds (peak at 1.6\u202fs) and again at 15\u201320\u202fseconds (peak at 16.78\u202fs).",
+   "cited_verdicts": [
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "A person is near a laptop.",
+   "cited_verdicts": [
+    "supported",
+    "supported",
+    "supported",
+    "supported",
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "Deployment is discussed at 10.0\u201315.0 seconds, when a laptop is visible.",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "run": "groq_2",
+   "kind": "positive",
+   "rag_status": "generated_supported",
+   "supported": true,
+   "answer": "SPEAKER_01 discusses architecture in the segment from 15.0\u202fs to 20.0\u202fs, where he says, \"This whiteboard shows the retrieval architecture.\"",
+   "cited_verdicts": [
+    "supported"
+   ],
+   "interpretation": "single",
+   "issues": [
+    "actions not in cited evidence: ['discusses']"
+   ]
+  },
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person near a whiteboard.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "SQLite metadata",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "Docker Neo4j",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "resolved",
+   "issues": []
+  },
+  {
+   "query": "SPEAKER_00 deployment",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "person near laptop",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "whiteboard architecture",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "positive",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find where someone talks about Kubernetes.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "Find a person riding a horse.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses Docker.",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "in_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "single",
+   "issues": []
+  },
+  {
+   "query": "zzzxylophone quantum penguin",
+   "video": "final_demo.mp4",
+   "run": "fallback",
+   "kind": "out_of_domain_negative",
+   "rag_status": "unavailable_missing_api_key",
+   "supported": null,
+   "answer": "",
+   "cited_verdicts": [],
+   "interpretation": "insufficient_evidence",
+   "issues": []
+  }
+ ],
+ "comparisons": [
+  {
+   "query": "Find where architecture is discussed.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.6,
+    "score": 0.6681,
+    "verdict": "supported",
+    "confidence": 0.6979,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     15,
+     20
+    ],
+    [
+     0,
+     5
+    ]
+   ],
+   "groq_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "transcript_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find a person near a laptop.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   "fallback_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:0:5000",
+    "video_title": "final_demo.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 1.0,
+    "verdict": "supported",
+    "confidence": 0.925,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "catch",
+     "eat",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "touch object",
+     "watch person",
+     "write"
+    ],
+    "transcript": "We discuss the software architecture.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "shake_hand_with",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person near laptop"
+    ],
+    "ocr": []
+   },
+   "truth": [
+    [
+     0,
+     25
+    ]
+   ],
+   "groq_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "laptop",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "relationship_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "near"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "near",
+      "object": "laptop",
+      "directionality": "symmetric"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where someone discusses deployment while a laptop is visible.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "groq_planned_validated",
+    "groq_planned_validated",
+    "fallback_provider_unconfigured"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": false,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": false,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:10000:15000",
+    "video_title": "final_demo.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.72,
+    "score": 0.7843,
+    "verdict": "supported",
+    "confidence": 0.6648,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "Deployment uses Docker for the backend and Neo4j graph.",
+    "speakers": [
+     "SPEAKER_00",
+     "SPEAKER_01"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     10,
+     15
+    ]
+   ],
+   "groq_plan": {
+    "intent": "visual_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [
+     "in_front_of"
+    ],
+    "relationship_tuples": [
+     {
+      "subject": "person",
+      "predicate": "in_front_of",
+      "object": "laptop",
+      "directionality": "directed"
+     }
+    ],
+    "actions": [],
+    "spoken_terms": [],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": [
+     {
+      "entity_class": "person",
+      "color": null,
+      "upper_clothing_color": null,
+      "upper_clothing_description": null,
+      "glasses": null,
+      "hat": null,
+      "bag": null,
+      "description": null
+     }
+    ]
+   },
+   "fallback_plan": {
+    "intent": "multimodal_search",
+    "visual_entities": [
+     "person",
+     "laptop"
+    ],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "deployment"
+    ],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": null,
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  },
+  {
+   "query": "Find where SPEAKER_01 discusses architecture.",
+   "video": "final_demo.mp4",
+   "kind": "positive",
+   "planner_status": [
+    "deterministic_clear",
+    "deterministic_clear",
+    "deterministic_clear"
+   ],
+   "plan_same_across_groq_runs": true,
+   "plan_same_as_fallback": true,
+   "top_same_across_groq_runs": true,
+   "top_same_as_fallback": true,
+   "ranked_ids_same_as_fallback": true,
+   "answer_same_across_groq_runs": true,
+   "supported_same_across_groq_runs": true,
+   "groq_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 19.583333333333332,
+    "score": 0.7996,
+    "verdict": "supported",
+    "confidence": 0.691,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "fallback_top": {
+    "segment_id": "4d508fd2-cb26-4caf-8c06-f7589c23764b:15000:20000",
+    "video_title": "final_demo.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 19.583333333333332,
+    "score": 0.7996,
+    "verdict": "supported",
+    "confidence": 0.691,
+    "entities": [
+     "chair",
+     "dining table",
+     "laptop",
+     "person",
+     "whiteboard"
+    ],
+    "actions": [
+     "carry/hold",
+     "catch",
+     "martial art",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "watch person",
+     "write"
+    ],
+    "transcript": "This whiteboard shows the retrieval architecture.",
+    "speakers": [
+     "SPEAKER_01",
+     "SPEAKER_02"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   "truth": [
+    [
+     15,
+     20
+    ]
+   ],
+   "groq_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_01",
+    "appearance_constraints": []
+   },
+   "fallback_plan": {
+    "intent": "speaker_search",
+    "visual_entities": [],
+    "relationships": [],
+    "relationship_tuples": [],
+    "actions": [],
+    "spoken_terms": [
+     "architecture"
+    ],
+    "visual_concepts": [],
+    "ocr_terms": [],
+    "speaker": "SPEAKER_01",
+    "appearance_constraints": []
+   },
+   "fallback_rag_status": "unavailable_missing_api_key",
+   "fallback_answer": null
+  }
+ ]
+}

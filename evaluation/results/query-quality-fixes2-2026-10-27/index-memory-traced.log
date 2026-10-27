@@ -1,0 +1,82 @@
+{"profile": "det-ava8-vidor4", "profiles_file": "evaluation/configs/model_profiles_2026-10-26.json", "overrides": {"WHISPER_TEMPERATURE_FALLBACK": "false", "ENABLE_GNN_ACTIONS": "true", "ENABLE_RELATION_GNN": "true", "ENABLE_NEO4J": "false", "HF_HUB_OFFLINE": "1", "GNN_CHECKPOINT": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.pt", "GNN_METADATA": "data/app/models/ava80_scale100/ava80-gat-v8-noleak-scale100-lr0.0003.metadata.json", "GNN_MODEL_VERSION": "ava80-gat-v8-noleak-scale100-lr0.0003", "RELATION_GNN_CHECKPOINT": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.pt", "RELATION_GNN_METADATA": "data/app/models/vidor_relation_scale2000/vidor-relation-pair-visual-gat-v4-scale2000.metadata.json", "RELATION_GNN_MODEL_VERSION": "vidor-relation-pair-visual-gat-v4-scale2000", "DATABASE_PATH": "data/app/benchmark/memprofile_2026-10-27/run2/index.sqlite3", "UPLOAD_DIR": "data/app/benchmark/memprofile_2026-10-27/run2/uploads", "GENERATED_DIR": "data/app/benchmark/memprofile_2026-10-27/run2/generated"}, "checkpoint_status": {"ava_action_gnn": "available_validated", "vidor_relation_gnn": "available_validated"}}
+Detected language: English
+  0%|          | 0/1864 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+100%|██████████| 1864/1864 [00:15<00:00, 119.75frames/s]100%|██████████| 1864/1864 [00:15<00:00, 119.72frames/s]
+DEBUG:speechbrain.utils.checkpoints:Registered checkpoint save hook for _speechbrain_save
+DEBUG:speechbrain.utils.checkpoints:Registered checkpoint load hook for _speechbrain_load
+DEBUG:speechbrain.utils.checkpoints:Registered checkpoint save hook for save
+DEBUG:speechbrain.utils.checkpoints:Registered checkpoint load hook for load
+DEBUG:speechbrain.utils.checkpoints:Registered checkpoint save hook for _save
+DEBUG:speechbrain.utils.checkpoints:Registered checkpoint load hook for _recover
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\lightning_fabric\utilities\cloud_io.py:73: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\pyannote\audio\utils\reproducibility.py:74: ReproducibilityWarning: TensorFloat-32 (TF32) has been disabled as it might lead to reproducibility issues and lower accuracy.
+It can be re-enabled by calling
+   >>> import torch
+   >>> torch.backends.cuda.matmul.allow_tf32 = True
+   >>> torch.backends.cudnn.allow_tf32 = True
+See https://github.com/pyannote/pyannote-audio/issues/1370 for more details.
+
+  warnings.warn(
+{"video": 1, "seconds": 236.4, "private_gb": 5.509, "rss_gb": 3.051, "python_objects": 703091}
+Detected language: English
+  0%|          | 0/3125 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+ 58%|█████▊    | 1800/3125 [00:00<00:00, 1857.95frames/s]100%|██████████| 3125/3125 [00:01<00:00, 1680.86frames/s]100%|██████████| 3125/3125 [00:01<00:00, 1705.27frames/s]
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\pyannote\audio\models\blocks\pooling.py:104: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\ReduceOps.cpp:1823.)
+  std = sequences.std(dim=-1, correction=1)
+{"video": 2, "seconds": 52.6, "private_gb": 8.37, "rss_gb": 3.192, "python_objects": 703380}
+Detected language: English
+  0%|          | 0/1667 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+100%|█████████▉| 1664/1667 [00:04<00:00, 365.40frames/s]100%|██████████| 1667/1667 [00:09<00:00, 174.91frames/s]
+{"video": 3, "seconds": 36.2, "private_gb": 9.191, "rss_gb": 4.0, "python_objects": 703796}
+Detected language: Nynorsk
+  0%|          | 0/2215 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+ 99%|█████████▉| 2202/2215 [00:01<00:00, 1203.95frames/s]100%|██████████| 2215/2215 [00:05<00:00, 398.62frames/s] 
+{"video": 4, "seconds": 26.4, "private_gb": 9.189, "rss_gb": 3.999, "python_objects": 703835}
+Detected language: Nynorsk
+  0%|          | 0/2846 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+100%|█████████▉| 2844/2846 [00:05<00:00, 563.81frames/s]100%|██████████| 2846/2846 [00:10<00:00, 282.71frames/s]
+{"video": 5, "seconds": 27.3, "private_gb": 9.193, "rss_gb": 4.0, "python_objects": 703851}
+Detected language: English
+  0%|          | 0/3076 [00:00<?, ?frames/s]  0%|          | 0/3076 [00:00<?, ?frames/s]
+{"video": 6, "seconds": 21.8, "private_gb": 9.195, "rss_gb": 4.003, "python_objects": 703883}
+Detected language: Nynorsk
+  0%|          | 0/3283 [00:00<?, ?frames/s]  0%|          | 0/3283 [00:00<?, ?frames/s]
+{"video": 7, "seconds": 23.8, "private_gb": 9.206, "rss_gb": 4.006, "python_objects": 703900}
+Detected language: English
+  0%|          | 0/3287 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+ 53%|█████▎    | 1732/3287 [00:00<00:00, 1909.88frames/s] 71%|███████   | 2334/3287 [00:01<00:00, 1129.39frames/s] 84%|████████▍ | 2768/3287 [00:02<00:00, 795.22frames/s] 100%|█████████▉| 3274/3287 [00:03<00:00, 671.65frames/s]100%|██████████| 3287/3287 [00:05<00:00, 550.93frames/s]
+{"video": 8, "seconds": 28.7, "private_gb": 9.231, "rss_gb": 4.033, "python_objects": 703926}
+Detected language: Nynorsk
+  0%|          | 0/1674 [00:00<?, ?frames/s]C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:42: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower median kernel implementation...
+  warnings.warn(
+C:\Users\Aryaman\AppData\Roaming\Python\Python312\site-packages\whisper\timing.py:146: UserWarning: Failed to launch Triton kernels, likely due to missing CUDA toolkit; falling back to a slower DTW implementation...
+  warnings.warn(
+ 93%|█████████▎| 1550/1674 [00:01<00:00, 817.39frames/s]100%|█████████▉| 1672/1674 [00:03<00:00, 381.31frames/s]100%|██████████| 1674/1674 [00:05<00:00, 301.19frames/s]
+{"video": 9, "seconds": 25.0, "private_gb": 9.228, "rss_gb": 4.024, "python_objects": 703931}
+Detected language: English
+  0%|          | 0/1741 [00:00<?, ?frames/s] 99%|█████████▉| 1720/1741 [00:03<00:00, 491.73frames/s]100%|██████████| 1741/1741 [00:03<00:00, 446.76frames/s]
+{"video": 10, "seconds": 18.7, "private_gb": 9.242, "rss_gb": 4.041, "python_objects": 703937}
+Detected language: Nynorsk
+  0%|          | 0/2595 [00:00<?, ?frames/s] 90%|█████████ | 2338/2595 [00:03<00:00, 617.23frames/s]100%|██████████| 2595/2595 [00:04<00:00, 619.98frames/s]100%|██████████| 2595/2595 [00:04<00:00, 618.79frames/s]
+{"video": 11, "seconds": 23.6, "private_gb": 9.236, "rss_gb": 4.04, "python_objects": 703962}
+Detected language: Nynorsk
+  0%|          | 0/3041 [00:00<?, ?frames/s] 92%|█████████▏| 2800/3041 [00:02<00:00, 1338.33frames/s]100%|██████████| 3041/3041 [00:02<00:00, 1262.69frames/s]100%|██████████| 3041/3041 [00:02<00:00, 1280.28frames/s]
+{"video": 12, "seconds": 21.9, "private_gb": 9.238, "rss_gb": 3.803, "python_objects": 703968}
