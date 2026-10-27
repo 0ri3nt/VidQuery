@@ -299,16 +299,36 @@ and results are in `evaluation/results/query-quality-fixes2-2026-10-27/`.
 
 | Issue | What changed | Default | Evidence | Status |
 |---|---|---|---|---|
-| Speaker attribution | 1. A named speaker scopes the spoken words to that speaker's own utterances (scoring and localization). 2. A refresh no longer mixes labelled utterances with fresh diarization labels: labelled utterances win, overlapping model copies are dropped, and repeated refreshes stop accumulating copies. | **on** | Regression tests. On a production copy with `final_demo` re-merged: "SPEAKER_01 discusses Docker" goes from supported 0.687 (10–15 s) to weak 0.375; all 10 positive production queries unchanged. | **fixed and verified**; the production library still holds the old merged `final_demo` until it is refreshed (**awaiting approval**) |
+| Speaker attribution | 1. A named speaker scopes the spoken words to that speaker's own utterances (scoring and localization). 2. A refresh no longer mixes labelled utterances with fresh diarization labels: labelled utterances win, overlapping model copies are dropped, and repeated refreshes stop accumulating copies. | **on** | Regression tests. On a production copy with `final_demo` re-merged: "SPEAKER_01 discusses Docker" goes from supported 0.687 (10–15 s) to weak 0.375; all 10 positive production queries unchanged. | **fixed and verified**, and applied to the production library on 27 October (see §Production refresh of `final_demo`) |
 | Conservative answer checks | Speech in a cited segment implies a person. Negated mentions ("is not cooking", "no laptop", "isn't drinking from a cup") are not treated as claims. | **on** | Regression tests; un-negated false claims are still rejected | **fixed and verified** |
 | Groq budget | Planner request carries only aliases present in the query (12,430 → about 5,200 characters, about 3,100 → 1,300 tokens). Provider aliases are mapped to labels locally. Optional on-disk response cache keyed by the full request (`QUERY_PLAN_CACHE_PATH`). | prompt on; cache off | Regression tests (size bound, alias mapping, cache across restarts). Live: planner prompts measured at 1,157–1,174 tokens (median 1,163). Groq's rate limiter put a full-alias request at 3,011–3,060 tokens, including the 700-token completion allowance. Whether the full and reduced prompts give the same plans was not measured, because the cap was reached. | **fixed and verified**; plan equivalence **requires more evidence** |
 | Live Groq answer quality | Live re-audit with the fixed code: all 14 production queries and 10 of the 28 demo queries before the daily token cap | — | No answer made a claim, time or object absent from its cited evidence. Every in-domain and out-of-domain negative was declined, except "SPEAKER_01 discusses Docker", which the speaker fix (above) corrects. All 10 production positives were answered; 2 of 7 demo positives were answered, the rest declined over weak evidence. Repeated queries gave identical plans and answers (4 of 4). See §Groq re-audit. | **verified on 24 of 42 queries**; the remaining 18 demo queries **require more evidence** (blocked by the daily cap) |
-| Empty Groq refusal shown as an outage (found in the re-audit) | A refusal with an empty answer (`{"answer": "", "supported": false}`) is now a "not supported" answer, not `provider_unavailable` | **on** | Regression test built from the live response; an empty *supported* answer is still rejected | **fixed and verified** (offline); live confirmation blocked by the cap |
-| Rejected Groq plan labelled "Groq unavailable" (found in the re-audit) | Not changed | — | 3 of 13 planner responses were rejected by validation (invalid speaker label ×2, unsupported action label ×1). The local parser was used correctly, but the status and UI notice say "Groq unavailable (rate limit or network)". An existing test pins this status. | **awaiting approval**: add a `fallback_invalid_plan` status and notice |
+| Empty Groq refusal shown as an outage (found in the re-audit) | A refusal with an empty answer (`{"answer": "", "supported": false}`) is now a "not supported" answer, not `provider_unavailable` | **on** | Regression test built from the live response; an empty *supported* answer is still rejected. Live on the refreshed production library, "Find where SPEAKER_01 discusses Docker." now returns `generated_unsupported` with the fixed sentence. | **fixed and verified** |
+| Rejected Groq plan labelled "Groq unavailable" (found in the re-audit) | A plan that Groq returns but that fails validation now has the status `fallback_invalid_plan` and the notice "Local query planner used: Groq's plan failed validation". Network and quota failures keep `fallback_provider_unavailable`. | **on** | 3 of 13 planner responses in the audit were rejected (invalid speaker label ×2, unsupported action label ×1). Regression tests cover the live invalid-speaker case and the cached rejection. In the server smoke check, "Docker Neo4j" got the new status (unsupported appearance entity label) and still returned its correct answer. | **fixed and verified** |
 | Routing of visible words | `VISUAL_CONCEPT_ROUTING`: visible nouns and verbs outside the detector and action vocabularies become `visual_concepts` (no transcript requirement). Visible-concept-only queries keep a spoken reading. Groq plans are routed too. | **off** | Validation: P@1 −0.003 (T1) / +0.003 (T0), not significant. In strict mode, "supported" verdicts rise from 9 (44% correct) to 181 (16% correct), because the absent-transcript zero had been damping overconfident verdicts. In the demo profile with the verdict fix: no gain (AUROC −0.020, not significant). | implemented, **not recommended** |
 | Contradictory evidence | `CONTRADICTION_EVIDENCE`: a required pose (sit, stand, walk, …) contradicted at every sampled moment by a different pose (confidence ≥ 0.6, at least 2 moments) adds an extra zero to the verdict | **off** | Fires on 42% of in-domain-negative vs 25% of positive segments for pose queries. Only 48 positives and 43 in-domain negatives involve a pose, so validation shows no measurable effect (AUROC +0.003, rejection 0). | implemented, **no measured benefit** |
 | Indexer memory | 1. The OpenCLIP text-embedding cache is bounded (LRU, 2,048 texts); search encodes every query there, so it grew for the life of the server. 2. `scripts/index_videos_batch.py --release-gpu-cache` frees cached CUDA blocks after each video. | 1 **on**; 2 **off** | The 10.7 GB was **not reproduced** in a clean single-process run: committed memory plateaus at 7.5 GB once the models load, then grows 3–5 MB per video. `--release-gpu-cache` lowers the plateau to 4.6 GB but makes every video slower (+28% mean) and leaves the slope unchanged. See §Indexer memory. | cache bound **fixed and verified**; GPU-cache release opt-in, **awaiting approval** if wanted; residual 3–5 MB/video **requires more evidence** |
 | YOLOv8s | No code change: this is an evidence question, not a defect | v8n | §5 | **decision needed**: retraining the GNNs on v8s boxes is the remaining experiment |
+
+### Production refresh of `final_demo`
+
+Applied on 27 October with the production `.env` and no overrides:
+`python -m vidquery refresh-library --video-id 4d508fd2-cb26-4caf-8c06-f7589c23764b`.
+
+- **Backups:** `data/app/backups/vidquery-before-2026-10-27-final-demo-speaker-fix.sqlite3` (a
+  consistent SQLite backup) and `data/app/backups/generated-4d508fd2-before-2026-10-27/`.
+  Log: `data/app/backups/refresh-2026-10-27-final-demo.log`.
+- **Utterances:** `final_demo` had 15 utterances (5 labelled, plus 10 model copies with arbitrary
+  speaker numbers, including a `SPEAKER_02` that is not in the labels). It now has the 5 labelled
+  utterances, with one speaker per segment.
+- **Other videos:** the other 12 videos' rows (videos, segments, entity appearances) are
+  byte-identical before and after.
+- **Queries** (`production-final-demo-refresh.json`): all 10 positives keep the same correct
+  top-1 window. Confidences moved by at most 0.002. "Find where SPEAKER_01 discusses Docker."
+  goes from supported 0.687 to weak 0.375. The results are identical to the copy verified
+  earlier.
+- **Rollback:** stop the server, then copy the backup over `data/app/vidquery.sqlite3` and the
+  generated folder back over `data/app/generated/4d508fd2-cb26-4caf-8c06-f7589c23764b/`.
 
 ### Indexer memory
 
@@ -331,6 +351,9 @@ read after each video.
 - The 10.7 GB observed in round 1 happened while another evaluation shared the GPU. The likely
   cause is CUDA allocations spilling into system memory under contention, but that was not
   measured directly. `--release-gpu-cache` is the mitigation to try if it recurs.
+- A code review found no other cache in the indexing path that grows per video. The only other
+  per-video cache, `FrameSemanticIndex`, is used by search and holds one entry per video.
+  Attributing the remaining native growth would need new profiling runs, so it is left open.
 
 Results: `index-memory-before-fix.json`, `index-memory-after-fix.json` and
 `index-memory-traced.json`, produced by `run_scripts/index_memory_profile.py`.
@@ -375,7 +398,11 @@ Records: `groq-production-records.json`, `groq-production-speakerfix-records.jso
 `groq-demo-records.json` (the queries after the cap are recorded as rate-limited) and
 `groq-demo-records-completed.json`. Checks: `groq-production-checks.json`, `groq-demo-checks.json`.
 The blocked prompt comparison is kept as `groq-prompt-equivalence-ratelimited.json`; every row in
-it is a 429 fallback, not a measured plan difference.
+it is a 429 fallback, not a measured plan difference. A second attempt at the remaining demo
+queries (15:20 IST) hit the daily cap after one planner call and is kept as
+`groq-demo-records-rest-ratelimited.json` (it holds local-parser records only). The round-1
+usage leaves the rolling window around 01:10 IST on 28 October, and this round's around 14:50
+IST; the `demo-rest` and `prompt` commands above can run after that.
 
 ## Failed or aborted runs (kept for the record)
 
@@ -395,6 +422,7 @@ it is a 429 fallback, not a measured plan difference.
 | `TRANSCRIPT_SPEECH_FILTER` | unset the flag. Indexes processed while it was on keep filtered transcripts: restore the database backup taken before reprocessing, or reprocess with the flag off |
 | YOLOv8s (if approved) | see §5 |
 | Round 2: speaker scoping, refresh merge, answer-check negation and speech-implies-person, reduced planner prompt, bounded text cache | `git revert` of the round-2 commit; no data change. A library refreshed with the new merge keeps its merged utterances: restore the database backup taken before the refresh |
+| Production refresh of `final_demo` (27 October) | restore the backups listed in §Production refresh of `final_demo` |
 | `QUERY_PLAN_CACHE_PATH`, `CONTRADICTION_EVIDENCE`, `VISUAL_CONCEPT_ROUTING`, `--release-gpu-cache` | unset or omit; no data change (delete the cache file if one was written) |
 
 Existing indexes, checkpoints, weights, benchmark splits and historical results were not modified. Audit copies are under `data/app/benchmark/{query_audit_2026-10-27,speech_filter_2026-10-27,yolo_val150_2026-10-27}/`.

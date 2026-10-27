@@ -231,7 +231,8 @@ class QueryPlanningService:
                 type(exc).__name__,
                 exc,
             )
-            return finish(self._restatus(fallback, "fallback_provider_unavailable"))
+            # Groq answered, but its plan failed validation: not an outage.
+            return finish(self._restatus(fallback, "fallback_invalid_plan"))
 
         if provider.confidence < self.min_confidence:
             return finish(self._restatus(fallback, "fallback_low_confidence"))

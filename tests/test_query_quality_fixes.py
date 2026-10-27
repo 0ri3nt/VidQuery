@@ -356,16 +356,28 @@ def test_provider_failure_falls_back_visibly_and_retries_later(caplog):
 def test_rejected_provider_plan_is_still_cached():
     transport = ScriptedTransport(_provider_plan(["teleport"]))
     planner = _planner(transport)
-    assert planner.plan("find drive").status == "fallback_provider_unavailable"
-    assert planner.plan("find drive").status == "fallback_provider_unavailable"
+    assert planner.plan("find drive").status == "fallback_invalid_plan"
+    assert planner.plan("find drive").status == "fallback_invalid_plan"
     assert transport.calls == 1
+
+
+def test_invalid_speaker_from_groq_is_an_invalid_plan_not_an_outage(caplog):
+    # Live audit: Groq returned a speaker that is not a SPEAKER_NN label.
+    plan = {**_provider_plan([]), "intent": "transcript_search",
+            "spoken_concepts": ["kubernetes"], "speakers": ["someone"]}
+    with caplog.at_level("WARNING"):
+        outcome = _planner(ScriptedTransport(plan)).plan(
+            "Find where someone talks about Kubernetes.")
+    assert outcome.status == "fallback_invalid_plan"
+    assert "Invalid speaker label" in caplog.text
+    assert outcome.plan.spoken_terms == ["kubernetes"]
 
 
 def test_ui_shows_planner_and_answer_notices():
     script = Path("frontend/assets/app.js").read_text(encoding="utf-8")
     page = Path("frontend/index.html").read_text(encoding="utf-8")
     assert 'id="pipeline-notices"' in page
-    for status in ("fallback_provider_unavailable", "provider_unavailable",
+    for status in ("fallback_provider_unavailable", "fallback_invalid_plan", "provider_unavailable",
                    "rejected_unverified_claims", "downgraded_weak_evidence"):
         assert f"{status}:" in script
 

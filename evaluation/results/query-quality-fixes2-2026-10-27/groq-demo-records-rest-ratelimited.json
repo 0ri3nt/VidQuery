@@ -1,0 +1,4312 @@
+[
+ {
+  "run": "fallback",
+  "query": "a person walks through a doorway.",
+  "video": "I2DHG.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    5.2
+   ]
+  ],
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "walks",
+    "doorway"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5739,
+    "verdict": "weak",
+    "confidence": 0.2935,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 21.993448759943846,
+    "score": 0.4895,
+    "verdict": "weak",
+    "confidence": 0.2704,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.016444949528712,
+    "score": 0.4729,
+    "verdict": "weak",
+    "confidence": 0.2572,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 27.007152884551104,
+    "score": 0.4622,
+    "verdict": "weak",
+    "confidence": 0.2484,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:10000:15000",
+    "video_title": "I2DHG.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 14.004946854736279,
+    "score": 0.4847,
+    "verdict": "weak",
+    "confidence": 0.201,
+    "entities": [
+     "bed",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "lift/pick up",
+     "sit",
+     "stand",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "away",
+     "grab_person",
+     "in_front_of",
+     "left_of",
+     "lift_person",
+     "point_to",
+     "shake_hand_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person drinking from a cup.",
+  "video": "I2DHG.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    13.1,
+    23.4
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "cup"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "drink"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.015910154422087,
+    "score": 0.5972,
+    "verdict": "supported",
+    "confidence": 0.4843,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 23.998930409786748,
+    "score": 0.5073,
+    "verdict": "weak",
+    "confidence": 0.4341,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.5239,
+    "verdict": "weak",
+    "confidence": 0.4033,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.353,
+    "verdict": "supported",
+    "confidence": 0.5374,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.3262,
+    "verdict": "supported",
+    "confidence": 0.5082,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person holding a cup.",
+  "video": "I2DHG.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    14,
+    21.5
+   ],
+   [
+    24,
+    26
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "relationship_search",
+   "visual_entities": [
+    "person",
+    "cup"
+   ],
+   "relationships": [
+    "hold"
+   ],
+   "relationship_tuples": [
+    {
+     "subject": "person",
+     "predicate": "hold",
+     "object": "cup",
+     "directionality": "directed"
+    }
+   ],
+   "actions": [],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.015910154422087,
+    "score": 0.8388,
+    "verdict": "weak",
+    "confidence": 0.3778,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.83,
+    "verdict": "weak",
+    "confidence": 0.3611,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 23.998930409786748,
+    "score": 0.8013,
+    "verdict": "weak",
+    "confidence": 0.3688,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [
+     "person hold cup"
+    ],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.3548,
+    "verdict": "supported",
+    "confidence": 0.5107,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.3349,
+    "verdict": "supported",
+    "confidence": 0.4857,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person smiling.",
+  "video": "I2DHG.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    19.7,
+    30.86
+   ]
+  ],
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "smiling"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 21.993448759943846,
+    "score": 0.512,
+    "verdict": "weak",
+    "confidence": 0.2794,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.016444949528712,
+    "score": 0.5152,
+    "verdict": "weak",
+    "confidence": 0.2742,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5123,
+    "verdict": "weak",
+    "confidence": 0.2688,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 27.007152884551104,
+    "score": 0.4916,
+    "verdict": "weak",
+    "confidence": 0.2603,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.98522628517949,
+    "score": 0.4828,
+    "verdict": "weak",
+    "confidence": 0.2422,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person sitting on the bed.",
+  "video": "I2DHG.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    14,
+    21.5
+   ],
+   [
+    24,
+    26
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "bed"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "sit"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.6875,
+    "verdict": "supported",
+    "confidence": 0.4782,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 19.987967110100943,
+    "score": 0.6973,
+    "verdict": "supported",
+    "confidence": 0.4518,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.990707935022392,
+    "score": 0.6443,
+    "verdict": "supported",
+    "confidence": 0.4733,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 9.993983555050471,
+    "score": 0.6366,
+    "verdict": "supported",
+    "confidence": 0.4633,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:10000:15000",
+    "video_title": "I2DHG.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 14.004946854736279,
+    "score": 0.758,
+    "verdict": "weak",
+    "confidence": 0.3287,
+    "entities": [
+     "bed",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "lift/pick up",
+     "sit",
+     "stand",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "away",
+     "grab_person",
+     "in_front_of",
+     "left_of",
+     "lift_person",
+     "point_to",
+     "shake_hand_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person wearing glasses.",
+  "video": "I2DHG.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    14,
+    21.5
+   ],
+   [
+    24,
+    26
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "person",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": true,
+     "hat": null,
+     "bag": null,
+     "description": "a person wearing glasses"
+    }
+   ]
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0016712347082,
+    "score": 0.7912,
+    "verdict": "supported",
+    "confidence": 0.5002,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 23.998930409786748,
+    "score": 0.7609,
+    "verdict": "supported",
+    "confidence": 0.4973,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:30000:31015",
+    "video_title": "I2DHG.mp4",
+    "start": 30.0,
+    "end": 31.015375359315463,
+    "peak": 30.015375359315463,
+    "score": 0.6864,
+    "verdict": "weak",
+    "confidence": 0.3352,
+    "entities": [
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "lift person",
+     "listen to",
+     "read",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "Mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "in_front_of",
+     "left_of",
+     "lift_person",
+     "listen_to",
+     "overlaps_with",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 8.991242730129018,
+    "score": 0.5441,
+    "verdict": "weak",
+    "confidence": 0.3999,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 18.98522628517949,
+    "score": 0.5594,
+    "verdict": "weak",
+    "confidence": 0.3825,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person cooking at the stove.",
+  "video": "I2DHG.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "cook"
+   ],
+   "spoken_terms": [
+    "stove"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.4024,
+    "verdict": "weak",
+    "confidence": 0.2785,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.016444949528712,
+    "score": 0.3814,
+    "verdict": "weak",
+    "confidence": 0.2715,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 27.007152884551104,
+    "score": 0.3601,
+    "verdict": "weak",
+    "confidence": 0.2556,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 21.993448759943846,
+    "score": 0.3494,
+    "verdict": "weak",
+    "confidence": 0.261,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:10000:15000",
+    "video_title": "I2DHG.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 14.004946854736279,
+    "score": 0.3799,
+    "verdict": "weak",
+    "confidence": 0.2098,
+    "entities": [
+     "bed",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "lift/pick up",
+     "sit",
+     "stand",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "away",
+     "grab_person",
+     "in_front_of",
+     "left_of",
+     "lift_person",
+     "point_to",
+     "shake_hand_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person opens the refrigerator.",
+  "video": "I2DHG.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "refrigerator",
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "open"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.002740824921452,
+    "score": 0.5795,
+    "verdict": "supported",
+    "confidence": 0.4697,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:25000:30000",
+    "video_title": "I2DHG.mp4",
+    "start": 25.0,
+    "end": 30.0,
+    "peak": 25.0,
+    "score": 0.3785,
+    "verdict": "supported",
+    "confidence": 0.5487,
+    "entities": [
+     "cup",
+     "person",
+     "potted plant"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "listen to",
+     "play musical instrument",
+     "read",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "behind",
+     "carry_hold",
+     "hold",
+     "hug",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.3631,
+    "verdict": "supported",
+    "confidence": 0.558,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.3434,
+    "verdict": "supported",
+    "confidence": 0.5299,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.318,
+    "verdict": "supported",
+    "confidence": 0.4732,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "A sparrowhawk chases a small bird through a dense forest.",
+  "video": "I2DHG.mp4",
+  "kind": "out_of_domain_negative",
+  "truth": null,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "bird"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "sparrowhawk",
+    "chases",
+    "dense",
+    "forest"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "bird",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": "small bird"
+    }
+   ]
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:0:5000",
+    "video_title": "I2DHG.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "laptop",
+     "oven",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "dress/put on clothing",
+     "grab person",
+     "hug",
+     "lift/pick up",
+     "pull",
+     "read",
+     "stand",
+     "talk to",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "talk_to",
+     "use",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:5000:10000",
+    "video_title": "I2DHG.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "bottle",
+     "person"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "lift/pick up",
+     "read",
+     "sit",
+     "stand",
+     "talk to",
+     "throw",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "carry_hold",
+     "hit",
+     "hold",
+     "in_front_of",
+     "kiss",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "towards",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": [
+     "yel"
+    ]
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:10000:15000",
+    "video_title": "I2DHG.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "bed",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "grab person",
+     "hug",
+     "lift person",
+     "lift/pick up",
+     "sit",
+     "stand",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "away",
+     "grab_person",
+     "in_front_of",
+     "left_of",
+     "lift_person",
+     "point_to",
+     "shake_hand_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:15000:20000",
+    "video_title": "I2DHG.mp4",
+    "start": 15.0,
+    "end": 20.0,
+    "peak": 15.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "bottle",
+     "cup",
+     "hot dog",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "point_to",
+     "shake_hand_with",
+     "shout_at",
+     "talk_to",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "2a380720-4895-4799-b892-73b60eae8c5b:20000:25000",
+    "video_title": "I2DHG.mp4",
+    "start": 20.0,
+    "end": 25.0,
+    "peak": 20.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "cup",
+     "person"
+    ],
+    "actions": [
+     "carry/hold",
+     "give/serve",
+     "listen to",
+     "play musical instrument",
+     "sit",
+     "stand",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "carry_hold",
+     "give_serve_to",
+     "hold",
+     "in_front_of",
+     "left_of",
+     "lift",
+     "listen_to",
+     "near",
+     "overlaps_with",
+     "shake_hand_with",
+     "talk_to",
+     "watch"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "a person is watching television on the sofa.",
+  "video": "GG4UR.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    3.6
+   ],
+   [
+    0,
+    7.5
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "couch"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "watch"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.0010000000000001,
+    "score": 0.5924,
+    "verdict": "supported",
+    "confidence": 0.5107,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.005,
+    "score": 0.6091,
+    "verdict": "supported",
+    "confidence": 0.4856,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.016000000000002,
+    "score": 0.445,
+    "verdict": "weak",
+    "confidence": 0.3437,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.2867,
+    "verdict": "supported",
+    "confidence": 0.4867,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person sitting on the couch.",
+  "video": "GG4UR.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    7.5
+   ]
+  ],
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "couch"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "sit"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 4.0040000000000004,
+    "score": 0.9387,
+    "verdict": "supported",
+    "confidence": 0.4572,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.005,
+    "score": 0.911,
+    "verdict": "weak",
+    "confidence": 0.4266,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.016000000000002,
+    "score": 0.5206,
+    "verdict": "weak",
+    "confidence": 0.4028,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.3609,
+    "verdict": "supported",
+    "confidence": 0.5447,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "a television screen.",
+  "video": "GG4UR.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    0,
+    7.5
+   ]
+  ],
+  "planner_status": "deterministic_hypotheses",
+  "plan": {
+   "intent": "visual_search",
+   "visual_entities": [
+    "tv"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "resolved",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.006,
+    "score": 0.8654,
+    "verdict": "weak",
+    "confidence": 0.4192,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 2.0020000000000002,
+    "score": 0.8491,
+    "verdict": "weak",
+    "confidence": 0.4461,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 15.0,
+    "score": 0.1164,
+    "verdict": "insufficient",
+    "confidence": 0.0606,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.1142,
+    "verdict": "insufficient",
+    "confidence": 0.0595,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person opens door to closet.",
+  "video": "GG4UR.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    10,
+    15.4
+   ]
+  ],
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "open"
+   ],
+   "spoken_terms": [
+    "closet"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 13.013,
+    "score": 0.7075,
+    "verdict": "weak",
+    "confidence": 0.3124,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.4715,
+    "verdict": "weak",
+    "confidence": 0.307,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.005,
+    "score": 0.4558,
+    "verdict": "weak",
+    "confidence": 0.2134,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.5,
+    "score": 0.3757,
+    "verdict": "weak",
+    "confidence": 0.2216,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person takes a towel out of the closet.",
+  "video": "GG4UR.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    13.5,
+    18.5
+   ]
+  ],
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "takes",
+    "towel",
+    "closet"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.651,
+    "verdict": "weak",
+    "confidence": 0.316,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 12.012,
+    "score": 0.59,
+    "verdict": "weak",
+    "confidence": 0.3048,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.005,
+    "score": 0.5822,
+    "verdict": "weak",
+    "confidence": 0.2031,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.5,
+    "score": 0.5236,
+    "verdict": "weak",
+    "confidence": 0.2306,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person holding a towel.",
+  "video": "GG4UR.mp4",
+  "kind": "positive",
+  "truth": [
+   [
+    14.5,
+    18.5
+   ]
+  ],
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person"
+   ],
+   "relationships": [
+    "hold"
+   ],
+   "relationship_tuples": [],
+   "actions": [
+    "carry/hold"
+   ],
+   "spoken_terms": [
+    "towel"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 16.983633333333334,
+    "score": 0.5176,
+    "verdict": "weak",
+    "confidence": 0.2808,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 11.011000000000001,
+    "score": 0.4748,
+    "verdict": "weak",
+    "confidence": 0.2728,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.0010000000000001,
+    "score": 0.4255,
+    "verdict": "weak",
+    "confidence": 0.2262,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 6.006,
+    "score": 0.4142,
+    "verdict": "weak",
+    "confidence": 0.1859,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person eating a sandwich.",
+  "video": "GG4UR.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "planner_status": "deterministic_clear",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "sandwich",
+    "person"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [
+    "eat"
+   ],
+   "spoken_terms": [],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 15.0,
+    "score": 0.3236,
+    "verdict": "supported",
+    "confidence": 0.4897,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.3038,
+    "verdict": "supported",
+    "confidence": 0.5001,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 0.0,
+    "score": 0.3144,
+    "verdict": "weak",
+    "confidence": 0.4159,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.3378,
+    "verdict": "weak",
+    "confidence": 0.3348,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "person washing dishes in the sink.",
+  "video": "GG4UR.mp4",
+  "kind": "in_domain_negative",
+  "truth": null,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "person",
+    "sink"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "washing",
+    "dishes"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": []
+  },
+  "interpretation": "single",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.3187,
+    "verdict": "weak",
+    "confidence": 0.2628,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 15.0,
+    "score": 0.3073,
+    "verdict": "weak",
+    "confidence": 0.2449,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.5,
+    "score": 0.2594,
+    "verdict": "weak",
+    "confidence": 0.1915,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.2687,
+    "verdict": "insufficient",
+    "confidence": 0.1442,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ },
+ {
+  "run": "fallback",
+  "query": "A sparrowhawk chases a small bird through a dense forest.",
+  "video": "GG4UR.mp4",
+  "kind": "out_of_domain_negative",
+  "truth": null,
+  "planner_status": "fallback_provider_unconfigured",
+  "plan": {
+   "intent": "multimodal_search",
+   "visual_entities": [
+    "bird"
+   ],
+   "relationships": [],
+   "relationship_tuples": [],
+   "actions": [],
+   "spoken_terms": [
+    "sparrowhawk",
+    "chases",
+    "dense",
+    "forest"
+   ],
+   "visual_concepts": [],
+   "ocr_terms": [],
+   "speaker": null,
+   "appearance_constraints": [
+    {
+     "entity_class": "bird",
+     "color": null,
+     "upper_clothing_color": null,
+     "upper_clothing_description": null,
+     "glasses": null,
+     "hat": null,
+     "bag": null,
+     "description": "small bird"
+    }
+   ]
+  },
+  "interpretation": "insufficient_evidence",
+  "rag_status": "unavailable_missing_api_key",
+  "answer": null,
+  "groq_calls": [],
+  "rate_limited_calls": [],
+  "results": [
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:0:5000",
+    "video_title": "GG4UR.mp4",
+    "start": 0.0,
+    "end": 5.0,
+    "peak": 1.5,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "sit",
+     "touch object"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:5000:10000",
+    "video_title": "GG4UR.mp4",
+    "start": 5.0,
+    "end": 10.0,
+    "peak": 5.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator",
+     "tv"
+    ],
+    "actions": [
+     "carry/hold",
+     "play musical instrument",
+     "pull",
+     "sit",
+     "touch object",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "\u304a\u306f\u3088\u3046\u3054\u3056\u3044\u307e\u3059\u3002",
+    "speakers": [
+     "SPEAKER_00"
+    ],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "below",
+     "carry_hold",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:10000:15000",
+    "video_title": "GG4UR.mp4",
+    "start": 10.0,
+    "end": 15.0,
+    "peak": 10.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "chair",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "bend/bow",
+     "carry/hold",
+     "close",
+     "fight/hit person",
+     "grab person",
+     "open",
+     "put down",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "behind",
+     "carry_hold",
+     "in_front_of",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "pat",
+     "towards"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   },
+   {
+    "segment_id": "0c824a7b-9237-4fb6-b202-a96cb5810308:15000:19753",
+    "video_title": "GG4UR.mp4",
+    "start": 15.0,
+    "end": 19.753066666666665,
+    "peak": 15.0,
+    "score": 0.0441,
+    "verdict": "insufficient",
+    "confidence": 0.0147,
+    "entities": [
+     "chair",
+     "couch",
+     "person",
+     "refrigerator"
+    ],
+    "actions": [
+     "carry/hold",
+     "enter",
+     "exit",
+     "fight/hit person",
+     "lift person",
+     "lift/pick up",
+     "throw",
+     "walk",
+     "watch person"
+    ],
+    "transcript": "",
+    "speakers": [],
+    "relationships": [
+     "above",
+     "away",
+     "below",
+     "carry_hold",
+     "hold_hand_of",
+     "in_front_of",
+     "lean_on",
+     "left_of",
+     "near",
+     "overlaps_with",
+     "watch",
+     "watch_person"
+    ],
+    "matched_relationships": [],
+    "ocr": []
+   }
+  ]
+ }
+]

@@ -157,7 +157,7 @@ def test_invalid_groq_label_is_rejected_to_safe_fallback(settings_factory):
     )
     outcome = configured_planner(settings_factory, transport).plan("find drive")
 
-    assert outcome.status == "fallback_provider_unavailable"
+    assert outcome.status == "fallback_invalid_plan"
     assert outcome.plan.actions == ["drive"]
     assert outcome.alternatives[0].spoken_terms == ["drive"]
 

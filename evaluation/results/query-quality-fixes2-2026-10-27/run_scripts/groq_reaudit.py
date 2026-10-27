@@ -96,6 +96,9 @@ def run_queries(settings, repository, queries, run, pause, tpm=6000, budget=None
             time.sleep(65)
             first = len(USAGE)
             payload = client.post("/api/search", json=body).json()
+            if any("per day" in c.get("message", "") for c in USAGE[first:]):
+                print(run, "daily token cap reached; stopping", flush=True)
+                break
         records.append(
             {
                 "run": run,

@@ -23,6 +23,7 @@ const seekTimeFor = (item) => (item.localization ? item.localization.peak_time :
 // Shown whenever Groq was not used as configured, so users know which path produced the result.
 const PLANNER_NOTICES = {
   fallback_provider_unavailable: "Local query planner used: Groq unavailable (rate limit or network)",
+  fallback_invalid_plan: "Local query planner used: Groq's plan failed validation",
   fallback_provider_unconfigured: "Local query planner used: Groq not configured",
   fallback_low_confidence: "Local query planner used: Groq plan below the confidence threshold",
 };
