@@ -56,6 +56,9 @@ h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; }
 
 .state-panel { width: min(1100px, 90vw); margin: 30px auto; padding: 18px 20px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); color: var(--muted); }
 .state-panel.error { border-color: rgba(255,128,109,.45); color: var(--danger); }
+.abstain-panel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; color: var(--ink); }
+.closest-toggle { border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; background: transparent; color: var(--muted); font-size: .78rem; cursor: pointer; }
+.closest-toggle:hover { color: var(--ink); }
 .results-section, #library-view, #upload-view, #annotate-view { width: min(1200px, 92vw); margin: 0 auto; padding: 70px 0 100px; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
 .section-heading h2, .page-heading h1 { font-size: clamp(2.1rem, 5vw, 4rem); margin-bottom: 18px; letter-spacing: -.045em; }

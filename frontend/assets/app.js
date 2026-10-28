@@ -124,13 +124,14 @@ function renderInterpretation(payload) {
     card.innerHTML = "";
     return;
   }
-  const chips = hypotheses.map((item) => {
+  // When the system abstains, hit counts and reading shares only suggest a match that isn't there.
+  const chips = status === "insufficient_evidence" ? "" : hypotheses.map((item) => {
     const selected = item.hypothesis_id === payload.selected_hypothesis_id;
     return `<button class="hypothesis-chip${selected ? " selected" : ""}" data-hypothesis="${escapeHtml(item.hypothesis_id)}" title="${escapeHtml(item.description)}">${escapeHtml(item.label)} · ${item.result_count} hit${item.result_count === 1 ? "" : "s"} · ${Math.round(item.posterior * 100)}%</button>`;
   }).join("");
   let headline = "";
   if (status === "clarification_suggested") headline = payload.clarification_prompt || "Did you mean…?";
-  else if (status === "insufficient_evidence") headline = "Not enough evidence for a confident answer. The closest moments are shown below with their confidence.";
+  else if (status === "insufficient_evidence") headline = "No matching moment: the evidence is insufficient, so VidQuery does not answer.";
   else if (status === "resolved") headline = "Ambiguous query resolved from the evidence. Pick another reading to override.";
   card.className = `interpretation-card ${status}`;
   card.innerHTML = `<p class="eyebrow">QUERY INTERPRETATION</p><p class="interpretation-text">${escapeHtml(headline)}</p><div class="hypothesis-row">${chips}</div>`;
@@ -180,7 +181,11 @@ function renderResults(payload) {
     results.innerHTML = '<div class="state-panel">No indexed moment matched. Try fewer constraints or process another video.</div>';
     return;
   }
-  results.innerHTML = payload.results.map((item, index) => {
+  // An insufficient verdict is an abstention: show no matches, and keep the
+  // closest low-confidence moments behind an explicit toggle.
+  const abstained = payload.interpretation === "insufficient_evidence";
+  if (abstained) $("#result-count").textContent = "0 matches";
+  const cards = payload.results.map((item, index) => {
     const evidence = [
       ...item.entities.map((value) => `entity: ${value}`),
       ...item.actions.map((value) => `action: ${value}`),
@@ -209,6 +214,18 @@ function renderResults(payload) {
       <div class="score"><small>score</small><strong>${Math.round(item.score * 100)}</strong><button class="play-button" data-result='${escapeHtml(JSON.stringify(item))}'>Play</button></div>
     </article>`;
   }).join("");
+  results.innerHTML = abstained
+    ? `<div class="state-panel abstain-panel">No moment in this video matches the query, so no result is shown.
+        <button class="closest-toggle" type="button">Show the ${payload.results.length} closest low-confidence moments</button></div>
+       <div class="closest-results hidden">${cards}</div>`
+    : cards;
+  const toggle = $(".closest-toggle");
+  if (toggle) toggle.addEventListener("click", () => {
+    $(".closest-results").classList.toggle("hidden");
+    toggle.textContent = $(".closest-results").classList.contains("hidden")
+      ? `Show the ${payload.results.length} closest low-confidence moments`
+      : "Hide the low-confidence moments";
+  });
   $$('.play-button').forEach((button) => button.addEventListener("click", () => openPlayer(JSON.parse(button.dataset.result))));
   section.scrollIntoView({ behavior: "smooth", block: "start" });
 }
