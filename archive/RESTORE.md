@@ -3,8 +3,9 @@
 The primary source archive is the `dev_aryaman` branch of
 `https://github.com/0ri3nt/VidQuery.git`. The versioned Release tagged
 `archive-dev-aryaman-2026-11-26` stores the local-only model weights,
-checkpoints, datasets, SQLite databases, media, experiments, and other
-ignored files. `RELEASE-2026-11-26.json` lists every Release volume and its
+checkpoints, application SQLite state, generated media, feature caches,
+and experiment records. Raw training datasets and benchmark videos are
+excluded at the owner's request. `RELEASE-2026-11-26.json` lists every Release volume and its
 SHA-256 hash. `backup-files.jsonl.gz` lists every archived file and its hash.
 
 The public archive deliberately excludes `.env`, which contains API tokens
@@ -28,8 +29,9 @@ they are machine-specific and can be recreated.
    the exact source snapshot. The later manifest commit only adds archive
    metadata, so the branch head also contains the archived source.
 4. Run the streaming restore command. It downloads each Release volume,
-   extracts it into this clone, and checks both the complete tar SHA-256 and
-   every extracted file's SHA-256. It places `__capstone_extras__` files in
+   extracts it into this clone, reassembles split checkpoints, and checks both
+   the complete tar SHA-256 and every extracted part's SHA-256. It places
+   `__capstone_extras__` files in
    the clone's parent directory, where they were on the original machine.
 
    ```sh
@@ -39,7 +41,7 @@ they are machine-specific and can be recreated.
 5. Create a new environment and install `requirements.txt`, then
    `requirements-ml.txt` and any optional groups you use. Recreate `.env`
    securely. Follow the README's startup instructions. The trained model
-   checkpoints and dataset-derived artifacts are restored by step 4; model
+   checkpoints and necessary derived artifacts are restored by step 4; model
    retraining is not required.
 
 ## Verify without writing extracted files

@@ -32,7 +32,17 @@ FILE_MANIFEST = ROOT / "archive" / "backup-files.jsonl.gz"
 SUMMARY = ROOT / "archive" / "RELEASE-2026-11-26.json"
 OWNER_REPO = "0ri3nt/VidQuery"
 TAG = "archive-dev-aryaman-2026-11-26"
-MAX_TAR = 1_800_000_000
+MAX_TAR = 100_000_000
+MAX_PART = 90_000_000
+LOCAL_PATHS = [
+    "data/app/models", "data/app/features", "data/app/generated",
+    "data/app/backups", "data/app/demo_library", "data/app/cache",
+    "data/app/uploads", "data/app/vidquery.sqlite3",
+    "data/app/benchmark/yolo_audit_2026-10-26/weights",
+    "data/ava/gnn_outputs", "data/ava/audio_outputs",
+    "evaluation", "archive/superseded_results", "docs", "data/demo",
+    "yolov8m.pt", "yolov8n.pt", "yolov8s.pt", "AGENTS.md",
+]
 SKIP_DIRS = {
     ".git", ".venv", ".venv-local", ".mypy_cache", ".ruff_cache",
     ".pytest_cache", "__pycache__", "node_modules", "vidquery.egg-info",
@@ -79,10 +89,16 @@ def tracked() -> set[str]:
 def inventory() -> list[dict]:
     indexed = tracked()
     found = []
-    for base, dirs, files in os.walk(ROOT):
-        dirs[:] = sorted(d for d in dirs if d not in SKIP_DIRS)
-        for name in sorted(files):
-            path = Path(base, name)
+    for source in LOCAL_PATHS:
+        initial = ROOT / source
+        if not initial.exists():
+            continue
+        candidates = [initial] if initial.is_file() else (
+            path for path in initial.rglob("*") if path.is_file()
+            and not any(part in SKIP_DIRS for part in path.relative_to(initial).parts)
+        )
+        for path in candidates:
+            name = path.name
             rel = path.relative_to(ROOT).as_posix()
             if name in SKIP_FILES or rel in indexed or path.is_symlink():
                 continue
@@ -103,7 +119,18 @@ def inventory() -> list[dict]:
             stat = child.stat()
             found.append({"path": rel, "source": str(child), "size": stat.st_size,
                           "mtime_ns": stat.st_mtime_ns})
-    return sorted(found, key=lambda x: x["path"])
+    expanded = []
+    for item in sorted(found, key=lambda x: x["path"]):
+        parts = max(1, (item["size"] + MAX_PART - 1) // MAX_PART)
+        for part in range(parts):
+            offset = part * MAX_PART
+            expanded.append({**item, "original_path": item["path"],
+                             "path": item["path"] if parts == 1 else
+                             f"__segments__/{item['path']}.part{part:04d}",
+                             "original_size": item["size"],
+                             "size": min(MAX_PART, item["size"] - offset),
+                             "offset": offset, "part": part, "parts": parts})
+    return expanded
 
 
 def tarinfo(item: dict) -> tarfile.TarInfo:
@@ -144,13 +171,16 @@ def volumes(items: list[dict]) -> list[dict]:
 
 
 class HashReader:
-    def __init__(self, path: str):
+    def __init__(self, path: str, offset: int, length: int):
         self.file = open(path, "rb")
+        self.file.seek(offset)
+        self.remaining = length
         self.hash = hashlib.sha256()
 
     def read(self, amount: int) -> bytes:
-        data = self.file.read(amount)
+        data = self.file.read(min(amount, self.remaining))
         self.hash.update(data)
+        self.remaining -= len(data)
         return data
 
     def close(self) -> None:
@@ -195,18 +225,20 @@ def upload_tar(volume: dict, release_id: int, token: str) -> dict:
                       bufsize=1024 * 1024) as archive:
         for item in volume["items"]:
             before = os.stat(item["source"])
-            if (before.st_size, before.st_mtime_ns) != (item["size"], item["mtime_ns"]):
+            if (before.st_size, before.st_mtime_ns) != (item["original_size"], item["mtime_ns"]):
                 raise RuntimeError("Source changed before upload: " + item["path"])
-            reader = HashReader(item["source"])
+            reader = HashReader(item["source"], item["offset"], item["size"])
             try:
                 archive.addfile(tarinfo(item), reader)
             finally:
                 reader.close()
             after = os.stat(item["source"])
-            if (after.st_size, after.st_mtime_ns) != (item["size"], item["mtime_ns"]):
+            if (after.st_size, after.st_mtime_ns) != (item["original_size"], item["mtime_ns"]):
                 raise RuntimeError("Source changed during upload: " + item["path"])
             records.append({"path": item["path"], "size": item["size"],
-                            "sha256": reader.hash.hexdigest(), "asset": volume["name"]})
+                            "sha256": reader.hash.hexdigest(), "asset": volume["name"],
+                            "original_path": item["original_path"], "part": item["part"],
+                            "parts": item["parts"], "offset": item["offset"]})
     if writer.count != volume["size"]:
         raise RuntimeError(f"Tar size mismatch: {writer.count} != {volume['size']}")
     response = conn.getresponse()
@@ -254,7 +286,7 @@ def main() -> None:
         head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT).decode().strip()
         release = api("POST", f"/repos/{OWNER_REPO}/releases", token, {
             "tag_name": TAG, "target_commitish": head, "name": "VidQuery full local archive 2026-11-26",
-            "body": "Full local artifact archive for dev_aryaman. See archive/RESTORE.md on that branch.",
+            "body": "Functioning system and trained model archive for dev_aryaman. Raw datasets are excluded. See archive/RESTORE.md on that branch.",
             "draft": True, "prerelease": True,
         })
         state = {"release_id": release["id"], "source_commit": head, "volumes": []}
@@ -275,6 +307,7 @@ def main() -> None:
                "source_commit": state["source_commit"], "release_id": state["release_id"],
                "files": len(records), "bytes": sum(r["size"] for r in records),
                "excluded": [".env (credentials)", "Git metadata and tracked files (on branch)",
+                            "raw AVA/VidOR datasets and benchmark media/databases",
                             "virtual environments, Python build and lint caches"],
                "manifest_sha256": hashlib.sha256(FILE_MANIFEST.read_bytes()).hexdigest(),
                "volumes": [{k: v[k] for k in ("name", "size", "sha256", "asset_id", "file_count")}
@@ -332,20 +365,26 @@ def verify(destination: Path | None = None) -> None:
                     record = expected[key]
                     if member.size != record["size"]:
                         raise RuntimeError("Restored file size mismatch: " + member.name)
+                    original_parts = Path(record["original_path"]).parts
+                    if any(part in {"..", "."} for part in original_parts):
+                        raise RuntimeError("Unsafe restored path: " + record["original_path"])
                     target = None
                     if destination is not None:
-                        if parts[0] == "__capstone_extras__":
-                            target = destination.parent.joinpath(*parts[1:])
+                        if original_parts[0] == "__capstone_extras__":
+                            target = destination.parent.joinpath(*original_parts[1:])
                         else:
-                            target = destination.joinpath(*parts)
+                            target = destination.joinpath(*original_parts)
                         target.parent.mkdir(parents=True, exist_ok=True)
+                        if record["part"] and (not target.exists() or
+                                               target.stat().st_size != record["offset"]):
+                            raise RuntimeError("Missing prior file part: " + str(target))
                     digest = hashlib.sha256()
                     with archive.extractfile(member) as source:
                         if target is None:
                             while chunk := source.read(1024 * 1024):
                                 digest.update(chunk)
                         else:
-                            with target.open("wb") as output:
+                            with target.open("wb" if record["part"] == 0 else "ab") as output:
                                 while chunk := source.read(1024 * 1024):
                                     output.write(chunk)
                                     digest.update(chunk)
