@@ -82,6 +82,18 @@ def api(method: str, path: str, token: str, data: dict | None = None) -> dict:
         return json.loads(body) if body else {}
 
 
+def release_assets(release_id: int, token: str) -> dict[str, dict]:
+    assets = {}
+    page = 1
+    while True:
+        batch = api("GET", f"/repos/{OWNER_REPO}/releases/{release_id}/assets?per_page=100&page={page}", token)
+        for asset in batch:
+            assets[asset["name"]] = asset
+        if len(batch) < 100:
+            return assets
+        page += 1
+
+
 def tracked() -> set[str]:
     raw = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT)
     return {os.fsdecode(item).replace("\\", "/") for item in raw.split(b"\0") if item}
@@ -270,14 +282,17 @@ def save_json(path: Path, value: dict) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["plan", "upload", "verify", "restore"])
+    parser.add_argument("mode", choices=["plan", "upload", "check", "verify", "restore"])
     parser.add_argument("--destination", type=Path,
                         help="Existing clone directory for the restore command")
+    parser.add_argument("--sample-assets", type=int, default=6,
+                        help="Number of volumes to download and parse during the check command")
     args = parser.parse_args()
-    if args.mode in {"verify", "restore"}:
+    if args.mode in {"check", "verify", "restore"}:
         if args.mode == "restore" and not args.destination:
             parser.error("restore requires --destination")
-        verify(args.destination if args.mode == "restore" else None)
+        verify(args.destination if args.mode == "restore" else None,
+               args.sample_assets if args.mode == "check" else None)
         return
     items = inventory()
     groups = volumes(items)
@@ -348,11 +363,16 @@ class HashStream:
         return data
 
 
-def verify(destination: Path | None = None) -> None:
+def verify(destination: Path | None = None, sample_assets: int | None = None) -> None:
     summary = json.loads(SUMMARY.read_text(encoding="utf-8"))
     token = credential()
-    release = api("GET", f"/repos/{OWNER_REPO}/releases/{summary['release_id']}", token)
-    assets = {asset["name"]: asset for asset in release["assets"]}
+    assets = release_assets(summary["release_id"], token)
+    for volume in summary["volumes"]:
+        asset = assets[volume["name"]]
+        if (asset["size"] != volume["size"] or asset["state"] != "uploaded" or
+                asset.get("digest") != "sha256:" + volume["sha256"]):
+            raise RuntimeError("GitHub asset metadata/hash mismatch: " + volume["name"])
+    print(f"GitHub SHA-256 matches all {len(summary['volumes'])} volumes", flush=True)
     expected = {}
     with gzip.open(FILE_MANIFEST, "rt", encoding="utf-8") as source:
         for line in source:
@@ -362,7 +382,15 @@ def verify(destination: Path | None = None) -> None:
     if destination is not None:
         destination = destination.resolve()
         destination.mkdir(parents=True, exist_ok=True)
-    for volume in summary["volumes"]:
+    selected = summary["volumes"]
+    if sample_assets is not None:
+        if sample_assets < 1:
+            raise ValueError("sample_assets must be positive")
+        count = min(sample_assets, len(selected))
+        indices = {round(i * (len(selected) - 1) / max(count - 1, 1))
+                   for i in range(count)}
+        selected = [selected[i] for i in sorted(indices)]
+    for volume in selected:
         asset = assets[volume["name"]]
         if asset["size"] != volume["size"] or asset["state"] != "uploaded":
             raise RuntimeError("Remote asset metadata mismatch: " + volume["name"])
@@ -415,9 +443,9 @@ def verify(destination: Path | None = None) -> None:
         if stream.count != volume["size"] or stream.hash.hexdigest() != volume["sha256"]:
             raise RuntimeError("Remote bytes mismatch: " + volume["name"])
         print("Verified", volume["name"], volume["file_count"], "files", flush=True)
-    if len(seen) != len(expected):
+    if sample_assets is None and len(seen) != len(expected):
         raise RuntimeError(f"Missing files: {len(expected) - len(seen)}")
-    print(f"Verified all {len(seen)} archived files", flush=True)
+    print(f"Parsed and verified {len(seen)} archived file parts in {len(selected)} volumes", flush=True)
 
 
 if __name__ == "__main__":

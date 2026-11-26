@@ -54,6 +54,10 @@ python scripts/archive_release.py verify
 
 This reads every remote Release volume, parses every tar member, and checks
 the full volume and individual file hashes against the branch manifest.
+For a faster check, `python scripts/archive_release.py check --sample-assets 6`
+compares GitHub's own SHA-256 for every Release asset with the locally computed
+upload hashes, then downloads and parses six spread-out volumes. The full
+`verify` command remains available if you want to redownload the entire archive.
 
 Do not remove the original local project until this verification has passed
 against the published Release and you have securely retained your `.env`
