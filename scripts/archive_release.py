@@ -18,6 +18,13 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+try:
+    import truststore
+except ImportError:
+    pass
+else:
+    truststore.inject_into_ssl()
+
 ROOT = Path(__file__).resolve().parents[1]
 PARENT = ROOT.parent
 STATE = ROOT / "tmp" / "archive-release-state.json"
