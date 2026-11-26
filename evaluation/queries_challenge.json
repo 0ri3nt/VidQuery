@@ -1,0 +1,53 @@
+{
+  "schema_version": "challenge-1.0",
+  "description": "Review-2 challenge benchmark, labelled with the VidQuery annotation page. Ground truth is a manually marked peak time and interval per query.",
+  "videos": {},
+  "queries": [
+    {
+      "id": "ts-meow-01",
+      "query": "find cat eating food",
+      "category": "timestamp",
+      "source_video_id": "meow",
+      "expected_intents": [],
+      "expected_hypothesis_ids": [
+        "visible_action"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "meow",
+          "peak_time": 3.0,
+          "start_time": 2.0,
+          "end_time": 4.0
+        }
+      ],
+      "annotator": "AS",
+      "verified_by": "AK",
+      "notes": "nice",
+      "negative": false
+    },
+    {
+      "id": "ts-om2nf-01",
+      "query": "find cat eating food",
+      "category": "timestamp",
+      "source_video_id": "OM2NF",
+      "expected_intents": [],
+      "expected_hypothesis_ids": [
+        "visible_action"
+      ],
+      "tolerance_seconds": 2.0,
+      "relevant": [
+        {
+          "source_video_id": "OM2NF",
+          "peak_time": 4.0,
+          "start_time": 2.0,
+          "end_time": 5.0
+        }
+      ],
+      "annotator": "AS",
+      "verified_by": "AK",
+      "notes": "",
+      "negative": false
+    }
+  ]
+}
