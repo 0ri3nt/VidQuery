@@ -1,0 +1,1048 @@
+{
+  "repository": "0ri3nt/VidQuery",
+  "branch": "dev_aryaman",
+  "tag": "archive-dev-aryaman-2026-11-26",
+  "source_commit": "0c78076a824cbefc18639ec8728229ef9eefaac2",
+  "release_id": 459285474,
+  "files": 106573,
+  "bytes": 12547968337,
+  "excluded": [
+    ".env (credentials)",
+    "Git metadata and tracked files (on branch)",
+    "raw AVA/VidOR datasets and benchmark media/databases",
+    "virtual environments, Python build and lint caches"
+  ],
+  "manifest_sha256": "82a5cf9f372722509b9826fcf6853e98abc78be870e508d1d3d92a3594a34129",
+  "volumes": [
+    {
+      "name": "vidquery-local-001.tar",
+      "size": 11315200,
+      "sha256": "e28828ee5e9768ff8a4950d627c39c41b74dbf3240f7d4285eb9e914068992d7",
+      "asset_id": 795518052,
+      "file_count": 50
+    },
+    {
+      "name": "vidquery-local-002.tar",
+      "size": 90009600,
+      "sha256": "98ed33795492905347be804b1569294744020425e376d0098392619559ee50f6",
+      "asset_id": 795578918,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-003.tar",
+      "size": 22067200,
+      "sha256": "c8746930f07c77751022871be1cc91b4d15ea1385838eeb0d286a3d8b110afc5",
+      "asset_id": 795582380,
+      "file_count": 3
+    },
+    {
+      "name": "vidquery-local-004.tar",
+      "size": 90009600,
+      "sha256": "864e601fc823b539aa36992533d3933fed49784aa80ed2e4258d6ef1abd7bbfb",
+      "asset_id": 795582726,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-005.tar",
+      "size": 87654400,
+      "sha256": "d4a5e1901c6bef1b41865b9903eaf4edf73c412bad6c0561891a861b7cd7ea57",
+      "asset_id": 795583880,
+      "file_count": 4
+    },
+    {
+      "name": "vidquery-local-006.tar",
+      "size": 99942400,
+      "sha256": "3ab0d6d9ce8bbccff83b59abb55cf9c79944d8a62177a7824408181692261287",
+      "asset_id": 795585545,
+      "file_count": 246
+    },
+    {
+      "name": "vidquery-local-007.tar",
+      "size": 99901440,
+      "sha256": "5807a3428c915355dd00b8f12302ef235bb23b6fca30f32a78a047040eb0d5cc",
+      "asset_id": 795587030,
+      "file_count": 110
+    },
+    {
+      "name": "vidquery-local-008.tar",
+      "size": 99993600,
+      "sha256": "88eeddc957a8e13ea66a6f01bfbbba48a655ad49e97242138f9add3c9494fbb5",
+      "asset_id": 795588792,
+      "file_count": 6413
+    },
+    {
+      "name": "vidquery-local-009.tar",
+      "size": 99993600,
+      "sha256": "b9f016e821ed24e9a5651f5378053d77d87e58500c0943acaf5fe58524058cd4",
+      "asset_id": 795591127,
+      "file_count": 9300
+    },
+    {
+      "name": "vidquery-local-010.tar",
+      "size": 99993600,
+      "sha256": "5f9f83dbfd4d08daf4a388478324fa1155a6c50f8fe53ea58340f6bc611a9f14",
+      "asset_id": 795592745,
+      "file_count": 9171
+    },
+    {
+      "name": "vidquery-local-011.tar",
+      "size": 99983360,
+      "sha256": "38fa5653bfdb2e9bf66f0fcf4675158e834977be9c1fe21f87d982ba23ae01c5",
+      "asset_id": 795594205,
+      "file_count": 9619
+    },
+    {
+      "name": "vidquery-local-012.tar",
+      "size": 99993600,
+      "sha256": "62bb6d4dcc2473287dff619ed625e8a0885ae77e8c6d721221a3de8ac81c6fc9",
+      "asset_id": 795596042,
+      "file_count": 9941
+    },
+    {
+      "name": "vidquery-local-013.tar",
+      "size": 99983360,
+      "sha256": "ee01af4aab38ac6b7782e6b3cf930eb8f71088ba0d5a3f7bdf60b08cadf958f4",
+      "asset_id": 795597719,
+      "file_count": 9134
+    },
+    {
+      "name": "vidquery-local-014.tar",
+      "size": 99993600,
+      "sha256": "ef782ed88505b28eba2cf719088a6728e072afaa3840735e6d811d94c2c516f1",
+      "asset_id": 795599103,
+      "file_count": 9806
+    },
+    {
+      "name": "vidquery-local-015.tar",
+      "size": 52336640,
+      "sha256": "8c3f0baa08c0af67cf7c0042f1915d52892cbd140ead9e957cd1f4e5d8991f62",
+      "asset_id": 795601090,
+      "file_count": 2509
+    },
+    {
+      "name": "vidquery-local-016.tar",
+      "size": 95600640,
+      "sha256": "6de0d069756011b02a58617134850b31caa2f2e674142068acd6c85a0ed85323",
+      "asset_id": 795602187,
+      "file_count": 4
+    },
+    {
+      "name": "vidquery-local-017.tar",
+      "size": 85319680,
+      "sha256": "f7e69ad1df012ce79bb54ae324dd681ab0f6ab4173c8b5c8735efa0d076ea10a",
+      "asset_id": 795603924,
+      "file_count": 4
+    },
+    {
+      "name": "vidquery-local-018.tar",
+      "size": 37754880,
+      "sha256": "18e334afc82722b47c8ea2f71b6206af242b898141113a9d11b666c7a1c1c8db",
+      "asset_id": 795605406,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-019.tar",
+      "size": 71956480,
+      "sha256": "d99d8015ceed83ea71c2abf1649a8f78ef5ecb6dc0f35c0706e70a06e42c0fdc",
+      "asset_id": 795605926,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-020.tar",
+      "size": 55961600,
+      "sha256": "95b3fd7c67bb46c352dbc1ee3c2f03372732c5714aa318281ed26083415dfa06",
+      "asset_id": 795607435,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-021.tar",
+      "size": 47769600,
+      "sha256": "7808fb23e79d701dacca1f461bc4d9dd8aa416cd6aef38cf23f6f3266bc01e46",
+      "asset_id": 795608441,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-022.tar",
+      "size": 53647360,
+      "sha256": "2df5e5ab0e74a985f57b643d3836cff5c26f53e39bdf7ba687e38165ba816652",
+      "asset_id": 795609347,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-023.tar",
+      "size": 85831680,
+      "sha256": "70726b96eda0f874d3d31d02770e918e59619554a7995cbce72db24a3905fe14",
+      "asset_id": 795610315,
+      "file_count": 4
+    },
+    {
+      "name": "vidquery-local-024.tar",
+      "size": 48824320,
+      "sha256": "62b159d9d15ba9c8b5ee5ed9e6d6d8a6b083b2fa336c48b06bead955b639e341",
+      "asset_id": 795612665,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-025.tar",
+      "size": 54282240,
+      "sha256": "f945de2018571103c8da56ea554fa5e68673bf176c2023f1a1100037a6c5b1a3",
+      "asset_id": 795613432,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-026.tar",
+      "size": 74608640,
+      "sha256": "c6fefc63dd407b0acfde38c6e6aa1e6f0d3e79878f836b113e4250f0662b7f19",
+      "asset_id": 795614855,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-027.tar",
+      "size": 60846080,
+      "sha256": "af6b930280e8f9e6bc401d6b1ebccc61c0fcfd6550849c29420db2dd4422659a",
+      "asset_id": 795616177,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-028.tar",
+      "size": 81223680,
+      "sha256": "46e9f2f6336ceae213c293ddd51b41bf5acfcb1e34110d78df8cfd6f39750a64",
+      "asset_id": 795617128,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-029.tar",
+      "size": 89835520,
+      "sha256": "8d55f918c8d0c717ba2f9a94f52713353c9247bfcd84b0734f8c3b29b53ff807",
+      "asset_id": 795618842,
+      "file_count": 4
+    },
+    {
+      "name": "vidquery-local-030.tar",
+      "size": 95918080,
+      "sha256": "be5c175eb2113bb3317b973207eba62ddab246cd8dab334ce75012d293bcd269",
+      "asset_id": 795620667,
+      "file_count": 32
+    },
+    {
+      "name": "vidquery-local-031.tar",
+      "size": 95078400,
+      "sha256": "a3a51ff45ffd1a9744c337514ec220e93de5ed86b842654eaee6477b3be32058",
+      "asset_id": 795622098,
+      "file_count": 34
+    },
+    {
+      "name": "vidquery-local-032.tar",
+      "size": 94853120,
+      "sha256": "a441221b9adcf74e811d02dc1ee592456f2ddc7ba211f3e9fa0fce07449afe8a",
+      "asset_id": 795623852,
+      "file_count": 34
+    },
+    {
+      "name": "vidquery-local-033.tar",
+      "size": 97413120,
+      "sha256": "ea2027903a28bb5afcce2b56ca57f303628f4302c220c3d27fc27270699046c2",
+      "asset_id": 795625612,
+      "file_count": 40
+    },
+    {
+      "name": "vidquery-local-034.tar",
+      "size": 92661760,
+      "sha256": "ca63f6bec9615f5a9fdadef571455f6049282c3f4fa1f0e4be7d747ab2223bbe",
+      "asset_id": 795627404,
+      "file_count": 32
+    },
+    {
+      "name": "vidquery-local-035.tar",
+      "size": 97259520,
+      "sha256": "574debeb3760a0eee82f720c097ec7d4dbc349c535c03562c86a868bc10cf810",
+      "asset_id": 795630037,
+      "file_count": 39
+    },
+    {
+      "name": "vidquery-local-036.tar",
+      "size": 98027520,
+      "sha256": "502abe18c1539db5a58be45d324f9bf6c0d4f3a7b50a150fc28cc620740c3002",
+      "asset_id": 795631499,
+      "file_count": 9
+    },
+    {
+      "name": "vidquery-local-037.tar",
+      "size": 99983360,
+      "sha256": "aecc8d0d1e29244d817ee38301d49a7035eea19e8e8279d56ed918215fda3331",
+      "asset_id": 795634278,
+      "file_count": 1391
+    },
+    {
+      "name": "vidquery-local-038.tar",
+      "size": 99983360,
+      "sha256": "2ece3b60c7cfbb20e18aa6a0df450630b935a1f53e58a8e89cd4d2f89b663a47",
+      "asset_id": 795636173,
+      "file_count": 2306
+    },
+    {
+      "name": "vidquery-local-039.tar",
+      "size": 23603200,
+      "sha256": "a884ba5e021cbae9303feb641003418b25a5523fac57e5db505de61df1e27a94",
+      "asset_id": 795638150,
+      "file_count": 492
+    },
+    {
+      "name": "vidquery-local-040.tar",
+      "size": 99973120,
+      "sha256": "1e7a85e624ebf3c5a55d15276d8b76d14d0ccd5767fe4626eb42a39282b8d2fe",
+      "asset_id": 795639035,
+      "file_count": 381
+    },
+    {
+      "name": "vidquery-local-041.tar",
+      "size": 99942400,
+      "sha256": "fbc9010e0a5b265aa8e6add4d10befb195eba3c294b21564acdb5d23abfd9445",
+      "asset_id": 795640487,
+      "file_count": 2227
+    },
+    {
+      "name": "vidquery-local-042.tar",
+      "size": 94177280,
+      "sha256": "4747681b6ab6dbc05af5f870683cda6c967fed88b4595c0eee6f8af8a77e7213",
+      "asset_id": 795642804,
+      "file_count": 25
+    },
+    {
+      "name": "vidquery-local-043.tar",
+      "size": 99993600,
+      "sha256": "6c7ecb7d833251dd005e36c936da5229f71511cf3dee3561cd0742aaee4e3164",
+      "asset_id": 795644980,
+      "file_count": 166
+    },
+    {
+      "name": "vidquery-local-044.tar",
+      "size": 99973120,
+      "sha256": "9a805abd731a414b7fac03817a905a7a99ee0b7b1fad711bb6cd40281aed443f",
+      "asset_id": 795646680,
+      "file_count": 1956
+    },
+    {
+      "name": "vidquery-local-045.tar",
+      "size": 99942400,
+      "sha256": "99171a4aa71fbb2a2c30662fda735c6d0de574cee91a6f254d8bea4acad0e552",
+      "asset_id": 795648162,
+      "file_count": 1774
+    },
+    {
+      "name": "vidquery-local-046.tar",
+      "size": 95180800,
+      "sha256": "be38a5c3a3e09e2e0853f8067ae8a818dfe44ac9ba1133f2814616b6c3fe5778",
+      "asset_id": 795651018,
+      "file_count": 1899
+    },
+    {
+      "name": "vidquery-local-047.tar",
+      "size": 99983360,
+      "sha256": "8acb02473c771a9441bdf71510c3e570be601e69ce4d2806b1b45c8dd3a3e512",
+      "asset_id": 795653094,
+      "file_count": 63
+    },
+    {
+      "name": "vidquery-local-048.tar",
+      "size": 99911680,
+      "sha256": "5772519723de3b5293456d45459569bd9c80376dda12b70004c4236325a45819",
+      "asset_id": 795654723,
+      "file_count": 1167
+    },
+    {
+      "name": "vidquery-local-049.tar",
+      "size": 99932160,
+      "sha256": "ac10b8194357d7db0b1e0107c2b6b490559a967997b39e8a02613e99cc6134ab",
+      "asset_id": 795656288,
+      "file_count": 850
+    },
+    {
+      "name": "vidquery-local-050.tar",
+      "size": 99983360,
+      "sha256": "090dc1596465bcf2b6ad3396c486204a069dd5ca7727302c03d54379ed78cce6",
+      "asset_id": 795658474,
+      "file_count": 1017
+    },
+    {
+      "name": "vidquery-local-051.tar",
+      "size": 99993600,
+      "sha256": "ec86ca4a5576a1964e3e6220f43eceac2077def1d5b23341153a1c3a2b5d9983",
+      "asset_id": 795660563,
+      "file_count": 732
+    },
+    {
+      "name": "vidquery-local-052.tar",
+      "size": 99952640,
+      "sha256": "8132d951c4ec1b36d90060e88edf45e329da679b4d5111e7103536892c8cdbdb",
+      "asset_id": 795662364,
+      "file_count": 616
+    },
+    {
+      "name": "vidquery-local-053.tar",
+      "size": 99973120,
+      "sha256": "1d8563ecec0294d20ccf9eb4487fa66fb37af619a90287419f5b1d87e9a0bc8c",
+      "asset_id": 795665026,
+      "file_count": 624
+    },
+    {
+      "name": "vidquery-local-054.tar",
+      "size": 42659840,
+      "sha256": "f878a1c35fef69671184937d02f18477a93b10cf1ffca8af2ac70c968cffff3b",
+      "asset_id": 795666538,
+      "file_count": 324
+    },
+    {
+      "name": "vidquery-local-055.tar",
+      "size": 90009600,
+      "sha256": "62aceb7f75d8044fc925993c1d308faae177b08e27cc9282ecb5465b5956095d",
+      "asset_id": 795667150,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-056.tar",
+      "size": 99962880,
+      "sha256": "0af7bad69b07e603788a6f4e4fc04db7c0c65c2c5e4299e97e0c83cfd5b8993f",
+      "asset_id": 795668258,
+      "file_count": 492
+    },
+    {
+      "name": "vidquery-local-057.tar",
+      "size": 99993600,
+      "sha256": "db4c594117fed0cf224ae8d3d3c28f7070b2d61e6f669c066bfb491b603c36c1",
+      "asset_id": 795670172,
+      "file_count": 2942
+    },
+    {
+      "name": "vidquery-local-058.tar",
+      "size": 51507200,
+      "sha256": "03c37c5b49b6a9a28bcfbc625ed91eab954517bf7a07c8a54dae48161057db15",
+      "asset_id": 795672047,
+      "file_count": 1990
+    },
+    {
+      "name": "vidquery-local-059.tar",
+      "size": 90009600,
+      "sha256": "029ecf793b02261a408605f0047dbf4ea8a3a36426b64f530c0ae4e67f90c5d7",
+      "asset_id": 795673467,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-060.tar",
+      "size": 90009600,
+      "sha256": "62a0950ff4c0a93ae6419d56a5155ef5f7facd8d118b080dd784758bc1059bbf",
+      "asset_id": 795675595,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-061.tar",
+      "size": 90009600,
+      "sha256": "22f5286916e1c9d2cf9edfa3124598057e407efb9ed8af2503e207c002a84161",
+      "asset_id": 795677098,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-062.tar",
+      "size": 99092480,
+      "sha256": "b2ad7152708c731e46408db1b409e303acc747aa86c897514bf52d90bae40e6c",
+      "asset_id": 795678773,
+      "file_count": 17
+    },
+    {
+      "name": "vidquery-local-063.tar",
+      "size": 82667520,
+      "sha256": "29497220a9f6fb6e4cd94ec91cdcd5909bbb13ecebece082e5cbfa9c93db3c1b",
+      "asset_id": 795680466,
+      "file_count": 73
+    },
+    {
+      "name": "vidquery-local-064.tar",
+      "size": 90009600,
+      "sha256": "10df6733fc2b0de99ee6b481a5b06d674ee764bda448551dc507c483b6ee26ec",
+      "asset_id": 795682189,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-065.tar",
+      "size": 90009600,
+      "sha256": "00888b5950066a1b52386125c93d8daf330a728fd53f87a8b99796e5962690d8",
+      "asset_id": 795683853,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-066.tar",
+      "size": 90009600,
+      "sha256": "b743cf3f7891cce601f9780ed115c37441608f8683a002a72862c9cc8725abc7",
+      "asset_id": 795685881,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-067.tar",
+      "size": 90009600,
+      "sha256": "847f58d7d438b644aaedf1bc424dcf5efcd2509d85798f18a6b29e35eaa3f99b",
+      "asset_id": 795686894,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-068.tar",
+      "size": 90009600,
+      "sha256": "51354b5bf57ff4e7b89c1723020c5e09191994c904f5657724b8c4a0c13aae93",
+      "asset_id": 795688742,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-069.tar",
+      "size": 90009600,
+      "sha256": "34f7a20684c23c03939715076bf46247f04e407c67e28c1cd9ae23a0f82a8c1a",
+      "asset_id": 795690147,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-070.tar",
+      "size": 90009600,
+      "sha256": "bcc92ea8af91440a6af2494c128ce3446847e2d2409258b26b5ab15160cbf52a",
+      "asset_id": 795691333,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-071.tar",
+      "size": 90009600,
+      "sha256": "0b1873ef42d75410c257b354a11a07bc49f54db36309c10c8461ffa65e6ad2b7",
+      "asset_id": 795692561,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-072.tar",
+      "size": 90009600,
+      "sha256": "647c12b21487f4e96ac553cc9fafbf3f37f97475d61834dce1bc184479d65a88",
+      "asset_id": 795693738,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-073.tar",
+      "size": 90009600,
+      "sha256": "b36d24fe6ffc6f7796f5d1fbb53d31e5a0252e5a3998c6d5d93606717101d1bc",
+      "asset_id": 795704950,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-074.tar",
+      "size": 90009600,
+      "sha256": "f4e19e5652837297ab6684cbb1cc9a71f5551fd95284b128871b4f07ca3fd99f",
+      "asset_id": 795707125,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-075.tar",
+      "size": 90009600,
+      "sha256": "e2d0eed0ceade26908eebb347ec76dd801ba3eff9b4a675792c5480d544e5da1",
+      "asset_id": 795708654,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-076.tar",
+      "size": 90009600,
+      "sha256": "32ae001a2210c3c80262f007e9bd86385bfe7d34c912f0d66fa30edf093fb7d9",
+      "asset_id": 795710632,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-077.tar",
+      "size": 90009600,
+      "sha256": "2ae97e4ad7c1f36ede86babc2f964051a5c658e1106ed09a6501d6348386c9b7",
+      "asset_id": 795712040,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-078.tar",
+      "size": 90009600,
+      "sha256": "69558f712130a96fae415fde930deb6b87ffc4125f058c8792c91ad266df7261",
+      "asset_id": 795713862,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-079.tar",
+      "size": 90009600,
+      "sha256": "f7e3aeb7e3db321d27f1b3420f60c89f76ccddd5bfe67ab5041c724c073944ea",
+      "asset_id": 795715832,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-080.tar",
+      "size": 90009600,
+      "sha256": "20b3a16c4956019f6eb45371563fd00ecbe46851362dbb31d15264bd408feed9",
+      "asset_id": 795717012,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-081.tar",
+      "size": 90009600,
+      "sha256": "ff002e417f69863be5102d4c4caab9111ea2f5755a8df4cbb2d557e159c6208c",
+      "asset_id": 795718232,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-082.tar",
+      "size": 99983360,
+      "sha256": "5ce1193c28f20acfb4d7b6e5a3a1b66cd5fcc5f995c663320fceb97b391db026",
+      "asset_id": 795719766,
+      "file_count": 2079
+    },
+    {
+      "name": "vidquery-local-083.tar",
+      "size": 99983360,
+      "sha256": "ecedcb6f8df805ac1be4b9ddbf3e12c18c9d5a5b098897f3a9effb09f4791e4a",
+      "asset_id": 795721653,
+      "file_count": 9272
+    },
+    {
+      "name": "vidquery-local-084.tar",
+      "size": 43356160,
+      "sha256": "a682d2c76223c324831e8f6027e0f10a390b7de029e2aa973bdb4d4433aa8f42",
+      "asset_id": 795723692,
+      "file_count": 1502
+    },
+    {
+      "name": "vidquery-local-085.tar",
+      "size": 63733760,
+      "sha256": "a744813ccbf2c0e8a1877ce96fbe8cbb8c3134f403d64477ea1caf274a88cf8c",
+      "asset_id": 795724766,
+      "file_count": 8
+    },
+    {
+      "name": "vidquery-local-086.tar",
+      "size": 99624960,
+      "sha256": "27431e4d9b83562956c0efa035943c4deef63f0043beebc32e0a896b6d8a2446",
+      "asset_id": 795726802,
+      "file_count": 14
+    },
+    {
+      "name": "vidquery-local-087.tar",
+      "size": 88432640,
+      "sha256": "a464a87b76ec7b1520fd8abe150e64aab7c76beb954349be4d8529e9a20319c8",
+      "asset_id": 795729559,
+      "file_count": 19
+    },
+    {
+      "name": "vidquery-local-088.tar",
+      "size": 67573760,
+      "sha256": "f7746f95e338b67fc5db4a6e4020135488da71f3ce7d095288851ef5bc5c33f2",
+      "asset_id": 795732364,
+      "file_count": 7
+    },
+    {
+      "name": "vidquery-local-089.tar",
+      "size": 90009600,
+      "sha256": "6241aa598dfe31eb071b27f748f3026f6aa3058f05feffdef07d14aa1e5cd325",
+      "asset_id": 795733476,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-090.tar",
+      "size": 90009600,
+      "sha256": "7780afb276b89820327986699f2f8bf85f88d2dd0689228736ea2749be114ddf",
+      "asset_id": 795737880,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-091.tar",
+      "size": 90009600,
+      "sha256": "542262b520a260f8e115906cbd8133e93624ba99d8c6c9bc114ba53bbfd7d5df",
+      "asset_id": 795740299,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-092.tar",
+      "size": 90009600,
+      "sha256": "d3eaa8cd78cdc5ab121998f90fb4c84c00410c47d13d12238df767e9e4d3df75",
+      "asset_id": 795742558,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-093.tar",
+      "size": 90009600,
+      "sha256": "f430241dabd1785af2898eac4ecc67a5c8c90d1a8fdf9066c7107e8de914f3c3",
+      "asset_id": 795745113,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-094.tar",
+      "size": 90009600,
+      "sha256": "c33f9d05aa99e321eac570a75055f977b04ef9fb77e941cfaff7f5c670a36a37",
+      "asset_id": 795746541,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-095.tar",
+      "size": 90009600,
+      "sha256": "f5c0a542ee837c83a647e6417bf7ba42c0bba3297d77fbe7ac3eb26278e39d47",
+      "asset_id": 795748800,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-096.tar",
+      "size": 90009600,
+      "sha256": "2f30ad42f27ef8ea57b6f43cdbd9c5c0432ee69e2da7408153fe4072f9d916f2",
+      "asset_id": 795750780,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-097.tar",
+      "size": 90009600,
+      "sha256": "539e52fa4ece24edc9f33df7cddd84a9d3d1ba3948f7c72d5f0c98c661492ae1",
+      "asset_id": 795753154,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-098.tar",
+      "size": 44349440,
+      "sha256": "d632fd59864cc35481d67efafc5f80bf2126fe79a340bff971467464115a5480",
+      "asset_id": 795755430,
+      "file_count": 13
+    },
+    {
+      "name": "vidquery-local-099.tar",
+      "size": 90009600,
+      "sha256": "41c0d683fbb55828998829eae0b8b87a91cbade4d25be1ee6ae90c9f8ff76a79",
+      "asset_id": 795756589,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-100.tar",
+      "size": 90009600,
+      "sha256": "9acd5c12fdb652111cf6f29f0de93bc7e3c07487a6f16bb1b2b996453f497330",
+      "asset_id": 795758148,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-101.tar",
+      "size": 90408960,
+      "sha256": "871526632bca67ef7b6052456a60c5e6fac231a3d5cec3ceada791d1338f1c05",
+      "asset_id": 795759930,
+      "file_count": 2
+    },
+    {
+      "name": "vidquery-local-102.tar",
+      "size": 90009600,
+      "sha256": "2dca5446b6381f50871af5d6028f86e8bf18a5de02a13be2b4ee3e5b6592baa2",
+      "asset_id": 795761784,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-103.tar",
+      "size": 90009600,
+      "sha256": "b747698d15df6a9fcb97c8a572b428cca3a3e4ff6d9552aec4c47ef38f2a594f",
+      "asset_id": 795763937,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-104.tar",
+      "size": 90009600,
+      "sha256": "ab77ea2e3e3855717f354e6ad00a7bdb520656fd02c7016a0c16164d5e5ef8bb",
+      "asset_id": 795765437,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-105.tar",
+      "size": 90009600,
+      "sha256": "163846ae0f51ca5da49575e5cbc031d9c737526c29c314305607b76816bcc346",
+      "asset_id": 795767710,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-106.tar",
+      "size": 90009600,
+      "sha256": "2b3a47760f5f282e2b13ac503c0157e0a89c14eb714fdaa956f960cfabe49194",
+      "asset_id": 795769463,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-107.tar",
+      "size": 90009600,
+      "sha256": "8ed45fd65dde125e50afd37ed65dac72168b48d905fa2cc8cd05cdc2eacdad17",
+      "asset_id": 795771846,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-108.tar",
+      "size": 90009600,
+      "sha256": "f09dc0ad6e04c710e4eb8d121047dc73bb21d0c0e69df1b4ddeaee0b84c0d121",
+      "asset_id": 795775027,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-109.tar",
+      "size": 90009600,
+      "sha256": "28e8b2d1bcb1ace3622b25d3b5469cbc7621da5331c5926124a3e74a4df1dda0",
+      "asset_id": 795777671,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-110.tar",
+      "size": 90009600,
+      "sha256": "c1354bd0e4dec87c20b7494c0ded20e973577f26bd65e957eccd8197d34f82b0",
+      "asset_id": 795779366,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-111.tar",
+      "size": 90009600,
+      "sha256": "3e1ac8c3def65be73fcdbae3fa16801cc70c4c8305d4a642d3f57167f596ff46",
+      "asset_id": 795781244,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-112.tar",
+      "size": 90009600,
+      "sha256": "9b53f216d122179b4ff370c9a542c4c9c3fb1e180b9258013385899ebfcaf6dd",
+      "asset_id": 795783768,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-113.tar",
+      "size": 90009600,
+      "sha256": "ff668aa8edd1a63e10199f58f6658081c2b7e9380b9dc9e99f62d10c9e1c83cf",
+      "asset_id": 795784941,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-114.tar",
+      "size": 90009600,
+      "sha256": "c74408a1cdd8a7da7c075277a09b93386eba39b750d8e2104ac13a1ed219b8ce",
+      "asset_id": 795786568,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-115.tar",
+      "size": 90009600,
+      "sha256": "6ce78cc9675b3c9519b6bddf4e9931a5e0b369155c151081a1528b2c347335b9",
+      "asset_id": 795789509,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-116.tar",
+      "size": 90009600,
+      "sha256": "d7c92a3d576a50246316c0c94443f7dc36c2e75d8d7d875aef48a87bd3c5f136",
+      "asset_id": 795791964,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-117.tar",
+      "size": 90009600,
+      "sha256": "03023a7ef82d52bad7b03cc7a5d782a004982cc1010973a2ddb12c1cc957eaf4",
+      "asset_id": 795794428,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-118.tar",
+      "size": 90009600,
+      "sha256": "2a04dfdebf0afcd8c3b9364ada28fa67eb679e69d9c97deabc8dac038847755f",
+      "asset_id": 795798051,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-119.tar",
+      "size": 87951360,
+      "sha256": "d390eb86a8296f0c660394c61400d033d5d1bc12800cd2c9394912975897c373",
+      "asset_id": 795801291,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-120.tar",
+      "size": 90009600,
+      "sha256": "3934b258f532e49e15b9bb2013bbc5972412bc3fe9afc6e12d09536d4c4da9d2",
+      "asset_id": 795802979,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-121.tar",
+      "size": 90009600,
+      "sha256": "03afa15a9b5c0f3c715297e9018d27cbd6c7e5b399a5a42a584ea084d2d0f194",
+      "asset_id": 795804228,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-122.tar",
+      "size": 90009600,
+      "sha256": "4e5978ef6181ffc299716b27f087099d5abd6739832e68509c85df18d5c6b336",
+      "asset_id": 795806687,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-123.tar",
+      "size": 90009600,
+      "sha256": "7550deff6d12acebf5c33d6d5aead7f9aa6279942be898d9de347b9b8f52fa3b",
+      "asset_id": 795810338,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-124.tar",
+      "size": 90009600,
+      "sha256": "61a870c7e8e06dbaa105e9bf85724d033d01fe12c1f5b5003ca72cdc6854749f",
+      "asset_id": 795813295,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-125.tar",
+      "size": 90009600,
+      "sha256": "b0db460f65d6102d840b858b56d211cb00c550648be7950f61d131c41bbfc2b1",
+      "asset_id": 795817209,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-126.tar",
+      "size": 90009600,
+      "sha256": "e3a3d9a1fc224ead8356af2f828b0be3641f024bc8aa0c1ff94a0f1eb8e332ba",
+      "asset_id": 795821656,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-127.tar",
+      "size": 90009600,
+      "sha256": "d65213e58e7896d647fde80e78a815a2dbed532d46c7095f76cb1ed613fb344a",
+      "asset_id": 795823643,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-128.tar",
+      "size": 90009600,
+      "sha256": "ef4a3f19c6d2b72085418dc0fa8382c886122bd4507b1ed44e749c22e4879037",
+      "asset_id": 795825252,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-129.tar",
+      "size": 90009600,
+      "sha256": "6672e082773b057bc23f4727911c32f0211d58b428e3576b5e0b0c6fb1caf072",
+      "asset_id": 795827718,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-130.tar",
+      "size": 90009600,
+      "sha256": "b96516056f3014bec9d6774fce488591dd5d1d4fd7eaeb8d8baf8fe7c5516d92",
+      "asset_id": 795829312,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-131.tar",
+      "size": 90009600,
+      "sha256": "129c1c3a0df70507accfc87d9ce394195f4d7723db67dd3c1c4b2f44d895021e",
+      "asset_id": 795831682,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-132.tar",
+      "size": 90009600,
+      "sha256": "1702700a3ec9153f3569efb9086bb8d86f88581f95f49189cd2cb4d35534a680",
+      "asset_id": 795833481,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-133.tar",
+      "size": 90009600,
+      "sha256": "4888810c98ad63238f95dda95fbeca0ca7bbdd1cedf37d48fb42ed3bb32d2a06",
+      "asset_id": 795835628,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-134.tar",
+      "size": 90009600,
+      "sha256": "8753050b04c1a26b732c7e1b13b8c3d4c88f5bec1f5ee6ecdd39a63dc61b62be",
+      "asset_id": 795837744,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-135.tar",
+      "size": 90009600,
+      "sha256": "d238ea31079a744d7e0a1399abbeef843ccbb2cc4e7905b934afe83db82deb81",
+      "asset_id": 795839498,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-136.tar",
+      "size": 88012800,
+      "sha256": "4b607f14fa96914583108df64e1616f96e34154e1cdc1a3596189f85e3f56d00",
+      "asset_id": 795841022,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-137.tar",
+      "size": 90009600,
+      "sha256": "f531fc42c0fd2ef1779a7fee426a91365e909fd5a6158fe5d1ca16a6c2fb147d",
+      "asset_id": 795842598,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-138.tar",
+      "size": 90009600,
+      "sha256": "d3fb9de5fe5c3de4d60091f87991686b5c1017bcf28107c92d5d1e344e05dc83",
+      "asset_id": 795844527,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-139.tar",
+      "size": 90009600,
+      "sha256": "b10acb66731a40294d1e09bf4d6872a1bdba94451c23f6e17c312c5cfead1fe7",
+      "asset_id": 795846116,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-140.tar",
+      "size": 90009600,
+      "sha256": "ae7156cb099a0f86069afd55ee29f32b2a6d748f600e90f24450666a3d4808d2",
+      "asset_id": 795849805,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-141.tar",
+      "size": 90009600,
+      "sha256": "6ccaa3a02235f07d58e9b5c739c446a34c9951981fc504873e109aa7bd03539c",
+      "asset_id": 795851258,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-142.tar",
+      "size": 33628160,
+      "sha256": "023971411a03b88e439e289e6060317435685e270f8b63c1e14d29d5b87c901c",
+      "asset_id": 795852569,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-143.tar",
+      "size": 75581440,
+      "sha256": "b28b534da233e21820b8fe81c47c7ebaff28189c9fe235796aae2bcbcc47f1c4",
+      "asset_id": 795853357,
+      "file_count": 1
+    },
+    {
+      "name": "vidquery-local-144.tar",
+      "size": 99092480,
+      "sha256": "1bb2e5da3d25aa5476deaf0692561e9d76e67d1ac5068121b3c946e5d3ed9647",
+      "asset_id": 795854756,
+      "file_count": 5
+    },
+    {
+      "name": "vidquery-local-145.tar",
+      "size": 94095360,
+      "sha256": "e5db198aae8a42cb05943500f964a9dc51e4f3105ae114a14a00df59cf4a5df4",
+      "asset_id": 795856327,
+      "file_count": 3
+    },
+    {
+      "name": "vidquery-local-146.tar",
+      "size": 49141760,
+      "sha256": "f8099cd52665a5d4333d70d0f7a95fdfbbf3e8e3488c3dca3fe69e15b9932fc5",
+      "asset_id": 795858424,
+      "file_count": 3562
+    },
+    {
+      "name": "vidquery-local-147.tar",
+      "size": 81285120,
+      "sha256": "83dbbdbe7e7043bab030191dcc68782b4b5b7f05147e2b6188baefbf927b2647",
+      "asset_id": 795859725,
+      "file_count": 3
+    }
+  ],
+  "parts": 106652
+}
