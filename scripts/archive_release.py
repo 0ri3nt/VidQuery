@@ -14,6 +14,7 @@ import json
 import os
 import subprocess
 import tarfile
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -78,7 +79,8 @@ def api(method: str, path: str, token: str, data: dict | None = None) -> dict:
         },
     )
     with urllib.request.urlopen(request, timeout=60) as response:
-        return json.load(response)
+        body = response.read()
+        return json.loads(body) if body else {}
 
 
 def tracked() -> set[str]:
@@ -296,7 +298,19 @@ def main() -> None:
         if group["name"] in completed:
             continue
         print("Uploading", group["name"], flush=True)
-        result = upload_tar(group, state["release_id"], token)
+        for attempt in range(1, 6):
+            try:
+                result = upload_tar(group, state["release_id"], token)
+                break
+            except (OSError, RuntimeError) as error:
+                print(f"Attempt {attempt} failed for {group['name']}: {error}", flush=True)
+                remote = api("GET", f"/repos/{OWNER_REPO}/releases/{state['release_id']}", token)
+                for asset in remote["assets"]:
+                    if asset["name"] == group["name"]:
+                        api("DELETE", f"/repos/{OWNER_REPO}/releases/assets/{asset['id']}", token)
+                if attempt == 5:
+                    raise
+                time.sleep(min(2 ** attempt, 15))
         state["volumes"].append(result)
         save_json(STATE, state)
     records = [record for volume in state["volumes"] for record in volume["records"]]
