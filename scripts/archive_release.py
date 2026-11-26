@@ -9,7 +9,6 @@ from __future__ import annotations
 import argparse
 import gzip
 import hashlib
-import http.client
 import json
 import os
 import subprocess
@@ -190,15 +189,15 @@ class HashReader:
 
 
 class SocketWriter:
-    def __init__(self, connection: http.client.HTTPSConnection, name: str):
-        self.connection = connection
+    def __init__(self, output, name: str):
+        self.output = output
         self.name = name
         self.hash = hashlib.sha256()
         self.count = 0
         self.next_report = 256 * 1024 * 1024
 
     def write(self, data: bytes) -> int:
-        self.connection.send(data)
+        self.output.write(data)
         self.hash.update(data)
         self.count += len(data)
         if self.count >= self.next_report:
@@ -212,16 +211,18 @@ class SocketWriter:
 
 def upload_tar(volume: dict, release_id: int, token: str) -> dict:
     query = urllib.parse.urlencode({"name": volume["name"]})
-    conn = http.client.HTTPSConnection("uploads.github.com", timeout=3600)
-    conn.putrequest("POST", f"/repos/{OWNER_REPO}/releases/{release_id}/assets?{query}")
-    conn.putheader("Authorization", "Bearer " + token)
-    conn.putheader("Accept", "application/vnd.github+json")
-    conn.putheader("X-GitHub-Api-Version", "2022-11-28")
-    conn.putheader("User-Agent", "VidQuery-archive")
-    conn.putheader("Content-Type", "application/x-tar")
-    conn.putheader("Content-Length", str(volume["size"]))
-    conn.endheaders()
-    writer = SocketWriter(conn, volume["name"])
+    url = f"https://uploads.github.com/repos/{OWNER_REPO}/releases/{release_id}/assets?{query}"
+    process = subprocess.Popen(
+        ["curl.exe", "--http1.1", "--silent", "--show-error", "--request", "POST",
+         "--header", "Authorization: Bearer " + token,
+         "--header", "Accept: application/vnd.github+json",
+         "--header", "Content-Type: application/x-tar",
+         "--header", "Content-Length: " + str(volume["size"]),
+         "--data-binary", "@-", url],
+        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+    )
+    assert process.stdin is not None
+    writer = SocketWriter(process.stdin, volume["name"])
     records = []
     with tarfile.open(fileobj=writer, mode="w|", format=tarfile.PAX_FORMAT,
                       bufsize=1024 * 1024) as archive:
@@ -243,12 +244,16 @@ def upload_tar(volume: dict, release_id: int, token: str) -> dict:
                             "parts": item["parts"], "offset": item["offset"]})
     if writer.count != volume["size"]:
         raise RuntimeError(f"Tar size mismatch: {writer.count} != {volume['size']}")
-    response = conn.getresponse()
-    body = response.read()
-    conn.close()
-    if response.status != 201:
-        raise RuntimeError(f"GitHub upload failed ({response.status}): {body[:500]!r}")
+    process.stdin.close()
+    assert process.stdout is not None and process.stderr is not None
+    body = process.stdout.read()
+    error = process.stderr.read()
+    status = process.wait(timeout=3600)
+    if status or not body:
+        raise RuntimeError(f"GitHub upload failed ({status}): {error[:500]!r} {body[:500]!r}")
     asset = json.loads(body)
+    if asset.get("id") is None:
+        raise RuntimeError(f"GitHub rejected asset: {body[:500]!r}")
     if asset["size"] != writer.count or asset["state"] != "uploaded":
         raise RuntimeError("GitHub asset size/state mismatch")
     return {"name": volume["name"], "size": writer.count,
