@@ -63,17 +63,17 @@ def credential() -> str:
     raise RuntimeError("GitHub credential unavailable")
 
 
-def api(method: str, path: str, token: str, data: dict | None = None) -> dict:
+def api(method: str, path: str, token: str | None, data: dict | None = None) -> dict:
     payload = None if data is None else json.dumps(data).encode()
     request = urllib.request.Request(
         "https://api.github.com" + path,
         data=payload,
         method=method,
         headers={
-            "Authorization": "Bearer " + token,
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28",
             "User-Agent": "VidQuery-archive",
+            **({"Authorization": "Bearer " + token} if token else {}),
             **({"Content-Type": "application/json"} if payload else {}),
         },
     )
@@ -82,7 +82,7 @@ def api(method: str, path: str, token: str, data: dict | None = None) -> dict:
         return json.loads(body) if body else {}
 
 
-def release_assets(release_id: int, token: str) -> dict[str, dict]:
+def release_assets(release_id: int, token: str | None) -> dict[str, dict]:
     assets = {}
     page = 1
     while True:
@@ -364,7 +364,7 @@ class HashStream:
 
 def verify(destination: Path | None = None, sample_assets: int | None = None) -> None:
     summary = json.loads(SUMMARY.read_text(encoding="utf-8"))
-    token = credential()
+    token = None  # Public Release downloads require no GitHub account.
     assets = release_assets(summary["release_id"], token)
     for volume in summary["volumes"]:
         asset = assets[volume["name"]]
@@ -394,8 +394,7 @@ def verify(destination: Path | None = None, sample_assets: int | None = None) ->
         if asset["size"] != volume["size"] or asset["state"] != "uploaded":
             raise RuntimeError("Remote asset metadata mismatch: " + volume["name"])
         request = urllib.request.Request(asset["browser_download_url"],
-                                         headers={"User-Agent": "VidQuery-archive",
-                                                  "Authorization": "Bearer " + token})
+                                         headers={"User-Agent": "VidQuery-archive"})
         with urllib.request.urlopen(request, timeout=3600) as response:
             stream = HashStream(response)
             with tarfile.open(fileobj=stream, mode="r|", format=tarfile.PAX_FORMAT) as archive:
