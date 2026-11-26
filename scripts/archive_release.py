@@ -324,10 +324,9 @@ def main() -> None:
                 break
             except (OSError, RuntimeError) as error:
                 print(f"Attempt {attempt} failed for {group['name']}: {error}", flush=True)
-                remote = api("GET", f"/repos/{OWNER_REPO}/releases/{state['release_id']}", token)
-                for asset in remote["assets"]:
-                    if asset["name"] == group["name"]:
-                        api("DELETE", f"/repos/{OWNER_REPO}/releases/assets/{asset['id']}", token)
+                asset = release_assets(state["release_id"], token).get(group["name"])
+                if asset is not None:
+                    api("DELETE", f"/repos/{OWNER_REPO}/releases/assets/{asset['id']}", token)
                 if attempt == 5:
                     raise
                 time.sleep(min(2 ** attempt, 15))
